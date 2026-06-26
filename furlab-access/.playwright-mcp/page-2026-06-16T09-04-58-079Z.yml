@@ -1,0 +1,79 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+      - button "VSA" [ref=e9] [cursor=pointer]
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic "Инструменты зон" [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Fur Lab
+            - button "Выбор" [ref=e15] [cursor=pointer]
+            - button "Линия зонирования" [ref=e17] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e44] [cursor=pointer]
+        - group [ref=e21]:
+          - generic "Настройки отображения" [ref=e22] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e23]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [disabled] [ref=e25]:
+          - generic [ref=e26]: description
+          - generic [ref=e27]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e49]: Нет деталей
+        - generic "Потяните для изменения высоты" [ref=e37]
+        - generic [ref=e38]:
+          - generic [ref=e39]: Редактор свойств
+          - generic [ref=e50]: Нет выбранного объекта
+  - group [ref=e42]:
+    - generic "Database" [ref=e43] [cursor=pointer]
+  - generic [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e54]: Проекты
+      - button "Закрыть" [ref=e55] [cursor=pointer]:
+        - generic [ref=e56]: close
+    - generic [ref=e58]:
+      - generic [ref=e59] [cursor=pointer]:
+        - generic [ref=e60]: проект - июньский
+        - generic [ref=e61]: 21 зон · 3 выкладок · 16.06.2026
+        - generic [ref=e62]:
+          - button "Открыть" [ref=e63]
+          - button "✕" [ref=e64]
+      - generic [ref=e65] [cursor=pointer]:
+        - generic [ref=e66]: прямоугольный проект
+        - generic [ref=e67]: 21 зон · 06.06.2026
+        - generic [ref=e68]:
+          - button "Открыть" [ref=e69]
+          - button "✕" [ref=e70]
+      - generic [ref=e71] [cursor=pointer]:
+        - generic [ref=e72]: Без названия
+        - generic [ref=e73]: 20 зон · 5 выкладок · 29.05.2026
+        - generic [ref=e74]:
+          - button "Открыть" [ref=e75]
+          - button "✕" [ref=e76]
+      - generic [ref=e77] [cursor=pointer]:
+        - generic [ref=e78]: Чистый 2
+        - generic [ref=e79]: 20 зон · 5 выкладок · 29.05.2026
+        - generic [ref=e80]:
+          - button "Открыть" [ref=e81]
+          - button "✕" [ref=e82]
+      - generic [ref=e83] [cursor=pointer]:
+        - generic [ref=e84]: опа!
+        - generic [ref=e85]: 21 зон · 2 выкладок · 25.05.2026
+        - generic [ref=e86]:
+          - button "Открыть" [ref=e87]
+          - button "✕" [ref=e88]
+    - generic [ref=e89]:
+      - button "Новый проект (импорт)" [ref=e90] [cursor=pointer]
+      - button "Отмена" [ref=e91] [cursor=pointer]

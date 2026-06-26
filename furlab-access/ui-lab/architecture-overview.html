@@ -1,0 +1,201 @@
+﻿<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FURLAB UI Lab - Архитектура системы</title>
+    <style>
+      :root {
+        --bg: #f4f6fb;
+        --panel: #ffffff;
+        --text: #1f2a37;
+        --muted: #4a5a70;
+        --border: #c9d3e6;
+        --react: #e8f2ff;
+        --legacy: #fff4e8;
+        --api: #eafbf0;
+        --wsh: #f8efff;
+        --db: #fff0f0;
+        --arrow: #4d5f7a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Segoe UI", Tahoma, sans-serif;
+      }
+
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+      }
+
+      .subtitle {
+        margin: 0 0 20px;
+        color: var(--muted);
+      }
+
+      .board {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+      }
+
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .box {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px;
+      }
+
+      .box h2 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      .box p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .react { background: var(--react); }
+      .legacy { background: var(--legacy); }
+      .api { background: var(--api); }
+      .wsh { background: var(--wsh); }
+      .db { background: var(--db); }
+
+      .diagram {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: #fbfcff;
+      }
+
+      .legend {
+        margin-top: 12px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .legend code {
+        background: #edf2ff;
+        padding: 1px 6px;
+        border-radius: 6px;
+      }
+
+      @media (max-width: 900px) {
+        .cols {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Архитектура FURLAB (React + Legacy Engine + Access API)</h1>
+      <p class="subtitle">
+        Текущая рабочая схема: React-UI управляет состоянием, legacy-ядро делает вычисления, Node API пишет в Access.
+      </p>
+
+      <div class="board">
+        <div class="cols">
+          <div class="box react">
+            <h2>1) UI слой (React + Ant Design)</h2>
+            <p>
+              <strong>App.tsx</strong>, <strong>uiState</strong>, <strong>useLegacyBridge</strong>.
+              Рисует интерфейс, отправляет команды движку, принимает состояние через события.
+            </p>
+          </div>
+          <div class="box legacy">
+            <h2>2) Вычислительный слой (Legacy appCore.js)</h2>
+            <p>
+              Canvas, QR, маски, P1-P2, расчет метрик и валидации. Публикует <code>ldv:state</code> и
+              <code>ldv:save-status</code>.
+            </p>
+          </div>
+          <div class="box api">
+            <h2>3) Сервер API (Node)</h2>
+            <p>
+              <strong>tools/ui_lab_server.js</strong>: <code>/api/health</code>, <code>/api/dicts</code>,
+              <code>/api/save-scrap-piece</code>.
+            </p>
+          </div>
+        </div>
+
+        <svg class="diagram" viewBox="0 0 1120 420" role="img" aria-label="Схема взаимодействия подсистем">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="var(--arrow)"></polygon>
+            </marker>
+          </defs>
+
+          <rect x="40" y="40" width="300" height="120" rx="12" fill="var(--react)" stroke="var(--border)" />
+          <text x="60" y="72" font-size="18" font-weight="600" fill="var(--text)">Browser / React UI</text>
+          <text x="60" y="98" font-size="14" fill="var(--muted)">App.tsx, uiState, useLegacyBridge</text>
+          <text x="60" y="120" font-size="14" fill="var(--muted)">Ant controls, form, tech-info</text>
+
+          <rect x="410" y="40" width="320" height="120" rx="12" fill="var(--legacy)" stroke="var(--border)" />
+          <text x="430" y="72" font-size="18" font-weight="600" fill="var(--text)">Legacy Engine (appCore.js)</text>
+          <text x="430" y="98" font-size="14" fill="var(--muted)">Canvas/QR/маски/вектор ворса</text>
+          <text x="430" y="120" font-size="14" fill="var(--muted)">emit: ldv:state, ldv:save-status</text>
+
+          <rect x="790" y="40" width="290" height="120" rx="12" fill="var(--api)" stroke="var(--border)" />
+          <text x="810" y="72" font-size="18" font-weight="600" fill="var(--text)">Node API</text>
+          <text x="810" y="98" font-size="14" fill="var(--muted)">/api/health, /api/dicts</text>
+          <text x="810" y="120" font-size="14" fill="var(--muted)">/api/save-scrap-piece</text>
+
+          <rect x="660" y="250" width="220" height="100" rx="12" fill="var(--wsh)" stroke="var(--border)" />
+          <text x="678" y="282" font-size="17" font-weight="600" fill="var(--text)">WSH Scripts</text>
+          <text x="678" y="306" font-size="13" fill="var(--muted)">access_read_dicts.js</text>
+          <text x="678" y="324" font-size="13" fill="var(--muted)">access_inventory_exists.js</text>
+          <text x="678" y="342" font-size="13" fill="var(--muted)">run_access_sql_via_access.js</text>
+
+          <rect x="920" y="250" width="160" height="100" rx="12" fill="var(--db)" stroke="var(--border)" />
+          <text x="940" y="295" font-size="17" font-weight="600" fill="var(--text)">Access DB</text>
+          <text x="940" y="320" font-size="13" fill="var(--muted)">Furlab 1.accdb</text>
+
+          <line x1="340" y1="82" x2="410" y2="82" stroke="var(--arrow)" stroke-width="2.4" marker-end="url(#arrow)" />
+          <line x1="410" y1="120" x2="340" y2="120" stroke="var(--arrow)" stroke-width="2.4" marker-end="url(#arrow)" />
+          <text x="350" y="70" font-size="12" fill="var(--muted)">commands</text>
+          <text x="350" y="136" font-size="12" fill="var(--muted)">state events</text>
+
+          <line x1="730" y1="100" x2="790" y2="100" stroke="var(--arrow)" stroke-width="2.4" marker-end="url(#arrow)" />
+          <text x="734" y="88" font-size="12" fill="var(--muted)">fetch /api/*</text>
+
+          <line x1="900" y1="160" x2="770" y2="250" stroke="var(--arrow)" stroke-width="2.4" marker-end="url(#arrow)" />
+          <text x="812" y="198" font-size="12" fill="var(--muted)">spawnSync cscript</text>
+
+          <line x1="880" y1="300" x2="920" y2="300" stroke="var(--arrow)" stroke-width="2.4" marker-end="url(#arrow)" />
+          <line x1="920" y1="335" x2="880" y2="335" stroke="var(--arrow)" stroke-width="2.4" marker-end="url(#arrow)" />
+          <text x="886" y="288" font-size="12" fill="var(--muted)">SQL/queries</text>
+          <text x="888" y="352" font-size="12" fill="var(--muted)">results</text>
+        </svg>
+
+        <div class="legend">
+          Открыть страницу: <code>ui-lab/architecture-overview.html</code><br />
+          Через сервер: <code>[project-ui]/ui-lab/architecture-overview.html</code>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,73 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Техпак" [ref=e9] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e10]:
+        - button "☀" [ref=e11] [cursor=pointer]
+        - button "EN" [ref=e12] [cursor=pointer]
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: 3D Lastique · Tech Pack
+      - heading "Tech Pack Builder" [level=1] [ref=e16]
+      - paragraph [ref=e17]: Garment specification — export to Excel / PDF
+    - generic [ref=e18]:
+      - button "01 Стиль" [ref=e19] [cursor=pointer]
+      - button "02 Выноски" [ref=e20] [cursor=pointer]
+      - button "03 BOM" [ref=e21] [cursor=pointer]
+      - button "04 Конструкция" [ref=e22] [cursor=pointer]
+      - button "05 Детали кроя" [ref=e23] [cursor=pointer]
+      - button "06 Маркировка" [ref=e24] [cursor=pointer]
+      - button "07 Файлы" [ref=e25] [cursor=pointer]
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]: Изделие
+        - combobox "Изделие" [ref=e30]:
+          - option "Классические брюки (муж.)" [selected]
+          - option "Пальто однобортное"
+          - option "Пальто двубортное"
+      - generic [ref=e31]:
+        - generic [ref=e32]: Базовый размер
+        - combobox "Базовый размер" [ref=e33]:
+          - option "46"
+          - option "48" [selected]
+          - option "50"
+          - option "52"
+          - option "54"
+          - option "56"
+      - generic [ref=e34]:
+        - generic [ref=e35]: Бренд
+        - textbox "Бренд" [ref=e36]: 3D Lastique
+      - generic [ref=e37]:
+        - generic [ref=e38]: Style No.
+        - textbox "Style No." [ref=e39]
+      - generic [ref=e40]:
+        - generic [ref=e41]: Name EN
+        - textbox "Name EN" [ref=e42]
+      - generic [ref=e43]:
+        - generic [ref=e44]: Название RU
+        - textbox "Название RU" [ref=e45]
+      - generic [ref=e46]:
+        - generic [ref=e47]: Сезон
+        - textbox "Сезон" [ref=e48]
+      - generic [ref=e49]:
+        - generic [ref=e50]: Пол
+        - textbox "Пол" [ref=e51]: Men
+      - generic [ref=e52]:
+        - generic [ref=e53]: Стадия
+        - textbox "Стадия" [ref=e54]: Tech pack
+      - generic [ref=e55]:
+        - generic [ref=e56]: Фабрика
+        - textbox "Фабрика" [ref=e57]
+      - generic [ref=e58]:
+        - generic [ref=e59]: Описание
+        - textbox "Описание" [ref=e60]
+    - generic [ref=e61]:
+      - button "↓ Техпак RU" [ref=e62] [cursor=pointer]
+      - button "↓ Техпак EN" [ref=e63] [cursor=pointer]
+      - generic [ref=e64] [cursor=pointer]: Генерация PDF...

@@ -1,0 +1,1118 @@
+{
+"qsAPIMetaDataUTF8" : "{\n}",
+"uiVersion" : 100,
+"qsItemNo" : "None",
+"uiFabricVersion" : 100,
+"qsName" : "FABRIC 1",
+"qsTrimTypeUTF8" : "None",
+"qsNameUTF8" : "FABRIC 1",
+"listMarkerColorwayData" : [ [  ] ],
+"qsTrimType" : "None",
+"qsItemNoUTF8" : "None",
+"mapMaterial2D" : {
+"listFaceMaterial" : [ {
+"iFileType" : 0,
+"v3BaseColor" : [1.0,1.0,1.0],
+"enMaterialFaceType" : 0,
+"fFurCurlRadiusVar" : 0.0,
+"fMetalness" : 0.0,
+"iNormalIntensityInPercentage" : 0,
+"fDisplacementEdgeLength" : 4.0,
+"iMaterialFileType" : 0,
+"mapElement" : {
+"qsName" : "FABRIC 1_FRONT_1356",
+"qsTrimTypeUTF8" : "None",
+"qsNameUTF8" : "FABRIC 1_FRONT_1356",
+"qsTrimType" : "None",
+"qsItemNo" : "None",
+"qsPatternTrimType" : "None",
+"qsItemNoUTF8" : "None",
+"qsPatternTrimTypeUTF8" : "None",
+"uiID" : 1357,
+"bVisible" : true,
+"bEditable" : true
+},
+"bFixedAspectRatio" : false,
+"iVersion" : 1,
+"fFurPheoMelanin" : 0.0,
+"v4Ambient" : [0.25713187,0.25713187,0.25713187,1.0],
+"v4Diffuse" : [0.81960785,0.81960785,0.81960785,1.0],
+"fRefractionIntensity" : 0.0,
+"fZero" : 0.0,
+"fFurLengthVar" : 0.0,
+"enOpaqueMode" : 0,
+"v4Specular" : [0.075000003,0.075000003,0.075000003,1.0],
+"v4Emission" : [0.0,0.0,0.0,1.0],
+"iRoughnessUIType" : 0,
+"fFurDirectionVar" : 0.0,
+"bUseFurCompensateEnergy" : true,
+"mapAmbientColor" : {
+"qsName" : "",
+"v4Color" : [0.25713187,0.25713187,0.25713187,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"iMaterialType_v2" : 0,
+"mapDiffuseColor" : {
+"qsName" : "",
+"v4Color" : [0.81960785,0.81960785,0.81960785,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurTaper" : 0.0,
+"mapEmissionColor" : {
+"qsName" : "",
+"v4Color" : [0.0,0.0,0.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fBaseColorMult" : 1.0,
+"mapIridescenceColor1" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFlakesNum" : 0.0,
+"iMaterialType" : 0,
+"enYKKMetalPresetType" : 5,
+"fFurGravityVectorX" : 0.0,
+"fFurMidPos" : 0.33000001,
+"enCLOMetalPresetType" : 0,
+"fShininess" : 28.763239,
+"fGlossiness" : 0.5,
+"bMetal" : false,
+"flakesSaturationVar" : 0.0,
+"fEnvironmentLightIntensity" : 1.0,
+"fAbbe" : 25.0,
+"fFurCurlAngle" : 0.0,
+"fCameraLightIntensity" : 0.0,
+"fReflectionIntensity" : 0.15000001,
+"fFrontColorMult" : 1.0,
+"fIOR" : 1.5,
+"fSideColorMult" : 1.0,
+"fFresnelIOR" : 1.5,
+"mapFlakesColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurCurlRadius" : 0.0,
+"fFogColorMult" : 1.0,
+"fDisplacementAmount" : 0.0,
+"fDisplacementShift" : 0.0,
+"fDisplacementWaterLevel" : 0.0,
+"bDisplacementKeepContinuity" : false,
+"iFurType" : 9,
+"fFurThicknessVar" : 0.0,
+"fFurLength" : 0.0,
+"uiBlendFuncSrc" : 770,
+"fFurDensity" : 0.0,
+"fFurThickness" : 0.0,
+"fFurBend" : 0.0,
+"fFurKnots" : 0.0,
+"fFurGravity" : 10.0,
+"fFurGravityVectorY" : -1.0,
+"mapSSSColor1" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurGravityVectorZ" : 0.0,
+"mapSSSColor2" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurGravityVar" : 0.0,
+"fFurMelanin" : 0.0,
+"fFurGlossiness" : 0.0,
+"fFurGlossinessBoost" : 0.0,
+"fFurSoftness" : 0.0,
+"bUseFurGradationColor" : false,
+"v4BlendColor" : [0.0,0.0,0.0,1.0],
+"bUseFurInterpolationColor" : true,
+"mapFurMidColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapFurTipColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurTipPos" : 0.66000003,
+"qsFurClusterInputXml" : "",
+"qsFurClusterInputXmlUTF8" : "",
+"listFurClusterInputTextures" : [  ],
+"fSSSMix" : 0.0,
+"fSSSDensityScale" : 0.0,
+"fSSSWeight1" : 0.0,
+"fSSSWeight2" : 0.0,
+"fSSSWeight3" : 0.0,
+"fSSSRadius1" : 0.0,
+"fSSSRadius2" : 0.0,
+"fSSSRadius3" : 0.0,
+"mapSSSColor3" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor2" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor3" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor4" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor5" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fIridescenceRoughness" : 0.0,
+"fIridescenceHueShift" : 0.0,
+"fIridescenceWeight" : 0.0,
+"uiBlendFuncDst" : 771,
+"mapBaseColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fAmbientIntensity" : 0.25713187,
+"fDiffuseIntensity" : 0.81960785,
+"bUseMetalnessRoughnessPBR" : true,
+"enMappingType" : 0,
+"listTexture" : [  ],
+"fDesaturated" : 0.0,
+"iShadowIntensity" : 0,
+"iShadowGray" : 0,
+"fBumpMode" : 1.0,
+"knitwearMap" : {
+"yarnPillingThickness" : 2.0,
+"yarnIrregularityFrequency" : 0.5,
+"bIsKnitwear" : false,
+"iKnitwearModelType" : 0,
+"yarnPillingLength" : 20.0,
+"seamMeshResolution" : 4,
+"plyMelangeSeed" : 0,
+"yarnRadius" : 1.0,
+"plyMelangeFactor" : 1.0,
+"plyTwist" : 1.0,
+"plyNum" : 4.0,
+"userCPI" : 0.0,
+"plyHeight" : 0.40000001,
+"plyLength" : 6.0,
+"userWPI" : 0.0,
+"bIsGenerateSeamMesh" : true,
+"seamMeshLength" : 5.0,
+"seamMeshCurvature" : 0.5,
+"bUsePlyMelangeRandomization" : true,
+"listPlys" : [ {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+} ],
+"needleGauge" : 2.54,
+"userFabricThickness" : 0.0,
+"bApplyUserScale" : false,
+"gauge" : 4.2756295,
+"directionInDegree" : 0.0,
+"bUseYarnIrregularity" : false,
+"yarnIrregularityScale" : 0.5,
+"yarnPillingFrequency" : 0.2,
+"bUseYarnPilling" : false,
+"version" : 1,
+"graph" : {
+"p0" : [nan.0,nan.0,nan.0],
+"p1" : [nan.0,nan.0,nan.0],
+"positions" : ""
+}
+},
+"mapPrintType" : {
+"enPrintType" : 0,
+"bUseSameNormalWithParent" : false,
+"bUseSameDisplacementWithParent" : false,
+"bUseSameOpacityWithParent" : false,
+"bUseSameRelfectionWithParent" : false
+},
+"mapFurStrand" : {
+"bIsFur" : false,
+"version" : 1,
+"seed" : 0
+},
+"mapDenim" : {
+"enWashType" : 0,
+"iSeamAbrasion" : 10,
+"iMapIntensity" : 150,
+"enPaintState" : -5577379,
+"iCycleDuration" : 25,
+"enBlendMode" : 9,
+"mapDenimBaseColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"iBlur" : 5,
+"iShadowIntensity" : -5577379,
+"iShadowGray" : -5577379
+}
+} ]
+},
+"qsPatternTrimType" : "None",
+"qsPatternTrimTypeUTF8" : "None",
+"uiID" : 1356,
+"listFabricFileInfo" : [ {
+"qsUserId" : "iND_2025",
+"qsUserIdUTF8" : "iND_2025",
+"qsClientVersion" : "2025.2.236.57278",
+"qsClientVersionUTF8" : "2025.2.236.57278",
+"qsOwner" : "None",
+"qsOwnerUTF8" : "None",
+"qsPPDataStateUTF8" : "Unknown",
+"qsSupplier" : "None",
+"qsSupplierUTF8" : "None",
+"qsDate" : "2026.5.22",
+"qsDateUTF8" : "2026.5.22",
+"qsTime" : "21:23:17",
+"qsTimeUTF8" : "21:23:17",
+"qsPPVersion" : "V1 (Unknown)",
+"qsPPVersionUTF8" : "V1 (Unknown)",
+"qsPPCreatedBy" : "Default Fabric",
+"qsPPCreatedByUTF8" : "Default Fabric",
+"qsPPDataState" : "Unknown"
+} ],
+"bVisible" : true,
+"bEditable" : true,
+"listMarkerColorwayLength" : [ [  ] ],
+"qsFabricName" : "FABRIC 1",
+"qsFabricNameUTF8" : "FABRIC 1",
+"bUseFrontColorOnSide" : false,
+"fabricType" : "None",
+"fabricTypeUTF8" : "None",
+"fabricContent" : "None",
+"fabricContentUTF8" : "None",
+"uiPhysicalType" : 0,
+"qsSupplierName" : "None",
+"qsSupplierNameUTF8" : "None",
+"qsOwner" : "None",
+"qsOwnerUTF8" : "None",
+"bIsBackFaceMaterial" : false,
+"bIsSideFaceMaterial" : false,
+"fHeight" : 10000.0,
+"bUseFrontColorOnBack" : false,
+"mapColorwayInfo" : {
+"uiCurrentCoordinationIndex" : 0,
+"iSubSize" : 1,
+"listColorwayInfo" : [ {
+"listMaterial2D" : [ {
+"listFaceMaterial" : [ {
+"iFileType" : 0,
+"v3BaseColor" : [1.0,1.0,1.0],
+"enMaterialFaceType" : 0,
+"fFurCurlRadiusVar" : 0.0,
+"fMetalness" : 0.0,
+"iNormalIntensityInPercentage" : 0,
+"fDisplacementEdgeLength" : 4.0,
+"iMaterialFileType" : 0,
+"mapElement" : {
+"qsName" : "FABRIC 1_FRONT_1356",
+"qsTrimTypeUTF8" : "None",
+"qsNameUTF8" : "FABRIC 1_FRONT_1356",
+"qsTrimType" : "None",
+"qsItemNo" : "None",
+"qsPatternTrimType" : "None",
+"qsItemNoUTF8" : "None",
+"qsPatternTrimTypeUTF8" : "None",
+"uiID" : 1357,
+"bVisible" : true,
+"bEditable" : true
+},
+"bFixedAspectRatio" : false,
+"iVersion" : 1,
+"fFurPheoMelanin" : 0.0,
+"v4Ambient" : [0.25713187,0.25713187,0.25713187,1.0],
+"v4Diffuse" : [0.81960785,0.81960785,0.81960785,1.0],
+"fRefractionIntensity" : 0.0,
+"fZero" : 0.0,
+"fFurLengthVar" : 0.0,
+"enOpaqueMode" : 0,
+"v4Specular" : [0.075000003,0.075000003,0.075000003,1.0],
+"v4Emission" : [0.0,0.0,0.0,1.0],
+"iRoughnessUIType" : 0,
+"fFurDirectionVar" : 0.0,
+"bUseFurCompensateEnergy" : true,
+"mapAmbientColor" : {
+"qsName" : "",
+"v4Color" : [0.25713187,0.25713187,0.25713187,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"iMaterialType_v2" : 0,
+"mapDiffuseColor" : {
+"qsName" : "",
+"v4Color" : [0.81960785,0.81960785,0.81960785,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurTaper" : 0.0,
+"mapEmissionColor" : {
+"qsName" : "",
+"v4Color" : [0.0,0.0,0.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fBaseColorMult" : 1.0,
+"mapIridescenceColor1" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFlakesNum" : 0.0,
+"iMaterialType" : 0,
+"enYKKMetalPresetType" : 5,
+"fFurGravityVectorX" : 0.0,
+"fFurMidPos" : 0.33000001,
+"enCLOMetalPresetType" : 0,
+"fShininess" : 28.763239,
+"fGlossiness" : 0.5,
+"bMetal" : false,
+"flakesSaturationVar" : 0.0,
+"fEnvironmentLightIntensity" : 1.0,
+"fAbbe" : 25.0,
+"fFurCurlAngle" : 0.0,
+"fCameraLightIntensity" : 0.0,
+"fReflectionIntensity" : 0.15000001,
+"fFrontColorMult" : 1.0,
+"fIOR" : 1.5,
+"fSideColorMult" : 1.0,
+"fFresnelIOR" : 1.5,
+"mapFlakesColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurCurlRadius" : 0.0,
+"fFogColorMult" : 1.0,
+"fDisplacementAmount" : 0.0,
+"fDisplacementShift" : 0.0,
+"fDisplacementWaterLevel" : 0.0,
+"bDisplacementKeepContinuity" : false,
+"iFurType" : 9,
+"fFurThicknessVar" : 0.0,
+"fFurLength" : 0.0,
+"uiBlendFuncSrc" : 770,
+"fFurDensity" : 0.0,
+"fFurThickness" : 0.0,
+"fFurBend" : 0.0,
+"fFurKnots" : 0.0,
+"fFurGravity" : 10.0,
+"fFurGravityVectorY" : -1.0,
+"mapSSSColor1" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurGravityVectorZ" : 0.0,
+"mapSSSColor2" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurGravityVar" : 0.0,
+"fFurMelanin" : 0.0,
+"fFurGlossiness" : 0.0,
+"fFurGlossinessBoost" : 0.0,
+"fFurSoftness" : 0.0,
+"bUseFurGradationColor" : false,
+"v4BlendColor" : [0.0,0.0,0.0,1.0],
+"bUseFurInterpolationColor" : true,
+"mapFurMidColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapFurTipColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurTipPos" : 0.66000003,
+"qsFurClusterInputXml" : "",
+"qsFurClusterInputXmlUTF8" : "",
+"listFurClusterInputTextures" : [  ],
+"fSSSMix" : 0.0,
+"fSSSDensityScale" : 0.0,
+"fSSSWeight1" : 0.0,
+"fSSSWeight2" : 0.0,
+"fSSSWeight3" : 0.0,
+"fSSSRadius1" : 0.0,
+"fSSSRadius2" : 0.0,
+"fSSSRadius3" : 0.0,
+"mapSSSColor3" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor2" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor3" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor4" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor5" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fIridescenceRoughness" : 0.0,
+"fIridescenceHueShift" : 0.0,
+"fIridescenceWeight" : 0.0,
+"uiBlendFuncDst" : 771,
+"mapBaseColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fAmbientIntensity" : 0.25713187,
+"fDiffuseIntensity" : 0.81960785,
+"bUseMetalnessRoughnessPBR" : true,
+"enMappingType" : 0,
+"listTexture" : [  ],
+"fDesaturated" : 0.0,
+"iShadowIntensity" : 0,
+"iShadowGray" : 0,
+"fBumpMode" : 1.0,
+"knitwearMap" : {
+"yarnPillingThickness" : 2.0,
+"yarnIrregularityFrequency" : 0.5,
+"bIsKnitwear" : false,
+"iKnitwearModelType" : 0,
+"yarnPillingLength" : 20.0,
+"seamMeshResolution" : 4,
+"plyMelangeSeed" : 0,
+"yarnRadius" : 1.0,
+"plyMelangeFactor" : 1.0,
+"plyTwist" : 1.0,
+"plyNum" : 4.0,
+"userCPI" : 0.0,
+"plyHeight" : 0.40000001,
+"plyLength" : 6.0,
+"userWPI" : 0.0,
+"bIsGenerateSeamMesh" : true,
+"seamMeshLength" : 5.0,
+"seamMeshCurvature" : 0.5,
+"bUsePlyMelangeRandomization" : true,
+"listPlys" : [ {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+} ],
+"needleGauge" : 2.54,
+"userFabricThickness" : 0.0,
+"bApplyUserScale" : false,
+"gauge" : 4.2756295,
+"directionInDegree" : 0.0,
+"bUseYarnIrregularity" : false,
+"yarnIrregularityScale" : 0.5,
+"yarnPillingFrequency" : 0.2,
+"bUseYarnPilling" : false,
+"version" : 1,
+"graph" : {
+"p0" : [nan.0,nan.0,nan.0],
+"p1" : [nan.0,nan.0,nan.0],
+"positions" : ""
+}
+},
+"mapPrintType" : {
+"enPrintType" : 0,
+"bUseSameNormalWithParent" : false,
+"bUseSameDisplacementWithParent" : false,
+"bUseSameOpacityWithParent" : false,
+"bUseSameRelfectionWithParent" : false
+},
+"mapFurStrand" : {
+"bIsFur" : false,
+"version" : 1,
+"seed" : 0
+},
+"mapDenim" : {
+"enWashType" : 0,
+"iSeamAbrasion" : 10,
+"iMapIntensity" : 150,
+"enPaintState" : -5577379,
+"iCycleDuration" : 25,
+"enBlendMode" : 9,
+"mapDenimBaseColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"iBlur" : 5,
+"iShadowIntensity" : -5577379,
+"iShadowGray" : -5577379
+}
+} ]
+} ],
+"listFaceMaterial" : [ {
+"iFileType" : 0,
+"v3BaseColor" : [1.0,1.0,1.0],
+"enMaterialFaceType" : 0,
+"fFurCurlRadiusVar" : 0.0,
+"fMetalness" : 0.0,
+"iNormalIntensityInPercentage" : 0,
+"fDisplacementEdgeLength" : 4.0,
+"iMaterialFileType" : 0,
+"mapElement" : {
+"qsName" : "FABRIC 1_FRONT_1356",
+"qsTrimTypeUTF8" : "None",
+"qsNameUTF8" : "FABRIC 1_FRONT_1356",
+"qsTrimType" : "None",
+"qsItemNo" : "None",
+"qsPatternTrimType" : "None",
+"qsItemNoUTF8" : "None",
+"qsPatternTrimTypeUTF8" : "None",
+"uiID" : 1357,
+"bVisible" : true,
+"bEditable" : true
+},
+"bFixedAspectRatio" : false,
+"iVersion" : 1,
+"fFurPheoMelanin" : 0.0,
+"v4Ambient" : [0.25713187,0.25713187,0.25713187,1.0],
+"v4Diffuse" : [0.81960785,0.81960785,0.81960785,1.0],
+"fRefractionIntensity" : 0.0,
+"fZero" : 0.0,
+"fFurLengthVar" : 0.0,
+"enOpaqueMode" : 0,
+"v4Specular" : [0.075000003,0.075000003,0.075000003,1.0],
+"v4Emission" : [0.0,0.0,0.0,1.0],
+"iRoughnessUIType" : 0,
+"fFurDirectionVar" : 0.0,
+"bUseFurCompensateEnergy" : true,
+"mapAmbientColor" : {
+"qsName" : "",
+"v4Color" : [0.25713187,0.25713187,0.25713187,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"iMaterialType_v2" : 0,
+"mapDiffuseColor" : {
+"qsName" : "",
+"v4Color" : [0.81960785,0.81960785,0.81960785,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurTaper" : 0.0,
+"mapEmissionColor" : {
+"qsName" : "",
+"v4Color" : [0.0,0.0,0.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fBaseColorMult" : 1.0,
+"mapIridescenceColor1" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFlakesNum" : 0.0,
+"iMaterialType" : 0,
+"enYKKMetalPresetType" : 5,
+"fFurGravityVectorX" : 0.0,
+"fFurMidPos" : 0.33000001,
+"enCLOMetalPresetType" : 0,
+"fShininess" : 28.763239,
+"fGlossiness" : 0.5,
+"bMetal" : false,
+"flakesSaturationVar" : 0.0,
+"fEnvironmentLightIntensity" : 1.0,
+"fAbbe" : 25.0,
+"fFurCurlAngle" : 0.0,
+"fCameraLightIntensity" : 0.0,
+"fReflectionIntensity" : 0.15000001,
+"fFrontColorMult" : 1.0,
+"fIOR" : 1.5,
+"fSideColorMult" : 1.0,
+"fFresnelIOR" : 1.5,
+"mapFlakesColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurCurlRadius" : 0.0,
+"fFogColorMult" : 1.0,
+"fDisplacementAmount" : 0.0,
+"fDisplacementShift" : 0.0,
+"fDisplacementWaterLevel" : 0.0,
+"bDisplacementKeepContinuity" : false,
+"iFurType" : 9,
+"fFurThicknessVar" : 0.0,
+"fFurLength" : 0.0,
+"uiBlendFuncSrc" : 770,
+"fFurDensity" : 0.0,
+"fFurThickness" : 0.0,
+"fFurBend" : 0.0,
+"fFurKnots" : 0.0,
+"fFurGravity" : 10.0,
+"fFurGravityVectorY" : -1.0,
+"mapSSSColor1" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurGravityVectorZ" : 0.0,
+"mapSSSColor2" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurGravityVar" : 0.0,
+"fFurMelanin" : 0.0,
+"fFurGlossiness" : 0.0,
+"fFurGlossinessBoost" : 0.0,
+"fFurSoftness" : 0.0,
+"bUseFurGradationColor" : false,
+"v4BlendColor" : [0.0,0.0,0.0,1.0],
+"bUseFurInterpolationColor" : true,
+"mapFurMidColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapFurTipColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fFurTipPos" : 0.66000003,
+"qsFurClusterInputXml" : "",
+"qsFurClusterInputXmlUTF8" : "",
+"listFurClusterInputTextures" : [  ],
+"fSSSMix" : 0.0,
+"fSSSDensityScale" : 0.0,
+"fSSSWeight1" : 0.0,
+"fSSSWeight2" : 0.0,
+"fSSSWeight3" : 0.0,
+"fSSSRadius1" : 0.0,
+"fSSSRadius2" : 0.0,
+"fSSSRadius3" : 0.0,
+"mapSSSColor3" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor2" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor3" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor4" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"mapIridescenceColor5" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fIridescenceRoughness" : 0.0,
+"fIridescenceHueShift" : 0.0,
+"fIridescenceWeight" : 0.0,
+"uiBlendFuncDst" : 771,
+"mapBaseColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"fAmbientIntensity" : 0.25713187,
+"fDiffuseIntensity" : 0.81960785,
+"bUseMetalnessRoughnessPBR" : true,
+"enMappingType" : 0,
+"listTexture" : [  ],
+"fDesaturated" : 0.0,
+"iShadowIntensity" : 0,
+"iShadowGray" : 0,
+"fBumpMode" : 1.0,
+"knitwearMap" : {
+"yarnPillingThickness" : 2.0,
+"yarnIrregularityFrequency" : 0.5,
+"bIsKnitwear" : false,
+"iKnitwearModelType" : 0,
+"yarnPillingLength" : 20.0,
+"seamMeshResolution" : 4,
+"plyMelangeSeed" : 0,
+"yarnRadius" : 1.0,
+"plyMelangeFactor" : 1.0,
+"plyTwist" : 1.0,
+"plyNum" : 4.0,
+"userCPI" : 0.0,
+"plyHeight" : 0.40000001,
+"plyLength" : 6.0,
+"userWPI" : 0.0,
+"bIsGenerateSeamMesh" : true,
+"seamMeshLength" : 5.0,
+"seamMeshCurvature" : 0.5,
+"bUsePlyMelangeRandomization" : true,
+"listPlys" : [ {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+}, {
+"mapPlyColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+}
+} ],
+"needleGauge" : 2.54,
+"userFabricThickness" : 0.0,
+"bApplyUserScale" : false,
+"gauge" : 4.2756295,
+"directionInDegree" : 0.0,
+"bUseYarnIrregularity" : false,
+"yarnIrregularityScale" : 0.5,
+"yarnPillingFrequency" : 0.2,
+"bUseYarnPilling" : false,
+"version" : 1,
+"graph" : {
+"p0" : [nan.0,nan.0,nan.0],
+"p1" : [nan.0,nan.0,nan.0],
+"positions" : ""
+}
+},
+"mapPrintType" : {
+"enPrintType" : 0,
+"bUseSameNormalWithParent" : false,
+"bUseSameDisplacementWithParent" : false,
+"bUseSameOpacityWithParent" : false,
+"bUseSameRelfectionWithParent" : false
+},
+"mapFurStrand" : {
+"bIsFur" : false,
+"version" : 1,
+"seed" : 0
+},
+"mapDenim" : {
+"enWashType" : 0,
+"iSeamAbrasion" : 10,
+"iMapIntensity" : 150,
+"enPaintState" : -5577379,
+"iCycleDuration" : 25,
+"enBlendMode" : 9,
+"mapDenimBaseColor" : {
+"qsName" : "",
+"v4Color" : [1.0,1.0,1.0,1.0],
+"qsPLMIdUTF8" : "",
+"qsNameUTF8" : "",
+"qsPLMId" : ""
+},
+"iBlur" : 5,
+"iShadowIntensity" : -5577379,
+"iShadowGray" : -5577379
+}
+} ],
+"ColorwayCostInfo" : {
+"enMVCostElementType" : 0,
+"enMVCostQuantityUnitToDisplay" : -1,
+"enMVCostQuantityUnit" : -1,
+"enMVCostCurrencyUnit" : 148,
+"fMVCostSingleUnitCost" : -1.0,
+"fMVCostSingleUnitQuantity" : 1.1395925e+35
+}
+} ]
+},
+"fWidth" : 1117.6,
+"bIsNewColorway" : true,
+"mapPhysical" : {
+"fBvK" : 600.0,
+"qsPhysicalPropertyName" : "Default",
+"fLeftShearK" : 5000.0,
+"qsPhysicalPropertyNameUTF8" : "Default",
+"enActivatePPType" : 0,
+"fBvK_v2" : 1884.9557,
+"enFabricType" : 0,
+"fSuK" : 100000.0,
+"fBucklingStiffnessU" : 0.0,
+"fSvK" : 100000.0,
+"fHK" : 5000.0,
+"fRightShearK_v2" : 10000.0,
+"fLeftShearK_v2" : 10000.0,
+"fBvLR" : 0.0,
+"qsMLModelVersion" : "Unknown",
+"listNonlinearSuK" : [  ],
+"listNonlinearSvK" : [  ],
+"listNonlinearHK" : [  ],
+"listNonlinearLeftShearK" : [  ],
+"fBLeftShearK" : 150.0,
+"fexpSuK" : 0.1,
+"fThickness" : 0.5,
+"fexpSvK" : 0.1,
+"bFromDefault" : true,
+"fexpRightShearK" : 0.1,
+"fexpLeftShearK" : 0.1,
+"fBuK" : 100.0,
+"fBhLR" : 0.0,
+"fBhK" : 150.0,
+"fBuK_v2" : 314.15927,
+"fBRightShearK_v2" : 471.23892,
+"fBLeftShearK_v2" : 471.23892,
+"qsSoftwareVersionUTF8" : "Unknown",
+"fBuLR" : 0.0,
+"fBLeftShearLR" : 0.0,
+"fBucklingStiffnessV" : 0.0,
+"fBucklingStiffnessH" : 0.0,
+"fBucklingStiffnessLeftShear" : 0.0,
+"fIDS" : 9.9999997e-05,
+"fFriction" : 0.029999999,
+"fDensity" : 0.00030000001,
+"bUseExpApproximation" : false,
+"bEband" : false,
+"qsSoftwareVersion" : "Unknown",
+"qsMLModelVersionUTF8" : "Unknown"
+},
+"qsAPIMetaData" : "{\n}",
+"bFoldFabricPatternPhysicalProperty" : false,
+"mapCostInfo" : {
+"enMVCostElementType" : 0,
+"enMVCostQuantityUnitToDisplay" : -1,
+"enMVCostQuantityUnit" : -1,
+"enMVCostCurrencyUnit" : 148,
+"fMVCostSingleUnitCost" : -1.0,
+"fMVCostSingleUnitQuantity" : 1.1396448e+35
+}
+}

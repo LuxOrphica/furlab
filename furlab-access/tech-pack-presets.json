@@ -1,0 +1,251 @@
+[
+  {
+    "id": "coat_single",
+    "labelRU": "Пальто однобортное",
+    "labelEN": "Single-breasted coat",
+    "category": "outerwear",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "fusing",          "status": "always",   "order": 4 },
+      { "id": "lining",          "status": "always",   "order": 5 },
+      { "id": "seam_allowances", "status": "always",   "order": 6 },
+      { "id": "stitch_spec",     "status": "always",   "order": 7 },
+      { "id": "measurements",    "status": "always",   "order": 8 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 9 },
+      { "id": "colorway",        "status": "optional", "order": 10 },
+      { "id": "wash_care",       "status": "always",   "order": 11 },
+      { "id": "labels_packing",  "status": "always",   "order": 12 },
+      { "id": "file_handoff",    "status": "always",   "order": 13 }
+    ]
+  },
+  {
+    "id": "coat_double",
+    "labelRU": "Пальто двубортное",
+    "labelEN": "Double-breasted coat",
+    "category": "outerwear",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "fusing",          "status": "always",   "order": 4 },
+      { "id": "lining",          "status": "always",   "order": 5 },
+      { "id": "seam_allowances", "status": "always",   "order": 6 },
+      { "id": "stitch_spec",     "status": "always",   "order": 7 },
+      { "id": "measurements",    "status": "always",   "order": 8 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 9 },
+      { "id": "colorway",        "status": "optional", "order": 10 },
+      { "id": "wash_care",       "status": "always",   "order": 11 },
+      { "id": "labels_packing",  "status": "always",   "order": 12 },
+      { "id": "file_handoff",    "status": "always",   "order": 13 }
+    ]
+  },
+  {
+    "id": "jacket_blazer",
+    "labelRU": "Жакет / блейзер",
+    "labelEN": "Jacket / blazer",
+    "category": "outerwear",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "fusing",          "status": "always",   "order": 4 },
+      { "id": "lining",          "status": "always",   "order": 5 },
+      { "id": "seam_allowances", "status": "always",   "order": 6 },
+      { "id": "stitch_spec",     "status": "always",   "order": 7 },
+      { "id": "measurements",    "status": "always",   "order": 8 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 9 },
+      { "id": "colorway",        "status": "optional", "order": 10 },
+      { "id": "wash_care",       "status": "always",   "order": 11 },
+      { "id": "labels_packing",  "status": "always",   "order": 12 },
+      { "id": "file_handoff",    "status": "always",   "order": 13 }
+    ]
+  },
+  {
+    "id": "trousers_classic",
+    "labelRU": "Брюки классические",
+    "labelEN": "Classic trousers",
+    "category": "bottoms",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "fusing",          "status": "always",   "order": 4 },
+      { "id": "lining",          "status": "optional", "order": 5 },
+      { "id": "elastic",         "status": "optional", "order": 6 },
+      { "id": "seam_allowances", "status": "always",   "order": 7 },
+      { "id": "stitch_spec",     "status": "always",   "order": 8 },
+      { "id": "measurements",    "status": "always",   "order": 9 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 10 },
+      { "id": "colorway",        "status": "optional", "order": 11 },
+      { "id": "wash_care",       "status": "always",   "order": 12 },
+      { "id": "labels_packing",  "status": "always",   "order": 13 },
+      { "id": "file_handoff",    "status": "always",   "order": 14 }
+    ]
+  },
+  {
+    "id": "trousers_casual",
+    "labelRU": "Брюки casual / chino",
+    "labelEN": "Casual trousers / chino",
+    "category": "bottoms",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "fusing",          "status": "optional", "order": 4 },
+      { "id": "elastic",         "status": "always",   "order": 5 },
+      { "id": "seam_allowances", "status": "always",   "order": 6 },
+      { "id": "stitch_spec",     "status": "always",   "order": 7 },
+      { "id": "measurements",    "status": "always",   "order": 8 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 9 },
+      { "id": "colorway",        "status": "optional", "order": 10 },
+      { "id": "wash_care",       "status": "always",   "order": 11 },
+      { "id": "labels_packing",  "status": "always",   "order": 12 },
+      { "id": "file_handoff",    "status": "always",   "order": 13 }
+    ]
+  },
+  {
+    "id": "skirt",
+    "labelRU": "Юбка",
+    "labelEN": "Skirt",
+    "category": "bottoms",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "fusing",          "status": "optional", "order": 4 },
+      { "id": "lining",          "status": "optional", "order": 5 },
+      { "id": "elastic",         "status": "optional", "order": 6 },
+      { "id": "seam_allowances", "status": "always",   "order": 7 },
+      { "id": "stitch_spec",     "status": "always",   "order": 8 },
+      { "id": "measurements",    "status": "always",   "order": 9 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 10 },
+      { "id": "colorway",        "status": "optional", "order": 11 },
+      { "id": "wash_care",       "status": "always",   "order": 12 },
+      { "id": "labels_packing",  "status": "always",   "order": 13 },
+      { "id": "file_handoff",    "status": "always",   "order": 14 }
+    ]
+  },
+  {
+    "id": "tshirt_polo",
+    "labelRU": "Футболка / поло",
+    "labelEN": "T-shirt / polo",
+    "category": "tops",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "elastic",         "status": "optional", "order": 4 },
+      { "id": "seam_allowances", "status": "always",   "order": 5 },
+      { "id": "stitch_spec",     "status": "always",   "order": 6 },
+      { "id": "measurements",    "status": "always",   "order": 7 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 8 },
+      { "id": "colorway",        "status": "optional", "order": 9 },
+      { "id": "wash_care",       "status": "always",   "order": 10 },
+      { "id": "labels_packing",  "status": "always",   "order": 11 },
+      { "id": "file_handoff",    "status": "always",   "order": 12 }
+    ]
+  },
+  {
+    "id": "knitwear",
+    "labelRU": "Джемпер / свитер",
+    "labelEN": "Knitwear / jumper",
+    "category": "tops",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "stitch_spec",     "status": "always",   "order": 4 },
+      { "id": "measurements",    "status": "always",   "order": 5 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 6 },
+      { "id": "colorway",        "status": "optional", "order": 7 },
+      { "id": "wash_care",       "status": "always",   "order": 8 },
+      { "id": "labels_packing",  "status": "always",   "order": 9 },
+      { "id": "file_handoff",    "status": "always",   "order": 10 }
+    ]
+  },
+  {
+    "id": "hoodie_sweatshirt",
+    "labelRU": "Худи / свитшот",
+    "labelEN": "Hoodie / sweatshirt",
+    "category": "tops",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "elastic",         "status": "always",   "order": 4 },
+      { "id": "seam_allowances", "status": "always",   "order": 5 },
+      { "id": "stitch_spec",     "status": "always",   "order": 6 },
+      { "id": "measurements",    "status": "always",   "order": 7 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 8 },
+      { "id": "colorway",        "status": "optional", "order": 9 },
+      { "id": "wash_care",       "status": "always",   "order": 10 },
+      { "id": "labels_packing",  "status": "always",   "order": 11 },
+      { "id": "file_handoff",    "status": "always",   "order": 12 }
+    ]
+  },
+  {
+    "id": "swimsuit",
+    "labelRU": "Купальник слитный",
+    "labelEN": "One-piece swimsuit",
+    "category": "swimwear",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "swimwear_lining", "status": "always",   "order": 4 },
+      { "id": "elastic",         "status": "always",   "order": 5 },
+      { "id": "seam_allowances", "status": "always",   "order": 6 },
+      { "id": "stitch_spec",     "status": "always",   "order": 7 },
+      { "id": "measurements",    "status": "always",   "order": 8 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 9 },
+      { "id": "colorway",        "status": "optional", "order": 10 },
+      { "id": "wash_care",       "status": "always",   "order": 11 },
+      { "id": "labels_packing",  "status": "always",   "order": 12 },
+      { "id": "file_handoff",    "status": "always",   "order": 13 }
+    ]
+  },
+  {
+    "id": "swim_shorts",
+    "labelRU": "Плавки / шорты купальные",
+    "labelEN": "Swim shorts / trunks",
+    "category": "swimwear",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "swimwear_lining", "status": "optional", "order": 4 },
+      { "id": "elastic",         "status": "always",   "order": 5 },
+      { "id": "seam_allowances", "status": "always",   "order": 6 },
+      { "id": "stitch_spec",     "status": "always",   "order": 7 },
+      { "id": "measurements",    "status": "always",   "order": 8 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 9 },
+      { "id": "colorway",        "status": "optional", "order": 10 },
+      { "id": "wash_care",       "status": "always",   "order": 11 },
+      { "id": "labels_packing",  "status": "always",   "order": 12 },
+      { "id": "file_handoff",    "status": "always",   "order": 13 }
+    ]
+  },
+  {
+    "id": "swimwear_set",
+    "labelRU": "Раздельный купальник (топ + низ)",
+    "labelEN": "Bikini / swimwear set",
+    "category": "swimwear",
+    "sections": [
+      { "id": "style_info",      "status": "always",   "order": 1 },
+      { "id": "callouts",        "status": "always",   "order": 2 },
+      { "id": "bom",             "status": "always",   "order": 3 },
+      { "id": "swimwear_lining", "status": "always",   "order": 4 },
+      { "id": "elastic",         "status": "always",   "order": 5 },
+      { "id": "seam_allowances", "status": "always",   "order": 6 },
+      { "id": "stitch_spec",     "status": "always",   "order": 7 },
+      { "id": "measurements",    "status": "always",   "order": 8 },
+      { "id": "pattern_pieces",  "status": "always",   "order": 9 },
+      { "id": "colorway",        "status": "optional", "order": 10 },
+      { "id": "wash_care",       "status": "always",   "order": 11 },
+      { "id": "labels_packing",  "status": "always",   "order": 12 },
+      { "id": "file_handoff",    "status": "always",   "order": 13 }
+    ]
+  }
+]

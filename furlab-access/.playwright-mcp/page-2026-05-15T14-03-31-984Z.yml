@@ -1,0 +1,219 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e93] [cursor=pointer]
+      - generic [ref=e94]: — прямоугольный проект
+      - button "Преобразовать в лекала" [ref=e95] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Линия зонирования" [ref=e13] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - button "Добавить выкладку" [ref=e656] [cursor=pointer]:
+              - generic [ref=e657]: add
+              - generic [ref=e658]: Добавить выкладку
+            - generic [ref=e659]:
+              - button "longitudinal Продольно-поперечная 1" [ref=e660] [cursor=pointer]:
+                - img "longitudinal" [ref=e662]
+                - generic [ref=e664]: Продольно-поперечная 1
+              - button "Удалить выкладку" [ref=e666] [cursor=pointer]:
+                - generic [ref=e667]: delete
+            - generic [ref=e668]:
+              - button "longitudinal Продольно-поперечная 2" [ref=e669] [cursor=pointer]:
+                - img "longitudinal" [ref=e671]
+                - generic [ref=e673]: Продольно-поперечная 2
+              - button "Удалить выкладку" [ref=e675] [cursor=pointer]:
+                - generic [ref=e676]: delete
+            - generic [ref=e677]:
+              - button "longitudinal Продольно-поперечная 3" [ref=e678] [cursor=pointer]:
+                - img "longitudinal" [ref=e680]
+                - generic [ref=e682]: Продольно-поперечная 3
+              - button "Удалить выкладку" [ref=e684] [cursor=pointer]:
+                - generic [ref=e685]: delete
+            - generic [ref=e686]:
+              - button "longitudinal Продольно-поперечная 4" [ref=e687] [cursor=pointer]:
+                - img "longitudinal" [ref=e689]
+                - generic [ref=e691]: Продольно-поперечная 4
+              - button "Удалить выкладку" [ref=e693] [cursor=pointer]:
+                - generic [ref=e694]: delete
+            - generic [ref=e695]:
+              - button "longitudinal Продольно-поперечная 5" [ref=e696] [cursor=pointer]:
+                - img "longitudinal" [ref=e698]
+                - generic [ref=e700]: Продольно-поперечная 5
+              - button "Удалить выкладку" [ref=e702] [cursor=pointer]:
+                - generic [ref=e703]: delete
+            - generic [ref=e704]:
+              - button "longitudinal Продольно-поперечная 6" [ref=e705] [cursor=pointer]:
+                - img "longitudinal" [ref=e707]
+                - generic [ref=e709]: Продольно-поперечная 6
+              - button "Удалить выкладку" [ref=e711] [cursor=pointer]:
+                - generic [ref=e712]: delete
+            - generic [ref=e713]:
+              - button "longitudinal Продольно-поперечная 7" [ref=e714] [cursor=pointer]:
+                - img "longitudinal" [ref=e716]
+                - generic [ref=e718]: Продольно-поперечная 7
+              - button "Удалить выкладку" [ref=e720] [cursor=pointer]:
+                - generic [ref=e721]: delete
+            - generic [ref=e722]:
+              - button "longitudinal Продольно-поперечная 8" [ref=e723] [cursor=pointer]:
+                - img "longitudinal" [ref=e725]
+                - generic [ref=e727]: Продольно-поперечная 8
+              - button "Удалить выкладку" [ref=e729] [cursor=pointer]:
+                - generic [ref=e730]: delete
+            - generic [ref=e731]:
+              - button "longitudinal Продольно-поперечная 9" [ref=e732] [cursor=pointer]:
+                - img "longitudinal" [ref=e734]
+                - generic [ref=e736]: Продольно-поперечная 9
+              - button "Удалить выкладку" [ref=e738] [cursor=pointer]:
+                - generic [ref=e739]: delete
+            - generic [ref=e740]:
+              - button "longitudinal Продольно-поперечная 10" [ref=e741] [cursor=pointer]:
+                - img "longitudinal" [ref=e743]
+                - generic [ref=e745]: Продольно-поперечная 10
+              - button "Удалить выкладку" [ref=e747] [cursor=pointer]:
+                - generic [ref=e748]: delete
+            - generic [ref=e749]:
+              - button "longitudinal Продольно-поперечная 11" [ref=e750] [cursor=pointer]:
+                - img "longitudinal" [ref=e752]
+                - generic [ref=e754]: Продольно-поперечная 11
+              - button "Удалить выкладку" [ref=e756] [cursor=pointer]:
+                - generic [ref=e757]: delete
+            - generic [ref=e758]:
+              - button "longitudinal Продольно-поперечная 12" [ref=e759] [cursor=pointer]:
+                - img "longitudinal" [ref=e761]
+                - generic [ref=e763]: Продольно-поперечная 12
+              - button "Удалить выкладку" [ref=e765] [cursor=pointer]:
+                - generic [ref=e766]: delete
+            - generic [ref=e767]:
+              - button "longitudinal Продольно-поперечная 13" [ref=e768] [cursor=pointer]:
+                - img "longitudinal" [ref=e770]
+                - generic [ref=e772]: Продольно-поперечная 13
+              - button "Удалить выкладку" [ref=e774] [cursor=pointer]:
+                - generic [ref=e775]: delete
+            - generic [ref=e776]:
+              - button "longitudinal Продольно-поперечная 14" [ref=e777] [cursor=pointer]:
+                - img "longitudinal" [ref=e779]
+                - generic [ref=e781]: Продольно-поперечная 14
+              - button "Удалить выкладку" [ref=e783] [cursor=pointer]:
+                - generic [ref=e784]: delete
+            - generic [ref=e785]:
+              - button "longitudinal Продольно-поперечная 15" [ref=e786] [cursor=pointer]:
+                - img "longitudinal" [ref=e788]
+                - generic [ref=e790]: Продольно-поперечная 15
+              - button "Удалить выкладку" [ref=e792] [cursor=pointer]:
+                - generic [ref=e793]: delete
+            - generic [ref=e794]:
+              - button "longitudinal Продольно-поперечная 16" [ref=e795] [cursor=pointer]:
+                - img "longitudinal" [ref=e797]
+                - generic [ref=e799]: Продольно-поперечная 16
+              - button "Удалить выкладку" [ref=e801] [cursor=pointer]:
+                - generic [ref=e802]: delete
+            - generic [ref=e803]:
+              - button "longitudinal Продольно-поперечная 17" [ref=e804] [cursor=pointer]:
+                - img "longitudinal" [ref=e806]
+                - generic [ref=e808]: Продольно-поперечная 17
+              - button "Удалить выкладку" [ref=e810] [cursor=pointer]:
+                - generic [ref=e811]: delete
+            - generic [ref=e812]:
+              - button "longitudinal Продольно-поперечная 18" [ref=e813] [cursor=pointer]:
+                - img "longitudinal" [ref=e815]
+                - generic [ref=e817]: Продольно-поперечная 18
+              - button "Удалить выкладку" [ref=e819] [cursor=pointer]:
+                - generic [ref=e820]: delete
+            - generic [ref=e821]:
+              - button "longitudinal Продольно-поперечная 19" [ref=e822] [cursor=pointer]:
+                - img "longitudinal" [ref=e824]
+                - generic [ref=e826]: Продольно-поперечная 19
+              - button "Удалить выкладку" [ref=e828] [cursor=pointer]:
+                - generic [ref=e829]: delete
+            - generic [ref=e830]:
+              - button "longitudinal Продольно-поперечная 20" [ref=e831] [cursor=pointer]:
+                - img "longitudinal" [ref=e833]
+                - generic [ref=e835]: Продольно-поперечная 20
+              - button "Удалить выкладку" [ref=e837] [cursor=pointer]:
+                - generic [ref=e838]: delete
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e839]:
+              - generic [ref=e840]: Выкладка
+              - generic [ref=e841]:
+                - button "Редактировать" [ref=e842] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e843] [cursor=pointer]
+            - generic [ref=e844]:
+              - button "▾ Информация" [expanded] [ref=e845] [cursor=pointer]:
+                - generic [ref=e846]: ▾
+                - generic [ref=e847]: Информация
+              - generic [ref=e848]:
+                - generic [ref=e849]:
+                  - generic [ref=e850]: Название
+                  - generic [ref=e851]:
+                    - textbox "(Пусто)" [disabled]: Продольно-поперечная 1
+                - generic [ref=e852]:
+                  - generic [ref=e853]: Тип
+                  - generic [ref=e854]: Продольно-поперечная
+            - generic [ref=e855]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e856] [cursor=pointer]:
+                - generic [ref=e857]: ▾
+                - generic [ref=e858]: Параметры выкладки
+              - generic [ref=e859]:
+                - generic [ref=e860]:
+                  - generic [ref=e861]: Резерв под припуски, мм
+                  - generic [ref=e862]:
+                    - spinbutton [disabled]: "12.0"
+                - generic [ref=e863]:
+                  - generic [ref=e864]: Вдоль ворса, мм
+                  - generic [ref=e865]:
+                    - generic [ref=e866]: min
+                    - spinbutton [disabled]: "60"
+                    - generic [ref=e867]: max
+                    - spinbutton: "640"
+                - generic [ref=e868]:
+                  - generic [ref=e869]: Поперёк ворса, мм
+                  - generic [ref=e870]:
+                    - generic [ref=e871]: min
+                    - spinbutton [disabled]: "60"
+                    - generic [ref=e872]: max
+                    - spinbutton: "480"
+                - generic [ref=e873]:
+                  - generic [ref=e874]: Ряды
+                  - generic [ref=e875]:
+                    - spinbutton [disabled]: "4"
+                - generic [ref=e876]:
+                  - generic [ref=e877]: Колонки
+                  - generic [ref=e878]:
+                    - spinbutton [disabled]: "4"
+                - generic [ref=e879]:
+                  - generic [ref=e880]: Зазор X, мм
+                  - generic [ref=e881]:
+                    - spinbutton [disabled]: "0"
+                - generic [ref=e882]:
+                  - generic [ref=e883]: Зазор Y, мм
+                  - generic [ref=e884]:
+                    - spinbutton [disabled]: "0"
+                - generic [ref=e885]:
+                  - generic [ref=e886]: Скругление, мм
+                  - generic [ref=e887]:
+                    - spinbutton [disabled]: "0"
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]

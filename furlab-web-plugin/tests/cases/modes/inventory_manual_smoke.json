@@ -1,0 +1,26 @@
+{
+  "name": "inventory_manual_smoke",
+  "request": {
+    "layoutType": "inventory_manual",
+    "zone": {
+      "id": "zone-smoke-3",
+      "points": [
+        { "x": 0, "y": 0 },
+        { "x": 80, "y": 0 },
+        { "x": 80, "y": 80 },
+        { "x": 0, "y": 80 }
+      ]
+    },
+    "inputs": {},
+    "options": {},
+    "seed": 1
+  },
+  "expect": {
+    "httpStatus": 200,
+    "ok": true,
+    "layoutType": "inventory_manual",
+    "resultStatusIn": ["needs_attention"],
+    "minRenderItems": 0
+  }
+}
+

@@ -1,0 +1,46 @@
+{
+  "name": "furlab-web-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone backend for FurLab web plugin (DXF import first step)",
+  "scripts": {
+    "start": "node src/server.js",
+    "oracle:run": "python scripts/oracle_run_case.py --case scripts/oracle_cases/sample_case.json",
+    "oracle:compare": "node scripts/compare_oracle_vs_js.js --cases scripts/oracle_cases --api http://127.0.0.1:5600",
+    "inventory:sweep": "node scripts/sweep_inventory_case.js",
+    "modes:testcases": "node scripts/run_mode_cases.js --api http://127.0.0.1:5600 --cases tests/cases/modes",
+    "test:split": "node scripts/test_split_return.js --api http://127.0.0.1:5610",
+    "test:manual-zone-lock": "node scripts/test_manual_selected_zone_lock.js",
+    "test:manual-e2e": "node scripts/selftest_inventory_manual_e2e.js",
+    "test:inventory-e2e": "node scripts/selftest_inventory_direct_e2e.js",
+    "test:intarsia-e2e": "node scripts/selftest_intarsia_e2e.js",
+    "encoding:check": "node scripts/encoding-check.js",
+    "mojibake:check": "node scripts/mojibake-check.js",
+    "i18n:check": "node scripts/i18n-structure-check.js",
+    "encoding:fix": "node scripts/encoding-check.js --fix",
+    "repo:check": "node scripts/repo-hygiene-check.js",
+    "test": "npm run encoding:check && npm run mojibake:check && npm run i18n:check && npm run repo:check",
+    "ui:smoke": "node scripts/selftest_layers_visual_split.js",
+    "prepare": "husky install",
+    "test:suite": "node scripts/run_tests.js",
+    "test:static": "node scripts/run_tests.js --skip-server-tests",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:unit:coverage": "vitest run --coverage",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:run": "npm run test:unit && npm run allure:report && npm run allure:open"
+  },
+  "dependencies": {
+    "clipper-lib": "^6.4.2",
+    "polygon-clipping": "^0.15.7"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.6",
+    "allure-commandline": "^2.41.0",
+    "allure-vitest": "^3.8.0",
+    "fast-check": "^4.8.0",
+    "husky": "^9.1.7",
+    "vitest": "^4.1.6"
+  }
+}

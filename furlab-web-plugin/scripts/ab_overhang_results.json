@@ -1,0 +1,113 @@
+{
+  "determinism": [
+    {
+      "det": 1,
+      "seed": 1772583497139,
+      "overhangMm": 75,
+      "fragments": 15,
+      "covPct": "99.974",
+      "residualTotal": 98,
+      "residualInterior": 0,
+      "residualPerim": 98,
+      "uncovComps": 0,
+      "iters": 2000,
+      "exitReason": "maxIterations",
+      "checksum": 31842
+    },
+    {
+      "det": 2,
+      "seed": 1772583497139,
+      "overhangMm": 75,
+      "fragments": 15,
+      "covPct": "99.974",
+      "residualTotal": 98,
+      "residualInterior": 0,
+      "residualPerim": 98,
+      "uncovComps": 0,
+      "iters": 2000,
+      "exitReason": "maxIterations",
+      "checksum": 31842
+    }
+  ],
+  "ab": [
+    {
+      "seed": 1772583497139,
+      "overhangMm": 0,
+      "fragments": 15,
+      "covPct": "99.974",
+      "residualTotal": 98,
+      "residualInterior": 0,
+      "residualPerim": 98,
+      "uncovComps": 0,
+      "iters": 2000,
+      "exitReason": "maxIterations",
+      "checksum": 31842
+    },
+    {
+      "seed": 1772583497139,
+      "overhangMm": 75,
+      "fragments": 15,
+      "covPct": "99.974",
+      "residualTotal": 98,
+      "residualInterior": 0,
+      "residualPerim": 98,
+      "uncovComps": 0,
+      "iters": 2000,
+      "exitReason": "maxIterations",
+      "checksum": 31842
+    },
+    {
+      "seed": 1772583498139,
+      "overhangMm": 0,
+      "fragments": 15,
+      "covPct": "99.974",
+      "residualTotal": 98,
+      "residualInterior": 0,
+      "residualPerim": 98,
+      "uncovComps": 0,
+      "iters": 2000,
+      "exitReason": "maxIterations",
+      "checksum": 32875
+    },
+    {
+      "seed": 1772583498139,
+      "overhangMm": 75,
+      "fragments": 15,
+      "covPct": "99.974",
+      "residualTotal": 98,
+      "residualInterior": 0,
+      "residualPerim": 98,
+      "uncovComps": 0,
+      "iters": 2000,
+      "exitReason": "maxIterations",
+      "checksum": 32875
+    },
+    {
+      "seed": 1772583499139,
+      "overhangMm": 0,
+      "fragments": 15,
+      "covPct": "99.974",
+      "residualTotal": 98,
+      "residualInterior": 0,
+      "residualPerim": 98,
+      "uncovComps": 0,
+      "iters": 2000,
+      "exitReason": "maxIterations",
+      "checksum": 32912
+    },
+    {
+      "seed": 1772583499139,
+      "overhangMm": 75,
+      "fragments": 15,
+      "covPct": "99.974",
+      "residualTotal": 98,
+      "residualInterior": 0,
+      "residualPerim": 98,
+      "uncovComps": 0,
+      "iters": 2000,
+      "exitReason": "maxIterations",
+      "checksum": 32912
+    }
+  ],
+  "errors": []
+}

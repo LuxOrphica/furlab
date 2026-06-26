@@ -1,0 +1,164 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Import" [ref=e4] [cursor=pointer]
+      - button "Открыть проект" [ref=e5] [cursor=pointer]
+      - button "Сохранить проект" [ref=e89] [cursor=pointer]
+      - generic [ref=e90]: — Чистый-очень
+      - button "Преобразовать в лекала" [ref=e91] [cursor=pointer]
+      - generic [ref=e6]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic "Инструменты зон" [ref=e9]:
+          - generic [ref=e10]:
+            - generic [ref=e11]: Fur Lab
+            - button "Выбор" [ref=e12] [cursor=pointer]
+            - button "Линия зонирования" [ref=e14] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e16] [cursor=pointer]
+        - group [ref=e18]:
+          - generic "Настройки отображения" [ref=e19] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e20]
+        - button "Отчеты" [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: description
+          - generic [ref=e24]: Отчеты
+      - complementary [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: Сборка меха
+          - generic [ref=e33]:
+            - button "Зоны" [ref=e34] [cursor=pointer]
+            - button "Мех" [active] [ref=e35] [cursor=pointer]
+            - button "Выкладки" [ref=e36] [cursor=pointer]
+          - generic [ref=e37]:
+            - button "Добавить" [ref=e3515] [cursor=pointer]:
+              - generic [ref=e3516]: add
+              - generic [ref=e3517]: Добавить
+            - generic [ref=e3518]:
+              - 'button "Ангора Зон: 1" [ref=e3519] [cursor=pointer]':
+                - img [ref=e3521]
+                - generic [ref=e3536]:
+                  - generic [ref=e3537]: Ангора
+                  - generic [ref=e3538]: "Зон: 1"
+              - button "Удалить мех" [ref=e3540] [cursor=pointer]:
+                - generic [ref=e3541]: delete
+            - generic [ref=e3542]:
+              - 'button "Норка Зон: 0" [ref=e3543] [cursor=pointer]':
+                - img [ref=e3545]
+                - generic [ref=e4071]:
+                  - generic [ref=e4072]: Норка
+                  - generic [ref=e4073]: "Зон: 0"
+              - button "Удалить мех" [ref=e4075] [cursor=pointer]:
+                - generic [ref=e4076]: delete
+        - generic "Потяните для изменения высоты" [ref=e39]
+        - generic [ref=e40]:
+          - generic [ref=e41]: Редактор свойств
+          - generic [ref=e42]:
+            - generic [ref=e4077]: Меховой материал
+            - generic [ref=e4078]:
+              - button "▾ Информация" [expanded] [ref=e4079] [cursor=pointer]:
+                - generic [ref=e4080]: ▾
+                - generic [ref=e4081]: Информация
+              - generic [ref=e4082]:
+                - generic [ref=e4083]:
+                  - generic [ref=e4084]: Название
+                  - generic [ref=e4085]: Норка
+                - generic [ref=e4086]:
+                  - generic [ref=e4087]: Категория
+                  - generic [ref=e4088]: Зимние виды
+                - generic [ref=e4089]:
+                  - generic [ref=e4090]: Вид
+                  - generic [ref=e4091]: Норка европейская
+            - generic [ref=e4092]:
+              - button "▾ Цвет и пигментация" [expanded] [ref=e4093] [cursor=pointer]:
+                - generic [ref=e4094]: ▾
+                - generic [ref=e4095]: Цвет и пигментация
+              - generic [ref=e4096]:
+                - generic [ref=e4097]:
+                  - generic [ref=e4098]: Цвет
+                  - generic [ref=e4101]: "#111111"
+                - generic [ref=e4102]:
+                  - generic [ref=e4103]: Меланин
+                  - generic [ref=e4104]: "0.60"
+                - generic [ref=e4105]:
+                  - generic [ref=e4106]: Феомеланин
+                  - generic [ref=e4107]: "0.00"
+            - generic [ref=e4108]:
+              - button "▾ Размеры заготовки" [expanded] [ref=e4109] [cursor=pointer]:
+                - generic [ref=e4110]: ▾
+                - generic [ref=e4111]: Размеры заготовки
+              - generic [ref=e4112]:
+                - generic [ref=e4113]:
+                  - generic [ref=e4114]: Длина макс, мм
+                  - generic [ref=e4115]: "640"
+                - generic [ref=e4116]:
+                  - generic [ref=e4117]: Ширина макс, мм
+                  - generic [ref=e4118]: "480"
+                - generic [ref=e4119]:
+                  - generic [ref=e4120]: Толщина, мм
+                  - generic [ref=e4121]: "0.50"
+            - generic [ref=e4122]:
+              - button "▾ Эстетика" [expanded] [ref=e4123] [cursor=pointer]:
+                - generic [ref=e4124]: ▾
+                - generic [ref=e4125]: Эстетика
+              - generic [ref=e4126]:
+                - generic [ref=e4127]:
+                  - generic [ref=e4128]: Блеск
+                  - generic [ref=e4129]: "0.60"
+                - generic [ref=e4130]:
+                  - generic [ref=e4131]: Мягкость
+                  - generic [ref=e4132]: "0.40"
+                - generic [ref=e4133]:
+                  - generic [ref=e4134]: Опушенность
+                  - generic [ref=e4135]: "0.50"
+            - generic [ref=e4136]:
+              - button "▾ Геометрия ворса" [expanded] [ref=e4137] [cursor=pointer]:
+                - generic [ref=e4138]: ▾
+                - generic [ref=e4139]: Геометрия ворса
+              - generic [ref=e4140]:
+                - generic [ref=e4141]:
+                  - generic [ref=e4142]: Длина, мм
+                  - generic [ref=e4143]: "25.0"
+                - generic [ref=e4144]:
+                  - generic [ref=e4145]: Диаметр, мм
+                  - generic [ref=e4146]: "0.17"
+                - generic [ref=e4147]:
+                  - generic [ref=e4148]: Густота, шт/inch²
+                  - generic [ref=e4149]: "890"
+                - generic [ref=e4150]:
+                  - generic [ref=e4151]: Уточнение
+                  - generic [ref=e4152]: "1.00"
+                - generic [ref=e4153]:
+                  - generic [ref=e4154]: Сегментация, шт
+                  - generic [ref=e4155]: "3"
+            - generic [ref=e4156]:
+              - button "▾ Ориентация и извитость" [expanded] [ref=e4157] [cursor=pointer]:
+                - generic [ref=e4158]: ▾
+                - generic [ref=e4159]: Ориентация и извитость
+              - generic [ref=e4160]:
+                - generic [ref=e4161]:
+                  - generic [ref=e4162]: Изгиб/наклон волос
+                  - generic [ref=e4163]: "0.20"
+                - generic [ref=e4164]:
+                  - generic [ref=e4165]: Разброс направления изгиба
+                  - generic [ref=e4166]: "0.45"
+                - generic [ref=e4167]:
+                  - generic [ref=e4168]: Радиус извитости, мм
+                  - generic [ref=e4169]: "2.0"
+                - generic [ref=e4170]:
+                  - generic [ref=e4171]: Эффект скрученности
+                  - generic [ref=e4172]: "1.00"
+            - generic [ref=e4173]:
+              - button "▾ Физика полотна" [expanded] [ref=e4174] [cursor=pointer]:
+                - generic [ref=e4175]: ▾
+                - generic [ref=e4176]: Физика полотна
+              - generic [ref=e4177]:
+                - generic [ref=e4178]:
+                  - generic [ref=e4179]: Упругость
+                  - generic [ref=e4180]: "0.78"
+                - generic [ref=e4181]:
+                  - generic [ref=e4182]: Растяжимость
+                  - generic [ref=e4183]: "0.78"
+                - generic [ref=e4184]:
+                  - generic [ref=e4185]: Вес полотна, г/м²
+                  - generic [ref=e4186]: "230"
+  - group [ref=e45]:
+    - generic "Database" [ref=e46] [cursor=pointer]

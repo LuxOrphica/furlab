@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UI Lab</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>UI Lab</h1>
+      <p>Песочница для прототипов интерфейсов.</p>
+    </header>
+
+    <section class="grid">
+      <a class="card" href="./normal-visualizer/index.html">
+        <h2>Normal Visualizer</h2>
+        <p>Восстановление внутренней нормали по точке на кромке.</p>
+      </a>
+      <a class="card" href="./line-direction-visualizer/index.html">
+        <h2>Line Direction Visualizer</h2>
+        <p>Направление ворса по отрезку P1-P2 и расстоянию до кромки.</p>
+      </a>
+    </section>
+    <div class="bottom-tools">
+      <label for="themeSelect">Тема:</label>
+      <select id="themeSelect">
+        <option value="lab-neutral">Lab Neutral</option>
+        <option value="blueprint">Blueprint</option>
+        <option value="warm-paper">Warm Paper</option>
+        <option value="high-contrast">High Contrast</option>
+      </select>
+    </div>
+  </main>
+  <script>
+    (function () {
+      const key = "ui_lab_theme";
+      const select = document.getElementById("themeSelect");
+      const allowed = new Set(["lab-neutral", "blueprint", "warm-paper", "high-contrast"]);
+      const saved = localStorage.getItem(key);
+      const initial = allowed.has(saved) ? saved : "lab-neutral";
+      document.documentElement.dataset.theme = initial;
+      select.value = initial;
+
+      select.addEventListener("change", () => {
+        const t = allowed.has(select.value) ? select.value : "lab-neutral";
+        document.documentElement.dataset.theme = t;
+        localStorage.setItem(key, t);
+      });
+    })();
+  </script>
+</body>
+</html>

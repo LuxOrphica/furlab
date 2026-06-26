@@ -1,0 +1,32 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-outside-1_2109_32513" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="61" fill="black">
+<rect fill="white" width="40" height="61"/>
+<path d="M1 1H39V60H1V1Z"/>
+</mask>
+<path d="M1 1V0H0V1H1ZM39 1H40V0H39V1ZM39 60V61H40V60H39ZM1 60H0V61H1V60ZM1 1V2H39V1V0H1V1ZM39 1H38V60H39H40V1H39ZM39 60V59H1V60V61H39V60ZM1 60H2V1H1H0V60H1Z" fill="black" mask="url(#path-1-outside-1_2109_32513)"/>
+<mask id="path-3-outside-2_2109_32513" maskUnits="userSpaceOnUse" x="40" y="0" width="40" height="61" fill="black">
+<rect fill="white" x="40" width="40" height="61"/>
+<path d="M40 1H79V60H40V1Z"/>
+</mask>
+<path d="M79 1H80V0H79V1ZM79 60V61H80V60H79ZM40 1V2H79V1V0H40V1ZM79 1H78V60H79H80V1H79ZM79 60V59H40V60V61H79V60Z" fill="black" mask="url(#path-3-outside-2_2109_32513)"/>
+<mask id="path-5-outside-3_2109_32513" maskUnits="userSpaceOnUse" x="80" y="0" width="40" height="61" fill="black">
+<rect fill="white" x="80" width="40" height="61"/>
+<path d="M80 1H119V60H80V1Z"/>
+</mask>
+<path d="M119 1H120V0H119V1ZM119 60V61H120V60H119ZM80 1V2H119V1V0H80V1ZM119 1H118V60H119H120V1H119ZM119 60V59H80V60V61H119V60Z" fill="black" mask="url(#path-5-outside-3_2109_32513)"/>
+<mask id="path-7-outside-4_2109_32513" maskUnits="userSpaceOnUse" x="0" y="61" width="40" height="59" fill="black">
+<rect fill="white" y="61" width="40" height="59"/>
+<path d="M1 61H39V119H1V61Z"/>
+</mask>
+<path d="M39 119V120H40V119H39ZM1 119H0V120H1V119ZM39 61H38V119H39H40V61H39ZM39 119V118H1V119V120H39V119ZM1 119H2V61H1H0V119H1Z" fill="black" mask="url(#path-7-outside-4_2109_32513)"/>
+<mask id="path-9-outside-5_2109_32513" maskUnits="userSpaceOnUse" x="40" y="61" width="40" height="59" fill="black">
+<rect fill="white" x="40" y="61" width="40" height="59"/>
+<path d="M40 61H79V119H40V61Z"/>
+</mask>
+<path d="M79 119V120H80V119H79ZM79 61H78V119H79H80V61H79ZM79 119V118H40V119V120H79V119Z" fill="black" mask="url(#path-9-outside-5_2109_32513)"/>
+<mask id="path-11-outside-6_2109_32513" maskUnits="userSpaceOnUse" x="80" y="61" width="40" height="59" fill="black">
+<rect fill="white" x="80" y="61" width="40" height="59"/>
+<path d="M80 61H119V119H80V61Z"/>
+</mask>
+<path d="M119 119V120H120V119H119ZM119 61H118V119H119H120V61H119ZM119 119V118H80V119V120H119V119Z" fill="black" mask="url(#path-11-outside-6_2109_32513)"/>
+</svg>

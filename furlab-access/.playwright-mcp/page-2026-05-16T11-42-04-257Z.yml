@@ -1,0 +1,64 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Услуги" [ref=e8] [cursor=pointer]:
+          - /url: "#services"
+        - link "Как работаю" [ref=e9] [cursor=pointer]:
+          - /url: "#how"
+        - link "Клиентам" [ref=e10] [cursor=pointer]:
+          - /url: "#for-whom"
+        - link "Продукты" [ref=e11] [cursor=pointer]:
+          - /url: "#products"
+        - link "Табель мер" [ref=e12] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Техпак" [ref=e13] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e14]:
+        - button "☀" [ref=e15] [cursor=pointer]
+        - button "EN" [ref=e16] [cursor=pointer]
+        - link "Заявка" [ref=e17] [cursor=pointer]:
+          - /url: "#contact"
+  - generic [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]: 3D Lastique · Tech Pack
+      - heading "Tech Pack Builder" [level=1] [ref=e21]
+      - paragraph [ref=e22]: Garment specification — export to Excel / PDF
+    - generic [ref=e23]:
+      - button "01 Style" [ref=e24] [cursor=pointer]
+      - button "02 Callouts" [ref=e25] [cursor=pointer]
+      - button "03 BOM" [active] [ref=e26] [cursor=pointer]
+      - button "04 Construction" [ref=e27] [cursor=pointer]
+      - button "05 Patterns" [ref=e28] [cursor=pointer]
+      - button "06 Labels & Pack" [ref=e29] [cursor=pointer]
+      - button "07 Files" [ref=e30] [cursor=pointer]
+    - generic [ref=e31]:
+      - paragraph [ref=e71]: Ведомость материалов — ткани, подкладки, фурнитура, этикетки, упаковка
+      - generic [ref=e72]:
+        - table [ref=e73]:
+          - rowgroup [ref=e74]:
+            - row "# Тип Наименование RU Item EN Расположение Требование Параметр Кол. Ед. Согласование Статус Примечания" [ref=e75]:
+              - columnheader "#" [ref=e76]
+              - columnheader "Тип" [ref=e77]
+              - columnheader "Наименование RU" [ref=e78]
+              - columnheader "Item EN" [ref=e79]
+              - columnheader "Расположение" [ref=e80]
+              - columnheader "Требование" [ref=e81]
+              - columnheader "Параметр" [ref=e82]
+              - columnheader "Кол." [ref=e83]
+              - columnheader "Ед." [ref=e84]
+              - columnheader "Согласование" [ref=e85]
+              - columnheader "Статус" [ref=e86]
+              - columnheader "Примечания" [ref=e87]
+              - columnheader [ref=e88]
+          - rowgroup [ref=e89]:
+            - row "Нет материалов — добавьте ткани, фурнитуру, этикетки" [ref=e90]:
+              - cell "Нет материалов — добавьте ткани, фурнитуру, этикетки" [ref=e91]
+        - button "+ Add row" [ref=e92] [cursor=pointer]
+    - generic [ref=e66]:
+      - button "↓ Техпак RU" [ref=e67] [cursor=pointer]
+      - button "↓ Техпак EN" [ref=e68] [cursor=pointer]
+      - link "↓ Техпак PDF" [ref=e70] [cursor=pointer]:
+        - /url: blob:http://localhost:5175/c433ac1e-a4b9-498f-a1e2-31b0a355232f

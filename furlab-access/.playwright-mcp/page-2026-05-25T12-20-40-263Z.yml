@@ -1,0 +1,134 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e75] [cursor=pointer]
+      - generic [ref=e76]: — Чистый 2
+      - button "Преобразовать в лекала" [ref=e77] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e1114]: "NFP+SA: 60 кандидатов, решаем…"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Редактировать точку кривой" [ref=e892] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - button "Добавить выкладку" [ref=e992] [cursor=pointer]:
+              - generic [ref=e993]: add
+              - generic [ref=e994]: Добавить выкладку
+            - generic [ref=e995]:
+              - button "radial Радиальная 6" [ref=e996] [cursor=pointer]:
+                - img "radial" [ref=e998]
+                - generic [ref=e1000]: Радиальная 6
+              - button "Удалить выкладку" [ref=e1002] [cursor=pointer]:
+                - generic [ref=e1003]: delete
+            - generic [ref=e1004]:
+              - button "longitudinal Продольно-поперечная 7" [ref=e1005] [cursor=pointer]:
+                - img "longitudinal" [ref=e1007]
+                - generic [ref=e1009]: Продольно-поперечная 7
+              - button "Удалить выкладку" [ref=e1011] [cursor=pointer]:
+                - generic [ref=e1012]: delete
+            - generic [ref=e1013]:
+              - button "shifted Со смещением 8" [ref=e1014] [cursor=pointer]:
+                - img "shifted" [ref=e1016]
+                - generic [ref=e1018]: Со смещением 8
+              - button "Удалить выкладку" [ref=e1020] [cursor=pointer]:
+                - generic [ref=e1021]: delete
+            - generic [ref=e1022]:
+              - button "transverse Ёлочка 5" [ref=e1023] [cursor=pointer]:
+                - img "transverse" [ref=e1025]
+                - generic [ref=e1027]: Ёлочка 5
+              - button "Удалить выкладку" [ref=e1029] [cursor=pointer]:
+                - generic [ref=e1030]: delete
+            - generic [ref=e1031]:
+              - button "inventory_nfp_sa Из инвентаря (NFP+SA) 5" [ref=e1032] [cursor=pointer]:
+                - img "inventory_nfp_sa" [ref=e1034]
+                - generic [ref=e1036]: Из инвентаря (NFP+SA) 5
+              - button "Удалить выкладку" [ref=e1038] [cursor=pointer]:
+                - generic [ref=e1039]: delete
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e1040]:
+              - generic [ref=e1041]: Выкладка
+              - generic [ref=e1042]:
+                - button "Заблокировать редактирование" [ref=e1043] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e1044] [cursor=pointer]
+            - generic [ref=e1045]:
+              - button "▾ Информация" [expanded] [ref=e1046] [cursor=pointer]:
+                - generic [ref=e1047]: ▾
+                - generic [ref=e1048]: Информация
+              - generic [ref=e1049]:
+                - generic [ref=e1050]:
+                  - generic [ref=e1051]: Название
+                  - textbox "(Пусто)" [ref=e1053]: Из инвентаря (NFP+SA) 5
+                - generic [ref=e1054]:
+                  - generic [ref=e1055]: Тип
+                  - generic [ref=e1056]: Из инвентаря (NFP+SA)
+            - generic [ref=e1057]:
+              - button "▾ Инвентарь" [expanded] [ref=e1058] [cursor=pointer]:
+                - generic [ref=e1059]: ▾
+                - generic [ref=e1060]: Инвентарь
+              - generic [ref=e1061]:
+                - generic [ref=e1062]:
+                  - generic [ref=e1063]: Мех
+                  - combobox [ref=e1065] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e1066]:
+                  - generic [ref=e1067]: Резерв припуска, мм
+                  - spinbutton [ref=e1069]: "12.0"
+                - button "Заполнить остаток" [ref=e1071] [cursor=pointer]
+                - generic [ref=e1072]: Настройки подбора, preview и применение
+            - generic [ref=e1073]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e1074] [cursor=pointer]:
+                - generic [ref=e1075]: ▾
+                - generic [ref=e1076]: Параметры выкладки
+              - generic [ref=e1078]:
+                - generic [ref=e1079]: Резерв под припуски, мм
+                - spinbutton [ref=e1081]: "12.0"
+  - generic [ref=e1116]:
+    - generic [ref=e1117]: "NFP+SA: 60 кандидатов, запуск солвера…"
+    - generic [ref=e1118]:
+      - generic: 30%
+    - list [ref=e1121]:
+      - listitem [ref=e1122]:
+        - generic [ref=e1123]: ✓
+        - generic [ref=e1124]: "NFP+SA: запрос кандидатов…"
+      - listitem [ref=e1125]:
+        - generic [ref=e1126]: •
+        - generic [ref=e1127]: "NFP+SA: 60 кандидатов, запуск солвера…"
+    - generic [ref=e1128]:
+      - generic [ref=e1129]: Кусков (подбор)
+      - generic [ref=e1130]: "0"
+      - generic [ref=e1131]: Покрытие, %
+      - generic [ref=e1132]: "0.00"
+      - generic [ref=e1133]: Утилизация, %
+      - generic [ref=e1134]: "0.00"
+      - generic [ref=e1135]: Хвостовой штраф, %
+      - generic [ref=e1136]: "0.00"
+    - generic [ref=e1137]: 00:02
+    - generic [ref=e1138]: "live: token=nfp_sa_1779711639201 | server.buildId=telemetry-v4-2026-05-06-export-reports-fix"
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]

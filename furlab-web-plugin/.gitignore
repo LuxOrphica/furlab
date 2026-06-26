@@ -1,0 +1,45 @@
+# Runtime/temp artifacts
+tmp/
+tmp_selftest/
+_tmp/
+node_modules/
+dist/
+build/
+coverage/
+*.log
+.env
+.env.*
+
+# Local backups and ad-hoc snapshots
+*.bak
+*.backup
+*.orig
+*.tmp
+*.swp
+*.swo
+
+# Never keep backups in served frontend folder
+public/js/*.bak
+public/js/*backup*
+
+# Test reports and allure artifacts
+allure-report/
+allure-results/
+
+# Project data files (runtime, not versioned)
+data/
+
+# Server process output logs
+server.*.out
+server.*.err
+server.out
+server.err
+
+# Zip exports and test archives
+*.zip
+
+# Ad-hoc debug/scratch scripts (prefixed with _)
+scripts/_*.js
+
+# Python cache
+scripts/__pycache__/

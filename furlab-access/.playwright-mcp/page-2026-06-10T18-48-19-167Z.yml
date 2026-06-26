@@ -1,0 +1,99 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e91] [cursor=pointer]
+      - generic [ref=e92]: — прямоугольный проект
+      - button "Преобразовать в лекала" [ref=e93] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - generic "Инструменты зон" [ref=e11]:
+          - generic [ref=e12]:
+            - generic [ref=e13]: Fur Lab
+            - button "Выбор" [ref=e14] [cursor=pointer]
+            - button "Линия зонирования" [ref=e16] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e18] [cursor=pointer]
+        - group [ref=e20]:
+          - generic "Настройки отображения" [ref=e21] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e22]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [disabled] [ref=e24]:
+          - generic [ref=e25]: description
+          - generic [ref=e26]: Отчеты
+      - complementary [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Сборка меха
+          - generic [ref=e35]:
+            - button "Зоны" [ref=e36] [cursor=pointer]
+            - button "Мех" [ref=e37] [cursor=pointer]
+            - button "Выкладки" [ref=e38] [cursor=pointer]
+          - generic [ref=e39]:
+            - button "Добавить выкладку" [active] [ref=e720] [cursor=pointer]:
+              - generic [ref=e721]: add
+              - generic [ref=e722]: Добавить выкладку
+            - generic [ref=e723]: Пока нет выкладок. Нажмите 'Добавить выкладку'.
+        - generic "Потяните для изменения высоты" [ref=e41]
+        - generic [ref=e42]:
+          - generic [ref=e43]: Редактор свойств
+          - generic [ref=e724]: Выкладка не выбрана
+  - generic [ref=e726]:
+    - generic [ref=e727]:
+      - generic [ref=e728]: Библиотека FurLab
+      - button "Закрыть" [ref=e729] [cursor=pointer]:
+        - generic [ref=e730]: close
+    - generic [ref=e731]:
+      - complementary [ref=e732]:
+        - button "Мех" [ref=e733]:
+          - generic [ref=e735]: Мех
+        - button "Выкладка" [ref=e736]:
+          - generic [ref=e738]: Выкладка
+        - button "Обработка" [ref=e739]:
+          - generic [ref=e741]: Обработка
+      - generic [ref=e743]:
+        - complementary
+        - generic [ref=e744]:
+          - generic [ref=e745]:
+            - textbox "Поиск" [ref=e747]
+            - generic [ref=e748]: Типы выкладки
+          - generic [ref=e749]:
+            - generic [ref=e750] [cursor=pointer]:
+              - img "longitudinal" [ref=e751]
+              - generic [ref=e752]: Продольно-поперечная
+            - generic [ref=e753] [cursor=pointer]:
+              - img "transverse" [ref=e754]
+              - generic [ref=e755]: Ёлочка
+            - generic [ref=e756] [cursor=pointer]:
+              - img "shifted" [ref=e757]
+              - generic [ref=e758]: Со смещением
+            - generic [ref=e759] [cursor=pointer]:
+              - img "radial" [ref=e760]
+              - generic [ref=e761]: Радиальная
+            - generic [ref=e762] [cursor=pointer]:
+              - img "voronoi_tiles" [ref=e763]
+              - generic [ref=e764]: Мозаика Вороного
+            - generic [ref=e765] [cursor=pointer]:
+              - img "intarsia" [ref=e766]
+              - generic [ref=e767]: Интарсия
+            - generic [ref=e768] [cursor=pointer]:
+              - img "inventory_manual" [ref=e769]
+              - generic [ref=e770]: Из инвентаря (ручной)
+            - generic [ref=e771] [cursor=pointer]:
+              - img "inventory_nfp_sa" [ref=e772]
+              - generic [ref=e773]: Из инвентаря (NFP+SA)
+            - generic [ref=e774] [cursor=pointer]:
+              - img "inventory_voronoi_sa" [ref=e775]
+              - generic [ref=e776]: Из инвентаря (Voronoi+SA)
+            - generic [ref=e777] [cursor=pointer]:
+              - img "inventory_mosaic" [ref=e778]
+              - generic [ref=e779]: Из инвентаря (мозаика)
+    - generic [ref=e780]:
+      - button "Выбрать" [disabled] [ref=e781] [cursor=pointer]
+      - button "Отмена" [ref=e782] [cursor=pointer]
+  - group [ref=e47]:
+    - generic "Database" [ref=e48] [cursor=pointer]

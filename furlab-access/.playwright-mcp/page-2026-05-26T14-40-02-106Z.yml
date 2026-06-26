@@ -1,0 +1,236 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Узлы" [ref=e9] [cursor=pointer]:
+          - /url: /tools/nodes
+        - link "VSE" [ref=e10] [cursor=pointer]:
+          - /url: /tools/vse
+        - link "Техпак" [ref=e11] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e12]:
+        - button "☾" [ref=e13] [cursor=pointer]
+        - button "EN" [ref=e14] [cursor=pointer]
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]: 3D Lastique · Tools
+      - heading "Garment Spec Builder" [level=1] [ref=e18]
+      - paragraph [ref=e19]: Табель мер / Measurement Sheet — v0.1
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]: Изделие
+        - combobox [ref=e23] [cursor=pointer]:
+          - option "Пальто однобортное" [selected]
+          - option "Пальто двубортное"
+          - option "Жакет / блейзер"
+          - option "Брюки классические"
+          - option "Брюки casual / chino"
+          - option "Юбка"
+          - option "Футболка / поло"
+          - option "Джемпер / свитер"
+          - option "Худи / свитшот"
+          - option "Купальник слитный"
+          - option "Плавки / шорты купальные"
+          - option "Раздельный купальник (топ+низ)"
+      - generic [ref=e24]:
+        - generic [ref=e25]: Размеры
+        - generic [ref=e26]:
+          - button "44" [ref=e27] [cursor=pointer]
+          - button "46" [ref=e28] [cursor=pointer]
+          - button "48" [ref=e29] [cursor=pointer]
+          - button "50" [ref=e30] [cursor=pointer]
+          - button "52" [ref=e31] [cursor=pointer]
+          - button "54" [ref=e32] [cursor=pointer]
+          - button "56" [ref=e33] [cursor=pointer]
+          - button "58" [ref=e34] [cursor=pointer]
+          - button "60" [ref=e35] [cursor=pointer]
+      - generic [ref=e36]:
+        - generic [ref=e37]: Базовый размер
+        - combobox [ref=e38] [cursor=pointer]:
+          - option "46"
+          - option "48" [selected]
+          - option "50"
+          - option "52"
+          - option "54"
+          - option "56"
+      - generic [ref=e39]:
+        - generic [ref=e40]: Единицы
+        - generic [ref=e41]:
+          - generic [ref=e42] [cursor=pointer]:
+            - radio "cm" [checked] [ref=e43]
+            - text: cm
+          - generic [ref=e44] [cursor=pointer]:
+            - radio "mm" [ref=e45]
+            - text: mm
+      - generic [ref=e46]:
+        - generic [ref=e47]: Способ измерения
+        - generic [ref=e48] [cursor=pointer]:
+          - checkbox "показать" [ref=e49]
+          - text: показать
+      - generic [ref=e50]:
+        - generic [ref=e51]: Детальные измерения
+        - generic [ref=e52] [cursor=pointer]:
+          - checkbox "показать" [ref=e53]
+          - text: показать
+    - generic [ref=e54]:
+      - button "Табель мер" [ref=e55] [cursor=pointer]
+      - button "Справочник POM" [ref=e56] [cursor=pointer]
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - table [ref=e60]:
+          - rowgroup [ref=e61]:
+            - row "Код Название RU Name EN 46 48● 50 52 54 56 TOL ±" [ref=e62]:
+              - columnheader "Код" [ref=e63]
+              - columnheader "Название RU" [ref=e64]
+              - columnheader "Name EN" [ref=e65]
+              - columnheader "46" [ref=e66]
+              - columnheader "48●" [ref=e67]
+              - columnheader "50" [ref=e68]
+              - columnheader "52" [ref=e69]
+              - columnheader "54" [ref=e70]
+              - columnheader "56" [ref=e71]
+              - columnheader "TOL ±" [ref=e72]
+          - rowgroup [ref=e73]:
+            - row "B Полуобхват талии 1/2 Waist 44.1 46.1 48.1 50.1 52.1 54.1 0.5" [ref=e74] [cursor=pointer]:
+              - cell "B" [ref=e75]
+              - cell "Полуобхват талии" [ref=e76]
+              - cell "1/2 Waist" [ref=e77]
+              - cell "44.1" [ref=e78]
+              - cell "46.1" [ref=e79]
+              - cell "48.1" [ref=e80]
+              - cell "50.1" [ref=e81]
+              - cell "52.1" [ref=e82]
+              - cell "54.1" [ref=e83]
+              - cell "0.5" [ref=e84]
+            - row "C Полуобхват бёдер 1/2 Hip 56.2 58.2 60.2 62.2 64.2 66.1 1" [ref=e85] [cursor=pointer]:
+              - cell "C" [ref=e86]
+              - cell "Полуобхват бёдер" [ref=e87]
+              - cell "1/2 Hip" [ref=e88]
+              - cell "56.2" [ref=e89]
+              - cell "58.2" [ref=e90]
+              - cell "60.2" [ref=e91]
+              - cell "62.2" [ref=e92]
+              - cell "64.2" [ref=e93]
+              - cell "66.1" [ref=e94]
+              - cell "1" [ref=e95]
+            - row "N Передняя высота сидения с поясом Front rise incl. waistband 29.1 29.7 30.2 30.7 31.2 31.7 0.5" [ref=e96] [cursor=pointer]:
+              - cell "N" [ref=e97]
+              - cell "Передняя высота сидения с поясом" [ref=e98]
+              - cell "Front rise incl. waistband" [ref=e99]
+              - cell "29.1" [ref=e100]
+              - cell "29.7" [ref=e101]
+              - cell "30.2" [ref=e102]
+              - cell "30.7" [ref=e103]
+              - cell "31.2" [ref=e104]
+              - cell "31.7" [ref=e105]
+              - cell "0.5" [ref=e106]
+            - row "N1 Задняя высота сидения с поясом Back rise incl. waistband 42.6 43.7 44.8 45.9 47.1 48.2 0.5" [ref=e107] [cursor=pointer]:
+              - cell "N1" [ref=e108]
+              - cell "Задняя высота сидения с поясом" [ref=e109]
+              - cell "Back rise incl. waistband" [ref=e110]
+              - cell "42.6" [ref=e111]
+              - cell "43.7" [ref=e112]
+              - cell "44.8" [ref=e113]
+              - cell "45.9" [ref=e114]
+              - cell "47.1" [ref=e115]
+              - cell "48.2" [ref=e116]
+              - cell "0.5" [ref=e117]
+            - row "C1 Ширина бедра 1/2 Thigh 33.65 34.85 36 37.15 38.35 39.5 0.5" [ref=e118] [cursor=pointer]:
+              - cell "C1" [ref=e119]
+              - cell "Ширина бедра" [ref=e120]
+              - cell "1/2 Thigh" [ref=e121]
+              - cell "33.65" [ref=e122]
+              - cell "34.85" [ref=e123]
+              - cell "36" [ref=e124]
+              - cell "37.15" [ref=e125]
+              - cell "38.35" [ref=e126]
+              - cell "39.5" [ref=e127]
+              - cell "0.5" [ref=e128]
+            - row "C2 Ширина колена 1/2 Knee width 24.2 25 25.8 26.6 27.4 28.2 0.5" [ref=e129] [cursor=pointer]:
+              - cell "C2" [ref=e130]
+              - cell "Ширина колена" [ref=e131]
+              - cell "1/2 Knee width" [ref=e132]
+              - cell "24.2" [ref=e133]
+              - cell "25" [ref=e134]
+              - cell "25.8" [ref=e135]
+              - cell "26.6" [ref=e136]
+              - cell "27.4" [ref=e137]
+              - cell "28.2" [ref=e138]
+              - cell "0.5" [ref=e139]
+            - row "D Ширина низа Leg opening 19.75 20.25 20.75 21.25 21.75 22.25 0.5" [ref=e140] [cursor=pointer]:
+              - cell "D" [ref=e141]
+              - cell "Ширина низа" [ref=e142]
+              - cell "Leg opening" [ref=e143]
+              - cell "19.75" [ref=e144]
+              - cell "20.25" [ref=e145]
+              - cell "20.75" [ref=e146]
+              - cell "21.25" [ref=e147]
+              - cell "21.75" [ref=e148]
+              - cell "22.25" [ref=e149]
+              - cell "0.5" [ref=e150]
+            - row "J Длина по боковому шву с поясом Outseam incl. waistband 114.8 115.8 116.8 117.8 118.8 119.8 1" [ref=e151] [cursor=pointer]:
+              - cell "J" [ref=e152]
+              - cell "Длина по боковому шву с поясом" [ref=e153]
+              - cell "Outseam incl. waistband" [ref=e154]
+              - cell "114.8" [ref=e155]
+              - cell "115.8" [ref=e156]
+              - cell "116.8" [ref=e157]
+              - cell "117.8" [ref=e158]
+              - cell "118.8" [ref=e159]
+              - cell "119.8" [ref=e160]
+              - cell "1" [ref=e161]
+            - row "J6 Длина по шаговому шву Inseam 86.3 86.7 87.3 87.7 88.2 88.7 1" [ref=e162] [cursor=pointer]:
+              - cell "J6" [ref=e163]
+              - cell "Длина по шаговому шву" [ref=e164]
+              - cell "Inseam" [ref=e165]
+              - cell "86.3" [ref=e166]
+              - cell "86.7" [ref=e167]
+              - cell "87.3" [ref=e168]
+              - cell "87.7" [ref=e169]
+              - cell "88.2" [ref=e170]
+              - cell "88.7" [ref=e171]
+              - cell "1" [ref=e172]
+            - row "B3 Высота пояса Waistband height 4.3 4.3 4.3 4.3 4.3 4.3 0.2" [ref=e173] [cursor=pointer]:
+              - cell "B3" [ref=e174]
+              - cell "Высота пояса" [ref=e175]
+              - cell "Waistband height" [ref=e176]
+              - cell "4.3" [ref=e177]
+              - cell "4.3" [ref=e178]
+              - cell "4.3" [ref=e179]
+              - cell "4.3" [ref=e180]
+              - cell "4.3" [ref=e181]
+              - cell "4.3" [ref=e182]
+              - cell "0.2" [ref=e183]
+            - row "B' Длина пояса по верху Waistband length 99.9 103.9 107.9 111.9 115.9 119.9 0.5" [ref=e184] [cursor=pointer]:
+              - cell "B'" [ref=e185]
+              - cell "Длина пояса по верху" [ref=e186]
+              - cell "Waistband length" [ref=e187]
+              - cell "99.9" [ref=e188]
+              - cell "103.9" [ref=e189]
+              - cell "107.9" [ref=e190]
+              - cell "111.9" [ref=e191]
+              - cell "115.9" [ref=e192]
+              - cell "119.9" [ref=e193]
+              - cell "0.5" [ref=e194]
+            - row "O Длина гульфика Fly length 16.4 16.3 16.3 16.3 16.3 16.3 0.3" [ref=e195] [cursor=pointer]:
+              - cell "O" [ref=e196]
+              - cell "Длина гульфика" [ref=e197]
+              - cell "Fly length" [ref=e198]
+              - cell "16.4" [ref=e199]
+              - cell "16.3" [ref=e200]
+              - cell "16.3" [ref=e201]
+              - cell "16.3" [ref=e202]
+              - cell "16.3" [ref=e203]
+              - cell "16.3" [ref=e204]
+              - cell "0.3" [ref=e205]
+        - generic [ref=e206]: "* Все значения — плоские замеры (изделие сложено вдвое). Единицы: cm. Базовый размер: 48."
+      - generic [ref=e208]:
+        - img "POM diagram" [ref=e210]
+        - generic [ref=e211]:
+          - button "+" [ref=e212] [cursor=pointer]
+          - generic [ref=e213]: 100%
+          - button "−" [disabled] [ref=e214]

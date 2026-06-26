@@ -1,0 +1,111 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e81] [cursor=pointer]
+      - generic [ref=e82]: — Чистый 2
+      - button "Преобразовать в лекала" [ref=e83] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Линия зонирования" [ref=e13] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+            - button "Перо интарсии" [ref=e850] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - button "Добавить выкладку" [ref=e944] [cursor=pointer]:
+              - generic [ref=e945]: add
+              - generic [ref=e946]: Добавить выкладку
+            - generic [ref=e947]:
+              - button "radial Радиальная 6" [ref=e948] [cursor=pointer]:
+                - img "radial" [ref=e950]
+                - generic [ref=e952]: Радиальная 6
+              - button "Удалить выкладку" [ref=e954] [cursor=pointer]:
+                - generic [ref=e955]: delete
+            - generic [ref=e956]:
+              - button "longitudinal Продольно-поперечная 7" [ref=e957] [cursor=pointer]:
+                - img "longitudinal" [ref=e959]
+                - generic [ref=e961]: Продольно-поперечная 7
+              - button "Удалить выкладку" [ref=e963] [cursor=pointer]:
+                - generic [ref=e964]: delete
+            - generic [ref=e965]:
+              - button "shifted Со смещением 8" [ref=e966] [cursor=pointer]:
+                - img "shifted" [ref=e968]
+                - generic [ref=e970]: Со смещением 8
+              - button "Удалить выкладку" [ref=e972] [cursor=pointer]:
+                - generic [ref=e973]: delete
+            - generic [ref=e974]:
+              - button "transverse Ёлочка 5" [ref=e975] [cursor=pointer]:
+                - img "transverse" [ref=e977]
+                - generic [ref=e979]: Ёлочка 5
+              - button "Удалить выкладку" [ref=e981] [cursor=pointer]:
+                - generic [ref=e982]: delete
+            - generic [ref=e983]:
+              - button "inventory_nfp_sa Из инвентаря (NFP+SA) 5" [ref=e984] [cursor=pointer]:
+                - img "inventory_nfp_sa" [ref=e986]
+                - generic [ref=e988]: Из инвентаря (NFP+SA) 5
+              - button "Удалить выкладку" [ref=e990] [cursor=pointer]:
+                - generic [ref=e991]: delete
+            - generic [ref=e992]:
+              - button "intarsia Интарсия 6" [ref=e993] [cursor=pointer]:
+                - img "intarsia" [ref=e995]
+                - generic [ref=e997]: Интарсия 6
+              - button "Удалить выкладку" [ref=e999] [cursor=pointer]:
+                - generic [ref=e1000]: delete
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e1001]:
+              - generic [ref=e1002]: Выкладка
+              - generic [ref=e1003]:
+                - button "Заблокировать редактирование" [ref=e1004] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e1005] [cursor=pointer]
+            - generic [ref=e1006]:
+              - button "▾ Информация" [expanded] [ref=e1007] [cursor=pointer]:
+                - generic [ref=e1008]: ▾
+                - generic [ref=e1009]: Информация
+              - generic [ref=e1010]:
+                - generic [ref=e1011]:
+                  - generic [ref=e1012]: Название
+                  - textbox "(Пусто)" [ref=e1014]: Интарсия 6
+                - generic [ref=e1015]:
+                  - generic [ref=e1016]: Тип
+                  - generic [ref=e1017]: Интарсия
+            - generic [ref=e1018]:
+              - button "▾ Импорт контуров" [expanded] [ref=e1019] [cursor=pointer]:
+                - generic [ref=e1020]: ▾
+                - generic [ref=e1021]: Импорт контуров
+              - generic [ref=e1022]:
+                - generic [ref=e1023]:
+                  - generic [ref=e1025]: Фрагмент 1
+                  - button "Удалить фрагмент" [ref=e1027] [cursor=pointer]:
+                    - generic [ref=e1028]: delete
+                - generic [ref=e1029]:
+                  - button "+ Добавить SVG" [ref=e1030] [cursor=pointer]
+                  - generic [ref=e1031]: "Лучший результат: контуры без заливки, без групп, один путь на фрагмент."
+            - generic [ref=e1032]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e1033] [cursor=pointer]:
+                - generic [ref=e1034]: ▾
+                - generic [ref=e1035]: Параметры выкладки
+              - generic [ref=e1037]:
+                - generic [ref=e1038]: Резерв под припуски, мм
+                - spinbutton [ref=e1040]: "12.0"
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]

@@ -1,0 +1,30 @@
+# Dependencies
+**/node_modules/
+
+# Runtime data
+furlab-web-plugin/data/
+furlab-web-plugin/allure-report/
+furlab-web-plugin/allure-results/
+furlab-web-plugin/server.*.out
+furlab-web-plugin/server.*.err
+furlab-web-plugin/server.out
+furlab-web-plugin/server.err
+
+# Archives
+**/*.zip
+
+# Logs
+**/*.log
+
+# Env
+**/.env
+**/.env.*
+
+# Temp
+**/*.tmp
+**/*.bak
+**/*.orig
+**/__pycache__/
+
+# VS Code local
+**/.vscode/

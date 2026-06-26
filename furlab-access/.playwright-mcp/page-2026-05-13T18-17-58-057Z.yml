@@ -1,0 +1,82 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Import" [ref=e4] [cursor=pointer]
+      - button "Открыть проект" [ref=e5] [cursor=pointer]
+      - button "Сохранить проект" [ref=e88] [cursor=pointer]
+      - generic [ref=e89]: — 23143
+      - button "Преобразовать в лекала" [ref=e90] [cursor=pointer]
+      - generic [ref=e6]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic "Инструменты зон" [ref=e9]:
+          - generic [ref=e10]:
+            - generic [ref=e11]: Fur Lab
+            - button "Выбор" [ref=e12] [cursor=pointer]
+            - button "Линия зонирования" [ref=e14] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e16] [cursor=pointer]
+        - group [ref=e18]:
+          - generic "Настройки отображения" [ref=e19] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e20]
+        - button "Отчеты" [disabled] [ref=e22]:
+          - generic [ref=e23]: description
+          - generic [ref=e24]: Отчеты
+      - complementary [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: Сборка меха
+          - generic [ref=e33]:
+            - button "Зоны" [ref=e34] [cursor=pointer]
+            - button "Мех" [ref=e35] [cursor=pointer]
+            - button "Выкладки" [ref=e36] [cursor=pointer]
+          - generic [ref=e37]:
+            - button "Добавить выкладку" [ref=e1985] [cursor=pointer]:
+              - generic [ref=e1986]: add
+              - generic [ref=e1987]: Добавить выкладку
+            - generic [ref=e1988]: Пока нет выкладок. Нажмите 'Добавить выкладку'.
+        - generic "Потяните для изменения высоты" [ref=e39]
+        - generic [ref=e40]:
+          - generic [ref=e41]: Редактор свойств
+          - generic [ref=e1989]: Выкладка не выбрана
+  - generic [ref=e1991]:
+    - generic [ref=e1992]:
+      - generic [ref=e1993]: Библиотека FurLab
+      - button "Закрыть" [ref=e1994] [cursor=pointer]:
+        - generic [ref=e1995]: close
+    - generic [ref=e1996]:
+      - complementary [ref=e1997]:
+        - button "Мех" [ref=e1998]:
+          - generic [ref=e2000]: Мех
+        - button "Выкладка" [ref=e2001]:
+          - generic [ref=e2003]: Выкладка
+        - button "Обработка" [ref=e2004]:
+          - generic [ref=e2006]: Обработка
+      - generic [ref=e2008]:
+        - complementary
+        - generic [ref=e2009]:
+          - generic [ref=e2010]:
+            - textbox "Поиск" [ref=e2012]
+            - generic [ref=e2013]: Типы выкладки
+          - generic [ref=e2014]:
+            - generic [ref=e2015] [cursor=pointer]:
+              - img "longitudinal" [ref=e2016]
+              - generic [ref=e2017]: Продольно-поперечная
+            - generic [ref=e2018] [cursor=pointer]:
+              - img "transverse" [ref=e2019]
+              - generic [ref=e2020]: Ёлочка
+            - generic [ref=e2021] [cursor=pointer]:
+              - img "shifted" [ref=e2022]
+              - generic [ref=e2023]: Со смещением
+            - generic [ref=e2024] [cursor=pointer]:
+              - img "radial" [ref=e2025]
+              - generic [ref=e2026]: Радиальная
+            - generic [ref=e2027] [cursor=pointer]:
+              - img "intarsia" [ref=e2028]
+              - generic [ref=e2029]: Интарсия
+            - generic [ref=e2030] [cursor=pointer]:
+              - img "inventory_manual" [ref=e2031]
+              - generic [ref=e2032]: Из инвентаря (ручной)
+    - generic [ref=e2033]:
+      - button "Выбрать" [disabled] [ref=e2034] [cursor=pointer]
+      - button "Отмена" [ref=e2035] [cursor=pointer]
+  - group [ref=e45]:
+    - generic "Database" [ref=e46] [cursor=pointer]

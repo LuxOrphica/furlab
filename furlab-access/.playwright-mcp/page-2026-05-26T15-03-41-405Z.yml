@@ -1,0 +1,172 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Узлы" [ref=e9] [cursor=pointer]:
+          - /url: /tools/nodes
+        - link "VSE" [ref=e10] [cursor=pointer]:
+          - /url: /tools/vse
+        - link "Техпак" [ref=e11] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e12]:
+        - button "☾" [ref=e13] [cursor=pointer]
+        - button "EN" [ref=e14] [cursor=pointer]
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]: 3D Lastique · Tech Pack
+      - heading "Tech Pack Builder" [level=1] [ref=e18]
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e22]: Изделие
+            - combobox "Изделие" [ref=e23] [cursor=pointer]:
+              - option "Пальто однобортное" [selected]
+              - option "Пальто двубортное"
+              - option "Жакет / блейзер"
+              - option "Брюки классические"
+              - option "Брюки casual / chino"
+              - option "Юбка"
+              - option "Футболка / поло"
+              - option "Джемпер / свитер"
+              - option "Худи / свитшот"
+              - option "Купальник слитный"
+              - option "Плавки / шорты купальные"
+              - option "Раздельный купальник (топ+низ)"
+          - generic [ref=e24]:
+            - generic [ref=e25]: Базовый размер
+            - combobox "Базовый размер" [ref=e26] [cursor=pointer]:
+              - option "48"
+              - option "50"
+              - option "52" [selected]
+              - option "54"
+              - option "56"
+              - option "58"
+        - generic [ref=e27]:
+          - button "↓ Excel RU" [ref=e28] [cursor=pointer]
+          - button "↓ Excel EN" [ref=e29] [cursor=pointer]
+          - link "↓ PDF" [ref=e30] [cursor=pointer]:
+            - /url: blob:http://localhost:5176/5ea19160-ce06-4fcb-ade6-1027177f2ee1
+    - generic [ref=e31]:
+      - button "01 Стиль" [ref=e32] [cursor=pointer]
+      - button "02 Выноски" [ref=e33] [cursor=pointer]
+      - button "03 BOM" [ref=e34] [cursor=pointer]
+      - button "04 Конструкция" [ref=e35] [cursor=pointer]
+      - button "05 Размерная" [ref=e36] [cursor=pointer]
+      - button "06 Детали кроя" [ref=e37] [cursor=pointer]
+      - button "07 Цветовая карта" [ref=e38] [cursor=pointer]
+      - button "08 Уход" [ref=e39] [cursor=pointer]
+      - button "09 Маркировка" [ref=e40] [cursor=pointer]
+      - button "10 Файлы" [ref=e41] [cursor=pointer]
+      - button "11 Узлы" [ref=e42] [cursor=pointer]
+    - generic [ref=e43]:
+      - generic [ref=e96]:
+        - heading "Дублерин / проклейка" [level=3] [ref=e98]
+        - generic [ref=e99]:
+          - table [ref=e100]:
+            - rowgroup [ref=e101]:
+              - row "# Зона RU Zone EN Тип дублерина Нанесение Согласование Статус Примечания" [ref=e102]:
+                - columnheader "#" [ref=e103]
+                - columnheader "Зона RU" [ref=e104]
+                - columnheader "Zone EN" [ref=e105]
+                - columnheader "Тип дублерина" [ref=e106]
+                - columnheader "Нанесение" [ref=e107]
+                - columnheader "Согласование" [ref=e108]
+                - columnheader "Статус" [ref=e109]
+                - columnheader "Примечания" [ref=e110]
+                - columnheader [ref=e111]
+            - rowgroup [ref=e112]:
+              - row "Нет зон проклейки" [ref=e113]:
+                - cell "Нет зон проклейки" [ref=e114]
+          - button "+ Добавить строку" [ref=e115] [cursor=pointer]
+      - generic [ref=e116]:
+        - heading "Подкладка" [level=3] [ref=e118]
+        - generic [ref=e119]:
+          - table [ref=e120]:
+            - rowgroup [ref=e121]:
+              - row "# Зона RU Zone EN Материал Покрытие Крепление Статус Примечания" [ref=e122]:
+                - columnheader "#" [ref=e123]
+                - columnheader "Зона RU" [ref=e124]
+                - columnheader "Zone EN" [ref=e125]
+                - columnheader "Материал" [ref=e126]
+                - columnheader "Покрытие" [ref=e127]
+                - columnheader "Крепление" [ref=e128]
+                - columnheader "Статус" [ref=e129]
+                - columnheader "Примечания" [ref=e130]
+                - columnheader [ref=e131]
+            - rowgroup [ref=e132]:
+              - row "Нет зон подкладки" [ref=e133]:
+                - cell "Нет зон подкладки" [ref=e134]
+          - button "+ Добавить строку" [ref=e135] [cursor=pointer]
+      - generic [ref=e136]:
+        - heading "Припуски на швы" [level=3] [ref=e138]
+        - generic [ref=e139]:
+          - table [ref=e140]:
+            - rowgroup [ref=e141]:
+              - row "# Зона / Шов RU Zone / Seam EN SA cm Обработка Примечания" [ref=e142]:
+                - columnheader "#" [ref=e143]
+                - columnheader "Зона / Шов RU" [ref=e144]
+                - columnheader "Zone / Seam EN" [ref=e145]
+                - columnheader "SA cm" [ref=e146]
+                - columnheader "Обработка" [ref=e147]
+                - columnheader "Примечания" [ref=e148]
+                - columnheader [ref=e149]
+            - rowgroup [ref=e150]:
+              - row "Нет припусков" [ref=e151]:
+                - cell "Нет припусков" [ref=e152]
+          - button "+ Добавить строку" [ref=e153] [cursor=pointer]
+      - generic [ref=e154]:
+        - heading "Параметры строчек" [level=3] [ref=e156]
+        - generic [ref=e157]:
+          - table [ref=e158]:
+            - rowgroup [ref=e159]:
+              - row "# ISO / ASTM Стеж/дюйм Зона RU Zone EN Нитки Натяжение Примечания" [ref=e160]:
+                - columnheader "#" [ref=e161]
+                - columnheader "ISO / ASTM" [ref=e162]
+                - columnheader "Стеж/дюйм" [ref=e163]
+                - columnheader "Зона RU" [ref=e164]
+                - columnheader "Zone EN" [ref=e165]
+                - columnheader "Нитки" [ref=e166]
+                - columnheader "Натяжение" [ref=e167]
+                - columnheader "Примечания" [ref=e168]
+                - columnheader [ref=e169]
+            - rowgroup [ref=e170]:
+              - row "1 301 — Lockstitch 12 Polyester 40/2 Стандартное ✓ ✕" [ref=e174]:
+                - cell "1" [ref=e175] [cursor=pointer]
+                - cell "301 — Lockstitch" [ref=e176] [cursor=pointer]:
+                  - combobox [ref=e177]:
+                    - option "—"
+                    - option "301 — Lockstitch" [selected]
+                    - option "401 — Chain stitch"
+                    - option "404 — Double chain stitch"
+                    - option "406 — Coverstitch (bottom)"
+                    - option "407 — Coverstitch (top+bottom)"
+                    - option "501 — Overlock 2-thread"
+                    - option "503 — Overlock 3-thread"
+                    - option "504 — Overlock 4-thread"
+                    - option "512 — Safety stitch (2+3)"
+                    - option "514 — Safety stitch (2+4)"
+                    - option "516 — Flatlock / flatseam"
+                    - option "602 — Cover stitch 3-needle"
+                    - option "605 — Cover stitch 5-thread"
+                    - option "101 — Chain stitch single"
+                    - option "209 — Blind stitch"
+                - cell "12" [ref=e178] [cursor=pointer]:
+                  - textbox [ref=e179]: "12"
+                - cell [ref=e180] [cursor=pointer]:
+                  - textbox [ref=e181]
+                - cell [ref=e182] [cursor=pointer]:
+                  - textbox [ref=e183]
+                - cell "Polyester 40/2" [ref=e184] [cursor=pointer]:
+                  - textbox [ref=e185]: Polyester 40/2
+                - cell "Стандартное" [ref=e186] [cursor=pointer]:
+                  - textbox [ref=e187]: Стандартное
+                - cell [ref=e188] [cursor=pointer]:
+                  - textbox [ref=e189]
+                - cell "✓ ✕" [ref=e190]:
+                  - button "✓" [ref=e191] [cursor=pointer]
+                  - button "✕" [ref=e192] [cursor=pointer]
+          - button "+ Добавить строку" [active] [ref=e173] [cursor=pointer]

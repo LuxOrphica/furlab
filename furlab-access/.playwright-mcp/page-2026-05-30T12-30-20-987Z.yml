@@ -1,0 +1,763 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Узлы" [ref=e9] [cursor=pointer]:
+          - /url: /tools/nodes
+        - link "VSE" [ref=e10] [cursor=pointer]:
+          - /url: /tools/vse
+        - link "Tech Pack Hub" [ref=e11] [cursor=pointer]:
+          - /url: /tools/techpack-hub
+        - link "Техпак" [ref=e12] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e13]:
+        - button "☾" [ref=e14] [cursor=pointer]
+        - button "EN" [ref=e15] [cursor=pointer]
+  - generic [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]: Visual Standardization Engine
+      - generic [ref=e19]: Обзор для конструктора
+      - generic [ref=e20]: Расшифровка обозначений — 6 узлов из библиотеки
+    - generic [ref=e21]:
+      - button "Разметка" [ref=e22] [cursor=pointer]
+      - button "Выноски и обозначения" [ref=e23] [cursor=pointer]
+      - button "Реестр стилей" [ref=e24] [cursor=pointer]
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - 'searchbox "Поиск узла: код, название, id..." [ref=e29]'
+          - generic [ref=e30]: показано 140 из 4116
+        - generic [ref=e31]:
+          - generic "Разделы схем" [ref=e32]:
+            - button "Все схемы 4116" [ref=e33] [cursor=pointer]:
+              - generic [ref=e34]: Все схемы
+              - generic [ref=e35]: "4116"
+            - button "Аксессуары 40" [ref=e36] [cursor=pointer]:
+              - generic [ref=e37]: Аксессуары
+              - generic [ref=e38]: "40"
+            - button "Боковой вырез 27" [ref=e39] [cursor=pointer]:
+              - generic [ref=e40]: Боковой вырез
+              - generic [ref=e41]: "27"
+            - button "Вентиляция 53" [ref=e42] [cursor=pointer]:
+              - generic [ref=e43]: Вентиляция
+              - generic [ref=e44]: "53"
+            - button "Воротник 38" [ref=e45] [cursor=pointer]:
+              - generic [ref=e46]: Воротник
+              - generic [ref=e47]: "38"
+            - button "Воротник+капюшон 178" [ref=e48] [cursor=pointer]:
+              - generic [ref=e49]: Воротник+капюшон
+              - generic [ref=e50]: "178"
+            - button "Горловина 21" [ref=e51] [cursor=pointer]:
+              - generic [ref=e52]: Горловина
+              - generic [ref=e53]: "21"
+            - button "Горловина на спине 94" [ref=e54] [cursor=pointer]:
+              - generic [ref=e55]: Горловина на спине
+              - generic [ref=e56]: "94"
+            - button "Завязать шнурок 18" [ref=e57] [cursor=pointer]:
+              - generic [ref=e58]: Завязать шнурок
+              - generic [ref=e59]: "18"
+            - button "Завязка 33" [ref=e60] [cursor=pointer]:
+              - generic [ref=e61]: Завязка
+              - generic [ref=e62]: "33"
+            - button "Застежка-молния спереди 704" [ref=e63] [cursor=pointer]:
+              - generic [ref=e64]: Застежка-молния спереди
+              - generic [ref=e65]: "704"
+            - button "Капюшон с меховой планкой 31" [ref=e66] [cursor=pointer]:
+              - generic [ref=e67]: Капюшон с меховой планкой
+              - generic [ref=e68]: "31"
+            - button "карманы 713" [ref=e69] [cursor=pointer]:
+              - generic [ref=e70]: карманы
+              - generic [ref=e71]: "713"
+            - button "Кромка 575" [ref=e72] [cursor=pointer]:
+              - generic [ref=e73]: Кромка
+              - generic [ref=e74]: "575"
+            - button "Кромка воротника 64" [ref=e75] [cursor=pointer]:
+              - generic [ref=e76]: Кромка воротника
+              - generic [ref=e77]: "64"
+            - button "Маркировка 69" [ref=e78] [cursor=pointer]:
+              - generic [ref=e79]: Маркировка
+              - generic [ref=e80]: "69"
+            - button "Петля 1" [ref=e81] [cursor=pointer]:
+              - generic [ref=e82]: Петля
+              - generic [ref=e83]: "1"
+            - button "Планка спереди 150" [ref=e84] [cursor=pointer]:
+              - generic [ref=e85]: Планка спереди
+              - generic [ref=e86]: "150"
+            - button "Плечо 4" [ref=e87] [cursor=pointer]:
+              - generic [ref=e88]: Плечо
+              - generic [ref=e89]: "4"
+            - button "Подвернуть 18" [ref=e90] [cursor=pointer]:
+              - generic [ref=e91]: Подвернуть
+              - generic [ref=e92]: "18"
+            - button "Полумесяц 2" [ref=e93] [cursor=pointer]:
+              - generic [ref=e94]: Полумесяц
+              - generic [ref=e95]: "2"
+            - button "Полупояс 48" [ref=e96] [cursor=pointer]:
+              - generic [ref=e97]: Полупояс
+              - generic [ref=e98]: "48"
+            - button "Пояс 344" [ref=e99] [cursor=pointer]:
+              - generic [ref=e100]: Пояс
+              - generic [ref=e101]: "344"
+            - button "пуллер 4" [ref=e102] [cursor=pointer]:
+              - generic [ref=e103]: пуллер
+              - generic [ref=e104]: "4"
+            - button "Разрез рукава 9" [ref=e105] [cursor=pointer]:
+              - generic [ref=e106]: Разрез рукава
+              - generic [ref=e107]: "9"
+            - button "Разрез сбоку (CT) 137" [ref=e108] [cursor=pointer]:
+              - generic [ref=e109]: Разрез сбоку (CT)
+              - generic [ref=e110]: "137"
+            - button "Ремни 5" [ref=e111] [cursor=pointer]:
+              - generic [ref=e112]: Ремни
+              - generic [ref=e113]: "5"
+            - button "Система шнуровок 53" [ref=e114] [cursor=pointer]:
+              - generic [ref=e115]: Система шнуровок
+              - generic [ref=e116]: "53"
+            - button "СнежныеGaiter 11" [ref=e117] [cursor=pointer]:
+              - generic [ref=e118]: СнежныеGaiter
+              - generic [ref=e119]: "11"
+            - button "СнежныеSkirt 29" [ref=e120] [cursor=pointer]:
+              - generic [ref=e121]: СнежныеSkirt
+              - generic [ref=e122]: "29"
+            - button "Съемные детали 12" [ref=e123] [cursor=pointer]:
+              - generic [ref=e124]: Съемные детали
+              - generic [ref=e125]: "12"
+            - button "трубопроводы 58" [ref=e126] [cursor=pointer]:
+              - generic [ref=e127]: трубопроводы
+              - generic [ref=e128]: "58"
+            - button "Туннель 47" [ref=e129] [cursor=pointer]:
+              - generic [ref=e130]: Туннель
+              - generic [ref=e131]: "47"
+            - button "Усиление 7" [ref=e132] [cursor=pointer]:
+              - generic [ref=e133]: Усиление
+              - generic [ref=e134]: "7"
+            - button "Швы 311" [ref=e135] [cursor=pointer]:
+              - generic [ref=e136]: Швы
+              - generic [ref=e137]: "311"
+            - button "Шлевка для ремня 22" [ref=e138] [cursor=pointer]:
+              - generic [ref=e139]: Шлевка для ремня
+              - generic [ref=e140]: "22"
+            - button "Шлица (вырез сзади) 25" [ref=e141] [cursor=pointer]:
+              - generic [ref=e142]: Шлица (вырез сзади)
+              - generic [ref=e143]: "25"
+            - button "Fly 119" [ref=e144] [cursor=pointer]:
+              - generic [ref=e145]: Fly
+              - generic [ref=e146]: "119"
+            - button "front_placket_FP00129.ai 1" [ref=e147] [cursor=pointer]:
+              - generic [ref=e148]: front_placket_FP00129.ai
+              - generic [ref=e149]: "1"
+            - button "neckline_FN00001.ai 1" [ref=e150] [cursor=pointer]:
+              - generic [ref=e151]: neckline_FN00001.ai
+              - generic [ref=e152]: "1"
+            - button "seams_SE00401.ai 1" [ref=e153] [cursor=pointer]:
+              - generic [ref=e154]: seams_SE00401.ai
+              - generic [ref=e155]: "1"
+            - button "sleeve_vent_SC00001.ai 1" [ref=e156] [cursor=pointer]:
+              - generic [ref=e157]: sleeve_vent_SC00001.ai
+              - generic [ref=e158]: "1"
+            - button "waistband_BE00001.ai 1" [ref=e159] [cursor=pointer]:
+              - generic [ref=e160]: waistband_BE00001.ai
+              - generic [ref=e161]: "1"
+            - button "Yoke 37" [ref=e162] [cursor=pointer]:
+              - generic [ref=e163]: Yoke
+              - generic [ref=e164]: "37"
+          - generic [ref=e165]:
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) 1651___1" [ref=e166] [cursor=pointer]:
+              - generic [ref=e167]:
+                - generic [ref=e168]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e169]: 1651___1
+            - button "Застежка-молния спереди / 12.Detachable lining(1300-1399) 1653_165" [ref=e170] [cursor=pointer]:
+              - generic [ref=e171]:
+                - generic [ref=e172]: Застежка-молния спереди / 12.Detachable lining(1300-1399)
+                - generic [ref=e173]: 1653_165
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) 1811___1" [ref=e174] [cursor=pointer]:
+              - generic [ref=e175]:
+                - generic [ref=e176]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e177]: 1811___1
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00002" [ref=e178] [cursor=pointer]:
+              - generic [ref=e179]:
+                - generic [ref=e180]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e181]: FZ00002
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00003 готово 1" [ref=e182] [cursor=pointer]:
+              - generic [ref=e183]:
+                - generic [ref=e184]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e185]: FZ00003
+              - generic [ref=e186]: готово
+              - generic [ref=e187]: "1"
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00004 готово 1" [ref=e188] [cursor=pointer]:
+              - generic [ref=e189]:
+                - generic [ref=e190]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e191]: FZ00004
+              - generic [ref=e192]: готово
+              - generic [ref=e193]: "1"
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00005 готово 1" [ref=e194] [cursor=pointer]:
+              - generic [ref=e195]:
+                - generic [ref=e196]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e197]: FZ00005
+              - generic [ref=e198]: готово
+              - generic [ref=e199]: "1"
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00006 готово 1" [ref=e200] [cursor=pointer]:
+              - generic [ref=e201]:
+                - generic [ref=e202]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e203]: FZ00006
+              - generic [ref=e204]: готово
+              - generic [ref=e205]: "1"
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00007" [ref=e206] [cursor=pointer]:
+              - generic [ref=e207]:
+                - generic [ref=e208]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e209]: FZ00007
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00009" [ref=e210] [cursor=pointer]:
+              - generic [ref=e211]:
+                - generic [ref=e212]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e213]: FZ00009
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00010" [ref=e214] [cursor=pointer]:
+              - generic [ref=e215]:
+                - generic [ref=e216]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e217]: FZ00010
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00011 готово 1" [ref=e218] [cursor=pointer]:
+              - generic [ref=e219]:
+                - generic [ref=e220]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e221]: FZ00011
+              - generic [ref=e222]: готово
+              - generic [ref=e223]: "1"
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00012 готово 1" [ref=e224] [cursor=pointer]:
+              - generic [ref=e225]:
+                - generic [ref=e226]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e227]: FZ00012
+              - generic [ref=e228]: готово
+              - generic [ref=e229]: "1"
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00013" [ref=e230] [cursor=pointer]:
+              - generic [ref=e231]:
+                - generic [ref=e232]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e233]: FZ00013
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00014" [ref=e234] [cursor=pointer]:
+              - generic [ref=e235]:
+                - generic [ref=e236]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e237]: FZ00014
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00015" [ref=e238] [cursor=pointer]:
+              - generic [ref=e239]:
+                - generic [ref=e240]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e241]: FZ00015
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00016" [ref=e242] [cursor=pointer]:
+              - generic [ref=e243]:
+                - generic [ref=e244]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e245]: FZ00016
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00017" [ref=e246] [cursor=pointer]:
+              - generic [ref=e247]:
+                - generic [ref=e248]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e249]: FZ00017
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00018 готово 1" [ref=e250] [cursor=pointer]:
+              - generic [ref=e251]:
+                - generic [ref=e252]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e253]: FZ00018
+              - generic [ref=e254]: готово
+              - generic [ref=e255]: "1"
+            - button "Застежка-молния спереди / 1.Without plackets(1-20_ 300-499) FZ00019 готово 1" [ref=e256] [cursor=pointer]:
+              - generic [ref=e257]:
+                - generic [ref=e258]: Застежка-молния спереди / 1.Without plackets(1-20_ 300-499)
+                - generic [ref=e259]: FZ00019
+              - generic [ref=e260]: готово
+              - generic [ref=e261]: "1"
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00033" [ref=e262] [cursor=pointer]:
+              - generic [ref=e263]:
+                - generic [ref=e264]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e265]: FZ00033
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00034" [ref=e266] [cursor=pointer]:
+              - generic [ref=e267]:
+                - generic [ref=e268]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e269]: FZ00034
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00035" [ref=e270] [cursor=pointer]:
+              - generic [ref=e271]:
+                - generic [ref=e272]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e273]: FZ00035
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00036" [ref=e274] [cursor=pointer]:
+              - generic [ref=e275]:
+                - generic [ref=e276]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e277]: FZ00036
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00037" [ref=e278] [cursor=pointer]:
+              - generic [ref=e279]:
+                - generic [ref=e280]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e281]: FZ00037
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00038" [ref=e282] [cursor=pointer]:
+              - generic [ref=e283]:
+                - generic [ref=e284]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e285]: FZ00038
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00039" [ref=e286] [cursor=pointer]:
+              - generic [ref=e287]:
+                - generic [ref=e288]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e289]: FZ00039
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00046" [ref=e290] [cursor=pointer]:
+              - generic [ref=e291]:
+                - generic [ref=e292]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e293]: FZ00046
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00049" [ref=e294] [cursor=pointer]:
+              - generic [ref=e295]:
+                - generic [ref=e296]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e297]: FZ00049
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00050" [ref=e298] [cursor=pointer]:
+              - generic [ref=e299]:
+                - generic [ref=e300]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e301]: FZ00050
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00051" [ref=e302] [cursor=pointer]:
+              - generic [ref=e303]:
+                - generic [ref=e304]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e305]: FZ00051
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00052" [ref=e306] [cursor=pointer]:
+              - generic [ref=e307]:
+                - generic [ref=e308]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e309]: FZ00052
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00053" [ref=e310] [cursor=pointer]:
+              - generic [ref=e311]:
+                - generic [ref=e312]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e313]: FZ00053
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00055" [ref=e314] [cursor=pointer]:
+              - generic [ref=e315]:
+                - generic [ref=e316]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e317]: FZ00055
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00056" [ref=e318] [cursor=pointer]:
+              - generic [ref=e319]:
+                - generic [ref=e320]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e321]: FZ00056
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00057" [ref=e322] [cursor=pointer]:
+              - generic [ref=e323]:
+                - generic [ref=e324]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e325]: FZ00057
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00058" [ref=e326] [cursor=pointer]:
+              - generic [ref=e327]:
+                - generic [ref=e328]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e329]: FZ00058
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00059" [ref=e330] [cursor=pointer]:
+              - generic [ref=e331]:
+                - generic [ref=e332]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e333]: FZ00059
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00060" [ref=e334] [cursor=pointer]:
+              - generic [ref=e335]:
+                - generic [ref=e336]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e337]: FZ00060
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00061" [ref=e338] [cursor=pointer]:
+              - generic [ref=e339]:
+                - generic [ref=e340]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e341]: FZ00061
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00062" [ref=e342] [cursor=pointer]:
+              - generic [ref=e343]:
+                - generic [ref=e344]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e345]: FZ00062
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00063" [ref=e346] [cursor=pointer]:
+              - generic [ref=e347]:
+                - generic [ref=e348]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e349]: FZ00063
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00064" [ref=e350] [cursor=pointer]:
+              - generic [ref=e351]:
+                - generic [ref=e352]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e353]: FZ00064
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00065" [ref=e354] [cursor=pointer]:
+              - generic [ref=e355]:
+                - generic [ref=e356]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e357]: FZ00065
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00066" [ref=e358] [cursor=pointer]:
+              - generic [ref=e359]:
+                - generic [ref=e360]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e361]: FZ00066
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00067" [ref=e362] [cursor=pointer]:
+              - generic [ref=e363]:
+                - generic [ref=e364]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e365]: FZ00067
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00068" [ref=e366] [cursor=pointer]:
+              - generic [ref=e367]:
+                - generic [ref=e368]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e369]: FZ00068
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00069" [ref=e370] [cursor=pointer]:
+              - generic [ref=e371]:
+                - generic [ref=e372]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e373]: FZ00069
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00070" [ref=e374] [cursor=pointer]:
+              - generic [ref=e375]:
+                - generic [ref=e376]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e377]: FZ00070
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00071" [ref=e378] [cursor=pointer]:
+              - generic [ref=e379]:
+                - generic [ref=e380]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e381]: FZ00071
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00072" [ref=e382] [cursor=pointer]:
+              - generic [ref=e383]:
+                - generic [ref=e384]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e385]: FZ00072
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00073" [ref=e386] [cursor=pointer]:
+              - generic [ref=e387]:
+                - generic [ref=e388]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e389]: FZ00073
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00074" [ref=e390] [cursor=pointer]:
+              - generic [ref=e391]:
+                - generic [ref=e392]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e393]: FZ00074
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00075" [ref=e394] [cursor=pointer]:
+              - generic [ref=e395]:
+                - generic [ref=e396]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e397]: FZ00075
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00076" [ref=e398] [cursor=pointer]:
+              - generic [ref=e399]:
+                - generic [ref=e400]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e401]: FZ00076
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00078" [ref=e402] [cursor=pointer]:
+              - generic [ref=e403]:
+                - generic [ref=e404]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e405]: FZ00078
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00079" [ref=e406] [cursor=pointer]:
+              - generic [ref=e407]:
+                - generic [ref=e408]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e409]: FZ00079
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00081" [ref=e410] [cursor=pointer]:
+              - generic [ref=e411]:
+                - generic [ref=e412]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e413]: FZ00081
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00082" [ref=e414] [cursor=pointer]:
+              - generic [ref=e415]:
+                - generic [ref=e416]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e417]: FZ00082
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00083" [ref=e418] [cursor=pointer]:
+              - generic [ref=e419]:
+                - generic [ref=e420]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e421]: FZ00083
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00084" [ref=e422] [cursor=pointer]:
+              - generic [ref=e423]:
+                - generic [ref=e424]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e425]: FZ00084
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00085" [ref=e426] [cursor=pointer]:
+              - generic [ref=e427]:
+                - generic [ref=e428]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e429]: FZ00085
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00086" [ref=e430] [cursor=pointer]:
+              - generic [ref=e431]:
+                - generic [ref=e432]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e433]: FZ00086
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00087" [ref=e434] [cursor=pointer]:
+              - generic [ref=e435]:
+                - generic [ref=e436]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e437]: FZ00087
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00088" [ref=e438] [cursor=pointer]:
+              - generic [ref=e439]:
+                - generic [ref=e440]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e441]: FZ00088
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00089" [ref=e442] [cursor=pointer]:
+              - generic [ref=e443]:
+                - generic [ref=e444]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e445]: FZ00089
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00090" [ref=e446] [cursor=pointer]:
+              - generic [ref=e447]:
+                - generic [ref=e448]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e449]: FZ00090
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00091" [ref=e450] [cursor=pointer]:
+              - generic [ref=e451]:
+                - generic [ref=e452]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e453]: FZ00091
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00093" [ref=e454] [cursor=pointer]:
+              - generic [ref=e455]:
+                - generic [ref=e456]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e457]: FZ00093
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00094" [ref=e458] [cursor=pointer]:
+              - generic [ref=e459]:
+                - generic [ref=e460]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e461]: FZ00094
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00095" [ref=e462] [cursor=pointer]:
+              - generic [ref=e463]:
+                - generic [ref=e464]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e465]: FZ00095
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00096" [ref=e466] [cursor=pointer]:
+              - generic [ref=e467]:
+                - generic [ref=e468]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e469]: FZ00096
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00097" [ref=e470] [cursor=pointer]:
+              - generic [ref=e471]:
+                - generic [ref=e472]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e473]: FZ00097
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00098" [ref=e474] [cursor=pointer]:
+              - generic [ref=e475]:
+                - generic [ref=e476]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e477]: FZ00098
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00099" [ref=e478] [cursor=pointer]:
+              - generic [ref=e479]:
+                - generic [ref=e480]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e481]: FZ00099
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00100" [ref=e482] [cursor=pointer]:
+              - generic [ref=e483]:
+                - generic [ref=e484]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e485]: FZ00100
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00101" [ref=e486] [cursor=pointer]:
+              - generic [ref=e487]:
+                - generic [ref=e488]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e489]: FZ00101
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00102" [ref=e490] [cursor=pointer]:
+              - generic [ref=e491]:
+                - generic [ref=e492]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e493]: FZ00102
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00103" [ref=e494] [cursor=pointer]:
+              - generic [ref=e495]:
+                - generic [ref=e496]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e497]: FZ00103
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00104" [ref=e498] [cursor=pointer]:
+              - generic [ref=e499]:
+                - generic [ref=e500]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e501]: FZ00104
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00105" [ref=e502] [cursor=pointer]:
+              - generic [ref=e503]:
+                - generic [ref=e504]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e505]: FZ00105
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00106" [ref=e506] [cursor=pointer]:
+              - generic [ref=e507]:
+                - generic [ref=e508]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e509]: FZ00106
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00107" [ref=e510] [cursor=pointer]:
+              - generic [ref=e511]:
+                - generic [ref=e512]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e513]: FZ00107
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00108" [ref=e514] [cursor=pointer]:
+              - generic [ref=e515]:
+                - generic [ref=e516]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e517]: FZ00108
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00109" [ref=e518] [cursor=pointer]:
+              - generic [ref=e519]:
+                - generic [ref=e520]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e521]: FZ00109
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00110" [ref=e522] [cursor=pointer]:
+              - generic [ref=e523]:
+                - generic [ref=e524]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e525]: FZ00110
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00111" [ref=e526] [cursor=pointer]:
+              - generic [ref=e527]:
+                - generic [ref=e528]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e529]: FZ00111
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00112" [ref=e530] [cursor=pointer]:
+              - generic [ref=e531]:
+                - generic [ref=e532]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e533]: FZ00112
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00113" [ref=e534] [cursor=pointer]:
+              - generic [ref=e535]:
+                - generic [ref=e536]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e537]: FZ00113
+            - button "Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699) FZ00114" [ref=e538] [cursor=pointer]:
+              - generic [ref=e539]:
+                - generic [ref=e540]: Застежка-молния спереди / 2.Inner placket(20-114_ 1813-1818_ 500-699)
+                - generic [ref=e541]: FZ00114
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00115" [ref=e542] [cursor=pointer]:
+              - generic [ref=e543]:
+                - generic [ref=e544]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e545]: FZ00115
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00116" [ref=e546] [cursor=pointer]:
+              - generic [ref=e547]:
+                - generic [ref=e548]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e549]: FZ00116
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00117" [ref=e550] [cursor=pointer]:
+              - generic [ref=e551]:
+                - generic [ref=e552]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e553]: FZ00117
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00118" [ref=e554] [cursor=pointer]:
+              - generic [ref=e555]:
+                - generic [ref=e556]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e557]: FZ00118
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00119" [ref=e558] [cursor=pointer]:
+              - generic [ref=e559]:
+                - generic [ref=e560]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e561]: FZ00119
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00120" [ref=e562] [cursor=pointer]:
+              - generic [ref=e563]:
+                - generic [ref=e564]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e565]: FZ00120
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00121" [ref=e566] [cursor=pointer]:
+              - generic [ref=e567]:
+                - generic [ref=e568]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e569]: FZ00121
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00122" [ref=e570] [cursor=pointer]:
+              - generic [ref=e571]:
+                - generic [ref=e572]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e573]: FZ00122
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00123" [ref=e574] [cursor=pointer]:
+              - generic [ref=e575]:
+                - generic [ref=e576]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e577]: FZ00123
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00124" [ref=e578] [cursor=pointer]:
+              - generic [ref=e579]:
+                - generic [ref=e580]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e581]: FZ00124
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00125" [ref=e582] [cursor=pointer]:
+              - generic [ref=e583]:
+                - generic [ref=e584]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e585]: FZ00125
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00126" [ref=e586] [cursor=pointer]:
+              - generic [ref=e587]:
+                - generic [ref=e588]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e589]: FZ00126
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00127" [ref=e590] [cursor=pointer]:
+              - generic [ref=e591]:
+                - generic [ref=e592]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e593]: FZ00127
+            - button "Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599) FZ00128" [ref=e594] [cursor=pointer]:
+              - generic [ref=e595]:
+                - generic [ref=e596]: Застежка-молния спереди / 3.Center placket(115-299_ 1500-1599)
+                - generic [ref=e597]: FZ00128
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00129" [ref=e598] [cursor=pointer]:
+              - generic [ref=e599]:
+                - generic [ref=e600]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e601]: FZ00129
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00130" [ref=e602] [cursor=pointer]:
+              - generic [ref=e603]:
+                - generic [ref=e604]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e605]: FZ00130
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00131" [ref=e606] [cursor=pointer]:
+              - generic [ref=e607]:
+                - generic [ref=e608]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e609]: FZ00131
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00132" [ref=e610] [cursor=pointer]:
+              - generic [ref=e611]:
+                - generic [ref=e612]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e613]: FZ00132
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00133" [ref=e614] [cursor=pointer]:
+              - generic [ref=e615]:
+                - generic [ref=e616]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e617]: FZ00133
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00134" [ref=e618] [cursor=pointer]:
+              - generic [ref=e619]:
+                - generic [ref=e620]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e621]: FZ00134
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00135" [ref=e622] [cursor=pointer]:
+              - generic [ref=e623]:
+                - generic [ref=e624]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e625]: FZ00135
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00136" [ref=e626] [cursor=pointer]:
+              - generic [ref=e627]:
+                - generic [ref=e628]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e629]: FZ00136
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00137" [ref=e630] [cursor=pointer]:
+              - generic [ref=e631]:
+                - generic [ref=e632]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e633]: FZ00137
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00138" [ref=e634] [cursor=pointer]:
+              - generic [ref=e635]:
+                - generic [ref=e636]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e637]: FZ00138
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00139" [ref=e638] [cursor=pointer]:
+              - generic [ref=e639]:
+                - generic [ref=e640]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e641]: FZ00139
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00140" [ref=e642] [cursor=pointer]:
+              - generic [ref=e643]:
+                - generic [ref=e644]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e645]: FZ00140
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00141" [ref=e646] [cursor=pointer]:
+              - generic [ref=e647]:
+                - generic [ref=e648]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e649]: FZ00141
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00142" [ref=e650] [cursor=pointer]:
+              - generic [ref=e651]:
+                - generic [ref=e652]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e653]: FZ00142
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00143" [ref=e654] [cursor=pointer]:
+              - generic [ref=e655]:
+                - generic [ref=e656]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e657]: FZ00143
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00144" [ref=e658] [cursor=pointer]:
+              - generic [ref=e659]:
+                - generic [ref=e660]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e661]: FZ00144
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00145" [ref=e662] [cursor=pointer]:
+              - generic [ref=e663]:
+                - generic [ref=e664]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e665]: FZ00145
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00146" [ref=e666] [cursor=pointer]:
+              - generic [ref=e667]:
+                - generic [ref=e668]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e669]: FZ00146
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00147" [ref=e670] [cursor=pointer]:
+              - generic [ref=e671]:
+                - generic [ref=e672]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e673]: FZ00147
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00149" [ref=e674] [cursor=pointer]:
+              - generic [ref=e675]:
+                - generic [ref=e676]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e677]: FZ00149
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00150" [ref=e678] [cursor=pointer]:
+              - generic [ref=e679]:
+                - generic [ref=e680]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e681]: FZ00150
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00151" [ref=e682] [cursor=pointer]:
+              - generic [ref=e683]:
+                - generic [ref=e684]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e685]: FZ00151
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00152" [ref=e686] [cursor=pointer]:
+              - generic [ref=e687]:
+                - generic [ref=e688]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e689]: FZ00152
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00153" [ref=e690] [cursor=pointer]:
+              - generic [ref=e691]:
+                - generic [ref=e692]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e693]: FZ00153
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00154" [ref=e694] [cursor=pointer]:
+              - generic [ref=e695]:
+                - generic [ref=e696]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e697]: FZ00154
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00155" [ref=e698] [cursor=pointer]:
+              - generic [ref=e699]:
+                - generic [ref=e700]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e701]: FZ00155
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00156" [ref=e702] [cursor=pointer]:
+              - generic [ref=e703]:
+                - generic [ref=e704]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e705]: FZ00156
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00157" [ref=e706] [cursor=pointer]:
+              - generic [ref=e707]:
+                - generic [ref=e708]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e709]: FZ00157
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00158" [ref=e710] [cursor=pointer]:
+              - generic [ref=e711]:
+                - generic [ref=e712]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e713]: FZ00158
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00159" [ref=e714] [cursor=pointer]:
+              - generic [ref=e715]:
+                - generic [ref=e716]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e717]: FZ00159
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00160" [ref=e718] [cursor=pointer]:
+              - generic [ref=e719]:
+                - generic [ref=e720]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e721]: FZ00160
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00161" [ref=e722] [cursor=pointer]:
+              - generic [ref=e723]:
+                - generic [ref=e724]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e725]: FZ00161
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00162" [ref=e726] [cursor=pointer]:
+              - generic [ref=e727]:
+                - generic [ref=e728]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e729]: FZ00162
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00163" [ref=e730] [cursor=pointer]:
+              - generic [ref=e731]:
+                - generic [ref=e732]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e733]: FZ00163
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00164" [ref=e734] [cursor=pointer]:
+              - generic [ref=e735]:
+                - generic [ref=e736]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e737]: FZ00164
+            - button "Застежка-молния спереди / 4.Center placket+inner placket(1600_1799) FZ00165" [ref=e738] [cursor=pointer]:
+              - generic [ref=e739]:
+                - generic [ref=e740]: Застежка-молния спереди / 4.Center placket+inner placket(1600_1799)
+                - generic [ref=e741]: FZ00165
+      - generic [ref=e742]:
+        - generic [ref=e744]:
+          - generic [ref=e745]:
+            - generic [ref=e746]:
+              - text: ОРИГИНАЛ
+              - button "↺" [ref=e747] [cursor=pointer]
+              - generic [ref=e748]: 100% · колесо = масштаб · перетаскивание = сдвиг
+            - img [ref=e751]
+          - generic [ref=e752]:
+            - generic [ref=e753]:
+              - text: СТАНДАРТ
+              - button "↺" [ref=e754] [cursor=pointer]
+              - generic [ref=e755]: 100% · колесо = масштаб · перетаскивание = сдвиг
+            - img [ref=e758]
+        - generic [ref=e760]:
+          - generic [ref=e761]:
+            - strong [ref=e762]: Для этого узла пока нет строк ролей.
+            - generic [ref=e763]: В сгенерированном SVG нет элементов с data-role. Проверь экспорт или выбери другой узел.
+          - button "Сгенерировать (0/0 ролей распознано)" [ref=e765] [cursor=pointer]

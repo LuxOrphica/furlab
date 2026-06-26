@@ -1,0 +1,94 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e90] [cursor=pointer]
+      - generic [ref=e91]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e92] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - generic "Инструменты зон" [ref=e11]:
+          - generic [ref=e12]:
+            - generic [ref=e13]: Fur Lab
+            - button "Выбор" [ref=e14] [cursor=pointer]
+            - button "Линия зонирования" [ref=e16] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e18] [cursor=pointer]
+        - group [ref=e20]:
+          - generic "Настройки отображения" [ref=e21] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e22]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: description
+          - generic [ref=e26]: Отчеты
+      - complementary [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Сборка меха
+          - generic [ref=e35]:
+            - button "Зоны" [ref=e36] [cursor=pointer]
+            - button "Мех" [ref=e37] [cursor=pointer]
+            - button "Выкладки" [ref=e38] [cursor=pointer]
+          - generic [ref=e39]:
+            - button "Добавить выкладку" [ref=e384] [cursor=pointer]:
+              - generic [ref=e385]: add
+              - generic [ref=e386]: Добавить выкладку
+            - generic [ref=e387]:
+              - button "voronoi_tiles Мозаика Вороного 1" [ref=e388] [cursor=pointer]:
+                - img "voronoi_tiles" [ref=e390]
+                - generic [ref=e392]: Мозаика Вороного 1
+              - button "Удалить выкладку" [ref=e394] [cursor=pointer]:
+                - generic [ref=e395]: delete
+        - generic "Потяните для изменения высоты" [ref=e41]
+        - generic [ref=e42]:
+          - generic [ref=e43]: Редактор свойств
+          - generic [ref=e44]:
+            - generic [ref=e396]:
+              - generic [ref=e397]: Выкладка
+              - generic [ref=e398]:
+                - button "Заблокировать редактирование" [ref=e399] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e400] [cursor=pointer]
+            - generic [ref=e401]:
+              - button "▾ Информация" [expanded] [ref=e402] [cursor=pointer]:
+                - generic [ref=e403]: ▾
+                - generic [ref=e404]: Информация
+              - generic [ref=e405]:
+                - generic [ref=e406]:
+                  - generic [ref=e407]: Название
+                  - textbox "(Пусто)" [ref=e409]: Мозаика Вороного 1
+                - generic [ref=e410]:
+                  - generic [ref=e411]: Тип
+                  - generic [ref=e412]: Мозаика Вороного
+            - generic [ref=e413]:
+              - button "▾ Инвентарь" [expanded] [ref=e414] [cursor=pointer]:
+                - generic [ref=e415]: ▾
+                - generic [ref=e416]: Инвентарь
+              - generic [ref=e417]:
+                - generic [ref=e418]:
+                  - generic [ref=e419]: Мех
+                  - combobox [ref=e421] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e422]:
+                  - generic [ref=e423]: Резерв припуска, мм
+                  - spinbutton [ref=e425]: "12.0"
+                - button "Заполнить остаток" [ref=e427] [cursor=pointer]
+                - generic [ref=e428]: Настройки подбора, preview и применение
+            - generic [ref=e429]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e430] [cursor=pointer]:
+                - generic [ref=e431]: ▾
+                - generic [ref=e432]: Параметры выкладки
+              - generic [ref=e434]:
+                - generic [ref=e435]: Резерв под припуски, мм
+                - spinbutton [ref=e437]: "12.0"
+  - group [ref=e47]:
+    - generic "Database" [ref=e48] [cursor=pointer]
+  - generic: x = 2070.74 мм y = 1018.59 мм

@@ -1,0 +1,30 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - generic [ref=e5]: "build: ..."
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Линия зонирования" [ref=e13] [cursor=pointer]
+            - button "Полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [disabled] [ref=e21]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]: Сборка меха
+          - generic [ref=e28]:
+            - button "Зоны" [ref=e29] [cursor=pointer]
+            - button "Мех" [ref=e30] [cursor=pointer]
+            - button "Выкладки" [ref=e31] [cursor=pointer]
+        - generic "Потяните для изменения высоты" [ref=e33]
+        - generic [ref=e35]: Редактор свойств
+  - group [ref=e38]:
+    - generic "Database" [ref=e39] [cursor=pointer]

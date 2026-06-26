@@ -1,0 +1,141 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e90] [cursor=pointer]
+      - generic [ref=e91]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e92] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - generic "Инструменты зон" [ref=e11]:
+          - generic [ref=e12]:
+            - generic [ref=e13]: Fur Lab
+            - button "Выбор" [ref=e14] [cursor=pointer]
+            - button "Линия зонирования" [ref=e16] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e18] [cursor=pointer]
+        - group [ref=e20]:
+          - generic "Настройки отображения" [ref=e21] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e22]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: description
+          - generic [ref=e26]: Отчеты
+      - complementary [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Сборка меха
+          - generic [ref=e35]:
+            - button "Зоны" [ref=e36] [cursor=pointer]
+            - button "Мех" [ref=e37] [cursor=pointer]
+            - button "Выкладки" [ref=e38] [cursor=pointer]
+          - generic [ref=e39]:
+            - button "Добавить выкладку" [ref=e94] [cursor=pointer]:
+              - generic [ref=e95]: add
+              - generic [ref=e96]: Добавить выкладку
+            - generic [ref=e97]:
+              - button "voronoi_tiles Мозаика Вороного 1" [ref=e98] [cursor=pointer]:
+                - img "voronoi_tiles" [ref=e100]
+                - generic [ref=e102]: Мозаика Вороного 1
+              - button "Удалить выкладку" [ref=e104] [cursor=pointer]:
+                - generic [ref=e105]: delete
+        - generic "Потяните для изменения высоты" [ref=e41]
+        - generic [ref=e42]:
+          - generic [ref=e43]: Редактор свойств
+          - generic [ref=e44]:
+            - generic [ref=e106]:
+              - generic [ref=e107]: Выкладка
+              - generic [ref=e108]:
+                - button "Заблокировать редактирование" [ref=e109] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e110] [cursor=pointer]
+            - generic [ref=e111]:
+              - button "▾ Информация" [expanded] [ref=e112] [cursor=pointer]:
+                - generic [ref=e113]: ▾
+                - generic [ref=e114]: Информация
+              - generic [ref=e115]:
+                - generic [ref=e116]:
+                  - generic [ref=e117]: Название
+                  - textbox "(Пусто)" [ref=e119]: Мозаика Вороного 1
+                - generic [ref=e120]:
+                  - generic [ref=e121]: Тип
+                  - generic [ref=e122]: Мозаика Вороного
+            - generic [ref=e123]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e124] [cursor=pointer]:
+                - generic [ref=e125]: ▾
+                - generic [ref=e126]: Параметры выкладки
+              - generic [ref=e127]:
+                - generic [ref=e128]:
+                  - generic [ref=e129]: Резерв под припуски, мм
+                  - spinbutton [ref=e131]: "12.0"
+                - generic [ref=e132]:
+                  - generic [ref=e133]: Вдоль ворса, мм
+                  - generic [ref=e134]:
+                    - generic [ref=e135]: min
+                    - spinbutton [ref=e136]: "60"
+                    - generic [ref=e137]: max
+                    - spinbutton
+                - generic [ref=e138]:
+                  - generic [ref=e139]: Поперёк ворса, мм
+                  - generic [ref=e140]:
+                    - generic [ref=e141]: min
+                    - spinbutton [ref=e142]: "60"
+                    - generic [ref=e143]: max
+                    - spinbutton
+                - generic [ref=e144]:
+                  - generic [ref=e145]: Плотность
+                  - spinbutton [ref=e147]: "5"
+                - generic [ref=e148]:
+                  - generic [ref=e149]: Вариативность
+                  - spinbutton [ref=e151]: "5"
+                - generic [ref=e152]:
+                  - generic [ref=e153]: Анизотропия (ворс)
+                  - spinbutton [ref=e155]: "5"
+                - generic [ref=e156]:
+                  - generic [ref=e157]: Зазор, мм
+                  - spinbutton [ref=e159]: "0"
+  - group [ref=e47]:
+    - generic "Database" [ref=e48] [cursor=pointer]
+  - generic [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e52]: Проекты
+      - button "Закрыть" [ref=e53] [cursor=pointer]:
+        - generic [ref=e54]: close
+    - generic [ref=e56]:
+      - generic [ref=e160] [cursor=pointer]:
+        - generic [ref=e161]: проект - июньский
+        - generic [ref=e162]: 20 зон · 08.06.2026
+        - generic [ref=e163]:
+          - button "Открыть" [ref=e164]
+          - button "✕" [ref=e165]
+      - generic [ref=e166] [cursor=pointer]:
+        - generic [ref=e167]: прямоугольный проект
+        - generic [ref=e168]: 21 зон · 06.06.2026
+        - generic [ref=e169]:
+          - button "Открыть" [ref=e170]
+          - button "✕" [ref=e171]
+      - generic [ref=e172] [cursor=pointer]:
+        - generic [ref=e173]: Без названия
+        - generic [ref=e174]: 20 зон · 5 выкладок · 29.05.2026
+        - generic [ref=e175]:
+          - button "Открыть" [ref=e176]
+          - button "✕" [ref=e177]
+      - generic [ref=e178] [cursor=pointer]:
+        - generic [ref=e179]: Чистый 2
+        - generic [ref=e180]: 20 зон · 5 выкладок · 29.05.2026
+        - generic [ref=e181]:
+          - button "Открыть" [ref=e182]
+          - button "✕" [ref=e183]
+      - generic [ref=e184] [cursor=pointer]:
+        - generic [ref=e185]: опа!
+        - generic [ref=e186]: 21 зон · 2 выкладок · 25.05.2026
+        - generic [ref=e187]:
+          - button "Открыть" [ref=e188]
+          - button "✕" [ref=e189]
+    - generic [ref=e87]:
+      - button "Новый проект (импорт)" [ref=e88] [cursor=pointer]
+      - button "Отмена" [ref=e89] [cursor=pointer]
+  - generic: x = 870.81 мм y = 1594.13 мм

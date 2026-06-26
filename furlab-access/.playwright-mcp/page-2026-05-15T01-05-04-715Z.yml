@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e58] [cursor=pointer]
+      - generic [ref=e59]: — прямоугольный проект
+      - button "Преобразовать в лекала" [ref=e60] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Линия зонирования" [ref=e13] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - button "Добавить выкладку" [ref=e2937] [cursor=pointer]:
+              - generic [ref=e2938]: add
+              - generic [ref=e2939]: Добавить выкладку
+            - generic [ref=e2940]:
+              - button "longitudinal Продольно-поперечная 21" [ref=e2941] [cursor=pointer]:
+                - img "longitudinal" [ref=e2943]
+                - generic [ref=e2945]: Продольно-поперечная 21
+              - generic [ref=e2946]:
+                - button "Редактировать выкладку" [ref=e2947] [cursor=pointer]:
+                  - generic [ref=e2948]: edit
+                - button "Удалить выкладку" [ref=e2949] [cursor=pointer]:
+                  - generic [ref=e2950]: delete
+            - generic [ref=e2951]:
+              - button "transverse Ёлочка 22" [ref=e2952] [cursor=pointer]:
+                - img "transverse" [ref=e2954]
+                - generic [ref=e2956]: Ёлочка 22
+              - generic [ref=e2957]:
+                - button "Редактировать выкладку" [ref=e2958] [cursor=pointer]:
+                  - generic [ref=e2959]: edit
+                - button "Удалить выкладку" [ref=e2960] [cursor=pointer]:
+                  - generic [ref=e2961]: delete
+            - generic [ref=e2962]:
+              - button "shifted Со смещением 23" [ref=e2963] [cursor=pointer]:
+                - img "shifted" [ref=e2965]
+                - generic [ref=e2967]: Со смещением 23
+              - generic [ref=e2968]:
+                - button "Редактировать выкладку" [ref=e2969] [cursor=pointer]:
+                  - generic [ref=e2970]: edit
+                - button "Удалить выкладку" [ref=e2971] [cursor=pointer]:
+                  - generic [ref=e2972]: delete
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e2973]:
+              - generic [ref=e2974]: Выкладка
+              - generic [ref=e2975]:
+                - button "Заблокировать редактирование" [ref=e2976] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e2977] [cursor=pointer]
+            - generic [ref=e2978]:
+              - button "▾ Информация" [expanded] [ref=e2979] [cursor=pointer]:
+                - generic [ref=e2980]: ▾
+                - generic [ref=e2981]: Информация
+              - generic [ref=e2982]:
+                - generic [ref=e2983]:
+                  - generic [ref=e2984]: Название
+                  - textbox "(Пусто)" [ref=e2986]: Со смещением 23
+                - generic [ref=e2987]:
+                  - generic [ref=e2988]: Тип
+                  - generic [ref=e2989]: Со смещением
+            - generic [ref=e2990]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e2991] [cursor=pointer]:
+                - generic [ref=e2992]: ▾
+                - generic [ref=e2993]: Параметры выкладки
+              - generic [ref=e2994]:
+                - generic [ref=e2995]:
+                  - generic [ref=e2996]: Резерв под припуски, мм
+                  - spinbutton [ref=e2998]: "12.0"
+                - generic [ref=e2999]:
+                  - generic [ref=e3000]: Вдоль ворса, мм
+                  - generic [ref=e3001]:
+                    - generic [ref=e3002]: min
+                    - spinbutton [ref=e3003]: "60"
+                    - generic [ref=e3004]: max
+                    - spinbutton: "640"
+                - generic [ref=e3005]:
+                  - generic [ref=e3006]: Поперёк ворса, мм
+                  - generic [ref=e3007]:
+                    - generic [ref=e3008]: min
+                    - spinbutton [ref=e3009]: "60"
+                    - generic [ref=e3010]: max
+                    - spinbutton: "480"
+                - generic [ref=e3011]:
+                  - generic [ref=e3012]: Ряды
+                  - spinbutton [ref=e3014]: "5"
+                - generic [ref=e3015]:
+                  - generic [ref=e3016]: Колонки
+                  - spinbutton [ref=e3018]: "5"
+                - generic [ref=e3019]:
+                  - generic [ref=e3020]: Смещение ряда, %
+                  - spinbutton [ref=e3022]: "50"
+                - generic [ref=e3023]:
+                  - generic [ref=e3024]: Зазор X, мм
+                  - spinbutton [ref=e3026]: "0"
+                - generic [ref=e3027]:
+                  - generic [ref=e3028]: Зазор Y, мм
+                  - spinbutton [ref=e3030]: "0"
+                - generic [ref=e3031]:
+                  - generic [ref=e3032]: Скругление, мм
+                  - spinbutton [ref=e3034]: "0"
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]

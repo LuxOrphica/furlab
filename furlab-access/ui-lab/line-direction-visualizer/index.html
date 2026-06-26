@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Направление по отрезку</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <div class="app window">
+    <div class="title-bar">
+      <div class="title-bar-text">Line Direction Visualizer</div>
+      <div class="title-bar-controls" aria-label="Window controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="top-tools">
+      <a class="back" href="../index.html">Назад в UI Lab</a>
+      <label class="theme-label" for="themeSelect">
+        Тема:
+        <select id="themeSelect">
+          <option value="lab-neutral">Lab Neutral</option>
+          <option value="blueprint">Blueprint</option>
+          <option value="warm-paper">Warm Paper</option>
+          <option value="high-contrast">High Contrast</option>
+          <option value="slate-pro">Slate Pro</option>
+          <option value="nord-light">Nord Light</option>
+          <option value="sand-ui">Sand UI</option>
+          <option value="windows-classic">Windows Classic</option>
+          <option value="modern-pico">Modern (Pico)</option>
+        </select>
+      </label>
+    </div>
+    <div class="header-bar">
+      <div class="header-group">
+        <div class="header-group-title">Загрузка и файл</div>
+        <div class="header-group-body">
+          <div class="file-picker">
+            <input id="fileInput" type="file" accept="image/*" />
+            <button id="pickScanBtn" type="button">Выбрать скан</button>
+            <span id="fileNameText" class="file-name">Файл не выбран</span>
+          </div>
+        </div>
+      </div>
+      <div class="header-group">
+        <div class="header-group-title">Определение направления ворса</div>
+        <div class="header-group-body">
+          <div class="mode-group" role="radiogroup" aria-label="Режим определения направления">
+            <label class="mode-option">
+              <input type="radio" name="mode" value="auto" checked />
+              Авто
+            </label>
+            <label class="mode-option">
+              <input type="radio" name="mode" value="manual" />
+              Ручной выбор
+            </label>
+          </div>
+          <button id="clearBtn" type="button">Очистить</button>
+        </div>
+        <span id="hintText" class="hint">Направление ворса определяется по найденной метке</span>
+      </div>
+      <div class="header-group">
+        <div class="header-group-title">Запись в Access</div>
+        <div class="header-group-body">
+          <button id="saveBtn" type="button">Записать в Access</button>
+          <label class="mode-option">
+            <input id="uploadImageChk" type="checkbox" checked />
+            Сохранить скан в проект
+          </label>
+          <span id="dictStatus" class="dict-status" aria-live="polite">dicts: -</span>
+          <span id="saveStatus" class="save-status" aria-live="polite"></span>
+        </div>
+      </div>
+    </div>
+    <div class="workspace">
+      <div class="stage">
+        <div class="zoom-rail" aria-label="Масштаб">
+          <button id="zoomInBtn" type="button" class="zoom-btn">+</button>
+          <input id="zoomInput" type="range" min="50" max="300" step="10" value="100" />
+          <button id="zoomOutBtn" type="button" class="zoom-btn">-</button>
+          <span id="zoomValue">100%</span>
+        </div>
+        <div class="stage-wrap">
+          <canvas id="canvas" width="800" height="800"></canvas>
+        </div>
+      </div>
+      <div class="right-stack">
+        <aside class="piece-card">
+          <div class="card-grid readonly-grid">
+            <label>
+              Инв. метка
+              <input id="invTagView" class="readonly-field" type="text" readonly value="-" />
+            </label>
+            <label>
+              Площадь, мм²
+              <input id="areaMm2View" class="readonly-field" type="text" readonly value="-" />
+            </label>
+            <label>
+              Ширина габарита, мм
+              <input id="bboxWidthMmView" class="readonly-field" type="text" readonly value="-" />
+            </label>
+            <label>
+              Высота габарита, мм
+              <input id="bboxHeightMmView" class="readonly-field" type="text" readonly value="-" />
+            </label>
+            <label>
+              Макс. габарит, мм
+              <input id="maxSpanMmView" class="readonly-field" type="text" readonly value="-" />
+            </label>
+            <label>
+              Угол ворса, °
+              <input id="napDegView" class="readonly-field" type="text" readonly value="-" />
+            </label>
+          </div>
+          <div class="card-grid edit-grid">
+            <label>
+              Материал
+              <select id="materialSelect">
+                <option value="">(не выбрано)</option>
+              </select>
+            </label>
+            <label>
+              Локация
+              <select id="storageSelect">
+                <option value="">(не выбрано)</option>
+              </select>
+            </label>
+            <label>
+              Качество
+              <select id="qualitySelect">
+                <option value="Good">Хорошее</option>
+                <option value="Limited">Ограниченное</option>
+              </select>
+            </label>
+            <label class="note-label">
+              Комментарий
+              <input id="noteInput" type="text" placeholder="Обязательно при качестве 'Ограниченное'" />
+            </label>
+          </div>
+        </aside>
+        <details class="tech-panel">
+          <summary class="tech-title">Отладка</summary>
+          <div class="tech-body">
+            <div id="debugOptions" class="tech-debug-options">
+              <label class="mode-option">
+                <input id="showLineMaskChk" type="checkbox" />
+                Показать маску линии
+              </label>
+              <label class="mode-option">
+                <input id="showEdgeDistanceChk" type="checkbox" />
+                Показать расстояния до контура
+              </label>
+              <label class="mode-option">
+                <input id="showBboxChk" type="checkbox" />
+                Показать габариты
+              </label>
+              <label class="mode-option">
+                <input id="showControlPointsChk" type="checkbox" checked />
+                Показать контрольные точки
+              </label>
+            </div>
+          </div>
+        </details>
+        <details class="tech-panel tech-info-panel">
+          <summary class="tech-title">Тех информация</summary>
+          <div class="out tech-info-body" id="output">Шаги:
+1) Загрузи скан.
+2) В режиме "Авто" система пытается сама найти отрезок P1→P2 на мездре.
+3) Если авто не сработал, переключись в "Ручной" и поставь 2 точки на линии ворса: сначала P1, потом P2.
+4) Направление ворса всегда считается от P1→P2.</div>
+        </details>
+      </div>
+    </div>
+    <div class="app-version status-bar" id="appVersion"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+  <script src="./js/app.js?v=2.0.8-line"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+services:
+  ldv-frontend:
+    build:
+      context: ./ui-lab/line-direction-visualizer-react
+      dockerfile: Dockerfile
+    container_name: furlab-ldv-frontend
+    ports:
+      - "5173:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "host.docker.internal.v4:host-gateway"
+    restart: unless-stopped

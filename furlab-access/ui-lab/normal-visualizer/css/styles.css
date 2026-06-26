@@ -1,0 +1,248 @@
+:root {
+  --bg: #f1f3f5;
+  --panel: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #0f766e;
+  --line: #d1d5db;
+  --glow-a: #e2f3ef;
+  --glow-b: #e8eef9;
+  --toolbar-bg: #fbfbfc;
+}
+
+:root[data-theme="blueprint"] {
+  --bg: #eaf0f7;
+  --panel: #ffffff;
+  --text: #0b1e33;
+  --muted: #395068;
+  --accent: #0b5fa5;
+  --line: #b9c8d8;
+  --glow-a: #dceafe;
+  --glow-b: #d8e4f5;
+  --toolbar-bg: #f5f9ff;
+}
+
+:root[data-theme="warm-paper"] {
+  --bg: #f3eee5;
+  --panel: #fffdf8;
+  --text: #2a211a;
+  --muted: #6a5a4b;
+  --accent: #a35a1f;
+  --line: #d8c9b7;
+  --glow-a: #f7e7d0;
+  --glow-b: #f3dfc6;
+  --toolbar-bg: #fff7ea;
+}
+
+:root[data-theme="high-contrast"] {
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --text: #09111a;
+  --muted: #1f2f3f;
+  --accent: #0b4f8a;
+  --line: #8ca3ba;
+  --glow-a: #dce9f5;
+  --glow-b: #d3e3f1;
+  --toolbar-bg: #eef4fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1400px 600px at 10% -10%, var(--glow-a) 0%, transparent 55%),
+    radial-gradient(1200px 700px at 110% 110%, var(--glow-b) 0%, transparent 50%),
+    var(--bg);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.app {
+  width: min(1100px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 14px 40px rgba(17, 24, 39, 0.08);
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--toolbar-bg);
+}
+
+label,
+button {
+  font-size: 14px;
+}
+
+.zoom-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-label select {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.bottom-tools {
+  padding: 0 12px 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#zoomInput {
+  width: 110px;
+}
+
+#zoomValue {
+  min-width: 46px;
+  text-align: right;
+  color: var(--muted);
+}
+
+.zoom-btn {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  border-radius: 6px;
+  padding: 2px 8px;
+  line-height: 1.2;
+}
+
+input[type="file"] {
+  max-width: 260px;
+}
+
+input[type="number"] {
+  width: 90px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+button {
+  border: 1px solid #0f766e;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+button:hover:not(:disabled) {
+  background: #0b6a63;
+  border-color: #0b6a63;
+}
+
+button:active:not(:disabled) {
+  background: #095a54;
+  border-color: #095a54;
+}
+
+button:disabled {
+  background: #cbd5e1;
+  border-color: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.mode-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: #fff;
+}
+
+.mode-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mode-option input {
+  margin: 0;
+}
+
+.back {
+  color: #0f766e;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.save-status {
+  font-size: 13px;
+  min-width: 180px;
+}
+
+.save-status.pending {
+  color: #92400e;
+}
+
+.save-status.success {
+  color: #166534;
+}
+
+.save-status.error {
+  color: #b91c1c;
+}
+
+.save-status.warn {
+  color: #9a3412;
+}
+
+.stage {
+  padding: 12px;
+  overflow: auto;
+}
+
+canvas {
+  display: block;
+  max-width: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  cursor: crosshair;
+}
+
+.out {
+  padding: 0 12px 12px;
+  font: 13px/1.5 Consolas, "Courier New", monospace;
+  color: #111827;
+  white-space: pre-wrap;
+}

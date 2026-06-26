@@ -1,0 +1,126 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e92] [cursor=pointer]
+      - generic [ref=e93]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e94] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+      - button "VSA" [ref=e9] [cursor=pointer]
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic "Инструменты зон" [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Fur Lab
+            - button "Выбор" [ref=e15] [cursor=pointer]
+            - button "Линия зонирования" [ref=e17] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e19] [cursor=pointer]
+        - group [ref=e21]:
+          - generic "Настройки отображения" [ref=e22] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e23]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: description
+          - generic [ref=e27]: Отчеты
+      - complementary [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: Сборка меха
+          - generic [ref=e36]:
+            - button "Зоны" [ref=e37] [cursor=pointer]
+            - button "Мех" [ref=e38] [cursor=pointer]
+            - button "Выкладки" [ref=e39] [cursor=pointer]
+          - generic [ref=e40]:
+            - button "Добавить выкладку" [ref=e3624] [cursor=pointer]:
+              - generic [ref=e3625]: add
+              - generic [ref=e3626]: Добавить выкладку
+            - generic [ref=e3627]:
+              - button "longitudinal Продольно-поперечная 3" [ref=e3628] [cursor=pointer]:
+                - img "longitudinal" [ref=e3630]
+                - generic [ref=e3632]: Продольно-поперечная 3
+              - button "Удалить выкладку" [ref=e3634] [cursor=pointer]:
+                - generic [ref=e3635]: delete
+            - generic [ref=e3636]:
+              - button "inventory_voronoi_sa Из инвентаря (Voronoi SA) 2" [ref=e3637] [cursor=pointer]:
+                - img "inventory_voronoi_sa" [ref=e3639]
+                - generic [ref=e3641]: Из инвентаря (Voronoi SA) 2
+              - button "Удалить выкладку" [ref=e3643] [cursor=pointer]:
+                - generic [ref=e3644]: delete
+        - generic "Потяните для изменения высоты" [ref=e42]
+        - generic [ref=e43]:
+          - generic [ref=e44]: Редактор свойств
+          - generic [ref=e45]:
+            - generic [ref=e3645]:
+              - generic [ref=e3646]: Выкладка
+              - generic [ref=e3647]:
+                - button "Заблокировать редактирование" [ref=e3648] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e3649] [cursor=pointer]
+            - generic [ref=e3650]:
+              - button "▾ Информация" [expanded] [ref=e3651] [cursor=pointer]:
+                - generic [ref=e3652]: ▾
+                - generic [ref=e3653]: Информация
+              - generic [ref=e3654]:
+                - generic [ref=e3655]:
+                  - generic [ref=e3656]: Название
+                  - textbox "(Пусто)" [ref=e3658]: Из инвентаря (Voronoi SA) 2
+                - generic [ref=e3659]:
+                  - generic [ref=e3660]: Тип
+                  - generic [ref=e3661]: Из инвентаря (Voronoi SA)
+            - generic [ref=e3662]:
+              - button "▾ Инвентарь" [expanded] [ref=e3663] [cursor=pointer]:
+                - generic [ref=e3664]: ▾
+                - generic [ref=e3665]: Инвентарь
+              - generic [ref=e3666]:
+                - generic [ref=e3667]:
+                  - generic [ref=e3668]: Мех
+                  - combobox [ref=e3670] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e3671]:
+                  - generic [ref=e3672]: Резерв припуска, мм
+                  - spinbutton [ref=e3674]: "12.0"
+                - button "Пересчитать" [ref=e3676] [cursor=pointer]
+                - generic [ref=e3677]: Настройки подбора, preview и применение
+  - generic [ref=e2127]:
+    - generic [ref=e2128]:
+      - generic [ref=e2129]: Шаг 1. Настройки подбора из инвентаря
+      - button "Закрыть" [ref=e2130] [cursor=pointer]:
+        - generic [ref=e2131]: close
+    - generic [ref=e2132]:
+      - generic [ref=e2133]: Выкладка формируется непосредственно из контуров кусков инвентаря.
+      - generic [ref=e2134]: "Цели: 100% покрытие, меньше кусков и швов, выше утилизация, штраф за большой кусок на мелких остатках."
+      - generic [ref=e2135]:
+        - generic [ref=e2136]:
+          - generic [ref=e2137]: Лимит кандидатов
+          - spinbutton [ref=e2138]: "300"
+        - generic [ref=e2139]:
+          - generic [ref=e2140]: Допуск по ворсу, °
+          - spinbutton [ref=e2141]: "15"
+        - generic [ref=e2142]:
+          - 'generic "Мультирестарт: перебрать N seed, взять минимум residual. 1 = без рестартов." [ref=e2143]': Рестарты (мультизапуск)
+          - spinbutton [ref=e2144]: "1"
+        - generic [ref=e2145]:
+          - generic [ref=e2146]: Резерв припуска (из свойств выкладки), мм
+          - spinbutton [ref=e2147]: "12.0"
+        - generic [ref=e2149]:
+          - generic [ref=e2150]:
+            - generic [ref=e2151]: Мин. ширина фрагм., мм
+            - spinbutton [ref=e2152]: "70"
+          - generic [ref=e2153]:
+            - generic [ref=e2154]: Мин. длина фрагм., мм
+            - spinbutton [ref=e2155]: "70"
+    - generic [ref=e2156]:
+      - button "Подобрать" [ref=e2157] [cursor=pointer]
+      - button "Закрыть" [ref=e2158] [cursor=pointer]
+  - group [ref=e48]:
+    - generic "Database" [ref=e49] [cursor=pointer]
+  - generic: x = -632.99 мм y = 1482.89 мм
+  - generic: Проект сохранён

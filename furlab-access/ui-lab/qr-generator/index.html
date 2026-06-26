@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FurLab QR Generator</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Генератор QR (FurLab)</h1>
+    <p class="sub">Режимы: одна наклейка или лист A4. Формат метки: <code>FL-SCR-000123</code>.</p>
+
+    <section class="panel">
+      <div class="mode-switch" role="tablist" aria-label="Режим генератора">
+        <button id="modeSingleBtn" class="mode-btn active" type="button">Одна наклейка</button>
+        <button id="modeSheetBtn" class="mode-btn" type="button">Лист A4</button>
+      </div>
+    </section>
+
+    <section id="singleSection" class="panel single-layout">
+      <div class="single-left">
+        <label for="inventoryTag">Инвентарная метка</label>
+        <input id="inventoryTag" type="text" maxlength="13" placeholder="FL-SCR-000123" value="FL-SCR-000123" />
+        <div id="validationMessage" class="msg"></div>
+
+        <div class="row">
+          <button id="generateBtn" type="button">Сгенерировать</button>
+          <button id="clearBtn" type="button" class="ghost">Очистить</button>
+        </div>
+
+        <div class="row space-between top-gap">
+          <h2>Превью</h2>
+          <span id="payloadText" class="payload">-</span>
+        </div>
+        <div id="qrBox" class="qr-box" aria-live="polite"></div>
+        <div class="row">
+          <button id="downloadPngBtn" type="button" disabled>Скачать PNG</button>
+          <button id="downloadSvgBtn" type="button" disabled>Скачать SVG</button>
+        </div>
+      </div>
+
+      <div class="single-right">
+        <div class="row">
+          <h2>Примерка на фото</h2>
+        </div>
+        <div class="row">
+          <label class="inline file-like">Фото
+            <input id="photoInput" type="file" accept="image/*" />
+          </label>
+        <span class="payload">Стикер: 22 мм</span>
+        <span class="payload">DPI: 150</span>
+        <span id="stickerPxHint" class="payload">~130 px</span>
+          <label class="inline">Масштаб
+            <input id="scanZoomInput" type="range" min="80" max="220" value="120" />
+          </label>
+          <span id="scanZoomValue" class="payload">120%</span>
+          <button id="toggleFurLineBtn" type="button" class="ghost">Маркер</button>
+          <button id="resetFurLineBtn" type="button" class="ghost" disabled>Очистить маркер</button>
+          <button id="resetStickerBtn" type="button" class="ghost" disabled>Сброс</button>
+          <button id="saveComposedBtn" type="button" disabled>Скачать фото с QR</button>
+        </div>
+        <div id="photoComposeMessage" class="msg"></div>
+        <div class="compose-stage-wrap">
+          <canvas id="composeCanvas" width="900" height="520" aria-label="Редактор фото с QR"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="sheetSection" class="panel hidden">
+      <label for="sheetTagsInput">Список меток (по одной в строке)</label>
+      <div class="row tight">
+        <label class="inline">Диапазон от
+          <input id="sheetRangeFromInput" type="number" min="1" max="999999" value="1" />
+        </label>
+        <label class="inline">до
+          <input id="sheetRangeToInput" type="number" min="1" max="999999" value="56" />
+        </label>
+        <button id="addRangeBtn" type="button" class="ghost">Добавить диапазон</button>
+      </div>
+      <textarea id="sheetTagsInput" rows="8" placeholder="FL-SCR-000001&#10;FL-SCR-000002&#10;FL-SCR-000003"></textarea>
+      <div class="row tight">
+        <label class="inline">Колонки
+          <input id="sheetColsInput" type="number" min="1" max="8" value="7" />
+        </label>
+        <label class="inline">Строки
+          <input id="sheetRowsInput" type="number" min="1" max="12" value="8" />
+        </label>
+      </div>
+      <div id="sheetMessage" class="msg"></div>
+      <div class="row">
+        <button id="previewSheetBtn" type="button">Собрать лист</button>
+        <button id="printSheetBtn" type="button" disabled>Печать</button>
+        <button id="downloadSheetHtmlBtn" type="button" class="ghost" disabled>Скачать HTML</button>
+        <button id="showRegistryBtn" type="button" class="ghost">Показать занятые коды</button>
+      </div>
+      <div id="registryPanel" class="panel hidden">
+        <div id="registrySummary" class="note">Реестр не загружен.</div>
+        <textarea id="registryListOutput" rows="8" readonly placeholder="Список занятых кодов"></textarea>
+      </div>
+      <div class="note">Формат этикетки на листе: 22x24 мм, QR сверху, текст метки снизу.</div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

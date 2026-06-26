@@ -1,0 +1,355 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e58] [cursor=pointer]
+      - generic [ref=e59]: — прямоугольный проект
+      - button "Преобразовать в лекала" [ref=e60] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Линия зонирования" [ref=e13] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [active] [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - button "Добавить выкладку" [ref=e4036] [cursor=pointer]:
+              - generic [ref=e4037]: add
+              - generic [ref=e4038]: Добавить выкладку
+            - generic [ref=e4039]:
+              - button "longitudinal Продольно-поперечная 21" [ref=e4040] [cursor=pointer]:
+                - img "longitudinal" [ref=e4042]
+                - generic [ref=e4044]: Продольно-поперечная 21
+              - generic [ref=e4045]:
+                - button "Редактировать выкладку" [ref=e4046] [cursor=pointer]:
+                  - generic [ref=e4047]: edit
+                - button "Удалить выкладку" [ref=e4048] [cursor=pointer]:
+                  - generic [ref=e4049]: delete
+            - generic [ref=e4050]:
+              - button "transverse Ёлочка 22" [ref=e4051] [cursor=pointer]:
+                - img "transverse" [ref=e4053]
+                - generic [ref=e4055]: Ёлочка 22
+              - generic [ref=e4056]:
+                - button "Редактировать выкладку" [ref=e4057] [cursor=pointer]:
+                  - generic [ref=e4058]: edit
+                - button "Удалить выкладку" [ref=e4059] [cursor=pointer]:
+                  - generic [ref=e4060]: delete
+            - generic [ref=e4061]:
+              - button "shifted Со смещением 23" [ref=e4062] [cursor=pointer]:
+                - img "shifted" [ref=e4064]
+                - generic [ref=e4066]: Со смещением 23
+              - generic [ref=e4067]:
+                - button "Редактировать выкладку" [ref=e4068] [cursor=pointer]:
+                  - generic [ref=e4069]: edit
+                - button "Удалить выкладку" [ref=e4070] [cursor=pointer]:
+                  - generic [ref=e4071]: delete
+            - generic [ref=e4072]:
+              - button "radial Радиальная 24" [ref=e4073] [cursor=pointer]:
+                - img "radial" [ref=e4075]
+                - generic [ref=e4077]: Радиальная 24
+              - generic [ref=e4078]:
+                - button "Редактировать выкладку" [ref=e4079] [cursor=pointer]:
+                  - generic [ref=e4080]: edit
+                - button "Удалить выкладку" [ref=e4081] [cursor=pointer]:
+                  - generic [ref=e4082]: delete
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e4083]:
+              - generic [ref=e4084]: Выкладка
+              - generic [ref=e4085]:
+                - button "Заблокировать редактирование" [ref=e4086] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e4087] [cursor=pointer]
+            - generic [ref=e4088]:
+              - button "▾ Информация" [expanded] [ref=e4089] [cursor=pointer]:
+                - generic [ref=e4090]: ▾
+                - generic [ref=e4091]: Информация
+              - generic [ref=e4092]:
+                - generic [ref=e4093]:
+                  - generic [ref=e4094]: Название
+                  - textbox "(Пусто)" [ref=e4096]: Ёлочка 22
+                - generic [ref=e4097]:
+                  - generic [ref=e4098]: Тип
+                  - generic [ref=e4099]: Ёлочка
+            - generic [ref=e4100]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e4101] [cursor=pointer]:
+                - generic [ref=e4102]: ▾
+                - generic [ref=e4103]: Параметры выкладки
+              - generic [ref=e4104]:
+                - generic [ref=e4105]:
+                  - generic [ref=e4106]: Резерв под припуски, мм
+                  - spinbutton [ref=e4108]: "12.0"
+                - generic [ref=e4109]:
+                  - generic [ref=e4110]: Вдоль ворса, мм
+                  - generic [ref=e4111]:
+                    - generic [ref=e4112]: min
+                    - spinbutton [ref=e4113]: "60"
+                    - generic [ref=e4114]: max
+                    - spinbutton: "640"
+                - generic [ref=e4115]:
+                  - generic [ref=e4116]: Поперёк ворса, мм
+                  - generic [ref=e4117]:
+                    - generic [ref=e4118]: min
+                    - spinbutton [ref=e4119]: "60"
+                    - generic [ref=e4120]: max
+                    - spinbutton: "480"
+                - generic [ref=e4122]: Фрагмент 937 мм > max 640 мм (вдоль) — используйте продольную выкладку
+                - generic [ref=e4123]:
+                  - generic [ref=e4124]: Оси
+                  - spinbutton [ref=e4126]: "1"
+                - generic [ref=e4127]:
+                  - generic [ref=e4128]: Шаг, мм
+                  - spinbutton [ref=e4130]: "120"
+                - generic [ref=e4131]:
+                  - generic [ref=e4132]: Угол, °
+                  - spinbutton [ref=e4134]: "45"
+                - generic [ref=e4135]:
+                  - generic [ref=e4136]: Зазор X, мм
+                  - spinbutton [ref=e4138]: "0"
+                - generic [ref=e4139]:
+                  - generic [ref=e4140]: Зазор Y, мм
+                  - spinbutton [ref=e4142]: "0"
+  - generic [ref=e4144]:
+    - generic [ref=e4145]:
+      - generic [ref=e4146]:
+        - generic [ref=e4147]: Спецификация
+        - generic [ref=e4148]: (4 деталей)
+      - generic [ref=e4149]:
+        - generic [ref=e4150]:
+          - generic [ref=e4151]: Деталь
+          - combobox "Деталь" [ref=e4152] [cursor=pointer]:
+            - option "2" [selected]
+            - option "3"
+            - option "4"
+            - option "20"
+        - button "Экспорт CSV" [ref=e4153] [cursor=pointer]
+        - button "Печать" [ref=e4154] [cursor=pointer]
+      - button "Закрыть" [ref=e4155] [cursor=pointer]:
+        - generic [ref=e4156]: close
+    - generic [ref=e4157]:
+      - generic [ref=e4159]:
+        - button "Деталь 2" [ref=e4160] [cursor=pointer]
+        - button "Деталь 3" [ref=e4161] [cursor=pointer]
+        - button "Деталь 4" [ref=e4162] [cursor=pointer]
+        - button "Деталь 20" [ref=e4163] [cursor=pointer]
+      - generic [ref=e4164]: Деталь 2
+      - generic [ref=e4165]: "Зона: 2 | Фрагментов: 19 | Пл. ядра: 372541.2 мм² | Пл. раскроя: 539040.0 мм²"
+      - generic [ref=e4166]:
+        - table [ref=e4168]:
+          - rowgroup [ref=e4169]:
+            - row "Рис. Направление ворса Фрагмент Материал меха Кол-во, шт Площадь, мм² Пл. раскроя, мм²" [ref=e4170]:
+              - columnheader "Рис." [ref=e4171]
+              - columnheader "Направление ворса" [ref=e4172]
+              - columnheader "Фрагмент" [ref=e4173]
+              - columnheader "Материал меха" [ref=e4174]
+              - columnheader "Кол-во, шт" [ref=e4175]
+              - columnheader "Площадь, мм²" [ref=e4176]
+              - columnheader "Пл. раскроя, мм²" [ref=e4177]
+          - rowgroup [ref=e4178]:
+            - row "↓ 90° 2-2-1 Норка 1 27964.9 39195.1" [ref=e4179]:
+              - cell [ref=e4180]:
+                - img [ref=e4181]
+              - cell "↓ 90°" [ref=e4184]
+              - cell "2-2-1" [ref=e4185]
+              - cell "Норка" [ref=e4186]
+              - cell "1" [ref=e4187]
+              - cell "27964.9" [ref=e4188]
+              - cell "39195.1" [ref=e4189]
+            - row "↓ 90° 2-2-2 Норка 1 27959.2 39187.2" [ref=e4190]:
+              - cell [ref=e4191]:
+                - img [ref=e4192]
+              - cell "↓ 90°" [ref=e4195]
+              - cell "2-2-2" [ref=e4196]
+              - cell "Норка" [ref=e4197]
+              - cell "1" [ref=e4198]
+              - cell "27959.2" [ref=e4199]
+              - cell "39187.2" [ref=e4200]
+            - row "↓ 90° 2-2-3 2-2-4 Норка 2 27955.8 39150.3" [ref=e4201]:
+              - cell [ref=e4202]:
+                - img [ref=e4203]
+              - cell "↓ 90°" [ref=e4206]
+              - cell "2-2-3 2-2-4" [ref=e4207]:
+                - text: 2-2-3
+                - text: 2-2-4
+              - cell "Норка" [ref=e4208]
+              - cell "2" [ref=e4209]
+              - cell "27955.8" [ref=e4210]
+              - cell "39150.3" [ref=e4211]
+            - row "↓ 90° 2-2-5 Норка 1 27954.1 39180.6" [ref=e4212]:
+              - cell [ref=e4213]:
+                - img [ref=e4214]
+              - cell "↓ 90°" [ref=e4217]
+              - cell "2-2-5" [ref=e4218]
+              - cell "Норка" [ref=e4219]
+              - cell "1" [ref=e4220]
+              - cell "27954.1" [ref=e4221]
+              - cell "39180.6" [ref=e4222]
+            - row "↓ 90° 2-2-6 Норка 1 27950.6 39176.2" [ref=e4223]:
+              - cell [ref=e4224]:
+                - img [ref=e4225]
+              - cell "↓ 90°" [ref=e4228]
+              - cell "2-2-6" [ref=e4229]
+              - cell "Норка" [ref=e4230]
+              - cell "1" [ref=e4231]
+              - cell "27950.6" [ref=e4232]
+              - cell "39176.2" [ref=e4233]
+            - row "↓ 90° 2-2-7 Норка 1 27947.1 39171.8" [ref=e4234]:
+              - cell [ref=e4235]:
+                - img [ref=e4236]
+              - cell "↓ 90°" [ref=e4239]
+              - cell "2-2-7" [ref=e4240]
+              - cell "Норка" [ref=e4241]
+              - cell "1" [ref=e4242]
+              - cell "27947.1" [ref=e4243]
+              - cell "39171.8" [ref=e4244]
+            - row "↓ 90° 2-2-8 Норка 1 27943.6 39167.2" [ref=e4245]:
+              - cell [ref=e4246]:
+                - img [ref=e4247]
+              - cell "↓ 90°" [ref=e4250]
+              - cell "2-2-8" [ref=e4251]
+              - cell "Норка" [ref=e4252]
+              - cell "1" [ref=e4253]
+              - cell "27943.6" [ref=e4254]
+              - cell "39167.2" [ref=e4255]
+            - row "↓ 90° 2-2-9 Норка 1 23012.3 32585.3" [ref=e4256]:
+              - cell [ref=e4257]:
+                - img [ref=e4258]
+              - cell "↓ 90°" [ref=e4261]
+              - cell "2-2-9" [ref=e4262]
+              - cell "Норка" [ref=e4263]
+              - cell "1" [ref=e4264]
+              - cell "23012.3" [ref=e4265]
+              - cell "32585.3" [ref=e4266]
+            - row "↓ 90° 2-2-10 Норка 1 22827.7 32440.5" [ref=e4267]:
+              - cell [ref=e4268]:
+                - img [ref=e4269]
+              - cell "↓ 90°" [ref=e4272]
+              - cell "2-2-10" [ref=e4273]
+              - cell "Норка" [ref=e4274]
+              - cell "1" [ref=e4275]
+              - cell "22827.7" [ref=e4276]
+              - cell "32440.5" [ref=e4277]
+            - row "↓ 90° 2-2-11 Норка 1 20950.1 30107.5" [ref=e4278]:
+              - cell [ref=e4279]:
+                - img [ref=e4280]
+              - cell "↓ 90°" [ref=e4283]
+              - cell "2-2-11" [ref=e4284]
+              - cell "Норка" [ref=e4285]
+              - cell "1" [ref=e4286]
+              - cell "20950.1" [ref=e4287]
+              - cell "30107.5" [ref=e4288]
+            - row "↓ 90° 2-2-12 Норка 1 18690.6 27800.7" [ref=e4289]:
+              - cell [ref=e4290]:
+                - img [ref=e4291]
+              - cell "↓ 90°" [ref=e4294]
+              - cell "2-2-12" [ref=e4295]
+              - cell "Норка" [ref=e4296]
+              - cell "1" [ref=e4297]
+              - cell "18690.6" [ref=e4298]
+              - cell "27800.7" [ref=e4299]
+            - row "↓ 90° 2-2-13 Норка 1 13955.3 20917.4" [ref=e4300]:
+              - cell [ref=e4301]:
+                - img [ref=e4302]
+              - cell "↓ 90°" [ref=e4305]
+              - cell "2-2-13" [ref=e4306]
+              - cell "Норка" [ref=e4307]
+              - cell "1" [ref=e4308]
+              - cell "13955.3" [ref=e4309]
+              - cell "20917.4" [ref=e4310]
+            - row "↓ 90° 2-2-14 Норка 1 13350.3 20281.0" [ref=e4311]:
+              - cell [ref=e4312]:
+                - img [ref=e4313]
+              - cell "↓ 90°" [ref=e4316]
+              - cell "2-2-14" [ref=e4317]
+              - cell "Норка" [ref=e4318]
+              - cell "1" [ref=e4319]
+              - cell "13350.3" [ref=e4320]
+              - cell "20281.0" [ref=e4321]
+            - row "↓ 90° 2-2-15 Норка 1 11983.0 18210.2" [ref=e4322]:
+              - cell [ref=e4323]:
+                - img [ref=e4324]
+              - cell "↓ 90°" [ref=e4327]
+              - cell "2-2-15" [ref=e4328]
+              - cell "Норка" [ref=e4329]
+              - cell "1" [ref=e4330]
+              - cell "11983.0" [ref=e4331]
+              - cell "18210.2" [ref=e4332]
+            - row "↓ 90° 2-2-16 Норка 1 11879.6 18827.7" [ref=e4333]:
+              - cell [ref=e4334]:
+                - img [ref=e4335]
+              - cell "↓ 90°" [ref=e4338]
+              - cell "2-2-16" [ref=e4339]
+              - cell "Норка" [ref=e4340]
+              - cell "1" [ref=e4341]
+              - cell "11879.6" [ref=e4342]
+              - cell "18827.7" [ref=e4343]
+            - row "↓ 90° 2-2-17 Норка 1 6674.4 11856.3" [ref=e4344]:
+              - cell [ref=e4345]:
+                - img [ref=e4346]
+              - cell "↓ 90°" [ref=e4349]
+              - cell "2-2-17" [ref=e4350]
+              - cell "Норка" [ref=e4351]
+              - cell "1" [ref=e4352]
+              - cell "6674.4" [ref=e4353]
+              - cell "11856.3" [ref=e4354]
+            - row "↓ 90° 2-2-18 Норка 1 3447.7 7461.3" [ref=e4355]:
+              - cell [ref=e4356]:
+                - img [ref=e4357]
+              - cell "↓ 90°" [ref=e4360]
+              - cell "2-2-18" [ref=e4361]
+              - cell "Норка" [ref=e4362]
+              - cell "1" [ref=e4363]
+              - cell "3447.7" [ref=e4364]
+              - cell "7461.3" [ref=e4365]
+            - row "↓ 90° 2-2-19 Норка 1 2139.0 5173.7" [ref=e4366]:
+              - cell [ref=e4367]:
+                - img [ref=e4368]
+              - cell "↓ 90°" [ref=e4371]
+              - cell "2-2-19" [ref=e4372]
+              - cell "Норка" [ref=e4373]
+              - cell "1" [ref=e4374]
+              - cell "2139.0" [ref=e4375]
+              - cell "5173.7" [ref=e4376]
+        - generic [ref=e4377]:
+          - generic [ref=e4378]: "Деталь: 2"
+          - generic [ref=e4379]: "Зона: 2"
+          - img "Схема детали" [ref=e4381]:
+            - generic [ref=e4383]:
+              - generic [ref=e4385]: "1"
+              - generic [ref=e4387]: "2"
+              - generic [ref=e4389]: "3"
+              - generic [ref=e4391]: "4"
+              - generic [ref=e4393]: "5"
+              - generic [ref=e4395]: "6"
+              - generic [ref=e4397]: "7"
+              - generic [ref=e4399]: "8"
+              - generic [ref=e4401]: "9"
+              - generic [ref=e4403]: "10"
+              - generic [ref=e4405]: "11"
+              - generic [ref=e4407]: "12"
+              - generic [ref=e4409]: "13"
+              - generic [ref=e4411]: "14"
+              - generic [ref=e4413]: "15"
+              - generic [ref=e4415]: "16"
+              - generic [ref=e4417]: "17"
+              - generic [ref=e4419]: "18"
+              - generic [ref=e4421]: "19"
+    - button "Закрыть" [ref=e4424] [cursor=pointer]
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]

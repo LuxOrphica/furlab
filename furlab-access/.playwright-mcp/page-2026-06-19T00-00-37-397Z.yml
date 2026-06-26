@@ -1,0 +1,103 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e91] [cursor=pointer]
+      - generic [ref=e92]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e93] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+      - button "VSA" [ref=e9] [cursor=pointer]
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic "Инструменты зон" [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Fur Lab
+            - button "Выбор" [ref=e15] [cursor=pointer]
+            - button "Линия зонирования" [ref=e17] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e19] [cursor=pointer]
+        - group [ref=e21]:
+          - generic "Настройки отображения" [ref=e22] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e23]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: description
+          - generic [ref=e27]: Отчеты
+      - complementary [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: Сборка меха
+          - generic [ref=e36]:
+            - button "Зоны" [ref=e37] [cursor=pointer]
+            - button "Мех" [ref=e38] [cursor=pointer]
+            - button "Выкладки" [ref=e39] [cursor=pointer]
+          - generic [ref=e40]:
+            - button "Добавить выкладку" [ref=e1098] [cursor=pointer]:
+              - generic [ref=e1099]: add
+              - generic [ref=e1100]: Добавить выкладку
+            - generic [ref=e1101]:
+              - button "longitudinal Продольно-поперечная 3" [ref=e1102] [cursor=pointer]:
+                - img "longitudinal" [ref=e1104]
+                - generic [ref=e1106]: Продольно-поперечная 3
+              - button "Удалить выкладку" [ref=e1108] [cursor=pointer]:
+                - generic [ref=e1109]: delete
+        - generic "Потяните для изменения высоты" [ref=e42]
+        - generic [ref=e43]:
+          - generic [ref=e44]: Редактор свойств
+          - generic [ref=e1110]: Выкладка не выбрана
+  - generic [ref=e1112]:
+    - generic [ref=e1113]:
+      - generic [ref=e1114]: Библиотека FurLab
+      - button "Закрыть" [ref=e1115] [cursor=pointer]:
+        - generic [ref=e1116]: close
+    - generic [ref=e1117]:
+      - complementary [ref=e1118]:
+        - button "Мех" [ref=e1119]:
+          - generic [ref=e1121]: Мех
+        - button "Выкладка" [ref=e1122]:
+          - generic [ref=e1124]: Выкладка
+        - button "Обработка" [ref=e1125]:
+          - generic [ref=e1127]: Обработка
+      - generic [ref=e1129]:
+        - complementary
+        - generic [ref=e1130]:
+          - generic [ref=e1131]:
+            - textbox "Поиск" [ref=e1133]
+            - generic [ref=e1134]: Типы выкладки
+          - generic [ref=e1135]:
+            - generic [ref=e1166] [cursor=pointer]:
+              - img "longitudinal" [ref=e1167]
+              - generic [ref=e1168]: Продольно-поперечная
+            - generic [ref=e1169] [cursor=pointer]:
+              - img "transverse" [ref=e1170]
+              - generic [ref=e1171]: Ёлочка
+            - generic [ref=e1172] [cursor=pointer]:
+              - img "shifted" [ref=e1173]
+              - generic [ref=e1174]: Со смещением
+            - generic [ref=e1175] [cursor=pointer]:
+              - img "radial" [ref=e1176]
+              - generic [ref=e1177]: Радиальная
+            - generic [ref=e1178] [cursor=pointer]:
+              - img "intarsia" [ref=e1179]
+              - generic [ref=e1180]: Интарсия
+            - generic [ref=e1181] [cursor=pointer]:
+              - img "voronoi_tiles" [ref=e1182]
+              - generic [ref=e1183]: Мозаика Вороного
+            - generic [ref=e1184] [cursor=pointer]:
+              - img "inventory_manual" [ref=e1185]
+              - generic [ref=e1186]: Из инвентаря (ручной)
+            - generic [ref=e1187] [cursor=pointer]:
+              - img "inventory_nfp_sa" [ref=e1188]
+              - generic [ref=e1189]: Из инвентаря (NFP+SA)
+            - generic [ref=e1190] [cursor=pointer]:
+              - img "inventory_voronoi_sa" [ref=e1191]
+              - generic [ref=e1192]: Из инвентаря (Voronoi SA)
+    - generic [ref=e1163]:
+      - button "Выбрать" [ref=e1164] [cursor=pointer]
+      - button "Отмена" [ref=e1165] [cursor=pointer]
+  - group [ref=e48]:
+    - generic "Database" [ref=e49] [cursor=pointer]
+  - generic: x = 2262.63 мм y = 91.31 мм

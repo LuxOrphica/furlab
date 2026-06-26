@@ -1,0 +1,192 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - link "Skip to content" [ref=e4] [cursor=pointer]:
+        - /url: "#start-of-content"
+      - banner [ref=e6]:
+        - heading "Navigation Menu" [level=2] [ref=e7]
+        - generic [ref=e9]:
+          - button "Toggle navigation" [ref=e11] [cursor=pointer]
+          - link "Homepage" [ref=e17] [cursor=pointer]:
+            - /url: /
+            - img [ref=e18]
+          - generic [ref=e20]:
+            - link "Sign in" [ref=e21] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fnexu-io%2Fopen-design%2Ftree%2Fmain%2Fdocs%2Fdeployment
+            - button "Appearance settings" [ref=e24] [cursor=pointer]:
+              - img
+    - main [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e32]:
+            - img [ref=e33]
+            - link "nexu-io" [ref=e36] [cursor=pointer]:
+              - /url: /nexu-io
+            - generic [ref=e37]: /
+            - strong [ref=e38]:
+              - link "open-design" [ref=e39] [cursor=pointer]:
+                - /url: /nexu-io/open-design
+            - generic [ref=e40]: Public
+          - generic [ref=e41]:
+            - list:
+              - listitem [ref=e42]:
+                - link "You must be signed in to change notification settings" [ref=e43] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                  - img [ref=e44]
+                  - text: Notifications
+              - listitem [ref=e46]:
+                - link "Fork 5.8k" [ref=e47] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                  - img [ref=e48]
+                  - text: Fork
+                  - generic "5,757" [ref=e50]: 5.8k
+              - listitem [ref=e51]:
+                - link "You must be signed in to star a repository" [ref=e53] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                  - img [ref=e54]
+                  - text: Star
+                  - generic "50504 users starred this repository" [ref=e56]: 50.5k
+        - navigation "Repository" [ref=e57]:
+          - list [ref=e58]:
+            - listitem [ref=e59]:
+              - link "Code" [ref=e60] [cursor=pointer]:
+                - /url: /nexu-io/open-design
+                - img [ref=e61]
+                - generic [ref=e63]: Code
+            - listitem [ref=e64]:
+              - link "Issues 165" [ref=e65] [cursor=pointer]:
+                - /url: /nexu-io/open-design/issues
+                - img [ref=e66]
+                - generic [ref=e69]: Issues
+                - generic "165" [ref=e70]
+            - listitem [ref=e71]:
+              - link "Pull requests 160" [ref=e72] [cursor=pointer]:
+                - /url: /nexu-io/open-design/pulls
+                - img [ref=e73]
+                - generic [ref=e75]: Pull requests
+                - generic "160" [ref=e76]
+            - listitem [ref=e77]:
+              - link "Discussions" [ref=e78] [cursor=pointer]:
+                - /url: /nexu-io/open-design/discussions
+                - img [ref=e79]
+                - generic [ref=e81]: Discussions
+            - listitem [ref=e82]:
+              - link "Actions" [ref=e83] [cursor=pointer]:
+                - /url: /nexu-io/open-design/actions
+                - img [ref=e84]
+                - generic [ref=e86]: Actions
+            - listitem [ref=e87]:
+              - link "Projects" [ref=e88] [cursor=pointer]:
+                - /url: /nexu-io/open-design/projects
+                - img [ref=e89]
+                - generic [ref=e91]: Projects
+            - listitem [ref=e92]
+            - listitem [ref=e93]
+          - button "Additional navigation options" [ref=e97] [cursor=pointer]:
+            - img
+      - generic [ref=e108]:
+        - generic [ref=e112]:
+          - generic [ref=e113]:
+            - heading "Expand file tree" [level=2] [ref=e115]:
+              - button "Expand file tree" [ref=e116] [cursor=pointer]:
+                - img [ref=e117]
+            - button "main branch" [ref=e121] [cursor=pointer]:
+              - generic [ref=e122]:
+                - generic [ref=e124]:
+                  - img [ref=e126]
+                  - generic [ref=e129]: main
+                - generic:
+                  - img
+            - generic [ref=e131]:
+              - navigation "Breadcrumbs" [ref=e132]:
+                - heading "Breadcrumbs" [level=2] [ref=e133]
+                - list [ref=e134]:
+                  - listitem [ref=e135]:
+                    - link "open-design" [ref=e136] [cursor=pointer]:
+                      - /url: /nexu-io/open-design/tree/main
+                  - listitem [ref=e137]:
+                    - text: /
+                    - link "docs" [ref=e138] [cursor=pointer]:
+                      - /url: /nexu-io/open-design/tree/main/docs
+              - generic [ref=e139]:
+                - text: /
+                - heading "deployment" [level=1] [ref=e140]
+                - text: /
+              - button "Copy path" [ref=e141] [cursor=pointer]:
+                - img [ref=e142]
+          - generic [ref=e147]:
+            - heading "Directory actions" [level=2] [ref=e148]
+            - generic [ref=e151]:
+              - img [ref=e153]
+              - combobox "Go to file" [ref=e155]
+            - heading "More options" [level=2] [ref=e156]
+            - button "More options" [ref=e157] [cursor=pointer]:
+              - img [ref=e158]
+        - generic [ref=e160]:
+          - generic [ref=e162]:
+            - heading "Latest commit" [level=2] [ref=e163]
+            - generic [ref=e164]:
+              - generic [ref=e166]:
+                - img "author" [ref=e167]
+                - generic "mec dot" [ref=e168]
+              - generic [ref=e169]:
+                - generic [ref=e171]:
+                  - 'link "docs: add Docker deployment guide with verification screenshots (" [ref=e172] [cursor=pointer]':
+                    - /url: /nexu-io/open-design/commit/76561964a2822d4be6443c139a67461792d60328
+                  - link "#1851" [ref=e173] [cursor=pointer]:
+                    - /url: https://github.com/nexu-io/open-design/pull/1851
+                  - link ")" [ref=e174] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/commit/76561964a2822d4be6443c139a67461792d60328
+                - button "failure" [ref=e175] [cursor=pointer]:
+                  - img [ref=e176]
+            - generic [ref=e178]:
+              - generic [ref=e180]:
+                - link "Commit 7656196" [ref=e181] [cursor=pointer]:
+                  - /url: /nexu-io/open-design/commit/76561964a2822d4be6443c139a67461792d60328
+                  - text: "7656196"
+                - text: ·
+                - generic "May 18, 2026, 1:00 PM GMT+3" [ref=e182]: May 18, 20265 days ago
+              - generic [ref=e183]:
+                - heading "History" [level=2] [ref=e184]
+                - link "View commit history for this file." [ref=e186] [cursor=pointer]:
+                  - /url: /nexu-io/open-design/commits/main/docs/deployment
+                  - generic [ref=e187]:
+                    - generic:
+                      - img
+          - generic [ref=e189]:
+            - heading "Folders and files" [level=2] [ref=e190]
+            - table "Folders and files" [ref=e191]:
+              - rowgroup [ref=e192]:
+                - row "Name Last commit message Last commit date" [ref=e193]:
+                  - columnheader "Name" [ref=e194]
+                  - columnheader "Last commit message" [ref=e195]:
+                    - generic "Last commit message" [ref=e196]
+                  - columnheader "Last commit date" [ref=e197]:
+                    - generic "Last commit date" [ref=e198]
+              - rowgroup [ref=e199]:
+                - row "parent directory Parent directory" [ref=e200]:
+                  - cell "parent directory Parent directory" [ref=e201]:
+                    - heading "parent directory" [level=3] [ref=e202]
+                    - link "Parent directory" [ref=e203] [cursor=pointer]:
+                      - /url: /nexu-io/open-design/tree/main/docs
+                      - generic [ref=e204]:
+                        - img [ref=e205]
+                        - text: ..
+                - 'row "docker.md, (File) docs: add Docker deployment guide with verification screenshots (#1851) May 18, 20265 days ago" [ref=e207]':
+                  - cell "docker.md, (File)" [ref=e208]:
+                    - generic [ref=e209]:
+                      - img [ref=e210]
+                      - link "docker.md, (File)" [ref=e215] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/deployment/docker.md
+                        - text: docker.md
+                  - 'cell "docs: add Docker deployment guide with verification screenshots (#1851)" [ref=e216]':
+                    - generic [ref=e218]:
+                      - 'link "docs: add Docker deployment guide with verification screenshots (" [ref=e219] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/76561964a2822d4be6443c139a67461792d60328
+                      - link "#1851" [ref=e220] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1851
+                      - link ")" [ref=e221] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/76561964a2822d4be6443c139a67461792d60328
+                  - cell "May 18, 20265 days ago" [ref=e222]:
+                    - generic [ref=e223]: May 18, 20265 days ago
+  - alert [ref=e227]

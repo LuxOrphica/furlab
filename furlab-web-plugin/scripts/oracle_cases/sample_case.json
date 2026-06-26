@@ -1,0 +1,57 @@
+{
+  "name": "sample_rect_zone",
+  "seed": 42,
+  "zone": {
+    "points": [
+      { "x": 0, "y": 0 },
+      { "x": 250, "y": 0 },
+      { "x": 250, "y": 400 },
+      { "x": 0, "y": 400 }
+    ]
+  },
+  "pieces": [
+    {
+      "id": "FL-SCR-SAMPLE-001",
+      "points": [
+        { "x": 0, "y": 0 },
+        { "x": 120, "y": 0 },
+        { "x": 120, "y": 90 },
+        { "x": 0, "y": 90 }
+      ]
+    },
+    {
+      "id": "FL-SCR-SAMPLE-002",
+      "points": [
+        { "x": 0, "y": 0 },
+        { "x": 100, "y": 0 },
+        { "x": 100, "y": 130 },
+        { "x": 0, "y": 130 }
+      ]
+    },
+    {
+      "id": "FL-SCR-SAMPLE-003",
+      "points": [
+        { "x": 0, "y": 0 },
+        { "x": 85, "y": 0 },
+        { "x": 85, "y": 85 },
+        { "x": 0, "y": 85 }
+      ]
+    }
+  ],
+  "params": {
+    "rPreview": 10,
+    "rFinal": 2,
+    "thetaMin": -15,
+    "thetaMax": 15,
+    "nAngles": 12,
+    "lambdaOverlap": 1,
+    "maxIter": 160,
+    "coverageTarget": 0.999,
+    "coverageEps": 0.002,
+    "maxSolveMs": 22000,
+    "maxPieces": 48,
+    "maxPointsPerCandidate": 90,
+    "napTolDeg": 15
+  }
+}
+

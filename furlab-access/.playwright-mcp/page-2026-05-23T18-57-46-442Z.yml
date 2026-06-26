@@ -1,0 +1,1330 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - link "Skip to content" [ref=e4] [cursor=pointer]:
+        - /url: "#start-of-content"
+      - banner [ref=e6]:
+        - heading "Navigation Menu" [level=2] [ref=e7]
+        - generic [ref=e9]:
+          - button "Toggle navigation" [ref=e11] [cursor=pointer]
+          - link "Homepage" [ref=e17] [cursor=pointer]:
+            - /url: /
+            - img [ref=e18]
+          - generic [ref=e20]:
+            - link "Sign in" [ref=e21] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fnexu-io%2Fopen-design%2Fblob%2Fmain%2Fdocs%2Fagent-adapters.md
+            - button "Appearance settings" [ref=e24] [cursor=pointer]:
+              - img
+    - main [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e32]:
+            - img [ref=e33]
+            - link "nexu-io" [ref=e36] [cursor=pointer]:
+              - /url: /nexu-io
+            - generic [ref=e37]: /
+            - strong [ref=e38]:
+              - link "open-design" [ref=e39] [cursor=pointer]:
+                - /url: /nexu-io/open-design
+            - generic [ref=e40]: Public
+          - generic [ref=e41]:
+            - list:
+              - listitem [ref=e42]:
+                - link "You must be signed in to change notification settings" [ref=e43] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                  - img [ref=e44]
+                  - text: Notifications
+              - listitem [ref=e46]:
+                - link "Fork 5.8k" [ref=e47] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                  - img [ref=e48]
+                  - text: Fork
+                  - generic "5,757" [ref=e50]: 5.8k
+              - listitem [ref=e51]:
+                - link "You must be signed in to star a repository" [ref=e53] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                  - img [ref=e54]
+                  - text: Star
+                  - generic "50505 users starred this repository" [ref=e56]: 50.5k
+        - navigation "Repository" [ref=e57]:
+          - list [ref=e58]:
+            - listitem [ref=e59]:
+              - link "Code" [ref=e60] [cursor=pointer]:
+                - /url: /nexu-io/open-design
+                - img [ref=e61]
+                - generic [ref=e63]: Code
+            - listitem [ref=e64]:
+              - link "Issues 165" [ref=e65] [cursor=pointer]:
+                - /url: /nexu-io/open-design/issues
+                - img [ref=e66]
+                - generic [ref=e69]: Issues
+                - generic "165" [ref=e70]
+            - listitem [ref=e71]:
+              - link "Pull requests 160" [ref=e72] [cursor=pointer]:
+                - /url: /nexu-io/open-design/pulls
+                - img [ref=e73]
+                - generic [ref=e75]: Pull requests
+                - generic "160" [ref=e76]
+            - listitem [ref=e77]:
+              - link "Discussions" [ref=e78] [cursor=pointer]:
+                - /url: /nexu-io/open-design/discussions
+                - img [ref=e79]
+                - generic [ref=e81]: Discussions
+            - listitem [ref=e82]:
+              - link "Actions" [ref=e83] [cursor=pointer]:
+                - /url: /nexu-io/open-design/actions
+                - img [ref=e84]
+                - generic [ref=e86]: Actions
+            - listitem [ref=e87]:
+              - link "Projects" [ref=e88] [cursor=pointer]:
+                - /url: /nexu-io/open-design/projects
+                - img [ref=e89]
+                - generic [ref=e91]: Projects
+            - listitem [ref=e92]
+            - listitem [ref=e93]
+          - button "Additional navigation options" [ref=e97] [cursor=pointer]:
+            - img
+      - generic [ref=e108]:
+        - generic [ref=e112]:
+          - generic [ref=e113]:
+            - heading "Expand file tree" [level=2] [ref=e115]:
+              - button "Expand file tree" [ref=e116] [cursor=pointer]:
+                - img [ref=e117]
+            - button "main branch" [ref=e121] [cursor=pointer]:
+              - generic [ref=e122]:
+                - generic [ref=e124]:
+                  - img [ref=e126]
+                  - generic [ref=e129]: main
+                - generic:
+                  - img
+            - generic [ref=e131]:
+              - navigation "Breadcrumbs" [ref=e132]:
+                - heading "Breadcrumbs" [level=2] [ref=e133]
+                - list [ref=e134]:
+                  - listitem [ref=e135]:
+                    - link "open-design" [ref=e136] [cursor=pointer]:
+                      - /url: /nexu-io/open-design/tree/main
+                  - listitem [ref=e137]:
+                    - text: /
+                    - link "docs" [ref=e138] [cursor=pointer]:
+                      - /url: /nexu-io/open-design/tree/main/docs
+              - generic [ref=e139]:
+                - text: /
+                - heading "agent-adapters.md" [level=1] [ref=e140]
+              - button "Copy path" [ref=e141] [cursor=pointer]:
+                - img [ref=e142]
+          - generic [ref=e147]:
+            - generic [ref=e150]:
+              - img [ref=e152]
+              - combobox "Go to file" [ref=e154]
+            - button "More file actions" [ref=e155] [cursor=pointer]:
+              - img [ref=e156]
+        - generic [ref=e158]:
+          - generic [ref=e160]:
+            - heading "Latest commit" [level=2] [ref=e161]
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - generic [ref=e165]:
+                  - img "JasonYang0104" [ref=e166]
+                  - img "AI Bot" [ref=e167]
+                - link "commits by JasonYang0104" [ref=e169] [cursor=pointer]:
+                  - /url: /nexu-io/open-design/commits?author=JasonYang0104
+                  - text: JasonYang0104
+                - generic [ref=e170]: and
+                - generic "AI Bot" [ref=e172]
+              - generic [ref=e173]:
+                - generic [ref=e175]:
+                  - link "Add Trae CLI as an ACP coding-agent adapter (" [ref=e176] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/commit/840019c8e256a6f11e9105ba06c1710bbebc0366
+                  - link "#2729" [ref=e177] [cursor=pointer]:
+                    - /url: https://github.com/nexu-io/open-design/pull/2729
+                  - link ")" [ref=e178] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/commit/840019c8e256a6f11e9105ba06c1710bbebc0366
+                - button "Open commit details" [ref=e179] [cursor=pointer]:
+                  - img [ref=e180]
+                - button "success" [ref=e182] [cursor=pointer]:
+                  - img [ref=e183]
+            - generic [ref=e185]:
+              - generic [ref=e187]:
+                - link "Commit 840019c" [ref=e188] [cursor=pointer]:
+                  - /url: /nexu-io/open-design/commit/840019c8e256a6f11e9105ba06c1710bbebc0366
+                  - text: 840019c
+                - text: ·
+                - generic "May 23, 2026, 6:17 PM GMT+3" [ref=e189]: May 23, 20263 hours ago
+              - generic [ref=e190]:
+                - heading "History" [level=2] [ref=e191]
+                - link "View commit history for this file." [ref=e193] [cursor=pointer]:
+                  - /url: /nexu-io/open-design/commits/main/docs/agent-adapters.md
+                  - generic [ref=e194]:
+                    - generic:
+                      - img
+          - generic [ref=e196]:
+            - generic "27.9 KB" [ref=e200]: 339 lines (257 loc) · 27.9 KB
+            - generic [ref=e202]:
+              - heading "File metadata and controls" [level=2] [ref=e203]
+              - list "File view" [ref=e205]:
+                - listitem [ref=e206]:
+                  - button "Preview" [ref=e207] [cursor=pointer]:
+                    - generic [ref=e209]: Preview
+                - listitem [ref=e210]:
+                  - button "Code" [ref=e211] [cursor=pointer]:
+                    - generic [ref=e213]: Code
+                - listitem [ref=e214]:
+                  - button "Blame" [ref=e215] [cursor=pointer]:
+                    - generic [ref=e217]: Blame
+              - generic [ref=e218]:
+                - generic [ref=e219]:
+                  - generic [ref=e220]:
+                    - link "Raw" [ref=e222] [cursor=pointer]:
+                      - /url: https://github.com/nexu-io/open-design/raw/refs/heads/main/docs/agent-adapters.md
+                      - generic [ref=e224]: Raw
+                    - button "Copy raw file" [ref=e226] [cursor=pointer]:
+                      - img [ref=e227]
+                    - button "Download raw file" [ref=e231] [cursor=pointer]:
+                      - img [ref=e232]
+                  - generic [ref=e235]:
+                    - button "You must be signed in to make or propose changes" [disabled] [ref=e237]:
+                      - img [ref=e238]
+                    - button "More edit options" [ref=e241] [cursor=pointer]:
+                      - img [ref=e242]
+                - button "Outline" [ref=e244] [cursor=pointer]:
+                  - img [ref=e245]
+            - region [ref=e248]:
+              - article [ref=e250]:
+                - generic [ref=e251]:
+                  - heading "Agent Adapters" [level=1] [ref=e252]
+                  - 'link "Permalink: Agent Adapters" [ref=e253] [cursor=pointer]':
+                    - /url: "#agent-adapters"
+                    - img [ref=e254]
+                - paragraph [ref=e256]:
+                  - strong [ref=e257]: "Parent:"
+                  - link "spec.md" [ref=e258] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/blob/main/docs/spec.md
+                    - code [ref=e259]: spec.md
+                  - text: ·
+                  - strong [ref=e260]: "Siblings:"
+                  - link "architecture.md" [ref=e261] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/blob/main/docs/architecture.md
+                    - code [ref=e262]: architecture.md
+                  - text: ·
+                  - link "skills-protocol.md" [ref=e263] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/blob/main/docs/skills-protocol.md
+                    - code [ref=e264]: skills-protocol.md
+                  - text: ·
+                  - link "new-agent-runtime-acp.md" [ref=e265] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/blob/main/docs/new-agent-runtime-acp.md
+                    - code [ref=e266]: new-agent-runtime-acp.md
+                  - text: ·
+                  - link "modes.md" [ref=e267] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/blob/main/docs/modes.md
+                    - code [ref=e268]: modes.md
+                - paragraph [ref=e269]:
+                  - text: The adapter layer is OD's most load-bearing design decision. We delegate the
+                  - strong [ref=e270]: entire agent loop
+                  - text: — model calls, tool use, context management, permission handling, resume, cancel — to the user's existing code agent CLI. OD's job is to detect it, feed it a skill + prompt + working directory, and stream its output back to the web UI.
+                - paragraph [ref=e271]:
+                  - text: If you're adding a new ACP-backed runtime, start with
+                  - link "new-agent-runtime-acp.md" [ref=e272] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/blob/main/docs/new-agent-runtime-acp.md
+                    - code [ref=e273]: new-agent-runtime-acp.md
+                  - text: for the expected stdio transport, JSON-RPC message flow, and process lifecycle contract.
+                - blockquote [ref=e274]:
+                  - paragraph [ref=e275]:
+                    - strong [ref=e276]: "Thesis:"
+                    - text: The code agent space has already converged on a few strong implementations (Claude Code, Codex, Devin for Terminal, Cursor Agent, Gemini CLI, OpenCode, OpenClaw, Qoder CLI). Reimplementing another one is worse than just talking to all of them.
+                  - paragraph [ref=e277]:
+                    - strong [ref=e278]: "Inspiration:"
+                    - link "multica" [ref=e279] [cursor=pointer]:
+                      - /url: https://github.com/multica-ai/multica
+                    - text: (PATH-scan detection + daemon architecture) and
+                    - link "cc-switch" [ref=e280] [cursor=pointer]:
+                      - /url: https://github.com/farion1231/cc-switch
+                    - text: (per-agent config format knowledge + symlink-based skill distribution).
+                - separator [ref=e281]
+                - generic [ref=e282]:
+                  - heading "1. Adapter interface (TypeScript)" [level=2] [ref=e283]
+                  - 'link "Permalink: 1. Adapter interface (TypeScript)" [ref=e284] [cursor=pointer]':
+                    - /url: "#1-adapter-interface-typescript"
+                    - img [ref=e285]
+                - paragraph [ref=e287]:
+                  - text: Every adapter implements this interface. The current adapter implementation lives in
+                  - link "apps/daemon/src/agents.ts" [ref=e288] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/blob/main/apps/daemon/src/agents.ts
+                    - code [ref=e289]: apps/daemon/src/agents.ts
+                  - text: .
+                - generic [ref=e290]:
+                  - generic [ref=e291]:
+                    - text: "interface AgentAdapter { readonly id: string; // \"claude-code\" | \"codex\" | … readonly displayName: string; // -- discovery -------------------------------------------------- detect(): Promise<AgentDetection | null>; // null if not installed // -- capability negotiation ------------------------------------ capabilities(): AgentCapabilities; // -- execution ------------------------------------------------- run(params: AgentRunParams): AsyncIterable<AgentEvent>; cancel(runId: string): Promise<"
+                    - generic [ref=e292]: void
+                    - text: ">; resume?(runId: string, message: string): AsyncIterable<AgentEvent>; } interface AgentDetection { executablePath: string; // absolute path to CLI version: string; configDir?: string; // e.g. ~/.claude skillsDir?: string; // e.g. ~/.claude/skills authState: \"ok\" | \"missing\" | \"expired\"; } interface AgentCapabilities { surgicalEdit: boolean; // can edit a targeted region without rewriting file nativeSkillLoading: boolean; // picks up ~/.<agent>/skills/ automatically streaming: boolean; // emits tool calls in real time resume: boolean; // can continue an interrupted run permissionMode: \"strict\" | \"permissive\" | \"none\"; contextWindowHint?: number; // in tokens } interface AgentRunParams { runId: string; cwd: string; // absolute path — artifact dir systemPrompt: string; // skill's SKILL.md body + DESIGN.md excerpt userPrompt: string; skillDir?: string; // if set, adapter should make skill files available allowedTools?: string[]; // for agents that support it timeoutMs?: number; } type AgentEvent = | { type: \"thinking\"; text: string } | { type: \"tool_call\"; name: string; input: unknown; id: string } | { type: \"tool_result\"; id: string; output: unknown } | { type: \"text_delta\"; text: string } | { type: \"file_write\"; path: string } // synthesized by adapter if agent doesn't emit natively | { type: \"error\"; error: string } | { type: \"done\"; reason: \"completed\" | \"cancelled\" | \"error\" };"
+                  - button "Copy code to clipboard" [ref=e294] [cursor=pointer]:
+                    - img [ref=e295]
+                - generic [ref=e298]:
+                  - heading "2. Detection strategy" [level=2] [ref=e299]
+                  - 'link "Permalink: 2. Detection strategy" [ref=e300] [cursor=pointer]':
+                    - /url: "#2-detection-strategy"
+                    - img [ref=e301]
+                - paragraph [ref=e303]:
+                  - text: Run all adapters'
+                  - code [ref=e304]: detect()
+                  - text: in parallel on daemon start, then cache results in
+                  - code [ref=e305]: ~/.open-design/agents.json
+                  - text: with a 24h TTL. Re-detect on daemon
+                  - code [ref=e306]: SIGHUP
+                  - text: .
+                - paragraph [ref=e307]:
+                  - text: Each adapter uses
+                  - strong [ref=e308]: two signals
+                  - text: ":"
+                - list [ref=e309]:
+                  - listitem [ref=e310]:
+                    - strong [ref=e311]: PATH scan.
+                    - code [ref=e312]: which <binary>
+                    - text: for each known executable name. Fast (<10ms).
+                  - listitem [ref=e313]:
+                    - strong [ref=e314]: Config-dir probe.
+                    - text: Check for
+                    - code [ref=e315]: ~/.claude/
+                    - text: ","
+                    - code [ref=e316]: ~/.codex/
+                    - text: ","
+                    - code [ref=e317]: ~/.cursor/
+                    - text: ", etc. This catches cases where the CLI was installed via npm global into a shell-specific PATH."
+                - paragraph [ref=e318]:
+                  - text: If both signals agree, detection is confident. If only one signal fires, we mark
+                  - code [ref=e319]: "authState: \"missing\""
+                  - text: and prompt the user to run the CLI's auth flow.
+                - generic [ref=e320]:
+                  - heading "3. Adapter catalog (v1 target)" [level=2] [ref=e321]
+                  - 'link "Permalink: 3. Adapter catalog (v1 target)" [ref=e322] [cursor=pointer]':
+                    - /url: "#3-adapter-catalog-v1-target"
+                    - img [ref=e323]
+                - table [ref=e326]:
+                  - rowgroup [ref=e327]:
+                    - row "Adapter CLI command Config dir Skills dir Native skill loading Surgical edit Streaming Priority" [ref=e328]:
+                      - columnheader "Adapter" [ref=e329]
+                      - columnheader "CLI command" [ref=e330]
+                      - columnheader "Config dir" [ref=e331]
+                      - columnheader "Skills dir" [ref=e332]
+                      - columnheader "Native skill loading" [ref=e333]
+                      - columnheader "Surgical edit" [ref=e334]
+                      - columnheader "Streaming" [ref=e335]
+                      - columnheader "Priority" [ref=e336]
+                  - rowgroup [ref=e337]:
+                    - row "claude-code claude ~/.claude/ ~/.claude/skills/ ✅ ✅ ✅ P0 (MVP)" [ref=e338]:
+                      - cell "claude-code" [ref=e339]:
+                        - strong [ref=e340]: claude-code
+                      - cell "claude" [ref=e341]:
+                        - code [ref=e342]: claude
+                      - cell "~/.claude/" [ref=e343]:
+                        - code [ref=e344]: ~/.claude/
+                      - cell "~/.claude/skills/" [ref=e345]:
+                        - code [ref=e346]: ~/.claude/skills/
+                      - cell "✅" [ref=e347]
+                      - cell "✅" [ref=e348]
+                      - cell "✅" [ref=e349]
+                      - cell "P0 (MVP)" [ref=e350]
+                    - row "api-fallback (direct Anthropic API) — — ❌ (prompt-injected) 〜 ✅ P0 (MVP)" [ref=e351]:
+                      - cell "api-fallback" [ref=e352]:
+                        - strong [ref=e353]: api-fallback
+                      - cell "(direct Anthropic API)" [ref=e354]:
+                        - emphasis [ref=e355]: (direct Anthropic API)
+                      - cell "—" [ref=e356]
+                      - cell "—" [ref=e357]
+                      - cell "❌ (prompt-injected)" [ref=e358]
+                      - cell "〜" [ref=e359]
+                      - cell "✅" [ref=e360]
+                      - cell "P0 (MVP)" [ref=e361]
+                    - row "codex codex ~/.codex/ ~/.codex/skills/ 〜 (varies by version) 〜 (regenerate w/ scoping) ✅ P1" [ref=e362]:
+                      - cell "codex" [ref=e363]:
+                        - strong [ref=e364]: codex
+                      - cell "codex" [ref=e365]:
+                        - code [ref=e366]: codex
+                      - cell "~/.codex/" [ref=e367]:
+                        - code [ref=e368]: ~/.codex/
+                      - cell "~/.codex/skills/" [ref=e369]:
+                        - code [ref=e370]: ~/.codex/skills/
+                      - cell "〜 (varies by version)" [ref=e371]
+                      - cell "〜 (regenerate w/ scoping)" [ref=e372]
+                      - cell "✅" [ref=e373]
+                      - cell "P1" [ref=e374]
+                    - row "devin devin ~/.config/devin/ ~/.config/devin/skills/ ✅ ✅ ✅ (acp-json-rpc) P1" [ref=e375]:
+                      - cell "devin" [ref=e376]:
+                        - strong [ref=e377]: devin
+                      - cell "devin" [ref=e378]:
+                        - code [ref=e379]: devin
+                      - cell "~/.config/devin/" [ref=e380]:
+                        - code [ref=e381]: ~/.config/devin/
+                      - cell "~/.config/devin/skills/" [ref=e382]:
+                        - code [ref=e383]: ~/.config/devin/skills/
+                      - cell "✅" [ref=e384]
+                      - cell "✅" [ref=e385]
+                      - cell "✅ (acp-json-rpc)" [ref=e386]:
+                        - text: ✅ (
+                        - code [ref=e387]: acp-json-rpc
+                        - text: )
+                      - cell "P1" [ref=e388]
+                    - row "cursor-agent cursor-agent ~/.cursor/ n/a (via project .cursorrules) ❌ (prompt-injected) ✅ ✅ P1" [ref=e389]:
+                      - cell "cursor-agent" [ref=e390]:
+                        - strong [ref=e391]: cursor-agent
+                      - cell "cursor-agent" [ref=e392]:
+                        - code [ref=e393]: cursor-agent
+                      - cell "~/.cursor/" [ref=e394]:
+                        - code [ref=e395]: ~/.cursor/
+                      - cell "n/a (via project .cursorrules)" [ref=e396]:
+                        - text: n/a (via project
+                        - code [ref=e397]: .cursorrules
+                        - text: )
+                      - cell "❌ (prompt-injected)" [ref=e398]
+                      - cell "✅" [ref=e399]
+                      - cell "✅" [ref=e400]
+                      - cell "P1" [ref=e401]
+                    - row "gemini-cli gemini ~/.config/gemini/ ❌ ❌ (prompt-injected) ❌ (regenerate) ✅ P2" [ref=e402]:
+                      - cell "gemini-cli" [ref=e403]:
+                        - strong [ref=e404]: gemini-cli
+                      - cell "gemini" [ref=e405]:
+                        - code [ref=e406]: gemini
+                      - cell "~/.config/gemini/" [ref=e407]:
+                        - code [ref=e408]: ~/.config/gemini/
+                      - cell "❌" [ref=e409]
+                      - cell "❌ (prompt-injected)" [ref=e410]
+                      - cell "❌ (regenerate)" [ref=e411]
+                      - cell "✅" [ref=e412]
+                      - cell "P2" [ref=e413]
+                    - row "opencode opencode ~/.opencode/ 〜 〜 ✅ P2" [ref=e414]:
+                      - cell "opencode" [ref=e415]:
+                        - strong [ref=e416]: opencode
+                      - cell "opencode" [ref=e417]:
+                        - code [ref=e418]: opencode
+                      - cell "~/.opencode/" [ref=e419]:
+                        - code [ref=e420]: ~/.opencode/
+                      - cell "〜" [ref=e421]
+                      - cell "〜" [ref=e422]
+                      - cell "✅" [ref=e423]
+                      - cell "P2" [ref=e424]
+                      - cell [ref=e425]
+                    - row "openclaw openclaw ~/.openclaw/ 〜 〜 〜 P2" [ref=e426]:
+                      - cell "openclaw" [ref=e427]:
+                        - strong [ref=e428]: openclaw
+                      - cell "openclaw" [ref=e429]:
+                        - code [ref=e430]: openclaw
+                      - cell "~/.openclaw/" [ref=e431]:
+                        - code [ref=e432]: ~/.openclaw/
+                      - cell "〜" [ref=e433]
+                      - cell "〜" [ref=e434]
+                      - cell "〜" [ref=e435]
+                      - cell "P2" [ref=e436]
+                      - cell [ref=e437]
+                    - row "copilot copilot ~/.copilot/ ❌ ✅ (edit tool) ✅ (--output-format json JSONL) P2" [ref=e438]:
+                      - cell "copilot" [ref=e439]:
+                        - strong [ref=e440]: copilot
+                      - cell "copilot" [ref=e441]:
+                        - code [ref=e442]: copilot
+                      - cell "~/.copilot/" [ref=e443]:
+                        - code [ref=e444]: ~/.copilot/
+                      - cell "❌" [ref=e445]
+                      - cell "✅ (edit tool)" [ref=e446]:
+                        - text: ✅ (
+                        - code [ref=e447]: edit
+                        - text: tool)
+                      - cell "✅ (--output-format json JSONL)" [ref=e448]:
+                        - text: ✅ (
+                        - code [ref=e449]: "--output-format json"
+                        - text: JSONL)
+                      - cell "P2" [ref=e450]
+                      - cell [ref=e451]
+                    - row "kiro kiro-cli ~/.kiro/ ❌ ✅ ✅ (acp-json-rpc) P2" [ref=e452]:
+                      - cell "kiro" [ref=e453]:
+                        - strong [ref=e454]: kiro
+                      - cell "kiro-cli" [ref=e455]:
+                        - code [ref=e456]: kiro-cli
+                      - cell "~/.kiro/" [ref=e457]:
+                        - code [ref=e458]: ~/.kiro/
+                      - cell "❌" [ref=e459]
+                      - cell "✅" [ref=e460]
+                      - cell "✅ (acp-json-rpc)" [ref=e461]:
+                        - text: ✅ (
+                        - code [ref=e462]: acp-json-rpc
+                        - text: )
+                      - cell "P2" [ref=e463]
+                      - cell [ref=e464]
+                    - row "kilo kilo — ❌ ✅ ✅ (acp-json-rpc) P2" [ref=e465]:
+                      - cell "kilo" [ref=e466]:
+                        - strong [ref=e467]: kilo
+                      - cell "kilo" [ref=e468]:
+                        - code [ref=e469]: kilo
+                      - cell "—" [ref=e470]
+                      - cell "❌" [ref=e471]
+                      - cell "✅" [ref=e472]
+                      - cell "✅ (acp-json-rpc)" [ref=e473]:
+                        - text: ✅ (
+                        - code [ref=e474]: acp-json-rpc
+                        - text: )
+                      - cell "P2" [ref=e475]
+                      - cell [ref=e476]
+                    - row "vibe vibe-acp ~/.vibe/ ❌ ✅ ✅ (acp-json-rpc) P2" [ref=e477]:
+                      - cell "vibe" [ref=e478]:
+                        - strong [ref=e479]: vibe
+                      - cell "vibe-acp" [ref=e480]:
+                        - code [ref=e481]: vibe-acp
+                      - cell "~/.vibe/" [ref=e482]:
+                        - code [ref=e483]: ~/.vibe/
+                      - cell "❌" [ref=e484]
+                      - cell "✅" [ref=e485]
+                      - cell "✅ (acp-json-rpc)" [ref=e486]:
+                        - text: ✅ (
+                        - code [ref=e487]: acp-json-rpc
+                        - text: )
+                      - cell "P2" [ref=e488]
+                      - cell [ref=e489]
+                    - row "trae-cli traecli Trae CLI config Trae CLI managed ❌ (prompt-injected) ✅ ✅ (acp-json-rpc) P2" [ref=e490]:
+                      - cell "trae-cli" [ref=e491]:
+                        - strong [ref=e492]: trae-cli
+                      - cell "traecli" [ref=e493]:
+                        - code [ref=e494]: traecli
+                      - cell "Trae CLI config" [ref=e495]
+                      - cell "Trae CLI managed" [ref=e496]
+                      - cell "❌ (prompt-injected)" [ref=e497]
+                      - cell "✅" [ref=e498]
+                      - cell "✅ (acp-json-rpc)" [ref=e499]:
+                        - text: ✅ (
+                        - code [ref=e500]: acp-json-rpc
+                        - text: )
+                      - cell "P2" [ref=e501]
+                    - row "deepseek deepseek ~/.deepseek/ ~/.deepseek/skills/ ❌ (prompt-injected) ✅ ✅ (plain text) P2" [ref=e502]:
+                      - cell "deepseek" [ref=e503]:
+                        - strong [ref=e504]: deepseek
+                      - cell "deepseek" [ref=e505]:
+                        - code [ref=e506]: deepseek
+                      - cell "~/.deepseek/" [ref=e507]:
+                        - code [ref=e508]: ~/.deepseek/
+                      - cell "~/.deepseek/skills/" [ref=e509]:
+                        - code [ref=e510]: ~/.deepseek/skills/
+                      - cell "❌ (prompt-injected)" [ref=e511]
+                      - cell "✅" [ref=e512]
+                      - cell "✅ (plain text)" [ref=e513]
+                      - cell "P2" [ref=e514]
+                    - row "qoder qodercli Qoder CLI config Qoder CLI managed ❌ (prompt-injected) ✅ ✅ (stream-json) P2" [ref=e515]:
+                      - cell "qoder" [ref=e516]:
+                        - strong [ref=e517]: qoder
+                      - cell "qodercli" [ref=e518]:
+                        - code [ref=e519]: qodercli
+                      - cell "Qoder CLI config" [ref=e520]
+                      - cell "Qoder CLI managed" [ref=e521]
+                      - cell "❌ (prompt-injected)" [ref=e522]
+                      - cell "✅" [ref=e523]
+                      - cell "✅ (stream-json)" [ref=e524]:
+                        - text: ✅ (
+                        - code [ref=e525]: stream-json
+                        - text: )
+                      - cell "P2" [ref=e526]
+                    - row "pi pi ~/.pi/agent/ ~/.pi/agent/skills/ ❌ (prompt-injected) ✅ ✅ (pi-rpc JSON-RPC) P2" [ref=e527]:
+                      - cell "pi" [ref=e528]:
+                        - strong [ref=e529]: pi
+                      - cell "pi" [ref=e530]:
+                        - code [ref=e531]: pi
+                      - cell "~/.pi/agent/" [ref=e532]:
+                        - code [ref=e533]: ~/.pi/agent/
+                      - cell "~/.pi/agent/skills/" [ref=e534]:
+                        - code [ref=e535]: ~/.pi/agent/skills/
+                      - cell "❌ (prompt-injected)" [ref=e536]
+                      - cell "✅" [ref=e537]
+                      - cell "✅ (pi-rpc JSON-RPC)" [ref=e538]:
+                        - text: ✅ (
+                        - code [ref=e539]: pi-rpc
+                        - text: JSON-RPC)
+                      - cell "P2" [ref=e540]
+                - paragraph [ref=e541]:
+                  - text: "\"P0/P1/P2\" correspond to the roadmap phases in"
+                  - link "roadmap.md" [ref=e542] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/blob/main/docs/roadmap.md
+                    - code [ref=e543]: roadmap.md
+                  - text: .
+                - generic [ref=e544]:
+                  - heading "4. Skill injection per adapter" [level=2] [ref=e545]
+                  - 'link "Permalink: 4. Skill injection per adapter" [ref=e546] [cursor=pointer]':
+                    - /url: "#4-skill-injection-per-adapter"
+                    - img [ref=e547]
+                - paragraph [ref=e549]: "Skills travel into each agent via one of three strategies, in order of preference:"
+                - generic [ref=e550]:
+                  - heading "4.1 Native skill loading (preferred)" [level=3] [ref=e551]
+                  - 'link "Permalink: 4.1 Native skill loading (preferred)" [ref=e552] [cursor=pointer]':
+                    - /url: "#41-native-skill-loading-preferred"
+                    - img [ref=e553]
+                - paragraph [ref=e555]:
+                  - text: Agent scans its own
+                  - code [ref=e556]: ~/.<agent>/skills/
+                  - text: on launch. We symlink OD's skill into that dir (see
+                  - link "skills-protocol.md" [ref=e557] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/blob/main/docs/skills-protocol.md
+                    - code [ref=e558]: skills-protocol.md
+                  - text: §3) and let the agent pick it up natively. Zero prompt overhead.
+                - list [ref=e559]:
+                  - listitem [ref=e560]:
+                    - strong [ref=e561]: "Works for:"
+                    - text: Claude Code. Codex (version-dependent). OpenCode.
+                - generic [ref=e562]:
+                  - heading "4.2 Prompt injection (fallback)" [level=3] [ref=e563]
+                  - 'link "Permalink: 4.2 Prompt injection (fallback)" [ref=e564] [cursor=pointer]':
+                    - /url: "#42-prompt-injection-fallback"
+                    - img [ref=e565]
+                - paragraph [ref=e567]:
+                  - text: We read the skill's
+                  - code [ref=e568]: SKILL.md
+                  - text: body + any
+                  - code [ref=e569]: references/*.md
+                  - text: files it has, concatenate them into the system prompt, and copy
+                  - code [ref=e570]: assets/
+                  - text: files into the cwd. The agent has no concept of "skills" but has the instructions.
+                - list [ref=e571]:
+                  - listitem [ref=e572]:
+                    - strong [ref=e573]: "Works for:"
+                    - text: everyone. Default for API fallback, Cursor Agent, Gemini CLI.
+                  - listitem [ref=e574]:
+                    - strong [ref=e575]: "Cost:"
+                    - text: "more tokens per run. Mitigation: prune"
+                    - code [ref=e576]: references/
+                    - text: to the files the skill body actually mentions.
+                - generic [ref=e577]:
+                  - heading "4.3 File-placed workflow (hybrid)" [level=3] [ref=e578]
+                  - 'link "Permalink: 4.3 File-placed workflow (hybrid)" [ref=e579] [cursor=pointer]':
+                    - /url: "#43-file-placed-workflow-hybrid"
+                    - img [ref=e580]
+                - paragraph [ref=e582]:
+                  - text: For agents that support
+                  - code [ref=e583]: AGENTS.md
+                  - text: /
+                  - code [ref=e584]: .cursorrules
+                  - text: / similar project-level instruction files (Cursor Agent, OpenCode), we write a project-scoped instruction file in the artifact cwd before running the agent. The agent picks it up automatically.
+                - list [ref=e585]:
+                  - listitem [ref=e586]:
+                    - strong [ref=e587]: "Works for:"
+                    - text: Cursor Agent (
+                    - code [ref=e588]: .cursorrules
+                    - text: ), some OpenCode configurations.
+                - paragraph [ref=e589]:
+                  - text: The adapter declares which strategy to use via
+                  - code [ref=e590]: capabilities().nativeSkillLoading
+                  - text: and a private
+                  - code [ref=e591]: skillInjectionStrategy
+                  - text: field.
+                - generic [ref=e592]:
+                  - heading "5. Per-adapter notes" [level=2] [ref=e593]
+                  - 'link "Permalink: 5. Per-adapter notes" [ref=e594] [cursor=pointer]':
+                    - /url: "#5-per-adapter-notes"
+                    - img [ref=e595]
+                - generic [ref=e597]:
+                  - heading "5.1 Claude Code (reference implementation)" [level=3] [ref=e598]
+                  - 'link "Permalink: 5.1 Claude Code (reference implementation)" [ref=e599] [cursor=pointer]':
+                    - /url: "#51-claude-code-reference-implementation"
+                    - img [ref=e600]
+                - list [ref=e602]:
+                  - listitem [ref=e603]:
+                    - text: "Invocation:"
+                    - code [ref=e604]: claude --print --output-format stream-json --cwd <artifact-dir> "<prompt>"
+                    - text: .
+                  - listitem [ref=e605]:
+                    - text: "Streaming format: JSON Lines over stdout; each line is an event we can map to"
+                    - code [ref=e606]: AgentEvent
+                    - text: directly.
+                  - listitem [ref=e607]:
+                    - text: "Skill loading: native. Just ensure the skill is symlinked in"
+                    - code [ref=e608]: ~/.claude/skills/
+                    - text: .
+                  - listitem [ref=e609]:
+                    - text: "Surgical edits: use the"
+                    - code [ref=e610]: Edit
+                    - text: tool; Claude Code's own loop handles this.
+                  - listitem [ref=e611]:
+                    - text: "Permission: set"
+                    - code [ref=e612]: "--allowed-tools \"Read,Edit,Write\""
+                    - text: to restrict blast radius.
+                  - listitem [ref=e613]:
+                    - text: "Cancel: send"
+                    - code [ref=e614]: SIGTERM
+                    - text: ; Claude Code flushes and exits.
+                  - listitem [ref=e615]:
+                    - strong [ref=e616]: "Gotchas:"
+                    - text: Claude Code's JSON stream schema is versioned — pin to a known version, warn on mismatch.
+                - generic [ref=e617]:
+                  - heading "5.2 API fallback (no CLI)" [level=3] [ref=e618]
+                  - 'link "Permalink: 5.2 API fallback (no CLI)" [ref=e619] [cursor=pointer]':
+                    - /url: "#52-api-fallback-no-cli"
+                    - img [ref=e620]
+                - list [ref=e622]:
+                  - listitem [ref=e623]:
+                    - text: "Invocation: direct Anthropic Messages API with"
+                    - code [ref=e624]: "stream: true"
+                    - text: .
+                  - listitem [ref=e625]: "Skill loading: prompt injection only — read the skill dir, inline everything."
+                  - listitem [ref=e626]:
+                    - text: "Tool use: we register"
+                    - code [ref=e627]: Read/Write/Edit
+                    - text: as tools, implement them in the daemon against the artifact cwd, and run the loop ourselves. This is the one place OD does own the loop — because the user has no agent at all. Keep it as dumb as possible.
+                  - listitem [ref=e628]: "Surgical edits: approximated by regenerating the whole target file with \"only change X\" in the prompt."
+                  - listitem [ref=e629]: "Model: Claude Sonnet 4.6 default; Opus 4.7 behind a flag."
+                  - listitem [ref=e630]:
+                    - strong [ref=e631]: Why ship this at all?
+                    - text: Topology C requires it (no daemon available in a pure-Vercel deploy). Also, users trying OD for the first time without a CLI installed still get a working experience.
+                - generic [ref=e632]:
+                  - heading "5.3 Codex" [level=3] [ref=e633]
+                  - 'link "Permalink: 5.3 Codex" [ref=e634] [cursor=pointer]':
+                    - /url: "#53-codex"
+                    - img [ref=e635]
+                - list [ref=e637]:
+                  - listitem [ref=e638]:
+                    - text: "Invocation:"
+                    - code [ref=e639]: codex exec --cwd <dir> "<prompt>"
+                    - text: .
+                  - listitem [ref=e640]: "Streaming: line-based; parse with a regex-based state machine. Less rich than Claude Code's JSON stream."
+                  - listitem [ref=e641]:
+                    - text: "Skill loading: varies. Newer Codex versions read"
+                    - code [ref=e642]: ~/.codex/skills/
+                    - text: ; older versions don't. Detect by version string; fall back to prompt injection.
+                  - listitem [ref=e643]: "Surgical edits: Codex's edit tool exists but the tool-call schema is different enough that we regenerate files instead in v1. Revisit in v2."
+                  - listitem [ref=e644]:
+                    - strong [ref=e645]: "Gotcha:"
+                    - text: Codex's CLI auth state can be "authenticated to wrong org." Detect by running
+                    - code [ref=e646]: codex whoami
+                    - text: at detect time.
+                - generic [ref=e647]:
+                  - heading "5.4 Devin for Terminal" [level=3] [ref=e648]
+                  - 'link "Permalink: 5.4 Devin for Terminal" [ref=e649] [cursor=pointer]':
+                    - /url: "#54-devin-for-terminal"
+                    - img [ref=e650]
+                - list [ref=e652]:
+                  - listitem [ref=e653]:
+                    - text: "Invocation:"
+                    - code [ref=e654]: devin --permission-mode dangerous --respect-workspace-trust false acp
+                    - text: .
+                  - listitem [ref=e655]:
+                    - text: "Install/update: macOS/Linux/WSL users can install with"
+                    - code [ref=e656]: curl -fsSL https://cli.devin.ai/install.sh | bash
+                    - text: ; run
+                    - code [ref=e657]: devin update
+                    - text: for existing installs.
+                  - listitem [ref=e658]:
+                    - text: "Version requirement: requires a Devin CLI build with the"
+                    - code [ref=e659]: devin acp
+                    - text: subcommand (verified with
+                    - code [ref=e660]: devin 2026.5.1-1
+                    - text: ). Check with
+                    - code [ref=e661]: devin acp --help
+                    - text: ; if the subcommand is missing, update or reinstall Devin for Terminal.
+                  - listitem [ref=e662]:
+                    - text: "Streaming: Agent Client Protocol JSON-RPC over stdio, handled by the daemon's shared"
+                    - code [ref=e663]: acp-json-rpc
+                    - text: transport.
+                  - listitem [ref=e664]:
+                    - text: "Skill loading: Devin supports"
+                    - code [ref=e665]: .devin/skills/
+                    - text: and
+                    - code [ref=e666]: ~/.config/devin/skills/
+                    - text: ; OD's current daemon also prompt-injects the selected skill body into the composed prompt, so no per-project skill install is required for generation.
+                  - listitem [ref=e667]: "Surgical edits: Devin's own edit/write tools handle targeted changes."
+                  - listitem [ref=e668]:
+                    - text: "Permission:"
+                    - code [ref=e669]: "--permission-mode dangerous"
+                    - text: avoids headless approval prompts in the web UI;
+                    - code [ref=e670]: "--respect-workspace-trust false"
+                    - text: ensures Devin doesn't block on trust prompts for newly created project dirs. Org/team-level policies still apply inside Devin.
+                - generic [ref=e671]:
+                  - heading "5.5 Cursor Agent" [level=3] [ref=e672]
+                  - 'link "Permalink: 5.5 Cursor Agent" [ref=e673] [cursor=pointer]':
+                    - /url: "#55-cursor-agent"
+                    - img [ref=e674]
+                - list [ref=e676]:
+                  - listitem [ref=e677]:
+                    - text: "Invocation:"
+                    - code [ref=e678]: cursor-agent --workspace <dir> "<prompt>"
+                    - text: (rough; verify with CLI docs at implementation time).
+                  - listitem [ref=e679]: "Streaming: yes, JSON lines."
+                  - listitem [ref=e680]:
+                    - text: "Skill loading: no native skill concept. We write a"
+                    - code [ref=e681]: .cursorrules
+                    - text: file into the artifact dir before running. The rules file contains the skill's SKILL.md body (minus front-matter).
+                  - listitem [ref=e682]:
+                    - text: "Surgical edits: Cursor's inline edit tool is strong; map our"
+                    - code [ref=e683]: refine
+                    - text: call to its edit protocol.
+                  - listitem [ref=e684]:
+                    - strong [ref=e685]: "Gotcha:"
+                    - text: Cursor Agent operates on workspaces, not single files. Constrain the workspace to the artifact dir to prevent over-broad changes.
+                - generic [ref=e686]:
+                  - heading "5.6 Gemini CLI" [level=3] [ref=e687]
+                  - 'link "Permalink: 5.6 Gemini CLI" [ref=e688] [cursor=pointer]':
+                    - /url: "#56-gemini-cli"
+                    - img [ref=e689]
+                - list [ref=e691]:
+                  - listitem [ref=e692]:
+                    - text: "Invocation:"
+                    - code [ref=e693]: gemini
+                    - text: with the composed prompt delivered via
+                    - strong [ref=e694]: stdin
+                    - text: (no
+                    - code [ref=e695]: "-p"
+                    - text: flag). Gemini CLI enters headless mode automatically when stdin is a pipe and no
+                    - code [ref=e696]: "-p"
+                    - text: flag is supplied — verified with
+                    - code [ref=e697]: gemini@0.1.x
+                    - text: .
+                  - listitem [ref=e698]:
+                    - text: "Trust:"
+                    - code [ref=e699]: GEMINI_CLI_TRUST_WORKSPACE=true
+                    - text: is set in the spawned process instead of passing
+                    - code [ref=e700]: "--skip-trust"
+                    - text: ", which is version-fragile across Gemini CLI releases."
+                  - listitem [ref=e701]:
+                    - text: "Streaming: yes,"
+                    - code [ref=e702]: "--output-format stream-json"
+                    - text: to stdout.
+                  - listitem [ref=e703]: "Skill loading: prompt injection only."
+                  - listitem [ref=e704]: "Surgical edits: regenerate whole file."
+                  - listitem [ref=e705]:
+                    - strong [ref=e706]:
+                      - text: Gotcha —
+                      - code [ref=e707]: spawn ENAMETOOLONG
+                      - text: "on Windows:"
+                    - text: Passing the full composed prompt as a
+                    - code [ref=e708]: "-p <string>"
+                    - text: CLI argument hits Windows'
+                    - code [ref=e709]: CreateProcess
+                    - text: hard limit of ~32 KB for the entire command line. The fix is to set
+                    - code [ref=e710]: "promptViaStdin: true"
+                    - text: in the agent definition and write the prompt to
+                    - code [ref=e711]: child.stdin
+                    - text: after spawning. The daemon's
+                    - code [ref=e712]: /api/chat
+                    - text: handler checks this flag and opens stdin as a pipe instead of
+                    - code [ref=e713]: "'ignore'"
+                    - text: .
+                  - listitem [ref=e714]:
+                    - strong [ref=e715]: "Gotcha:"
+                    - text: Gemini's tool-use format is distinct; we translate our file-write tool to its
+                    - code [ref=e716]: file_tool
+                    - text: equivalent when that feature is implemented.
+                - generic [ref=e717]:
+                  - heading "5.7 OpenCode / OpenClaw" [level=3] [ref=e718]
+                  - 'link "Permalink: 5.7 OpenCode / OpenClaw" [ref=e719] [cursor=pointer]':
+                    - /url: "#57-opencode--openclaw"
+                    - img [ref=e720]
+                - list [ref=e722]:
+                  - listitem [ref=e723]: Less-matured CLIs. Targeting P2. Expect bumps; adapter implementations will likely be the thinnest possible "shell out, parse output, synthesize events" approach.
+                - generic [ref=e724]:
+                  - heading "5.8 GitHub Copilot CLI" [level=3] [ref=e725]
+                  - 'link "Permalink: 5.8 GitHub Copilot CLI" [ref=e726] [cursor=pointer]':
+                    - /url: "#58-github-copilot-cli"
+                    - img [ref=e727]
+                - list [ref=e729]:
+                  - listitem [ref=e730]:
+                    - text: "Invocation:"
+                    - code [ref=e731]: copilot -p "<prompt>" --allow-all-tools --output-format json --add-dir <skills> --add-dir <design-systems>
+                    - text: .
+                    - code [ref=e732]: "--allow-all-tools"
+                    - text: is mandatory in non-interactive mode — without it the CLI blocks waiting for human approval on every tool call. Unlike Codex (where
+                    - code [ref=e733]: exec
+                    - text: is a dedicated headless subcommand with auto-approve baked in) or Claude Code (which inherits its permission policy from
+                    - code [ref=e734]: ~/.claude/settings.json
+                    - text: ), Copilot's
+                    - code [ref=e735]: "-p"
+                    - text: mode always prompts unless this flag is passed explicitly.
+                    - code [ref=e736]: "--add-dir"
+                    - text: (repeatable) widens the path-level sandbox so Copilot can read skill seeds and design-system specs that live outside the project cwd.
+                  - listitem [ref=e737]:
+                    - text: "Streaming:"
+                    - code [ref=e738]: "--output-format json"
+                    - text: emits JSONL with the same expressive shape as Claude Code's stream-json (
+                    - code [ref=e739]: assistant.reasoning_delta
+                    - text: ","
+                    - code [ref=e740]: assistant.message_delta
+                    - text: ","
+                    - code [ref=e741]: tool.execution_start/complete
+                    - text: ","
+                    - code [ref=e742]: result
+                    - text: ).
+                    - code [ref=e743]: apps/daemon/src/copilot-stream.ts
+                    - text: maps these onto the same UI events as
+                    - code [ref=e744]: claude-stream.ts
+                    - text: .
+                  - listitem [ref=e745]:
+                    - text: "Skill loading: prompt injection only. Github Copilot's tool catalog includes a"
+                    - code [ref=e746]: skill
+                    - text: tool — native format worth reverse-engineering later.
+                  - listitem [ref=e747]:
+                    - text: "Surgical edits: dedicated"
+                    - code [ref=e748]: edit
+                    - text: tool.
+                  - listitem [ref=e749]:
+                    - text: "Detection assumes Copilot is already authenticated, via one of:"
+                    - code [ref=e750]: copilot login
+                    - text: (subcommand, OAuth device flow), the interactive
+                    - code [ref=e751]: /login
+                    - text: slash command inside
+                    - code [ref=e752]: copilot
+                    - text: with no args.
+                - generic [ref=e753]:
+                  - heading "5.9 Qoder CLI" [level=3] [ref=e754]
+                  - 'link "Permalink: 5.9 Qoder CLI" [ref=e755] [cursor=pointer]':
+                    - /url: "#59-qoder-cli"
+                    - img [ref=e756]
+                - list [ref=e758]:
+                  - listitem [ref=e759]:
+                    - text: "Invocation:"
+                    - code [ref=e760]: qodercli -p --output-format stream-json --permission-mode bypass_permissions --cwd <dir> [--model <id>] --add-dir <absolute-skills-dir> --add-dir <absolute-design-systems-dir>
+                    - text: ", with the composed prompt delivered over stdin. Print mode exits after the turn, which fits the daemon's one-request chat lifecycle. Qoder is currently text-only in OD;"
+                    - code [ref=e761]: _imagePaths
+                    - text: are intentionally ignored because Qoder CLI does not expose a supported multimodal flag for this adapter path yet.
+                  - listitem [ref=e762]:
+                    - text: "Streaming:"
+                    - code [ref=e763]: "--output-format stream-json"
+                    - text: emits JSONL records such as
+                    - code [ref=e764]: system/init
+                    - text: ","
+                    - code [ref=e765]: assistant
+                    - text: ", and"
+                    - code [ref=e766]: result
+                    - text: .
+                    - code [ref=e767]: apps/daemon/src/qoder-stream.ts
+                    - text: maps assistant content blocks to text deltas, maps assistant errors without text to typed error events, and preserves result usage, model usage, cost, duration, stop reason, and unknown records as raw events.
+                  - listitem [ref=e768]:
+                    - text: "Models: ships fallback hints for"
+                    - code [ref=e769]: default
+                    - text: ","
+                    - code [ref=e770]: lite
+                    - text: ","
+                    - code [ref=e771]: efficient
+                    - text: ","
+                    - code [ref=e772]: auto
+                    - text: ","
+                    - code [ref=e773]: performance
+                    - text: ", and"
+                    - code [ref=e774]: ultimate
+                    - text: . Selecting
+                    - code [ref=e775]: default
+                    - text: omits
+                    - code [ref=e776]: "--model"
+                    - text: so Qoder's own CLI configuration remains authoritative.
+                  - listitem [ref=e777]:
+                    - text: "Skills: prompt injection only in v1."
+                    - code [ref=e778]: "--add-dir"
+                    - text: is repeatable so Qoder can read absolute skill and design-system roots that live outside the active project cwd; the daemon does not forward relative extra directory entries.
+                  - listitem [ref=e779]:
+                    - text: "Permission:"
+                    - code [ref=e780]: "--permission-mode bypass_permissions"
+                    - text: avoids headless approval prompts in the web UI. Users should treat this as the same trust posture as running Qoder directly with that flag in the selected project directory.
+                  - listitem [ref=e781]:
+                    - strong [ref=e782]: "Gotcha:"
+                    - text: Detection only proves
+                    - code [ref=e783]: qodercli --version
+                    - text: can run. Qoder authentication and account scope remain owned by Qoder CLI, with credentials read from Qoder's
+                    - code [ref=e784]: ~/.qoder/config.json
+                    - text: ; the daemon surfaces stderr/stdout failures from the spawned run instead of running login or editing Qoder config.
+                - generic [ref=e785]:
+                  - heading "5.10 Trae CLI" [level=3] [ref=e786]
+                  - 'link "Permalink: 5.10 Trae CLI" [ref=e787] [cursor=pointer]':
+                    - /url: "#510-trae-cli"
+                    - img [ref=e788]
+                - list [ref=e790]:
+                  - listitem [ref=e791]:
+                    - text: "Invocation:"
+                    - code [ref=e792]: traecli acp serve
+                    - text: ", using the daemon's shared ACP JSON-RPC transport. The adapter follows Trae CLI's public ACP entrypoint documented at"
+                    - link "https://www.volcengine.com/docs/86677/2227861?lang=zh" [ref=e793] [cursor=pointer]:
+                      - /url: https://www.volcengine.com/docs/86677/2227861?lang=zh
+                    - text: .
+                  - listitem [ref=e794]:
+                    - text: "Streaming:"
+                    - code [ref=e795]: acp-json-rpc
+                    - text: ; the daemon uses the same ACP event path as the other ACP-backed adapters.
+                  - listitem [ref=e796]: "Models: dynamic via the ACP handshake. If model discovery fails, the picker falls back to the CLI's default configuration rather than requiring CI or startup detection to log in to Trae CLI."
+                  - listitem [ref=e797]:
+                    - text: "Skills: prompt injection only in v1. External MCP servers can be forwarded through the ACP launch descriptor with the existing"
+                    - code [ref=e798]: acp-merge
+                    - text: path.
+                  - listitem [ref=e799]:
+                    - strong [ref=e800]: "Gotcha:"
+                    - text: Detection only proves
+                    - code [ref=e801]: traecli --version
+                    - text: and model discovery can run in the current environment. Trae CLI owns login, account scope, and model entitlement; the daemon does not run login flows or edit Trae CLI configuration.
+                - generic [ref=e802]:
+                  - heading "5.11 Pi" [level=3] [ref=e803]
+                  - 'link "Permalink: 5.11 Pi" [ref=e804] [cursor=pointer]':
+                    - /url: "#511-pi"
+                    - img [ref=e805]
+                - list [ref=e807]:
+                  - listitem [ref=e808]:
+                    - text: "Invocation:"
+                    - code [ref=e809]: pi --mode rpc [--model <id>] [--thinking <level>] [--append-system-prompt <dir> …]
+                    - text: ", with the composed prompt delivered over stdin via JSON-RPC. The daemon sends a"
+                    - code [ref=e810]: prompt
+                    - text: command (optionally with
+                    - code [ref=e811]: images
+                    - text: for multimodal input) and pi streams back typed events until
+                    - code [ref=e812]: agent_end
+                    - text: . Pi's RPC process stays alive after
+                    - code [ref=e813]: agent_end
+                    - text: (designed for multi-prompt sessions); the daemon closes stdin and SIGTERMs after a grace period since
+                    - code [ref=e814]: /api/chat
+                    - text: is single-shot.
+                  - listitem [ref=e815]:
+                    - text: "Streaming:"
+                    - code [ref=e816]: pi-rpc
+                    - text: JSON-RPC over stdio. Events include
+                    - code [ref=e817]: agent_start
+                    - text: ","
+                    - code [ref=e818]: turn_start/end
+                    - text: ","
+                    - code [ref=e819]: message_update
+                    - text: (text deltas, thinking deltas, tool calls),
+                    - code [ref=e820]: tool_execution_start/end
+                    - text: ","
+                    - code [ref=e821]: compaction_start
+                    - text: ","
+                    - code [ref=e822]: auto_retry_start/end
+                    - text: ","
+                    - code [ref=e823]: extension_error
+                    - text: .
+                    - code [ref=e824]: apps/daemon/src/pi-rpc.ts
+                    - text: maps these onto the same UI event set as
+                    - code [ref=e825]: claude-stream.js
+                    - text: /
+                    - code [ref=e826]: copilot-stream.js
+                    - text: /
+                    - code [ref=e827]: acp.js
+                    - text: . Error events from
+                    - code [ref=e828]: extension_error
+                    - text: and exhausted
+                    - code [ref=e829]: auto_retry_end
+                    - text: are routed through
+                    - code [ref=e830]: sendAgentEvent
+                    - text: so the daemon's empty-output guard and
+                    - code [ref=e831]: agentStreamError
+                    - text: "flag apply (same path as qoder-stream-json and json-event-stream after issue #691)."
+                  - listitem [ref=e832]:
+                    - text: "Models: dynamic —"
+                    - code [ref=e833]: pi --list-models
+                    - text: prints a TSV table to stderr that the daemon parses into provider/model picker entries. Fallback hints for the most common providers/models are shipped for when the list command times out.
+                  - listitem [ref=e834]:
+                    - text: "Images: pi's RPC"
+                    - code [ref=e835]: prompt
+                    - text: command supports an
+                    - code [ref=e836]: images
+                    - text: field (base64-encoded
+                    - code [ref=e837]: ImageContent
+                    - text: objects). The daemon reads validated
+                    - code [ref=e838]: imagePaths
+                    - text: at session attach time and includes them in the prompt command. Unreadable images are skipped rather than failing the run.
+                  - listitem [ref=e839]:
+                    - text: "Skills: prompt injection in v1."
+                    - code [ref=e840]: extraAllowedDirs
+                    - text: (skill seed and design-system directories) are forwarded as
+                    - code [ref=e841]: "--append-system-prompt"
+                    - text: repeatable flags so the agent knows these directories exist and can Read files inside them. pi doesn't have an
+                    - code [ref=e842]: "--add-dir"
+                    - text: sandbox flag — it uses OS cwd — so system-prompt hints are the only available mechanism.
+                    - strong [ref=e843]: "Important:"
+                    - code [ref=e844]: "--append-system-prompt"
+                    - text: only hints paths in the system prompt; it does not grant sandbox or filesystem access. pi's Read tool can normally open absolute paths outside cwd, but when absolute reads fail (sandboxed environments, restricted permissions), the reliable fallback is to stage copies of the needed files into the project cwd before the run. No stronger pi flag exists for this purpose today.
+                  - listitem [ref=e845]:
+                    - text: "Thinking: the daemon exposes pi's"
+                    - code [ref=e846]: "--thinking"
+                    - text: levels (
+                    - code [ref=e847]: "off"
+                    - text: ","
+                    - code [ref=e848]: minimal
+                    - text: ","
+                    - code [ref=e849]: low
+                    - text: ","
+                    - code [ref=e850]: medium
+                    - text: ","
+                    - code [ref=e851]: high
+                    - text: ","
+                    - code [ref=e852]: xhigh
+                    - text: ) in the Settings model picker.
+                  - listitem [ref=e853]:
+                    - text: "Extension UI: auto-resolved. pi's RPC protocol can request user dialogs ("
+                    - code [ref=e854]: select
+                    - text: ","
+                    - code [ref=e855]: confirm
+                    - text: ","
+                    - code [ref=e856]: input
+                    - text: ","
+                    - code [ref=e857]: editor
+                    - text: ) and fire-and-forget notifications (
+                    - code [ref=e858]: setStatus
+                    - text: ","
+                    - code [ref=e859]: setWidget
+                    - text: ","
+                    - code [ref=e860]: notify
+                    - text: ","
+                    - code [ref=e861]: setTitle
+                    - text: ","
+                    - code [ref=e862]: set_editor_text
+                    - text: ). Dialog methods are auto-approved (confirm → true, select → first option) and fire-and-forget methods are silently consumed because the web UI has no surface for them.
+                  - listitem [ref=e863]:
+                    - strong [ref=e864]: "Gotcha:"
+                    - text: pi's RPC
+                    - code [ref=e865]: prompt
+                    - text: response is asynchronous —
+                    - code [ref=e866]: "success: true"
+                    - text: only means the prompt was accepted, not that the agent finished. Agent failures after acceptance surface through the normal event stream (
+                    - code [ref=e867]: extension_error
+                    - text: ","
+                    - code [ref=e868]: auto_retry_end
+                    - text: with
+                    - code [ref=e869]: "success: false"
+                    - text: ) and the empty-output guard.
+                - generic [ref=e870]:
+                  - heading "5.12 DeepSeek TUI" [level=3] [ref=e871]
+                  - 'link "Permalink: 5.12 DeepSeek TUI" [ref=e872] [cursor=pointer]':
+                    - /url: "#512-deepseek-tui"
+                    - img [ref=e873]
+                - list [ref=e875]:
+                  - listitem [ref=e876]:
+                    - text: "Invocation:"
+                    - code [ref=e877]: deepseek exec --auto [--model <id>] "<prompt>"
+                    - text: . The
+                    - code [ref=e878]: deepseek
+                    - text: dispatcher owns the
+                    - code [ref=e879]: exec
+                    - text: /
+                    - code [ref=e880]: "--auto"
+                    - text: subcommands and delegates to a sibling
+                    - code [ref=e881]: deepseek-tui
+                    - text: runtime binary at exec time; upstream documents both binaries as required (the npm and cargo paths install them together). We only probe the dispatcher —
+                    - code [ref=e882]: deepseek-tui
+                    - text: on its own doesn't accept this argv shape, so advertising it as a fallback would surface the agent as available but fail on the first chat run. A future revision could teach resolution + buildArgs which binary was selected and emit a verified
+                    - code [ref=e883]: deepseek-tui
+                    - text: invocation, with a regression test exercising that path.
+                  - listitem [ref=e884]:
+                    - text: "Streaming: plain text deltas to stdout in non-"
+                    - code [ref=e885]: "--json"
+                    - text: mode (tool-call notifications go to stderr). Skipping
+                    - code [ref=e886]: "--json"
+                    - text: is intentional —
+                    - code [ref=e887]: deepseek exec --json
+                    - text: batches the entire run into one trailing summary object instead of streaming, which would freeze the chat UI until end-of-turn.
+                  - listitem [ref=e888]:
+                    - text: "Auto-approval:"
+                    - code [ref=e889]: "--auto"
+                    - text: enables agentic mode with the YOLO permission posture. The daemon runs every CLI without a TTY, so the interactive approval prompt would otherwise hang the run.
+                  - listitem [ref=e890]:
+                    - text: "Skills: prompt injection only in v1. DeepSeek TUI does walk"
+                    - code [ref=e891]: .agents/skills
+                    - text: ","
+                    - code [ref=e892]: skills
+                    - text: ","
+                    - code [ref=e893]: .opencode/skills
+                    - text: ","
+                    - code [ref=e894]: .claude/skills
+                    - text: ", and"
+                    - code [ref=e895]: ~/.deepseek/skills
+                    - text: first-wins, so a future revision can switch to file-placed skill loading the same way Claude Code does.
+                  - listitem [ref=e896]:
+                    - text: "Prompt delivery: positional argv (no stdin sentinel; clap declares"
+                    - code [ref=e897]: "prompt: String"
+                    - text: as a required field). This means very large composed prompts can hit Windows' ~32 KB
+                    - code [ref=e898]: CreateProcess
+                    - text: limit; for typical chat prompts this is non-issue. Upstream support for a
+                    - code [ref=e899]: "-"
+                    - text: stdin sentinel would let us flip this to
+                    - code [ref=e900]: "promptViaStdin: true"
+                    - text: like the other adapters. To avoid surfacing oversized prompts as a generic
+                    - code [ref=e901]: spawn ENAMETOOLONG
+                    - text: /
+                    - code [ref=e902]: E2BIG
+                    - text: ", the adapter declares"
+                    - code [ref=e903]: maxPromptArgBytes
+                    - text: (currently 30,000) and
+                    - code [ref=e904]: /api/chat
+                    - text: "enforces it through three complementary guards: a fast pre-bin-resolution"
+                    - code [ref=e905]: checkPromptArgvBudget
+                    - text: against the raw composed prompt bytes, a post-
+                    - code [ref=e906]: buildArgs
+                    - code [ref=e907]: checkWindowsCmdShimCommandLineBudget
+                    - text: that — when the resolved binary is a Windows
+                    - code [ref=e908]: .cmd
+                    - text: /
+                    - code [ref=e909]: .bat
+                    - text: shim — recomputes the would-be
+                    - code [ref=e910]: cmd.exe /d /s /c "<inner>"
+                    - text: command line using the same per-arg quote-doubling the platform layer applies on Windows, and a sibling
+                    - code [ref=e911]: checkWindowsDirectExeCommandLineBudget
+                    - text: that — when the resolved binary is a non-shim Windows install (e.g. a cargo-built
+                    - code [ref=e912]: deepseek.exe
+                    - text: ) — recomputes the same command line using libuv's
+                    - code [ref=e913]: quote_cmd_arg
+                    - text: rules (every
+                    - code [ref=e914]: "\""
+                    - text: becomes
+                    - code [ref=e915]: \"
+                    - text: ", backslashes adjacent to a quote are doubled). The two Windows guards are mutually exclusive on a given resolution: the cmd-shim guard owns"
+                    - code [ref=e916]: .cmd
+                    - text: /
+                    - code [ref=e917]: .bat
+                    - text: ", the direct-exe guard owns everything else. Together they catch quote-heavy prompts (code blocks, JSON-shaped skill seeds) that fit under the raw byte budget but expand past CreateProcess's 32_767-char"
+                    - code [ref=e918]: lpCommandLine
+                    - text: cap on either install path. All three guards emit the same actionable
+                    - code [ref=e919]: AGENT_PROMPT_TOO_LARGE
+                    - text: SSE error telling the user to reduce skills/design-system context, shorten the conversation, or pick an adapter with stdin support, and all three are unit-tested (oversized + short-prompt branches, quote-heavy regressions for both Windows paths, and a mutual-exclusivity check) so the guards can't silently regress.
+                  - listitem [ref=e920]:
+                    - text: "Models: ships"
+                    - code [ref=e921]: deepseek-v4-pro
+                    - text: and
+                    - code [ref=e922]: deepseek-v4-flash
+                    - text: as fallback hints (1M-token context windows, native thinking-mode streaming). Users can paste any other id (e.g.
+                    - code [ref=e923]: nvidia-nim/deepseek-v4-pro
+                    - text: ","
+                    - code [ref=e924]: fireworks/deepseek-v4-flash
+                    - text: ) via the Settings dialog's custom-model input.
+                  - listitem [ref=e925]:
+                    - strong [ref=e926]: Gotcha — auth state is not auto-detected.
+                    - text: DeepSeek TUI reads its API key from
+                    - code [ref=e927]: ~/.deepseek/config.toml
+                    - text: or
+                    - code [ref=e928]: DEEPSEEK_API_KEY
+                    - text: . If the user hasn't run
+                    - code [ref=e929]: deepseek auth set --provider deepseek
+                    - text: (or set the env var), the first run errors out with a non-actionable message. Detection currently only reports
+                    - code [ref=e930]: "available: true"
+                    - text: based on the binary being on PATH; surface auth state via
+                    - code [ref=e931]: deepseek doctor --json
+                    - text: in a follow-up.
+                - generic [ref=e932]:
+                  - heading "6. Capability-driven UI" [level=2] [ref=e933]
+                  - 'link "Permalink: 6. Capability-driven UI" [ref=e934] [cursor=pointer]':
+                    - /url: "#6-capability-driven-ui"
+                    - img [ref=e935]
+                - paragraph [ref=e937]:
+                  - text: The web UI reads
+                  - code [ref=e938]: agents.capabilities()
+                  - text: "and disables features that the active adapter can't support:"
+                - table [ref=e940]:
+                  - rowgroup [ref=e941]:
+                    - row "UI feature Requires If missing" [ref=e942]:
+                      - columnheader "UI feature" [ref=e943]
+                      - columnheader "Requires" [ref=e944]
+                      - columnheader "If missing" [ref=e945]
+                  - rowgroup [ref=e946]:
+                    - 'row "Comment mode (click to refine) surgicalEdit: true Hidden; show tooltip explaining why" [ref=e947]':
+                      - cell "Comment mode (click to refine)" [ref=e948]
+                      - 'cell "surgicalEdit: true" [ref=e949]':
+                        - code [ref=e950]: "surgicalEdit: true"
+                      - cell "Hidden; show tooltip explaining why" [ref=e951]
+                    - 'row "Streaming tool-call feed streaming: true Show a spinner only" [ref=e952]':
+                      - cell "Streaming tool-call feed" [ref=e953]
+                      - 'cell "streaming: true" [ref=e954]':
+                        - code [ref=e955]: "streaming: true"
+                      - cell "Show a spinner only" [ref=e956]
+                    - 'row "Resume interrupted run resume: true \"Cancel + restart\" only" [ref=e957]':
+                      - cell "Resume interrupted run" [ref=e958]
+                      - 'cell "resume: true" [ref=e959]':
+                        - code [ref=e960]: "resume: true"
+                      - cell "\"Cancel + restart\" only" [ref=e961]
+                    - row "Skill picker shows skill with od.capabilities_required all listed caps Skill greyed out with reason" [ref=e962]:
+                      - cell "Skill picker shows skill with od.capabilities_required" [ref=e963]:
+                        - text: Skill picker shows skill with
+                        - code [ref=e964]: od.capabilities_required
+                      - cell "all listed caps" [ref=e965]
+                      - cell "Skill greyed out with reason" [ref=e966]
+                - paragraph [ref=e967]: This is how we avoid "works on my Claude Code, breaks on your Gemini" — we detect, degrade, and document.
+                - generic [ref=e968]:
+                  - heading "7. Agent switching" [level=2] [ref=e969]
+                  - 'link "Permalink: 7. Agent switching" [ref=e970] [cursor=pointer]':
+                    - /url: "#7-agent-switching"
+                    - img [ref=e971]
+                - paragraph [ref=e973]: "The user can switch active agent per session:"
+                - generic [ref=e974]:
+                  - code [ref=e976]: "POST agents.setActive { agentId: \"codex\" } → capabilities() reported → web UI refreshes feature gates → next generation runs on Codex"
+                  - button "Copy code to clipboard" [ref=e978] [cursor=pointer]:
+                    - img [ref=e979]
+                - paragraph [ref=e982]: Switching mid-run is not allowed (cancel first). The artifact is agent-agnostic; only the generation process differs.
+                - generic [ref=e983]:
+                  - heading "8. Fallback chain" [level=2] [ref=e984]
+                  - 'link "Permalink: 8. Fallback chain" [ref=e985] [cursor=pointer]':
+                    - /url: "#8-fallback-chain"
+                    - img [ref=e986]
+                - paragraph [ref=e988]: "If the user's preferred agent fails (crash, auth, timeout), OD offers a one-click fallback in this order:"
+                - list [ref=e989]:
+                  - listitem [ref=e990]: User's preferred agent (e.g. Cursor Agent)
+                  - listitem [ref=e991]: Any other detected agent (Claude Code, if installed)
+                  - listitem [ref=e992]: API fallback (direct Anthropic, requires key)
+                - paragraph [ref=e993]: The user explicitly opts in to fallback — we don't silently switch, because a skill may have been authored for a specific agent's capabilities.
+                - generic [ref=e994]:
+                  - heading "9. Detection UX" [level=2] [ref=e995]
+                  - 'link "Permalink: 9. Detection UX" [ref=e996] [cursor=pointer]':
+                    - /url: "#9-detection-ux"
+                    - img [ref=e997]
+                - paragraph [ref=e999]: "First run:"
+                - generic [ref=e1000]:
+                  - code [ref=e1002]: "$ pnpm tools-dev run web [od] daemon starting on :7456 [od] detecting agents… [od] ✓ claude-code v0.6.3 (auth: ok, skills dir linked) [od] ✓ codex v0.8.1 (auth: ok) [od] ✗ cursor-agent (not installed) [od] ✗ gemini-cli (installed but not authenticated; run `gemini auth login`) [od] ✓ api-fallback (ANTHROPIC_API_KEY found) [od] daemon ready; 3 agents available"
+                  - button "Copy code to clipboard" [ref=e1004] [cursor=pointer]:
+                    - img [ref=e1005]
+                - paragraph [ref=e1008]: Web UI mirrors this in an agent-selector dropdown, with unauthenticated agents shown greyed out with a fix-it tooltip.
+                - generic [ref=e1009]:
+                  - heading "10. Authorization boundaries" [level=2] [ref=e1010]
+                  - 'link "Permalink: 10. Authorization boundaries" [ref=e1011] [cursor=pointer]':
+                    - /url: "#10-authorization-boundaries"
+                    - img [ref=e1012]
+                - paragraph [ref=e1014]: "We inherit the underlying agent's permission model rather than building our own. This means:"
+                - list [ref=e1015]:
+                  - listitem [ref=e1016]:
+                    - strong [ref=e1017]: Claude Code
+                    - text: respects its own
+                    - code [ref=e1018]: "--allowed-tools"
+                    - text: and
+                    - code [ref=e1019]: "--permission-mode"
+                    - text: flags. OD passes through user preferences.
+                  - listitem [ref=e1020]:
+                    - strong [ref=e1021]: Codex / Cursor
+                    - text: sandbox by workspace; OD always sets cwd to the artifact dir so nothing outside is visible by default.
+                  - listitem [ref=e1022]:
+                    - strong [ref=e1023]: Qoder CLI
+                    - text: runs with
+                    - code [ref=e1024]: "--permission-mode bypass_permissions"
+                    - text: for non-interactive web execution and is scoped by the daemon's cwd plus explicit absolute
+                    - code [ref=e1025]: "--add-dir"
+                    - text: entries.
+                  - listitem [ref=e1026]:
+                    - strong [ref=e1027]: API fallback
+                    - text: "is the one case we own. We implement a whitelist: only"
+                    - code [ref=e1028]: Read
+                    - text: ","
+                    - code [ref=e1029]: Write
+                    - text: ","
+                    - code [ref=e1030]: Edit
+                    - text: tools, all rooted at the artifact cwd. Network access is off.
+                - paragraph [ref=e1031]: The daemon never grants more authority to an agent than it had on its own. We don't run the agent in a privileged mode "for convenience."
+                - generic [ref=e1032]:
+                  - heading "11. Adapter source layout" [level=2] [ref=e1033]
+                  - 'link "Permalink: 11. Adapter source layout" [ref=e1034] [cursor=pointer]':
+                    - /url: "#11-adapter-source-layout"
+                    - img [ref=e1035]
+                - generic [ref=e1037]:
+                  - code [ref=e1039]: "apps/daemon/ ├── base.ts # shared interface + utility helpers ├── claude-code/ │ ├── adapter.ts │ ├── stream-parser.ts # JSON-lines → AgentEvent │ └── detect.ts ├── api-fallback/ │ ├── adapter.ts │ ├── tool-loop.ts # the minimal tool-use loop │ └── tools.ts # Read/Write/Edit implementations ├── codex/ # Phase 1 ├── cursor-agent/ # Phase 1 ├── gemini-cli/ # Phase 2 ├── opencode/ # Phase 2 └── openclaw/ # Phase 2"
+                  - button "Copy code to clipboard" [ref=e1041] [cursor=pointer]:
+                    - img [ref=e1042]
+                - paragraph [ref=e1045]: Each adapter is a separate module so community contributions can add new ones without touching core daemon code.
+                - generic [ref=e1046]:
+                  - heading "12. Open questions" [level=2] [ref=e1047]
+                  - 'link "Permalink: 12. Open questions" [ref=e1048] [cursor=pointer]':
+                    - /url: "#12-open-questions"
+                    - img [ref=e1049]
+                - list [ref=e1051]:
+                  - listitem [ref=e1052]:
+                    - strong [ref=e1053]: Nested agents.
+                    - text: "What if Claude Code's agent itself spawns a subagent? We receive events from the outer process only. v1 policy: surface only top-level events; summarize subagent activity as \"sub-task\" placeholder."
+                  - listitem [ref=e1054]:
+                    - strong [ref=e1055]: Billing awareness.
+                    - text: Some agents bill per message, some per token. OD doesn't track cost in MVP; v1 adds an optional "usage" event from adapters that expose it.
+                  - listitem [ref=e1056]:
+                    - strong [ref=e1057]: Windows support.
+                    - text: PATH scanning and
+                    - code [ref=e1058]: spawn
+                    - text: "semantics differ on Windows. v1 targets macOS and Linux; Windows is best-effort. Known issue fixed:"
+                    - code [ref=e1059]: spawn ENAMETOOLONG
+                    - text: when running Gemini CLI (and other plain-text agents) on Windows — resolved by routing the composed prompt through stdin instead of as a CLI argument (see §5.5).
+                  - listitem [ref=e1060]:
+                    - strong [ref=e1061]: Docker-contained agents.
+                    - text: Some users run Claude Code in a container. Adapter needs a "remote" mode — probably same interface but talks over SSH. Phase 2+.
+  - alert [ref=e1065]

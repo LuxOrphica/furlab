@@ -1,0 +1,38 @@
+{
+  "name": "transverse_smoke",
+  "request": {
+    "layoutType": "transverse",
+    "zone": {
+      "id": "zone-smoke-trans-1",
+      "points": [
+        { "x": 0, "y": 0 },
+        { "x": 120, "y": 0 },
+        { "x": 120, "y": 60 },
+        { "x": 0, "y": 60 }
+      ]
+    },
+    "inputs": {
+      "normalizeRules": {
+        "minFragmentWidthMm": 1,
+        "minFragmentLengthMm": 1,
+        "mergeSmallFragments": false
+      }
+    },
+    "options": {
+      "rows": 2,
+      "cols": 3,
+      "gapX": 0,
+      "gapY": 0,
+      "cornerRadius": 0,
+      "angleDeg": 45
+    },
+    "seed": 123
+  },
+  "expect": {
+    "httpStatus": 200,
+    "ok": true,
+    "layoutType": "transverse",
+    "resultStatusIn": ["ok"],
+    "minRenderItems": 4
+  }
+}

@@ -1,0 +1,230 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: 3D Lastique · Tools
+    - heading "Garment Spec Builder" [level=1] [ref=e6]
+    - paragraph [ref=e7]: Табель мер / Measurement Sheet — v0.1
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - generic [ref=e10]: Изделие
+      - combobox [ref=e11] [cursor=pointer]:
+        - option "Классические брюки (муж.)"
+        - option "Пиджак однобортный" [selected]
+        - option "Пиджак двубортный"
+    - generic [ref=e12]:
+      - generic [ref=e13]: Размеры
+      - generic [ref=e14]:
+        - button "44" [ref=e15] [cursor=pointer]
+        - button "46" [ref=e16] [cursor=pointer]
+        - button "48" [ref=e17] [cursor=pointer]
+        - button "50" [ref=e18] [cursor=pointer]
+        - button "52" [ref=e19] [cursor=pointer]
+        - button "54" [ref=e20] [cursor=pointer]
+        - button "56" [ref=e21] [cursor=pointer]
+        - button "58" [ref=e22] [cursor=pointer]
+        - button "60" [ref=e23] [cursor=pointer]
+    - generic [ref=e24]:
+      - generic [ref=e25]: Базовый размер
+      - combobox [ref=e26] [cursor=pointer]:
+        - option "48"
+        - option "50"
+        - option "52" [selected]
+        - option "54"
+        - option "56"
+        - option "58"
+    - generic [ref=e27]:
+      - generic [ref=e28]: Единицы
+      - generic [ref=e29]:
+        - generic [ref=e30] [cursor=pointer]:
+          - radio "cm" [checked] [ref=e31]
+          - text: cm
+        - generic [ref=e32] [cursor=pointer]:
+          - radio "mm" [ref=e33]
+          - text: mm
+    - generic [ref=e34]:
+      - generic [ref=e35]: Названия
+      - generic [ref=e36]:
+        - generic [ref=e37] [cursor=pointer]:
+          - radio "RU + EN" [checked] [ref=e38]
+          - text: RU + EN
+        - generic [ref=e39] [cursor=pointer]:
+          - radio "RU" [ref=e40]
+          - text: RU
+        - generic [ref=e41] [cursor=pointer]:
+          - radio "EN" [ref=e42]
+          - text: EN
+    - generic [ref=e43]:
+      - generic [ref=e44]: Способ измерения
+      - generic [ref=e45] [cursor=pointer]:
+        - checkbox "показать" [ref=e46]
+        - text: показать
+    - generic [ref=e47]:
+      - generic [ref=e48]: Детальные измерения
+      - generic [ref=e49] [cursor=pointer]:
+        - checkbox "показать" [ref=e50]
+        - text: показать
+  - generic [ref=e51]:
+    - generic [ref=e52]:
+      - generic [ref=e53]: Measurement diagram
+      - img "POM diagram" [ref=e54]
+    - generic [ref=e55]:
+      - table [ref=e57]:
+        - rowgroup [ref=e58]:
+          - row "Код Название RU Name EN 48 50 52● 54 56 58 TOL ±" [ref=e207]:
+            - columnheader "Код" [ref=e60]
+            - columnheader "Название RU" [ref=e61]
+            - columnheader "Name EN" [ref=e62]
+            - columnheader "48" [ref=e208]
+            - columnheader "50" [ref=e65]
+            - columnheader "52●" [ref=e209]
+            - columnheader "54" [ref=e67]
+            - columnheader "56" [ref=e68]
+            - columnheader "58" [ref=e210]
+            - columnheader "TOL ±" [ref=e69]
+        - rowgroup [ref=e70]:
+          - row "A Длина изделия Garment length 75 76 77 78 79 80 0.5" [ref=e211]:
+            - cell "A" [ref=e212]
+            - cell "Длина изделия" [ref=e213]
+            - cell "Garment length" [ref=e214]
+            - cell "75" [ref=e215]
+            - cell "76" [ref=e216]
+            - cell "77" [ref=e217]
+            - cell "78" [ref=e218]
+            - cell "79" [ref=e219]
+            - cell "80" [ref=e220]
+            - cell "0.5" [ref=e221]
+          - row "A2 Длина рукава Sleeve length 63 63.5 64 64.5 65 65.5 0.5" [ref=e222]:
+            - cell "A2" [ref=e223]
+            - cell "Длина рукава" [ref=e224]
+            - cell "Sleeve length" [ref=e225]
+            - cell "63" [ref=e226]
+            - cell "63.5" [ref=e227]
+            - cell "64" [ref=e228]
+            - cell "64.5" [ref=e229]
+            - cell "65" [ref=e230]
+            - cell "65.5" [ref=e231]
+            - cell "0.5" [ref=e232]
+          - row "A4 Высота проймы Armhole depth 25.5 26 26.5 27 27.5 28 0.5" [ref=e233]:
+            - cell "A4" [ref=e234]
+            - cell "Высота проймы" [ref=e235]
+            - cell "Armhole depth" [ref=e236]
+            - cell "25.5" [ref=e237]
+            - cell "26" [ref=e238]
+            - cell "26.5" [ref=e239]
+            - cell "27" [ref=e240]
+            - cell "27.5" [ref=e241]
+            - cell "28" [ref=e242]
+            - cell "0.5" [ref=e243]
+          - row "E Полуобхват груди 1/2 Chest 54 56 58 60 62 64 1" [ref=e244]:
+            - cell "E" [ref=e245]
+            - cell "Полуобхват груди" [ref=e246]
+            - cell "1/2 Chest" [ref=e247]
+            - cell "54" [ref=e248]
+            - cell "56" [ref=e249]
+            - cell "58" [ref=e250]
+            - cell "60" [ref=e251]
+            - cell "62" [ref=e252]
+            - cell "64" [ref=e253]
+            - cell "1" [ref=e254]
+          - row "E1 Полуобхват груди (верх) 1/2 Chest upper 53 55 57 59 61 63 1" [ref=e255]:
+            - cell "E1" [ref=e256]
+            - cell "Полуобхват груди (верх)" [ref=e257]
+            - cell "1/2 Chest upper" [ref=e258]
+            - cell "53" [ref=e259]
+            - cell "55" [ref=e260]
+            - cell "57" [ref=e261]
+            - cell "59" [ref=e262]
+            - cell "61" [ref=e263]
+            - cell "63" [ref=e264]
+            - cell "1" [ref=e265]
+          - row "B Полуобхват талии 1/2 Waist 47 49 51 53 55 57 1" [ref=e266]:
+            - cell "B" [ref=e72]
+            - cell "Полуобхват талии" [ref=e73]
+            - cell "1/2 Waist" [ref=e74]
+            - cell "47" [ref=e267]
+            - cell "49" [ref=e268]
+            - cell "51" [ref=e269]
+            - cell "53" [ref=e270]
+            - cell "55" [ref=e271]
+            - cell "57" [ref=e272]
+            - cell "1" [ref=e273]
+          - row "C Полуобхват бёдер 1/2 Hip 56 58 60 62 64 66 1" [ref=e274]:
+            - cell "C" [ref=e83]
+            - cell "Полуобхват бёдер" [ref=e84]
+            - cell "1/2 Hip" [ref=e85]
+            - cell "56" [ref=e275]
+            - cell "58" [ref=e276]
+            - cell "60" [ref=e277]
+            - cell "62" [ref=e278]
+            - cell "64" [ref=e279]
+            - cell "66" [ref=e280]
+            - cell "1" [ref=e92]
+          - row "D Ширина низа Hem width 55 57 59 61 63 65 1" [ref=e281]:
+            - cell "D" [ref=e138]
+            - cell "Ширина низа" [ref=e139]
+            - cell "Hem width" [ref=e282]
+            - cell "55" [ref=e283]
+            - cell "57" [ref=e284]
+            - cell "59" [ref=e285]
+            - cell "61" [ref=e286]
+            - cell "63" [ref=e287]
+            - cell "65" [ref=e288]
+            - cell "1" [ref=e289]
+          - row "J Ширина плеча Shoulder width 15 15.5 16 16.5 17 17.5 0.3" [ref=e290]:
+            - cell "J" [ref=e149]
+            - cell "Ширина плеча" [ref=e291]
+            - cell "Shoulder width" [ref=e292]
+            - cell "15" [ref=e293]
+            - cell "15.5" [ref=e294]
+            - cell "16" [ref=e295]
+            - cell "16.5" [ref=e296]
+            - cell "17" [ref=e297]
+            - cell "17.5" [ref=e298]
+            - cell "0.3" [ref=e299]
+          - row "J1 Ширина спины Back width 20.5 21 21.5 22 22.5 23 0.5" [ref=e300]:
+            - cell "J1" [ref=e301]
+            - cell "Ширина спины" [ref=e302]
+            - cell "Back width" [ref=e303]
+            - cell "20.5" [ref=e304]
+            - cell "21" [ref=e305]
+            - cell "21.5" [ref=e306]
+            - cell "22" [ref=e307]
+            - cell "22.5" [ref=e308]
+            - cell "23" [ref=e309]
+            - cell "0.5" [ref=e310]
+          - row "J3 Ширина груди Chest width 19 19.5 20 20.5 21 21.5 0.5" [ref=e311]:
+            - cell "J3" [ref=e312]
+            - cell "Ширина груди" [ref=e313]
+            - cell "Chest width" [ref=e314]
+            - cell "19" [ref=e315]
+            - cell "19.5" [ref=e316]
+            - cell "20" [ref=e317]
+            - cell "20.5" [ref=e318]
+            - cell "21" [ref=e319]
+            - cell "21.5" [ref=e320]
+            - cell "0.5" [ref=e321]
+          - row "J5 Ширина рукава (верх) Sleeve width upper 19.5 20 20.5 21 21.5 22 0.5" [ref=e322]:
+            - cell "J5" [ref=e323]
+            - cell "Ширина рукава (верх)" [ref=e324]
+            - cell "Sleeve width upper" [ref=e325]
+            - cell "19.5" [ref=e326]
+            - cell "20" [ref=e327]
+            - cell "20.5" [ref=e328]
+            - cell "21" [ref=e329]
+            - cell "21.5" [ref=e330]
+            - cell "22" [ref=e331]
+            - cell "0.5" [ref=e332]
+          - row "B5 Ширина рукава (низ) Sleeve opening 14 14.3 14.5 14.8 15 15.3 0.3" [ref=e333]:
+            - cell "B5" [ref=e334]
+            - cell "Ширина рукава (низ)" [ref=e335]
+            - cell "Sleeve opening" [ref=e336]
+            - cell "14" [ref=e337]
+            - cell "14.3" [ref=e338]
+            - cell "14.5" [ref=e339]
+            - cell "14.8" [ref=e340]
+            - cell "15" [ref=e341]
+            - cell "15.3" [ref=e342]
+            - cell "0.3" [ref=e343]
+      - generic [ref=e203]: "* Все значения — плоские замеры (изделие сложено вдвое). Единицы: cm. Базовый размер: 52."
+  - generic [ref=e204]:
+    - button "↓ Экспорт Excel" [ref=e205] [cursor=pointer]
+    - generic [ref=e206]: PDF — скоро

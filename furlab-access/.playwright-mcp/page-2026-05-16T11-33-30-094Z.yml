@@ -1,0 +1,1703 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Услуги" [ref=e8] [cursor=pointer]:
+          - /url: "#services"
+        - link "Как работаю" [ref=e9] [cursor=pointer]:
+          - /url: "#how"
+        - link "Клиентам" [ref=e10] [cursor=pointer]:
+          - /url: "#for-whom"
+        - link "Продукты" [ref=e11] [cursor=pointer]:
+          - /url: "#products"
+        - link "Табель мер" [ref=e12] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Техпак" [ref=e13] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e14]:
+        - button "☀" [ref=e15] [cursor=pointer]
+        - button "EN" [ref=e16] [cursor=pointer]
+        - link "Заявка" [ref=e17] [cursor=pointer]:
+          - /url: "#contact"
+  - generic [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]: 3D Lastique · Tools
+      - heading "Garment Spec Builder" [level=1] [ref=e21]
+      - paragraph [ref=e22]: Табель мер / Measurement Sheet — v0.1
+    - generic [ref=e57]:
+      - button "Табель мер" [ref=e58] [cursor=pointer]
+      - button "Справочник POM" [active] [ref=e59] [cursor=pointer]
+    - generic [ref=e218]:
+      - generic [ref=e220]:
+        - button "Одежда414" [ref=e221] [cursor=pointer]
+        - button "Аксессуары118" [ref=e222] [cursor=pointer]
+        - button "Купальники муж.47" [ref=e223] [cursor=pointer]
+        - button "Купальники жен.144" [ref=e224] [cursor=pointer]
+      - generic [ref=e225]:
+        - textbox "Поиск по коду или названию…" [ref=e226]
+        - generic [ref=e227]: 414 / 414
+      - table [ref=e229]:
+        - rowgroup [ref=e230]:
+          - row "Код Название RU Name EN" [ref=e231]:
+            - columnheader "Код" [ref=e232]
+            - columnheader "Название RU" [ref=e233]
+            - columnheader "Name EN" [ref=e234]
+        - rowgroup [ref=e235]:
+          - row "1a Ширина планки для меха Placket for fur width" [ref=e236] [cursor=pointer]:
+            - cell "1a" [ref=e237]
+            - cell "Ширина планки для меха" [ref=e238]
+            - cell "Placket for fur width" [ref=e239]
+          - row "1b Ширина детали планки для меха Placket for fur welt width" [ref=e240] [cursor=pointer]:
+            - cell "1b" [ref=e241]
+            - cell "Ширина детали планки для меха" [ref=e242]
+            - cell "Placket for fur welt width" [ref=e243]
+          - row "1F Ширина меховой планки Fur placket width" [ref=e244] [cursor=pointer]:
+            - cell "1F" [ref=e245]
+            - cell "Ширина меховой планки" [ref=e246]
+            - cell "Fur placket width" [ref=e247]
+          - row "2a Длина планки для меха Placket for fur length" [ref=e248] [cursor=pointer]:
+            - cell "2a" [ref=e249]
+            - cell "Длина планки для меха" [ref=e250]
+            - cell "Placket for fur length" [ref=e251]
+          - row "2F Длина меховой планки Fur placket length" [ref=e252] [cursor=pointer]:
+            - cell "2F" [ref=e253]
+            - cell "Длина меховой планки" [ref=e254]
+            - cell "Fur placket length" [ref=e255]
+          - row "A Полуобхват груди (1/2 обхвата на уровне проймы) 1/2 chest (1/2 circumference at armhole level)" [ref=e256] [cursor=pointer]:
+            - cell "A" [ref=e257]
+            - cell "Полуобхват груди (1/2 обхвата на уровне проймы)" [ref=e258]
+            - cell "1/2 chest (1/2 circumference at armhole level)" [ref=e259]
+          - row "a! Уровень линии бедер (не включая пояс) Hip position (excl. wb)" [ref=e260] [cursor=pointer]:
+            - cell "a!" [ref=e261]
+            - cell "Уровень линии бедер (не включая пояс)" [ref=e262]
+            - cell "Hip position (excl. wb)" [ref=e263]
+          - row "A' Полуобхват груди (1/2 обхвата на уровне проймы) в растянутом виде 1/2 chest (1/2 circumference at armhole level) extended" [ref=e264] [cursor=pointer]:
+            - cell "A'" [ref=e265]
+            - cell "Полуобхват груди (1/2 обхвата на уровне проймы) в растянутом виде" [ref=e266]
+            - cell "1/2 chest (1/2 circumference at armhole level) extended" [ref=e267]
+          - row "a1 Уровень линии бедер по центру переда (не включая пояс) Hip position CF (excl. wb)" [ref=e268] [cursor=pointer]:
+            - cell "a1" [ref=e269]
+            - cell "Уровень линии бедер по центру переда (не включая пояс)" [ref=e270]
+            - cell "Hip position CF (excl. wb)" [ref=e271]
+          - row "A1 Ширина полочки (поперечное измерение полочки) Across front" [ref=e272] [cursor=pointer]:
+            - cell "A1" [ref=e273]
+            - cell "Ширина полочки (поперечное измерение полочки)" [ref=e274]
+            - cell "Across front" [ref=e275]
+          - row "A1' Ширина полочки (поперечное измерение полочки) в растянутом виде Across front extended" [ref=e276] [cursor=pointer]:
+            - cell "A1'" [ref=e277]
+            - cell "Ширина полочки (поперечное измерение полочки) в растянутом виде" [ref=e278]
+            - cell "Across front extended" [ref=e279]
+          - row "A2 Ширина спинки (поперечное измерение спинки) Across back" [ref=e280] [cursor=pointer]:
+            - cell "A2" [ref=e281]
+            - cell "Ширина спинки (поперечное измерение спинки)" [ref=e282]
+            - cell "Across back" [ref=e283]
+          - row "A2' Ширина спинки (поперечное измерение спинки) в растянутом виде Across back extended" [ref=e284] [cursor=pointer]:
+            - cell "A2'" [ref=e285]
+            - cell "Ширина спинки (поперечное измерение спинки) в растянутом виде" [ref=e286]
+            - cell "Across back extended" [ref=e287]
+          - row "A3 Уровень на котором измеряется ширина полочки Position Across front" [ref=e288] [cursor=pointer]:
+            - cell "A3" [ref=e289]
+            - cell "Уровень на котором измеряется ширина полочки" [ref=e290]
+            - cell "Position Across front" [ref=e291]
+          - row "A4 Уровень на котором измеряется ширина спинки Position Across back" [ref=e292] [cursor=pointer]:
+            - cell "A4" [ref=e293]
+            - cell "Уровень на котором измеряется ширина спинки" [ref=e294]
+            - cell "Position Across back" [ref=e295]
+          - row "A4.1 Уровень на котором измеряется ширина спинки от центра горловины спинки Position Across back from CB neck" [ref=e296] [cursor=pointer]:
+            - cell "A4.1" [ref=e297]
+            - cell "Уровень на котором измеряется ширина спинки от центра горловины спинки" [ref=e298]
+            - cell "Position Across back from CB neck" [ref=e299]
+          - row "A5 Вставка на полочке Front Chest Insert" [ref=e300] [cursor=pointer]:
+            - cell "A5" [ref=e301]
+            - cell "Вставка на полочке" [ref=e302]
+            - cell "Front Chest Insert" [ref=e303]
+          - row "A6 Вставка на спинке Back Chest Insert" [ref=e304] [cursor=pointer]:
+            - cell "A6" [ref=e305]
+            - cell "Вставка на спинке" [ref=e306]
+            - cell "Back Chest Insert" [ref=e307]
+          - row "B Ширина талии Waist width (straight line)" [ref=e308] [cursor=pointer]:
+            - cell "B" [ref=e309]
+            - cell "Ширина талии" [ref=e310]
+            - cell "Waist width (straight line)" [ref=e311]
+          - row "b! Уровень коленок (не включая пояс, для брюк, шорт) Knee position (excl. wb) for, pants, shorts" [ref=e312] [cursor=pointer]:
+            - cell "b!" [ref=e313]
+            - cell "Уровень коленок (не включая пояс, для брюк, шорт)" [ref=e314]
+            - cell "Knee position (excl. wb) for, pants, shorts" [ref=e315]
+          - row "B' Ширина талии, в растянутом виде Waist width (extended)" [ref=e316] [cursor=pointer]:
+            - cell "B'" [ref=e317]
+            - cell "Ширина талии, в растянутом виде" [ref=e318]
+            - cell "Waist width (extended)" [ref=e319]
+          - row "B1 Фигруный пояс, высота пояса по задней части Figured waistband height BS" [ref=e320] [cursor=pointer]:
+            - cell "B1" [ref=e321]
+            - cell "Фигруный пояс, высота пояса по задней части" [ref=e322]
+            - cell "Figured waistband height BS" [ref=e323]
+          - row "B2 Пояс в растянутом виде (для изделий с поясом на резинке) Waistband stretched (for styles with elastic wb)" [ref=e324] [cursor=pointer]:
+            - cell "B2" [ref=e325]
+            - cell "Пояс в растянутом виде (для изделий с поясом на резинке)" [ref=e326]
+            - cell "Waistband stretched (for styles with elastic wb)" [ref=e327]
+          - row "B3 Высота пояса/ Высота кулиски Waistband width /Self-belt width" [ref=e328] [cursor=pointer]:
+            - cell "B3" [ref=e329]
+            - cell "Высота пояса/ Высота кулиски" [ref=e330]
+            - cell "Waistband width /Self-belt width" [ref=e331]
+          - row "B4 Ширина вставки на поясе Belt panel width" [ref=e332] [cursor=pointer]:
+            - cell "B4" [ref=e333]
+            - cell "Ширина вставки на поясе" [ref=e334]
+            - cell "Belt panel width" [ref=e335]
+          - row "B5 Уровень линии талии Position of waist line (front)" [ref=e336] [cursor=pointer]:
+            - cell "B5" [ref=e337]
+            - cell "Уровень линии талии" [ref=e338]
+            - cell "Position of waist line (front)" [ref=e339]
+          - row "B5.1 Уровень линии талии Position of waist line back" [ref=e340] [cursor=pointer]:
+            - cell "B5.1" [ref=e341]
+            - cell "Уровень линии талии" [ref=e342]
+            - cell "Position of waist line back" [ref=e343]
+          - row "B5.2 Уровень шлевки Position of loop" [ref=e344] [cursor=pointer]:
+            - cell "B5.2" [ref=e345]
+            - cell "Уровень шлевки" [ref=e346]
+            - cell "Position of loop" [ref=e347]
+          - row "B6 Расстояние между концевиков Dist between end links" [ref=e348] [cursor=pointer]:
+            - cell "B6" [ref=e349]
+            - cell "Расстояние между концевиков" [ref=e350]
+            - cell "Dist between end links" [ref=e351]
+          - row "B7 Расстояние между концевиками (от точки до точки) Length link (from point to point)" [ref=e352] [cursor=pointer]:
+            - cell "B7" [ref=e353]
+            - cell "Расстояние между концевиками (от точки до точки)" [ref=e354]
+            - cell "Length link (from point to point)" [ref=e355]
+          - row "B7' Расстояние между концевиками (от точки до точки), в растянутом виде Length link (from point to point), extended" [ref=e356] [cursor=pointer]:
+            - cell "B7'" [ref=e357]
+            - cell "Расстояние между концевиками (от точки до точки), в растянутом виде" [ref=e358]
+            - cell "Length link (from point to point), extended" [ref=e359]
+          - row "B8 Длина запаха на юбке Skirt waist length /overlay" [ref=e360] [cursor=pointer]:
+            - cell "B8" [ref=e361]
+            - cell "Длина запаха на юбке" [ref=e362]
+            - cell "Skirt waist length /overlay" [ref=e363]
+          - row "B9 Регулировка по талии (в готовом виде) Adjustable waist (relaxed)" [ref=e364] [cursor=pointer]:
+            - cell "B9" [ref=e365]
+            - cell "Регулировка по талии (в готовом виде)" [ref=e366]
+            - cell "Adjustable waist (relaxed)" [ref=e367]
+          - row "B9' Регулировка по талии (в растянутом виде) Adjustable waist (extended)" [ref=e368] [cursor=pointer]:
+            - cell "B9'" [ref=e369]
+            - cell "Регулировка по талии (в растянутом виде)" [ref=e370]
+            - cell "Adjustable waist (extended)" [ref=e371]
+          - row "Bp Ширина входа в задний карман Back pocket opening" [ref=e372] [cursor=pointer]:
+            - cell "Bp" [ref=e373]
+            - cell "Ширина входа в задний карман" [ref=e374]
+            - cell "Back pocket opening" [ref=e375]
+          - row "Bp1 Высота листочки/рамки на заднем кармане, высота заднего кармана Back pocket height" [ref=e376] [cursor=pointer]:
+            - cell "Bp1" [ref=e377]
+            - cell "Высота листочки/рамки на заднем кармане, высота заднего кармана" [ref=e378]
+            - cell "Back pocket height" [ref=e379]
+          - row "Bs Расстояние от горловины до снегозащитной юбки Distance between neck and snowskirt" [ref=e380] [cursor=pointer]:
+            - cell "Bs" [ref=e381]
+            - cell "Расстояние от горловины до снегозащитной юбки" [ref=e382]
+            - cell "Distance between neck and snowskirt" [ref=e383]
+          - row "C Обхват бедер (измеряется на расстоянии \"а!/a1\" от верхнего среза не включая пояс) Hip (measured at a distance \"а!/a1\" from the upper edge not including the belt)" [ref=e384] [cursor=pointer]:
+            - cell "C" [ref=e385]
+            - cell "Обхват бедер (измеряется на расстоянии \"а!/a1\" от верхнего среза не включая пояс)" [ref=e386]
+            - cell "Hip (measured at a distance \"а!/a1\" from the upper edge not including the belt)" [ref=e387]
+          - row "C1 Обхват бедра Thigh" [ref=e388] [cursor=pointer]:
+            - cell "C1" [ref=e389]
+            - cell "Обхват бедра" [ref=e390]
+            - cell "Thigh" [ref=e391]
+          - row "C2 Ширина брюк на уровне коленей Knee width" [ref=e392] [cursor=pointer]:
+            - cell "C2" [ref=e393]
+            - cell "Ширина брюк на уровне коленей" [ref=e394]
+            - cell "Knee width" [ref=e395]
+          - row "C3 Oбхват икры Calf width" [ref=e396] [cursor=pointer]:
+            - cell "C3" [ref=e397]
+            - cell "Oбхват икры" [ref=e398]
+            - cell "Calf width" [ref=e399]
+          - row "Ca Уровень линии бедер (включая пояс в изделиях с поясом, а также для изделий без пояса) Hip position (incl. wb/for styles wo wb)" [ref=e400] [cursor=pointer]:
+            - cell "Ca" [ref=e401]
+            - cell "Уровень линии бедер (включая пояс в изделиях с поясом, а также для изделий без пояса)" [ref=e402]
+            - cell "Hip position (incl. wb/for styles wo wb)" [ref=e403]
+          - row "Ca1 Уровень линии бедер по центру переда (включая пояс в изделиях с поясом, а также для изделий без пояса) Hip position on CF (incl. wb/for styles wo wb)" [ref=e404] [cursor=pointer]:
+            - cell "Ca1" [ref=e405]
+            - cell "Уровень линии бедер по центру переда (включая пояс в изделиях с поясом, а также для изделий без пояса)" [ref=e406]
+            - cell "Hip position on CF (incl. wb/for styles wo wb)" [ref=e407]
+          - row "Ca2 Уровень линии бедер от наивысшей точки плеча Hip position from HPS" [ref=e408] [cursor=pointer]:
+            - cell "Ca2" [ref=e409]
+            - cell "Уровень линии бедер от наивысшей точки плеча" [ref=e410]
+            - cell "Hip position from HPS" [ref=e411]
+          - row "Cb Уровень коленок (включая пояс, для брюк, шорт) Knee position (incl. wb), for, pants, shorts" [ref=e412] [cursor=pointer]:
+            - cell "Cb" [ref=e413]
+            - cell "Уровень коленок (включая пояс, для брюк, шорт)" [ref=e414]
+            - cell "Knee position (incl. wb), for, pants, shorts" [ref=e415]
+          - row "Cc Уровень икры Calf position" [ref=e416] [cursor=pointer]:
+            - cell "Cc" [ref=e417]
+            - cell "Уровень икры" [ref=e418]
+            - cell "Calf position" [ref=e419]
+          - row "CFx Расстояние от центра переда до логотипа Disntance from CF to a logo" [ref=e420] [cursor=pointer]:
+            - cell "CFx" [ref=e421]
+            - cell "Расстояние от центра переда до логотипа" [ref=e422]
+            - cell "Disntance from CF to a logo" [ref=e423]
+          - row "Cp Нагрудный карман - вход Chest pocket opening" [ref=e424] [cursor=pointer]:
+            - cell "Cp" [ref=e425]
+            - cell "Нагрудный карман - вход" [ref=e426]
+            - cell "Chest pocket opening" [ref=e427]
+          - row "Cp1 Высота листочки/рамки в в нагрудном кармане Chest pocket height" [ref=e428] [cursor=pointer]:
+            - cell "Cp1" [ref=e429]
+            - cell "Высота листочки/рамки в в нагрудном кармане" [ref=e430]
+            - cell "Chest pocket height" [ref=e431]
+          - row "Cp2 Второй нагрудный карман - вход Second chest pocket opening" [ref=e432] [cursor=pointer]:
+            - cell "Cp2" [ref=e433]
+            - cell "Второй нагрудный карман - вход" [ref=e434]
+            - cell "Second chest pocket opening" [ref=e435]
+          - row "D Ширина низа брюк в расслабленном виде (шорты, брюки) Hem opening (pant/short)(relaxed)" [ref=e436] [cursor=pointer]:
+            - cell "D" [ref=e437]
+            - cell "Ширина низа брюк в расслабленном виде (шорты, брюки)" [ref=e438]
+            - cell "Hem opening (pant/short)(relaxed)" [ref=e439]
+          - row "D1 Высота манжеты Cuff height" [ref=e440] [cursor=pointer]:
+            - cell "D1" [ref=e441]
+            - cell "Высота манжеты" [ref=e442]
+            - cell "Cuff height" [ref=e443]
+          - row "D2 Низ изделия в расстянутом виде Hem width extended" [ref=e444] [cursor=pointer]:
+            - cell "D2" [ref=e445]
+            - cell "Низ изделия в расстянутом виде" [ref=e446]
+            - cell "Hem width extended" [ref=e447]
+          - row "D3 Ширина по низу над поясом-манжетой Hem width above cuff" [ref=e448] [cursor=pointer]:
+            - cell "D3" [ref=e449]
+            - cell "Ширина по низу над поясом-манжетой" [ref=e450]
+            - cell "Hem width above cuff" [ref=e451]
+          - row "D4 Ширина низа внутренней манжеты в расслабленном виде Inside Hem cuff width relaxed" [ref=e452] [cursor=pointer]:
+            - cell "D4" [ref=e453]
+            - cell "Ширина низа внутренней манжеты в расслабленном виде" [ref=e454]
+            - cell "Inside Hem cuff width relaxed" [ref=e455]
+          - row "D5 Ширина низа внутренней манжеты в расстянутом виде Inside Hem cuff width extented" [ref=e456] [cursor=pointer]:
+            - cell "D5" [ref=e457]
+            - cell "Ширина низа внутренней манжеты в расстянутом виде" [ref=e458]
+            - cell "Inside Hem cuff width extented" [ref=e459]
+          - row "D6 Видимая часть внутренней манжеты Visible part of an internal cuff" [ref=e460] [cursor=pointer]:
+            - cell "D6" [ref=e461]
+            - cell "Видимая часть внутренней манжеты" [ref=e462]
+            - cell "Visible part of an internal cuff" [ref=e463]
+          - row "D7 Ширина планки/вставки на брюках/шортах/юбках Pants/shorts/skirts panel/insert width" [ref=e464] [cursor=pointer]:
+            - cell "D7" [ref=e465]
+            - cell "Ширина планки/вставки на брюках/шортах/юбках" [ref=e466]
+            - cell "Pants/shorts/skirts panel/insert width" [ref=e467]
+          - row "Df Длина стопы Foot length" [ref=e468] [cursor=pointer]:
+            - cell "Df" [ref=e469]
+            - cell "Длина стопы" [ref=e470]
+            - cell "Foot length" [ref=e471]
+          - row "Df1 Длина стопы сверху Foot length on top" [ref=e472] [cursor=pointer]:
+            - cell "Df1" [ref=e473]
+            - cell "Длина стопы сверху" [ref=e474]
+            - cell "Foot length on top" [ref=e475]
+          - row "Dh Высота пятки Heel height" [ref=e476] [cursor=pointer]:
+            - cell "Dh" [ref=e477]
+            - cell "Высота пятки" [ref=e478]
+            - cell "Heel height" [ref=e479]
+          - row "DPb Диаметр дна чехла для куртки Bottom diameter for jacket packable bag" [ref=e480] [cursor=pointer]:
+            - cell "DPb" [ref=e481]
+            - cell "Диаметр дна чехла для куртки" [ref=e482]
+            - cell "Bottom diameter for jacket packable bag" [ref=e483]
+          - row "E Ширина плеча Shoulder width" [ref=e484] [cursor=pointer]:
+            - cell "E" [ref=e485]
+            - cell "Ширина плеча" [ref=e486]
+            - cell "Shoulder width" [ref=e487]
+          - row "E' Ширина плеча, в растянутом виде Shoulder width (extended)" [ref=e488] [cursor=pointer]:
+            - cell "E'" [ref=e489]
+            - cell "Ширина плеча, в растянутом виде" [ref=e490]
+            - cell "Shoulder width (extended)" [ref=e491]
+          - row "E1 Поперечное измерение плеч Across shoulders" [ref=e492] [cursor=pointer]:
+            - cell "E1" [ref=e493]
+            - cell "Поперечное измерение плеч" [ref=e494]
+            - cell "Across shoulders" [ref=e495]
+          - row "E2 Длина вставки/реглана по линии горловины Shoulder insert/raglan neck line length" [ref=e496] [cursor=pointer]:
+            - cell "E2" [ref=e497]
+            - cell "Длина вставки/реглана по линии горловины" [ref=e498]
+            - cell "Shoulder insert/raglan neck line length" [ref=e499]
+          - row "E3 Длина вставки/реглана по линии проймы Shoulder insert/raglan armhole line length" [ref=e500] [cursor=pointer]:
+            - cell "E3" [ref=e501]
+            - cell "Длина вставки/реглана по линии проймы" [ref=e502]
+            - cell "Shoulder insert/raglan armhole line length" [ref=e503]
+          - row "E4 Ширина вставки/ Длина перевода плечевого шва в готовом виде Width insert/ Length of transposition of shoulder seam" [ref=e504] [cursor=pointer]:
+            - cell "E4" [ref=e505]
+            - cell "Ширина вставки/ Длина перевода плечевого шва в готовом виде" [ref=e506]
+            - cell "Width insert/ Length of transposition of shoulder seam" [ref=e507]
+          - row "E5 Наклон плеча Shoulder Slope" [ref=e508] [cursor=pointer]:
+            - cell "E5" [ref=e509]
+            - cell "Наклон плеча" [ref=e510]
+            - cell "Shoulder Slope" [ref=e511]
+          - row "E6 Ширина промежности в узком месте для нижнего белья Crotch width narrow for underwear" [ref=e512] [cursor=pointer]:
+            - cell "E6" [ref=e513]
+            - cell "Ширина промежности в узком месте для нижнего белья" [ref=e514]
+            - cell "Crotch width narrow for underwear" [ref=e515]
+          - row "E7 Ширина промежности по шву для нижнего белья Crotch width at seam for underwear" [ref=e516] [cursor=pointer]:
+            - cell "E7" [ref=e517]
+            - cell "Ширина промежности по шву для нижнего белья" [ref=e518]
+            - cell "Crotch width at seam for underwear" [ref=e519]
+          - row "Eb Длина эластичной тесьмы Elastic band length" [ref=e520] [cursor=pointer]:
+            - cell "Eb" [ref=e521]
+            - cell "Длина эластичной тесьмы" [ref=e522]
+            - cell "Elastic band length" [ref=e523]
+          - row "Eb1 Длина эластичной тесьмы внизу брюк Elastic band length (pants bottom)" [ref=e524] [cursor=pointer]:
+            - cell "Eb1" [ref=e525]
+            - cell "Длина эластичной тесьмы внизу брюк" [ref=e526]
+            - cell "Elastic band length (pants bottom)" [ref=e527]
+          - row "F Глубина проймы Armhole drop" [ref=e528] [cursor=pointer]:
+            - cell "F" [ref=e529]
+            - cell "Глубина проймы" [ref=e530]
+            - cell "Armhole drop" [ref=e531]
+          - row "F' Armhole drop (extended)" [ref=e532] [cursor=pointer]:
+            - cell "F'" [ref=e533]
+            - cell [ref=e534]
+            - cell "Armhole drop (extended)" [ref=e535]
+          - row "F0 Расстояние от плечевого шва до начала рельефа или кокетки на Спинке Dist bw shoulder seam to beginning relief or yoke Back" [ref=e536] [cursor=pointer]:
+            - cell "F0" [ref=e537]
+            - cell "Расстояние от плечевого шва до начала рельефа или кокетки на Спинке" [ref=e538]
+            - cell "Dist bw shoulder seam to beginning relief or yoke Back" [ref=e539]
+          - row "F1 Расстояние от плечевого шва до начала рельефа или кокетки на Полочке Dist bw shoulder seam to beginning relief or yoke Front" [ref=e540] [cursor=pointer]:
+            - cell "F1" [ref=e541]
+            - cell "Расстояние от плечевого шва до начала рельефа или кокетки на Полочке" [ref=e542]
+            - cell "Dist bw shoulder seam to beginning relief or yoke Front" [ref=e543]
+          - row "F1' 1/2 Length of FS edge of trunks extended (in paper patterns)" [ref=e544] [cursor=pointer]:
+            - cell "F1'" [ref=e545]
+            - cell [ref=e546]
+            - cell "1/2 Length of FS edge of trunks extended (in paper patterns)" [ref=e547]
+          - row "F10 ½ Длины среза по передней половинке трусов ½Length of FS edge of underpants" [ref=e548] [cursor=pointer]:
+            - cell "F10" [ref=e549]
+            - cell "½ Длины среза по передней половинке трусов" [ref=e550]
+            - cell "½Length of FS edge of underpants" [ref=e551]
+          - row "F11 ½ Длины среза по задней половинке трусов ½Length of BS edge of underpants" [ref=e552] [cursor=pointer]:
+            - cell "F11" [ref=e553]
+            - cell "½ Длины среза по задней половинке трусов" [ref=e554]
+            - cell "½Length of BS edge of underpants" [ref=e555]
+          - row "F2 Ширина (открытие) проймы в изделиях без рукавов Armhole opening (for styles without sleeves)" [ref=e556] [cursor=pointer]:
+            - cell "F2" [ref=e557]
+            - cell "Ширина (открытие) проймы в изделиях без рукавов" [ref=e558]
+            - cell "Armhole opening (for styles without sleeves)" [ref=e559]
+          - row "F2' 1/2 Length of BS edge of trunks extended (in paper patterns)" [ref=e560] [cursor=pointer]:
+            - cell "F2'" [ref=e561]
+            - cell [ref=e562]
+            - cell "1/2 Length of BS edge of trunks extended (in paper patterns)" [ref=e563]
+          - row "F3 Высота проймы (измеряется до уровне 1/2 ширины груди) Armhole height (measured to the level of the 1/2 chest width)" [ref=e564] [cursor=pointer]:
+            - cell "F3" [ref=e565]
+            - cell "Высота проймы (измеряется до уровне 1/2 ширины груди)" [ref=e566]
+            - cell "Armhole height (measured to the level of the 1/2 chest width)" [ref=e567]
+          - row "F4 Длина проймы реглана на полочке Front raglan armhole length" [ref=e568] [cursor=pointer]:
+            - cell "F4" [ref=e569]
+            - cell "Длина проймы реглана на полочке" [ref=e570]
+            - cell "Front raglan armhole length" [ref=e571]
+          - row "F41 Длина проймы реглана на спинке Back raglan armhole length" [ref=e572] [cursor=pointer]:
+            - cell "F41" [ref=e573]
+            - cell "Длина проймы реглана на спинке" [ref=e574]
+            - cell "Back raglan armhole length" [ref=e575]
+          - row "F5 Ширина локтя (1/2) Elbow width" [ref=e576] [cursor=pointer]:
+            - cell "F5" [ref=e577]
+            - cell "Ширина локтя (1/2)" [ref=e578]
+            - cell "Elbow width" [ref=e579]
+          - row "F6 Ширина локтя (1/2) Elbow width" [ref=e580] [cursor=pointer]:
+            - cell "F6" [ref=e581]
+            - cell "Ширина локтя (1/2)" [ref=e582]
+            - cell "Elbow width" [ref=e583]
+          - row "F6a Уровень локтя Elbow position" [ref=e584] [cursor=pointer]:
+            - cell "F6a" [ref=e585]
+            - cell "Уровень локтя" [ref=e586]
+            - cell "Elbow position" [ref=e587]
+          - row "F7 Ширина рукава Sleeve width" [ref=e588] [cursor=pointer]:
+            - cell "F7" [ref=e589]
+            - cell "Ширина рукава" [ref=e590]
+            - cell "Sleeve width" [ref=e591]
+          - row "F8 Высота оката рукава (Расстояние между плечевым швом или шириной рукава Dist between shoulder seam& Sleeve width (measure only for Shirts)" [ref=e592] [cursor=pointer]:
+            - cell "F8" [ref=e593]
+            - cell "Высота оката рукава (Расстояние между плечевым швом или шириной рукава" [ref=e594]
+            - cell "Dist between shoulder seam& Sleeve width (measure only for Shirts)" [ref=e595]
+          - row "F9 ½ Открытие ноги в расслабленном виде для нижнего белья ½Leg opening relaxed for underwear" [ref=e596] [cursor=pointer]:
+            - cell "F9" [ref=e597]
+            - cell "½ Открытие ноги в расслабленном виде для нижнего белья" [ref=e598]
+            - cell "½Leg opening relaxed for underwear" [ref=e599]
+          - row "Fa Длина проймы по кривой Armhole length curved" [ref=e600] [cursor=pointer]:
+            - cell "Fa" [ref=e601]
+            - cell "Длина проймы по кривой" [ref=e602]
+            - cell "Armhole length curved" [ref=e603]
+          - row "Fa' Armhole length curved (extended)" [ref=e604] [cursor=pointer]:
+            - cell "Fa'" [ref=e605]
+            - cell [ref=e606]
+            - cell "Armhole length curved (extended)" [ref=e607]
+          - row "Fd Расстояние до декоративного элемента / линии реза Distance to decoretive element / cut line" [ref=e608] [cursor=pointer]:
+            - cell "Fd" [ref=e609]
+            - cell "Расстояние до декоративного элемента / линии реза" [ref=e610]
+            - cell "Distance to decoretive element / cut line" [ref=e611]
+          - row "FSx Расстояние от шва отделки до логотипа (по горизонтали) Disntance from finishing seam to a logo (horizontally)" [ref=e612] [cursor=pointer]:
+            - cell "FSx" [ref=e613]
+            - cell "Расстояние от шва отделки до логотипа (по горизонтали)" [ref=e614]
+            - cell "Disntance from finishing seam to a logo (horizontally)" [ref=e615]
+          - row "FSy Расстояние от шва отделки до логотипа (по вертикали) Disntance from finishing seam to a logo (vertically)" [ref=e616] [cursor=pointer]:
+            - cell "FSy" [ref=e617]
+            - cell "Расстояние от шва отделки до логотипа (по вертикали)" [ref=e618]
+            - cell "Disntance from finishing seam to a logo (vertically)" [ref=e619]
+          - row "G Длина рукава, втачной рукав Sleeve length set-in" [ref=e620] [cursor=pointer]:
+            - cell "G" [ref=e621]
+            - cell "Длина рукава, втачной рукав" [ref=e622]
+            - cell "Sleeve length set-in" [ref=e623]
+          - row "G' 1/2 Armhole opening extended" [ref=e624] [cursor=pointer]:
+            - cell "G'" [ref=e625]
+            - cell [ref=e626]
+            - cell "1/2 Armhole opening extended" [ref=e627]
+          - row "G1 Длина рукава реглан/кимоно Sleeve length raglan/kimono" [ref=e628] [cursor=pointer]:
+            - cell "G1" [ref=e629]
+            - cell "Длина рукава реглан/кимоно" [ref=e630]
+            - cell "Sleeve length raglan/kimono" [ref=e631]
+          - row "G1' Armhole edge in front (in paper patterns)" [ref=e632] [cursor=pointer]:
+            - cell "G1'" [ref=e633]
+            - cell [ref=e634]
+            - cell "Armhole edge in front (in paper patterns)" [ref=e635]
+          - row "G2 Ширина планки/вставки на рукаве Sleeve panel/insert width" [ref=e636] [cursor=pointer]:
+            - cell "G2" [ref=e637]
+            - cell "Ширина планки/вставки на рукаве" [ref=e638]
+            - cell "Sleeve panel/insert width" [ref=e639]
+          - row "G2' Armhole edge in back (in paper patterns)" [ref=e640] [cursor=pointer]:
+            - cell "G2'" [ref=e641]
+            - cell [ref=e642]
+            - cell "Armhole edge in back (in paper patterns)" [ref=e643]
+          - row "G3 Длина планки/вставки на рукаве Sleeve panel/insert length" [ref=e644] [cursor=pointer]:
+            - cell "G3" [ref=e645]
+            - cell "Длина планки/вставки на рукаве" [ref=e646]
+            - cell "Sleeve panel/insert length" [ref=e647]
+          - row "G4 Длина рукава от уровня подмышки Underarm sleeve length" [ref=e648] [cursor=pointer]:
+            - cell "G4" [ref=e649]
+            - cell "Длина рукава от уровня подмышки" [ref=e650]
+            - cell "Underarm sleeve length" [ref=e651]
+          - row "G6 Расстояние от проймы до реза на рукаве Distance from armhole to sleeve cut" [ref=e652] [cursor=pointer]:
+            - cell "G6" [ref=e653]
+            - cell "Расстояние от проймы до реза на рукаве" [ref=e654]
+            - cell "Distance from armhole to sleeve cut" [ref=e655]
+          - row "G7 Ширина вставки рукава Sleeve insert width" [ref=e656] [cursor=pointer]:
+            - cell "G7" [ref=e657]
+            - cell "Ширина вставки рукава" [ref=e658]
+            - cell "Sleeve insert width" [ref=e659]
+          - row "G8 Расстояние от низа рукава до реза Distance from sleeve bottom to sleeve cut" [ref=e660] [cursor=pointer]:
+            - cell "G8" [ref=e661]
+            - cell "Расстояние от низа рукава до реза" [ref=e662]
+            - cell "Distance from sleeve bottom to sleeve cut" [ref=e663]
+          - row "G9 Отверстие для большого пальца Opening for thumb" [ref=e664] [cursor=pointer]:
+            - cell "G9" [ref=e665]
+            - cell "Отверстие для большого пальца" [ref=e666]
+            - cell "Opening for thumb" [ref=e667]
+          - row "Gr1 Ширина сборки по полочке на уровне груди Width of gathering line at the chest position (FRONT)" [ref=e668] [cursor=pointer]:
+            - cell "Gr1" [ref=e669]
+            - cell "Ширина сборки по полочке на уровне груди" [ref=e670]
+            - cell "Width of gathering line at the chest position (FRONT)" [ref=e671]
+          - row "Gr1' Ширина сборки по полочке на уровне груди, в растянутом виде Width of gathering line at the chest position (FRONT) extended" [ref=e672] [cursor=pointer]:
+            - cell "Gr1'" [ref=e673]
+            - cell "Ширина сборки по полочке на уровне груди, в растянутом виде" [ref=e674]
+            - cell "Width of gathering line at the chest position (FRONT) extended" [ref=e675]
+          - row "Gr2 Ширина сборки на уровне талии полочки Width of gathering line at the waist position (FRONT)" [ref=e676] [cursor=pointer]:
+            - cell "Gr2" [ref=e677]
+            - cell "Ширина сборки на уровне талии полочки" [ref=e678]
+            - cell "Width of gathering line at the waist position (FRONT)" [ref=e679]
+          - row "Gr2' Ширина сборки на уровне талии полочки, в растянутом виде Width of gathering line at the waist position (FRONT) extended" [ref=e680] [cursor=pointer]:
+            - cell "Gr2'" [ref=e681]
+            - cell "Ширина сборки на уровне талии полочки, в растянутом виде" [ref=e682]
+            - cell "Width of gathering line at the waist position (FRONT) extended" [ref=e683]
+          - row "Gr3 Ширина сборки в верхней части спинки Width of gathering line at the upper back" [ref=e684] [cursor=pointer]:
+            - cell "Gr3" [ref=e685]
+            - cell "Ширина сборки в верхней части спинки" [ref=e686]
+            - cell "Width of gathering line at the upper back" [ref=e687]
+          - row "Gr3' Ширина сборки в верхней части спинки, в растянутом виде Width of gathering line at the upper back extended" [ref=e688] [cursor=pointer]:
+            - cell "Gr3'" [ref=e689]
+            - cell "Ширина сборки в верхней части спинки, в растянутом виде" [ref=e690]
+            - cell "Width of gathering line at the upper back extended" [ref=e691]
+          - row "Gr4 Ширина сборки по спинке на уровне талии Width of gathering line at the waist position (BACK)" [ref=e692] [cursor=pointer]:
+            - cell "Gr4" [ref=e693]
+            - cell "Ширина сборки по спинке на уровне талии" [ref=e694]
+            - cell "Width of gathering line at the waist position (BACK)" [ref=e695]
+          - row "Gr4' Ширина сборки по спинке на уровне талии, в растянутом виде Width of gathering line at the waist position (BACK) extended" [ref=e696] [cursor=pointer]:
+            - cell "Gr4'" [ref=e697]
+            - cell "Ширина сборки по спинке на уровне талии, в растянутом виде" [ref=e698]
+            - cell "Width of gathering line at the waist position (BACK) extended" [ref=e699]
+          - row "Gr5 Половина ширины рукава вдоль сборки на уровне локтя 1/2 width of gathering line at the elbow position" [ref=e700] [cursor=pointer]:
+            - cell "Gr5" [ref=e701]
+            - cell "Половина ширины рукава вдоль сборки на уровне локтя" [ref=e702]
+            - cell "1/2 width of gathering line at the elbow position" [ref=e703]
+          - row "Gr5' Половина ширины рукава вдоль сборки на уровне локтя, в растянутом виде 1/2 width of gathering line at the elbow position extended" [ref=e704] [cursor=pointer]:
+            - cell "Gr5'" [ref=e705]
+            - cell "Половина ширины рукава вдоль сборки на уровне локтя, в растянутом виде" [ref=e706]
+            - cell "1/2 width of gathering line at the elbow position extended" [ref=e707]
+          - row "Gt Длина вытачки рукава Sleeve tuck length" [ref=e708] [cursor=pointer]:
+            - cell "Gt" [ref=e709]
+            - cell "Длина вытачки рукава" [ref=e710]
+            - cell "Sleeve tuck length" [ref=e711]
+          - row "H Ширина рукава по низу/Ширина манжеты рукава понизу (в расслабленном виде) Sleeve opening/ Sleeve cuff opening(relaxed)" [ref=e712] [cursor=pointer]:
+            - cell "H" [ref=e713]
+            - cell "Ширина рукава по низу/Ширина манжеты рукава понизу (в расслабленном виде)" [ref=e714]
+            - cell "Sleeve opening/ Sleeve cuff opening(relaxed)" [ref=e715]
+          - row "H1 Ширина рукава по низу Sleeve opening (extented)" [ref=e716] [cursor=pointer]:
+            - cell "H1" [ref=e717]
+            - cell "Ширина рукава по низу" [ref=e718]
+            - cell "Sleeve opening (extented)" [ref=e719]
+          - row "H2 Высота манжеты рукава Sleeve cuff height" [ref=e720] [cursor=pointer]:
+            - cell "H2" [ref=e721]
+            - cell "Высота манжеты рукава" [ref=e722]
+            - cell "Sleeve cuff height" [ref=e723]
+          - row "H3 Высота пояса-манжеты (верха) Top belt-cuff height" [ref=e724] [cursor=pointer]:
+            - cell "H3" [ref=e725]
+            - cell "Высота пояса-манжеты (верха)" [ref=e726]
+            - cell "Top belt-cuff height" [ref=e727]
+          - row "HBy Расстояние от низа изделия до логотипа (сзади) Disntance from the Back hem to a logo" [ref=e728] [cursor=pointer]:
+            - cell "HBy" [ref=e729]
+            - cell "Расстояние от низа изделия до логотипа (сзади)" [ref=e730]
+            - cell "Disntance from the Back hem to a logo" [ref=e731]
+          - row "HFy Расстояние от низа изделия до логотипа (спереди) Disntance from the Front hem to a logo" [ref=e732] [cursor=pointer]:
+            - cell "HFy" [ref=e733]
+            - cell "Расстояние от низа изделия до логотипа (спереди)" [ref=e734]
+            - cell "Disntance from the Front hem to a logo" [ref=e735]
+          - row "HPb Высота чехла для куртки Height for jacket packable bag" [ref=e736] [cursor=pointer]:
+            - cell "HPb" [ref=e737]
+            - cell "Высота чехла для куртки" [ref=e738]
+            - cell "Height for jacket packable bag" [ref=e739]
+          - row "I Ширина внутренней манжеты рукава Inside Sleeve inner cuff opening" [ref=e740] [cursor=pointer]:
+            - cell "I" [ref=e741]
+            - cell "Ширина внутренней манжеты рукава" [ref=e742]
+            - cell "Inside Sleeve inner cuff opening" [ref=e743]
+          - row "I1 Высота манжеты подкладки брюк Inside hem cuff height" [ref=e744] [cursor=pointer]:
+            - cell "I1" [ref=e745]
+            - cell "Высота манжеты подкладки брюк" [ref=e746]
+            - cell "Inside hem cuff height" [ref=e747]
+          - row "I2 Высота видимой части внутренней манжеты рукава по низу Inside Sleeve inner cuff visible height" [ref=e748] [cursor=pointer]:
+            - cell "I2" [ref=e749]
+            - cell "Высота видимой части внутренней манжеты рукава по низу" [ref=e750]
+            - cell "Inside Sleeve inner cuff visible height" [ref=e751]
+          - row "I3 Высота манжеты подкладки брюк (комбинезон) Inside hem cuff height (overall)" [ref=e752] [cursor=pointer]:
+            - cell "I3" [ref=e753]
+            - cell "Высота манжеты подкладки брюк (комбинезон)" [ref=e754]
+            - cell "Inside hem cuff height (overall)" [ref=e755]
+          - row "IСa Уровень линии бедер внутренних шорт Inner hip position" [ref=e756] [cursor=pointer]:
+            - cell "IСa" [ref=e757]
+            - cell "Уровень линии бедер внутренних шорт" [ref=e758]
+            - cell "Inner hip position" [ref=e759]
+          - row "IA Полуобхват груди (1/2 обхвата на уровне проймы) поддержки 1/2 chest (1/2 circumference at armhole level) of support" [ref=e760] [cursor=pointer]:
+            - cell "IA" [ref=e761]
+            - cell "Полуобхват груди (1/2 обхвата на уровне проймы) поддержки" [ref=e762]
+            - cell "1/2 chest (1/2 circumference at armhole level) of support" [ref=e763]
+          - row "Ia! Уровень линии бедер (не включая пояс) Hip position (excl. wb)" [ref=e764] [cursor=pointer]:
+            - cell "Ia!" [ref=e765]
+            - cell "Уровень линии бедер (не включая пояс)" [ref=e766]
+            - cell "Hip position (excl. wb)" [ref=e767]
+          - row "IA1 Длина внутреннего края чашки Length of inner edge of cup" [ref=e768] [cursor=pointer]:
+            - cell "IA1" [ref=e769]
+            - cell "Длина внутреннего края чашки" [ref=e770]
+            - cell "Length of inner edge of cup" [ref=e771]
+          - row "IA1' Length of inner edge of cup (in paper pattern)" [ref=e772] [cursor=pointer]:
+            - cell "IA1'" [ref=e773]
+            - cell [ref=e774]
+            - cell "Length of inner edge of cup (in paper pattern)" [ref=e775]
+          - row "IA2 Длина бокового края чашки Length of side edge of cup" [ref=e776] [cursor=pointer]:
+            - cell "IA2" [ref=e777]
+            - cell "Длина бокового края чашки" [ref=e778]
+            - cell "Length of side edge of cup" [ref=e779]
+          - row "IA2' Length of side edge of cup (in paper pattern)" [ref=e780] [cursor=pointer]:
+            - cell "IA2'" [ref=e781]
+            - cell [ref=e782]
+            - cell "Length of side edge of cup (in paper pattern)" [ref=e783]
+          - row "IA3 Высота чашки по центру Height of center cup" [ref=e784] [cursor=pointer]:
+            - cell "IA3" [ref=e785]
+            - cell "Высота чашки по центру" [ref=e786]
+            - cell "Height of center cup" [ref=e787]
+          - row "IA4 Ширина чашки по низу Bottom width of cup" [ref=e788] [cursor=pointer]:
+            - cell "IA4" [ref=e789]
+            - cell "Ширина чашки по низу" [ref=e790]
+            - cell "Bottom width of cup" [ref=e791]
+          - row "IC Обхват бедер внутренних шорт Inner Hip" [ref=e792] [cursor=pointer]:
+            - cell "IC" [ref=e793]
+            - cell "Обхват бедер внутренних шорт" [ref=e794]
+            - cell "Inner Hip" [ref=e795]
+          - row "IC1 Обхват бедра внутренних шорт Inner Thigh" [ref=e796] [cursor=pointer]:
+            - cell "IC1" [ref=e797]
+            - cell "Обхват бедра внутренних шорт" [ref=e798]
+            - cell "Inner Thigh" [ref=e799]
+          - row "Ica Уровень линии бедер (включая пояс) Hip position (incl. wb)" [ref=e800] [cursor=pointer]:
+            - cell "Ica" [ref=e801]
+            - cell "Уровень линии бедер (включая пояс)" [ref=e802]
+            - cell "Hip position (incl. wb)" [ref=e803]
+          - row "ID Ширина по линии низа поддержки Support Hem width" [ref=e804] [cursor=pointer]:
+            - cell "ID" [ref=e805]
+            - cell "Ширина по линии низа поддержки" [ref=e806]
+            - cell "Support Hem width" [ref=e807]
+          - row "ID2 Низ поддержки в расстянутом виде Support Hem width extended" [ref=e808] [cursor=pointer]:
+            - cell "ID2" [ref=e809]
+            - cell "Низ поддержки в расстянутом виде" [ref=e810]
+            - cell "Support Hem width extended" [ref=e811]
+          - row "IE Ширина плеча поддержки Support Shoulder width" [ref=e812] [cursor=pointer]:
+            - cell "IE" [ref=e813]
+            - cell "Ширина плеча поддержки" [ref=e814]
+            - cell "Support Shoulder width" [ref=e815]
+          - row "IF Глубина проймы поддержки Support Armhole drop" [ref=e816] [cursor=pointer]:
+            - cell "IF" [ref=e817]
+            - cell "Глубина проймы поддержки" [ref=e818]
+            - cell "Support Armhole drop" [ref=e819]
+          - row "IJ Длина Переда поддержки от наивысшей точки плеча до низа Support Front length from High Point Shoulder (HPS) to hem" [ref=e820] [cursor=pointer]:
+            - cell "IJ" [ref=e821]
+            - cell "Длина Переда поддержки от наивысшей точки плеча до низа" [ref=e822]
+            - cell "Support Front length from High Point Shoulder (HPS) to hem" [ref=e823]
+          - row "IJ2 Длина по Центру Переда поддержки (включая резинку) Support Centre Front length (CF length) (including elastic band)" [ref=e824] [cursor=pointer]:
+            - cell "IJ2" [ref=e825]
+            - cell "Длина по Центру Переда поддержки (включая резинку)" [ref=e826]
+            - cell "Support Centre Front length (CF length) (including elastic band)" [ref=e827]
+          - row "IJ3 Длина по Центру Спинки пожддержки Support Centre Back length (CB length) (including elastic band)" [ref=e828] [cursor=pointer]:
+            - cell "IJ3" [ref=e829]
+            - cell "Длина по Центру Спинки пожддержки" [ref=e830]
+            - cell "Support Centre Back length (CB length) (including elastic band)" [ref=e831]
+          - row "IJ5 Боковой шов (ниже проймы) Support Side seam (below armhole)" [ref=e832] [cursor=pointer]:
+            - cell "IJ5" [ref=e833]
+            - cell "Боковой шов (ниже проймы)" [ref=e834]
+            - cell "Support Side seam (below armhole)" [ref=e835]
+          - row "IJ6 Шаговый шов (внутренний шов) Inner Inseam" [ref=e836] [cursor=pointer]:
+            - cell "IJ6" [ref=e837]
+            - cell "Шаговый шов (внутренний шов)" [ref=e838]
+            - cell "Inner Inseam" [ref=e839]
+          - row "IJ7 Длина бокового шва (не включая пояс) Inner Outseam (excl. wb)" [ref=e840] [cursor=pointer]:
+            - cell "IJ7" [ref=e841]
+            - cell "Длина бокового шва (не включая пояс)" [ref=e842]
+            - cell "Inner Outseam (excl. wb)" [ref=e843]
+          - row "IK Ширина горловины поддержки Support Back neck width" [ref=e844] [cursor=pointer]:
+            - cell "IK" [ref=e845]
+            - cell "Ширина горловины поддержки" [ref=e846]
+            - cell "Support Back neck width" [ref=e847]
+          - row "IK1 Глубина горловины поддержки сзади Support Back neck drop" [ref=e848] [cursor=pointer]:
+            - cell "IK1" [ref=e849]
+            - cell "Глубина горловины поддержки сзади" [ref=e850]
+            - cell "Support Back neck drop" [ref=e851]
+          - row "IK2 Глубина горловины поддержки спереди Support Front neck drop" [ref=e852] [cursor=pointer]:
+            - cell "IK2" [ref=e853]
+            - cell "Глубина горловины поддержки спереди" [ref=e854]
+            - cell "Support Front neck drop" [ref=e855]
+          - row "IL6 Длина внутреннего воротника по верхнему краю Inner Collar length upper edge" [ref=e856] [cursor=pointer]:
+            - cell "IL6" [ref=e857]
+            - cell "Длина внутреннего воротника по верхнему краю" [ref=e858]
+            - cell "Inner Collar length upper edge" [ref=e859]
+          - row "IN Длина среднего шва передней половинки внутренних шорт, (включая пояс) Inner Front rise (incl. wb)" [ref=e860] [cursor=pointer]:
+            - cell "IN" [ref=e861]
+            - cell "Длина среднего шва передней половинки внутренних шорт, (включая пояс)" [ref=e862]
+            - cell "Inner Front rise (incl. wb)" [ref=e863]
+          - row "IN1 Длина среднего шва задней половинки внутренних шорт, (включая пояс) Inner Back rise (incl. wb)" [ref=e864] [cursor=pointer]:
+            - cell "IN1" [ref=e865]
+            - cell "Длина среднего шва задней половинки внутренних шорт, (включая пояс)" [ref=e866]
+            - cell "Inner Back rise (incl. wb)" [ref=e867]
+          - row "IN2 Длина среднего шва передней половинки внутренних шорт, (не включая пояс) Inner Front rise (excl. wb)" [ref=e868] [cursor=pointer]:
+            - cell "IN2" [ref=e869]
+            - cell "Длина среднего шва передней половинки внутренних шорт, (не включая пояс)" [ref=e870]
+            - cell "Inner Front rise (excl. wb)" [ref=e871]
+          - row "IN3 Длина среднего шва задней половинки внутренних шорт, (не включая пояс) Inner Back rise (excl. wb)" [ref=e872] [cursor=pointer]:
+            - cell "IN3" [ref=e873]
+            - cell "Длина среднего шва задней половинки внутренних шорт, (не включая пояс)" [ref=e874]
+            - cell "Inner Back rise (excl. wb)" [ref=e875]
+          - row "IPp1 Высота накладного кармана по линии борта до нижнего среза Patch pocket length along centre line to bottom edge" [ref=e876] [cursor=pointer]:
+            - cell "IPp1" [ref=e877]
+            - cell "Высота накладного кармана по линии борта до нижнего среза" [ref=e878]
+            - cell "Patch pocket length along centre line to bottom edge" [ref=e879]
+          - row "Ipp3 Высота накладного кармана до нижнего среза Patch pocket lenght to bottom edge" [ref=e880] [cursor=pointer]:
+            - cell "Ipp3" [ref=e881]
+            - cell "Высота накладного кармана до нижнего среза" [ref=e882]
+            - cell "Patch pocket lenght to bottom edge" [ref=e883]
+          - row "IT Расстояние от линии талии до вытачки (не включая пояс) Distance betweenwaist line and tuck (excl. waistband)" [ref=e884] [cursor=pointer]:
+            - cell "IT" [ref=e885]
+            - cell "Расстояние от линии талии до вытачки (не включая пояс)" [ref=e886]
+            - cell "Distance betweenwaist line and tuck (excl. waistband)" [ref=e887]
+          - row "IT0 Расстояние от горловины до внутреннего кармана Inner pocket from neck" [ref=e888] [cursor=pointer]:
+            - cell "IT0" [ref=e889]
+            - cell "Расстояние от горловины до внутреннего кармана" [ref=e890]
+            - cell "Inner pocket from neck" [ref=e891]
+          - row "IT1 Расстояние от шва до внутреннего кармана Inner pocket from seam" [ref=e892] [cursor=pointer]:
+            - cell "IT1" [ref=e893]
+            - cell "Расстояние от шва до внутреннего кармана" [ref=e894]
+            - cell "Inner pocket from seam" [ref=e895]
+          - row "J Длина Переда от наивысшей точки плеча до низа Front length from High Point Shoulder (HPS) to hem" [ref=e896] [cursor=pointer]:
+            - cell "J" [ref=e897]
+            - cell "Длина Переда от наивысшей точки плеча до низа" [ref=e898]
+            - cell "Front length from High Point Shoulder (HPS) to hem" [ref=e899]
+          - row "J1 Длина Спинки от наивысшей точки плеча до низа (готовый вид) Back length from High Point Shoulder (HPS) to hem (ready to use, not paper patterns msmnt)" [ref=e900] [cursor=pointer]:
+            - cell "J1" [ref=e901]
+            - cell "Длина Спинки от наивысшей точки плеча до низа (готовый вид)" [ref=e902]
+            - cell "Back length from High Point Shoulder (HPS) to hem (ready to use, not paper patterns msmnt)" [ref=e903]
+          - row "J10 Расстояние от низа брюк (юбки) до реза по боковому шву Distance from garment bottom to side seam cut" [ref=e904] [cursor=pointer]:
+            - cell "J10" [ref=e905]
+            - cell "Расстояние от низа брюк (юбки) до реза по боковому шву" [ref=e906]
+            - cell "Distance from garment bottom to side seam cut" [ref=e907]
+          - row "J11 Ширина коленной вставки по внутреннему шву Knee insert width along inner seam" [ref=e908] [cursor=pointer]:
+            - cell "J11" [ref=e909]
+            - cell "Ширина коленной вставки по внутреннему шву" [ref=e910]
+            - cell "Knee insert width along inner seam" [ref=e911]
+          - row "J12 Расстояние от низа брюк (юбки) до реза по внутреннему шву Distance from garment bottom to cut along inner seam" [ref=e912] [cursor=pointer]:
+            - cell "J12" [ref=e913]
+            - cell "Расстояние от низа брюк (юбки) до реза по внутреннему шву" [ref=e914]
+            - cell "Distance from garment bottom to cut along inner seam" [ref=e915]
+          - row "J13 Длина криволинейного среза спереди Curve seam length Front" [ref=e916] [cursor=pointer]:
+            - cell "J13" [ref=e917]
+            - cell "Длина криволинейного среза спереди" [ref=e918]
+            - cell "Curve seam length Front" [ref=e919]
+          - row "J14 Длина криволинейного среза сзади Curve seam length Back" [ref=e920] [cursor=pointer]:
+            - cell "J14" [ref=e921]
+            - cell "Длина криволинейного среза сзади" [ref=e922]
+            - cell "Curve seam length Back" [ref=e923]
+          - row "J2 Длина по Центру Переда Centre Front length (CF length)" [ref=e924] [cursor=pointer]:
+            - cell "J2" [ref=e925]
+            - cell "Длина по Центру Переда" [ref=e926]
+            - cell "Centre Front length (CF length)" [ref=e927]
+          - row "J3 Длина по Центру Спинки Centre Back length (CB length)" [ref=e928] [cursor=pointer]:
+            - cell "J3" [ref=e929]
+            - cell "Длина по Центру Спинки" [ref=e930]
+            - cell "Centre Back length (CB length)" [ref=e931]
+          - row "J4 Длина торса от Наивысшей точки плеча до центра линии шага Torso length from HPS to CC" [ref=e932] [cursor=pointer]:
+            - cell "J4" [ref=e933]
+            - cell "Длина торса от Наивысшей точки плеча до центра линии шага" [ref=e934]
+            - cell "Torso length from HPS to CC" [ref=e935]
+          - row "J5 Боковой шов (ниже проймы) Side seam (below armhole)" [ref=e936] [cursor=pointer]:
+            - cell "J5" [ref=e937]
+            - cell "Боковой шов (ниже проймы)" [ref=e938]
+            - cell "Side seam (below armhole)" [ref=e939]
+          - row "J6 Шаговый шов (внутренний шов) Inseam" [ref=e940] [cursor=pointer]:
+            - cell "J6" [ref=e941]
+            - cell "Шаговый шов (внутренний шов)" [ref=e942]
+            - cell "Inseam" [ref=e943]
+          - row "J7 Боковой шов (внешний шов) не включая пояс Outseam (excl. wb)" [ref=e944] [cursor=pointer]:
+            - cell "J7" [ref=e945]
+            - cell "Боковой шов (внешний шов) не включая пояс" [ref=e946]
+            - cell "Outseam (excl. wb)" [ref=e947]
+          - row "J8 Расстояние от линии втачивания пояса до реза по боковому шву Distance from waistband to side seam cut" [ref=e948] [cursor=pointer]:
+            - cell "J8" [ref=e949]
+            - cell "Расстояние от линии втачивания пояса до реза по боковому шву" [ref=e950]
+            - cell "Distance from waistband to side seam cut" [ref=e951]
+          - row "J9 Ширина коленной вставки по боковому шву Knee insert width along side seam" [ref=e952] [cursor=pointer]:
+            - cell "J9" [ref=e953]
+            - cell "Ширина коленной вставки по боковому шву" [ref=e954]
+            - cell "Knee insert width along side seam" [ref=e955]
+          - row "K Ширина горловины (не для бумажных лекал) Back neck width (not check with paper patterns)" [ref=e956] [cursor=pointer]:
+            - cell "K" [ref=e957]
+            - cell "Ширина горловины (не для бумажных лекал)" [ref=e958]
+            - cell "Back neck width (not check with paper patterns)" [ref=e959]
+          - row "K0 Длина шнура капюшона (1/2) Hood draw cord length (1/2)" [ref=e960] [cursor=pointer]:
+            - cell "K0" [ref=e961]
+            - cell "Длина шнура капюшона (1/2)" [ref=e962]
+            - cell "Hood draw cord length (1/2)" [ref=e963]
+          - row "K01 Полная длина шнура капюшона Hood draw cord length" [ref=e964] [cursor=pointer]:
+            - cell "K01" [ref=e965]
+            - cell "Полная длина шнура капюшона" [ref=e966]
+            - cell "Hood draw cord length" [ref=e967]
+          - row "K02 Длина шнура внизу (1/2) Draw cord length at hem (1/2)" [ref=e968] [cursor=pointer]:
+            - cell "K02" [ref=e969]
+            - cell "Длина шнура внизу (1/2)" [ref=e970]
+            - cell "Draw cord length at hem (1/2)" [ref=e971]
+          - row "K1 Глубина горловины сзади (не для бумажных лекал) Back neck drop (not check with paper patterns)" [ref=e972] [cursor=pointer]:
+            - cell "K1" [ref=e973]
+            - cell "Глубина горловины сзади (не для бумажных лекал)" [ref=e974]
+            - cell "Back neck drop (not check with paper patterns)" [ref=e975]
+          - row "K2 Глубина горловины спереди (не для бумажных лекал) Front neck drop (not check with paper patterns)" [ref=e976] [cursor=pointer]:
+            - cell "K2" [ref=e977]
+            - cell "Глубина горловины спереди (не для бумажных лекал)" [ref=e978]
+            - cell "Front neck drop (not check with paper patterns)" [ref=e979]
+          - row "K3 Ширины обтачка горловины (плечо) Back neck welt width (shoulder)" [ref=e980] [cursor=pointer]:
+            - cell "K3" [ref=e981]
+            - cell "Ширины обтачка горловины (плечо)" [ref=e982]
+            - cell "Back neck welt width (shoulder)" [ref=e983]
+          - row "K4 Высота обтачки горловины сзади (центр спинки) Back neck welt height (СB)" [ref=e984] [cursor=pointer]:
+            - cell "K4" [ref=e985]
+            - cell "Высота обтачки горловины сзади (центр спинки)" [ref=e986]
+            - cell "Back neck welt height (СB)" [ref=e987]
+          - row "K4a Ширина обтаки спинки внизу Back neck welt with (bottom)" [ref=e988] [cursor=pointer]:
+            - cell "K4a" [ref=e989]
+            - cell "Ширина обтаки спинки внизу" [ref=e990]
+            - cell "Back neck welt with (bottom)" [ref=e991]
+          - row "K5 Ширина внутренней детали полочки Front inner detail width" [ref=e992] [cursor=pointer]:
+            - cell "K5" [ref=e993]
+            - cell "Ширина внутренней детали полочки" [ref=e994]
+            - cell "Front inner detail width" [ref=e995]
+          - row "K6 Длина шнура (1/2) Draw cord length (1/2)" [ref=e996] [cursor=pointer]:
+            - cell "K6" [ref=e997]
+            - cell "Длина шнура (1/2)" [ref=e998]
+            - cell "Draw cord length (1/2)" [ref=e999]
+          - row "K61 Полная длина шнура Draw cord full length" [ref=e1000] [cursor=pointer]:
+            - cell "K61" [ref=e1001]
+            - cell "Полная длина шнура" [ref=e1002]
+            - cell "Draw cord full length" [ref=e1003]
+          - row "K62 Видимая длина шнура Draw cord see length" [ref=e1004] [cursor=pointer]:
+            - cell "K62" [ref=e1005]
+            - cell "Видимая длина шнура" [ref=e1006]
+            - cell "Draw cord see length" [ref=e1007]
+          - row "K7 1/2 длины горловины 1/2 length of neck hole" [ref=e1008] [cursor=pointer]:
+            - cell "K7" [ref=e1009]
+            - cell "1/2 длины горловины" [ref=e1010]
+            - cell "1/2 length of neck hole" [ref=e1011]
+          - row "K7' 1/2 длины горловины, в растянутом виде (не сравнивать с лекалами) 1/2 length of neck hole extended (do not check with paper patterns)" [ref=e1012] [cursor=pointer]:
+            - cell "K7'" [ref=e1013]
+            - cell "1/2 длины горловины, в растянутом виде (не сравнивать с лекалами)" [ref=e1014]
+            - cell "1/2 length of neck hole extended (do not check with paper patterns)" [ref=e1015]
+          - row "Kp Карман на уровне коленей -вход Knee pocket opening" [ref=e1016] [cursor=pointer]:
+            - cell "Kp" [ref=e1017]
+            - cell "Карман на уровне коленей -вход" [ref=e1018]
+            - cell "Knee pocket opening" [ref=e1019]
+          - row "Kp1 Высота листочки/рамки в Кармане на уровне коленей Knee pocket height" [ref=e1020] [cursor=pointer]:
+            - cell "Kp1" [ref=e1021]
+            - cell "Высота листочки/рамки в Кармане на уровне коленей" [ref=e1022]
+            - cell "Knee pocket height" [ref=e1023]
+          - row "L Высота воротника сзади Centre back collar height" [ref=e1024] [cursor=pointer]:
+            - cell "L" [ref=e1025]
+            - cell "Высота воротника сзади" [ref=e1026]
+            - cell "Centre back collar height" [ref=e1027]
+          - row "L0 1/2 Длина нижнего среза воротника 1/2 Collar low seam cut length" [ref=e1028] [cursor=pointer]:
+            - cell "L0" [ref=e1029]
+            - cell "1/2 Длина нижнего среза воротника" [ref=e1030]
+            - cell "1/2 Collar low seam cut length" [ref=e1031]
+          - row "L1 Высота воротника спереди Centre front collar height" [ref=e1032] [cursor=pointer]:
+            - cell "L1" [ref=e1033]
+            - cell "Высота воротника спереди" [ref=e1034]
+            - cell "Centre front collar height" [ref=e1035]
+          - row "L1a Высота внутреннего воротника спереди Centre front inner collar height" [ref=e1036] [cursor=pointer]:
+            - cell "L1a" [ref=e1037]
+            - cell "Высота внутреннего воротника спереди" [ref=e1038]
+            - cell "Centre front inner collar height" [ref=e1039]
+          - row "L2 Высота стойки воротника сзади Collar stand height CB" [ref=e1040] [cursor=pointer]:
+            - cell "L2" [ref=e1041]
+            - cell "Высота стойки воротника сзади" [ref=e1042]
+            - cell "Collar stand height CB" [ref=e1043]
+          - row "L3 Высота стойки воротника спереди Collar stand height CF" [ref=e1044] [cursor=pointer]:
+            - cell "L3" [ref=e1045]
+            - cell "Высота стойки воротника спереди" [ref=e1046]
+            - cell "Collar stand height CF" [ref=e1047]
+          - row "L4 Обхват горловины Neck circumference" [ref=e1048] [cursor=pointer]:
+            - cell "L4" [ref=e1049]
+            - cell "Обхват горловины" [ref=e1050]
+            - cell "Neck circumference" [ref=e1051]
+          - row "L4.1 Обхват горловины по центру стойки Neck circumference by stand center" [ref=e1052] [cursor=pointer]:
+            - cell "L4.1" [ref=e1053]
+            - cell "Обхват горловины по центру стойки" [ref=e1054]
+            - cell "Neck circumference by stand center" [ref=e1055]
+          - row "L4.2 Длина нижнего среза воротника Collar low seam cut length" [ref=e1056] [cursor=pointer]:
+            - cell "L4.2" [ref=e1057]
+            - cell "Длина нижнего среза воротника" [ref=e1058]
+            - cell "Collar low seam cut length" [ref=e1059]
+          - row "L5 Конец воротника Collar end" [ref=e1060] [cursor=pointer]:
+            - cell "L5" [ref=e1061]
+            - cell "Конец воротника" [ref=e1062]
+            - cell "Collar end" [ref=e1063]
+          - row "L6 Длина воротника по верхнему краю Collar length upper edge" [ref=e1064] [cursor=pointer]:
+            - cell "L6" [ref=e1065]
+            - cell "Длина воротника по верхнему краю" [ref=e1066]
+            - cell "Collar length upper edge" [ref=e1067]
+          - row "L6' Длина воротника по верхнему краю в растянутом виде Collar length upper edge (extented)" [ref=e1068] [cursor=pointer]:
+            - cell "L6'" [ref=e1069]
+            - cell "Длина воротника по верхнему краю в растянутом виде" [ref=e1070]
+            - cell "Collar length upper edge (extented)" [ref=e1071]
+          - row "L6a Длина второго воротника по верхнему краю Second collar length upper edge" [ref=e1072] [cursor=pointer]:
+            - cell "L6a" [ref=e1073]
+            - cell "Длина второго воротника по верхнему краю" [ref=e1074]
+            - cell "Second collar length upper edge" [ref=e1075]
+          - row "L7 Длина воротника по верхнему краю, 1/2 1/2 Collar length upper edge" [ref=e1076] [cursor=pointer]:
+            - cell "L7" [ref=e1077]
+            - cell "Длина воротника по верхнему краю, 1/2" [ref=e1078]
+            - cell "1/2 Collar length upper edge" [ref=e1079]
+          - row "L7' 1/2 Collar length upper edge (extented)" [ref=e1080] [cursor=pointer]:
+            - cell "L7'" [ref=e1081]
+            - cell [ref=e1082]
+            - cell "1/2 Collar length upper edge (extented)" [ref=e1083]
+          - row "L8 Длина лацкана Lapel length" [ref=e1084] [cursor=pointer]:
+            - cell "L8" [ref=e1085]
+            - cell "Длина лацкана" [ref=e1086]
+            - cell "Lapel length" [ref=e1087]
+          - row "L9 Ширина лацкана Lapel width" [ref=e1088] [cursor=pointer]:
+            - cell "L9" [ref=e1089]
+            - cell "Ширина лацкана" [ref=e1090]
+            - cell "Lapel width" [ref=e1091]
+          - row "La Высота второго воротника сзади Second collar centre back height" [ref=e1092] [cursor=pointer]:
+            - cell "La" [ref=e1093]
+            - cell "Высота второго воротника сзади" [ref=e1094]
+            - cell "Second collar centre back height" [ref=e1095]
+          - row "Lp Карман на брюках - вход (местоположение в центральной части брючины) Leg pocket opening" [ref=e1096] [cursor=pointer]:
+            - cell "Lp" [ref=e1097]
+            - cell "Карман на брюках - вход (местоположение в центральной части брючины)" [ref=e1098]
+            - cell "Leg pocket opening" [ref=e1099]
+          - row "Lp1 Высота листочки/рамки кармана на брюках (местоположение в центральной части брючины) Leg pocket height" [ref=e1100] [cursor=pointer]:
+            - cell "Lp1" [ref=e1101]
+            - cell "Высота листочки/рамки кармана на брюках (местоположение в центральной части брючины)" [ref=e1102]
+            - cell "Leg pocket height" [ref=e1103]
+          - row "Ls Высота горловины сбоку Side collar height" [ref=e1104] [cursor=pointer]:
+            - cell "Ls" [ref=e1105]
+            - cell "Высота горловины сбоку" [ref=e1106]
+            - cell "Side collar height" [ref=e1107]
+          - row "M Высота кокетки по центру спинки Back yoke height СB" [ref=e1108] [cursor=pointer]:
+            - cell "M" [ref=e1109]
+            - cell "Высота кокетки по центру спинки" [ref=e1110]
+            - cell "Back yoke height СB" [ref=e1111]
+          - row "M1 Высота кокетки по центру полочки Front yoke height CF" [ref=e1112] [cursor=pointer]:
+            - cell "M1" [ref=e1113]
+            - cell "Высота кокетки по центру полочки" [ref=e1114]
+            - cell "Front yoke height CF" [ref=e1115]
+          - row "M2 Высота кокетки по боковому шву спереди Front yoke height SS" [ref=e1116] [cursor=pointer]:
+            - cell "M2" [ref=e1117]
+            - cell "Высота кокетки по боковому шву спереди" [ref=e1118]
+            - cell "Front yoke height SS" [ref=e1119]
+          - row "M3 Высота кокетки по боковому шву сзади Back yoke height SS" [ref=e1120] [cursor=pointer]:
+            - cell "M3" [ref=e1121]
+            - cell "Высота кокетки по боковому шву сзади" [ref=e1122]
+            - cell "Back yoke height SS" [ref=e1123]
+          - row "MPb Высота по середине чехла для куртки Middle height for jacket packable bag" [ref=e1124] [cursor=pointer]:
+            - cell "MPb" [ref=e1125]
+            - cell "Высота по середине чехла для куртки" [ref=e1126]
+            - cell "Middle height for jacket packable bag" [ref=e1127]
+          - row "N Длина среднего шва передней половинки брюк, (включая пояс) Front rise (incl. wb)" [ref=e1128] [cursor=pointer]:
+            - cell "N" [ref=e1129]
+            - cell "Длина среднего шва передней половинки брюк, (включая пояс)" [ref=e1130]
+            - cell "Front rise (incl. wb)" [ref=e1131]
+          - row "N1 Длина среднего шва задней половинки брюк, (включая пояс) Back rise (incl. wb)" [ref=e1132] [cursor=pointer]:
+            - cell "N1" [ref=e1133]
+            - cell "Длина среднего шва задней половинки брюк, (включая пояс)" [ref=e1134]
+            - cell "Back rise (incl. wb)" [ref=e1135]
+          - row "N10 Ширина вставки (вверху) Insert width (on top)" [ref=e1136] [cursor=pointer]:
+            - cell "N10" [ref=e1137]
+            - cell "Ширина вставки (вверху)" [ref=e1138]
+            - cell "Insert width (on top)" [ref=e1139]
+          - row "N11 Широкая часть вставки Widest part of insert" [ref=e1140] [cursor=pointer]:
+            - cell "N11" [ref=e1141]
+            - cell "Широкая часть вставки" [ref=e1142]
+            - cell "Widest part of insert" [ref=e1143]
+          - row "N12 Ширина вставки (внизу) Insert width (on bottom)" [ref=e1144] [cursor=pointer]:
+            - cell "N12" [ref=e1145]
+            - cell "Ширина вставки (внизу)" [ref=e1146]
+            - cell "Insert width (on bottom)" [ref=e1147]
+          - row "N2 Длина среднего шва передней половинки брюк (не включая пояс) Front rise (excl. wb)" [ref=e1148] [cursor=pointer]:
+            - cell "N2" [ref=e1149]
+            - cell "Длина среднего шва передней половинки брюк (не включая пояс)" [ref=e1150]
+            - cell "Front rise (excl. wb)" [ref=e1151]
+          - row "N3 Длина среднего шва задней половинки брюк (не включая пояс) Back rise (excl. wb)" [ref=e1152] [cursor=pointer]:
+            - cell "N3" [ref=e1153]
+            - cell "Длина среднего шва задней половинки брюк (не включая пояс)" [ref=e1154]
+            - cell "Back rise (excl. wb)" [ref=e1155]
+          - row "N6 Ширина ластовицы Gusset width" [ref=e1156] [cursor=pointer]:
+            - cell "N6" [ref=e1157]
+            - cell "Ширина ластовицы" [ref=e1158]
+            - cell "Gusset width" [ref=e1159]
+          - row "N7 Длина ластовицы Gusset length" [ref=e1160] [cursor=pointer]:
+            - cell "N7" [ref=e1161]
+            - cell "Длина ластовицы" [ref=e1162]
+            - cell "Gusset length" [ref=e1163]
+          - row "N8 Ширина ластовицы (по рукаву) Gusset width ( on sleeve )" [ref=e1164] [cursor=pointer]:
+            - cell "N8" [ref=e1165]
+            - cell "Ширина ластовицы (по рукаву)" [ref=e1166]
+            - cell "Gusset width ( on sleeve )" [ref=e1167]
+          - row "N9 Ширина ластовицы ( по низу изделия) Gusset width ( on body bottom )" [ref=e1168] [cursor=pointer]:
+            - cell "N9" [ref=e1169]
+            - cell "Ширина ластовицы ( по низу изделия)" [ref=e1170]
+            - cell "Gusset width ( on body bottom )" [ref=e1171]
+          - row "NBy Расстояние от точки центра горловины спинки до логотипа Distance from neckline CB to a logo" [ref=e1172] [cursor=pointer]:
+            - cell "NBy" [ref=e1173]
+            - cell "Расстояние от точки центра горловины спинки до логотипа" [ref=e1174]
+            - cell "Distance from neckline CB to a logo" [ref=e1175]
+          - row "NFy Расстояние от точки центра горловины полочки до логотипа Distance from neckline CF to a logo" [ref=e1176] [cursor=pointer]:
+            - cell "NFy" [ref=e1177]
+            - cell "Расстояние от точки центра горловины полочки до логотипа" [ref=e1178]
+            - cell "Distance from neckline CF to a logo" [ref=e1179]
+          - row "O Длина гульфика Front Fly" [ref=e1180] [cursor=pointer]:
+            - cell "O" [ref=e1181]
+            - cell "Длина гульфика" [ref=e1182]
+            - cell "Front Fly" [ref=e1183]
+          - row "O1 Ширина гульфика Fly width" [ref=e1184] [cursor=pointer]:
+            - cell "O1" [ref=e1185]
+            - cell "Ширина гульфика" [ref=e1186]
+            - cell "Fly width" [ref=e1187]
+          - row "O2 Ширина планки Placket width" [ref=e1188] [cursor=pointer]:
+            - cell "O2" [ref=e1189]
+            - cell "Ширина планки" [ref=e1190]
+            - cell "Placket width" [ref=e1191]
+          - row "O3 Длина планки Placket/cut length" [ref=e1192] [cursor=pointer]:
+            - cell "O3" [ref=e1193]
+            - cell "Длина планки" [ref=e1194]
+            - cell "Placket/cut length" [ref=e1195]
+          - row "O4 Ширина внутренней планки Inside placket width" [ref=e1196] [cursor=pointer]:
+            - cell "O4" [ref=e1197]
+            - cell "Ширина внутренней планки" [ref=e1198]
+            - cell "Inside placket width" [ref=e1199]
+          - row "O5 Ширина планки/разреза на рукаве Sleeve placket width" [ref=e1200] [cursor=pointer]:
+            - cell "O5" [ref=e1201]
+            - cell "Ширина планки/разреза на рукаве" [ref=e1202]
+            - cell "Sleeve placket width" [ref=e1203]
+          - row "O6 Длина планки/разреза на рукаве Sleeve placket/cut length" [ref=e1204] [cursor=pointer]:
+            - cell "O6" [ref=e1205]
+            - cell "Длина планки/разреза на рукаве" [ref=e1206]
+            - cell "Sleeve placket/cut length" [ref=e1207]
+          - row "P Положение 1-й пуговицы/кнопки 1-st button placement" [ref=e1208] [cursor=pointer]:
+            - cell "P" [ref=e1209]
+            - cell "Положение 1-й пуговицы/кнопки" [ref=e1210]
+            - cell "1-st button placement" [ref=e1211]
+          - row "P1 Расстояние между пуговицами/кнопками Dist between buttons" [ref=e1212] [cursor=pointer]:
+            - cell "P1" [ref=e1213]
+            - cell "Расстояние между пуговицами/кнопками" [ref=e1214]
+            - cell "Dist between buttons" [ref=e1215]
+          - row "PCp Накладной нагрудный карман -вход Patch Chest pocket opening" [ref=e1216] [cursor=pointer]:
+            - cell "PCp" [ref=e1217]
+            - cell "Накладной нагрудный карман -вход" [ref=e1218]
+            - cell "Patch Chest pocket opening" [ref=e1219]
+          - row "PCp1 Высота Накладного Нагрудного кармана со стороны Центральной части Полочки Patch Chest pocket height CF" [ref=e1220] [cursor=pointer]:
+            - cell "PCp1" [ref=e1221]
+            - cell "Высота Накладного Нагрудного кармана со стороны Центральной части Полочки" [ref=e1222]
+            - cell "Patch Chest pocket height CF" [ref=e1223]
+          - row "PCp2 Высота Накладного Нагрудного кармана по центру Patch Chest pocket сenter height" [ref=e1224] [cursor=pointer]:
+            - cell "PCp2" [ref=e1225]
+            - cell "Высота Накладного Нагрудного кармана по центру" [ref=e1226]
+            - cell "Patch Chest pocket сenter height" [ref=e1227]
+          - row "PCp3 Высота Накладного Нагрудного кармана со стороны бокового шва Patch Chest pocket height SS" [ref=e1228] [cursor=pointer]:
+            - cell "PCp3" [ref=e1229]
+            - cell "Высота Накладного Нагрудного кармана со стороны бокового шва" [ref=e1230]
+            - cell "Patch Chest pocket height SS" [ref=e1231]
+          - row "PCp4 Накладной Нагрудный карман - длина по низу кармана Patch Chest pocket length bottom" [ref=e1232] [cursor=pointer]:
+            - cell "PCp4" [ref=e1233]
+            - cell "Накладной Нагрудный карман - длина по низу кармана" [ref=e1234]
+            - cell "Patch Chest pocket length bottom" [ref=e1235]
+          - row "PEx Расстояние от края кармана (клапана) до логотипа - горизонтально Distance from the pocket (flap) edge to a logo - horizontally" [ref=e1236] [cursor=pointer]:
+            - cell "PEx" [ref=e1237]
+            - cell "Расстояние от края кармана (клапана) до логотипа - горизонтально" [ref=e1238]
+            - cell "Distance from the pocket (flap) edge to a logo - horizontally" [ref=e1239]
+          - row "PEy Расстояние от края кармана (клапана) до логотипа - вертикально Distance from the pocket edge to a logo - vertically" [ref=e1240] [cursor=pointer]:
+            - cell "PEy" [ref=e1241]
+            - cell "Расстояние от края кармана (клапана) до логотипа - вертикально" [ref=e1242]
+            - cell "Distance from the pocket edge to a logo - vertically" [ref=e1243]
+          - row "Pin Вход во внутренний карман Pocket inner opening" [ref=e1244] [cursor=pointer]:
+            - cell "Pin" [ref=e1245]
+            - cell "Вход во внутренний карман" [ref=e1246]
+            - cell "Pocket inner opening" [ref=e1247]
+          - row "PKp Накладной Карман на уровне коленей - вход на плоскости Patch Knee pocket opening on plane" [ref=e1248] [cursor=pointer]:
+            - cell "PKp" [ref=e1249]
+            - cell "Накладной Карман на уровне коленей - вход на плоскости" [ref=e1250]
+            - cell "Patch Knee pocket opening on plane" [ref=e1251]
+          - row "PKp1 Высота Накладного Кармана на уровне коленей со стороны Центральной части Patch Knee pocket height СF" [ref=e1252] [cursor=pointer]:
+            - cell "PKp1" [ref=e1253]
+            - cell "Высота Накладного Кармана на уровне коленей со стороны Центральной части" [ref=e1254]
+            - cell "Patch Knee pocket height СF" [ref=e1255]
+          - row "PKp2 Высота Накладного Кармана на уровне коленей по центру Patch Knee pocket center height" [ref=e1256] [cursor=pointer]:
+            - cell "PKp2" [ref=e1257]
+            - cell "Высота Накладного Кармана на уровне коленей по центру" [ref=e1258]
+            - cell "Patch Knee pocket center height" [ref=e1259]
+          - row "PKp3 Высота Накладного Кармана на уровне коленей со стороны бокового шва Patch Knee pocket height SS" [ref=e1260] [cursor=pointer]:
+            - cell "PKp3" [ref=e1261]
+            - cell "Высота Накладного Кармана на уровне коленей со стороны бокового шва" [ref=e1262]
+            - cell "Patch Knee pocket height SS" [ref=e1263]
+          - row "PKp4 Длина Накладного Кармана на уровне коленей по низу кармана Patch pocket length bottom" [ref=e1264] [cursor=pointer]:
+            - cell "PKp4" [ref=e1265]
+            - cell "Длина Накладного Кармана на уровне коленей по низу кармана" [ref=e1266]
+            - cell "Patch pocket length bottom" [ref=e1267]
+          - row "PKp5 Фактическая длина входа в накладной карман на уровне коленей Actual patch knee pocket openning" [ref=e1268] [cursor=pointer]:
+            - cell "PKp5" [ref=e1269]
+            - cell "Фактическая длина входа в накладной карман на уровне коленей" [ref=e1270]
+            - cell "Actual patch knee pocket openning" [ref=e1271]
+          - row "Pl Расстояние от от точки до флажка Distance from point to pip label" [ref=e1272] [cursor=pointer]:
+            - cell "Pl" [ref=e1273]
+            - cell "Расстояние от от точки до флажка" [ref=e1274]
+            - cell "Distance from point to pip label" [ref=e1275]
+          - row "Pl2 Расстояние от от точки до флажка 2 Distance from point to pip label 2" [ref=e1276] [cursor=pointer]:
+            - cell "Pl2" [ref=e1277]
+            - cell "Расстояние от от точки до флажка 2" [ref=e1278]
+            - cell "Distance from point to pip label 2" [ref=e1279]
+          - row "Pmh Высота кармана для мобильного телефона Mobile pocket height" [ref=e1280] [cursor=pointer]:
+            - cell "Pmh" [ref=e1281]
+            - cell "Высота кармана для мобильного телефона" [ref=e1282]
+            - cell "Mobile pocket height" [ref=e1283]
+          - row "Pmw Ширина кармана для мобильного телефона Mobile pocket width" [ref=e1284] [cursor=pointer]:
+            - cell "Pmw" [ref=e1285]
+            - cell "Ширина кармана для мобильного телефона" [ref=e1286]
+            - cell "Mobile pocket width" [ref=e1287]
+          - row "Pp Накладной Карман -вход Patch pocket opening" [ref=e1288] [cursor=pointer]:
+            - cell "Pp" [ref=e1289]
+            - cell "Накладной Карман -вход" [ref=e1290]
+            - cell "Patch pocket opening" [ref=e1291]
+          - row "Pp1 Высота Накладного Кармана - по цетральной части полочки или передней половинки /по центральной части спинки ли Задней половинки Patch pocket height side CF/CB" [ref=e1292] [cursor=pointer]:
+            - cell "Pp1" [ref=e1293]
+            - cell "Высота Накладного Кармана - по цетральной части полочки или передней половинки /по центральной части спинки ли Задней половинки" [ref=e1294]
+            - cell "Patch pocket height side CF/CB" [ref=e1295]
+          - row "Pp2 Высота Накладного кармана по центру Patch pocket center height" [ref=e1296] [cursor=pointer]:
+            - cell "Pp2" [ref=e1297]
+            - cell "Высота Накладного кармана по центру" [ref=e1298]
+            - cell "Patch pocket center height" [ref=e1299]
+          - row "Pp3 Высота Накладного кармана по боковому шву Patch pocket height SS" [ref=e1300] [cursor=pointer]:
+            - cell "Pp3" [ref=e1301]
+            - cell "Высота Накладного кармана по боковому шву" [ref=e1302]
+            - cell "Patch pocket height SS" [ref=e1303]
+          - row "Pp4 Длина Накладного кармана по низу кармана Patch pocket length bottom" [ref=e1304] [cursor=pointer]:
+            - cell "Pp4" [ref=e1305]
+            - cell "Длина Накладного кармана по низу кармана" [ref=e1306]
+            - cell "Patch pocket length bottom" [ref=e1307]
+          - row "Pp5 Длина Накладного кармана по верхнему срезу кармана Patch pocket length upper" [ref=e1308] [cursor=pointer]:
+            - cell "Pp5" [ref=e1309]
+            - cell "Длина Накладного кармана по верхнему срезу кармана" [ref=e1310]
+            - cell "Patch pocket length upper" [ref=e1311]
+          - row "PSlp Накладной карман на рукаве - вход Patch Sleeve pocket opening" [ref=e1312] [cursor=pointer]:
+            - cell "PSlp" [ref=e1313]
+            - cell "Накладной карман на рукаве - вход" [ref=e1314]
+            - cell "Patch Sleeve pocket opening" [ref=e1315]
+          - row "PSlp1 Высота Накладного кармана на Рукаве - со стороны переда Patch Sleeve pocket height FS" [ref=e1316] [cursor=pointer]:
+            - cell "PSlp1" [ref=e1317]
+            - cell "Высота Накладного кармана на Рукаве - со стороны переда" [ref=e1318]
+            - cell "Patch Sleeve pocket height FS" [ref=e1319]
+          - row "PSlp2 Высота Накладного кармана на Рукаве - по центру Patch Sleeve pocket center height" [ref=e1320] [cursor=pointer]:
+            - cell "PSlp2" [ref=e1321]
+            - cell "Высота Накладного кармана на Рукаве - по центру" [ref=e1322]
+            - cell "Patch Sleeve pocket center height" [ref=e1323]
+          - row "PSlp3 Высота Накладного кармана на Рукаве - со стороны спинки Patch Sleeve pocket height BS" [ref=e1324] [cursor=pointer]:
+            - cell "PSlp3" [ref=e1325]
+            - cell "Высота Накладного кармана на Рукаве - со стороны спинки" [ref=e1326]
+            - cell "Patch Sleeve pocket height BS" [ref=e1327]
+          - row "PSlp4 Длина Накладного кармана на Рукаве по низу кармана Patch Sleeve pocket length bottom" [ref=e1328] [cursor=pointer]:
+            - cell "PSlp4" [ref=e1329]
+            - cell "Длина Накладного кармана на Рукаве по низу кармана" [ref=e1330]
+            - cell "Patch Sleeve pocket length bottom" [ref=e1331]
+          - row "PSp Накладной Боковой Карман -вход Patch Side pocket opening" [ref=e1332] [cursor=pointer]:
+            - cell "PSp" [ref=e1333]
+            - cell "Накладной Боковой Карман -вход" [ref=e1334]
+            - cell "Patch Side pocket opening" [ref=e1335]
+          - row "PSp1 Высота Накладного Бокового Кармана, к центру передней половинки Patch Side pocket height side СF" [ref=e1336] [cursor=pointer]:
+            - cell "PSp1" [ref=e1337]
+            - cell "Высота Накладного Бокового Кармана, к центру передней половинки" [ref=e1338]
+            - cell "Patch Side pocket height side СF" [ref=e1339]
+          - row "PSp2 Высота Накладного Бокового кармана по центру Patch Side pocket center height" [ref=e1340] [cursor=pointer]:
+            - cell "PSp2" [ref=e1341]
+            - cell "Высота Накладного Бокового кармана по центру" [ref=e1342]
+            - cell "Patch Side pocket center height" [ref=e1343]
+          - row "PSp3 Высота Накладного кармана по боковому шву Patch Side pocket height SS" [ref=e1344] [cursor=pointer]:
+            - cell "PSp3" [ref=e1345]
+            - cell "Высота Накладного кармана по боковому шву" [ref=e1346]
+            - cell "Patch Side pocket height SS" [ref=e1347]
+          - row "PSp4 Длина Накладного бокового кармана по низу кармана Patch Side pocket length bottom" [ref=e1348] [cursor=pointer]:
+            - cell "PSp4" [ref=e1349]
+            - cell "Длина Накладного бокового кармана по низу кармана" [ref=e1350]
+            - cell "Patch Side pocket length bottom" [ref=e1351]
+          - row "PSp5 Длина Накладного бокового кармана по верхнему срезу кармана Patch Side pocket length upper" [ref=e1352] [cursor=pointer]:
+            - cell "PSp5" [ref=e1353]
+            - cell "Длина Накладного бокового кармана по верхнему срезу кармана" [ref=e1354]
+            - cell "Patch Side pocket length upper" [ref=e1355]
+          - row "Q 1-я складка (защип)/вытачка от центра 1st pleat/dart placement from СF edge" [ref=e1356] [cursor=pointer]:
+            - cell "Q" [ref=e1357]
+            - cell "1-я складка (защип)/вытачка от центра" [ref=e1358]
+            - cell "1st pleat/dart placement from СF edge" [ref=e1359]
+          - row "Q1 Расстояние между складками(защипами) /вытачками Dist between pleats/darts" [ref=e1360] [cursor=pointer]:
+            - cell "Q1" [ref=e1361]
+            - cell "Расстояние между складками(защипами) /вытачками" [ref=e1362]
+            - cell "Dist between pleats/darts" [ref=e1363]
+          - row "Q2 Положение складки(защипа)/вытачки на Спинке /Задней половинке Pleat/dart placement from CB" [ref=e1364] [cursor=pointer]:
+            - cell "Q2" [ref=e1365]
+            - cell "Положение складки(защипа)/вытачки на Спинке /Задней половинке" [ref=e1366]
+            - cell "Pleat/dart placement from CB" [ref=e1367]
+          - row "Q3 Положение декоративной отстрочки под поясом спереди Placemant of decorative stitch under waistband on FRONT" [ref=e1368] [cursor=pointer]:
+            - cell "Q3" [ref=e1369]
+            - cell "Положение декоративной отстрочки под поясом спереди" [ref=e1370]
+            - cell "Placemant of decorative stitch under waistband on FRONT" [ref=e1371]
+          - row "Q4 Положение декоративной отстрочки на уровне обхвата бедра спереди Placemant of decorative stitch at Thigh position on FRONT" [ref=e1372] [cursor=pointer]:
+            - cell "Q4" [ref=e1373]
+            - cell "Положение декоративной отстрочки на уровне обхвата бедра спереди" [ref=e1374]
+            - cell "Placemant of decorative stitch at Thigh position on FRONT" [ref=e1375]
+          - row "Q5 Положение декоративной отстрочки на уровне обхвата колена спереди Placemant of decorative stitch at Knee position on FRONT" [ref=e1376] [cursor=pointer]:
+            - cell "Q5" [ref=e1377]
+            - cell "Положение декоративной отстрочки на уровне обхвата колена спереди" [ref=e1378]
+            - cell "Placemant of decorative stitch at Knee position on FRONT" [ref=e1379]
+          - row "Q6 Положение декоративной отстрочки на уровне обхвата бедер сзади Placemant of decorative stitch at hip position on BACK" [ref=e1380] [cursor=pointer]:
+            - cell "Q6" [ref=e1381]
+            - cell "Положение декоративной отстрочки на уровне обхвата бедер сзади" [ref=e1382]
+            - cell "Placemant of decorative stitch at hip position on BACK" [ref=e1383]
+          - row "Q7 Положение декоративной отстрочки на уровне обхвата бедра сзади Placemant of decorative stitch at Thigh position on BACK" [ref=e1384] [cursor=pointer]:
+            - cell "Q7" [ref=e1385]
+            - cell "Положение декоративной отстрочки на уровне обхвата бедра сзади" [ref=e1386]
+            - cell "Placemant of decorative stitch at Thigh position on BACK" [ref=e1387]
+          - row "Q8 Положение декоративной отстрочки на уровне обхвата колена сзади Placemant of decorative stitch at Knee position on BACK" [ref=e1388] [cursor=pointer]:
+            - cell "Q8" [ref=e1389]
+            - cell "Положение декоративной отстрочки на уровне обхвата колена сзади" [ref=e1390]
+            - cell "Placemant of decorative stitch at Knee position on BACK" [ref=e1391]
+          - row "QSy Расстояние от стежки на рукаве до логотипа Disntance between quilting on sleeve to a logo" [ref=e1392] [cursor=pointer]:
+            - cell "QSy" [ref=e1393]
+            - cell "Расстояние от стежки на рукаве до логотипа" [ref=e1394]
+            - cell "Disntance between quilting on sleeve to a logo" [ref=e1395]
+          - row "R Высота нагрудника (спинка) Bib height (Back)" [ref=e1396] [cursor=pointer]:
+            - cell "R" [ref=e1397]
+            - cell "Высота нагрудника (спинка)" [ref=e1398]
+            - cell "Bib height (Back)" [ref=e1399]
+          - row "R0 Высота нагрудника (перед) Bib height (Front)" [ref=e1400] [cursor=pointer]:
+            - cell "R0" [ref=e1401]
+            - cell "Высота нагрудника (перед)" [ref=e1402]
+            - cell "Bib height (Front)" [ref=e1403]
+          - row "R1 Ширина нагрудника вверху (спинка) Bib top width (Back)" [ref=e1404] [cursor=pointer]:
+            - cell "R1" [ref=e1405]
+            - cell "Ширина нагрудника вверху (спинка)" [ref=e1406]
+            - cell "Bib top width (Back)" [ref=e1407]
+          - row "R11 Высота подкладки кармана спереди Bag pocket height on Front" [ref=e1408] [cursor=pointer]:
+            - cell "R11" [ref=e1409]
+            - cell "Высота подкладки кармана спереди" [ref=e1410]
+            - cell "Bag pocket height on Front" [ref=e1411]
+          - row "R12 Ширина подкладки кармана спереди Bag pocket width on Front" [ref=e1412] [cursor=pointer]:
+            - cell "R12" [ref=e1413]
+            - cell "Ширина подкладки кармана спереди" [ref=e1414]
+            - cell "Bag pocket width on Front" [ref=e1415]
+          - row "R2 Ширина нагрудника по низу (спинка) Bib hem width (Back)" [ref=e1416] [cursor=pointer]:
+            - cell "R2" [ref=e1417]
+            - cell "Ширина нагрудника по низу (спинка)" [ref=e1418]
+            - cell "Bib hem width (Back)" [ref=e1419]
+          - row "R21 Ширина нагрудника вверху (перед) Bib top width (Front)" [ref=e1420] [cursor=pointer]:
+            - cell "R21" [ref=e1421]
+            - cell "Ширина нагрудника вверху (перед)" [ref=e1422]
+            - cell "Bib top width (Front)" [ref=e1423]
+          - row "R22 Ширина нагрудника по низу (перед) Bib hem width (Front)" [ref=e1424] [cursor=pointer]:
+            - cell "R22" [ref=e1425]
+            - cell "Ширина нагрудника по низу (перед)" [ref=e1426]
+            - cell "Bib hem width (Front)" [ref=e1427]
+          - row "S Высота снегозащитной юбки Snowskirt flap height" [ref=e1428] [cursor=pointer]:
+            - cell "S" [ref=e1429]
+            - cell "Высота снегозащитной юбки" [ref=e1430]
+            - cell "Snowskirt flap height" [ref=e1431]
+          - row "S1 Длина снежной юбки в собранном виде Snowskirt (relaxed)" [ref=e1432] [cursor=pointer]:
+            - cell "S1" [ref=e1433]
+            - cell "Длина снежной юбки в собранном виде" [ref=e1434]
+            - cell "Snowskirt (relaxed)" [ref=e1435]
+          - row "S10 Ширина подкладки кармана сзади Back Bag pocket width" [ref=e1436] [cursor=pointer]:
+            - cell "S10" [ref=e1437]
+            - cell "Ширина подкладки кармана сзади" [ref=e1438]
+            - cell "Back Bag pocket width" [ref=e1439]
+          - row "S2 Длина снегозащитной юбки в растянутом виде Snowskirt (extended)" [ref=e1440] [cursor=pointer]:
+            - cell "S2" [ref=e1441]
+            - cell "Длина снегозащитной юбки в растянутом виде" [ref=e1442]
+            - cell "Snowskirt (extended)" [ref=e1443]
+          - row "S9 Высота подкладки кармана сзади Back Bag pocket height" [ref=e1444] [cursor=pointer]:
+            - cell "S9" [ref=e1445]
+            - cell "Высота подкладки кармана сзади" [ref=e1446]
+            - cell "Back Bag pocket height" [ref=e1447]
+          - row "SBx Расстояние от бокового шва до логотипа (сзади) Disntance from side seam to a logo (Back)" [ref=e1448] [cursor=pointer]:
+            - cell "SBx" [ref=e1449]
+            - cell "Расстояние от бокового шва до логотипа (сзади)" [ref=e1450]
+            - cell "Disntance from side seam to a logo (Back)" [ref=e1451]
+          - row "SFx Расстояние от бокового шва до логотипа (спереди) Disntance from side seam to a logo (Front)" [ref=e1452] [cursor=pointer]:
+            - cell "SFx" [ref=e1453]
+            - cell "Расстояние от бокового шва до логотипа (спереди)" [ref=e1454]
+            - cell "Disntance from side seam to a logo (Front)" [ref=e1455]
+          - row "SHy Расстояние от высшей плечевой точки изделия до логотипа Distance from HPS to a logo" [ref=e1456] [cursor=pointer]:
+            - cell "SHy" [ref=e1457]
+            - cell "Расстояние от высшей плечевой точки изделия до логотипа" [ref=e1458]
+            - cell "Distance from HPS to a logo" [ref=e1459]
+          - row "Skp Карман для скипасса - вход Ski pass pocket opening" [ref=e1460] [cursor=pointer]:
+            - cell "Skp" [ref=e1461]
+            - cell "Карман для скипасса - вход" [ref=e1462]
+            - cell "Ski pass pocket opening" [ref=e1463]
+          - row "Skp1 Высота листочки на кармане для скипасса Ski pass pocket height" [ref=e1464] [cursor=pointer]:
+            - cell "Skp1" [ref=e1465]
+            - cell "Высота листочки на кармане для скипасса" [ref=e1466]
+            - cell "Ski pass pocket height" [ref=e1467]
+          - row "Slp Карман в верхней части рукава -вход Sleeve pocket opening" [ref=e1468] [cursor=pointer]:
+            - cell "Slp" [ref=e1469]
+            - cell "Карман в верхней части рукава -вход" [ref=e1470]
+            - cell "Sleeve pocket opening" [ref=e1471]
+          - row "Slp1 Высота листочки/рамки кармана в верхней части рукава Sleeve pocket height" [ref=e1472] [cursor=pointer]:
+            - cell "Slp1" [ref=e1473]
+            - cell "Высота листочки/рамки кармана в верхней части рукава" [ref=e1474]
+            - cell "Sleeve pocket height" [ref=e1475]
+          - row "Sly Расстояние от высшей точки оката рукава до логотипа Distance from highest sleeve point to a logo" [ref=e1476] [cursor=pointer]:
+            - cell "Sly" [ref=e1477]
+            - cell "Расстояние от высшей точки оката рукава до логотипа" [ref=e1478]
+            - cell "Distance from highest sleeve point to a logo" [ref=e1479]
+          - row "Sly1 Расстояние от низа рукава до логотипа Distance from sleeve bottom to a logo" [ref=e1480] [cursor=pointer]:
+            - cell "Sly1" [ref=e1481]
+            - cell "Расстояние от низа рукава до логотипа" [ref=e1482]
+            - cell "Distance from sleeve bottom to a logo" [ref=e1483]
+          - row "Sly2 Расстояние от высшей точки оката правого рукава до логотипа Distance from highest right sleeve point to a logo" [ref=e1484] [cursor=pointer]:
+            - cell "Sly2" [ref=e1485]
+            - cell "Расстояние от высшей точки оката правого рукава до логотипа" [ref=e1486]
+            - cell "Distance from highest right sleeve point to a logo" [ref=e1487]
+          - row "Sp Боковой карман -вход Side pocket opening" [ref=e1488] [cursor=pointer]:
+            - cell "Sp" [ref=e1489]
+            - cell "Боковой карман -вход" [ref=e1490]
+            - cell "Side pocket opening" [ref=e1491]
+          - row "Sp1 Высота листочки/рамки в боковом кармане Side pocket height" [ref=e1492] [cursor=pointer]:
+            - cell "Sp1" [ref=e1493]
+            - cell "Высота листочки/рамки в боковом кармане" [ref=e1494]
+            - cell "Side pocket height" [ref=e1495]
+          - row "Sp2 Второй боковой карман - вход Second side pocket opening" [ref=e1496] [cursor=pointer]:
+            - cell "Sp2" [ref=e1497]
+            - cell "Второй боковой карман - вход" [ref=e1498]
+            - cell "Second side pocket opening" [ref=e1499]
+          - row "Spf Длина клапана бокового кармана Side pocket flap length" [ref=e1500] [cursor=pointer]:
+            - cell "Spf" [ref=e1501]
+            - cell "Длина клапана бокового кармана" [ref=e1502]
+            - cell "Side pocket flap length" [ref=e1503]
+          - row "Spf2 Высота клапана бокового кармана Side pocket flap height" [ref=e1504] [cursor=pointer]:
+            - cell "Spf2" [ref=e1505]
+            - cell "Высота клапана бокового кармана" [ref=e1506]
+            - cell "Side pocket flap height" [ref=e1507]
+          - row "Sy Расстояние от выбранного шва/стежки до логотипа Disntance between a selected seam/quilting to a logo" [ref=e1508] [cursor=pointer]:
+            - cell "Sy" [ref=e1509]
+            - cell "Расстояние от выбранного шва/стежки до логотипа" [ref=e1510]
+            - cell "Disntance between a selected seam/quilting to a logo" [ref=e1511]
+          - row "T Месторасположение Нагрудного кармана от Наивысшей точки плеча Chest pocket placement from high point shoulder(HPS)" [ref=e1512] [cursor=pointer]:
+            - cell "T" [ref=e1513]
+            - cell "Месторасположение Нагрудного кармана от Наивысшей точки плеча" [ref=e1514]
+            - cell "Chest pocket placement from high point shoulder(HPS)" [ref=e1515]
+          - row "T0 Месторасположение Нагрудного кармана от линии горловины Chest pocket placement from neck" [ref=e1516] [cursor=pointer]:
+            - cell "T0" [ref=e1517]
+            - cell "Месторасположение Нагрудного кармана от линии горловины" [ref=e1518]
+            - cell "Chest pocket placement from neck" [ref=e1519]
+          - row "T1 Месторасположение Нагрудного кармана от центра полочки/планки (переда) Chest pocket placement from СF/placket" [ref=e1520] [cursor=pointer]:
+            - cell "T1" [ref=e1521]
+            - cell "Месторасположение Нагрудного кармана от центра полочки/планки (переда)" [ref=e1522]
+            - cell "Chest pocket placement from СF/placket" [ref=e1523]
+          - row "T10 Месторасположение Заднего кармана от центра на Задней Половинке Back Pocket placement from CB" [ref=e1524] [cursor=pointer]:
+            - cell "T10" [ref=e1525]
+            - cell "Месторасположение Заднего кармана от центра на Задней Половинке" [ref=e1526]
+            - cell "Back Pocket placement from CB" [ref=e1527]
+          - row "T11 Месторасположение Заднего кармана от бокового шва на Задней Половинке Back Pocket placement from SS" [ref=e1528] [cursor=pointer]:
+            - cell "T11" [ref=e1529]
+            - cell "Месторасположение Заднего кармана от бокового шва на Задней Половинке" [ref=e1530]
+            - cell "Back Pocket placement from SS" [ref=e1531]
+          - row "T12 Месторасположение Заднего кармана от пояса на Задней Половинке Back pocket placement from waistband" [ref=e1532] [cursor=pointer]:
+            - cell "T12" [ref=e1533]
+            - cell "Месторасположение Заднего кармана от пояса на Задней Половинке" [ref=e1534]
+            - cell "Back pocket placement from waistband" [ref=e1535]
+          - row "T2 Месторасположение Бокового кармана от центра полочки(переда) от шва/ планки(гульфика) Bверху Side pocket placement from CF seam excl. zipper/Fly upwards" [ref=e1536] [cursor=pointer]:
+            - cell "T2" [ref=e1537]
+            - cell "Месторасположение Бокового кармана от центра полочки(переда) от шва/ планки(гульфика) Bверху" [ref=e1538]
+            - cell "Side pocket placement from CF seam excl. zipper/Fly upwards" [ref=e1539]
+          - row "T3 Месторасположение Бокового кармана от центра полочки(переда) / планки(гульфика) Внизу Side pocket from CF seam excl. zipper/Fly down" [ref=e1540] [cursor=pointer]:
+            - cell "T3" [ref=e1541]
+            - cell "Месторасположение Бокового кармана от центра полочки(переда) / планки(гульфика) Внизу" [ref=e1542]
+            - cell "Side pocket from CF seam excl. zipper/Fly down" [ref=e1543]
+          - row "T4 Высота Бокового кармана по боковому шву (для низов) Side pocket height along SS (for Bottoms)" [ref=e1544] [cursor=pointer]:
+            - cell "T4" [ref=e1545]
+            - cell "Высота Бокового кармана по боковому шву (для низов)" [ref=e1546]
+            - cell "Side pocket height along SS (for Bottoms)" [ref=e1547]
+          - row "T5 Месторасположение Бокового кармана от низа или шва манжеты (для верхов) Side pocket placement at hem or сuff seam (for Tops)" [ref=e1548] [cursor=pointer]:
+            - cell "T5" [ref=e1549]
+            - cell "Месторасположение Бокового кармана от низа или шва манжеты (для верхов)" [ref=e1550]
+            - cell "Side pocket placement at hem or сuff seam (for Tops)" [ref=e1551]
+          - row "T6 Месторасположение Бокового кармана от бокового шва Side pocket placement at SS" [ref=e1552] [cursor=pointer]:
+            - cell "T6" [ref=e1553]
+            - cell "Месторасположение Бокового кармана от бокового шва" [ref=e1554]
+            - cell "Side pocket placement at SS" [ref=e1555]
+          - row "T7 Месторасположение Бокового кармана от верхнего края Side pocket placement top edge" [ref=e1556] [cursor=pointer]:
+            - cell "T7" [ref=e1557]
+            - cell "Месторасположение Бокового кармана от верхнего края" [ref=e1558]
+            - cell "Side pocket placement top edge" [ref=e1559]
+          - row "T8 Месторасположение Бокового кармана от среднего шва переда Pocket placement at Front" [ref=e1560] [cursor=pointer]:
+            - cell "T8" [ref=e1561]
+            - cell "Месторасположение Бокового кармана от среднего шва переда" [ref=e1562]
+            - cell "Pocket placement at Front" [ref=e1563]
+          - row "T9 Месторасположение Бокового кармана от среднего шва переда Side pocket placement at CF" [ref=e1564] [cursor=pointer]:
+            - cell "T9" [ref=e1565]
+            - cell "Месторасположение Бокового кармана от среднего шва переда" [ref=e1566]
+            - cell "Side pocket placement at CF" [ref=e1567]
+          - row "Tc Месторасположение кармана от линии реза/шва Pocket placement from cut line/seam" [ref=e1568] [cursor=pointer]:
+            - cell "Tc" [ref=e1569]
+            - cell "Месторасположение кармана от линии реза/шва" [ref=e1570]
+            - cell "Pocket placement from cut line/seam" [ref=e1571]
+          - row "Tin Расстояние от линии низа до внутреннего кармана Inner pocket position from hem" [ref=e1572] [cursor=pointer]:
+            - cell "Tin" [ref=e1573]
+            - cell "Расстояние от линии низа до внутреннего кармана" [ref=e1574]
+            - cell "Inner pocket position from hem" [ref=e1575]
+          - row "Tk Расстояние от низа брюк (юбки) до петли (пуговицы) Distance from garment bottom to loop (button)" [ref=e1576] [cursor=pointer]:
+            - cell "Tk" [ref=e1577]
+            - cell "Расстояние от низа брюк (юбки) до петли (пуговицы)" [ref=e1578]
+            - cell "Distance from garment bottom to loop (button)" [ref=e1579]
+          - row "Tl Расстояние от линии втачивания пояса до кармана по боковому шву Distance from waistband to pocket along side seam" [ref=e1580] [cursor=pointer]:
+            - cell "Tl" [ref=e1581]
+            - cell "Расстояние от линии втачивания пояса до кармана по боковому шву" [ref=e1582]
+            - cell "Distance from waistband to pocket along side seam" [ref=e1583]
+          - row "Tsl Расстояние от проймы до кармана (пуговицы, петли) на рукаве Distance from armhole to sleeve pocket (buttpn, loop)" [ref=e1584] [cursor=pointer]:
+            - cell "Tsl" [ref=e1585]
+            - cell "Расстояние от проймы до кармана (пуговицы, петли) на рукаве" [ref=e1586]
+            - cell "Distance from armhole to sleeve pocket (buttpn, loop)" [ref=e1587]
+          - row "U Длина разреза Cut length" [ref=e1588] [cursor=pointer]:
+            - cell "U" [ref=e1589]
+            - cell "Длина разреза" [ref=e1590]
+            - cell "Cut length" [ref=e1591]
+          - row "U1 Высота хвоста от бокового шва (для курток/топов/футболок/рубашек/блузок) Tail height from SS (for Jacket/top/T-shirts/Shirts)" [ref=e1592] [cursor=pointer]:
+            - cell "U1" [ref=e1593]
+            - cell "Высота хвоста от бокового шва (для курток/топов/футболок/рубашек/блузок)" [ref=e1594]
+            - cell "Tail height from SS (for Jacket/top/T-shirts/Shirts)" [ref=e1595]
+          - row "U2 Расстояние между низом Переда и низом Спинки Dist between front hem&back hem" [ref=e1596] [cursor=pointer]:
+            - cell "U2" [ref=e1597]
+            - cell "Расстояние между низом Переда и низом Спинки" [ref=e1598]
+            - cell "Dist between front hem&back hem" [ref=e1599]
+          - row "U3 Расстояние на Полочке между низом и линией талии Dist on front from bottom to waist line" [ref=e1600] [cursor=pointer]:
+            - cell "U3" [ref=e1601]
+            - cell "Расстояние на Полочке между низом и линией талии" [ref=e1602]
+            - cell "Dist on front from bottom to waist line" [ref=e1603]
+          - row "V Высота капюшона Hood height" [ref=e1604] [cursor=pointer]:
+            - cell "V" [ref=e1605]
+            - cell "Высота капюшона" [ref=e1606]
+            - cell "Hood height" [ref=e1607]
+          - row "V' Высота капюшона, в растянутом виде Hood height extended" [ref=e1608] [cursor=pointer]:
+            - cell "V'" [ref=e1609]
+            - cell "Высота капюшона, в растянутом виде" [ref=e1610]
+            - cell "Hood height extended" [ref=e1611]
+          - row "V1 Ширина капюшона Hood width" [ref=e1612] [cursor=pointer]:
+            - cell "V1" [ref=e1613]
+            - cell "Ширина капюшона" [ref=e1614]
+            - cell "Hood width" [ref=e1615]
+          - row "V10 1/2 длины края линии капюшона 1/2 Hood edge line (lenght)" [ref=e1616] [cursor=pointer]:
+            - cell "V10" [ref=e1617]
+            - cell "1/2 длины края линии капюшона" [ref=e1618]
+            - cell "1/2 Hood edge line (lenght)" [ref=e1619]
+          - row "V10' 1/2 длины края линии капюшона, в растянутом виде 1/2 Hood edge line (length) extended" [ref=e1620] [cursor=pointer]:
+            - cell "V10'" [ref=e1621]
+            - cell "1/2 длины края линии капюшона, в растянутом виде" [ref=e1622]
+            - cell "1/2 Hood edge line (length) extended" [ref=e1623]
+          - row "V11 Длина резинки Elastic band length" [ref=e1624] [cursor=pointer]:
+            - cell "V11" [ref=e1625]
+            - cell "Длина резинки" [ref=e1626]
+            - cell "Elastic band length" [ref=e1627]
+          - row "V11' Длина резинки, в растянутом виде Elastic band length (extended)" [ref=e1628] [cursor=pointer]:
+            - cell "V11'" [ref=e1629]
+            - cell "Длина резинки, в растянутом виде" [ref=e1630]
+            - cell "Elastic band length (extended)" [ref=e1631]
+          - row "V2 Высота планки капюшона Нood placket height" [ref=e1632] [cursor=pointer]:
+            - cell "V2" [ref=e1633]
+            - cell "Высота планки капюшона" [ref=e1634]
+            - cell "Нood placket height" [ref=e1635]
+          - row "V3 Длина планки капюшона Нood placket lenght" [ref=e1636] [cursor=pointer]:
+            - cell "V3" [ref=e1637]
+            - cell "Длина планки капюшона" [ref=e1638]
+            - cell "Нood placket lenght" [ref=e1639]
+          - row "V4 Средняя часть капюшона (вверху) Middle part of hood(upper)" [ref=e1640] [cursor=pointer]:
+            - cell "V4" [ref=e1641]
+            - cell "Средняя часть капюшона (вверху)" [ref=e1642]
+            - cell "Middle part of hood(upper)" [ref=e1643]
+          - row "V5 Средняя часть капюшона (внизу) Middle part of hood(lower)" [ref=e1644] [cursor=pointer]:
+            - cell "V5" [ref=e1645]
+            - cell "Средняя часть капюшона (внизу)" [ref=e1646]
+            - cell "Middle part of hood(lower)" [ref=e1647]
+          - row "V6 Высота языка капюшона Hood tongue height" [ref=e1648] [cursor=pointer]:
+            - cell "V6" [ref=e1649]
+            - cell "Высота языка капюшона" [ref=e1650]
+            - cell "Hood tongue height" [ref=e1651]
+          - row "V7 Длина внутренней планки капюшона Нood inner placket lenght" [ref=e1652] [cursor=pointer]:
+            - cell "V7" [ref=e1653]
+            - cell "Длина внутренней планки капюшона" [ref=e1654]
+            - cell "Нood inner placket lenght" [ref=e1655]
+          - row "V8 Длина капюшона по центральному шву Hood length at from centre seam" [ref=e1656] [cursor=pointer]:
+            - cell "V8" [ref=e1657]
+            - cell "Длина капюшона по центральному шву" [ref=e1658]
+            - cell "Hood length at from centre seam" [ref=e1659]
+          - row "V9 Kрай линии капюшона (длина) Hood edge line (lenght)" [ref=e1660] [cursor=pointer]:
+            - cell "V9" [ref=e1661]
+            - cell "Kрай линии капюшона (длина)" [ref=e1662]
+            - cell "Hood edge line (lenght)" [ref=e1663]
+          - row "V9' Kрай линии капюшона (длина), в растянутом виде Hood edge line (lenght) extended" [ref=e1664] [cursor=pointer]:
+            - cell "V9'" [ref=e1665]
+            - cell "Kрай линии капюшона (длина), в растянутом виде" [ref=e1666]
+            - cell "Hood edge line (lenght) extended" [ref=e1667]
+          - row "Vа Высота капюшона от плечевой точки Hood height shoulder point" [ref=e1668] [cursor=pointer]:
+            - cell "Vа" [ref=e1669]
+            - cell "Высота капюшона от плечевой точки" [ref=e1670]
+            - cell "Hood height shoulder point" [ref=e1671]
+          - row "Vb Ширина капюшона (основная часть капюшона) Hood width (main part of hood)" [ref=e1672] [cursor=pointer]:
+            - cell "Vb" [ref=e1673]
+            - cell "Ширина капюшона (основная часть капюшона)" [ref=e1674]
+            - cell "Hood width (main part of hood)" [ref=e1675]
+          - row "Vc Уровень измерения V1/уровень утяжки на капюшоне Level of V1 / Hood adjustment level" [ref=e1676] [cursor=pointer]:
+            - cell "Vc" [ref=e1677]
+            - cell "Уровень измерения V1/уровень утяжки на капюшоне" [ref=e1678]
+            - cell "Level of V1 / Hood adjustment level" [ref=e1679]
+          - row "W Расположение рельефа от центра Полочки по низу Relief position from CF at hem" [ref=e1680] [cursor=pointer]:
+            - cell "W" [ref=e1681]
+            - cell "Расположение рельефа от центра Полочки по низу" [ref=e1682]
+            - cell "Relief position from CF at hem" [ref=e1683]
+          - row "W0 Расстояние между швами на полочке внизу Distance between seams on FS at hem" [ref=e1684] [cursor=pointer]:
+            - cell "W0" [ref=e1685]
+            - cell "Расстояние между швами на полочке внизу" [ref=e1686]
+            - cell "Distance between seams on FS at hem" [ref=e1687]
+          - row "W1 Расстояние между швами на спинке внизу Dist between seams on BS at hem" [ref=e1688] [cursor=pointer]:
+            - cell "W1" [ref=e1689]
+            - cell "Расстояние между швами на спинке внизу" [ref=e1690]
+            - cell "Dist between seams on BS at hem" [ref=e1691]
+          - row "W10 Глубина складки/вытачки Pleat/dart depth" [ref=e1692] [cursor=pointer]:
+            - cell "W10" [ref=e1693]
+            - cell "Глубина складки/вытачки" [ref=e1694]
+            - cell "Pleat/dart depth" [ref=e1695]
+          - row "W10_1 Глубина 1-го защипа Pleat depth 1" [ref=e1696] [cursor=pointer]:
+            - cell "W10_1" [ref=e1697]
+            - cell "Глубина 1-го защипа" [ref=e1698]
+            - cell "Pleat depth 1" [ref=e1699]
+          - row "W10_2 Глубина 2-го защипа Pleat depth 2" [ref=e1700] [cursor=pointer]:
+            - cell "W10_2" [ref=e1701]
+            - cell "Глубина 2-го защипа" [ref=e1702]
+            - cell "Pleat depth 2" [ref=e1703]
+          - row "W2 Вытачка на Спинке от Наивысшей точки плеча Back top dart from HPS" [ref=e1704] [cursor=pointer]:
+            - cell "W2" [ref=e1705]
+            - cell "Вытачка на Спинке от Наивысшей точки плеча" [ref=e1706]
+            - cell "Back top dart from HPS" [ref=e1707]
+          - row "W3 Вытачка на Полочке от Наивысшей точки плеча Front top dart from HPS" [ref=e1708] [cursor=pointer]:
+            - cell "W3" [ref=e1709]
+            - cell "Вытачка на Полочке от Наивысшей точки плеча" [ref=e1710]
+            - cell "Front top dart from HPS" [ref=e1711]
+          - row "W4 Расстояние между вытачками на Спинке в верхних точках Dist between darts points on BS at upper point" [ref=e1712] [cursor=pointer]:
+            - cell "W4" [ref=e1713]
+            - cell "Расстояние между вытачками на Спинке в верхних точках" [ref=e1714]
+            - cell "Dist between darts points on BS at upper point" [ref=e1715]
+          - row "W5 Вытачка на Полочке от от центра Front top dart from CF" [ref=e1716] [cursor=pointer]:
+            - cell "W5" [ref=e1717]
+            - cell "Вытачка на Полочке от от центра" [ref=e1718]
+            - cell "Front top dart from CF" [ref=e1719]
+          - row "W6 Расстояние между проймой и нагрудной вытачкой на боковом шве Dist between armhole&chest dart at SS" [ref=e1720] [cursor=pointer]:
+            - cell "W6" [ref=e1721]
+            - cell "Расстояние между проймой и нагрудной вытачкой на боковом шве" [ref=e1722]
+            - cell "Dist between armhole&chest dart at SS" [ref=e1723]
+          - row "W7 Расстояние между концом и верхом вытачки - проекция Dist between top&end of dart" [ref=e1724] [cursor=pointer]:
+            - cell "W7" [ref=e1725]
+            - cell "Расстояние между концом и верхом вытачки - проекция" [ref=e1726]
+            - cell "Dist between top&end of dart" [ref=e1727]
+          - row "W8 Длина нагрудной вытачки Chest dart length(point to point)" [ref=e1728] [cursor=pointer]:
+            - cell "W8" [ref=e1729]
+            - cell "Длина нагрудной вытачки" [ref=e1730]
+            - cell "Chest dart length(point to point)" [ref=e1731]
+          - row "W9 Длина Передней/Задней вытачки Front/Back dart length" [ref=e1732] [cursor=pointer]:
+            - cell "W9" [ref=e1733]
+            - cell "Длина Передней/Задней вытачки" [ref=e1734]
+            - cell "Front/Back dart length" [ref=e1735]
+          - row "WBy Расстояние от верхнего среза пояса на задней половинке до логотипа Distance from the waistband top edge on Back to a logo" [ref=e1736] [cursor=pointer]:
+            - cell "WBy" [ref=e1737]
+            - cell "Расстояние от верхнего среза пояса на задней половинке до логотипа" [ref=e1738]
+            - cell "Distance from the waistband top edge on Back to a logo" [ref=e1739]
+          - row "WPb Ширина чехла для куртки Jacket packable bag width" [ref=e1740] [cursor=pointer]:
+            - cell "WPb" [ref=e1741]
+            - cell "Ширина чехла для куртки" [ref=e1742]
+            - cell "Jacket packable bag width" [ref=e1743]
+          - row "WSy Расстояние от шва притачивания пояса до логотипа Distance from the waistband seam to a logo" [ref=e1744] [cursor=pointer]:
+            - cell "WSy" [ref=e1745]
+            - cell "Расстояние от шва притачивания пояса до логотипа" [ref=e1746]
+            - cell "Distance from the waistband seam to a logo" [ref=e1747]
+          - row "X Ширина Loop width" [ref=e1748] [cursor=pointer]:
+            - cell "X" [ref=e1749]
+            - cell "Ширина" [ref=e1750]
+            - cell "Loop width" [ref=e1751]
+          - row "X1 Высота шлевки Loop height" [ref=e1752] [cursor=pointer]:
+            - cell "X1" [ref=e1753]
+            - cell "Высота шлевки" [ref=e1754]
+            - cell "Loop height" [ref=e1755]
+          - row "X2 Местоположение шлевки от центра на полочке Loop placement from CF" [ref=e1756] [cursor=pointer]:
+            - cell "X2" [ref=e1757]
+            - cell "Местоположение шлевки от центра на полочке" [ref=e1758]
+            - cell "Loop placement from CF" [ref=e1759]
+          - row "X3 Местоположение шлевки от центра на спинке Loop placement from CB" [ref=e1760] [cursor=pointer]:
+            - cell "X3" [ref=e1761]
+            - cell "Местоположение шлевки от центра на спинке" [ref=e1762]
+            - cell "Loop placement from CB" [ref=e1763]
+          - row "X4 Расстояние между шлевками Dist between loops" [ref=e1764] [cursor=pointer]:
+            - cell "X4" [ref=e1765]
+            - cell "Расстояние между шлевками" [ref=e1766]
+            - cell "Dist between loops" [ref=e1767]
+          - row "X5 Расстояние от шва до шлевки Dist from seam to loop" [ref=e1768] [cursor=pointer]:
+            - cell "X5" [ref=e1769]
+            - cell "Расстояние от шва до шлевки" [ref=e1770]
+            - cell "Dist from seam to loop" [ref=e1771]
+          - row "Y Полная длина среза по переду (с или без высоты стойки, высоты стойки капюшона) Full centre front cut length (with or without collar height, tongue of hood)" [ref=e1772] [cursor=pointer]:
+            - cell "Y" [ref=e1773]
+            - cell "Полная длина среза по переду (с или без высоты стойки, высоты стойки капюшона)" [ref=e1774]
+            - cell "Full centre front cut length (with or without collar height, tongue of hood)" [ref=e1775]
+          - row "Y1 Длина разреза для молнии (низ брюк или рукава) Cut length zip" [ref=e1776] [cursor=pointer]:
+            - cell "Y1" [ref=e1777]
+            - cell "Длина разреза для молнии (низ брюк или рукава)" [ref=e1778]
+            - cell "Cut length zip" [ref=e1779]
+          - row "Y2 Застежка (на молнию, пуговицы) (брюки/шорты/юбки) не включая пояс Fastener (zipper, buttons) (pants/shorts-skirts)excl. wb" [ref=e1780] [cursor=pointer]:
+            - cell "Y2" [ref=e1781]
+            - cell "Застежка (на молнию, пуговицы) (брюки/шорты/юбки) не включая пояс" [ref=e1782]
+            - cell "Fastener (zipper, buttons) (pants/shorts-skirts)excl. wb" [ref=e1783]
+          - row "Y3 Ширина гаража центральной планки Central placket garage width" [ref=e1784] [cursor=pointer]:
+            - cell "Y3" [ref=e1785]
+            - cell "Ширина гаража центральной планки" [ref=e1786]
+            - cell "Central placket garage width" [ref=e1787]
+          - row "Y4 Длина гаража центральной планки Central placket garage length" [ref=e1788] [cursor=pointer]:
+            - cell "Y4" [ref=e1789]
+            - cell "Длина гаража центральной планки" [ref=e1790]
+            - cell "Central placket garage length" [ref=e1791]
+          - row "Y5 Длина гаража кармана Pocket garage length" [ref=e1792] [cursor=pointer]:
+            - cell "Y5" [ref=e1793]
+            - cell "Длина гаража кармана" [ref=e1794]
+            - cell "Pocket garage length" [ref=e1795]
+          - row "Y6 Длина гаража Garage length" [ref=e1796] [cursor=pointer]:
+            - cell "Y6" [ref=e1797]
+            - cell "Длина гаража" [ref=e1798]
+            - cell "Garage length" [ref=e1799]
+          - row "Ya Вторая полная длина среза по переду Second full centre front cut length" [ref=e1800] [cursor=pointer]:
+            - cell "Ya" [ref=e1801]
+            - cell "Вторая полная длина среза по переду" [ref=e1802]
+            - cell "Second full centre front cut length" [ref=e1803]
+          - row "Yh Длина среза по отлету капюшона (для опушки) Cut length at hood front line (for fur fixation)" [ref=e1804] [cursor=pointer]:
+            - cell "Yh" [ref=e1805]
+            - cell "Длина среза по отлету капюшона (для опушки)" [ref=e1806]
+            - cell "Cut length at hood front line (for fur fixation)" [ref=e1807]
+          - row "Ym Длина среза (на средней части) Cut length of hood ( on middle part )" [ref=e1808] [cursor=pointer]:
+            - cell "Ym" [ref=e1809]
+            - cell "Длина среза (на средней части)" [ref=e1810]
+            - cell "Cut length of hood ( on middle part )" [ref=e1811]
+          - row "Yn Длина среза по горловине для капюшона Сut length neck for hood" [ref=e1812] [cursor=pointer]:
+            - cell "Yn" [ref=e1813]
+            - cell "Длина среза по горловине для капюшона" [ref=e1814]
+            - cell "Сut length neck for hood" [ref=e1815]
+          - row "Ys Длина среза Сut length" [ref=e1816] [cursor=pointer]:
+            - cell "Ys" [ref=e1817]
+            - cell "Длина среза" [ref=e1818]
+            - cell "Сut length" [ref=e1819]
+          - row "Yv Длина среза в подмышке Сut length underarm" [ref=e1820] [cursor=pointer]:
+            - cell "Yv" [ref=e1821]
+            - cell "Длина среза в подмышке" [ref=e1822]
+            - cell "Сut length underarm" [ref=e1823]
+          - row "Yv1 Длина среза вентиляции в шаговом шве Inseam сut length venting opening" [ref=e1824] [cursor=pointer]:
+            - cell "Yv1" [ref=e1825]
+            - cell "Длина среза вентиляции в шаговом шве" [ref=e1826]
+            - cell "Inseam сut length venting opening" [ref=e1827]
+          - row "Z Обтачка горловины (риб/манжета из основной ткани) Neck rib/self fabric cuff" [ref=e1828] [cursor=pointer]:
+            - cell "Z" [ref=e1829]
+            - cell "Обтачка горловины (риб/манжета из основной ткани)" [ref=e1830]
+            - cell "Neck rib/self fabric cuff" [ref=e1831]
+          - row "Z1 Пройма (риб/манжета из основной ткани/биндинг) Armhole rib/ self fabric cuff/binding width" [ref=e1832] [cursor=pointer]:
+            - cell "Z1" [ref=e1833]
+            - cell "Пройма (риб/манжета из основной ткани/биндинг)" [ref=e1834]
+            - cell "Armhole rib/ self fabric cuff/binding width" [ref=e1835]
+          - row "Z2 Длина пояса/Длина бретелей Belt length / Shoulder-strap length" [ref=e1836] [cursor=pointer]:
+            - cell "Z2" [ref=e1837]
+            - cell "Длина пояса/Длина бретелей" [ref=e1838]
+            - cell "Belt length / Shoulder-strap length" [ref=e1839]
+          - row "Z2' Длина пояса/Длина бретелей (в расстянутом виде) Belt length / Shoulder-strap length (extented)" [ref=e1840] [cursor=pointer]:
+            - cell "Z2'" [ref=e1841]
+            - cell "Длина пояса/Длина бретелей (в расстянутом виде)" [ref=e1842]
+            - cell "Belt length / Shoulder-strap length (extented)" [ref=e1843]
+          - row "Z21 Длина бретелей фиксированная Shoulder-strap fixing length" [ref=e1844] [cursor=pointer]:
+            - cell "Z21" [ref=e1845]
+            - cell "Длина бретелей фиксированная" [ref=e1846]
+            - cell "Shoulder-strap fixing length" [ref=e1847]
+          - row "Z22 Расстояние между бретелями на спинке Distance between shoulder-strap on back" [ref=e1848] [cursor=pointer]:
+            - cell "Z22" [ref=e1849]
+            - cell "Расстояние между бретелями на спинке" [ref=e1850]
+            - cell "Distance between shoulder-strap on back" [ref=e1851]
+          - row "Z3 Высота пояса/Ширина бретелей Belt height / Shoulder-strap width" [ref=e1852] [cursor=pointer]:
+            - cell "Z3" [ref=e1853]
+            - cell "Высота пояса/Ширина бретелей" [ref=e1854]
+            - cell "Belt height / Shoulder-strap width" [ref=e1855]
+          - row "Z4 Ширина обтачки по низу Hem welt width" [ref=e1856] [cursor=pointer]:
+            - cell "Z4" [ref=e1857]
+            - cell "Ширина обтачки по низу" [ref=e1858]
+            - cell "Hem welt width" [ref=e1859]
+          - row "Z5 Ширина хлястика Half-belt width" [ref=e1860] [cursor=pointer]:
+            - cell "Z5" [ref=e1861]
+            - cell "Ширина хлястика" [ref=e1862]
+            - cell "Half-belt width" [ref=e1863]
+          - row "Z6 Длина хлястика Half-belt length" [ref=e1864] [cursor=pointer]:
+            - cell "Z6" [ref=e1865]
+            - cell "Длина хлястика" [ref=e1866]
+            - cell "Half-belt length" [ref=e1867]
+          - row "Z7a Длина тесьмы 1 Tape length 1" [ref=e1868] [cursor=pointer]:
+            - cell "Z7a" [ref=e1869]
+            - cell "Длина тесьмы 1" [ref=e1870]
+            - cell "Tape length 1" [ref=e1871]
+          - row "Z7b Длина тесьмы 2 Tape length 2" [ref=e1872] [cursor=pointer]:
+            - cell "Z7b" [ref=e1873]
+            - cell "Длина тесьмы 2" [ref=e1874]
+            - cell "Tape length 2" [ref=e1875]
+          - row "Z7c Длина тесьмы 3 Tape length 3" [ref=e1876] [cursor=pointer]:
+            - cell "Z7c" [ref=e1877]
+            - cell "Длина тесьмы 3" [ref=e1878]
+            - cell "Tape length 3" [ref=e1879]
+          - row "Z7d Длина тесьмы 4 Tape length 4" [ref=e1880] [cursor=pointer]:
+            - cell "Z7d" [ref=e1881]
+            - cell "Длина тесьмы 4" [ref=e1882]
+            - cell "Tape length 4" [ref=e1883]
+          - row "Z7e Длина тесьмы 5 Tape length 5" [ref=e1884] [cursor=pointer]:
+            - cell "Z7e" [ref=e1885]
+            - cell "Длина тесьмы 5" [ref=e1886]
+            - cell "Tape length 5" [ref=e1887]
+          - row "Z7f Длина тесьмы 6 Tape length 6" [ref=e1888] [cursor=pointer]:
+            - cell "Z7f" [ref=e1889]
+            - cell "Длина тесьмы 6" [ref=e1890]
+            - cell "Tape length 6" [ref=e1891]

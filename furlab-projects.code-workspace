@@ -1,0 +1,102 @@
+{
+  "folders": [
+    {
+      "name": "furlab ac",
+      "path": "F:/FURLAB/dev/furlab-access"
+    },
+    {
+      "name": "furlab dfx",
+      "path": "F:/FURLAB/dev/furlab-web-plugin"
+    },
+    {
+      "name": "shop",
+      "path": "F:/Projects/smart-home-shop"
+    },
+    {
+      "name": "ROAR",
+      "path": "F:/ROAR"
+    }
+  ],
+  "settings": {
+    "git.openRepositoryInParentFolders": "never",
+    "files.watcherExclude": {
+      "**/.git/**": true,
+      "**/node_modules/**": true,
+      "**/.next/**": true,
+      "**/dist/**": true,
+      "**/build/**": true,
+      "**/coverage/**": true,
+      "**/.turbo/**": true,
+      "**/.cache/**": true,
+      "**/.pnpm-store/**": true
+    },
+    "search.exclude": {
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/dist": true,
+      "**/build": true,
+      "**/coverage": true,
+      "**/.turbo": true,
+      "**/.cache": true,
+      "**/.pnpm-store": true
+    },
+    "files.exclude": {
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/dist": true,
+      "**/build": true,
+      "**/coverage": true,
+      "**/.turbo": true,
+      "**/.cache": true
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell UTF-8",
+    "terminal.integrated.profiles.windows": {
+      "PowerShell UTF-8": {
+        "source": "PowerShell",
+        "args": [
+          "-NoLogo",
+          "-NoExit",
+          "-Command",
+          "chcp 65001 | Out-Null; $utf8NoBom = New-Object System.Text.UTF8Encoding $false; [Console]::InputEncoding = $utf8NoBom; [Console]::OutputEncoding = $utf8NoBom; $OutputEncoding = $utf8NoBom"
+        ]
+      }
+    },
+    "terminal.integrated.env.windows": {
+      "PYTHONIOENCODING": "utf-8",
+      "PYTHONUTF8": "1"
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "VSE: Dev",
+        "type": "process",
+        "command": "powershell.exe",
+        "args": [
+          "-NoLogo",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "F:/Projects/lekala-site/scripts/start_vse_dev.ps1"
+        ],
+        "options": {
+          "cwd": "F:/Projects/lekala-site"
+        },
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "clear": false,
+          "showReuseMessage": false
+        }
+      }
+    ]
+  }
+}

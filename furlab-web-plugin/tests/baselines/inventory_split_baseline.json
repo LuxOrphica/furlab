@@ -1,0 +1,24 @@
+{
+  "oracle_case_zone_4_1772795164231": {
+    "coveragePercent": 55.55824472530869,
+    "pieces": 9,
+    "overlapAreaMm2": 1774.441,
+    "utilizationPct": 96.577,
+    "timeMs": 0
+  },
+  "oracle_case_zone_6_1772727412367": {
+    "coveragePercent": 45.52132682246715,
+    "pieces": 7,
+    "overlapAreaMm2": 274.015,
+    "utilizationPct": 97.811,
+    "timeMs": 0
+  },
+  "oracle_case_zone_1_1772731241049": {
+    "coveragePercent": 57.21848713367932,
+    "pieces": 9,
+    "overlapAreaMm2": 1658.725,
+    "utilizationPct": 94.8,
+    "timeMs": 0
+  }
+}
+

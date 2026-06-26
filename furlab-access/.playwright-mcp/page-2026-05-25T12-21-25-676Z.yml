@@ -1,0 +1,237 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e75] [cursor=pointer]
+      - generic [ref=e76]: — Чистый 2
+      - button "Преобразовать в лекала" [ref=e77] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Редактировать точку кривой" [ref=e892] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - button "Добавить выкладку" [ref=e1140] [cursor=pointer]:
+              - generic [ref=e1141]: add
+              - generic [ref=e1142]: Добавить выкладку
+            - generic [ref=e1143]:
+              - button "radial Радиальная 6" [ref=e1144] [cursor=pointer]:
+                - img "radial" [ref=e1146]
+                - generic [ref=e1148]: Радиальная 6
+              - button "Удалить выкладку" [ref=e1150] [cursor=pointer]:
+                - generic [ref=e1151]: delete
+            - generic [ref=e1152]:
+              - button "longitudinal Продольно-поперечная 7" [ref=e1153] [cursor=pointer]:
+                - img "longitudinal" [ref=e1155]
+                - generic [ref=e1157]: Продольно-поперечная 7
+              - button "Удалить выкладку" [ref=e1159] [cursor=pointer]:
+                - generic [ref=e1160]: delete
+            - generic [ref=e1161]:
+              - button "shifted Со смещением 8" [ref=e1162] [cursor=pointer]:
+                - img "shifted" [ref=e1164]
+                - generic [ref=e1166]: Со смещением 8
+              - button "Удалить выкладку" [ref=e1168] [cursor=pointer]:
+                - generic [ref=e1169]: delete
+            - generic [ref=e1170]:
+              - button "transverse Ёлочка 5" [ref=e1171] [cursor=pointer]:
+                - img "transverse" [ref=e1173]
+                - generic [ref=e1175]: Ёлочка 5
+              - button "Удалить выкладку" [ref=e1177] [cursor=pointer]:
+                - generic [ref=e1178]: delete
+            - generic [ref=e1179]:
+              - button "inventory_nfp_sa Из инвентаря (NFP+SA) 5" [ref=e1180] [cursor=pointer]:
+                - img "inventory_nfp_sa" [ref=e1182]
+                - generic [ref=e1184]: Из инвентаря (NFP+SA) 5
+              - button "Удалить выкладку" [ref=e1186] [cursor=pointer]:
+                - generic [ref=e1187]: delete
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e1188]:
+              - generic [ref=e1189]: Выкладка
+              - generic [ref=e1190]:
+                - button "Заблокировать редактирование" [ref=e1191] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e1192] [cursor=pointer]
+            - generic [ref=e1193]:
+              - button "▾ Информация" [expanded] [ref=e1194] [cursor=pointer]:
+                - generic [ref=e1195]: ▾
+                - generic [ref=e1196]: Информация
+              - generic [ref=e1197]:
+                - generic [ref=e1198]:
+                  - generic [ref=e1199]: Название
+                  - textbox "(Пусто)" [ref=e1201]: Из инвентаря (NFP+SA) 5
+                - generic [ref=e1202]:
+                  - generic [ref=e1203]: Тип
+                  - generic [ref=e1204]: Из инвентаря (NFP+SA)
+            - generic [ref=e1205]:
+              - button "▾ Инвентарь" [expanded] [ref=e1206] [cursor=pointer]:
+                - generic [ref=e1207]: ▾
+                - generic [ref=e1208]: Инвентарь
+              - generic [ref=e1209]:
+                - generic [ref=e1210]:
+                  - generic [ref=e1211]: Мех
+                  - combobox [ref=e1213] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e1214]:
+                  - generic [ref=e1215]: Резерв припуска, мм
+                  - spinbutton [ref=e1217]: "12.0"
+                - button "Заполнить остаток" [ref=e1219] [cursor=pointer]
+                - generic [ref=e1220]: Настройки подбора, preview и применение
+            - generic [ref=e1221]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e1222] [cursor=pointer]:
+                - generic [ref=e1223]: ▾
+                - generic [ref=e1224]: Параметры выкладки
+              - generic [ref=e1226]:
+                - generic [ref=e1227]: Резерв под припуски, мм
+                - spinbutton [ref=e1229]: "12.0"
+  - generic [ref=e1231]:
+    - generic [ref=e1232]:
+      - generic [ref=e1233]: Шаг 2. Предпросмотр и доводка подбора
+      - button "Закрыть" [ref=e1234] [cursor=pointer]:
+        - generic [ref=e1235]: close
+    - generic [ref=e1236]:
+      - generic [ref=e1237]:
+        - generic [ref=e1238]: Фрагментов добавлено
+        - generic [ref=e1239]: "25"
+      - generic [ref=e1240]:
+        - generic [ref=e1241]: Нарушения ограничений
+        - generic [ref=e1242]: "0"
+      - generic [ref=e1243]:
+        - generic [ref=e1244]: Пересечения
+        - generic [ref=e1245]: "0"
+      - generic [ref=e1246]:
+        - generic [ref=e1247]: Непокрытые области
+        - generic [ref=e1248]: "5"
+      - generic [ref=e1249]:
+        - generic [ref=e1250]: Покрытие зоны, %
+        - generic [ref=e1251]: "100.0"
+      - generic [ref=e1252]:
+        - generic [ref=e1253]: Остаток, мм²
+        - generic [ref=e1254]: "0"
+      - generic [ref=e1255]:
+        - generic [ref=e1256]: Полезно использовано, мм²
+        - generic [ref=e1257]: "0.0"
+      - generic [ref=e1258]:
+        - generic [ref=e1259]: Выбрано кусков в зоне, мм²
+        - generic [ref=e1260]: "0"
+      - generic [ref=e1261]:
+        - generic [ref=e1262]: Использование кусков, %
+        - generic [ref=e1263]: "0"
+      - generic [ref=e1264]:
+        - generic [ref=e1265]: Отходы кусков, %
+        - generic [ref=e1266]: "0"
+      - generic [ref=e1267]:
+        - generic [ref=e1268]: Перекрытия, мм²
+        - generic [ref=e1269]: "0"
+      - generic [ref=e1270]:
+        - generic [ref=e1271]: Бюджет площади, мм²
+        - generic [ref=e1272]: "0"
+      - generic [ref=e1273]:
+        - generic [ref=e1274]: Кандидатов в БД
+        - generic [ref=e1275]: "92"
+      - generic [ref=e1276]:
+        - generic [ref=e1277]: Совместимых
+        - generic [ref=e1278]: "60"
+      - generic [ref=e1279]:
+        - generic [ref=e1280]: Стратегия подбора
+        - generic [ref=e1281]: NFP+SA
+      - generic [ref=e1282]:
+        - generic [ref=e1283]: Сопоставлено фрагм., %
+        - generic [ref=e1284]: "41.67"
+      - generic [ref=e1285]:
+        - generic [ref=e1286]: KPI покрытие, %
+        - generic [ref=e1287]: "100.0"
+      - generic [ref=e1288]:
+        - generic [ref=e1289]: Tail start (coverage)
+        - generic [ref=e1290]: "-"
+      - generic [ref=e1291]:
+        - generic [ref=e1292]: Tail alpha
+        - generic [ref=e1293]: "-"
+      - generic [ref=e1294]:
+        - generic [ref=e1295]: Отбрак. oversize
+        - generic [ref=e1296]: "0"
+      - generic [ref=e1297]:
+        - generic [ref=e1298]: Отбрак. overlap
+        - generic [ref=e1299]: "0"
+      - generic [ref=e1300]:
+        - generic [ref=e1301]: Отбрак. lowGain
+        - generic [ref=e1302]: "0"
+      - generic [ref=e1303]:
+        - generic [ref=e1304]: Отбрак. outside
+        - generic [ref=e1305]: "0"
+      - button "Экспорт case" [ref=e1307] [cursor=pointer]
+      - generic [ref=e1308]: "Диагностика:"
+      - generic [ref=e1309]: "NFP+SA: iters=sa, pieces=25, cov=100.0%"
+      - generic [ref=e1310]: "Использованные inventoryTag:"
+      - generic [ref=e1311]: FL-SCR-000107 FL-SCR-000034 FL-SCR-000016 FL-SCR-000075 FL-SCR-000067 FL-SCR-000025 FL-SCR-000089 FL-SCR-000046 FL-SCR-000100 FL-SCR-000022 FL-SCR-000029 FL-SCR-000094 FL-SCR-000078 FL-SCR-000111 FL-SCR-000019 FL-SCR-000023 FL-SCR-000006 FL-SCR-000055 FL-SCR-001007 FL-SCR-000036 FL-SCR-000009 FL-SCR-001005 FL-SCR-000011 FL-SCR-000099 FL-SCR-000049
+      - generic [ref=e1312]:
+        - generic [ref=e1313]: "Соответствие фрагментов и кандидатов:"
+        - table [ref=e1315]:
+          - rowgroup [ref=e1316]:
+            - row "Фрагм. Площадь Кандидат Ворс Статус" [ref=e1317]:
+              - columnheader "Фрагм." [ref=e1318]
+              - columnheader "Площадь" [ref=e1319]
+              - columnheader "Кандидат" [ref=e1320]
+              - columnheader "Ворс" [ref=e1321]
+              - columnheader "Статус" [ref=e1322]
+          - rowgroup [ref=e1323]:
+            - row "Нет данных" [ref=e1324]:
+              - cell "Нет данных" [ref=e1325]
+      - generic [ref=e1326]:
+        - generic [ref=e1327]: "Почему выбран этот кандидат (top-3):"
+        - generic [ref=e1328]: Выберите строку фрагмента в таблице выше
+        - table [ref=e1330]:
+          - rowgroup [ref=e1331]:
+            - row "# Кандидат Score Inside Outside Coverage" [ref=e1332]:
+              - columnheader "#" [ref=e1333]
+              - columnheader "Кандидат" [ref=e1334]
+              - columnheader "Score" [ref=e1335]
+              - columnheader "Inside" [ref=e1336]
+              - columnheader "Outside" [ref=e1337]
+              - columnheader "Coverage" [ref=e1338]
+          - rowgroup [ref=e1339]:
+            - row "Нет данных" [ref=e1340]:
+              - cell "Нет данных" [ref=e1341]
+      - generic [ref=e1342]:
+        - generic [ref=e1343]: "Покрытие фрагментов (худшие):"
+        - generic [ref=e1344]: Нет данных
+        - table [ref=e1346]:
+          - rowgroup [ref=e1347]:
+            - row "Фрагм. Coverage Inside Outside Кандидат" [ref=e1348]:
+              - columnheader "Фрагм." [ref=e1349]
+              - columnheader "Coverage" [ref=e1350]
+              - columnheader "Inside" [ref=e1351]
+              - columnheader "Outside" [ref=e1352]
+              - columnheader "Кандидат" [ref=e1353]
+          - rowgroup [ref=e1354]:
+            - row "Нет данных" [ref=e1355]:
+              - cell "Нет данных" [ref=e1356]
+    - generic [ref=e1357]:
+      - button "Назад" [ref=e1358] [cursor=pointer]
+      - button "Применить" [ref=e1359] [cursor=pointer]
+      - button "Отмена" [ref=e1360] [cursor=pointer]
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]

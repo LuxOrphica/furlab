@@ -1,0 +1,28 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Узлы" [ref=e9] [cursor=pointer]:
+          - /url: /tools/nodes
+        - link "VSE" [ref=e10] [cursor=pointer]:
+          - /url: /tools/vse
+        - link "Tech Pack Hub" [ref=e11] [cursor=pointer]:
+          - /url: /tools/techpack-hub
+        - link "Техпак" [ref=e12] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e13]:
+        - button "☾" [ref=e14] [cursor=pointer]
+        - button "EN" [ref=e15] [cursor=pointer]
+  - generic [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]: Visual Standardization Engine
+      - generic [ref=e19]: Обзор для конструктора
+      - generic [ref=e20]: Расшифровка обозначений — 6 узлов из библиотеки
+    - generic [ref=e21]:
+      - button "Разметка" [ref=e22] [cursor=pointer]
+      - button "Выноски и обозначения" [ref=e23] [cursor=pointer]
+      - button "Реестр стилей" [ref=e24] [cursor=pointer]

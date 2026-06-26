@@ -1,0 +1,172 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e91] [cursor=pointer]
+      - generic [ref=e92]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e93] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+      - button "VSA" [ref=e9] [cursor=pointer]
+    - generic [ref=e384]:
+      - generic [ref=e385]:
+        - generic [ref=e386]: DEV · Voronoi SA Monitor
+        - generic [ref=e387]: v2.0
+        - generic [ref=e388]: —
+        - button "✕" [ref=e389] [cursor=pointer]
+      - generic [ref=e390]:
+        - generic [ref=e391]: Run Summary
+        - generic [ref=e392]:
+          - generic [ref=e393]: resultStatus
+          - generic [ref=e394]: —
+          - generic [ref=e395]: geometricPartCover
+          - generic [ref=e396]: —
+          - generic [ref=e397]: physicalCoverage
+          - generic [ref=e398]: —
+          - generic [ref=e399]: physMissingTotal
+          - generic [ref=e400]: —
+          - generic [ref=e401]: zoneAreaMm2
+          - generic [ref=e402]: —
+          - generic [ref=e403]: zoneBBox WxH
+          - generic [ref=e404]: —
+          - generic [ref=e405]: fragmentsTotal
+          - generic [ref=e406]: —
+          - generic [ref=e407]: invalidFragments
+          - generic [ref=e408]: —
+          - generic [ref=e409]: gapFillFragments
+          - generic [ref=e410]: —
+          - generic [ref=e411]: unresolvedGapMm2
+          - generic [ref=e412]: —
+          - generic [ref=e413]: dissolve N+K
+          - generic [ref=e414]: —
+          - generic [ref=e415]: pieceSeamReserveMm
+          - generic [ref=e416]: —
+          - generic [ref=e417]: napToleranceDeg
+          - generic [ref=e418]: —
+        - generic [ref=e419]: Residual (Clipper)
+        - generic [ref=e420]:
+          - generic [ref=e421]: residualTotal мм²
+          - generic [ref=e422]: —
+          - generic [ref=e423]: residualPerimeter мм²
+          - generic [ref=e424]: —
+          - generic [ref=e425]: residualInterior мм²
+          - generic [ref=e426]: —
+          - generic [ref=e427]: rasterSeamArtifact мм²
+          - 'generic "Растровые фантомы по швам (~3мм сетка). Не дыры — under=100%, VOID=0. Порог приёмки: <300мм²" [ref=e428]': —
+          - generic [ref=e429]: uncoveredComponents
+          - generic [ref=e430]: —
+        - generic [ref=e431]: Preflight / Selection
+        - generic [ref=e432]:
+          - generic [ref=e433]: Az (зона)
+          - generic [ref=e434]: —
+          - generic [ref=e435]: Cmed (медиана cap)
+          - generic [ref=e436]: —
+          - generic [ref=e437]: Nbase
+          - generic [ref=e438]: —
+          - generic [ref=e439]: reserveFactor
+          - generic [ref=e440]: —
+          - generic [ref=e441]: Nstart
+          - generic [ref=e442]: —
+          - generic [ref=e443]: targetCellArea
+          - generic [ref=e444]: —
+          - generic [ref=e445]: fragMode
+          - generic [ref=e446]: —
+          - generic [ref=e447]: finalFragments
+          - generic [ref=e448]: —
+          - generic [ref=e449]: overhangMm (IFP)
+          - generic [ref=e450]: —
+          - generic [ref=e451]: unselectedUsable
+          - generic [ref=e452]: —
+        - generic [ref=e453]: Invariants
+        - generic [ref=e454]: Fragments
+        - button "⬇ Экспорт run output" [ref=e456] [cursor=pointer]
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic "Инструменты зон" [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Fur Lab
+            - button "Выбор" [ref=e15] [cursor=pointer]
+            - button "Линия зонирования" [ref=e17] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e19] [cursor=pointer]
+        - group [ref=e21]:
+          - generic "Настройки отображения" [ref=e22] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e23]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [disabled] [ref=e25]:
+          - generic [ref=e26]: description
+          - generic [ref=e27]: Отчеты
+      - complementary [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: Сборка меха
+          - generic [ref=e36]:
+            - button "Зоны" [ref=e37] [cursor=pointer]
+            - button "Мех" [ref=e38] [cursor=pointer]
+            - button "Выкладки" [ref=e39] [cursor=pointer]
+          - generic [ref=e40]:
+            - button "Добавить выкладку" [active] [ref=e777] [cursor=pointer]:
+              - generic [ref=e778]: add
+              - generic [ref=e779]: Добавить выкладку
+            - generic [ref=e780]: Пока нет выкладок. Нажмите 'Добавить выкладку'.
+        - generic "Потяните для изменения высоты" [ref=e42]
+        - generic [ref=e43]:
+          - generic [ref=e44]: Редактор свойств
+          - generic [ref=e781]: Выкладка не выбрана
+  - generic [ref=e783]:
+    - generic [ref=e784]:
+      - generic [ref=e785]: Библиотека FurLab
+      - button "Закрыть" [ref=e786] [cursor=pointer]:
+        - generic [ref=e787]: close
+    - generic [ref=e788]:
+      - complementary [ref=e789]:
+        - button "Мех" [ref=e790]:
+          - generic [ref=e792]: Мех
+        - button "Выкладка" [ref=e793]:
+          - generic [ref=e795]: Выкладка
+        - button "Обработка" [ref=e796]:
+          - generic [ref=e798]: Обработка
+      - generic [ref=e800]:
+        - complementary
+        - generic [ref=e801]:
+          - generic [ref=e802]:
+            - textbox "Поиск" [ref=e804]
+            - generic [ref=e805]: Типы выкладки
+          - generic [ref=e806]:
+            - generic [ref=e807] [cursor=pointer]:
+              - img "longitudinal" [ref=e808]
+              - generic [ref=e809]: Продольно-поперечная
+            - generic [ref=e810] [cursor=pointer]:
+              - img "transverse" [ref=e811]
+              - generic [ref=e812]: Ёлочка
+            - generic [ref=e813] [cursor=pointer]:
+              - img "shifted" [ref=e814]
+              - generic [ref=e815]: Со смещением
+            - generic [ref=e816] [cursor=pointer]:
+              - img "radial" [ref=e817]
+              - generic [ref=e818]: Радиальная
+            - generic [ref=e819] [cursor=pointer]:
+              - img "intarsia" [ref=e820]
+              - generic [ref=e821]: Интарсия
+            - generic [ref=e822] [cursor=pointer]:
+              - img "voronoi_tiles" [ref=e823]
+              - generic [ref=e824]: Мозаика Вороного
+            - generic [ref=e825] [cursor=pointer]:
+              - img "inventory_manual" [ref=e826]
+              - generic [ref=e827]: Из инвентаря (ручной)
+            - generic [ref=e828] [cursor=pointer]:
+              - img "inventory_nfp_sa" [ref=e829]
+              - generic [ref=e830]: Из инвентаря (NFP+SA)
+            - generic [ref=e831] [cursor=pointer]:
+              - img "inventory_voronoi_sa" [ref=e832]
+              - generic [ref=e833]: Из инвентаря (Voronoi SA)
+            - generic [ref=e834] [cursor=pointer]:
+              - img "inventory_mosaic" [ref=e835]
+              - generic [ref=e836]: Из инвентаря (Мозаика)
+    - generic [ref=e837]:
+      - button "Выбрать" [disabled] [ref=e838] [cursor=pointer]
+      - button "Отмена" [ref=e839] [cursor=pointer]
+  - group [ref=e48]:
+    - generic "Database" [ref=e49] [cursor=pointer]

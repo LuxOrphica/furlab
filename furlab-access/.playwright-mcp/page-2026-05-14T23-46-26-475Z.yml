@@ -1,0 +1,441 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: 3D Lastique · Tools
+    - heading "Garment Spec Builder" [level=1] [ref=e6]
+    - paragraph [ref=e7]: Табель мер / Measurement Sheet — v0.1
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - generic [ref=e10]: Изделие
+      - combobox [ref=e11] [cursor=pointer]:
+        - option "Классические брюки (муж.)"
+        - option "Пальто однобортное" [selected]
+        - option "Пальто двубортное"
+    - generic [ref=e12]:
+      - generic [ref=e13]: Размеры
+      - generic [ref=e14]:
+        - button "44" [ref=e15] [cursor=pointer]
+        - button "46" [ref=e16] [cursor=pointer]
+        - button "48" [ref=e17] [cursor=pointer]
+        - button "50" [ref=e18] [cursor=pointer]
+        - button "52" [ref=e19] [cursor=pointer]
+        - button "54" [ref=e20] [cursor=pointer]
+        - button "56" [ref=e21] [cursor=pointer]
+        - button "58" [ref=e22] [cursor=pointer]
+        - button "60" [ref=e23] [cursor=pointer]
+    - generic [ref=e24]:
+      - generic [ref=e25]: Базовый размер
+      - combobox [ref=e26] [cursor=pointer]:
+        - option "48"
+        - option "50"
+        - option "52" [selected]
+        - option "54"
+        - option "56"
+        - option "58"
+    - generic [ref=e27]:
+      - generic [ref=e28]: Единицы
+      - generic [ref=e29]:
+        - generic [ref=e30] [cursor=pointer]:
+          - radio "cm" [checked] [ref=e31]
+          - text: cm
+        - generic [ref=e32] [cursor=pointer]:
+          - radio "mm" [ref=e33]
+          - text: mm
+    - generic [ref=e34]:
+      - generic [ref=e35]: Названия
+      - generic [ref=e36]:
+        - generic [ref=e37] [cursor=pointer]:
+          - radio "RU + EN" [checked] [ref=e38]
+          - text: RU + EN
+        - generic [ref=e39] [cursor=pointer]:
+          - radio "RU" [ref=e40]
+          - text: RU
+        - generic [ref=e41] [cursor=pointer]:
+          - radio "EN" [ref=e42]
+          - text: EN
+    - generic [ref=e43]:
+      - generic [ref=e44]: Способ измерения
+      - generic [ref=e45] [cursor=pointer]:
+        - checkbox "показать" [ref=e46]
+        - text: показать
+    - generic [ref=e47]:
+      - generic [ref=e48]: Детальные измерения
+      - generic [ref=e49] [cursor=pointer]:
+        - checkbox "показать" [checked] [active] [ref=e50]
+        - text: показать
+  - generic [ref=e51]:
+    - button "Табель мер" [ref=e52] [cursor=pointer]
+    - button "Справочник POM 407" [ref=e53] [cursor=pointer]:
+      - text: Справочник POM
+      - generic [ref=e54]: "407"
+  - generic [ref=e55]:
+    - generic [ref=e56]:
+      - table [ref=e58]:
+        - rowgroup [ref=e59]:
+          - row "Код Название RU Name EN 48 50 52● 54 56 58 TOL ±" [ref=e321]:
+            - columnheader "Код" [ref=e61]
+            - columnheader "Название RU" [ref=e62]
+            - columnheader "Name EN" [ref=e63]
+            - columnheader "48" [ref=e322]
+            - columnheader "50" [ref=e66]
+            - columnheader "52●" [ref=e323]
+            - columnheader "54" [ref=e68]
+            - columnheader "56" [ref=e69]
+            - columnheader "58" [ref=e324]
+            - columnheader "TOL ±" [ref=e70]
+        - rowgroup [ref=e71]:
+          - row "A Полуобхват груди 1/2 Chest 54 56 58 60 62 64 1" [ref=e325] [cursor=pointer]:
+            - cell "A" [ref=e326]
+            - cell "Полуобхват груди" [ref=e327]
+            - cell "1/2 Chest" [ref=e328]
+            - cell "54" [ref=e329]
+            - cell "56" [ref=e330]
+            - cell "58" [ref=e331]
+            - cell "60" [ref=e332]
+            - cell "62" [ref=e333]
+            - cell "64" [ref=e334]
+            - cell "1" [ref=e335]
+          - row "A2 Ширина спинки Across back 20.5 21 21.5 22 22.5 23 0.5" [ref=e336] [cursor=pointer]:
+            - cell "A2" [ref=e337]
+            - cell "Ширина спинки" [ref=e338]
+            - cell "Across back" [ref=e339]
+            - cell "20.5" [ref=e340]
+            - cell "21" [ref=e341]
+            - cell "21.5" [ref=e342]
+            - cell "22" [ref=e343]
+            - cell "22.5" [ref=e344]
+            - cell "23" [ref=e345]
+            - cell "0.5" [ref=e346]
+          - row "A4 Уровень измерения ширины спинки Position across back 17.5 17.5 18 18 18.5 18.5 0.3" [ref=e347] [cursor=pointer]:
+            - cell "A4" [ref=e348]
+            - cell "Уровень измерения ширины спинки" [ref=e349]
+            - cell "Position across back" [ref=e350]
+            - cell "17.5" [ref=e351]
+            - cell "17.5" [ref=e352]
+            - cell "18" [ref=e353]
+            - cell "18" [ref=e354]
+            - cell "18.5" [ref=e355]
+            - cell "18.5" [ref=e356]
+            - cell "0.3" [ref=e357]
+          - row "E1 Поперечное измерение плеч Across shoulders 47 48 49 50 51 52 0.5" [ref=e358] [cursor=pointer]:
+            - cell "E1" [ref=e359]
+            - cell "Поперечное измерение плеч" [ref=e360]
+            - cell "Across shoulders" [ref=e361]
+            - cell "47" [ref=e362]
+            - cell "48" [ref=e363]
+            - cell "49" [ref=e364]
+            - cell "50" [ref=e365]
+            - cell "51" [ref=e366]
+            - cell "52" [ref=e367]
+            - cell "0.5" [ref=e368]
+          - row "E Ширина плеча Shoulder width 15 15.5 16 16.5 17 17.5 0.3" [ref=e369] [cursor=pointer]:
+            - cell "E" [ref=e370]
+            - cell "Ширина плеча" [ref=e371]
+            - cell "Shoulder width" [ref=e372]
+            - cell "15" [ref=e373]
+            - cell "15.5" [ref=e374]
+            - cell "16" [ref=e375]
+            - cell "16.5" [ref=e376]
+            - cell "17" [ref=e377]
+            - cell "17.5" [ref=e378]
+            - cell "0.3" [ref=e379]
+          - row "B Ширина талии Waist width 47 49 51 53 55 57 1" [ref=e380] [cursor=pointer]:
+            - cell "B" [ref=e73]
+            - cell "Ширина талии" [ref=e381]
+            - cell "Waist width" [ref=e382]
+            - cell "47" [ref=e383]
+            - cell "49" [ref=e384]
+            - cell "51" [ref=e385]
+            - cell "53" [ref=e386]
+            - cell "55" [ref=e387]
+            - cell "57" [ref=e388]
+            - cell "1" [ref=e389]
+          - row "B5 Уровень линии талии спереди Position of waist line front 43 43.5 44 44.5 45 45.5 0.5" [ref=e390] [cursor=pointer]:
+            - cell "B5" [ref=e391]
+            - cell "Уровень линии талии спереди" [ref=e392]
+            - cell "Position of waist line front" [ref=e393]
+            - cell "43" [ref=e394]
+            - cell "43.5" [ref=e395]
+            - cell "44" [ref=e396]
+            - cell "44.5" [ref=e397]
+            - cell "45" [ref=e398]
+            - cell "45.5" [ref=e399]
+            - cell "0.5" [ref=e400]
+          - row "C Ширина по бёдрам Hip width 56 58 60 62 64 66 1" [ref=e401] [cursor=pointer]:
+            - cell "C" [ref=e84]
+            - cell "Ширина по бёдрам" [ref=e402]
+            - cell "Hip width" [ref=e403]
+            - cell "56" [ref=e404]
+            - cell "58" [ref=e405]
+            - cell "60" [ref=e406]
+            - cell "62" [ref=e407]
+            - cell "64" [ref=e408]
+            - cell "66" [ref=e409]
+            - cell "1" [ref=e93]
+          - row "Ca2 Уровень линии бёдер от HPS Hip position from HPS 67 68 69 70 71 72 0.5" [ref=e410] [cursor=pointer]:
+            - cell "Ca2" [ref=e411]
+            - cell "Уровень линии бёдер от HPS" [ref=e412]
+            - cell "Hip position from HPS" [ref=e413]
+            - cell "67" [ref=e414]
+            - cell "68" [ref=e415]
+            - cell "69" [ref=e416]
+            - cell "70" [ref=e417]
+            - cell "71" [ref=e418]
+            - cell "72" [ref=e419]
+            - cell "0.5" [ref=e420]
+          - row "D Ширина низа изделия Hem width 55 57 59 61 63 65 1" [ref=e421] [cursor=pointer]:
+            - cell "D" [ref=e139]
+            - cell "Ширина низа изделия" [ref=e422]
+            - cell "Hem width" [ref=e423]
+            - cell "55" [ref=e424]
+            - cell "57" [ref=e425]
+            - cell "59" [ref=e426]
+            - cell "61" [ref=e427]
+            - cell "63" [ref=e428]
+            - cell "65" [ref=e429]
+            - cell "1" [ref=e430]
+          - row "J Длина переда от HPS до низа Front length from HPS to hem 75 76 77 78 79 80 0.5" [ref=e431] [cursor=pointer]:
+            - cell "J" [ref=e150]
+            - cell "Длина переда от HPS до низа" [ref=e432]
+            - cell "Front length from HPS to hem" [ref=e433]
+            - cell "75" [ref=e434]
+            - cell "76" [ref=e435]
+            - cell "77" [ref=e436]
+            - cell "78" [ref=e437]
+            - cell "79" [ref=e438]
+            - cell "80" [ref=e439]
+            - cell "0.5" [ref=e440]
+          - row "J1 Длина спинки от HPS до низа Back length from HPS to hem 76 77 78 79 80 81 0.5" [ref=e441] [cursor=pointer]:
+            - cell "J1" [ref=e442]
+            - cell "Длина спинки от HPS до низа" [ref=e443]
+            - cell "Back length from HPS to hem" [ref=e444]
+            - cell "76" [ref=e445]
+            - cell "77" [ref=e446]
+            - cell "78" [ref=e447]
+            - cell "79" [ref=e448]
+            - cell "80" [ref=e449]
+            - cell "81" [ref=e450]
+            - cell "0.5" [ref=e451]
+          - row "J3 Длина по центру спинки Centre back length 70 71 72 73 74 75 0.5" [ref=e452] [cursor=pointer]:
+            - cell "J3" [ref=e453]
+            - cell "Длина по центру спинки" [ref=e454]
+            - cell "Centre back length" [ref=e455]
+            - cell "70" [ref=e456]
+            - cell "71" [ref=e457]
+            - cell "72" [ref=e458]
+            - cell "73" [ref=e459]
+            - cell "74" [ref=e460]
+            - cell "75" [ref=e461]
+            - cell "0.5" [ref=e462]
+          - row "J5 Длина бокового шва ниже проймы Side seam below armhole 57 58 59 60 61 62 0.5" [ref=e463] [cursor=pointer]:
+            - cell "J5" [ref=e464]
+            - cell "Длина бокового шва ниже проймы" [ref=e465]
+            - cell "Side seam below armhole" [ref=e466]
+            - cell "57" [ref=e467]
+            - cell "58" [ref=e468]
+            - cell "59" [ref=e469]
+            - cell "60" [ref=e470]
+            - cell "61" [ref=e471]
+            - cell "62" [ref=e472]
+            - cell "0.5" [ref=e473]
+          - row "Детальные измерения" [ref=e474]:
+            - cell "Детальные измерения" [ref=e475]
+          - row "F3 Высота проймы Armhole height 25.5 26 26.5 27 27.5 28 0.5" [ref=e476] [cursor=pointer]:
+            - cell "F3" [ref=e477]
+            - cell "Высота проймы" [ref=e478]
+            - cell "Armhole height" [ref=e479]
+            - cell "25.5" [ref=e480]
+            - cell "26" [ref=e481]
+            - cell "26.5" [ref=e482]
+            - cell "27" [ref=e483]
+            - cell "27.5" [ref=e484]
+            - cell "28" [ref=e485]
+            - cell "0.5" [ref=e486]
+          - row "G Длина рукава (втачной) Sleeve length set-in 63 63.5 64 64.5 65 65.5 0.5" [ref=e487] [cursor=pointer]:
+            - cell "G" [ref=e488]
+            - cell "Длина рукава (втачной)" [ref=e489]
+            - cell "Sleeve length set-in" [ref=e490]
+            - cell "63" [ref=e491]
+            - cell "63.5" [ref=e492]
+            - cell "64" [ref=e493]
+            - cell "64.5" [ref=e494]
+            - cell "65" [ref=e495]
+            - cell "65.5" [ref=e496]
+            - cell "0.5" [ref=e497]
+          - row "F7 Ширина рукава Sleeve width 19.5 20 20.5 21 21.5 22 0.5" [ref=e498] [cursor=pointer]:
+            - cell "F7" [ref=e499]
+            - cell "Ширина рукава" [ref=e500]
+            - cell "Sleeve width" [ref=e501]
+            - cell "19.5" [ref=e502]
+            - cell "20" [ref=e503]
+            - cell "20.5" [ref=e504]
+            - cell "21" [ref=e505]
+            - cell "21.5" [ref=e506]
+            - cell "22" [ref=e507]
+            - cell "0.5" [ref=e508]
+          - row "H Ширина рукава по низу Sleeve opening 14 14.3 14.5 14.8 15 15.3 0.3" [ref=e509] [cursor=pointer]:
+            - cell "H" [ref=e510]
+            - cell "Ширина рукава по низу" [ref=e511]
+            - cell "Sleeve opening" [ref=e512]
+            - cell "14" [ref=e513]
+            - cell "14.3" [ref=e514]
+            - cell "14.5" [ref=e515]
+            - cell "14.8" [ref=e516]
+            - cell "15" [ref=e517]
+            - cell "15.3" [ref=e518]
+            - cell "0.3" [ref=e519]
+          - row "L Высота воротника сзади Centre back collar height 3.5 3.5 3.5 3.5 3.5 3.5 0.2" [ref=e520] [cursor=pointer]:
+            - cell "L" [ref=e521]
+            - cell "Высота воротника сзади" [ref=e522]
+            - cell "Centre back collar height" [ref=e523]
+            - cell "3.5" [ref=e524]
+            - cell "3.5" [ref=e525]
+            - cell "3.5" [ref=e526]
+            - cell "3.5" [ref=e527]
+            - cell "3.5" [ref=e528]
+            - cell "3.5" [ref=e529]
+            - cell "0.2" [ref=e530]
+          - row "L6 Длина воротника по верхнему краю Collar length upper edge 42 43 44 45 46 47 0.5" [ref=e531] [cursor=pointer]:
+            - cell "L6" [ref=e532]
+            - cell "Длина воротника по верхнему краю" [ref=e533]
+            - cell "Collar length upper edge" [ref=e534]
+            - cell "42" [ref=e535]
+            - cell "43" [ref=e536]
+            - cell "44" [ref=e537]
+            - cell "45" [ref=e538]
+            - cell "46" [ref=e539]
+            - cell "47" [ref=e540]
+            - cell "0.5" [ref=e541]
+          - row "L8 Длина лацкана Lapel length 20.5 20.5 21 21 21.5 21.5 0.5" [ref=e542] [cursor=pointer]:
+            - cell "L8" [ref=e543]
+            - cell "Длина лацкана" [ref=e544]
+            - cell "Lapel length" [ref=e545]
+            - cell "20.5" [ref=e546]
+            - cell "20.5" [ref=e547]
+            - cell "21" [ref=e548]
+            - cell "21" [ref=e549]
+            - cell "21.5" [ref=e550]
+            - cell "21.5" [ref=e551]
+            - cell "0.5" [ref=e552]
+          - row "L9 Ширина лацкана Lapel width 9 9 9.5 9.5 10 10 0.3" [ref=e553] [cursor=pointer]:
+            - cell "L9" [ref=e554]
+            - cell "Ширина лацкана" [ref=e555]
+            - cell "Lapel width" [ref=e556]
+            - cell "9" [ref=e557]
+            - cell "9" [ref=e558]
+            - cell "9.5" [ref=e559]
+            - cell "9.5" [ref=e560]
+            - cell "10" [ref=e561]
+            - cell "10" [ref=e562]
+            - cell "0.3" [ref=e563]
+          - row "Cp Вход в нагрудный карман Chest pocket opening 10.5 10.5 11 11 11 11 0.2" [ref=e564] [cursor=pointer]:
+            - cell "Cp" [ref=e565]
+            - cell "Вход в нагрудный карман" [ref=e566]
+            - cell "Chest pocket opening" [ref=e567]
+            - cell "10.5" [ref=e568]
+            - cell "10.5" [ref=e569]
+            - cell "11" [ref=e570]
+            - cell "11" [ref=e571]
+            - cell "11" [ref=e572]
+            - cell "11" [ref=e573]
+            - cell "0.2" [ref=e574]
+          - row "Cp1 Высота листочки нагрудного кармана Chest pocket welt height 2 2 2 2 2 2 0.1" [ref=e575] [cursor=pointer]:
+            - cell "Cp1" [ref=e576]
+            - cell "Высота листочки нагрудного кармана" [ref=e577]
+            - cell "Chest pocket welt height" [ref=e578]
+            - cell "2" [ref=e579]
+            - cell "2" [ref=e580]
+            - cell "2" [ref=e581]
+            - cell "2" [ref=e582]
+            - cell "2" [ref=e583]
+            - cell "2" [ref=e584]
+            - cell "0.1" [ref=e585]
+          - row "Sp1 Высота листочки бокового кармана Side pocket welt height 2.5 2.5 2.5 2.5 2.5 2.5 0.1" [ref=e586] [cursor=pointer]:
+            - cell "Sp1" [ref=e587]
+            - cell "Высота листочки бокового кармана" [ref=e588]
+            - cell "Side pocket welt height" [ref=e589]
+            - cell "2.5" [ref=e590]
+            - cell "2.5" [ref=e591]
+            - cell "2.5" [ref=e592]
+            - cell "2.5" [ref=e593]
+            - cell "2.5" [ref=e594]
+            - cell "2.5" [ref=e595]
+            - cell "0.1" [ref=e596]
+          - row "Sp Вход в боковой карман Side pocket opening 14 14 14.5 14.5 15 15 0.3" [ref=e597] [cursor=pointer]:
+            - cell "Sp" [ref=e256]
+            - cell "Вход в боковой карман" [ref=e598]
+            - cell "Side pocket opening" [ref=e258]
+            - cell "14" [ref=e599]
+            - cell "14" [ref=e600]
+            - cell "14.5" [ref=e601]
+            - cell "14.5" [ref=e602]
+            - cell "15" [ref=e603]
+            - cell "15" [ref=e604]
+            - cell "0.3" [ref=e265]
+          - row "T2 Расположение бокового кармана от CF (вверху) Side pocket placement from CF (top) 7 7.5 7.5 7.5 8 8 0.3" [ref=e605] [cursor=pointer]:
+            - cell "T2" [ref=e606]
+            - cell "Расположение бокового кармана от CF (вверху)" [ref=e607]
+            - cell "Side pocket placement from CF (top)" [ref=e608]
+            - cell "7" [ref=e609]
+            - cell "7.5" [ref=e610]
+            - cell "7.5" [ref=e611]
+            - cell "7.5" [ref=e612]
+            - cell "8" [ref=e613]
+            - cell "8" [ref=e614]
+            - cell "0.3" [ref=e615]
+          - row "T3 Расположение бокового кармана от CF (внизу) Side pocket placement from CF (bottom) 4 4 4 4 4 4 0.3" [ref=e616] [cursor=pointer]:
+            - cell "T3" [ref=e617]
+            - cell "Расположение бокового кармана от CF (внизу)" [ref=e618]
+            - cell "Side pocket placement from CF (bottom)" [ref=e619]
+            - cell "4" [ref=e620]
+            - cell "4" [ref=e621]
+            - cell "4" [ref=e622]
+            - cell "4" [ref=e623]
+            - cell "4" [ref=e624]
+            - cell "4" [ref=e625]
+            - cell "0.3" [ref=e626]
+          - row "P1 Расстояние между пуговицами Distance between buttons 10 10.5 10.5 10.5 11 11 0.2" [ref=e627] [cursor=pointer]:
+            - cell "P1" [ref=e628]
+            - cell "Расстояние между пуговицами" [ref=e629]
+            - cell "Distance between buttons" [ref=e630]
+            - cell "10" [ref=e631]
+            - cell "10.5" [ref=e632]
+            - cell "10.5" [ref=e633]
+            - cell "10.5" [ref=e634]
+            - cell "11" [ref=e635]
+            - cell "11" [ref=e636]
+            - cell "0.2" [ref=e637]
+          - row "U Длина шлицы сзади Back vent length 23 23 24 24 25 25 0.5" [ref=e638] [cursor=pointer]:
+            - cell "U" [ref=e639]
+            - cell "Длина шлицы сзади" [ref=e640]
+            - cell "Back vent length" [ref=e641]
+            - cell "23" [ref=e642]
+            - cell "23" [ref=e643]
+            - cell "24" [ref=e644]
+            - cell "24" [ref=e645]
+            - cell "25" [ref=e646]
+            - cell "25" [ref=e647]
+            - cell "0.5" [ref=e648]
+      - generic [ref=e204]: "* Все значения — плоские замеры (изделие сложено вдвое). Единицы: cm. Базовый размер: 52."
+      - generic [ref=e205]:
+        - button "↓ Экспорт Excel" [ref=e206] [cursor=pointer]
+        - generic [ref=e207]: PDF — скоро
+    - generic [ref=e208]:
+      - generic [ref=e209]:
+        - img "POM diagram" [ref=e211]
+        - generic [ref=e212]:
+          - button "+" [ref=e213] [cursor=pointer]
+          - generic [ref=e214]: 100%
+          - button "−" [disabled] [ref=e215]
+      - generic [ref=e216]:
+        - generic [ref=e217]:
+          - generic [ref=e218]: C2
+          - button "✕" [ref=e219] [cursor=pointer]
+        - generic [ref=e220]: Ширина брюк на уровне коленей
+        - generic [ref=e221]: Knee width
+        - img "measurement" [ref=e224]
+        - generic [ref=e225]:
+          - generic [ref=e226]: Способ измерения
+          - generic [ref=e227]: измеряется горизонтально из стороны в сторону, на уровне колена
+        - generic [ref=e228]:
+          - generic [ref=e229]: Method
+          - generic [ref=e230]: meas horizontal line from side to side at the position of knee

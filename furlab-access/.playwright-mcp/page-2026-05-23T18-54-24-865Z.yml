@@ -1,0 +1,814 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - link "Skip to content" [ref=e4] [cursor=pointer]:
+        - /url: "#start-of-content"
+      - banner [ref=e6]:
+        - heading "Navigation Menu" [level=2] [ref=e7]
+        - generic [ref=e9]:
+          - button "Toggle navigation" [ref=e11] [cursor=pointer]
+          - link "Homepage" [ref=e17] [cursor=pointer]:
+            - /url: /
+            - img [ref=e18]
+          - generic [ref=e20]:
+            - link "Sign in" [ref=e21] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fnexu-io%2Fopen-design%2Ftree%2Fmain%2Fdocs
+            - button "Appearance settings" [ref=e24] [cursor=pointer]:
+              - img
+    - main [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e32]:
+            - img [ref=e33]
+            - link "nexu-io" [ref=e36] [cursor=pointer]:
+              - /url: /nexu-io
+            - generic [ref=e37]: /
+            - strong [ref=e38]:
+              - link "open-design" [ref=e39] [cursor=pointer]:
+                - /url: /nexu-io/open-design
+            - generic [ref=e40]: Public
+          - generic [ref=e41]:
+            - list:
+              - listitem [ref=e42]:
+                - link "You must be signed in to change notification settings" [ref=e43] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                  - img [ref=e44]
+                  - text: Notifications
+              - listitem [ref=e46]:
+                - link "Fork 5.8k" [ref=e47] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                  - img [ref=e48]
+                  - text: Fork
+                  - generic "5,757" [ref=e50]: 5.8k
+              - listitem [ref=e51]:
+                - link "You must be signed in to star a repository" [ref=e53] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                  - img [ref=e54]
+                  - text: Star
+                  - generic "50504 users starred this repository" [ref=e56]: 50.5k
+        - navigation "Repository" [ref=e57]:
+          - list [ref=e58]:
+            - listitem [ref=e59]:
+              - link "Code" [ref=e60] [cursor=pointer]:
+                - /url: /nexu-io/open-design
+                - img [ref=e61]
+                - generic [ref=e63]: Code
+            - listitem [ref=e64]:
+              - link "Issues 165" [ref=e65] [cursor=pointer]:
+                - /url: /nexu-io/open-design/issues
+                - img [ref=e66]
+                - generic [ref=e69]: Issues
+                - generic "165" [ref=e70]
+            - listitem [ref=e71]:
+              - link "Pull requests 160" [ref=e72] [cursor=pointer]:
+                - /url: /nexu-io/open-design/pulls
+                - img [ref=e73]
+                - generic [ref=e75]: Pull requests
+                - generic "160" [ref=e76]
+            - listitem [ref=e77]:
+              - link "Discussions" [ref=e78] [cursor=pointer]:
+                - /url: /nexu-io/open-design/discussions
+                - img [ref=e79]
+                - generic [ref=e81]: Discussions
+            - listitem [ref=e82]:
+              - link "Actions" [ref=e83] [cursor=pointer]:
+                - /url: /nexu-io/open-design/actions
+                - img [ref=e84]
+                - generic [ref=e86]: Actions
+            - listitem [ref=e87]:
+              - link "Projects" [ref=e88] [cursor=pointer]:
+                - /url: /nexu-io/open-design/projects
+                - img [ref=e89]
+                - generic [ref=e91]: Projects
+            - listitem [ref=e92]
+            - listitem [ref=e93]
+          - button "Additional navigation options" [ref=e97] [cursor=pointer]:
+            - img
+      - generic [ref=e108]:
+        - generic [ref=e112]:
+          - generic [ref=e113]:
+            - heading "Expand file tree" [level=2] [ref=e115]:
+              - button "Expand file tree" [ref=e116] [cursor=pointer]:
+                - img [ref=e117]
+            - button "main branch" [ref=e121] [cursor=pointer]:
+              - generic [ref=e122]:
+                - generic [ref=e124]:
+                  - img [ref=e126]
+                  - generic [ref=e129]: main
+                - generic:
+                  - img
+            - generic [ref=e131]:
+              - navigation "Breadcrumbs" [ref=e132]:
+                - heading "Breadcrumbs" [level=2] [ref=e133]
+                - list [ref=e134]:
+                  - listitem [ref=e135]:
+                    - link "open-design" [ref=e136] [cursor=pointer]:
+                      - /url: /nexu-io/open-design/tree/main
+              - generic [ref=e137]:
+                - text: /
+                - heading "docs" [level=1] [ref=e138]
+                - text: /
+              - button "Copy path" [ref=e139] [cursor=pointer]:
+                - img [ref=e140]
+          - generic [ref=e145]:
+            - heading "Directory actions" [level=2] [ref=e146]
+            - generic [ref=e149]:
+              - img [ref=e151]
+              - combobox "Go to file" [ref=e153]
+            - heading "More options" [level=2] [ref=e154]
+            - button "More options" [ref=e155] [cursor=pointer]:
+              - img [ref=e156]
+        - generic [ref=e158]:
+          - generic [ref=e160]:
+            - heading "Latest commit" [level=2] [ref=e161]
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - generic [ref=e165]:
+                  - img "JasonYang0104" [ref=e166]
+                  - img "AI Bot" [ref=e167]
+                - link "commits by JasonYang0104" [ref=e169] [cursor=pointer]:
+                  - /url: /nexu-io/open-design/commits?author=JasonYang0104
+                  - text: JasonYang0104
+                - generic [ref=e170]: and
+                - generic "AI Bot" [ref=e172]
+              - generic [ref=e173]:
+                - generic [ref=e175]:
+                  - link "Add Trae CLI as an ACP coding-agent adapter (" [ref=e176] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/commit/840019c8e256a6f11e9105ba06c1710bbebc0366
+                  - link "#2729" [ref=e177] [cursor=pointer]:
+                    - /url: https://github.com/nexu-io/open-design/pull/2729
+                  - link ")" [ref=e178] [cursor=pointer]:
+                    - /url: /nexu-io/open-design/commit/840019c8e256a6f11e9105ba06c1710bbebc0366
+                - button "Open commit details" [ref=e179] [cursor=pointer]:
+                  - img [ref=e180]
+                - button "success" [ref=e182] [cursor=pointer]:
+                  - img [ref=e183]
+            - generic [ref=e185]:
+              - generic [ref=e187]:
+                - link "Commit 840019c" [ref=e188] [cursor=pointer]:
+                  - /url: /nexu-io/open-design/commit/840019c8e256a6f11e9105ba06c1710bbebc0366
+                  - text: 840019c
+                - text: ·
+                - generic "May 23, 2026, 6:17 PM GMT+3" [ref=e189]: May 23, 20263 hours ago
+              - generic [ref=e190]:
+                - heading "History" [level=2] [ref=e191]
+                - link "View commit history for this file." [ref=e193] [cursor=pointer]:
+                  - /url: /nexu-io/open-design/commits/main/docs
+                  - generic [ref=e194]:
+                    - generic:
+                      - img
+          - generic [ref=e196]:
+            - heading "Folders and files" [level=2] [ref=e197]
+            - table "Folders and files" [ref=e198]:
+              - rowgroup [ref=e199]:
+                - row "Name Last commit message Last commit date" [ref=e200]:
+                  - columnheader "Name" [ref=e201]
+                  - columnheader "Last commit message" [ref=e202]:
+                    - generic "Last commit message" [ref=e203]
+                  - columnheader "Last commit date" [ref=e204]:
+                    - generic "Last commit date" [ref=e205]
+              - rowgroup [ref=e206]:
+                - row "parent directory Parent directory" [ref=e207]:
+                  - cell "parent directory Parent directory" [ref=e208]:
+                    - heading "parent directory" [level=3] [ref=e209]
+                    - link "Parent directory" [ref=e210] [cursor=pointer]:
+                      - /url: /nexu-io/open-design/tree/main
+                      - generic [ref=e211]:
+                        - img [ref=e212]
+                        - text: ..
+                - row "adr, (Directory) Centralize daemon startup (#2054) May 18, 20265 days ago" [ref=e214]:
+                  - cell "adr, (Directory)" [ref=e215]:
+                    - generic [ref=e216]:
+                      - img [ref=e217]
+                      - link "adr, (Directory)" [ref=e222] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/adr
+                        - text: adr
+                  - cell "Centralize daemon startup (#2054)" [ref=e223]:
+                    - generic [ref=e225]:
+                      - link "Centralize daemon startup (" [ref=e226] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/832bdeb5353113373f8321cc5d54888967a28380
+                      - link "#2054" [ref=e227] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2054
+                      - link ")" [ref=e228] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/832bdeb5353113373f8321cc5d54888967a28380
+                  - cell "May 18, 20265 days ago" [ref=e229]:
+                    - generic [ref=e230]: May 18, 20265 days ago
+                - 'row "assets, (Directory) Merge pull request #2461 from nexu-io/release/v0.8.0 May 23, 202614 hours ago" [ref=e231]':
+                  - cell "assets, (Directory)" [ref=e232]:
+                    - generic [ref=e233]:
+                      - img [ref=e234]
+                      - link "assets, (Directory)" [ref=e239] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/assets
+                        - text: assets
+                  - 'cell "Merge pull request #2461 from nexu-io/release/v0.8.0" [ref=e240]':
+                    - generic [ref=e242]:
+                      - link "Merge pull request" [ref=e243] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/a37d11fe72b813249ae7c49dd9f8d1aac428dc69
+                      - link "#2461" [ref=e244] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2461
+                      - link "from nexu-io/release/v0.8.0" [ref=e245] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/a37d11fe72b813249ae7c49dd9f8d1aac428dc69
+                  - cell "May 23, 202614 hours ago" [ref=e246]:
+                    - generic [ref=e247]: May 23, 202614 hours ago
+                - 'row "deployment, (Directory) docs: add Docker deployment guide with verification screenshots (#1851) May 18, 20265 days ago" [ref=e248]':
+                  - cell "deployment, (Directory)" [ref=e249]:
+                    - generic [ref=e250]:
+                      - img [ref=e251]
+                      - link "deployment, (Directory)" [ref=e256] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/deployment
+                        - text: deployment
+                  - 'cell "docs: add Docker deployment guide with verification screenshots (#1851)" [ref=e257]':
+                    - generic [ref=e259]:
+                      - 'link "docs: add Docker deployment guide with verification screenshots (" [ref=e260] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/76561964a2822d4be6443c139a67461792d60328
+                      - link "#1851" [ref=e261] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1851
+                      - link ")" [ref=e262] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/76561964a2822d4be6443c139a67461792d60328
+                  - cell "May 18, 20265 days ago" [ref=e263]:
+                    - generic [ref=e264]: May 18, 20265 days ago
+                - row "examples, (Directory) Refactor project name from \"Open Claude Design\" to \"Open Design\" (#1) Apr 28, 2026last month" [ref=e265]:
+                  - cell "examples, (Directory)" [ref=e266]:
+                    - generic [ref=e267]:
+                      - img [ref=e268]
+                      - link "examples, (Directory)" [ref=e273] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/examples
+                        - text: examples
+                  - cell "Refactor project name from \"Open Claude Design\" to \"Open Design\" (#1)" [ref=e274]:
+                    - generic [ref=e276]:
+                      - link "Refactor project name from \"Open Claude Design\" to \"Open Design\" (" [ref=e277] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/6f6bf31dd23d8e83a74fc5775272cf8c8ecae509
+                      - link "#1" [ref=e278] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1
+                      - link ")" [ref=e279] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/6f6bf31dd23d8e83a74fc5775272cf8c8ecae509
+                  - cell "Apr 28, 2026last month" [ref=e280]:
+                    - generic [ref=e281]: Apr 28, 2026last month
+                - row "plans, (Directory) Merge remote-tracking branch 'origin/preview/0.8.0' into preview/v0.8.0 May 14, 2026last week" [ref=e282]:
+                  - cell "plans, (Directory)" [ref=e283]:
+                    - generic [ref=e284]:
+                      - img [ref=e285]
+                      - link "plans, (Directory)" [ref=e290] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/plans
+                        - text: plans
+                  - cell "Merge remote-tracking branch 'origin/preview/0.8.0' into preview/v0.8.0" [ref=e291]:
+                    - link "Merge remote-tracking branch 'origin/preview/0.8.0' into preview/v0.8.0" [ref=e294] [cursor=pointer]:
+                      - /url: /nexu-io/open-design/commit/4f15c33595e057d1e1f493a49c0949e3c204bc33
+                  - cell "May 14, 2026last week" [ref=e295]:
+                    - generic [ref=e296]: May 14, 2026last week
+                - 'row "rfc-drafts, (Directory) feat: import existing local folder as project (#597) (#624) May 7, 20262 weeks ago" [ref=e297]':
+                  - cell "rfc-drafts, (Directory)" [ref=e298]:
+                    - generic [ref=e299]:
+                      - img [ref=e300]
+                      - link "rfc-drafts, (Directory)" [ref=e305] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/rfc-drafts
+                        - text: rfc-drafts
+                  - 'cell "feat: import existing local folder as project (#597) (#624)" [ref=e306]':
+                    - generic [ref=e308]:
+                      - 'link "feat: import existing local folder as project (" [ref=e309] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/988fd6db5e5ec4518f1893d9133239e29ab92852
+                      - link "#597" [ref=e310] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/issues/597
+                      - link ") (" [ref=e311] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/988fd6db5e5ec4518f1893d9133239e29ab92852
+                      - link "#624" [ref=e312] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/624
+                      - link ")" [ref=e313] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/988fd6db5e5ec4518f1893d9133239e29ab92852
+                  - cell "May 7, 20262 weeks ago" [ref=e314]:
+                    - generic [ref=e315]: May 7, 20262 weeks ago
+                - row "schemas, (Directory) Add i18n metadata for official content (#2692) May 22, 2026yesterday" [ref=e316]:
+                  - cell "schemas, (Directory)" [ref=e317]:
+                    - generic [ref=e318]:
+                      - img [ref=e319]
+                      - link "schemas, (Directory)" [ref=e324] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/schemas
+                        - text: schemas
+                  - cell "Add i18n metadata for official content (#2692)" [ref=e325]:
+                    - generic [ref=e327]:
+                      - link "Add i18n metadata for official content (" [ref=e328] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                      - link "#2692" [ref=e329] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2692
+                      - link ")" [ref=e330] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                  - cell "May 22, 2026yesterday" [ref=e331]:
+                    - generic [ref=e332]: May 22, 2026yesterday
+                - 'row "screenshots, (Directory) docs: add Docker deployment guide with verification screenshots (#1851) May 18, 20265 days ago" [ref=e333]':
+                  - cell "screenshots, (Directory)" [ref=e334]:
+                    - generic [ref=e335]:
+                      - img [ref=e336]
+                      - link "screenshots, (Directory)" [ref=e341] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/screenshots
+                        - text: screenshots
+                  - 'cell "docs: add Docker deployment guide with verification screenshots (#1851)" [ref=e342]':
+                    - generic [ref=e344]:
+                      - 'link "docs: add Docker deployment guide with verification screenshots (" [ref=e345] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/76561964a2822d4be6443c139a67461792d60328
+                      - link "#1851" [ref=e346] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1851
+                      - link ")" [ref=e347] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/76561964a2822d4be6443c139a67461792d60328
+                  - cell "May 18, 20265 days ago" [ref=e348]:
+                    - generic [ref=e349]: May 18, 20265 days ago
+                - row "superpowers/plans, (Directory) Add Linux packaged client parity smoke coverage (#1204) May 15, 2026last week" [ref=e350]:
+                  - cell "superpowers/plans, (Directory)" [ref=e351]:
+                    - generic [ref=e352]:
+                      - img [ref=e353]
+                      - link "superpowers/plans, (Directory)" [ref=e358] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/superpowers/plans
+                        - text: superpowers/plans
+                  - cell "Add Linux packaged client parity smoke coverage (#1204)" [ref=e359]:
+                    - generic [ref=e361]:
+                      - link "Add Linux packaged client parity smoke coverage (" [ref=e362] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/74637f1cb57ea4b89f0ec4c4b63fd8ae387c535f
+                      - link "#1204" [ref=e363] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1204
+                      - link ")" [ref=e364] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/74637f1cb57ea4b89f0ec4c4b63fd8ae387c535f
+                  - cell "May 15, 2026last week" [ref=e365]:
+                    - generic [ref=e366]: May 15, 2026last week
+                - 'row "testing, (Directory) [codex] test(e2e): harden settings and entry regressions (#2578) May 22, 20262 days ago" [ref=e367]':
+                  - cell "testing, (Directory)" [ref=e368]:
+                    - generic [ref=e369]:
+                      - img [ref=e370]
+                      - link "testing, (Directory)" [ref=e375] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/tree/main/docs/testing
+                        - text: testing
+                  - 'cell "[codex] test(e2e): harden settings and entry regressions (#2578)" [ref=e376]':
+                    - generic [ref=e378]:
+                      - 'link "[codex] test(e2e): harden settings and entry regressions (" [ref=e379] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/95bbdbb7344873aa016b2141c8979f246d28ce8e
+                      - link "#2578" [ref=e380] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2578
+                      - link ")" [ref=e381] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/95bbdbb7344873aa016b2141c8979f246d28ce8e
+                  - cell "May 22, 20262 days ago" [ref=e382]:
+                    - generic [ref=e383]: May 22, 20262 days ago
+                - row "agent-adapters.md, (File) Add Trae CLI as an ACP coding-agent adapter (#2729) May 23, 20263 hours ago" [ref=e384]:
+                  - cell "agent-adapters.md, (File)" [ref=e385]:
+                    - generic [ref=e386]:
+                      - img [ref=e387]
+                      - link "agent-adapters.md, (File)" [ref=e392] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/agent-adapters.md
+                        - text: agent-adapters.md
+                  - cell "Add Trae CLI as an ACP coding-agent adapter (#2729)" [ref=e393]:
+                    - generic [ref=e395]:
+                      - link "Add Trae CLI as an ACP coding-agent adapter (" [ref=e396] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/840019c8e256a6f11e9105ba06c1710bbebc0366
+                      - link "#2729" [ref=e397] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2729
+                      - link ")" [ref=e398] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/840019c8e256a6f11e9105ba06c1710bbebc0366
+                  - cell "May 23, 20263 hours ago" [ref=e399]:
+                    - generic [ref=e400]: May 23, 20263 hours ago
+                - 'row "architecture.md, (File) feat(web): add Finalize design package + Continue in CLI buttons (#451)… May 10, 20262 weeks ago" [ref=e401]':
+                  - cell "architecture.md, (File)" [ref=e402]:
+                    - generic [ref=e403]:
+                      - img [ref=e404]
+                      - link "architecture.md, (File)" [ref=e409] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/architecture.md
+                        - text: architecture.md
+                  - 'cell "feat(web): add Finalize design package + Continue in CLI buttons (#451)…" [ref=e410]':
+                    - generic [ref=e412]:
+                      - 'link "feat(web): add Finalize design package + Continue in CLI buttons (" [ref=e413] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/587c783dc0f51d32ae1098055e996b42b9cbec57
+                      - link "#451" [ref=e414] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/issues/451
+                      - link ")…" [ref=e415] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/587c783dc0f51d32ae1098055e996b42b9cbec57
+                  - cell "May 10, 20262 weeks ago" [ref=e416]:
+                    - generic [ref=e417]: May 10, 20262 weeks ago
+                - 'row "atoms.md, (File) docs(plugins): add docs/atoms.md (first-party atom catalog reference) May 9, 20262 weeks ago" [ref=e418]':
+                  - cell "atoms.md, (File)" [ref=e419]:
+                    - generic [ref=e420]:
+                      - img [ref=e421]
+                      - link "atoms.md, (File)" [ref=e426] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/atoms.md
+                        - text: atoms.md
+                  - 'cell "docs(plugins): add docs/atoms.md (first-party atom catalog reference)" [ref=e427]':
+                    - 'link "docs(plugins): add docs/atoms.md (first-party atom catalog reference)" [ref=e430] [cursor=pointer]':
+                      - /url: /nexu-io/open-design/commit/e0840697edf8f785edfed450a060d8857fa44cb2
+                  - cell "May 9, 20262 weeks ago" [ref=e431]:
+                    - generic [ref=e432]: May 9, 20262 weeks ago
+                - 'row "blog-indexing-automation.md, (File) feat(seo): add Search Console reporting workflows (#2229) May 19, 20264 days ago" [ref=e433]':
+                  - cell "blog-indexing-automation.md, (File)" [ref=e434]:
+                    - generic [ref=e435]:
+                      - img [ref=e436]
+                      - link "blog-indexing-automation.md, (File)" [ref=e441] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/blog-indexing-automation.md
+                        - text: blog-indexing-automation.md
+                  - 'cell "feat(seo): add Search Console reporting workflows (#2229)" [ref=e442]':
+                    - generic [ref=e444]:
+                      - 'link "feat(seo): add Search Console reporting workflows (" [ref=e445] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/07659b7272185fb523992246c18bf395a3415638
+                      - link "#2229" [ref=e446] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2229
+                      - link ")" [ref=e447] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/07659b7272185fb523992246c18bf395a3415638
+                  - cell "May 19, 20264 days ago" [ref=e448]:
+                    - generic [ref=e449]: May 19, 20264 days ago
+                - 'row "blog-indexing-status.json, (File) docs(blog): refresh daily indexing status (#2502) May 21, 20263 days ago" [ref=e450]':
+                  - cell "blog-indexing-status.json, (File)" [ref=e451]:
+                    - generic [ref=e452]:
+                      - img [ref=e453]
+                      - link "blog-indexing-status.json, (File)" [ref=e458] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/blog-indexing-status.json
+                        - text: blog-indexing-status.json
+                  - 'cell "docs(blog): refresh daily indexing status (#2502)" [ref=e459]':
+                    - generic [ref=e461]:
+                      - 'link "docs(blog): refresh daily indexing status (" [ref=e462] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/21e75225741c6f797d2bc50afa0ebb6efeca86c4
+                      - link "#2502" [ref=e463] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2502
+                      - link ")" [ref=e464] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/21e75225741c6f797d2bc50afa0ebb6efeca86c4
+                  - cell "May 21, 20263 days ago" [ref=e465]:
+                    - generic [ref=e466]: May 21, 20263 days ago
+                - 'row "blog-indexing-status.md, (File) docs(blog): refresh daily indexing status (#2502) May 21, 20263 days ago" [ref=e467]':
+                  - cell "blog-indexing-status.md, (File)" [ref=e468]:
+                    - generic [ref=e469]:
+                      - img [ref=e470]
+                      - link "blog-indexing-status.md, (File)" [ref=e475] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/blog-indexing-status.md
+                        - text: blog-indexing-status.md
+                  - 'cell "docs(blog): refresh daily indexing status (#2502)" [ref=e476]':
+                    - generic [ref=e478]:
+                      - 'link "docs(blog): refresh daily indexing status (" [ref=e479] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/21e75225741c6f797d2bc50afa0ebb6efeca86c4
+                      - link "#2502" [ref=e480] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2502
+                      - link ")" [ref=e481] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/21e75225741c6f797d2bc50afa0ebb6efeca86c4
+                  - cell "May 21, 20263 days ago" [ref=e482]:
+                    - generic [ref=e483]: May 21, 20263 days ago
+                - 'row "blog-traffic-digest.md, (File) docs(blog): refresh 3-day traffic digest (#2669) May 22, 20262 days ago" [ref=e484]':
+                  - cell "blog-traffic-digest.md, (File)" [ref=e485]:
+                    - generic [ref=e486]:
+                      - img [ref=e487]
+                      - link "blog-traffic-digest.md, (File)" [ref=e492] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/blog-traffic-digest.md
+                        - text: blog-traffic-digest.md
+                  - 'cell "docs(blog): refresh 3-day traffic digest (#2669)" [ref=e493]':
+                    - generic [ref=e495]:
+                      - 'link "docs(blog): refresh 3-day traffic digest (" [ref=e496] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/a0e1b9510bfcafaf47bb03c473856357c8bce86f
+                      - link "#2669" [ref=e497] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2669
+                      - link ")" [ref=e498] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/a0e1b9510bfcafaf47bb03c473856357c8bce86f
+                  - cell "May 22, 20262 days ago" [ref=e499]:
+                    - generic [ref=e500]: May 22, 20262 days ago
+                - 'row "code-review-guidelines.md, (File) docs: add repository-wide code review guidelines (#927) May 8, 20262 weeks ago" [ref=e501]':
+                  - cell "code-review-guidelines.md, (File)" [ref=e502]:
+                    - generic [ref=e503]:
+                      - img [ref=e504]
+                      - link "code-review-guidelines.md, (File)" [ref=e509] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/code-review-guidelines.md
+                        - text: code-review-guidelines.md
+                  - 'cell "docs: add repository-wide code review guidelines (#927)" [ref=e510]':
+                    - generic [ref=e512]:
+                      - 'link "docs: add repository-wide code review guidelines (" [ref=e513] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/bdd49ebc47b85164ac57d32ffdd0448cf627bc96
+                      - link "#927" [ref=e514] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/927
+                      - link ")" [ref=e515] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/bdd49ebc47b85164ac57d32ffdd0448cf627bc96
+                  - cell "May 8, 20262 weeks ago" [ref=e516]:
+                    - generic [ref=e517]: May 8, 20262 weeks ago
+                - 'row "codex-pets.md, (File) feat(web): add pet companion with Codex hatch-pet integration (#296) May 2, 20263 weeks ago" [ref=e518]':
+                  - cell "codex-pets.md, (File)" [ref=e519]:
+                    - generic [ref=e520]:
+                      - img [ref=e521]
+                      - link "codex-pets.md, (File)" [ref=e526] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/codex-pets.md
+                        - text: codex-pets.md
+                  - 'cell "feat(web): add pet companion with Codex hatch-pet integration (#296)" [ref=e527]':
+                    - generic [ref=e529]:
+                      - 'link "feat(web): add pet companion with Codex hatch-pet integration (" [ref=e530] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/6fa20776516b6e905fb23f586ed9ca9066c2ebfa
+                      - link "#296" [ref=e531] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/296
+                      - link ")" [ref=e532] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/6fa20776516b6e905fb23f586ed9ca9066c2ebfa
+                  - cell "May 2, 20263 weeks ago" [ref=e533]:
+                    - generic [ref=e534]: May 2, 20263 weeks ago
+                - 'row "critique-theater.md, (File) feat: Critique Theater wireup (activate the stack, M0 dark-launch by … May 14, 2026last week" [ref=e535]':
+                  - cell "critique-theater.md, (File)" [ref=e536]:
+                    - generic [ref=e537]:
+                      - img [ref=e538]
+                      - link "critique-theater.md, (File)" [ref=e543] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/critique-theater.md
+                        - text: critique-theater.md
+                  - 'cell "feat: Critique Theater wireup (activate the stack, M0 dark-launch by …" [ref=e544]':
+                    - 'link "feat: Critique Theater wireup (activate the stack, M0 dark-launch by …" [ref=e547] [cursor=pointer]':
+                      - /url: /nexu-io/open-design/commit/98bc6d63e653c731a2acca5f255e04b536646c93
+                  - cell "May 14, 2026last week" [ref=e548]:
+                    - generic [ref=e549]: May 14, 2026last week
+                - row "design-systems.md, (File) Default English resource i18n fallback (#1270) May 11, 20262 weeks ago" [ref=e550]:
+                  - cell "design-systems.md, (File)" [ref=e551]:
+                    - generic [ref=e552]:
+                      - img [ref=e553]
+                      - link "design-systems.md, (File)" [ref=e558] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/design-systems.md
+                        - text: design-systems.md
+                  - cell "Default English resource i18n fallback (#1270)" [ref=e559]:
+                    - generic [ref=e561]:
+                      - link "Default English resource i18n fallback (" [ref=e562] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/be77dc03943a9ae0ad8b50223a5b1b2b8bcd1443
+                      - link "#1270" [ref=e563] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1270
+                      - link ")" [ref=e564] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/be77dc03943a9ae0ad8b50223a5b1b2b8bcd1443
+                  - cell "May 11, 20262 weeks ago" [ref=e565]:
+                    - generic [ref=e566]: May 11, 20262 weeks ago
+                - 'row "install-guide.md, (File) feat(deploy): add one-click Docker/Podman Compose installer for Linux… ( May 22, 20262 days ago" [ref=e567]':
+                  - cell "install-guide.md, (File)" [ref=e568]:
+                    - generic [ref=e569]:
+                      - img [ref=e570]
+                      - link "install-guide.md, (File)" [ref=e575] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/install-guide.md
+                        - text: install-guide.md
+                  - 'cell "feat(deploy): add one-click Docker/Podman Compose installer for Linux… (" [ref=e576]':
+                    - 'link "feat(deploy): add one-click Docker/Podman Compose installer for Linux… (" [ref=e579] [cursor=pointer]':
+                      - /url: /nexu-io/open-design/commit/e8b5dd8aafe664bd6aa1b62d2e6a76da2d0da255
+                  - cell "May 22, 20262 days ago" [ref=e580]:
+                    - generic [ref=e581]: May 22, 20262 days ago
+                - row "modes.md, (File) Refactor project name from \"Open Claude Design\" to \"Open Design\" (#1) Apr 28, 2026last month" [ref=e582]:
+                  - cell "modes.md, (File)" [ref=e583]:
+                    - generic [ref=e584]:
+                      - img [ref=e585]
+                      - link "modes.md, (File)" [ref=e590] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/modes.md
+                        - text: modes.md
+                  - cell "Refactor project name from \"Open Claude Design\" to \"Open Design\" (#1)" [ref=e591]:
+                    - generic [ref=e593]:
+                      - link "Refactor project name from \"Open Claude Design\" to \"Open Design\" (" [ref=e594] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/6f6bf31dd23d8e83a74fc5775272cf8c8ecae509
+                      - link "#1" [ref=e595] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1
+                      - link ")" [ref=e596] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/6f6bf31dd23d8e83a74fc5775272cf8c8ecae509
+                  - cell "Apr 28, 2026last month" [ref=e597]:
+                    - generic [ref=e598]: Apr 28, 2026last month
+                - 'row "new-agent-runtime-acp.md, (File) docs: document ACP runtime integration (#2232) May 19, 20264 days ago" [ref=e599]':
+                  - cell "new-agent-runtime-acp.md, (File)" [ref=e600]:
+                    - generic [ref=e601]:
+                      - img [ref=e602]
+                      - link "new-agent-runtime-acp.md, (File)" [ref=e607] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/new-agent-runtime-acp.md
+                        - text: new-agent-runtime-acp.md
+                  - 'cell "docs: document ACP runtime integration (#2232)" [ref=e608]':
+                    - generic [ref=e610]:
+                      - 'link "docs: document ACP runtime integration (" [ref=e611] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/320bd4c3033748ca7167f9c379ba8df733e1f6d0
+                      - link "#2232" [ref=e612] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2232
+                      - link ")" [ref=e613] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/320bd4c3033748ca7167f9c379ba8df733e1f6d0
+                  - cell "May 19, 20264 days ago" [ref=e614]:
+                    - generic [ref=e615]: May 19, 20264 days ago
+                - 'row "notebooklm.md, (File) docs: add NotebookLM GitHub export script (#1062) May 12, 20262 weeks ago" [ref=e616]':
+                  - cell "notebooklm.md, (File)" [ref=e617]:
+                    - generic [ref=e618]:
+                      - img [ref=e619]
+                      - link "notebooklm.md, (File)" [ref=e624] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/notebooklm.md
+                        - text: notebooklm.md
+                  - 'cell "docs: add NotebookLM GitHub export script (#1062)" [ref=e625]':
+                    - generic [ref=e627]:
+                      - 'link "docs: add NotebookLM GitHub export script (" [ref=e628] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/325d1d3ceb36256e362f9049e06c6e0fa836a8fb
+                      - link "#1062" [ref=e629] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1062
+                      - link ")" [ref=e630] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/325d1d3ceb36256e362f9049e06c6e0fa836a8fb
+                  - cell "May 12, 20262 weeks ago" [ref=e631]:
+                    - generic [ref=e632]: May 12, 20262 weeks ago
+                - row "plugins-spec.md, (File) Add i18n metadata for official content (#2692) May 22, 2026yesterday" [ref=e633]:
+                  - cell "plugins-spec.md, (File)" [ref=e634]:
+                    - generic [ref=e635]:
+                      - img [ref=e636]
+                      - link "plugins-spec.md, (File)" [ref=e641] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/plugins-spec.md
+                        - text: plugins-spec.md
+                  - cell "Add i18n metadata for official content (#2692)" [ref=e642]:
+                    - generic [ref=e644]:
+                      - link "Add i18n metadata for official content (" [ref=e645] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                      - link "#2692" [ref=e646] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2692
+                      - link ")" [ref=e647] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                  - cell "May 22, 2026yesterday" [ref=e648]:
+                    - generic [ref=e649]: May 22, 2026yesterday
+                - row "plugins-spec.zh-CN.md, (File) Add i18n metadata for official content (#2692) May 22, 2026yesterday" [ref=e650]:
+                  - cell "plugins-spec.zh-CN.md, (File)" [ref=e651]:
+                    - generic [ref=e652]:
+                      - img [ref=e653]
+                      - link "plugins-spec.zh-CN.md, (File)" [ref=e658] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/plugins-spec.zh-CN.md
+                        - text: plugins-spec.zh-CN.md
+                  - cell "Add i18n metadata for official content (#2692)" [ref=e659]:
+                    - generic [ref=e661]:
+                      - link "Add i18n metadata for official content (" [ref=e662] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                      - link "#2692" [ref=e663] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2692
+                      - link ")" [ref=e664] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                  - cell "May 22, 2026yesterday" [ref=e665]:
+                    - generic [ref=e666]: May 22, 2026yesterday
+                - row "publishing-a-plugin.md, (File) Add community and use case blog posts (#2103) May 19, 20265 days ago" [ref=e667]:
+                  - cell "publishing-a-plugin.md, (File)" [ref=e668]:
+                    - generic [ref=e669]:
+                      - img [ref=e670]
+                      - link "publishing-a-plugin.md, (File)" [ref=e675] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/publishing-a-plugin.md
+                        - text: publishing-a-plugin.md
+                  - cell "Add community and use case blog posts (#2103)" [ref=e676]:
+                    - generic [ref=e678]:
+                      - link "Add community and use case blog posts (" [ref=e679] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/5d28f1c19df283ec69baa9244141bc34e0311a5e
+                      - link "#2103" [ref=e680] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2103
+                      - link ")" [ref=e681] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/5d28f1c19df283ec69baa9244141bc34e0311a5e
+                  - cell "May 19, 20265 days ago" [ref=e682]:
+                    - generic [ref=e683]: May 19, 20265 days ago
+                - 'row "publishing-a-plugin.zh-CN.md, (File) feat(plugins): add registry protocol and enhance plugin management fe… May 14, 2026last week" [ref=e684]':
+                  - cell "publishing-a-plugin.zh-CN.md, (File)" [ref=e685]:
+                    - generic [ref=e686]:
+                      - img [ref=e687]
+                      - link "publishing-a-plugin.zh-CN.md, (File)" [ref=e692] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/publishing-a-plugin.zh-CN.md
+                        - text: publishing-a-plugin.zh-CN.md
+                  - 'cell "feat(plugins): add registry protocol and enhance plugin management fe…" [ref=e693]':
+                    - 'link "feat(plugins): add registry protocol and enhance plugin management fe…" [ref=e696] [cursor=pointer]':
+                      - /url: /nexu-io/open-design/commit/3b167b692130ead374ebb17c2d2574a9932529c2
+                  - cell "May 14, 2026last week" [ref=e697]:
+                    - generic [ref=e698]: May 14, 2026last week
+                - row "references.md, (File) [codex] Add automation templates and proposal workflows (#2193) May 19, 20264 days ago" [ref=e699]:
+                  - cell "references.md, (File)" [ref=e700]:
+                    - generic [ref=e701]:
+                      - img [ref=e702]
+                      - link "references.md, (File)" [ref=e707] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/references.md
+                        - text: references.md
+                  - cell "[codex] Add automation templates and proposal workflows (#2193)" [ref=e708]:
+                    - generic [ref=e710]:
+                      - link "[codex] Add automation templates and proposal workflows (" [ref=e711] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/86ec951fb956253827e3ad9778fb7a3a5d2ee9cf
+                      - link "#2193" [ref=e712] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2193
+                      - link ")" [ref=e713] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/86ec951fb956253827e3ad9778fb7a3a5d2ee9cf
+                  - cell "May 19, 20264 days ago" [ref=e714]:
+                    - generic [ref=e715]: May 19, 20264 days ago
+                - row "roadmap.md, (File) [codex] Add automation templates and proposal workflows (#2193) May 19, 20264 days ago" [ref=e716]:
+                  - cell "roadmap.md, (File)" [ref=e717]:
+                    - generic [ref=e718]:
+                      - img [ref=e719]
+                      - link "roadmap.md, (File)" [ref=e724] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/roadmap.md
+                        - text: roadmap.md
+                  - cell "[codex] Add automation templates and proposal workflows (#2193)" [ref=e725]:
+                    - generic [ref=e727]:
+                      - link "[codex] Add automation templates and proposal workflows (" [ref=e728] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/86ec951fb956253827e3ad9778fb7a3a5d2ee9cf
+                      - link "#2193" [ref=e729] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2193
+                      - link ")" [ref=e730] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/86ec951fb956253827e3ad9778fb7a3a5d2ee9cf
+                  - cell "May 19, 20264 days ago" [ref=e731]:
+                    - generic [ref=e732]: May 19, 20264 days ago
+                - 'row "self-hosting-a-registry.md, (File) feat(plugins): add registry protocol and enhance plugin management fe… May 14, 2026last week" [ref=e733]':
+                  - cell "self-hosting-a-registry.md, (File)" [ref=e734]:
+                    - generic [ref=e735]:
+                      - img [ref=e736]
+                      - link "self-hosting-a-registry.md, (File)" [ref=e741] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/self-hosting-a-registry.md
+                        - text: self-hosting-a-registry.md
+                  - 'cell "feat(plugins): add registry protocol and enhance plugin management fe…" [ref=e742]':
+                    - 'link "feat(plugins): add registry protocol and enhance plugin management fe…" [ref=e745] [cursor=pointer]':
+                      - /url: /nexu-io/open-design/commit/3b167b692130ead374ebb17c2d2574a9932529c2
+                  - cell "May 14, 2026last week" [ref=e746]:
+                    - generic [ref=e747]: May 14, 2026last week
+                - 'row "seo-daily-report.md, (File) feat(seo): add GSC report opportunities (#2388) May 20, 20263 days ago" [ref=e748]':
+                  - cell "seo-daily-report.md, (File)" [ref=e749]:
+                    - generic [ref=e750]:
+                      - img [ref=e751]
+                      - link "seo-daily-report.md, (File)" [ref=e756] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/seo-daily-report.md
+                        - text: seo-daily-report.md
+                  - 'cell "feat(seo): add GSC report opportunities (#2388)" [ref=e757]':
+                    - generic [ref=e759]:
+                      - 'link "feat(seo): add GSC report opportunities (" [ref=e760] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/65e760b88af19116de4eec44f61ad397bbfe87b1
+                      - link "#2388" [ref=e761] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2388
+                      - link ")" [ref=e762] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/65e760b88af19116de4eec44f61ad397bbfe87b1
+                  - cell "May 20, 20263 days ago" [ref=e763]:
+                    - generic [ref=e764]: May 20, 20263 days ago
+                - row "skills-contributing.md, (File) Add i18n metadata for official content (#2692) May 22, 2026yesterday" [ref=e765]:
+                  - cell "skills-contributing.md, (File)" [ref=e766]:
+                    - generic [ref=e767]:
+                      - img [ref=e768]
+                      - link "skills-contributing.md, (File)" [ref=e773] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/skills-contributing.md
+                        - text: skills-contributing.md
+                  - cell "Add i18n metadata for official content (#2692)" [ref=e774]:
+                    - generic [ref=e776]:
+                      - link "Add i18n metadata for official content (" [ref=e777] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                      - link "#2692" [ref=e778] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2692
+                      - link ")" [ref=e779] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                  - cell "May 22, 2026yesterday" [ref=e780]:
+                    - generic [ref=e781]: May 22, 2026yesterday
+                - row "skills-protocol.md, (File) Add i18n metadata for official content (#2692) May 22, 2026yesterday" [ref=e782]:
+                  - cell "skills-protocol.md, (File)" [ref=e783]:
+                    - generic [ref=e784]:
+                      - img [ref=e785]
+                      - link "skills-protocol.md, (File)" [ref=e790] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/skills-protocol.md
+                        - text: skills-protocol.md
+                  - cell "Add i18n metadata for official content (#2692)" [ref=e791]:
+                    - generic [ref=e793]:
+                      - link "Add i18n metadata for official content (" [ref=e794] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                      - link "#2692" [ref=e795] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2692
+                      - link ")" [ref=e796] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/e6da01e998d3ddbb3b3a51c44c0864be2ca87f6c
+                  - cell "May 22, 2026yesterday" [ref=e797]:
+                    - generic [ref=e798]: May 22, 2026yesterday
+                - row "spec.md, (File) [codex] Add automation templates and proposal workflows (#2193) May 19, 20264 days ago" [ref=e799]:
+                  - cell "spec.md, (File)" [ref=e800]:
+                    - generic [ref=e801]:
+                      - img [ref=e802]
+                      - link "spec.md, (File)" [ref=e807] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/spec.md
+                        - text: spec.md
+                  - cell "[codex] Add automation templates and proposal workflows (#2193)" [ref=e808]:
+                    - generic [ref=e810]:
+                      - link "[codex] Add automation templates and proposal workflows (" [ref=e811] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/86ec951fb956253827e3ad9778fb7a3a5d2ee9cf
+                      - link "#2193" [ref=e812] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/2193
+                      - link ")" [ref=e813] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/86ec951fb956253827e3ad9778fb7a3a5d2ee9cf
+                  - cell "May 19, 20264 days ago" [ref=e814]:
+                    - generic [ref=e815]: May 19, 20264 days ago
+                - 'row "v0.8.0-announcement.md, (File) docs: point 0.8.0 preview contributors at main (#1846) May 15, 2026last week" [ref=e816]':
+                  - cell "v0.8.0-announcement.md, (File)" [ref=e817]:
+                    - generic [ref=e818]:
+                      - img [ref=e819]
+                      - link "v0.8.0-announcement.md, (File)" [ref=e824] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/v0.8.0-announcement.md
+                        - text: v0.8.0-announcement.md
+                  - 'cell "docs: point 0.8.0 preview contributors at main (#1846)" [ref=e825]':
+                    - generic [ref=e827]:
+                      - 'link "docs: point 0.8.0 preview contributors at main (" [ref=e828] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/7d1adf9fd72f2eea98eae6262bdf74bd79cdf1fb
+                      - link "#1846" [ref=e829] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1846
+                      - link ")" [ref=e830] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/7d1adf9fd72f2eea98eae6262bdf74bd79cdf1fb
+                  - cell "May 15, 2026last week" [ref=e831]:
+                    - generic [ref=e832]: May 15, 2026last week
+                - 'row "v0.8.0-announcement.zh-CN.md, (File) docs: point 0.8.0 preview contributors at main (#1846) May 15, 2026last week" [ref=e833]':
+                  - cell "v0.8.0-announcement.zh-CN.md, (File)" [ref=e834]:
+                    - generic [ref=e835]:
+                      - img [ref=e836]
+                      - link "v0.8.0-announcement.zh-CN.md, (File)" [ref=e841] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/v0.8.0-announcement.zh-CN.md
+                        - text: v0.8.0-announcement.zh-CN.md
+                  - 'cell "docs: point 0.8.0 preview contributors at main (#1846)" [ref=e842]':
+                    - generic [ref=e844]:
+                      - 'link "docs: point 0.8.0 preview contributors at main (" [ref=e845] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/7d1adf9fd72f2eea98eae6262bdf74bd79cdf1fb
+                      - link "#1846" [ref=e846] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1846
+                      - link ")" [ref=e847] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/commit/7d1adf9fd72f2eea98eae6262bdf74bd79cdf1fb
+                  - cell "May 15, 2026last week" [ref=e848]:
+                    - generic [ref=e849]: May 15, 2026last week
+                - 'row "windows-troubleshooting.md, (File) refactor(web): rename Execution mode and tighten settings dialog UI (#… May 15, 2026last week" [ref=e850]':
+                  - cell "windows-troubleshooting.md, (File)" [ref=e851]:
+                    - generic [ref=e852]:
+                      - img [ref=e853]
+                      - link "windows-troubleshooting.md, (File)" [ref=e858] [cursor=pointer]:
+                        - /url: /nexu-io/open-design/blob/main/docs/windows-troubleshooting.md
+                        - text: windows-troubleshooting.md
+                  - 'cell "refactor(web): rename Execution mode and tighten settings dialog UI (#…" [ref=e859]':
+                    - generic [ref=e861]:
+                      - 'link "refactor(web): rename Execution mode and tighten settings dialog UI (" [ref=e862] [cursor=pointer]':
+                        - /url: /nexu-io/open-design/commit/bcc58af9319017a79752d41059b1678dacfe9384
+                      - link "#…" [ref=e863] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/pull/1568
+                  - cell "May 15, 2026last week" [ref=e864]:
+                    - generic [ref=e865]: May 15, 2026last week
+  - alert [ref=e869]

@@ -1,0 +1,2353 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e9]:
+        - button "Toggle navigation" [ref=e11] [cursor=pointer]
+        - link "Homepage" [ref=e17] [cursor=pointer]:
+          - /url: /
+          - img [ref=e18]
+        - generic [ref=e20]:
+          - link "Sign in" [ref=e21] [cursor=pointer]:
+            - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fnexu-io%2Fopen-design%2Freleases%2Ftag%2Fopen-design-v0.8.0
+          - button "Appearance settings" [ref=e24] [cursor=pointer]:
+            - img
+  - main [ref=e28]:
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e32]:
+          - img [ref=e33]
+          - link "nexu-io" [ref=e36] [cursor=pointer]:
+            - /url: /nexu-io
+          - generic [ref=e37]: /
+          - strong [ref=e38]:
+            - link "open-design" [ref=e39] [cursor=pointer]:
+              - /url: /nexu-io/open-design
+          - generic [ref=e40]: Public
+        - generic [ref=e41]:
+          - list:
+            - listitem [ref=e42]:
+              - link "You must be signed in to change notification settings" [ref=e43] [cursor=pointer]:
+                - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                - img [ref=e44]
+                - text: Notifications
+            - listitem [ref=e46]:
+              - link "Fork 5.8k" [ref=e47] [cursor=pointer]:
+                - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                - img [ref=e48]
+                - text: Fork
+                - generic "5,757" [ref=e50]: 5.8k
+            - listitem [ref=e51]:
+              - link "You must be signed in to star a repository" [ref=e53] [cursor=pointer]:
+                - /url: /login?return_to=%2Fnexu-io%2Fopen-design
+                - img [ref=e54]
+                - text: Star
+                - generic "50504 users starred this repository" [ref=e56]: 50.5k
+      - navigation "Repository" [ref=e57]:
+        - list [ref=e58]:
+          - listitem [ref=e59]:
+            - link "Code" [ref=e60] [cursor=pointer]:
+              - /url: /nexu-io/open-design/tree/open-design-v0.8.0
+              - img [ref=e61]
+              - generic [ref=e63]: Code
+          - listitem [ref=e64]:
+            - link "Issues 165" [ref=e65] [cursor=pointer]:
+              - /url: /nexu-io/open-design/issues
+              - img [ref=e66]
+              - generic [ref=e69]: Issues
+              - generic "165" [ref=e70]
+          - listitem [ref=e71]:
+            - link "Pull requests 160" [ref=e72] [cursor=pointer]:
+              - /url: /nexu-io/open-design/pulls
+              - img [ref=e73]
+              - generic [ref=e75]: Pull requests
+              - generic "160" [ref=e76]
+          - listitem [ref=e77]:
+            - link "Discussions" [ref=e78] [cursor=pointer]:
+              - /url: /nexu-io/open-design/discussions
+              - img [ref=e79]
+              - generic [ref=e81]: Discussions
+          - listitem [ref=e82]:
+            - link "Actions" [ref=e83] [cursor=pointer]:
+              - /url: /nexu-io/open-design/actions
+              - img [ref=e84]
+              - generic [ref=e86]: Actions
+          - listitem [ref=e87]:
+            - link "Projects" [ref=e88] [cursor=pointer]:
+              - /url: /nexu-io/open-design/projects
+              - img [ref=e89]
+              - generic [ref=e91]: Projects
+          - listitem [ref=e92]
+          - listitem [ref=e93]
+        - button "Additional navigation options" [ref=e97] [cursor=pointer]:
+          - img
+    - generic [ref=e100]:
+      - navigation "Breadcrumb" [ref=e101]:
+        - list [ref=e102]:
+          - listitem [ref=e103]:
+            - link "Releases" [ref=e104] [cursor=pointer]:
+              - /url: /nexu-io/open-design/releases
+          - listitem [ref=e105]:
+            - link "open-design-v0.8.0" [ref=e106]:
+              - /url: /nexu-io/open-design/releases/tag/open-design-v0.8.0
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - generic [ref=e112]:
+              - heading "Open Design 0.8.0" [level=1] [ref=e113]
+              - link "Latest" [ref=e115] [cursor=pointer]:
+                - /url: /nexu-io/open-design/releases/latest
+                - generic [ref=e116]: Latest
+            - button "Compare" [ref=e120] [cursor=pointer]:
+              - generic [ref=e121]:
+                - generic [ref=e122]: Compare
+                - generic:
+                  - img
+          - generic [ref=e124]:
+            - generic [ref=e125]:
+              - img "@github-actions" [ref=e126]
+              - link "github-actions" [ref=e127] [cursor=pointer]:
+                - /url: /apps/github-actions
+              - text: released this 22 May 12:43 yesterday
+            - link "Tag open-design-v0.8.0" [ref=e129] [cursor=pointer]:
+              - /url: /nexu-io/open-design/tree/open-design-v0.8.0
+              - generic [ref=e130]:
+                - img "Tag" [ref=e131]
+                - text: open-design-v0.8.0
+            - link "Commit c20d156" [ref=e134] [cursor=pointer]:
+              - /url: /nexu-io/open-design/commit/c20d1560d0c439506e248fffefd4dfbe52221826
+              - img "Commit" [ref=e135]
+              - code [ref=e137]: c20d156
+          - generic [ref=e138]:
+            - paragraph [ref=e139]:
+              - text: ✊
+              - strong [ref=e140]:
+                - code [ref=e141]: 305 PRs
+                - text: ·
+                - code [ref=e142]: 75 contributors
+                - text: · 7 days
+              - text: —
+              - strong [ref=e143]: This isn't a release. It's a starting gun.
+              - text: We rebuilt Open Design's core. Then we ported the old world into it.
+            - paragraph [ref=e144]: "Three things are different underneath now:"
+            - list [ref=e145]:
+              - listitem [ref=e146]:
+                - text: 🧩
+                - strong [ref=e147]: Everything is a plugin.
+                - text: The engine stays small and boring. Design systems, slices, prototypes, exports, and every legacy workflow — including Figma itself — all live in plugins. You write a plugin; you migrate a piece of the industry.
+              - listitem [ref=e148]:
+                - text: 🌐
+                - strong [ref=e149]: Headless by default.
+                - text: The desktop app is a thin wrapper around the CLI. The same engine runs in Claude Code, OpenClaw, Hermes Agent, or straight inside a Lark / Discord / Slack chat. Design stops being a place you go and becomes a capability your agents have.
+              - listitem [ref=e150]:
+                - text: ♻️
+                - strong [ref=e151]: Plugins create plugins.
+                - text: OD CLI wraps GitHub CLI, so an agent can clone the repo, scaffold a plugin, and open a PR — for you, or for itself. The engine grows itself, in public, with you in the loop.
+            - paragraph [ref=e152]: "Two movements behind the rebuild:"
+            - list [ref=e153]:
+              - listitem [ref=e154]:
+                - text: 🥊
+                - strong [ref=e155]: "#DeFigma — kill the canvas, keep the craft."
+                - text: Figma isn't broken. It's just the wrong unit of work in an agent-native world. A design system shouldn't be a file you maintain. A prototype shouldn't be 200 frames you nudge by hand. The canvas was a workaround for not having a real engine. We have an engine now.
+              - listitem [ref=e156]:
+                - text: 🤖
+                - strong [ref=e157]: Agent-Native Design — the designer becomes the director.
+                - text: Agent-driven design is no longer a demo. It's shipping production-grade design systems, world-class UI, decks, prototypes — for people who cannot draw a rectangle. The 10×–100× productivity jump people kept promising for AI tooling? It's here. The human gives intent, not coordinates.
+            - paragraph [ref=e158]:
+              - text: This is the first release where both movements are real in the same engine.
+              - link "Full announcement and discussion thread →" [ref=e159] [cursor=pointer]:
+                - /url: https://github.com/nexu-io/open-design/discussions/1727
+            - heading "🔥 Highlights" [level=2] [ref=e160]
+            - list [ref=e161]:
+              - listitem [ref=e162]:
+                - text: 🧩
+                - strong [ref=e163]: Plugin engine rebuild.
+                - text: Open Design's research-preview architecture has been replaced with a small, boring engine plus a plugin surface — every workflow from design-system templates and slices to prototypes, exports, and Figma itself is now a plugin. Engine stays small on purpose so the industry can be ported into it one plugin at a time. Thanks
+                - link "@bulai0408" [ref=e164] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: ","
+                - link "@YUHAO-corn" [ref=e165] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: ","
+                - link "@xxiaoxiong" [ref=e166] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: ", and everyone who shaped the new shape."
+              - listitem [ref=e167]:
+                - text: 🌐
+                - strong [ref=e168]: Headless by default.
+                - text: The desktop app is now a thin wrapper around the OD CLI. The same engine runs from Claude Code, OpenClaw, Hermes Agent, and chat bots in Lark / Discord / Slack — design becomes a capability your agents have, not a place you visit. Custom CLI agent profiles ship in this release. (
+                - link "#378" [ref=e169] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/378
+                - text: ) Thanks
+                - link "@fuyizheng3120" [ref=e170] [cursor=pointer]:
+                  - /url: https://github.com/fuyizheng3120
+                - text: .
+              - listitem [ref=e171]:
+                - text: ♻️
+                - strong [ref=e172]: Plugins create plugins.
+                - text: OD CLI wraps GitHub CLI, so an agent can clone the repo, scaffold a plugin, and open a PR — for you, or for itself. The Publish-repo flow now correctly creates the author's GitHub repo (
+                - link "#2332" [ref=e173] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/2332
+                - text: ","
+                - link "#2363" [ref=e174] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2363
+                - text: ) and CLI plugin publish reads the live manifest version (
+                - link "#1903" [ref=e175] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1903
+                - text: ). Thanks
+                - link "@lefarcen" [ref=e176] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: ","
+                - link "@leessju" [ref=e177] [cursor=pointer]:
+                  - /url: https://github.com/leessju
+                - text: .
+              - listitem [ref=e178]:
+                - text: 🛒
+                - strong [ref=e179]: Plugin Registry + marketplace surface.
+                - text: New plugin registry detail drawer with trust badges, GitHub rate-limit-aware marketplace fallback, polished publish footer, and unified plugin/integration nav. (
+                - link "#2087" [ref=e180] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2087
+                - text: ","
+                - link "#2064" [ref=e181] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2064
+                - text: ","
+                - link "#1806" [ref=e182] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1806
+                - text: ","
+                - link "#1849" [ref=e183] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1849
+                - text: ) Thanks
+                - link "@bulai0408" [ref=e184] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: ","
+                - link "@zoeforfun" [ref=e185] [cursor=pointer]:
+                  - /url: https://github.com/zoeforfun
+                - text: ","
+                - link "@mturac" [ref=e186] [cursor=pointer]:
+                  - /url: https://github.com/mturac
+                - text: .
+              - listitem [ref=e187]:
+                - text: 🎭
+                - strong [ref=e188]: Critique Theater matures through Phase 16.
+                - text: What was Phase 7 in 0.7.0 is now a fully observable judge — Phase 9 web client wrapper with native de/ja/ko/zh-TW i18n, Phase 10 adapter conformance lab, Phase 11 Playwright stage suite, Phase 12 with 9 Prometheus metrics + 6 log events + OTel span + Grafana dashboard, Phase 13 reducer p99 bench, Phase 14 user guide, Phase 15 rollout resolver + Settings toggle, Phase 16 M-phase rollout ratchet +
+                - code [ref=e189]: /api/critique/conformance
+                - text: — dark-launched M0 by default. (
+                - link "#1315" [ref=e190] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1315
+                - text: –
+                - link "#1320" [ref=e191] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1320
+                - text: ","
+                - link "#1338" [ref=e192] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1338
+                - text: ","
+                - link "#1483" [ref=e193] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1483
+                - text: –
+                - link "#1485" [ref=e194] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1485
+                - text: ","
+                - link "#1499" [ref=e195] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1499
+                - text: ) Thanks
+                - link "@Nagendhra-web" [ref=e196] [cursor=pointer]:
+                  - /url: https://github.com/Nagendhra-web
+                - text: .
+              - listitem [ref=e197]:
+                - text: 🎨
+                - strong [ref=e198]:
+                  - text: 149 design systems with structured
+                  - code [ref=e199]: tokens.css
+                  - text: + components manifest.
+                - text: Brand-token fixtures landed for 60+ new brands (Apple, Stripe, Airbnb, Vercel, Notion, Linear, GitHub, Figma, Slack, Discord, OpenAI, Shopify, Spotify, Uber, Cursor, and 50 more across AI / SaaS / devtool / fintech / docs / consumer / hardware / cultural categories) — each ships
+                - code [ref=e200]: tokens.css
+                - text: +
+                - code [ref=e201]: components.html
+                - text: ", served through the design-system token channel that's now default-on. Plus design-system project import. ("
+                - link "#1544" [ref=e202] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1544
+                - text: ","
+                - link "#1652" [ref=e203] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1652
+                - text: ","
+                - link "#1794" [ref=e204] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1794
+                - text: ","
+                - link "#1841" [ref=e205] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1841
+                - text: ","
+                - link "#2023" [ref=e206] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2023
+                - text: ","
+                - link "#2028" [ref=e207] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2028
+                - text: ","
+                - link "#2029" [ref=e208] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2029
+                - text: ","
+                - link "#2033" [ref=e209] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2033
+                - text: ","
+                - link "#2037" [ref=e210] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2037
+                - text: ","
+                - link "#2040" [ref=e211] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2040
+                - text: ","
+                - link "#2043" [ref=e212] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2043
+                - text: ","
+                - link "#2049" [ref=e213] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2049
+                - text: ","
+                - link "#2051" [ref=e214] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2051
+                - text: ) Thanks
+                - link "@zoeforfun" [ref=e215] [cursor=pointer]:
+                  - /url: https://github.com/zoeforfun
+                - text: .
+              - listitem [ref=e216]:
+                - text: 🤖
+                - strong [ref=e217]: "Three new media providers: Leonardo.ai, ElevenLabs, SenseAudio."
+                - text: Leonardo.ai image generation (
+                - link "#1123" [ref=e218] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1123
+                - text: ), ElevenLabs audio (
+                - link "#1384" [ref=e219] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1384
+                - text: ), SenseAudio TTS plus BYOK chat with image + video tools (
+                - link "#1633" [ref=e220] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1633
+                - text: ","
+                - link "#2065" [ref=e221] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2065
+                - text: ). Thanks
+                - link "@xxiaoxiong" [ref=e222] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: ","
+                - link "@bulai0408" [ref=e223] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: ","
+                - link "@Fl0rencess720" [ref=e224] [cursor=pointer]:
+                  - /url: https://github.com/Fl0rencess720
+                - text: ","
+                - link "@mzl163" [ref=e225] [cursor=pointer]:
+                  - /url: https://github.com/mzl163
+                - text: .
+              - listitem [ref=e226]:
+                - text: 🔄
+                - strong [ref=e227]: Packaged auto-update — battle-hardened on both macOS and Windows.
+                - text: 0.8.0 is the first release where packaged installs self-update end-to-end on both platforms through the same R2 feed, with a refreshed in-app updater popup, validated download / install handoff, and recovery from interrupted applies. The whole flow was rebuilt and stress-tested through the preview cycle. (
+                - link "#2270" [ref=e228] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2270
+                - text: ","
+                - link "#2362" [ref=e229] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2362
+                - text: ","
+                - link "#2376" [ref=e230] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2376
+                - text: ","
+                - link "#2403" [ref=e231] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2403
+                - text: ","
+                - link "#2429" [ref=e232] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2429
+                - text: ","
+                - link "#2565" [ref=e233] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2565
+                - text: ","
+                - link "#2575" [ref=e234] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2575
+                - text: ","
+                - link "#2592" [ref=e235] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2592
+                - text: ","
+                - link "#2595" [ref=e236] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2595
+                - text: ","
+                - link "#2677" [ref=e237] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2677
+                - text: ","
+                - link "#2687" [ref=e238] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2687
+                - text: ","
+                - link "#2700" [ref=e239] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2700
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e240] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: ","
+                - link "@mturac" [ref=e241] [cursor=pointer]:
+                  - /url: https://github.com/mturac
+                - text: .
+              - listitem [ref=e242]:
+                - text: 🎨
+                - strong [ref=e243]: Top-to-bottom visual refresh.
+                - text: New official Open Design app icons, brand glyphs, refreshed wordmark — wrapped together as one coordinated drop in time for 0.8.0. (
+                - link "#2436" [ref=e244] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2436
+                - text: )
+              - listitem [ref=e245]:
+                - text: 🌍
+                - strong [ref=e246]: Italian (it) locale + CJK font fallback.
+                - text: Open Design now ships full UI in 19 languages including Italian (
+                - link "#1323" [ref=e247] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1323
+                - text: ), and Chinese / Japanese / Korean text falls back to platform-native CJK fonts so the UI reads natively instead of going through Latin substitution (
+                - link "#2227" [ref=e248] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2227
+                - text: ). Thanks
+                - link "@xxiaoxiong" [ref=e249] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: ","
+                - link "@delamoer" [ref=e250] [cursor=pointer]:
+                  - /url: https://github.com/delamoer
+                - text: .
+              - listitem [ref=e251]:
+                - text: 🧠
+                - strong [ref=e252]: Quick-brief discovery overhaul.
+                - text: Freeform project clarification now collapses into a single form (
+                - link "#2226" [ref=e253] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2226
+                - text: ), plugin inputs are authoritative answers (
+                - link "#2243" [ref=e254] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2243
+                - text: ), brand-answer prompts stabilized (
+                - link "#1861" [ref=e255] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1861
+                - text: ), and the daemon surfaces form answers directly to agents (
+                - link "#2071" [ref=e256] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2071
+                - text: ). Thanks
+                - link "@lefarcen" [ref=e257] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: ","
+                - link "@YUHAO-corn" [ref=e258] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: ","
+                - link "@bulai0408" [ref=e259] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e260]:
+                - text: ✏️
+                - strong [ref=e261]: Manual edit UX overhaul.
+                - text: Focus mode, inline upload, remove-element patch, history affordance — manual editing on artifacts finally feels like a real tool instead of a toggle. (
+                - link "#1448" [ref=e262] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1448
+                - text: ","
+                - link "#1516" [ref=e263] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1516
+                - text: ) Thanks
+                - link "@alchemistklk" [ref=e264] [cursor=pointer]:
+                  - /url: https://github.com/alchemistklk
+                - text: ","
+                - link "@nombreregular" [ref=e265] [cursor=pointer]:
+                  - /url: https://github.com/nombreregular
+                - text: .
+              - listitem [ref=e266]:
+                - text: 📊
+                - strong [ref=e267]: PostHog v2 event schema.
+                - text: Unified
+                - code [ref=e268]: page_name
+                - text: + onboarding/design-system page_views, modernized event taxonomy so product analytics finally reflects the new plugin world. (
+                - link "#2285" [ref=e269] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2285
+                - text: ","
+                - link "#2390" [ref=e270] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2390
+                - text: ) Thanks
+                - link "@lefarcen" [ref=e271] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e272]:
+                - text: 🌐
+                - strong [ref=e273]: HTML Anything page + tutorials channel on the landing site.
+                - text: New
+                - code [ref=e274]: /html-anything
+                - text: evangelism page (
+                - link "#2452" [ref=e275] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2452
+                - text: ), rebuilt
+                - code [ref=e276]: /templates
+                - text: catalog backed by
+                - code [ref=e277]: design-templates
+                - text: (
+                - link "#2369" [ref=e278] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2369
+                - text: ), tutorials section (
+                - link "#2409" [ref=e279] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2409
+                - text: ). Thanks
+                - link "@Tuola-waj" [ref=e280] [cursor=pointer]:
+                  - /url: https://github.com/Tuola-waj
+                - text: ","
+                - link "@ashleyashli" [ref=e281] [cursor=pointer]:
+                  - /url: https://github.com/ashleyashli
+                - text: .
+            - blockquote [ref=e282]:
+              - paragraph [ref=e283]:
+                - text: 📥
+                - strong [ref=e284]: "Download:"
+                - text: Tag
+                - code [ref=e285]: open-design-v0.8.0
+                - text: . All assets below are live on GitHub Releases and
+                - code [ref=e286]: releases.open-design.ai
+                - text: .
+              - table [ref=e287]:
+                - rowgroup [ref=e288]:
+                  - row "Platform Architecture Asset" [ref=e289]:
+                    - columnheader "Platform" [ref=e290]
+                    - columnheader "Architecture" [ref=e291]
+                    - columnheader "Asset" [ref=e292]
+                - rowgroup [ref=e293]:
+                  - row "macOS Apple Silicon (arm64) open-design-0.8.0-mac-arm64.dmg" [ref=e294]:
+                    - cell "macOS" [ref=e295]
+                    - cell "Apple Silicon (arm64)" [ref=e296]
+                    - cell "open-design-0.8.0-mac-arm64.dmg" [ref=e297]:
+                      - link "open-design-0.8.0-mac-arm64.dmg" [ref=e298] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/releases/download/open-design-v0.8.0/open-design-0.8.0-mac-arm64.dmg
+                  - row "macOS Intel (x64) open-design-0.8.0-mac-x64.dmg" [ref=e299]:
+                    - cell "macOS" [ref=e300]
+                    - cell "Intel (x64)" [ref=e301]
+                    - cell "open-design-0.8.0-mac-x64.dmg" [ref=e302]:
+                      - link "open-design-0.8.0-mac-x64.dmg" [ref=e303] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/releases/download/open-design-v0.8.0/open-design-0.8.0-mac-x64.dmg
+                  - row "macOS (auto-update feed) Apple Silicon (arm64) open-design-0.8.0-mac-arm64.zip" [ref=e304]:
+                    - cell "macOS (auto-update feed)" [ref=e305]
+                    - cell "Apple Silicon (arm64)" [ref=e306]
+                    - cell "open-design-0.8.0-mac-arm64.zip" [ref=e307]:
+                      - link "open-design-0.8.0-mac-arm64.zip" [ref=e308] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/releases/download/open-design-v0.8.0/open-design-0.8.0-mac-arm64.zip
+                  - row "Windows x64 (unsigned, auto-update 🆕) open-design-0.8.0-win-x64-setup.exe" [ref=e309]:
+                    - cell "Windows" [ref=e310]
+                    - cell "x64 (unsigned, auto-update 🆕)" [ref=e311]:
+                      - text: x64 (unsigned,
+                      - strong [ref=e312]: auto-update 🆕
+                      - text: )
+                    - cell "open-design-0.8.0-win-x64-setup.exe" [ref=e313]:
+                      - link "open-design-0.8.0-win-x64-setup.exe" [ref=e314] [cursor=pointer]:
+                        - /url: https://github.com/nexu-io/open-design/releases/download/open-design-v0.8.0/open-design-0.8.0-win-x64-setup.exe
+            - heading "✨ What's New" [level=2] [ref=e315]
+            - heading "🧩 Plugin engine, registry & publishing" [level=3] [ref=e316]
+            - list [ref=e317]:
+              - listitem [ref=e318]:
+                - strong [ref=e319]: Plugin registry detail drawer.
+                - text: (
+                - link "#2087" [ref=e320] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2087
+                - text: ) Thanks
+                - link "@bulai0408" [ref=e321] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e322]:
+                - strong [ref=e323]: Plugin Publish repo creates the author's GitHub repo.
+                - text: (
+                - link "#2332" [ref=e324] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/2332
+                - text: ","
+                - link "#2363" [ref=e325] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2363
+                - text: ) Thanks
+                - link "@lefarcen" [ref=e326] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e327]:
+                - strong [ref=e328]: CLI plugin publish reads manifest version when stored row is 0.0.0 sentinel.
+                - text: (
+                - link "#1903" [ref=e329] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1903
+                - text: ) Thanks
+                - link "@leessju" [ref=e330] [cursor=pointer]:
+                  - /url: https://github.com/leessju
+                - text: .
+              - listitem [ref=e331]:
+                - strong [ref=e332]: GitHub rate-limit fallback for marketplace plugins.
+                - text: (
+                - link "#2064" [ref=e333] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2064
+                - text: ) Thanks
+                - link "@bulai0408" [ref=e334] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e335]:
+                - strong [ref=e336]: Plugin trust badges unified.
+                - text: (
+                - link "#2331" [ref=e337] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2331
+                - text: ) Thanks
+                - link "@bulai0408" [ref=e338] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e339]:
+                - strong [ref=e340]: Demote Plugins + Integrations to nav rail footer
+                - text: so primary surface stays focused. (
+                - link "#1806" [ref=e341] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1806
+                - text: ","
+                - link "#2360" [ref=e342] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2360
+                - text: ","
+                - link "#2397" [ref=e343] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2397
+                - text: ) Thanks
+                - link "@zoeforfun" [ref=e344] [cursor=pointer]:
+                  - /url: https://github.com/zoeforfun
+                - text: ","
+                - link "@lefarcen" [ref=e345] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e346]:
+                - strong [ref=e347]: Stop recommending raw publish CLIs from the authoring summary
+                - text: — keep agents on the OD publish path. (
+                - link "#2380" [ref=e348] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2380
+                - text: ) Thanks
+                - link "@bulai0408" [ref=e349] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e350]:
+                - strong [ref=e351]: Wire Open Design "Open Design PR" button end-to-end
+                - text: in plugin authoring. Thanks
+                - link "@bulai0408" [ref=e352] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e353]:
+                - strong [ref=e354]: Breathing room for plugin publish footer.
+                - text: (
+                - link "#1849" [ref=e355] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1849
+                - text: ) Thanks
+                - link "@mturac" [ref=e356] [cursor=pointer]:
+                  - /url: https://github.com/mturac
+                - text: .
+            - heading "🎭 Critique Theater (Phases 9 – 16)" [level=3] [ref=e357]
+            - list [ref=e358]:
+              - listitem [ref=e359]:
+                - strong [ref=e360]: Phase 9
+                - text: — drop-in mount wrapper, native i18n for
+                - code [ref=e361]: de
+                - text: /
+                - code [ref=e362]: ja
+                - text: /
+                - code [ref=e363]: ko
+                - text: /
+                - code [ref=e364]: zh-TW
+                - text: . (
+                - link "#1315" [ref=e365] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1315
+                - text: ) Thanks
+                - link "@Nagendhra-web" [ref=e366] [cursor=pointer]:
+                  - /url: https://github.com/Nagendhra-web
+                - text: .
+              - listitem [ref=e367]:
+                - strong [ref=e368]: Phase 10
+                - text: — daemon adapter conformance lab + degraded registry. (
+                - link "#1316" [ref=e369] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1316
+                - text: )
+              - listitem [ref=e370]:
+                - strong [ref=e371]: Phase 11
+                - text: — Playwright stage suite (happy path, interrupt, 3 viewports, a11y). (
+                - link "#1317" [ref=e372] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1317
+                - text: ","
+                - link "#1483" [ref=e373] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1483
+                - text: )
+              - listitem [ref=e374]:
+                - strong [ref=e375]: Phase 12
+                - text: — 9 Prometheus metrics + 6 log events + OTel span + Grafana dashboard. (
+                - link "#1485" [ref=e376] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1485
+                - text: )
+              - listitem [ref=e377]:
+                - strong [ref=e378]: Phase 13
+                - text: — reducer p99 benchmark + surface coverage walker. (
+                - link "#1318" [ref=e379] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1318
+                - text: )
+              - listitem [ref=e380]:
+                - strong [ref=e381]: Phase 14
+                - text: — full user guide + 2 AGENTS module maps. (
+                - link "#1319" [ref=e382] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1319
+                - text: )
+              - listitem [ref=e383]:
+                - strong [ref=e384]: Phase 15
+                - text: — rollout resolver + Settings toggle hook. (
+                - link "#1320" [ref=e385] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1320
+                - text: )
+              - listitem [ref=e386]:
+                - strong [ref=e387]: Phase 16
+                - text: — M-phase rollout ratchet +
+                - code [ref=e388]: /api/critique/conformance
+                - text: . (
+                - link "#1499" [ref=e389] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1499
+                - text: )
+              - listitem [ref=e390]:
+                - strong [ref=e391]: Wireup + M0 dark-launch by default.
+                - text: (
+                - link "#1338" [ref=e392] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1338
+                - text: )
+              - listitem [ref=e393]:
+                - strong [ref=e394]: Settings toggle with dedicated section + i18n.
+                - text: (
+                - link "#1484" [ref=e395] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1484
+                - text: )
+            - heading "🎨 Design systems & tokens" [level=3] [ref=e396]
+            - list [ref=e397]:
+              - listitem [ref=e398]:
+                - strong [ref=e399]: Token channel default-on (PR-D)
+                - text: so the new fixture pipeline is the default surface. (
+                - link "#1544" [ref=e400] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1544
+                - text: ) Thanks
+                - link "@zoeforfun" [ref=e401] [cursor=pointer]:
+                  - /url: https://github.com/zoeforfun
+                - text: .
+              - listitem [ref=e402]:
+                - strong [ref=e403]:
+                  - text: Structured
+                  - code [ref=e404]: tokens.css
+                  - text: for 60+ brands
+                - text: across AI, devtool, SaaS, fintech, docs, consumer, hardware, cultural categories — Apple, Stripe, Airbnb, Vercel, Notion, Linear, GitHub, Figma, Slack, Discord, OpenAI, Shopify, Spotify, Uber, Cursor, and many more. (
+                - link "#1652" [ref=e405] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1652
+                - text: ","
+                - link "#1794" [ref=e406] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1794
+                - text: ","
+                - link "#1841" [ref=e407] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1841
+                - text: ","
+                - link "#2023" [ref=e408] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2023
+                - text: ","
+                - link "#2028" [ref=e409] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2028
+                - text: ","
+                - link "#2029" [ref=e410] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2029
+                - text: ","
+                - link "#2033" [ref=e411] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2033
+                - text: ) Thanks
+                - link "@zoeforfun" [ref=e412] [cursor=pointer]:
+                  - /url: https://github.com/zoeforfun
+                - text: .
+              - listitem [ref=e413]:
+                - strong [ref=e414]: Token fixture catalog
+                - text: — 20 brand + 20 product + remaining style fixtures, component-fixture coverage reporting. (
+                - link "#2037" [ref=e415] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2037
+                - text: ","
+                - link "#2040" [ref=e416] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2040
+                - text: ","
+                - link "#2043" [ref=e417] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2043
+                - text: ","
+                - link "#2049" [ref=e418] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2049
+                - text: )
+              - listitem [ref=e419]:
+                - strong [ref=e420]: Component manifests
+                - text: — extract + consume manifests for design systems. (
+                - link "#2051" [ref=e421] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2051
+                - text: ", daemon side)"
+              - listitem [ref=e422]:
+                - strong [ref=e423]: Perplexity design system.
+                - text: (
+                - link "#1747" [ref=e424] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1747
+                - text: ) Thanks
+                - link "@MJ-thunder" [ref=e425] [cursor=pointer]:
+                  - /url: https://github.com/MJ-thunder
+                - text: .
+              - listitem [ref=e426]:
+                - strong [ref=e427]: Import design-system projects
+                - text: via the discovery flow. Thanks
+                - link "@zoeforfun" [ref=e428] [cursor=pointer]:
+                  - /url: https://github.com/zoeforfun
+                - text: .
+              - listitem [ref=e429]:
+                - strong [ref=e430]: Synchronise README inventory badges
+                - text: — skills 31 → 131, design-systems 72 → 149. (
+                - link "#1899" [ref=e431] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1899
+                - text: ) Thanks
+                - link "@leessju" [ref=e432] [cursor=pointer]:
+                  - /url: https://github.com/leessju
+                - text: .
+            - heading "🤖 Agents, providers & media" [level=3] [ref=e433]
+            - list [ref=e434]:
+              - listitem [ref=e435]:
+                - strong [ref=e436]: Local custom CLI agent profiles
+                - text: so users can plug arbitrary CLI agents into the runtime. (
+                - link "#378" [ref=e437] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/378
+                - text: ) Thanks
+                - link "@fuyizheng3120" [ref=e438] [cursor=pointer]:
+                  - /url: https://github.com/fuyizheng3120
+                - text: .
+              - listitem [ref=e439]:
+                - strong [ref=e440]: Leonardo.ai image provider.
+                - text: (
+                - link "#1123" [ref=e441] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1123
+                - text: ) Thanks
+                - link "@xxiaoxiong" [ref=e442] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e443]:
+                - strong [ref=e444]: ElevenLabs audio support.
+                - text: (
+                - link "#1384" [ref=e445] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1384
+                - text: ) Thanks
+                - link "@bulai0408" [ref=e446] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e447]:
+                - strong [ref=e448]: SenseAudio TTS provider
+                - text: + BYOK chat with image / video generation tools. (
+                - link "#1633" [ref=e449] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1633
+                - text: ","
+                - link "#2065" [ref=e450] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2065
+                - text: ) Thanks
+                - link "@Fl0rencess720" [ref=e451] [cursor=pointer]:
+                  - /url: https://github.com/Fl0rencess720
+                - text: ","
+                - link "@mzl163" [ref=e452] [cursor=pointer]:
+                  - /url: https://github.com/mzl163
+                - text: .
+              - listitem [ref=e453]:
+                - strong [ref=e454]: OpenAI-compatible media providers
+                - text: for the dispatcher. Thanks
+                - link "@bulai0408" [ref=e455] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e456]:
+                - strong [ref=e457]: User-configurable model alias for the media dispatcher
+                - text: (
+                - link "#1277" [ref=e458] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/1277
+                - text: ). Thanks
+                - link "@PerishCode" [ref=e459] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e460]:
+                - strong [ref=e461]: Cursor Agent live model id parsing.
+                - text: (
+                - link "#2228" [ref=e462] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2228
+                - text: ) Thanks
+                - link "@Derrick-xn" [ref=e463] [cursor=pointer]:
+                  - /url: https://github.com/Derrick-xn
+                - text: .
+              - listitem [ref=e464]:
+                - strong [ref=e465]: Cursor Agent auth diagnostics.
+                - text: (
+                - link "#1538" [ref=e466] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1538
+                - text: ) Thanks
+                - link "@alchemistklk" [ref=e467] [cursor=pointer]:
+                  - /url: https://github.com/alchemistklk
+                - text: .
+              - listitem [ref=e468]:
+                - strong [ref=e469]: AskUserQuestion tool wired through Claude chat
+                - text: + TodoWrite pinning. Thanks
+                - link "@lefarcen" [ref=e470] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e471]:
+                - strong [ref=e472]: Discover Codex models from the installed CLI.
+                - text: Thanks
+                - link "@alchemistklk" [ref=e473] [cursor=pointer]:
+                  - /url: https://github.com/alchemistklk
+                - text: .
+              - listitem [ref=e474]:
+                - strong [ref=e475]:
+                  - code [ref=e476]: CODEX_API_KEY
+                  - text: support for the Codex CLI
+                - text: lane. Thanks
+                - link "@alchemistklk" [ref=e477] [cursor=pointer]:
+                  - /url: https://github.com/alchemistklk
+                - text: .
+              - listitem [ref=e478]:
+                - strong [ref=e479]: Forward external MCP servers to OpenCode.
+                - text: Thanks
+                - link "@mutoe" [ref=e480] [cursor=pointer]:
+                  - /url: https://github.com/mutoe
+                - text: .
+            - heading "🖥️ Web UI" [level=3] [ref=e481]
+            - list [ref=e482]:
+              - listitem [ref=e483]:
+                - strong [ref=e484]: Improve manual edit UX
+                - text: — focus mode, inline uploads, remove-element patch. (
+                - link "#1516" [ref=e485] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1516
+                - text: ) Thanks
+                - link "@nombreregular" [ref=e486] [cursor=pointer]:
+                  - /url: https://github.com/nombreregular
+                - text: .
+              - listitem [ref=e487]:
+                - strong [ref=e488]: Manual edit inspector.
+                - text: (
+                - link "#1448" [ref=e489] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1448
+                - text: ) Thanks
+                - link "@alchemistklk" [ref=e490] [cursor=pointer]:
+                  - /url: https://github.com/alchemistklk
+                - text: .
+              - listitem [ref=e491]:
+                - strong [ref=e492]: Tweaks toolbar bound to the artifact panel.
+                - text: Thanks
+                - link "@xxiaoxiong" [ref=e493] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e494]:
+                - strong [ref=e495]: Custom select primitive
+                - text: for cleaner dropdowns. Thanks
+                - link "@xxiaoxiong" [ref=e496] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e497]:
+                - strong [ref=e498]: Collapsible comment side panel.
+                - text: Thanks
+                - link "@xxiaoxiong" [ref=e499] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e500]:
+                - strong [ref=e501]: Export-as-image screenshot in the share menu.
+                - text: Thanks
+                - link "@xxiaoxiong" [ref=e502] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e503]:
+                - strong [ref=e504]: Render GFM tables in markdown artifacts and chat.
+                - text: Thanks
+                - link "@xxiaoxiong" [ref=e505] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e506]:
+                - strong [ref=e507]: Surface saved Project instructions for review and retrieval.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e508] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e509]:
+                - strong [ref=e510]: Copy-to-clipboard for user messages.
+                - text: Thanks
+                - link "@asim48-ctrl" [ref=e511] [cursor=pointer]:
+                  - /url: https://github.com/asim48-ctrl
+                - text: .
+              - listitem [ref=e512]:
+                - strong [ref=e513]: Filter-by-kind dropdown on the design-files viewer.
+                - text: Thanks
+                - link "@xxiaoxiong" [ref=e514] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e515]:
+                - strong [ref=e516]: Critique Theater drop-in mount + Settings toggle in the web client.
+                - text: (
+                - link "#1315" [ref=e517] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1315
+                - text: ","
+                - link "#1484" [ref=e518] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1484
+                - text: ) Thanks
+                - link "@Nagendhra-web" [ref=e519] [cursor=pointer]:
+                  - /url: https://github.com/Nagendhra-web
+                - text: .
+              - listitem [ref=e520]:
+                - strong [ref=e521]: "Discovery: collapse freeform clarification + plugin-inputs-authoritative."
+                - text: (
+                - link "#2226" [ref=e522] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2226
+                - text: ","
+                - link "#2243" [ref=e523] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2243
+                - text: ) Thanks
+                - link "@lefarcen" [ref=e524] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+            - heading "🍎🪟 Desktop & packaging" [level=3] [ref=e525]
+            - list [ref=e526]:
+              - listitem [ref=e527]:
+                - strong [ref=e528]: Packaged auto-update for both macOS and Windows.
+                - text: (
+                - link "#2362" [ref=e529] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2362
+                - text: ","
+                - link "#2270" [ref=e530] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2270
+                - text: ","
+                - link "#2403" [ref=e531] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2403
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e532] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: ","
+                - link "@mturac" [ref=e533] [cursor=pointer]:
+                  - /url: https://github.com/mturac
+                - text: .
+              - listitem [ref=e534]:
+                - strong [ref=e535]: Updater hardening
+                - text: through the preview cycle — release validation, deferred installer on Windows, applied-state clearing, download / install handoff hardening, smoke-recovery. (
+                - link "#2565" [ref=e536] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2565
+                - text: ","
+                - link "#2575" [ref=e537] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2575
+                - text: ","
+                - link "#2592" [ref=e538] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2592
+                - text: ","
+                - link "#2595" [ref=e539] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2595
+                - text: ","
+                - link "#2677" [ref=e540] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2677
+                - text: ","
+                - link "#2687" [ref=e541] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2687
+                - text: ","
+                - link "#2700" [ref=e542] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2700
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e543] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e544]:
+                - strong [ref=e545]: Packaged update apply observations
+                - text: captured for telemetry / debugging. (
+                - link "#2429" [ref=e546] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2429
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e547] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e548]:
+                - strong [ref=e549]: Keep the macOS Dock icon when the desktop-pet window opens.
+                - text: (
+                - link "#2413" [ref=e550] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2413
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e551] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e552]:
+                - strong [ref=e553]: Forward proxy env vars to packaged sidecars
+                - text: so corporate networks work. Thanks
+                - link "@PerishCode" [ref=e554] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e555]:
+                - strong [ref=e556]: Detect mise-installed npm bins
+                - text: for the daemon's CLI discovery. Thanks
+                - link "@PerishCode" [ref=e557] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e558]:
+                - strong [ref=e559]: Refresh Open Design app visuals
+                - text: — new icons, logo, brand glyphs. (
+                - link "#2436" [ref=e560] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2436
+                - text: ) Thanks codex agent +
+                - link "@lefarcen" [ref=e561] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e562]:
+                - strong [ref=e563]: Support nightly + preview package identity
+                - text: so beta channel installs don't collide with stable. (
+                - link "#2437" [ref=e564] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2437
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e565] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e566]:
+                - strong [ref=e567]: Linux packaged client parity smoke coverage.
+                - text: Thanks
+                - link "@PerishCode" [ref=e568] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e569]:
+                - strong [ref=e570]: Ensure node binary dir is on PATH for agent sub-processes on Windows.
+                - text: (
+                - link "#1989" [ref=e571] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1989
+                - text: ) Thanks
+                - link "@jiannanya" [ref=e572] [cursor=pointer]:
+                  - /url: https://github.com/jiannanya
+                - text: .
+            - heading "🌍 Internationalization" [level=3] [ref=e573]
+            - list [ref=e574]:
+              - listitem [ref=e575]:
+                - strong [ref=e576]: Italian (it) locale
+                - text: — full UI translation, brings supported languages to 19. (
+                - link "#1323" [ref=e577] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1323
+                - text: ) Thanks
+                - link "@xxiaoxiong" [ref=e578] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e579]:
+                - strong [ref=e580]: CJK font fallback
+                - text: for Chinese / Japanese / Korean. (
+                - link "#2227" [ref=e581] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2227
+                - text: ) Thanks
+                - link "@delamoer" [ref=e582] [cursor=pointer]:
+                  - /url: https://github.com/delamoer
+                - text: .
+              - listitem [ref=e583]:
+                - strong [ref=e584]: Refresh + polish French UI locale.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e585] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e586]:
+                - strong [ref=e587]: Translate template platform selection + Companion surfaces to Chinese.
+                - text: (
+                - link "#1491" [ref=e588] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1491
+                - text: ) Thanks
+                - link "@YUHAO-corn" [ref=e589] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e590]:
+                - strong [ref=e591]: Localize accent controls in settings.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e592] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e593]:
+                - strong [ref=e594]: Localize comment panel strings.
+                - text: (
+                - link "#1390" [ref=e595] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/1390
+                - text: ","
+                - link "#1392" [ref=e596] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/1392
+                - text: ) Thanks
+                - link "@YUHAO-corn" [ref=e597] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e598]:
+                - strong [ref=e599]: Localize skill validation messages.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e600] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e601]:
+                - strong [ref=e602]: Make de / fr / ru content i18n optional
+                - text: to unblock locale rollout. Thanks
+                - link "@YUHAO-corn" [ref=e603] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e604]:
+                - strong [ref=e605]:
+                  - text: i18n coverage report script (
+                  - code [ref=e606]: pnpm i18n:coverage
+                  - text: ).
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e607] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+            - heading "📊 Analytics, observability & infra" [level=3] [ref=e608]
+            - list [ref=e609]:
+              - listitem [ref=e610]:
+                - strong [ref=e611]: PostHog v2 event schema.
+                - text: (
+                - link "#2285" [ref=e612] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2285
+                - text: ) Thanks
+                - link "@lefarcen" [ref=e613] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e614]:
+                - strong [ref=e615]:
+                  - text: Unified
+                  - code [ref=e616]: page_name
+                  - text: + onboarding / design-system page_views.
+                - text: (
+                - link "#2390" [ref=e617] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2390
+                - text: ) Thanks
+                - link "@lefarcen" [ref=e618] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e619]:
+                - strong [ref=e620]:
+                  - text: Upgrade
+                  - code [ref=e621]: posthog-node
+                  - text: 4 → 5 in the daemon.
+                - text: (
+                - link "#2309" [ref=e622] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2309
+                - text: ) Thanks
+                - link "@neogenix" [ref=e623] [cursor=pointer]:
+                  - /url: https://github.com/neogenix
+                - text: .
+              - listitem [ref=e624]:
+                - strong [ref=e625]: One-click log export from Settings → About.
+                - text: Thanks
+                - link "@bulai0408" [ref=e626] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e627]:
+                - strong [ref=e628]: Visual regression PR workflow.
+                - text: Thanks
+                - link "@lefarcen" [ref=e629] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+            - heading "📦 Templates, landing & tutorials" [level=3] [ref=e630]
+            - list [ref=e631]:
+              - listitem [ref=e632]:
+                - strong [ref=e633]: HTML Anything page + responsive landing header.
+                - text: (
+                - link "#2452" [ref=e634] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2452
+                - text: ) Thanks
+                - link "@Tuola-waj" [ref=e635] [cursor=pointer]:
+                  - /url: https://github.com/Tuola-waj
+                - text: .
+              - listitem [ref=e636]:
+                - strong [ref=e637]:
+                  - text: Rebuild
+                  - code [ref=e638]: /templates
+                  - text: catalog from
+                  - code [ref=e639]: design-templates
+                  - text: .
+                - text: (
+                - link "#2369" [ref=e640] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2369
+                - text: ) Thanks
+                - link "@ashleyashli" [ref=e641] [cursor=pointer]:
+                  - /url: https://github.com/ashleyashli
+                - text: .
+              - listitem [ref=e642]:
+                - strong [ref=e643]: Refresh templates + add tutorials channel.
+                - text: (
+                - link "#2409" [ref=e644] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2409
+                - text: ) Thanks
+                - link "@ashleyashli" [ref=e645] [cursor=pointer]:
+                  - /url: https://github.com/ashleyashli
+                - text: .
+              - listitem [ref=e646]:
+                - strong [ref=e647]: Add blog routes
+                - text: on the landing site. Thanks
+                - link "@ashleyashli" [ref=e648] [cursor=pointer]:
+                  - /url: https://github.com/ashleyashli
+                - text: .
+              - listitem [ref=e649]:
+                - strong [ref=e650]: Search Console reporting workflows.
+                - text: Thanks
+                - link "@lefarcen" [ref=e651] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e652]:
+                - strong [ref=e653]: GSC report opportunities.
+                - text: (
+                - link "#2388" [ref=e654] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2388
+                - text: ) Thanks
+                - link "@lefarcen" [ref=e655] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e656]:
+                - strong [ref=e657]: Daily blog indexing / 3-day traffic digests.
+                - text: Thanks
+                - link "@lefarcen" [ref=e658] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e659]:
+                - strong [ref=e660]: WeRead year-in-review HyperFrames template.
+                - text: Thanks
+                - link "@bulai0408" [ref=e661] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e662]:
+                - strong [ref=e663]:
+                  - text: "Templates: design-system token channel +"
+                  - code [ref=e664]: Refresh-Templates
+                  - text: flow.
+                - text: Thanks
+                - link "@ashleyashli" [ref=e665] [cursor=pointer]:
+                  - /url: https://github.com/ashleyashli
+                - text: .
+            - heading "🐛 Selected fixes" [level=2] [ref=e666]
+            - heading "Web" [level=3] [ref=e667]
+            - list [ref=e668]:
+              - listitem [ref=e669]:
+                - strong [ref=e670]: Block pitch-deck placeholder publishes
+                - text: and unbreak framework decks. Thanks
+                - link "@bulai0408" [ref=e671] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e672]:
+                - strong [ref=e673]: Rename FileViewer "Share" button to "Export"
+                - text: to match the action. Thanks
+                - link "@bulai0408" [ref=e674] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e675]:
+                - strong [ref=e676]: Confirm before deleting a saved template
+                - text: in New Project. Thanks
+                - link "@YUHAO-corn" [ref=e677] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e678]:
+                - strong [ref=e679]: Restore consistent app header layout
+                - text: on the entry view. (
+                - link "#1519" [ref=e680] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1519
+                - text: ) Thanks
+                - link "@Siri-Ray" [ref=e681] [cursor=pointer]:
+                  - /url: https://github.com/Siri-Ray
+                - text: .
+              - listitem [ref=e682]:
+                - strong [ref=e683]: Refine preview and project dropdown controls.
+                - text: (
+                - link "#1514" [ref=e684] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1514
+                - text: ) Thanks
+                - link "@Siri-Ray" [ref=e685] [cursor=pointer]:
+                  - /url: https://github.com/Siri-Ray
+                - text: .
+              - listitem [ref=e686]:
+                - strong [ref=e687]: Demote Plugins + Integrations to the nav rail footer.
+                - text: (
+                - link "#1806" [ref=e688] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1806
+                - text: ) Thanks
+                - link "@zoeforfun" [ref=e689] [cursor=pointer]:
+                  - /url: https://github.com/zoeforfun
+                - text: .
+              - listitem [ref=e690]:
+                - strong [ref=e691]: Pin chat during content growth.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e692] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e693]:
+                - strong [ref=e694]: Auto-scroll feedback form.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e695] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e696]:
+                - strong [ref=e697]: Routines history rows deep-link
+                - text: to their specific conversation (Fixes
+                - link "#1505" [ref=e698] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/1505
+                - text: ). Thanks
+                - link "@bulai0408" [ref=e699] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e700]:
+                - strong [ref=e701]: Hide resolved comments from preview overlays.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e702] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e703]:
+                - strong [ref=e704]: Keep filter pill hover labels readable.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e705] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e706]:
+                - strong [ref=e707]: Improve replace-modal button hover contrast.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e708] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e709]:
+                - strong [ref=e710]: Freeze completed run durations across conversations.
+                - text: Thanks
+                - link "@bulai0408" [ref=e711] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e712]:
+                - strong [ref=e713]: Align Home prompt overlay with textarea so caret lands on click.
+                - text: Thanks
+                - link "@xxiaoxiong" [ref=e714] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e715]:
+                - strong [ref=e716]: Restore release-light background.
+                - text: (
+                - link "#1540" [ref=e717] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1540
+                - text: )
+              - listitem [ref=e718]:
+                - strong [ref=e719]: Allow downloads from preview iframes
+                - text: and fall back to srcDoc when the HTML preview needs sandbox shim. Thanks
+                - link "@PerishCode" [ref=e720] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e721]:
+                - strong [ref=e722]: Coalesce chokidar rewrite bursts
+                - text: before refreshing files. Thanks
+                - link "@PerishCode" [ref=e723] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e724]:
+                - strong [ref=e725]: Memory editor reveals after edit click
+                - text: + distinguish expanded memory preview action. Thanks
+                - link "@xxiaoxiong" [ref=e726] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+              - listitem [ref=e727]:
+                - strong [ref=e728]: Auto-annotate imported HTML elements for Tweaks selection.
+                - text: (
+                - link "#892" [ref=e729] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/892
+                - text: ) Thanks
+                - link "@bulai0408" [ref=e730] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e731]:
+                - strong [ref=e732]: Stable shared frame screen paths from referrer.
+                - text: Thanks
+                - link "@bulai0408" [ref=e733] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e734]:
+                - strong [ref=e735]: Daemon run recovery across reloads.
+                - text: (
+                - link "#2374" [ref=e736] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2374
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e737] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e738]:
+                - strong [ref=e739]: Restore custom dropdown chevron for the timezone selector in dark mode.
+                - text: Thanks
+                - link "@xxiaoxiong" [ref=e740] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                - text: .
+            - heading "Desktop & packaging" [level=3] [ref=e741]
+            - list [ref=e742]:
+              - listitem [ref=e743]:
+                - strong [ref=e744]: macOS Dock icon stays put when desktop-pet window opens.
+                - text: (
+                - link "#2413" [ref=e745] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2413
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e746] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e747]:
+                - strong [ref=e748]: Align Windows smoke update root with portable installs.
+                - text: (
+                - link "#2376" [ref=e749] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2376
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e750] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e751]:
+                - strong [ref=e752]: Nightly release smoke identity.
+                - text: (
+                - link "#2446" [ref=e753] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2446
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e754] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e755]:
+                - strong [ref=e756]: Improve desktop updater ready UI.
+                - text: (
+                - link "#2403" [ref=e757] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2403
+                - text: ) Thanks
+                - link "@mturac" [ref=e758] [cursor=pointer]:
+                  - /url: https://github.com/mturac
+                - text: .
+              - listitem [ref=e759]:
+                - strong [ref=e760]: Forward proxy env to sidecars.
+                - text: Thanks
+                - link "@PerishCode" [ref=e761] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e762]:
+                - strong [ref=e763]: Detect mise npm package bins.
+                - text: Thanks
+                - link "@PerishCode" [ref=e764] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e765]:
+                - strong [ref=e766]: Launch Windows updater fixture via Node.
+                - text: (
+                - link "#2364" [ref=e767] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2364
+                - text: ) Thanks
+                - link "@PerishCode" [ref=e768] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e769]:
+                - strong [ref=e770]: macOS close exits fullscreen before hiding.
+                - text: Thanks
+                - link "@PerishCode" [ref=e771] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e772]:
+                - strong [ref=e773]: Daemon's external-browser opener fixed on Windows.
+                - text: Thanks
+                - link "@PerishCode" [ref=e774] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+            - heading "Daemon, runtime & connectivity" [level=3] [ref=e775]
+            - list [ref=e776]:
+              - listitem [ref=e777]:
+                - strong [ref=e778]: Surface discovery form answers to agents.
+                - text: (
+                - link "#2071" [ref=e779] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/2071
+                - text: ) Thanks
+                - link "@bulai0408" [ref=e780] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e781]:
+                - strong [ref=e782]: Stabilize discovery brand answers
+                - text: in prompts. (
+                - link "#1861" [ref=e783] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1861
+                - text: ) Thanks
+                - link "@YUHAO-corn" [ref=e784] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e785]:
+                - strong [ref=e786]: ACP model detection timeout is configurable.
+                - text: Thanks
+                - link "@alchemistklk" [ref=e787] [cursor=pointer]:
+                  - /url: https://github.com/alchemistklk
+                - text: .
+              - listitem [ref=e788]:
+                - strong [ref=e789]: Wrap Claude smoke test stdin as stream-json.
+                - text: Thanks
+                - link "@lefarcen" [ref=e790] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e791]:
+                - strong [ref=e792]: Preserve Claude tool inputs.
+                - text: (
+                - link "#1476" [ref=e793] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1476
+                - text: ) Thanks
+                - link "@lefarcen" [ref=e794] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e795]:
+                - strong [ref=e796]: Codex CLI path fallback UX.
+                - text: (
+                - link "#1205" [ref=e797] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1205
+                - text: ) Thanks
+                - link "@shangxinyu1" [ref=e798] [cursor=pointer]:
+                  - /url: https://github.com/shangxinyu1
+                - text: .
+              - listitem [ref=e799]:
+                - strong [ref=e800]: Treat Codex reconnect events as warnings, not fatal errors.
+                - text: (
+                - link "#1482" [ref=e801] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1482
+                - text: ) Thanks
+                - link "@alchemistklk" [ref=e802] [cursor=pointer]:
+                  - /url: https://github.com/alchemistklk
+                - text: .
+              - listitem [ref=e803]:
+                - strong [ref=e804]: ACP config options used for model selection.
+                - text: (
+                - link "#1208" [ref=e805] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1208
+                - text: ) Thanks
+                - link "@bulai0408" [ref=e806] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                - text: .
+              - listitem [ref=e807]:
+                - strong [ref=e808]: Remove OpenCode stdin dash sentinel
+                - text: + soft empty API response. Thanks
+                - link "@PerishCode" [ref=e809] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+            - heading "📚 Documentation" [level=2] [ref=e810]
+            - list [ref=e811]:
+              - listitem [ref=e812]:
+                - strong [ref=e813]: Critique Theater Phase 14 user guide + 2 AGENTS module maps.
+                - text: (
+                - link "#1319" [ref=e814] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1319
+                - text: ) Thanks
+                - link "@Nagendhra-web" [ref=e815] [cursor=pointer]:
+                  - /url: https://github.com/Nagendhra-web
+                - text: .
+              - listitem [ref=e816]:
+                - strong [ref=e817]: Windows native setup notes in AGENTS.md.
+                - text: Thanks
+                - link "@PerishCode" [ref=e818] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e819]:
+                - strong [ref=e820]: Comprehensive contributor guide in TRANSLATIONS.md.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e821] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e822]:
+                - strong [ref=e823]: RTL_LOCALES UI guidance + es-ES alignment.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e824] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e825]:
+                - strong [ref=e826]:
+                  - text: Sync
+                  - code [ref=e827]: zh-TW
+                  - text: README with the English version.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e828] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e829]:
+                - strong [ref=e830]: Sync Windows troubleshooting link across locale READMEs.
+                - text: Thanks
+                - link "@YUHAO-corn" [ref=e831] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                - text: .
+              - listitem [ref=e832]:
+                - strong [ref=e833]: Refresh contributors wall + GitHub metrics SVG.
+              - listitem [ref=e834]:
+                - strong [ref=e835]: Clarify Intel Mac ZIP packaging support.
+                - text: Thanks
+                - link "@PerishCode" [ref=e836] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                - text: .
+              - listitem [ref=e837]:
+                - strong [ref=e838]: README inventory badges sync
+                - text: (skills 31 → 131, design-systems 72 → 149). (
+                - link "#1899" [ref=e839] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1899
+                - text: ) Thanks
+                - link "@leessju" [ref=e840] [cursor=pointer]:
+                  - /url: https://github.com/leessju
+                - text: .
+              - listitem [ref=e841]:
+                - strong [ref=e842]: "0.8.0-preview banner + Discussion #1727 pointer."
+                - text: (
+                - link "#1781" [ref=e843] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1781
+                - text: ) Thanks
+                - link "@lefarcen" [ref=e844] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                - text: .
+              - listitem [ref=e845]:
+                - strong [ref=e846]:
+                  - text: Active 0.8.0 contributors point at
+                  - code [ref=e847]: main
+                  - text: .
+                - text: (
+                - link "#1846" [ref=e848] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/pull/1846
+                - text: )
+            - heading "🔨 For Developers" [level=2] [ref=e849]
+            - group [ref=e850]:
+              - generic "Click to expand" [ref=e851] [cursor=pointer]
+            - heading "✅ System requirements" [level=2] [ref=e852]
+            - list [ref=e853]:
+              - listitem [ref=e854]:
+                - text: 🍎
+                - strong [ref=e855]: macOS
+                - text: — Apple Silicon (arm64)
+                - strong [ref=e856]: and
+                - text: Intel (x64), macOS 11 Big Sur or newer.
+              - listitem [ref=e857]:
+                - text: 🪟
+                - strong [ref=e858]: Windows
+                - text: — x64, Windows 10 / 11. Installer is
+                - strong [ref=e859]: unsigned
+                - text: but now ships
+                - strong [ref=e860]: packaged auto-update
+                - text: .
+              - listitem [ref=e861]:
+                - text: 🐧
+                - strong [ref=e862]: Linux
+                - text: — headless lifecycle (
+                - code [ref=e863]: install
+                - text: /
+                - code [ref=e864]: start
+                - text: /
+                - code [ref=e865]: stop
+                - text: from CLI). Packaged GUI artifact is
+                - strong [ref=e866]: still
+                - text: deferred while the release lane is hardened.
+              - listitem [ref=e867]:
+                - text: ❄️
+                - strong [ref=e868]: Nix
+                - text: — official flake at
+                - code [ref=e869]: flake.nix
+                - text: with home-manager and NixOS support.
+              - listitem [ref=e870]:
+                - text: 🧑‍💻
+                - strong [ref=e871]: From source
+                - text: — Node.js 24.x and pnpm 10.33.2+ (per
+                - code [ref=e872]: engines
+                - text: in
+                - code [ref=e873]: package.json
+                - text: ).
+            - heading "⚠️ Known issues" [level=2] [ref=e874]:
+              - generic [ref=e875]: ⚠️
+              - text: Known issues
+            - list [ref=e876]:
+              - listitem [ref=e877]:
+                - text: 🪟
+                - strong [ref=e878]: Windows installer is unsigned.
+                - text: SmartScreen / antivirus warnings expected on first launch. Code signing is follow-up work.
+              - listitem [ref=e879]:
+                - text: 🐧
+                - strong [ref=e880]: No Linux desktop GUI package in 0.8.0 stable
+                - text: — use headless mode, the Nix flake, or run from source.
+              - listitem [ref=e881]:
+                - text: 🐚
+                - strong [ref=e882]:
+                  - code [ref=e883]: od
+                  - text: CLI shadows POSIX
+                  - code [ref=e884]: od
+                - text: when installed globally. Use
+                - code [ref=e885]: /usr/bin/od
+                - text: or
+                - code [ref=e886]: command od
+                - text: for the system tool.
+              - listitem [ref=e887]:
+                - text: 🧪 Several preview-period feedback issues (
+                - link "#1729" [ref=e888] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/1729
+                - text: ","
+                - link "#2076" [ref=e889] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/2076
+                - text: ","
+                - link "#2059" [ref=e890] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/2059
+                - text: ","
+                - link "#1797" [ref=e891] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues/1797
+                - text: ", …) remain open for community follow-up — see"
+                - link "the issue tracker" [ref=e892] [cursor=pointer]:
+                  - /url: https://github.com/nexu-io/open-design/issues?q=is:open+is:issue+label:preview-v0.8.0
+                - text: .
+            - heading "🙏 Thanks to everyone who shipped 0.8.0" [level=2] [ref=e893]
+            - paragraph [ref=e894]:
+              - text: 305 PRs by 75 contributors. The "everything is a plugin" thesis only works because so many of you came at it from so many different angles.
+              - strong [ref=e895]: Thank you
+              - text: "to:"
+            - paragraph [ref=e896]:
+              - link "@Abepena" [ref=e897] [cursor=pointer]:
+                - /url: https://github.com/Abepena
+              - text: ","
+              - link "@Derrick-xn" [ref=e898] [cursor=pointer]:
+                - /url: https://github.com/Derrick-xn
+              - text: ","
+              - link "@Fl0rencess720" [ref=e899] [cursor=pointer]:
+                - /url: https://github.com/Fl0rencess720
+              - text: ","
+              - link "@GHX5T-SOL" [ref=e900] [cursor=pointer]:
+                - /url: https://github.com/GHX5T-SOL
+              - text: ","
+              - link "@Hetsavani" [ref=e901] [cursor=pointer]:
+                - /url: https://github.com/Hetsavani
+              - text: ","
+              - link "@Jeshua09090" [ref=e902] [cursor=pointer]:
+                - /url: https://github.com/Jeshua09090
+              - text: ","
+              - link "@Lucky19112002" [ref=e903] [cursor=pointer]:
+                - /url: https://github.com/Lucky19112002
+              - text: ","
+              - link "@MJ-thunder" [ref=e904] [cursor=pointer]:
+                - /url: https://github.com/MJ-thunder
+              - text: ","
+              - link "@MetaAlms" [ref=e905] [cursor=pointer]:
+                - /url: https://github.com/MetaAlms
+              - text: ","
+              - link "@MrRockySL" [ref=e906] [cursor=pointer]:
+                - /url: https://github.com/MrRockySL
+              - text: ","
+              - link "@Nagendhra-web" [ref=e907] [cursor=pointer]:
+                - /url: https://github.com/Nagendhra-web
+              - text: ","
+              - link "@PerishCode" [ref=e908] [cursor=pointer]:
+                - /url: https://github.com/PerishCode
+              - text: ","
+              - link "@Priyanshudotdev" [ref=e909] [cursor=pointer]:
+                - /url: https://github.com/Priyanshudotdev
+              - text: ","
+              - link "@Romantin" [ref=e910] [cursor=pointer]:
+                - /url: https://github.com/Romantin
+              - text: ","
+              - link "@Sid-Qin" [ref=e911] [cursor=pointer]:
+                - /url: https://github.com/Sid-Qin
+              - text: ","
+              - link "@Siri-Ray" [ref=e912] [cursor=pointer]:
+                - /url: https://github.com/Siri-Ray
+              - text: ","
+              - link "@Tuola-waj" [ref=e913] [cursor=pointer]:
+                - /url: https://github.com/Tuola-waj
+              - text: ","
+              - link "@YUHAO-corn" [ref=e914] [cursor=pointer]:
+                - /url: https://github.com/YUHAO-corn
+              - text: ","
+              - link "@ZZXX-bit" [ref=e915] [cursor=pointer]:
+                - /url: https://github.com/ZZXX-bit
+              - text: ","
+              - link "@aaronjmars" [ref=e916] [cursor=pointer]:
+                - /url: https://github.com/aaronjmars
+              - text: ","
+              - link "@abhid-007" [ref=e917] [cursor=pointer]:
+                - /url: https://github.com/abhid-007
+              - text: ","
+              - link "@alchemistklk" [ref=e918] [cursor=pointer]:
+                - /url: https://github.com/alchemistklk
+              - text: ","
+              - link "@ashleyashli" [ref=e919] [cursor=pointer]:
+                - /url: https://github.com/ashleyashli
+              - text: ","
+              - link "@asim48-ctrl" [ref=e920] [cursor=pointer]:
+                - /url: https://github.com/asim48-ctrl
+              - text: ","
+              - link "@bankielewicz" [ref=e921] [cursor=pointer]:
+                - /url: https://github.com/bankielewicz
+              - text: ","
+              - link "@bluto447" [ref=e922] [cursor=pointer]:
+                - /url: https://github.com/bluto447
+              - text: ","
+              - link "@bulai0408" [ref=e923] [cursor=pointer]:
+                - /url: https://github.com/bulai0408
+              - text: ","
+              - link "@davezfr" [ref=e924] [cursor=pointer]:
+                - /url: https://github.com/davezfr
+              - text: ","
+              - link "@delamoer" [ref=e925] [cursor=pointer]:
+                - /url: https://github.com/delamoer
+              - text: ","
+              - link "@digitalcr8tive" [ref=e926] [cursor=pointer]:
+                - /url: https://github.com/digitalcr8tive
+              - text: ","
+              - link "@enaktes9-hub" [ref=e927] [cursor=pointer]:
+                - /url: https://github.com/enaktes9-hub
+              - text: ","
+              - link "@epicsagas" [ref=e928] [cursor=pointer]:
+                - /url: https://github.com/epicsagas
+              - text: ","
+              - link "@fancyboi999" [ref=e929] [cursor=pointer]:
+                - /url: https://github.com/fancyboi999
+              - text: ","
+              - link "@feliciaZH" [ref=e930] [cursor=pointer]:
+                - /url: https://github.com/feliciaZH
+              - text: ","
+              - link "@fuyizheng3120" [ref=e931] [cursor=pointer]:
+                - /url: https://github.com/fuyizheng3120
+              - text: ","
+              - link "@hahaplus" [ref=e932] [cursor=pointer]:
+                - /url: https://github.com/hahaplus
+              - text: ","
+              - link "@heylakatos" [ref=e933] [cursor=pointer]:
+                - /url: https://github.com/heylakatos
+              - text: ","
+              - link "@hobostay" [ref=e934] [cursor=pointer]:
+                - /url: https://github.com/hobostay
+              - text: ","
+              - link "@jeongjin0" [ref=e935] [cursor=pointer]:
+                - /url: https://github.com/jeongjin0
+              - text: ","
+              - link "@jiannanya" [ref=e936] [cursor=pointer]:
+                - /url: https://github.com/jiannanya
+              - text: ","
+              - link "@laihenyi" [ref=e937] [cursor=pointer]:
+                - /url: https://github.com/laihenyi
+              - text: ","
+              - link "@leessju" [ref=e938] [cursor=pointer]:
+                - /url: https://github.com/leessju
+              - text: ","
+              - link "@lefarcen" [ref=e939] [cursor=pointer]:
+                - /url: https://github.com/lefarcen
+              - text: ","
+              - link "@mar2181" [ref=e940] [cursor=pointer]:
+                - /url: https://github.com/mar2181
+              - text: ","
+              - link "@mrcfps" [ref=e941] [cursor=pointer]:
+                - /url: https://github.com/mrcfps
+              - text: ","
+              - link "@mrzhangkris" [ref=e942] [cursor=pointer]:
+                - /url: https://github.com/mrzhangkris
+              - text: ","
+              - link "@mturac" [ref=e943] [cursor=pointer]:
+                - /url: https://github.com/mturac
+              - text: ","
+              - link "@mutoe" [ref=e944] [cursor=pointer]:
+                - /url: https://github.com/mutoe
+              - text: ","
+              - link "@mzl163" [ref=e945] [cursor=pointer]:
+                - /url: https://github.com/mzl163
+              - text: ","
+              - link "@mzl2233" [ref=e946] [cursor=pointer]:
+                - /url: https://github.com/mzl2233
+              - text: ","
+              - link "@neogenix" [ref=e947] [cursor=pointer]:
+                - /url: https://github.com/neogenix
+              - text: ","
+              - link "@nettee" [ref=e948] [cursor=pointer]:
+                - /url: https://github.com/nettee
+              - text: ","
+              - link "@ngoduybien" [ref=e949] [cursor=pointer]:
+                - /url: https://github.com/ngoduybien
+              - text: ","
+              - link "@nmsn" [ref=e950] [cursor=pointer]:
+                - /url: https://github.com/nmsn
+              - text: ","
+              - link "@nombreregular" [ref=e951] [cursor=pointer]:
+                - /url: https://github.com/nombreregular
+              - text: ","
+              - link "@ojhendershot" [ref=e952] [cursor=pointer]:
+                - /url: https://github.com/ojhendershot
+              - text: ","
+              - link "@orbisai0security" [ref=e953] [cursor=pointer]:
+                - /url: https://github.com/orbisai0security
+              - text: ","
+              - link "@pftom" [ref=e954] [cursor=pointer]:
+                - /url: https://github.com/pftom
+              - text: ","
+              - link "@portseif" [ref=e955] [cursor=pointer]:
+                - /url: https://github.com/portseif
+              - text: ","
+              - link "@prantikmedhi" [ref=e956] [cursor=pointer]:
+                - /url: https://github.com/prantikmedhi
+              - text: ","
+              - link "@quangdo126" [ref=e957] [cursor=pointer]:
+                - /url: https://github.com/quangdo126
+              - text: ","
+              - link "@sakshyasinha" [ref=e958] [cursor=pointer]:
+                - /url: https://github.com/sakshyasinha
+              - text: ","
+              - link "@samay-hash" [ref=e959] [cursor=pointer]:
+                - /url: https://github.com/samay-hash
+              - text: ","
+              - link "@sasha1107" [ref=e960] [cursor=pointer]:
+                - /url: https://github.com/sasha1107
+              - text: ","
+              - link "@shangxinyu1" [ref=e961] [cursor=pointer]:
+                - /url: https://github.com/shangxinyu1
+              - text: ","
+              - link "@slamj1" [ref=e962] [cursor=pointer]:
+                - /url: https://github.com/slamj1
+              - text: ","
+              - link "@spurnout" [ref=e963] [cursor=pointer]:
+                - /url: https://github.com/spurnout
+              - text: ","
+              - link "@sukumarp2022" [ref=e964] [cursor=pointer]:
+                - /url: https://github.com/sukumarp2022
+              - text: ","
+              - link "@toby-bridges" [ref=e965] [cursor=pointer]:
+                - /url: https://github.com/toby-bridges
+              - text: ","
+              - link "@whoughton" [ref=e966] [cursor=pointer]:
+                - /url: https://github.com/whoughton
+              - text: ","
+              - link "@xxiaoxiong" [ref=e967] [cursor=pointer]:
+                - /url: https://github.com/xxiaoxiong
+              - text: ","
+              - link "@yuhaoyuan" [ref=e968] [cursor=pointer]:
+                - /url: https://github.com/yuhaoyuan
+              - text: ","
+              - link "@zellux" [ref=e969] [cursor=pointer]:
+                - /url: https://github.com/zellux
+              - text: ","
+              - link "@zhangdongming0607" [ref=e970] [cursor=pointer]:
+                - /url: https://github.com/zhangdongming0607
+              - text: ","
+              - link "@zoeforfun" [ref=e971] [cursor=pointer]:
+                - /url: https://github.com/zoeforfun
+              - text: .
+            - paragraph [ref=e972]: A movement doesn't ship from one team's laptops; it ships from the people who showed up early and built the missing pieces. We see you. 🫡
+            - separator [ref=e973]
+            - paragraph [ref=e974]:
+              - strong [ref=e975]: "Full Changelog:"
+              - link "open-design-v0.7.0...release/v0.8.0" [ref=e976] [cursor=pointer]:
+                - /url: https://github.com/nexu-io/open-design/compare/open-design-v0.7.0...release/v0.8.0
+        - generic [ref=e977]:
+          - generic [ref=e978]:
+            - heading "Contributors" [level=3] [ref=e979]
+            - list [ref=e980]:
+              - listitem [ref=e981]:
+                - link "@zellux" [ref=e982] [cursor=pointer]:
+                  - /url: https://github.com/zellux
+                  - img "@zellux" [ref=e983]
+              - listitem [ref=e984]:
+                - link "@neogenix" [ref=e985] [cursor=pointer]:
+                  - /url: https://github.com/neogenix
+                  - img "@neogenix" [ref=e986]
+              - listitem [ref=e987]:
+                - link "@mturac" [ref=e988] [cursor=pointer]:
+                  - /url: https://github.com/mturac
+                  - img "@mturac" [ref=e989]
+              - listitem [ref=e990]:
+                - link "@laihenyi" [ref=e991] [cursor=pointer]:
+                  - /url: https://github.com/laihenyi
+                  - img "@laihenyi" [ref=e992]
+              - listitem [ref=e993]:
+                - link "@whoughton" [ref=e994] [cursor=pointer]:
+                  - /url: https://github.com/whoughton
+                  - img "@whoughton" [ref=e995]
+              - listitem [ref=e996]:
+                - link "@slamj1" [ref=e997] [cursor=pointer]:
+                  - /url: https://github.com/slamj1
+                  - img "@slamj1" [ref=e998]
+              - listitem [ref=e999]:
+                - link "@ngoduybien" [ref=e1000] [cursor=pointer]:
+                  - /url: https://github.com/ngoduybien
+                  - img "@ngoduybien" [ref=e1001]
+              - listitem [ref=e1002]:
+                - link "@nettee" [ref=e1003] [cursor=pointer]:
+                  - /url: https://github.com/nettee
+                  - img "@nettee" [ref=e1004]
+              - listitem [ref=e1005]:
+                - link "@spurnout" [ref=e1006] [cursor=pointer]:
+                  - /url: https://github.com/spurnout
+                  - img "@spurnout" [ref=e1007]
+              - listitem [ref=e1008]:
+                - link "@mutoe" [ref=e1009] [cursor=pointer]:
+                  - /url: https://github.com/mutoe
+                  - img "@mutoe" [ref=e1010]
+              - listitem [ref=e1011]:
+                - link "@portseif" [ref=e1012] [cursor=pointer]:
+                  - /url: https://github.com/portseif
+                  - img "@portseif" [ref=e1013]
+              - listitem [ref=e1014]:
+                - link "@feliciaZH" [ref=e1015] [cursor=pointer]:
+                  - /url: https://github.com/feliciaZH
+                  - img "@feliciaZH" [ref=e1016]
+              - listitem [ref=e1017]:
+                - link "@bluto447" [ref=e1018] [cursor=pointer]:
+                  - /url: https://github.com/bluto447
+                  - img "@bluto447" [ref=e1019]
+              - listitem [ref=e1020]:
+                - link "@hahaplus" [ref=e1021] [cursor=pointer]:
+                  - /url: https://github.com/hahaplus
+                  - img "@hahaplus" [ref=e1022]
+              - listitem [ref=e1023]:
+                - link "@zhangdongming0607" [ref=e1024] [cursor=pointer]:
+                  - /url: https://github.com/zhangdongming0607
+                  - img "@zhangdongming0607" [ref=e1025]
+              - listitem [ref=e1026]:
+                - link "@davezfr" [ref=e1027] [cursor=pointer]:
+                  - /url: https://github.com/davezfr
+                  - img "@davezfr" [ref=e1028]
+              - listitem [ref=e1029]:
+                - link "@lefarcen" [ref=e1030] [cursor=pointer]:
+                  - /url: https://github.com/lefarcen
+                  - img "@lefarcen" [ref=e1031]
+              - listitem [ref=e1032]:
+                - link "@nmsn" [ref=e1033] [cursor=pointer]:
+                  - /url: https://github.com/nmsn
+                  - img "@nmsn" [ref=e1034]
+              - listitem [ref=e1035]:
+                - link "@mrcfps" [ref=e1036] [cursor=pointer]:
+                  - /url: https://github.com/mrcfps
+                  - img "@mrcfps" [ref=e1037]
+              - listitem [ref=e1038]:
+                - link "@pftom" [ref=e1039] [cursor=pointer]:
+                  - /url: https://github.com/pftom
+                  - img "@pftom" [ref=e1040]
+              - listitem [ref=e1041]:
+                - link "@xxiaoxiong" [ref=e1042] [cursor=pointer]:
+                  - /url: https://github.com/xxiaoxiong
+                  - img "@xxiaoxiong" [ref=e1043]
+              - listitem [ref=e1044]:
+                - link "@Abepena" [ref=e1045] [cursor=pointer]:
+                  - /url: https://github.com/Abepena
+                  - img "@Abepena" [ref=e1046]
+              - listitem [ref=e1047]:
+                - link "@yuhaoyuan" [ref=e1048] [cursor=pointer]:
+                  - /url: https://github.com/yuhaoyuan
+                  - img "@yuhaoyuan" [ref=e1049]
+              - listitem [ref=e1050]:
+                - link "@bulai0408" [ref=e1051] [cursor=pointer]:
+                  - /url: https://github.com/bulai0408
+                  - img "@bulai0408" [ref=e1052]
+              - listitem [ref=e1053]:
+                - link "@PerishCode" [ref=e1054] [cursor=pointer]:
+                  - /url: https://github.com/PerishCode
+                  - img "@PerishCode" [ref=e1055]
+              - listitem [ref=e1056]:
+                - link "@epicsagas" [ref=e1057] [cursor=pointer]:
+                  - /url: https://github.com/epicsagas
+                  - img "@epicsagas" [ref=e1058]
+              - listitem [ref=e1059]:
+                - link "@leessju" [ref=e1060] [cursor=pointer]:
+                  - /url: https://github.com/leessju
+                  - img "@leessju" [ref=e1061]
+              - listitem [ref=e1062]:
+                - link "@Lucky19112002" [ref=e1063] [cursor=pointer]:
+                  - /url: https://github.com/Lucky19112002
+                  - img "@Lucky19112002" [ref=e1064]
+              - listitem [ref=e1065]:
+                - link "@mzl163" [ref=e1066] [cursor=pointer]:
+                  - /url: https://github.com/mzl163
+                  - img "@mzl163" [ref=e1067]
+              - listitem [ref=e1068]:
+                - link "@alchemistklk" [ref=e1069] [cursor=pointer]:
+                  - /url: https://github.com/alchemistklk
+                  - img "@alchemistklk" [ref=e1070]
+              - listitem [ref=e1071]:
+                - link "@toby-bridges" [ref=e1072] [cursor=pointer]:
+                  - /url: https://github.com/toby-bridges
+                  - img "@toby-bridges" [ref=e1073]
+              - listitem [ref=e1074]:
+                - link "@aaronjmars" [ref=e1075] [cursor=pointer]:
+                  - /url: https://github.com/aaronjmars
+                  - img "@aaronjmars" [ref=e1076]
+              - listitem [ref=e1077]:
+                - link "@nombreregular" [ref=e1078] [cursor=pointer]:
+                  - /url: https://github.com/nombreregular
+                  - img "@nombreregular" [ref=e1079]
+              - listitem [ref=e1080]:
+                - link "@Derrick-xn" [ref=e1081] [cursor=pointer]:
+                  - /url: https://github.com/Derrick-xn
+                  - img "@Derrick-xn" [ref=e1082]
+              - listitem [ref=e1083]:
+                - link "@Jeshua09090" [ref=e1084] [cursor=pointer]:
+                  - /url: https://github.com/Jeshua09090
+                  - img "@Jeshua09090" [ref=e1085]
+              - listitem [ref=e1086]:
+                - link "@sasha1107" [ref=e1087] [cursor=pointer]:
+                  - /url: https://github.com/sasha1107
+                  - img "@sasha1107" [ref=e1088]
+              - listitem [ref=e1089]:
+                - link "@jeongjin0" [ref=e1090] [cursor=pointer]:
+                  - /url: https://github.com/jeongjin0
+                  - img "@jeongjin0" [ref=e1091]
+              - listitem [ref=e1092]:
+                - link "@jiannanya" [ref=e1093] [cursor=pointer]:
+                  - /url: https://github.com/jiannanya
+                  - img "@jiannanya" [ref=e1094]
+              - listitem [ref=e1095]:
+                - link "@quangdo126" [ref=e1096] [cursor=pointer]:
+                  - /url: https://github.com/quangdo126
+                  - img "@quangdo126" [ref=e1097]
+              - listitem [ref=e1098]:
+                - link "@mrzhangkris" [ref=e1099] [cursor=pointer]:
+                  - /url: https://github.com/mrzhangkris
+                  - img "@mrzhangkris" [ref=e1100]
+              - listitem [ref=e1101]:
+                - link "@MetaAlms" [ref=e1102] [cursor=pointer]:
+                  - /url: https://github.com/MetaAlms
+                  - img "@MetaAlms" [ref=e1103]
+              - listitem [ref=e1104]:
+                - link "@ashleyashli" [ref=e1105] [cursor=pointer]:
+                  - /url: https://github.com/ashleyashli
+                  - img "@ashleyashli" [ref=e1106]
+              - listitem [ref=e1107]:
+                - link "@MrRockySL" [ref=e1108] [cursor=pointer]:
+                  - /url: https://github.com/MrRockySL
+                  - img "@MrRockySL" [ref=e1109]
+              - listitem [ref=e1110]:
+                - link "@ojhendershot" [ref=e1111] [cursor=pointer]:
+                  - /url: https://github.com/ojhendershot
+                  - img "@ojhendershot" [ref=e1112]
+              - listitem [ref=e1113]:
+                - link "@mzl2233" [ref=e1114] [cursor=pointer]:
+                  - /url: https://github.com/mzl2233
+                  - img "@mzl2233" [ref=e1115]
+              - listitem [ref=e1116]:
+                - link "@Siri-Ray" [ref=e1117] [cursor=pointer]:
+                  - /url: https://github.com/Siri-Ray
+                  - img "@Siri-Ray" [ref=e1118]
+              - listitem [ref=e1119]:
+                - link "@hobostay" [ref=e1120] [cursor=pointer]:
+                  - /url: https://github.com/hobostay
+                  - img "@hobostay" [ref=e1121]
+              - listitem [ref=e1122]:
+                - link "@Hetsavani" [ref=e1123] [cursor=pointer]:
+                  - /url: https://github.com/Hetsavani
+                  - img "@Hetsavani" [ref=e1124]
+              - listitem [ref=e1125]:
+                - link "@abhid-007" [ref=e1126] [cursor=pointer]:
+                  - /url: https://github.com/abhid-007
+                  - img "@abhid-007" [ref=e1127]
+              - listitem [ref=e1128]:
+                - link "@sukumarp2022" [ref=e1129] [cursor=pointer]:
+                  - /url: https://github.com/sukumarp2022
+                  - img "@sukumarp2022" [ref=e1130]
+              - listitem [ref=e1131]:
+                - link "@bankielewicz" [ref=e1132] [cursor=pointer]:
+                  - /url: https://github.com/bankielewicz
+                  - img "@bankielewicz" [ref=e1133]
+              - listitem [ref=e1134]:
+                - link "@delamoer" [ref=e1135] [cursor=pointer]:
+                  - /url: https://github.com/delamoer
+                  - img "@delamoer" [ref=e1136]
+              - listitem [ref=e1137]:
+                - link "@fancyboi999" [ref=e1138] [cursor=pointer]:
+                  - /url: https://github.com/fancyboi999
+                  - img "@fancyboi999" [ref=e1139]
+              - listitem [ref=e1140]:
+                - link "@prantikmedhi" [ref=e1141] [cursor=pointer]:
+                  - /url: https://github.com/prantikmedhi
+                  - img "@prantikmedhi" [ref=e1142]
+              - listitem [ref=e1143]:
+                - link "@Fl0rencess720" [ref=e1144] [cursor=pointer]:
+                  - /url: https://github.com/Fl0rencess720
+                  - img "@Fl0rencess720" [ref=e1145]
+              - listitem [ref=e1146]:
+                - link "@sakshyasinha" [ref=e1147] [cursor=pointer]:
+                  - /url: https://github.com/sakshyasinha
+                  - img "@sakshyasinha" [ref=e1148]
+              - listitem [ref=e1149]:
+                - link "@Priyanshudotdev" [ref=e1150] [cursor=pointer]:
+                  - /url: https://github.com/Priyanshudotdev
+                  - img "@Priyanshudotdev" [ref=e1151]
+              - listitem [ref=e1152]:
+                - link "@Romantin" [ref=e1153] [cursor=pointer]:
+                  - /url: https://github.com/Romantin
+                  - img "@Romantin" [ref=e1154]
+              - listitem [ref=e1155]:
+                - link "@ZZXX-bit" [ref=e1156] [cursor=pointer]:
+                  - /url: https://github.com/ZZXX-bit
+                  - img "@ZZXX-bit" [ref=e1157]
+              - listitem [ref=e1158]:
+                - link "@samay-hash" [ref=e1159] [cursor=pointer]:
+                  - /url: https://github.com/samay-hash
+                  - img "@samay-hash" [ref=e1160]
+              - listitem [ref=e1161]:
+                - link "@Tuola-waj" [ref=e1162] [cursor=pointer]:
+                  - /url: https://github.com/Tuola-waj
+                  - img "@Tuola-waj" [ref=e1163]
+              - listitem [ref=e1164]:
+                - link "@mar2181" [ref=e1165] [cursor=pointer]:
+                  - /url: https://github.com/mar2181
+                  - img "@mar2181" [ref=e1166]
+              - listitem [ref=e1167]:
+                - link "@GHX5T-SOL" [ref=e1168] [cursor=pointer]:
+                  - /url: https://github.com/GHX5T-SOL
+                  - img "@GHX5T-SOL" [ref=e1169]
+              - listitem [ref=e1170]:
+                - link "@Sid-Qin" [ref=e1171] [cursor=pointer]:
+                  - /url: https://github.com/Sid-Qin
+                  - img "@Sid-Qin" [ref=e1172]
+              - listitem [ref=e1173]:
+                - link "@YUHAO-corn" [ref=e1174] [cursor=pointer]:
+                  - /url: https://github.com/YUHAO-corn
+                  - img "@YUHAO-corn" [ref=e1175]
+              - listitem [ref=e1176]:
+                - link "@MJ-thunder" [ref=e1177] [cursor=pointer]:
+                  - /url: https://github.com/MJ-thunder
+                  - img "@MJ-thunder" [ref=e1178]
+              - listitem [ref=e1179]:
+                - link "@Nagendhra-web" [ref=e1180] [cursor=pointer]:
+                  - /url: https://github.com/Nagendhra-web
+                  - img "@Nagendhra-web" [ref=e1181]
+              - listitem [ref=e1182]:
+                - link "@shangxinyu1" [ref=e1183] [cursor=pointer]:
+                  - /url: https://github.com/shangxinyu1
+                  - img "@shangxinyu1" [ref=e1184]
+              - listitem [ref=e1185]:
+                - link "@orbisai0security" [ref=e1186] [cursor=pointer]:
+                  - /url: https://github.com/orbisai0security
+                  - img "@orbisai0security" [ref=e1187]
+              - listitem [ref=e1188]:
+                - link "@asim48-ctrl" [ref=e1189] [cursor=pointer]:
+                  - /url: https://github.com/asim48-ctrl
+                  - img "@asim48-ctrl" [ref=e1190]
+              - listitem [ref=e1191]:
+                - link "@zoeforfun" [ref=e1192] [cursor=pointer]:
+                  - /url: https://github.com/zoeforfun
+                  - img "@zoeforfun" [ref=e1193]
+              - listitem [ref=e1194]:
+                - link "@enaktes9-hub" [ref=e1195] [cursor=pointer]:
+                  - /url: https://github.com/enaktes9-hub
+                  - img "@enaktes9-hub" [ref=e1196]
+              - listitem [ref=e1197]:
+                - link "@fuyizheng3120" [ref=e1198] [cursor=pointer]:
+                  - /url: https://github.com/fuyizheng3120
+                  - img "@fuyizheng3120" [ref=e1199]
+              - listitem [ref=e1200]:
+                - link "@heylakatos" [ref=e1201] [cursor=pointer]:
+                  - /url: https://github.com/heylakatos
+                  - img "@heylakatos" [ref=e1202]
+              - listitem [ref=e1203]:
+                - link "@digitalcr8tive" [ref=e1204] [cursor=pointer]:
+                  - /url: https://github.com/digitalcr8tive
+                  - img "@digitalcr8tive" [ref=e1205]
+            - generic [ref=e1206]: zellux, neogenix, and 73 other contributors
+          - group [ref=e1209]:
+            - button "Assets 14" [expanded] [ref=e1210] [cursor=pointer]:
+              - generic [ref=e1211]:
+                - generic [ref=e1212]: Assets
+                - generic "14" [ref=e1213]
+            - generic [ref=e1216]:
+              - img [ref=e1217]
+              - generic [ref=e1220]: Loading
+          - generic [ref=e1222]:
+            - generic [ref=e1224]:
+              - 'button "thumbs up (10): github-actions[bot], 11:49AM yesterday" [disabled] [ref=e1225]':
+                - generic [ref=e1226]: 👍
+                - generic [ref=e1227]: "10"
+              - 'button "hooray (8): github-actions[bot], 11:49AM yesterday" [disabled] [ref=e1228]':
+                - generic [ref=e1229]: 🎉
+                - generic [ref=e1230]: "8"
+              - 'button "heart (6): github-actions[bot], 11:49AM yesterday" [disabled] [ref=e1231]':
+                - generic [ref=e1232]: ❤️
+                - generic [ref=e1233]: "6"
+              - 'button "rocket (6): github-actions[bot], 11:49AM yesterday" [disabled] [ref=e1234]':
+                - generic [ref=e1235]: 🚀
+                - generic [ref=e1236]: "6"
+            - generic [ref=e1237]: 17 people reacted
+  - contentinfo [ref=e1238]:
+    - heading "Footer" [level=2] [ref=e1239]
+    - generic [ref=e1240]:
+      - generic [ref=e1241]:
+        - link "GitHub Homepage" [ref=e1242] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1243]
+        - generic [ref=e1245]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1246]:
+        - heading "Footer navigation" [level=3] [ref=e1247]
+        - list "Footer navigation" [ref=e1248]:
+          - listitem [ref=e1249]:
+            - link "Terms" [ref=e1250] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1251]:
+            - link "Privacy" [ref=e1252] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1253]:
+            - link "Security" [ref=e1254] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1255]:
+            - link "Status" [ref=e1256] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1257]:
+            - link "Community" [ref=e1258] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1259]:
+            - link "Docs" [ref=e1260] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1261]:
+            - link "Contact" [ref=e1262] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1263]:
+            - button "Manage cookies" [ref=e1265] [cursor=pointer]
+          - listitem [ref=e1266]:
+            - button "Do not share my personal information" [ref=e1268] [cursor=pointer]

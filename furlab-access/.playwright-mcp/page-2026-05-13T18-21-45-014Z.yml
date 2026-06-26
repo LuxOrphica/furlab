@@ -1,0 +1,87 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Import" [ref=e4] [cursor=pointer]
+      - button "Открыть проект" [ref=e5] [cursor=pointer]
+      - button "Сохранить проект" [ref=e88] [cursor=pointer]
+      - generic [ref=e89]: — 23143
+      - button "Преобразовать в лекала" [ref=e90] [cursor=pointer]
+      - generic [ref=e6]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic "Инструменты зон" [ref=e9]:
+          - generic [ref=e10]:
+            - generic [ref=e11]: Fur Lab
+            - button "Выбор" [ref=e12] [cursor=pointer]
+            - button "Редактировать точку кривой" [ref=e2434] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e16] [cursor=pointer]
+        - group [ref=e18]:
+          - generic "Настройки отображения" [ref=e19] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e20]
+        - button "Отчеты" [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: description
+          - generic [ref=e24]: Отчеты
+      - complementary [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: Сборка меха
+          - generic [ref=e33]:
+            - button "Зоны" [ref=e34] [cursor=pointer]
+            - button "Мех" [ref=e35] [cursor=pointer]
+            - button "Выкладки" [ref=e36] [cursor=pointer]
+          - generic [ref=e37]:
+            - button "Добавить" [ref=e2767] [cursor=pointer]:
+              - generic [ref=e2768]: add
+              - generic [ref=e2769]: Добавить
+            - generic [ref=e2770]: Пока нет материалов. Назначьте мех зоне.
+        - generic "Потяните для изменения высоты" [ref=e39]
+        - generic [ref=e40]:
+          - generic [ref=e41]: Редактор свойств
+          - generic [ref=e2771]: Меховой материал не выбран
+  - generic [ref=e1991]:
+    - generic [ref=e1992]:
+      - generic [ref=e1993]: Библиотека FurLab
+      - button "Закрыть" [ref=e1994] [cursor=pointer]:
+        - generic [ref=e1995]: close
+    - generic [ref=e1996]:
+      - complementary [ref=e1997]:
+        - button "Мех" [ref=e1998]:
+          - generic [ref=e2000]: Мех
+        - button "Выкладка" [ref=e2001]:
+          - generic [ref=e2003]: Выкладка
+        - button "Обработка" [ref=e2004]:
+          - generic [ref=e2006]: Обработка
+      - generic [ref=e2008]:
+        - complementary [ref=e2772]:
+          - button "Все категории" [ref=e3905] [cursor=pointer]
+          - button "Весенние виды" [ref=e3906] [cursor=pointer]
+          - button "Зимние виды" [ref=e3907] [cursor=pointer]
+          - button "Кроличьи" [ref=e3908] [cursor=pointer]
+          - button "Морской зверь" [ref=e3909] [cursor=pointer]
+        - generic [ref=e2009]:
+          - textbox "Поиск" [ref=e2012]
+          - generic [ref=e2014]:
+            - generic [ref=e3910] [cursor=pointer]:
+              - img [ref=e3913]
+              - generic [ref=e4439]: Норка европейская
+              - generic [ref=e4440]: wave | sp 13.6 | dash 5.7 | gap 10.9 | w 1.72 | a -69.6 | wav 5.6
+            - generic [ref=e4441] [cursor=pointer]:
+              - img [ref=e4444]
+              - generic [ref=e4460]: Лиса
+              - generic [ref=e4461]: line | sp 22.5 | dash 13.9 | gap 19.8 | w 2.13 | a -60.4 | wav 0.0
+            - generic [ref=e4462] [cursor=pointer]:
+              - img [ref=e4465]
+              - generic [ref=e4991]: Ондатра
+              - generic [ref=e4992]: wave | sp 13.6 | dash 5.7 | gap 10.9 | w 1.72 | a -71.4 | wav 2.9
+            - generic [ref=e4993] [cursor=pointer]:
+              - img [ref=e4996]
+              - generic [ref=e5011]: Ангора
+              - generic [ref=e5012]: line | sp 25.4 | dash 19.6 | gap 16.3 | w 0.77 | a -51.2 | wav 0.0
+            - generic [ref=e5013] [cursor=pointer]:
+              - img [ref=e5016]
+              - generic [ref=e5034]: Кролик
+              - generic [ref=e5035]: line | sp 20.8 | dash 8.5 | gap 16.0 | w 1.18 | a -67.8 | wav 0.0
+    - generic [ref=e2033]:
+      - button "Выбрать мех" [ref=e3904] [cursor=pointer]
+      - button "Отмена" [ref=e2035] [cursor=pointer]
+  - group [ref=e45]:
+    - generic "Database" [ref=e46] [cursor=pointer]

@@ -1,0 +1,124 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e75] [cursor=pointer]
+      - generic [ref=e76]: — Чистый 2
+      - button "Преобразовать в лекала" [ref=e77] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Линия зонирования" [ref=e13] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - button "Добавить выкладку" [ref=e2346] [cursor=pointer]:
+              - generic [ref=e2347]: add
+              - generic [ref=e2348]: Добавить выкладку
+            - generic [ref=e2349]:
+              - button "radial Радиальная 6" [ref=e2350] [cursor=pointer]:
+                - img "radial" [ref=e2352]
+                - generic [ref=e2354]: Радиальная 6
+              - button "Удалить выкладку" [ref=e2356] [cursor=pointer]:
+                - generic [ref=e2357]: delete
+            - generic [ref=e2358]:
+              - button "longitudinal Продольно-поперечная 7" [ref=e2359] [cursor=pointer]:
+                - img "longitudinal" [ref=e2361]
+                - generic [ref=e2363]: Продольно-поперечная 7
+              - button "Удалить выкладку" [ref=e2365] [cursor=pointer]:
+                - generic [ref=e2366]: delete
+            - generic [ref=e2367]:
+              - button "shifted Со смещением 8" [ref=e2368] [cursor=pointer]:
+                - img "shifted" [ref=e2370]
+                - generic [ref=e2372]: Со смещением 8
+              - button "Удалить выкладку" [ref=e2374] [cursor=pointer]:
+                - generic [ref=e2375]: delete
+            - generic [ref=e2376]:
+              - button "transverse Ёлочка 5" [ref=e2377] [cursor=pointer]:
+                - img "transverse" [ref=e2379]
+                - generic [ref=e2381]: Ёлочка 5
+              - button "Удалить выкладку" [ref=e2383] [cursor=pointer]:
+                - generic [ref=e2384]: delete
+            - generic [ref=e2385]:
+              - button "inventory_nfp_sa Из инвентаря (NFP+SA) 5" [ref=e2386] [cursor=pointer]:
+                - img "inventory_nfp_sa" [ref=e2388]
+                - generic [ref=e2390]: Из инвентаря (NFP+SA) 5
+              - button "Удалить выкладку" [ref=e2392] [cursor=pointer]:
+                - generic [ref=e2393]: delete
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e2394]:
+              - generic [ref=e2395]: Выкладка
+              - generic [ref=e2396]:
+                - button "Заблокировать редактирование" [ref=e2397] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e2398] [cursor=pointer]
+            - generic [ref=e2399]:
+              - button "▾ Информация" [expanded] [ref=e2400] [cursor=pointer]:
+                - generic [ref=e2401]: ▾
+                - generic [ref=e2402]: Информация
+              - generic [ref=e2403]:
+                - generic [ref=e2404]:
+                  - generic [ref=e2405]: Название
+                  - textbox "(Пусто)" [ref=e2407]: Из инвентаря (NFP+SA) 5
+                - generic [ref=e2408]:
+                  - generic [ref=e2409]: Тип
+                  - generic [ref=e2410]: Из инвентаря (NFP+SA)
+            - generic [ref=e2411]:
+              - button "▾ Инвентарь" [expanded] [ref=e2412] [cursor=pointer]:
+                - generic [ref=e2413]: ▾
+                - generic [ref=e2414]: Инвентарь
+              - generic [ref=e2415]:
+                - generic [ref=e2416]:
+                  - generic [ref=e2417]: Мех
+                  - combobox [ref=e2419] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e2420]:
+                  - generic [ref=e2421]: Резерв припуска, мм
+                  - spinbutton [ref=e2423]: "12.0"
+                - generic [ref=e2424]:
+                  - button "Пересчитать" [ref=e2425] [cursor=pointer]
+                  - generic [ref=e2426]: Алгоритм стохастический — каждый запуск даёт новый вариант раскроя. Запускайте несколько раз для лучшего покрытия.
+                - generic [ref=e2427]: Настройки подбора, preview и применение
+            - generic [ref=e2428]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e2429] [cursor=pointer]:
+                - generic [ref=e2430]: ▾
+                - generic [ref=e2431]: Параметры выкладки
+              - generic [ref=e2433]:
+                - generic [ref=e2434]: Резерв под припуски, мм
+                - spinbutton [ref=e2436]: "12.0"
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]
+  - generic [ref=e2438]:
+    - generic [ref=e2439]:
+      - generic [ref=e2440]: Сохранить проект
+      - button "Закрыть" [ref=e2441] [cursor=pointer]:
+        - generic [ref=e2442]: close
+    - generic [ref=e2443]:
+      - generic [ref=e2444]: Название проекта
+      - textbox "Введите название…" [active] [ref=e2445]: Чистый 2
+    - generic [ref=e2446]:
+      - button "Отмена" [ref=e2447] [cursor=pointer]
+      - button "Сохранить" [disabled] [ref=e2448]

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Восстановление нормали</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="toolbar">
+      <label>
+        Картинка:
+        <input id="fileInput" type="file" accept="image/*" />
+      </label>
+      <label>
+        Длина нормали:
+        <input id="normalLength" type="number" min="20" max="300" step="5" value="120" />
+      </label>
+      <label class="zoom-label">
+        Зум:
+        <button id="zoomOutBtn" type="button" class="zoom-btn">-</button>
+        <input id="zoomInput" type="range" min="50" max="300" step="10" value="100" />
+        <button id="zoomInBtn" type="button" class="zoom-btn">+</button>
+        <span id="zoomValue">100%</span>
+      </label>
+      <div class="mode-group" role="radiogroup" aria-label="Режим поиска точки">
+        <label class="mode-option">
+          <input type="radio" name="mode" value="auto" checked />
+          Авто
+        </label>
+        <label class="mode-option">
+          <input type="radio" name="mode" value="manual" />
+          Ручной
+        </label>
+      </div>
+      <button id="clearBtn" type="button">Очистить</button>
+      <button id="saveBtn" type="button">Записать в Access</button>
+      <label class="mode-option">
+        <input id="uploadImageChk" type="checkbox" checked />
+        Сохранить файл в проект
+      </label>
+      <span id="saveStatus" class="save-status" aria-live="polite"></span>
+      <a class="back" href="../index.html">Назад в UI Lab</a>
+      <span class="hint">Авто: отделение метки + QR + геометрическая нормаль от проекции на кромку. v1.6.0-access</span>
+    </div>
+    <div class="stage">
+      <canvas id="canvas" width="800" height="800"></canvas>
+    </div>
+    <div class="out" id="output">Шаги:
+1) Загрузи скан.
+2) Режим "Авто": точка ищется сразу после загрузки.
+3) Если авто промахнулся, переключись в "Ручной" и кликни точно в черную метку у кромки.
+4) Внизу проверь QR, площадь/габариты и координаты точки кромки.</div>
+    <div class="bottom-tools">
+      <label class="theme-label" for="themeSelect">
+        Тема:
+        <select id="themeSelect">
+          <option value="lab-neutral">Lab Neutral</option>
+          <option value="blueprint">Blueprint</option>
+          <option value="warm-paper">Warm Paper</option>
+          <option value="high-contrast">High Contrast</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

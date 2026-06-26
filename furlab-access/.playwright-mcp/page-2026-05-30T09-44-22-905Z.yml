@@ -1,0 +1,391 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Узлы" [ref=e9] [cursor=pointer]:
+          - /url: /tools/nodes
+        - link "VSE" [ref=e10] [cursor=pointer]:
+          - /url: /tools/vse
+        - link "Tech Pack Hub" [ref=e11] [cursor=pointer]:
+          - /url: /tools/techpack-hub
+        - link "Техпак" [ref=e12] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e13]:
+        - button "☾" [ref=e14] [cursor=pointer]
+        - button "EN" [ref=e15] [cursor=pointer]
+  - generic [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]: Visual Standardization Engine
+      - generic [ref=e19]: Обзор для конструктора
+      - generic [ref=e20]: Расшифровка обозначений — 6 узлов из библиотеки
+    - generic [ref=e21]:
+      - button "Разметка" [ref=e22] [cursor=pointer]
+      - button "Выноски и обозначения" [ref=e23] [cursor=pointer]
+      - button "Реестр стилей" [ref=e24] [cursor=pointer]
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - 'searchbox "Поиск узла: код, название, id..." [ref=e29]'
+          - generic [ref=e30]: показано 1 из 1
+        - generic [ref=e31]:
+          - generic "Разделы схем" [ref=e32]:
+            - button "Все схемы 1" [ref=e33] [cursor=pointer]:
+              - generic [ref=e34]: Все схемы
+              - generic [ref=e35]: "1"
+            - button "Аксессуары 1" [ref=e36] [cursor=pointer]:
+              - generic [ref=e37]: Аксессуары
+              - generic [ref=e38]: "1"
+          - button "Аксессуары / 1.Cap_Hat (from 1-) AC00002" [active] [ref=e40] [cursor=pointer]:
+            - generic [ref=e41]:
+              - generic [ref=e42]: Аксессуары / 1.Cap_Hat (from 1-)
+              - generic [ref=e43]: AC00002
+      - generic [ref=e44]:
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - text: ОРИГИНАЛ
+              - button "↺" [ref=e49] [cursor=pointer]
+              - generic [ref=e50]: 100% · колесо = масштаб · перетаскивание = сдвиг
+            - img [ref=e65]
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - text: СТАНДАРТ
+              - button "↺" [ref=e54] [cursor=pointer]
+              - generic [ref=e55]: 100% · колесо = масштаб · перетаскивание = сдвиг
+            - img [ref=e67]
+        - generic [ref=e58]:
+          - generic [ref=e59]:
+            - generic [ref=e68]:
+              - generic [ref=e69]: Наведи на строку → подсветка на оригинале и стандарте
+              - generic [ref=e70]: Роли из фактического SVG
+              - generic [ref=e71]: 4 / 4
+            - table [ref=e72]:
+              - rowgroup [ref=e73]:
+                - row "Превью Цвет Толщ. Кол. Роль" [ref=e74]:
+                  - columnheader "Превью" [ref=e75]
+                  - columnheader "Цвет" [ref=e76]
+                  - columnheader "Толщ." [ref=e77]
+                  - columnheader "Кол." [ref=e78]
+                  - columnheader "Роль" [ref=e79]
+              - rowgroup [ref=e80]:
+                - row "#1d1c1a 1 2 Линия обрыва" [ref=e81] [cursor=pointer]:
+                  - cell [ref=e82]:
+                    - img [ref=e83]
+                  - cell "#1d1c1a" [ref=e84]:
+                    - code [ref=e86]: "#1d1c1a"
+                  - cell "1" [ref=e87]
+                  - cell "2" [ref=e88]
+                  - cell "Линия обрыва" [ref=e89]:
+                    - combobox [ref=e90]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Невидимый контур / пунктир"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Сквозная строчка"
+                      - option "Отделочная строчка / topstitch"
+                      - option "Двойная строчка"
+                      - option "Скрытая / потайная строчка"
+                      - option "Распошивальная / cover stitch"
+                      - option "Оверлочная строчка"
+                      - option "Зигзаг"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивальная F (ISO 602/605)"
+                      - option "Закрепка / bar tack (Bc/Bt)"
+                      - option "Прокладка / padding"
+                      - option "Конструктивная зона"
+                      - option "Подкладка / lining"
+                      - option "Флизелин / interlining"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Серая ткань / нейтральная заливка"
+                      - option "Темная ткань / темная деталь"
+                      - option "Контрастная деталь"
+                      - option "Тесьма / лента"
+                      - option "Окантовка / binding"
+                      - option "Резинка / elastic band"
+                      - option "Шнур / cord"
+                      - option "Маска материала"
+                      - option "PU tape / полиуретановая лента"
+                      - option "Кант / piping"
+                      - option "Клеевая зона / glue"
+                      - option "Светлая розовая заливка"
+                      - option "Темная розово-фиолетовая заливка"
+                      - option "Вспомогательная линия"
+                      - option "Заливка / прочее"
+                      - option "Градиентная заливка / shading"
+                      - option "Меховая градиентная заливка / fur fill"
+                      - option "Теневая / металлическая градиентная заливка"
+                      - option "Молния"
+                      - option "Тесьма молнии"
+                      - option "Контур тесьмы молнии"
+                      - option "Пряжка / buckle"
+                      - option "Заливка пряжки"
+                      - option "Пуговица / button"
+                      - option "Петля / buttonhole"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура / прочее"
+                      - option "Выноска"
+                      - option "Выноска к увеличению"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Символ строчки"
+                      - option "Вспомогательная направляющая"
+                      - option "Справочная смысловая линия"
+                      - option "Резинка / эластичная линия"
+                      - option "Мех / ворсовая линия"
+                      - option "Липучка / Velcro"
+                      - option "Сетка / mesh"
+                      - option "Декоративная линия"
+                      - option "Линия с фото / неуверенная"
+                      - option "Мятый / сборенный край материала"
+                      - option "Линия обрыва" [selected]
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#221f1f 1.5 8 Контур детали" [ref=e91] [cursor=pointer]:
+                  - cell [ref=e92]:
+                    - img [ref=e93]
+                  - cell "#221f1f" [ref=e94]:
+                    - code [ref=e96]: "#221f1f"
+                  - cell "1.5" [ref=e97]
+                  - cell "8" [ref=e98]
+                  - cell "Контур детали" [ref=e99]:
+                    - combobox [ref=e100]:
+                      - option "— не назначено —"
+                      - option "Контур детали" [selected]
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Невидимый контур / пунктир"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Сквозная строчка"
+                      - option "Отделочная строчка / topstitch"
+                      - option "Двойная строчка"
+                      - option "Скрытая / потайная строчка"
+                      - option "Распошивальная / cover stitch"
+                      - option "Оверлочная строчка"
+                      - option "Зигзаг"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивальная F (ISO 602/605)"
+                      - option "Закрепка / bar tack (Bc/Bt)"
+                      - option "Прокладка / padding"
+                      - option "Конструктивная зона"
+                      - option "Подкладка / lining"
+                      - option "Флизелин / interlining"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Серая ткань / нейтральная заливка"
+                      - option "Темная ткань / темная деталь"
+                      - option "Контрастная деталь"
+                      - option "Тесьма / лента"
+                      - option "Окантовка / binding"
+                      - option "Резинка / elastic band"
+                      - option "Шнур / cord"
+                      - option "Маска материала"
+                      - option "PU tape / полиуретановая лента"
+                      - option "Кант / piping"
+                      - option "Клеевая зона / glue"
+                      - option "Светлая розовая заливка"
+                      - option "Темная розово-фиолетовая заливка"
+                      - option "Вспомогательная линия"
+                      - option "Заливка / прочее"
+                      - option "Градиентная заливка / shading"
+                      - option "Меховая градиентная заливка / fur fill"
+                      - option "Теневая / металлическая градиентная заливка"
+                      - option "Молния"
+                      - option "Тесьма молнии"
+                      - option "Контур тесьмы молнии"
+                      - option "Пряжка / buckle"
+                      - option "Заливка пряжки"
+                      - option "Пуговица / button"
+                      - option "Петля / buttonhole"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура / прочее"
+                      - option "Выноска"
+                      - option "Выноска к увеличению"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Символ строчки"
+                      - option "Вспомогательная направляющая"
+                      - option "Справочная смысловая линия"
+                      - option "Резинка / эластичная линия"
+                      - option "Мех / ворсовая линия"
+                      - option "Липучка / Velcro"
+                      - option "Сетка / mesh"
+                      - option "Декоративная линия"
+                      - option "Линия с фото / неуверенная"
+                      - option "Мятый / сборенный край материала"
+                      - option "Линия обрыва"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#eb2123 1 3 Строчка по краю" [ref=e101] [cursor=pointer]:
+                  - cell [ref=e102]:
+                    - img [ref=e103]
+                  - cell "#eb2123" [ref=e104]:
+                    - code [ref=e106]: "#eb2123"
+                  - cell "1" [ref=e107]
+                  - cell "3" [ref=e108]
+                  - cell "Строчка по краю" [ref=e109]:
+                    - combobox [ref=e110]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Невидимый контур / пунктир"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю" [selected]
+                      - option "Сквозная строчка"
+                      - option "Отделочная строчка / topstitch"
+                      - option "Двойная строчка"
+                      - option "Скрытая / потайная строчка"
+                      - option "Распошивальная / cover stitch"
+                      - option "Оверлочная строчка"
+                      - option "Зигзаг"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивальная F (ISO 602/605)"
+                      - option "Закрепка / bar tack (Bc/Bt)"
+                      - option "Прокладка / padding"
+                      - option "Конструктивная зона"
+                      - option "Подкладка / lining"
+                      - option "Флизелин / interlining"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Серая ткань / нейтральная заливка"
+                      - option "Темная ткань / темная деталь"
+                      - option "Контрастная деталь"
+                      - option "Тесьма / лента"
+                      - option "Окантовка / binding"
+                      - option "Резинка / elastic band"
+                      - option "Шнур / cord"
+                      - option "Маска материала"
+                      - option "PU tape / полиуретановая лента"
+                      - option "Кант / piping"
+                      - option "Клеевая зона / glue"
+                      - option "Светлая розовая заливка"
+                      - option "Темная розово-фиолетовая заливка"
+                      - option "Вспомогательная линия"
+                      - option "Заливка / прочее"
+                      - option "Градиентная заливка / shading"
+                      - option "Меховая градиентная заливка / fur fill"
+                      - option "Теневая / металлическая градиентная заливка"
+                      - option "Молния"
+                      - option "Тесьма молнии"
+                      - option "Контур тесьмы молнии"
+                      - option "Пряжка / buckle"
+                      - option "Заливка пряжки"
+                      - option "Пуговица / button"
+                      - option "Петля / buttonhole"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура / прочее"
+                      - option "Выноска"
+                      - option "Выноска к увеличению"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Символ строчки"
+                      - option "Вспомогательная направляющая"
+                      - option "Справочная смысловая линия"
+                      - option "Резинка / эластичная линия"
+                      - option "Мех / ворсовая линия"
+                      - option "Липучка / Velcro"
+                      - option "Сетка / mesh"
+                      - option "Декоративная линия"
+                      - option "Линия с фото / неуверенная"
+                      - option "Мятый / сборенный край материала"
+                      - option "Линия обрыва"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#eb2123 1 6 Сквозная строчка" [ref=e111] [cursor=pointer]:
+                  - cell [ref=e112]:
+                    - img [ref=e113]
+                  - cell "#eb2123" [ref=e114]:
+                    - code [ref=e116]: "#eb2123"
+                  - cell "1" [ref=e117]
+                  - cell "6" [ref=e118]
+                  - cell "Сквозная строчка" [ref=e119]:
+                    - combobox [ref=e120]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Невидимый контур / пунктир"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Сквозная строчка" [selected]
+                      - option "Отделочная строчка / topstitch"
+                      - option "Двойная строчка"
+                      - option "Скрытая / потайная строчка"
+                      - option "Распошивальная / cover stitch"
+                      - option "Оверлочная строчка"
+                      - option "Зигзаг"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивальная F (ISO 602/605)"
+                      - option "Закрепка / bar tack (Bc/Bt)"
+                      - option "Прокладка / padding"
+                      - option "Конструктивная зона"
+                      - option "Подкладка / lining"
+                      - option "Флизелин / interlining"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Серая ткань / нейтральная заливка"
+                      - option "Темная ткань / темная деталь"
+                      - option "Контрастная деталь"
+                      - option "Тесьма / лента"
+                      - option "Окантовка / binding"
+                      - option "Резинка / elastic band"
+                      - option "Шнур / cord"
+                      - option "Маска материала"
+                      - option "PU tape / полиуретановая лента"
+                      - option "Кант / piping"
+                      - option "Клеевая зона / glue"
+                      - option "Светлая розовая заливка"
+                      - option "Темная розово-фиолетовая заливка"
+                      - option "Вспомогательная линия"
+                      - option "Заливка / прочее"
+                      - option "Градиентная заливка / shading"
+                      - option "Меховая градиентная заливка / fur fill"
+                      - option "Теневая / металлическая градиентная заливка"
+                      - option "Молния"
+                      - option "Тесьма молнии"
+                      - option "Контур тесьмы молнии"
+                      - option "Пряжка / buckle"
+                      - option "Заливка пряжки"
+                      - option "Пуговица / button"
+                      - option "Петля / buttonhole"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура / прочее"
+                      - option "Выноска"
+                      - option "Выноска к увеличению"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Символ строчки"
+                      - option "Вспомогательная направляющая"
+                      - option "Справочная смысловая линия"
+                      - option "Резинка / эластичная линия"
+                      - option "Мех / ворсовая линия"
+                      - option "Липучка / Velcro"
+                      - option "Сетка / mesh"
+                      - option "Декоративная линия"
+                      - option "Линия с фото / неуверенная"
+                      - option "Мятый / сборенный край материала"
+                      - option "Линия обрыва"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+          - button "Сгенерировать стандарт →" [ref=e121] [cursor=pointer]

@@ -1,0 +1,306 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Import" [ref=e4] [cursor=pointer]
+      - button "Открыть проект" [ref=e5] [cursor=pointer]
+      - button "Сохранить проект" [ref=e76] [cursor=pointer]
+      - generic [ref=e77]: — Чистый
+      - button "Преобразовать в лекала" [ref=e78] [cursor=pointer]
+      - generic [ref=e6]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic "Инструменты зон" [ref=e9]:
+          - generic [ref=e10]:
+            - generic [ref=e11]: Fur Lab
+            - button "Выбор" [ref=e12] [cursor=pointer]
+            - button "Линия зонирования" [ref=e14] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e16] [cursor=pointer]
+        - group [ref=e18]:
+          - generic "Настройки отображения" [ref=e19] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e20]
+        - button "Отчеты" [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: description
+          - generic [ref=e24]: Отчеты
+        - generic [ref=e641]:
+          - generic [ref=e1012]:
+            - generic [ref=e1013]:
+              - button "Оценить" [ref=e1014] [cursor=pointer]
+              - button "Применить" [ref=e1015] [cursor=pointer]
+            - button "Диагностика" [ref=e1017] [cursor=pointer]:
+              - generic [ref=e1018]: Диагностика
+              - generic [ref=e1020]: chevron_right
+            - generic [ref=e1021]:
+              - button "Повернуть влево" [ref=e1022] [cursor=pointer]:
+                - generic [ref=e1023]: rotate_left
+              - button "Повернуть вправо" [ref=e1024] [cursor=pointer]:
+                - generic [ref=e1025]: rotate_right
+              - button "Уменьшить шаг" [ref=e1026] [cursor=pointer]:
+                - generic [ref=e1027]: remove
+              - button "Увеличить шаг" [ref=e1028] [cursor=pointer]:
+                - generic [ref=e1029]: add
+              - generic [ref=e1030]: шаг 5°
+            - generic [ref=e1031]:
+              - button "Выше" [ref=e1032] [cursor=pointer]:
+                - generic [ref=e1033]: vertical_align_top
+              - button "Ниже" [ref=e1034] [cursor=pointer]:
+                - generic [ref=e1035]: vertical_align_bottom
+              - button "Вперёд" [ref=e1036] [cursor=pointer]:
+                - generic [ref=e1037]: flip_to_front
+              - button "Назад" [ref=e1038] [cursor=pointer]:
+                - generic [ref=e1039]: flip_to_back
+            - button "Лоток (75)" [ref=e1041] [cursor=pointer]:
+              - generic [ref=e1042]: Лоток (75)
+              - generic [ref=e1044]: expand_more
+          - generic [ref=e1045]:
+            - generic [ref=e1046]:
+              - generic [ref=e1047]: Большие (>=28.4 см)
+              - generic [ref=e1049]:
+                - button "FL-SCR-000082" [ref=e1050] [cursor=pointer]:
+                  - img [ref=e1051]
+                - button "FL-SCR-000035" [ref=e1053] [cursor=pointer]:
+                  - img [ref=e1054]
+                - button "FL-SCR-000085" [ref=e1056] [cursor=pointer]:
+                  - img [ref=e1057]
+                - button "FL-SCR-000111" [ref=e1059] [cursor=pointer]:
+                  - img [ref=e1060]
+                - button "FL-SCR-000063" [ref=e1062] [cursor=pointer]:
+                  - img [ref=e1063]
+                - button "FL-SCR-000031" [ref=e1065] [cursor=pointer]:
+                  - img [ref=e1066]
+                - button "FL-SCR-000022" [ref=e1068] [cursor=pointer]:
+                  - img [ref=e1069]
+                - button "FL-SCR-000006" [ref=e1071] [cursor=pointer]:
+                  - img [ref=e1072]
+                - button "FL-SCR-000017" [ref=e1074] [cursor=pointer]:
+                  - img [ref=e1075]
+                - button "FL-SCR-000012" [ref=e1077] [cursor=pointer]:
+                  - img [ref=e1078]
+                - button "FL-SCR-000110" [ref=e1080] [cursor=pointer]:
+                  - img [ref=e1081]
+                - button "FL-SCR-000043" [ref=e1083] [cursor=pointer]:
+                  - img [ref=e1084]
+                - button "FL-SCR-000010" [ref=e1086] [cursor=pointer]:
+                  - img [ref=e1087]
+                - button "FL-SCR-000046" [ref=e1089] [cursor=pointer]:
+                  - img [ref=e1090]
+                - button "FL-SCR-000024" [ref=e1092] [cursor=pointer]:
+                  - img [ref=e1093]
+                - button "FL-SCR-000071" [ref=e1095] [cursor=pointer]:
+                  - img [ref=e1096]
+                - button "FL-SCR-000025" [ref=e1098] [cursor=pointer]:
+                  - img [ref=e1099]
+                - button "FL-SCR-000120" [ref=e1101] [cursor=pointer]:
+                  - img [ref=e1102]
+                - button "FL-SCR-000074" [ref=e1104] [cursor=pointer]:
+                  - img [ref=e1105]
+                - button "FL-SCR-000089" [ref=e1107] [cursor=pointer]:
+                  - img [ref=e1108]
+                - button "FL-SCR-000004" [ref=e1110] [cursor=pointer]:
+                  - img [ref=e1111]
+                - button "FL-SCR-000032" [ref=e1113] [cursor=pointer]:
+                  - img [ref=e1114]
+                - button "FL-SCR-000075" [ref=e1116] [cursor=pointer]:
+                  - img [ref=e1117]
+                - button "FL-SCR-000036" [ref=e1119] [cursor=pointer]:
+                  - img [ref=e1120]
+                - button "FL-SCR-000058" [ref=e1122] [cursor=pointer]:
+                  - img [ref=e1123]
+                - button "FL-SCR-000020" [ref=e1125] [cursor=pointer]:
+                  - img [ref=e1126]
+            - generic [ref=e1128]:
+              - generic [ref=e1129]: Средние (20.6-28.4 см)
+              - generic [ref=e1131]:
+                - button "FL-SCR-000073" [ref=e1132] [cursor=pointer]:
+                  - img [ref=e1133]
+                - button "FL-SCR-000015" [ref=e1135] [cursor=pointer]:
+                  - img [ref=e1136]
+                - button "FL-SCR-000091" [ref=e1138] [cursor=pointer]:
+                  - img [ref=e1139]
+                - button "FL-SCR-000008" [ref=e1141] [cursor=pointer]:
+                  - img [ref=e1142]
+                - button "FL-SCR-000098" [ref=e1144] [cursor=pointer]:
+                  - img [ref=e1145]
+                - button "FL-SCR-000084" [ref=e1147] [cursor=pointer]:
+                  - img [ref=e1148]
+                - button "FL-SCR-000014" [ref=e1150] [cursor=pointer]:
+                  - img [ref=e1151]
+                - button "FL-SCR-000095" [ref=e1153] [cursor=pointer]:
+                  - img [ref=e1154]
+                - button "FL-SCR-000042" [ref=e1156] [cursor=pointer]:
+                  - img [ref=e1157]
+                - button "FL-SCR-000097" [ref=e1159] [cursor=pointer]:
+                  - img [ref=e1160]
+                - button "FL-SCR-000119" [ref=e1162] [cursor=pointer]:
+                  - img [ref=e1163]
+                - button "FL-SCR-000068" [ref=e1165] [cursor=pointer]:
+                  - img [ref=e1166]
+                - button "FL-SCR-000059" [ref=e1168] [cursor=pointer]:
+                  - img [ref=e1169]
+                - button "FL-SCR-000023" [ref=e1171] [cursor=pointer]:
+                  - img [ref=e1172]
+                - button "FL-SCR-000104" [ref=e1174] [cursor=pointer]:
+                  - img [ref=e1175]
+                - button "FL-SCR-001003" [ref=e1177] [cursor=pointer]:
+                  - img [ref=e1178]
+                - button "FL-SCR-001012" [ref=e1180] [cursor=pointer]:
+                  - img [ref=e1181]
+                - button "FL-SCR-000033" [ref=e1183] [cursor=pointer]:
+                  - img [ref=e1184]
+                - button "FL-SCR-000079" [ref=e1186] [cursor=pointer]:
+                  - img [ref=e1187]
+                - button "FL-SCR-000011" [ref=e1189] [cursor=pointer]:
+                  - img [ref=e1190]
+                - button "FL-SCR-000117" [ref=e1192] [cursor=pointer]:
+                  - img [ref=e1193]
+                - button "FL-SCR-000041" [ref=e1195] [cursor=pointer]:
+                  - img [ref=e1196]
+                - button "FL-SCR-000054" [ref=e1198] [cursor=pointer]:
+                  - img [ref=e1199]
+                - button "FL-SCR-001001" [ref=e1201] [cursor=pointer]:
+                  - img [ref=e1202]
+            - generic [ref=e1204]:
+              - generic [ref=e1205]: Малые (<=20.6 см)
+              - generic [ref=e1207]:
+                - button "FL-SCR-000090" [ref=e1208] [cursor=pointer]:
+                  - img [ref=e1209]
+                - button "FL-SCR-000030" [ref=e1211] [cursor=pointer]:
+                  - img [ref=e1212]
+                - button "FL-SCR-000072" [ref=e1214] [cursor=pointer]:
+                  - img [ref=e1215]
+                - button "FL-SCR-000007" [ref=e1217] [cursor=pointer]:
+                  - img [ref=e1218]
+                - button "FL-SCR-000037" [ref=e1220] [cursor=pointer]:
+                  - img [ref=e1221]
+                - button "FL-SCR-000013" [ref=e1223] [cursor=pointer]:
+                  - img [ref=e1224]
+                - button "FL-SCR-000086" [ref=e1226] [cursor=pointer]:
+                  - img [ref=e1227]
+                - button "FL-SCR-000092" [ref=e1229] [cursor=pointer]:
+                  - img [ref=e1230]
+                - button "FL-SCR-000062" [ref=e1232] [cursor=pointer]:
+                  - img [ref=e1233]
+                - button "FL-SCR-000088" [ref=e1235] [cursor=pointer]:
+                  - img [ref=e1236]
+                - button "FL-SCR-001025" [ref=e1238] [cursor=pointer]:
+                  - img [ref=e1239]
+                - button "FL-SCR-000108" [ref=e1241] [cursor=pointer]:
+                  - img [ref=e1242]
+                - button "FL-SCR-000069" [ref=e1244] [cursor=pointer]:
+                  - img [ref=e1245]
+                - button "FL-SCR-099123" [ref=e1247] [cursor=pointer]:
+                  - img [ref=e1248]
+                - button "FL-SCR-000040" [ref=e1250] [cursor=pointer]:
+                  - img [ref=e1251]
+                - button "FL-SCR-000102" [ref=e1253] [cursor=pointer]:
+                  - img [ref=e1254]
+                - button "FL-SCR-000070" [ref=e1256] [cursor=pointer]:
+                  - img [ref=e1257]
+                - button "FL-SCR-000124" [ref=e1259] [cursor=pointer]:
+                  - img [ref=e1260]
+                - button "FL-SCR-000087" [ref=e1262] [cursor=pointer]:
+                  - img [ref=e1263]
+                - button "FL-SCR-000123" [ref=e1265] [cursor=pointer]:
+                  - img [ref=e1266]
+                - button "FL-SCR-000051" [ref=e1268] [cursor=pointer]:
+                  - img [ref=e1269]
+                - button "FL-SCR-000016" [ref=e1271] [cursor=pointer]:
+                  - img [ref=e1272]
+                - button "FL-SCR-000060" [ref=e1274] [cursor=pointer]:
+                  - img [ref=e1275]
+                - button "FL-SCR-001005" [ref=e1277] [cursor=pointer]:
+                  - img [ref=e1278]
+                - button "FL-SCR-001004" [ref=e1280] [cursor=pointer]:
+                  - img [ref=e1281]
+      - complementary [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: Сборка меха
+          - generic [ref=e33]:
+            - button "Зоны" [ref=e34] [cursor=pointer]
+            - button "Мех" [ref=e35] [cursor=pointer]
+            - button "Выкладки" [ref=e36] [cursor=pointer]
+          - generic [ref=e37]:
+            - button "Добавить выкладку" [ref=e1284] [cursor=pointer]:
+              - generic [ref=e1285]: add
+              - generic [ref=e1286]: Добавить выкладку
+            - generic [ref=e1287]:
+              - button "shifted Со смещением 5" [ref=e1288] [cursor=pointer]:
+                - img "shifted" [ref=e1290]
+                - generic [ref=e1292]: Со смещением 5
+              - button "Удалить выкладку" [ref=e1294] [cursor=pointer]:
+                - generic [ref=e1295]: delete
+            - generic [ref=e1296]:
+              - button "longitudinal Продольно-поперечная 6" [ref=e1297] [cursor=pointer]:
+                - img "longitudinal" [ref=e1299]
+                - generic [ref=e1301]: Продольно-поперечная 6
+              - button "Удалить выкладку" [ref=e1303] [cursor=pointer]:
+                - generic [ref=e1304]: delete
+            - generic [ref=e1305]:
+              - button "transverse Ёлочка 7" [ref=e1306] [cursor=pointer]:
+                - img "transverse" [ref=e1308]
+                - generic [ref=e1310]: Ёлочка 7
+              - button "Удалить выкладку" [ref=e1312] [cursor=pointer]:
+                - generic [ref=e1313]: delete
+            - generic [ref=e1314]:
+              - button "radial Радиальная 8" [ref=e1315] [cursor=pointer]:
+                - img "radial" [ref=e1317]
+                - generic [ref=e1319]: Радиальная 8
+              - button "Удалить выкладку" [ref=e1321] [cursor=pointer]:
+                - generic [ref=e1322]: delete
+            - generic [ref=e1323]:
+              - button "radial Радиальная 9" [ref=e1324] [cursor=pointer]:
+                - img "radial" [ref=e1326]
+                - generic [ref=e1328]: Радиальная 9
+              - button "Удалить выкладку" [ref=e1330] [cursor=pointer]:
+                - generic [ref=e1331]: delete
+            - generic [ref=e1332]:
+              - button "inventory_manual Из инвентаря (ручной) 7" [ref=e1333] [cursor=pointer]:
+                - img "inventory_manual" [ref=e1335]
+                - generic [ref=e1337]: Из инвентаря (ручной) 7
+              - button "Удалить выкладку" [ref=e1339] [cursor=pointer]:
+                - generic [ref=e1340]: delete
+            - generic [ref=e1341]:
+              - button "intarsia Интарсия 7" [ref=e1342] [cursor=pointer]:
+                - img "intarsia" [ref=e1344]
+                - generic [ref=e1346]: Интарсия 7
+              - button "Удалить выкладку" [ref=e1348] [cursor=pointer]:
+                - generic [ref=e1349]: delete
+        - generic "Потяните для изменения высоты" [ref=e39]
+        - generic [ref=e40]:
+          - generic [ref=e41]: Редактор свойств
+          - generic [ref=e42]:
+            - generic [ref=e1350]:
+              - generic [ref=e1351]: Выкладка
+              - generic [ref=e1352]:
+                - button "Заблокировать редактирование" [ref=e1353] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e1354] [cursor=pointer]
+            - generic [ref=e1355]:
+              - button "▾ Информация" [expanded] [ref=e1356] [cursor=pointer]:
+                - generic [ref=e1357]: ▾
+                - generic [ref=e1358]: Информация
+              - generic [ref=e1359]:
+                - generic [ref=e1360]:
+                  - generic [ref=e1361]: Название
+                  - textbox "(Пусто)" [ref=e1363]: Из инвентаря (ручной) 7
+                - generic [ref=e1364]:
+                  - generic [ref=e1365]: Тип
+                  - generic [ref=e1366]: Из инвентаря (ручной)
+            - generic [ref=e1367]:
+              - button "▾ Инвентарь" [expanded] [ref=e1368] [cursor=pointer]:
+                - generic [ref=e1369]: ▾
+                - generic [ref=e1370]: Инвентарь
+              - generic [ref=e1371]:
+                - generic [ref=e1372]:
+                  - generic [ref=e1373]: Мех
+                  - combobox [disabled] [ref=e1375] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e1376]:
+                  - generic [ref=e1377]: Резерв припуска, мм
+                  - spinbutton [ref=e1379]: "12.0"
+                - button "Загрузить кандидаты из БД" [disabled] [ref=e1381]
+  - group [ref=e45]:
+    - generic "Database" [ref=e46] [cursor=pointer]

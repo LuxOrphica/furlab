@@ -1,0 +1,72 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="40" height="40" fill="white"/>
+<rect x="0.5" y="0.5" width="39" height="39" stroke="#0D0D0D"/>
+<path d="M28.6055 6.5V18.2715L28.9023 18.4033L34.2969 20.7949L31.29 26.2119C30.3727 27.0147 28.9448 28.208 27.5625 29.2412C26.8549 29.7701 26.166 30.2518 25.5684 30.6182C24.953 30.9954 24.4902 31.214 24.2168 31.2695C23.4251 31.43 22.3088 31.8538 21.2646 32.2988C20.3914 32.671 19.5403 33.0714 18.9199 33.377L15.1348 28.8418L7.69824 18.0781L10.5957 16.1211L11.0684 15.8018L10.6895 15.375L7.6084 11.9062L10.375 6.9209L14.335 12.2705L14.6094 12.6416L15.001 12.3975L24.458 6.5H28.6055Z" fill="url(#pattern0_2297_1166)" stroke="black"/>
+<defs>
+<pattern id="pattern0_2297_1166" patternUnits="userSpaceOnUse" patternTransform="matrix(589.4 0 0 202.8 -273.841 -81.5411)" preserveAspectRatio="none" viewBox="-0.353516 -0.352676 1473.5 507" width="1" height="1">
+<use xlink:href="#pattern0_2297_1166_inner" transform="translate(-1473.5 -507)"/>
+<use xlink:href="#pattern0_2297_1166_inner" transform="translate(0 -507)"/>
+<use xlink:href="#pattern0_2297_1166_inner" transform="translate(-1473.5 0)"/>
+<g id="pattern0_2297_1166_inner">
+<path d="M969 507L1473.5 0" stroke="black"/>
+<path d="M952 507L1456.5 0" stroke="black"/>
+<path d="M935 507L1439.5 0" stroke="black"/>
+<path d="M918 507L1422.5 0" stroke="black"/>
+<path d="M901 507L1405.5 0" stroke="black"/>
+<path d="M884 507L1388.5 0" stroke="black"/>
+<path d="M867 507L1371.5 0" stroke="black"/>
+<path d="M850 507L1354.5 0" stroke="black"/>
+<path d="M833 507L1337.5 0" stroke="black"/>
+<path d="M816 507L1320.5 0" stroke="black"/>
+<path d="M799 507L1303.5 0" stroke="black"/>
+<path d="M782 507L1286.5 0" stroke="black"/>
+<path d="M765 507L1269.5 0" stroke="black"/>
+<path d="M748 507L1252.5 0" stroke="black"/>
+<path d="M731 507L1235.5 0" stroke="black"/>
+<path d="M714 507L1218.5 0" stroke="black"/>
+<path d="M697 507L1201.5 0" stroke="black"/>
+<path d="M680 507L1184.5 0" stroke="black"/>
+<path d="M663 507L1167.5 0" stroke="black"/>
+<path d="M646 507L1150.5 0" stroke="black"/>
+<path d="M629 507L1133.5 0" stroke="black"/>
+<path d="M612 507L1116.5 0" stroke="black"/>
+<path d="M595 507L1099.5 0" stroke="black"/>
+<path d="M578 507L1082.5 0" stroke="black"/>
+<path d="M561 507L1065.5 0" stroke="black"/>
+<path d="M544 507L1048.5 0" stroke="black"/>
+<path d="M527 507L1031.5 0" stroke="black"/>
+<path d="M510 507L1014.5 0" stroke="black"/>
+<path d="M493 507L997.5 0" stroke="black"/>
+<path d="M493 507L997.5 0" stroke="black"/>
+<path d="M476 507L980.5 0" stroke="black"/>
+<path d="M459 507L963.5 0" stroke="black"/>
+<path d="M442 507L946.5 0" stroke="black"/>
+<path d="M425 507L929.5 0" stroke="black"/>
+<path d="M408 507L912.5 0" stroke="black"/>
+<path d="M391 507L895.5 0" stroke="black"/>
+<path d="M374 507L878.5 0" stroke="black"/>
+<path d="M357 507L861.5 0" stroke="black"/>
+<path d="M340 507L844.5 0" stroke="black"/>
+<path d="M323 507L827.5 0" stroke="black"/>
+<path d="M306 507L810.5 0" stroke="black"/>
+<path d="M289 507L793.5 0" stroke="black"/>
+<path d="M272 507L776.5 0" stroke="black"/>
+<path d="M255 507L759.5 0" stroke="black"/>
+<path d="M238 507L742.5 0" stroke="black"/>
+<path d="M221 507L725.5 0" stroke="black"/>
+<path d="M204 507L708.5 0" stroke="black"/>
+<path d="M187 507L691.5 0" stroke="black"/>
+<path d="M170 507L674.5 0" stroke="black"/>
+<path d="M153 507L657.5 0" stroke="black"/>
+<path d="M136 507L640.5 0" stroke="black"/>
+<path d="M119 507L623.5 0" stroke="black"/>
+<path d="M102 507L606.5 0" stroke="black"/>
+<path d="M85 507L589.5 0" stroke="black"/>
+<path d="M68 507L572.5 0" stroke="black"/>
+<path d="M51 507L555.5 0" stroke="black"/>
+<path d="M34 507L538.5 0" stroke="black"/>
+<path d="M17 507L521.5 0" stroke="black"/>
+<path d="M0 507L504.5 0" stroke="black"/>
+</g>
+</pattern></defs>
+</svg>

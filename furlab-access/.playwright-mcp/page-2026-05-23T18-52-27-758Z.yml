@@ -1,0 +1,843 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: OD / 2026 · Том 01 / Выпуск Nº 26
+      - generic [ref=e7]:
+        - link "Live · v0.8.0" [ref=e8] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design/releases
+          - text: Live · v0.8.0
+        - group [ref=e10]:
+          - generic "Сменить язык" [ref=e11] [cursor=pointer]:
+            - generic [ref=e12]: Язык
+            - generic [ref=e13]: ·
+            - generic [ref=e14]: RU
+            - img [ref=e15]
+    - banner [ref=e17]:
+      - generic [ref=e18]:
+        - link "Open Design" [ref=e19] [cursor=pointer]:
+          - /url: "#top"
+          - generic [ref=e21]: Open Design
+        - button "Переключить меню навигации" [ref=e22] [cursor=pointer]
+        - menu:
+          - menuitem "Open Design":
+            - generic: Open Design
+          - menuitem "HTML Anything":
+            - generic: HTML Anything
+        - menu:
+          - menuitem "Skills":
+            - generic: Skills
+          - menuitem "Системы":
+            - generic: Системы
+          - menuitem "Шаблоны":
+            - generic: Шаблоны
+          - menuitem "Правила":
+            - generic: Правила
+        - generic [ref=e24]:
+          - text: ↓
+          - link "Поставить звезду Open Design на GitHub" [ref=e25] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design
+            - text: Star ·
+            - generic [ref=e26]: 50.1K
+            - text: ★
+  - generic [ref=e29]:
+    - generic [ref=e30]:
+      - link "Присоединиться к Discord Open Design" [ref=e31] [cursor=pointer]:
+        - /url: https://discord.gg/9ptkbbqRu
+        - generic [ref=e32]: ●
+        - text: Войти в Discord
+      - generic [ref=e33]:
+        - text: Дизайн-студия с открытым исходным кодом
+        - generic [ref=e34]: · Кейс № 01 · локально / открыто / Земля
+      - heading "Открытый Claude Design на вашем собственном агенте." [level=1] [ref=e35]:
+        - text: Открытый
+        - emphasis [ref=e36]: Claude Design
+        - text: на вашем
+        - emphasis [ref=e37]: собственном агенте
+        - text: .
+      - paragraph [ref=e38]: Open Design — официальная local-first альтернатива Claude Design. Ваш coding agent — Claude Code, Codex, Cursor, Gemini, OpenCode или Qwen — становится дизайн-движком с 132 составными skills и 150 переносимыми DESIGN.md-системами.
+      - generic [ref=e39]:
+        - link "Поставить Star на GitHub" [ref=e40] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design
+          - text: Поставить Star на GitHub
+          - img [ref=e42]
+        - link "Скачать desktop" [ref=e44] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design/releases
+          - text: Скачать desktop
+          - img [ref=e46]
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - generic [ref=e51]: "132"
+          - generic [ref=e52]:
+            - generic [ref=e53]: Skills
+            - text: готовы к delivery
+        - generic [ref=e54]:
+          - generic [ref=e55]: "150"
+          - generic [ref=e56]:
+            - generic [ref=e57]: Системы
+            - text: переносимые
+        - generic [ref=e58]:
+          - generic [ref=e59]: "12"
+          - generic [ref=e60]:
+            - generic [ref=e61]: CLI
+            - text: ваш агент
+      - generic [ref=e62]:
+        - generic [ref=e63]: ↳ pnpm tools-dev · старт в 3 команды
+        - generic [ref=e64]: 52.5200° N · 13.4050° E
+    - generic [ref=e65]:
+      - generic [ref=e70]: FIG. 01 / OD-26
+      - generic [ref=e71]: Таблица № 08
+      - generic [ref=e72]: SHA · a1b2c3d
+      - generic [ref=e73]: Собрано в Open Design
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]: "01"
+          - text: Обнаружить
+        - generic [ref=e77]:
+          - generic [ref=e78]: "02"
+          - text: Исследовать
+        - generic [ref=e79]:
+          - generic [ref=e80]: "03"
+          - text: Направить
+        - generic [ref=e81]:
+          - generic [ref=e82]: "04"
+          - text: Доставить
+  - region "Global wire — cities and contributors" [ref=e83]:
+    - generic [ref=e84]:
+      - generic [ref=e88]:
+        - generic [ref=e89]: From the field
+        - generic [ref=e90]: Open · 23 cities · 6 contributors
+      - generic [ref=e91]:
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - generic [ref=e95]: 52.52°N
+            - generic [ref=e96]: Berlin
+          - generic [ref=e97]:
+            - generic [ref=e98]: 35.68°N
+            - generic [ref=e99]: Tokyo
+          - generic [ref=e100]:
+            - generic [ref=e101]: 31.23°N
+            - generic [ref=e102]: Shanghai
+          - generic [ref=e103]:
+            - generic [ref=e104]: 39.90°N
+            - generic [ref=e105]: Beijing
+          - generic [ref=e106]:
+            - generic [ref=e107]: 25.03°N
+            - generic [ref=e108]: Taipei
+          - generic [ref=e109]:
+            - generic [ref=e110]: 1.35°N
+            - generic [ref=e111]: Singapore
+          - generic [ref=e112]:
+            - generic [ref=e113]: 12.97°N
+            - generic [ref=e114]: Bangalore
+          - generic [ref=e115]:
+            - generic [ref=e116]: 25.20°N
+            - generic [ref=e117]: Dubai
+          - generic [ref=e118]:
+            - generic [ref=e119]: 6.52°N
+            - generic [ref=e120]: Lagos
+          - generic [ref=e121]:
+            - generic [ref=e122]: 1.29°S
+            - generic [ref=e123]: Nairobi
+          - generic [ref=e124]:
+            - generic [ref=e125]: 33.92°S
+            - generic [ref=e126]: Cape Town
+          - generic [ref=e127]:
+            - generic [ref=e128]: 38.72°N
+            - generic [ref=e129]: Lisbon
+          - generic [ref=e130]:
+            - generic [ref=e131]: 40.42°N
+            - generic [ref=e132]: Madrid
+          - generic [ref=e133]:
+            - generic [ref=e134]: 48.86°N
+            - generic [ref=e135]: Paris
+          - generic [ref=e136]:
+            - generic [ref=e137]: 51.51°N
+            - generic [ref=e138]: London
+          - generic [ref=e139]:
+            - generic [ref=e140]: 52.37°N
+            - generic [ref=e141]: Amsterdam
+          - generic [ref=e142]:
+            - generic [ref=e143]: 59.33°N
+            - generic [ref=e144]: Stockholm
+          - generic [ref=e145]:
+            - generic [ref=e146]: 43.65°N
+            - generic [ref=e147]: Toronto
+          - generic [ref=e148]:
+            - generic [ref=e149]: 40.71°N
+            - generic [ref=e150]: New York
+          - generic [ref=e151]:
+            - generic [ref=e152]: 37.77°N
+            - generic [ref=e153]: San Francisco
+          - generic [ref=e154]:
+            - generic [ref=e155]: 19.43°N
+            - generic [ref=e156]: Mexico City
+          - generic [ref=e157]:
+            - generic [ref=e158]: 23.55°S
+            - generic [ref=e159]: São Paulo
+          - generic [ref=e160]:
+            - generic [ref=e161]: 33.87°S
+            - generic [ref=e162]: Sydney
+          - generic [ref=e163]:
+            - generic [ref=e164]: 52.52°N
+            - generic [ref=e165]: Berlin
+          - generic [ref=e166]:
+            - generic [ref=e167]: 35.68°N
+            - generic [ref=e168]: Tokyo
+          - generic [ref=e169]:
+            - generic [ref=e170]: 31.23°N
+            - generic [ref=e171]: Shanghai
+          - generic [ref=e172]:
+            - generic [ref=e173]: 39.90°N
+            - generic [ref=e174]: Beijing
+          - generic [ref=e175]:
+            - generic [ref=e176]: 25.03°N
+            - generic [ref=e177]: Taipei
+          - generic [ref=e178]:
+            - generic [ref=e179]: 1.35°N
+            - generic [ref=e180]: Singapore
+          - generic [ref=e181]:
+            - generic [ref=e182]: 12.97°N
+            - generic [ref=e183]: Bangalore
+          - generic [ref=e184]:
+            - generic [ref=e185]: 25.20°N
+            - generic [ref=e186]: Dubai
+          - generic [ref=e187]:
+            - generic [ref=e188]: 6.52°N
+            - generic [ref=e189]: Lagos
+          - generic [ref=e190]:
+            - generic [ref=e191]: 1.29°S
+            - generic [ref=e192]: Nairobi
+          - generic [ref=e193]:
+            - generic [ref=e194]: 33.92°S
+            - generic [ref=e195]: Cape Town
+          - generic [ref=e196]:
+            - generic [ref=e197]: 38.72°N
+            - generic [ref=e198]: Lisbon
+          - generic [ref=e199]:
+            - generic [ref=e200]: 40.42°N
+            - generic [ref=e201]: Madrid
+          - generic [ref=e202]:
+            - generic [ref=e203]: 48.86°N
+            - generic [ref=e204]: Paris
+          - generic [ref=e205]:
+            - generic [ref=e206]: 51.51°N
+            - generic [ref=e207]: London
+          - generic [ref=e208]:
+            - generic [ref=e209]: 52.37°N
+            - generic [ref=e210]: Amsterdam
+          - generic [ref=e211]:
+            - generic [ref=e212]: 59.33°N
+            - generic [ref=e213]: Stockholm
+          - generic [ref=e214]:
+            - generic [ref=e215]: 43.65°N
+            - generic [ref=e216]: Toronto
+          - generic [ref=e217]:
+            - generic [ref=e218]: 40.71°N
+            - generic [ref=e219]: New York
+          - generic [ref=e220]:
+            - generic [ref=e221]: 37.77°N
+            - generic [ref=e222]: San Francisco
+          - generic [ref=e223]:
+            - generic [ref=e224]: 19.43°N
+            - generic [ref=e225]: Mexico City
+          - generic [ref=e226]:
+            - generic [ref=e227]: 23.55°S
+            - generic [ref=e228]: São Paulo
+          - generic [ref=e229]:
+            - generic [ref=e230]: 33.87°S
+            - generic [ref=e231]: Sydney
+        - generic [ref=e233]:
+          - link "Open tw93 on GitHub" [ref=e234] [cursor=pointer]:
+            - /url: https://github.com/tw93
+            - generic: ·
+            - generic [ref=e235]: "@tw93"
+            - generic [ref=e236]: kami
+          - link "Open op7418 on GitHub" [ref=e237] [cursor=pointer]:
+            - /url: https://github.com/op7418
+            - generic: ·
+            - generic [ref=e238]: "@op7418"
+            - generic [ref=e239]: guizang
+          - link "Open alchaincyf on GitHub" [ref=e240] [cursor=pointer]:
+            - /url: https://github.com/alchaincyf
+            - generic: ·
+            - generic [ref=e241]: "@alchaincyf"
+            - generic [ref=e242]: huashu
+          - link "Open multica-ai on GitHub" [ref=e243] [cursor=pointer]:
+            - /url: https://github.com/multica-ai
+            - generic: ·
+            - generic [ref=e244]: "@multica-ai"
+            - generic [ref=e245]: daemon
+          - link "Open OpenCoworkAI on GitHub" [ref=e246] [cursor=pointer]:
+            - /url: https://github.com/OpenCoworkAI
+            - generic: ·
+            - generic [ref=e247]: "@OpenCoworkAI"
+            - generic [ref=e248]: codesign
+          - link "Open nexu-io on GitHub" [ref=e249] [cursor=pointer]:
+            - /url: https://github.com/nexu-io
+            - generic: ·
+            - generic [ref=e250]: "@nexu-io"
+            - generic [ref=e251]: studio
+          - link "Open you on GitHub" [ref=e252] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design/graphs/contributors
+            - generic: ·
+            - generic [ref=e253]: "@you"
+            - generic [ref=e254]: be next
+          - link "Open tw93 on GitHub" [ref=e255] [cursor=pointer]:
+            - /url: https://github.com/tw93
+            - generic: ·
+            - generic [ref=e256]: "@tw93"
+            - generic [ref=e257]: kami
+          - link "Open op7418 on GitHub" [ref=e258] [cursor=pointer]:
+            - /url: https://github.com/op7418
+            - generic: ·
+            - generic [ref=e259]: "@op7418"
+            - generic [ref=e260]: guizang
+          - link "Open alchaincyf on GitHub" [ref=e261] [cursor=pointer]:
+            - /url: https://github.com/alchaincyf
+            - generic: ·
+            - generic [ref=e262]: "@alchaincyf"
+            - generic [ref=e263]: huashu
+          - link "Open multica-ai on GitHub" [ref=e264] [cursor=pointer]:
+            - /url: https://github.com/multica-ai
+            - generic: ·
+            - generic [ref=e265]: "@multica-ai"
+            - generic [ref=e266]: daemon
+          - link "Open OpenCoworkAI on GitHub" [ref=e267] [cursor=pointer]:
+            - /url: https://github.com/OpenCoworkAI
+            - generic: ·
+            - generic [ref=e268]: "@OpenCoworkAI"
+            - generic [ref=e269]: codesign
+          - link "Open nexu-io on GitHub" [ref=e270] [cursor=pointer]:
+            - /url: https://github.com/nexu-io
+            - generic: ·
+            - generic [ref=e271]: "@nexu-io"
+            - generic [ref=e272]: studio
+          - link "Open you on GitHub" [ref=e273] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design/graphs/contributors
+            - generic: ·
+            - generic [ref=e274]: "@you"
+            - generic [ref=e275]: be next
+  - region "Официальный источник Open Design" [ref=e276]:
+    - generic [ref=e278]:
+      - generic [ref=e279]: Официальный источник · Nº 00
+      - list [ref=e280]:
+        - listitem [ref=e281]:
+          - link "Официальный сайт open-design.ai" [ref=e282] [cursor=pointer]:
+            - /url: /ru/official/
+            - generic [ref=e283]: Официальный сайт
+            - generic [ref=e284]: open-design.ai
+        - listitem [ref=e285]:
+          - link "Исходный код nexu-io/open-design" [ref=e286] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design
+            - generic [ref=e287]: Исходный код
+            - generic [ref=e288]: nexu-io/open-design
+        - listitem [ref=e289]:
+          - link "Релизы v0.8.0" [ref=e290] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design/releases
+            - generic [ref=e291]: Релизы
+            - generic [ref=e292]: v0.8.0
+        - listitem [ref=e293]:
+          - link "Загрузка Desktop · macOS · Win · Linux" [ref=e294] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design/releases
+            - generic [ref=e295]: Загрузка
+            - generic [ref=e296]: Desktop · macOS · Win · Linux
+        - listitem [ref=e297]:
+          - link "Документация README + /quickstart/" [ref=e298] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design#readme
+            - generic [ref=e299]: Документация
+            - generic [ref=e300]: README + /quickstart/
+        - listitem [ref=e301]:
+          - link "Сообщество Discord" [ref=e302] [cursor=pointer]:
+            - /url: https://discord.gg/9ptkbbqRu
+            - generic [ref=e303]: Сообщество
+            - generic [ref=e304]: Discord
+  - generic [ref=e306]:
+    - generic [ref=e307]:
+      - generic [ref=e308]: I.
+      - generic [ref=e309]:
+        - generic [ref=e310]: О студии / манифест
+        - generic [ref=e311]: •
+        - generic [ref=e312]: Open Design / том 01
+      - generic [ref=e313]: 002 / 008
+    - generic [ref=e314]:
+      - generic [ref=e315]:
+        - generic [ref=e316]:
+          - text: О студии
+          - generic [ref=e317]: · Nº 02
+        - heading "Мы относимся к вашему агенту как к творческому соавтору а не черному ящику." [level=2] [ref=e318]:
+          - text: Мы относимся к
+          - emphasis [ref=e319]: вашему агенту
+          - text: как к творческому
+          - emphasis [ref=e320]: соавтору
+          - text: а не черному ящику.
+        - paragraph [ref=e321]: "Самые сильные coding agents уже стоят на вашем ноутбуке. Мы не поставляем еще одного закрытого агента, а подключаем их к skill-driven дизайн-процессу: локально через pnpm tools-dev, web layer можно развернуть на Vercel, BYOK сохраняется на каждом уровне."
+        - link "Прочитать подход" [ref=e322] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design/tree/main/apps/daemon
+          - text: Прочитать подход
+          - img [ref=e324]
+        - generic [ref=e326]:
+          - generic [ref=e327]: Ø
+          - generic [ref=e328]: Исследование · дизайн · инженерия · итерации
+          - generic [ref=e329]:
+            - generic [ref=e330]: Практика студии
+            - generic [ref=e331]: Осн. MMXXVI
+      - generic [ref=e332]:
+        - generic [ref=e333]:
+          - generic [ref=e335]: От поведения модели
+          - generic [ref=e336]: до визуального вкуса
+          - generic [ref=e337]: мы прототипируем
+          - generic [ref=e338]: весь стек
+          - generic [ref=e339]: креативных систем.
+        - generic [ref=e341]: Исследования формы · восприятия · машинного воображения. (Open Design, MMXXVI)
+  - generic [ref=e343]:
+    - generic [ref=e344]:
+      - generic [ref=e345]: II.
+      - generic [ref=e346]:
+        - generic [ref=e347]: Возможности · skills · системы
+        - generic [ref=e348]: •
+        - generic [ref=e349]: 4 поверхности / 1 цикл
+      - generic [ref=e350]: 003 / 008
+    - generic [ref=e351]:
+      - generic [ref=e355]: OPEN DESIGN · МАТРИЦА ВОЗМОЖНОСТЕЙ · OD/26
+      - generic [ref=e356]:
+        - generic [ref=e357]:
+          - text: Возможности
+          - generic [ref=e358]: · Nº 03
+        - heading "Skills, системы и поверхности для творческого интеллекта." [level=2] [ref=e359]:
+          - text: Skills, системы и поверхности
+          - emphasis [ref=e360]: для творческого
+          - text: интеллекта.
+        - paragraph [ref=e361]: Мы соединяем человеческий вкус с агентом, которому вы уже доверяете, чтобы выпускать осмысленные, выразительные и живые интерфейсы, decks и редакционные страницы.
+        - generic [ref=e362]:
+          - generic [ref=e363]:
+            - generic [ref=e364]:
+              - text: "01"
+              - generic [ref=e365]: Skills
+            - img [ref=e366]
+            - heading "Skills, не plugins" [level=3] [ref=e369]:
+              - text: Skills,
+              - generic [ref=e370]: не plugins
+            - paragraph [ref=e371]: 132 файловых bundle на SKILL.md. Положите папку, перезапустите daemon — и он появится в picker.
+            - link "Посмотреть все skills на GitHub" [ref=e372] [cursor=pointer]:
+              - /url: https://github.com/nexu-io/open-design/tree/main/skills
+              - img [ref=e373]
+          - generic [ref=e375]:
+            - generic [ref=e376]:
+              - text: "02"
+              - generic [ref=e377]: Системы
+            - img [ref=e378]
+            - heading "Дизайн-системы как Markdown" [level=3] [ref=e383]:
+              - text: Дизайн-системы
+              - generic [ref=e384]: как Markdown
+            - paragraph [ref=e385]: "150 переносимых DESIGN.md-систем: Linear, Vercel, Stripe, Apple, Cursor, Figma и другие."
+            - link "Посмотреть все дизайн-системы на GitHub" [ref=e386] [cursor=pointer]:
+              - /url: https://github.com/nexu-io/open-design/tree/main/design-systems
+              - img [ref=e387]
+          - generic [ref=e389]:
+            - generic [ref=e390]:
+              - text: "03"
+              - generic [ref=e391]: Adapters
+            - img [ref=e392]
+            - heading "12 adapter для агентов" [level=3] [ref=e395]:
+              - text: 12 adapter
+              - generic [ref=e396]: для агентов
+            - paragraph [ref=e397]: Claude · Codex · Gemini · Cursor · Copilot · OpenCode · Devin · Hermes · Pi · Kimi · Kiro · Qwen автоматически находятся через $PATH.
+            - link "Открыть исходники agent adapters" [ref=e398] [cursor=pointer]:
+              - /url: https://github.com/nexu-io/open-design/tree/main/apps/daemon
+              - img [ref=e399]
+          - generic [ref=e401]:
+            - generic [ref=e402]:
+              - text: "04"
+              - generic [ref=e403]: BYOK
+            - img [ref=e404]
+            - heading "BYOK на каждом уровне" [level=3] [ref=e407]:
+              - text: BYOK
+              - generic [ref=e408]: на каждом уровне
+            - paragraph [ref=e409]: "OpenAI-совместимый proxy. DeepSeek, Groq, OpenRouter или свой vLLM: укажите baseUrl и key, затем доставляйте."
+            - link "Посмотреть настройку BYOK" [ref=e410] [cursor=pointer]:
+              - /url: https://github.com/nexu-io/open-design
+              - img [ref=e411]
+  - generic [ref=e414]:
+    - generic [ref=e415]:
+      - generic [ref=e416]: III.
+      - generic [ref=e417]:
+        - generic [ref=e418]: Лаборатория / каталог skills
+        - generic [ref=e419]: •
+        - generic [ref=e420]: 05 экспериментов из 132 активны
+      - generic [ref=e421]: 004 / 008
+    - generic [ref=e422]:
+      - generic [ref=e423]:
+        - generic [ref=e424]:
+          - text: Лаборатория
+          - generic [ref=e425]: · Nº 04
+        - heading "Растущий архив экспериментов со skills, decks и машинными формами." [level=2] [ref=e426]:
+          - text: Растущий
+          - emphasis [ref=e427]: архив экспериментов
+          - text: со skills, decks и машинными формами.
+      - generic [ref=e428]:
+        - link "Все 132" [ref=e429] [cursor=pointer]:
+          - /url: /ru/skills/
+          - text: Все
+          - generic [ref=e430]: "132"
+        - link "Прототип 32" [ref=e431] [cursor=pointer]:
+          - /url: /ru/skills/mode/prototype/
+          - text: Прототип
+          - generic [ref=e432]: "32"
+        - link "Deck 09" [ref=e433] [cursor=pointer]:
+          - /url: /ru/skills/mode/deck/
+          - text: Deck
+          - generic [ref=e434]: "09"
+        - link "Mobile 02" [ref=e435] [cursor=pointer]:
+          - /url: /ru/skills/
+          - text: Mobile
+          - generic [ref=e436]: "02"
+        - link "Office —" [ref=e437] [cursor=pointer]:
+          - /url: /ru/skills/
+          - text: Office
+          - generic [ref=e438]: —
+    - generic [ref=e439]:
+      - generic [ref=e440]: "05"
+      - generic [ref=e441]:
+        - generic [ref=e442]: Текущие эксперименты
+        - text: Документировать меняющиеся идеи
+        - generic [ref=e443]: Строить интеллект через практику
+        - generic [ref=e444]: Оттачивать суждение на деле
+    - generic [ref=e445]:
+      - generic [ref=e446]:
+        - generic [ref=e448]: Deck
+        - generic [ref=e449]:
+          - generic [ref=e450]: Nº 01
+          - generic [ref=e451]: "2026"
+        - heading "Журнальные decks" [level=4] [ref=e452]
+        - paragraph [ref=e453]: Редакционные слайды на guizang-ppt. Журнальная сетка и WebGL hero входят в комплект.
+        - link "Открыть Журнальные decks на GitHub" [ref=e454] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design/tree/main/skills/guizang-ppt
+          - img [ref=e455]
+      - generic [ref=e457]:
+        - generic [ref=e459]: Медиа
+        - generic [ref=e460]:
+          - generic [ref=e461]: Nº 02
+          - generic [ref=e462]: "2026"
+        - heading "Синтетические медиа" [level=4] [ref=e463]
+        - paragraph [ref=e464]: Gpt-image-2, Seedance и HyperFrames. Изображения, видео и аудио на той же chat surface, что и code.
+        - link "Открыть Синтетические медиа на GitHub" [ref=e465] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design/tree/main/skills/hyperframes
+          - img [ref=e466]
+      - generic [ref=e468]:
+        - generic [ref=e470]: Loop
+        - generic [ref=e471]:
+          - generic [ref=e472]: Nº 03
+          - generic [ref=e473]: "2026"
+        - heading "Хореография prompt" [level=4] [ref=e474]
+        - paragraph [ref=e475]: До первого пикселя форма вопросов фиксирует направление. 30 секунд выбора экономят долгие переделки.
+        - link "Открыть Хореография prompt на GitHub" [ref=e476] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design/tree/main/skills/design-brief
+          - img [ref=e477]
+      - generic [ref=e479]:
+        - generic [ref=e481]: Критика
+        - generic [ref=e482]:
+          - generic [ref=e483]: Nº 04
+          - generic [ref=e484]: "2026"
+        - heading "Визуальное рассуждение" [level=4] [ref=e485]
+        - paragraph [ref=e486]: "Пять осей self-critique защищают artifact: позиция, иерархия, исполнение, конкретность и сдержанность."
+        - link "Открыть Визуальное рассуждение на GitHub" [ref=e487] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design/tree/main/skills/critique
+          - img [ref=e488]
+      - generic [ref=e490]:
+        - generic [ref=e492]: Runtime
+        - generic [ref=e493]:
+          - generic [ref=e494]: Nº 05
+          - generic [ref=e495]: "2026"
+        - heading "Мягкие системы" [level=4] [ref=e496]
+        - paragraph [ref=e497]: Sandbox iframe, streaming todo, реальная cwd file system и адаптивные циклы человека и машины.
+        - link "Открыть Мягкие системы на GitHub" [ref=e498] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design/tree/main/apps/daemon
+          - img [ref=e499]
+    - generic [ref=e511]:
+      - text: 05 / 132 СКИЛЛОВ ·
+      - link "ПОСМОТРЕТЬ ВСЮ БИБЛИОТЕКУ →" [ref=e512] [cursor=pointer]:
+        - /url: /ru/skills/
+  - generic [ref=e514]:
+    - generic [ref=e515]:
+      - generic [ref=e516]: IV.
+      - generic [ref=e517]:
+        - generic [ref=e518]: Метод / цикл
+        - generic [ref=e519]: •
+        - generic [ref=e520]: 04 этапа, итеративно
+      - generic [ref=e521]: 005 / 008
+    - generic [ref=e522]:
+      - generic [ref=e523]:
+        - generic [ref=e524]:
+          - text: Метод
+          - generic [ref=e525]: · Nº 05
+        - heading "От сигнала к системе." [level=2] [ref=e526]:
+          - text: От
+          - emphasis [ref=e527]: сигнала
+          - text: к системе.
+      - generic [ref=e528]:
+        - generic [ref=e529]: +
+        - paragraph [ref=e530]: "Каждый этап итеративен, визуален и основан на исследовании: составные файлы вместо непрозрачных prompts."
+    - generic [ref=e531]:
+      - generic [ref=e532]:
+        - generic [ref=e533]: "01"
+        - heading "Обнаружить →" [level=4] [ref=e534]:
+          - text: Обнаружить
+          - generic [ref=e535]: →
+        - paragraph [ref=e536]: Daemon сканирует $PATH для 12 coding agents и при старте загружает 132 skills и 150 систем.
+      - generic [ref=e538]:
+        - generic [ref=e539]: "02"
+        - heading "Исследовать →" [level=4] [ref=e540]:
+          - text: Исследовать
+          - generic [ref=e541]: →
+        - paragraph [ref=e542]: "Первый turn — форма вопросов: surface, аудитория, тон, масштаб и бренд-контекст фиксируются за 30 секунд."
+      - generic [ref=e544]:
+        - generic [ref=e545]: "03"
+        - heading "Направить →" [level=4] [ref=e546]:
+          - text: Направить
+          - generic [ref=e547]: →
+        - paragraph [ref=e548]: Выберите одно из 5 детерминированных visual directions с OKLch-палитрой, font stack и layout posture.
+      - generic [ref=e550]:
+        - generic [ref=e551]: "04"
+        - heading "Доставить" [level=4] [ref=e552]
+        - paragraph [ref=e553]: Agent пишет на диск, вы смотрите preview в sandbox iframe и экспортируете HTML / PDF / PPTX / ZIP / Markdown.
+    - generic [ref=e555]:
+      - generic [ref=e558]: Skills задают намерение. Файлы делают результат реальным.
+      - generic [ref=e559]:
+        - link "github.com/nexu-io/open-design" [ref=e560] [cursor=pointer]:
+          - /url: https://github.com/nexu-io/open-design
+        - text: · Apache-2.0
+  - generic [ref=e562]:
+    - generic [ref=e563]:
+      - generic [ref=e564]: V.
+      - generic [ref=e565]:
+        - generic [ref=e566]: Избранные работы · каталог 2026
+        - generic [ref=e567]: •
+        - generic [ref=e568]: Редакция Open Design
+      - generic [ref=e569]: 006 / 008
+    - generic [ref=e570]:
+      - generic [ref=e571]:
+        - generic [ref=e572]: Избранные работы
+        - heading "Skills превращают briefs в запоминающиеся и готовые к отправке артефакты ." [level=2] [ref=e573]:
+          - text: Skills превращают briefs в
+          - emphasis [ref=e574]: запоминающиеся
+          - text: и готовые к отправке
+          - emphasis [ref=e575]: артефакты
+          - text: .
+        - link "Посмотреть все 132 skills ↗" [ref=e576] [cursor=pointer]:
+          - /url: /ru/skills/
+      - link "Избранный skill 01 / 132 guizang-ppt Журнальный Web PPT для продуктовых запусков и pitch decks. Встроен без изменений, исходная LICENSE сохранена. 2026 · DECK СТАНДАРТ" [ref=e577] [cursor=pointer]:
+        - /url: https://github.com/nexu-io/open-design/tree/main/skills/guizang-ppt
+        - generic [ref=e578]:
+          - generic [ref=e579]: Избранный skill
+          - generic [ref=e580]: 01 / 132
+        - heading "guizang-ppt" [level=3] [ref=e581]
+        - paragraph [ref=e582]: Журнальный Web PPT для продуктовых запусков и pitch decks. Встроен без изменений, исходная LICENSE сохранена.
+        - generic [ref=e584]:
+          - generic [ref=e585]: 2026 · DECK
+          - generic [ref=e586]: СТАНДАРТ
+      - 'link "Связанная система 04 / 150 kami Редакционная бумажная система: теплый parchment canvas, ink-blue accent, serif hierarchy и многоязычная структура. 2026 · PAPER SYSTEM" [ref=e587] [cursor=pointer]':
+        - /url: https://github.com/tw93/kami
+        - generic [ref=e588]:
+          - generic [ref=e589]: Связанная система
+          - generic [ref=e590]: 04 / 150
+        - heading "kami" [level=3] [ref=e591]
+        - paragraph [ref=e592]: "Редакционная бумажная система: теплый parchment canvas, ink-blue accent, serif hierarchy и многоязычная структура."
+        - generic [ref=e594]:
+          - generic [ref=e595]: 2026 · PAPER
+          - generic [ref=e596]: SYSTEM
+    - generic [ref=e597]:
+      - button [ref=e598] [cursor=pointer]:
+        - img [ref=e599]
+      - button [ref=e601] [cursor=pointer]:
+        - img [ref=e602]
+  - generic [ref=e605]:
+    - generic [ref=e606]:
+      - generic [ref=e607]: VI.
+      - generic [ref=e608]:
+        - generic [ref=e609]: Соавторы / происхождение
+        - generic [ref=e610]: •
+        - generic [ref=e611]: Стоять на плечах сильных работ
+      - generic [ref=e612]: 007 / 008
+    - generic [ref=e614]:
+      - generic [ref=e615]:
+        - text: Соавторы
+        - generic [ref=e616]: · Nº 06
+      - heading "«Open Design помог превратить расплывчатые AI-идеи в четкую, надежную и действительно новую визуальную систему.»" [level=2] [ref=e617]
+      - generic [ref=e618]:
+        - generic [ref=e619]: m
+        - paragraph [ref=e620]:
+          - text: Mina Kovac
+          - generic [ref=e621]: Креативный директор · North Form
+      - paragraph [ref=e623]: Мы строим на опыте команд, которые уже выпускали open-source дизайн-культуру.
+      - generic [ref=e624]:
+        - link "huashu-design Мысль" [ref=e625] [cursor=pointer]:
+          - /url: https://github.com/alchaincyf/huashu-design
+          - img [ref=e627]
+          - generic [ref=e629]: huashu-design
+          - generic [ref=e630]: Мысль
+        - link "guizang-ppt Decks" [ref=e631] [cursor=pointer]:
+          - /url: https://github.com/op7418/guizang-ppt-skill
+          - img [ref=e633]
+          - generic [ref=e635]: guizang-ppt
+          - generic [ref=e636]: Decks
+        - link "open-codesign UX" [ref=e637] [cursor=pointer]:
+          - /url: https://github.com/OpenCoworkAI/open-codesign
+          - img [ref=e639]
+          - generic [ref=e642]: open-codesign
+          - generic [ref=e643]: UX
+        - link "Devin CLI Terminal" [ref=e644] [cursor=pointer]:
+          - /url: https://devin.ai/terminal
+          - img [ref=e646]
+          - generic [ref=e648]: Devin CLI
+          - generic [ref=e649]: Terminal
+        - link "hyperframes Frames" [ref=e650] [cursor=pointer]:
+          - /url: https://github.com/heygen-com/hyperframes
+          - img [ref=e652]
+          - generic [ref=e655]: hyperframes
+          - generic [ref=e656]: Frames
+      - link "Читать больше историй →" [ref=e657] [cursor=pointer]:
+        - /url: https://github.com/nexu-io/open-design
+  - generic [ref=e660]:
+    - generic [ref=e661]:
+      - generic [ref=e662]: VI·5.
+      - generic [ref=e663]:
+        - generic [ref=e664]: Частые вопросы
+        - generic [ref=e665]: •
+        - generic [ref=e666]: Официальные ответы без маркетингового шума
+      - generic [ref=e667]: 006 / 008
+    - generic [ref=e668]:
+      - generic [ref=e669]: Вопросы об Open Design · Nº 06.5
+      - heading "Вопросы про Open Design, OpenDesign, и открытую альтернативу Claude Design." [level=2] [ref=e670]:
+        - text: Вопросы про
+        - emphasis [ref=e671]: Open Design
+        - text: ","
+        - emphasis [ref=e672]: OpenDesign
+        - text: ", и"
+        - emphasis [ref=e673]: открытую альтернативу Claude Design
+        - text: .
+    - list [ref=e674]:
+      - listitem [ref=e675]:
+        - group [ref=e676]:
+          - generic "01 Что такое Open Design?" [ref=e677] [cursor=pointer]:
+            - generic [ref=e678]: "01"
+            - generic [ref=e679]: Что такое Open Design?
+            - generic [ref=e680]: +
+      - listitem [ref=e681]:
+        - group [ref=e682]:
+          - generic "02 Open Design официальный?" [ref=e683] [cursor=pointer]:
+            - generic [ref=e684]: "02"
+            - generic [ref=e685]: Open Design официальный?
+            - generic [ref=e686]: +
+      - listitem [ref=e687]:
+        - group [ref=e688]:
+          - generic "03 Чем он отличается от Claude Design?" [ref=e689] [cursor=pointer]:
+            - generic [ref=e690]: "03"
+            - generic [ref=e691]: Чем он отличается от Claude Design?
+            - generic [ref=e692]: +
+      - listitem [ref=e693]:
+        - group [ref=e694]:
+          - generic "04 Open Design запускается локально?" [ref=e695] [cursor=pointer]:
+            - generic [ref=e696]: "04"
+            - generic [ref=e697]: Open Design запускается локально?
+            - generic [ref=e698]: +
+      - listitem [ref=e699]:
+        - group [ref=e700]:
+          - generic "05 Какие coding agents поддерживаются?" [ref=e701] [cursor=pointer]:
+            - generic [ref=e702]: "05"
+            - generic [ref=e703]: Какие coding agents поддерживаются?
+            - generic [ref=e704]: +
+      - listitem [ref=e705]:
+        - group [ref=e706]:
+          - generic "06 Можно self-host или fork?" [ref=e707] [cursor=pointer]:
+            - generic [ref=e708]: "06"
+            - generic [ref=e709]: Можно self-host или fork?
+            - generic [ref=e710]: +
+  - generic [ref=e712]:
+    - generic [ref=e713]:
+      - generic [ref=e714]: VII.
+      - generic [ref=e715]:
+        - generic [ref=e716]: Контакт / разговор
+        - generic [ref=e717]: •
+        - generic [ref=e718]: Три команды до delivery
+      - generic [ref=e719]: 008 / 008
+    - generic [ref=e720]:
+      - generic [ref=e721]:
+        - generic [ref=e722]:
+          - text: Начать разговор
+          - generic [ref=e723]: · Nº 07
+        - heading "Давайте создадим что-то открытое и визуально сильное ." [level=2] [ref=e724]:
+          - text: Давайте создадим что-то
+          - emphasis [ref=e725]: открытое
+          - text: и
+          - emphasis [ref=e726]: визуально сильное
+          - text: .
+        - paragraph [ref=e727]: Поставьте Star на GitHub, откройте issue или запустите pnpm tools-dev сегодня вечером. Три команды — и цикл у вас.
+        - generic [ref=e728]:
+          - link "Поставить Star на GitHub" [ref=e729] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design
+            - text: Поставить Star на GitHub
+            - img [ref=e731]
+          - link "Открыть issue →" [ref=e733] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design/issues
+            - text: Открыть issue
+            - generic [ref=e734]: →
+        - generic [ref=e735]:
+          - generic [ref=e736]: ● В сети
+          - generic [ref=e737]: v0.8.0 / Apache-2.0
+          - generic [ref=e738]: 52.5200° N · 13.4050° E
+      - generic [ref=e739]:
+        - generic [ref=e740]: Nº 08
+        - generic [ref=e741]: OPEN DESIGN · ФИНАЛ.
+  - contentinfo [ref=e742]:
+    - generic [ref=e743]:
+      - generic [ref=e744]:
+        - generic [ref=e745]:
+          - link "Open Design" [ref=e746] [cursor=pointer]:
+            - /url: "#top"
+            - generic [ref=e748]: Open Design
+          - paragraph [ref=e749]: Открытая альтернатива Claude Design, созданная на основе работ huashu-design, guizang-ppt, multica-ai и open-codesign.
+          - link "Скачать настольное приложение Open Design" [ref=e750] [cursor=pointer]:
+            - /url: https://github.com/nexu-io/open-design/releases
+            - text: Скачать desktop
+            - generic [ref=e751]: macOS · v0.8.0
+            - text: ↓
+        - generic [ref=e752]:
+          - heading "Студия" [level=5] [ref=e753]
+          - list [ref=e754]:
+            - listitem [ref=e755]:
+              - link "Возможности" [ref=e756] [cursor=pointer]:
+                - /url: "#agents"
+            - listitem [ref=e757]:
+              - link "Лаборатория" [ref=e758] [cursor=pointer]:
+                - /url: "#labs"
+            - listitem [ref=e759]:
+              - link "Метод" [ref=e760] [cursor=pointer]:
+                - /url: https://github.com/nexu-io/open-design/tree/main/apps/daemon
+            - listitem [ref=e761]:
+              - link "Манифест" [ref=e762] [cursor=pointer]:
+                - /url: https://github.com/nexu-io/open-design
+        - generic [ref=e763]:
+          - heading "Библиотека" [level=5] [ref=e764]
+          - list [ref=e765]:
+            - listitem [ref=e766]:
+              - link "132 skills" [ref=e767] [cursor=pointer]:
+                - /url: /ru/skills/
+            - listitem [ref=e768]:
+              - link "150 систем" [ref=e769] [cursor=pointer]:
+                - /url: /ru/systems/
+            - listitem [ref=e770]:
+              - link "Шаблоны" [ref=e771] [cursor=pointer]:
+                - /url: /ru/templates/
+            - listitem [ref=e772]:
+              - link "Правила craft" [ref=e773] [cursor=pointer]:
+                - /url: /ru/craft/
+            - listitem [ref=e774]:
+              - link "HTML Anything" [ref=e775] [cursor=pointer]:
+                - /url: /html-anything/
+      - generic [ref=e776]:
+        - generic [ref=e777]: ● Open Design · Apache-2.0 · 2026 / Том 01 / Выпуск № 26
+        - generic [ref=e779]:
+          - generic [ref=e780]: Берлин / Открыто / Земля
+          - generic [ref=e781]: 52.5200° N · 13.4050° E
+          - generic [ref=e782]: ♥ MMXXVI
+      - generic [ref=e784]: Open Design.

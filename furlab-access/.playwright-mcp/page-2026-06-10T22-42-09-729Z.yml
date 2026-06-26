@@ -1,0 +1,166 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e91] [cursor=pointer]
+      - generic [ref=e92]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e93] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - generic "Инструменты зон" [ref=e11]:
+          - generic [ref=e12]:
+            - generic [ref=e13]: Fur Lab
+            - button "Выбор" [ref=e14] [cursor=pointer]
+            - button "Линия зонирования" [ref=e16] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e18] [cursor=pointer]
+        - group [ref=e20]:
+          - generic "Настройки отображения" [ref=e21] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e22]
+          - generic [ref=e1366]:
+            - generic [ref=e1367]:
+              - generic [ref=e1368]: Детали
+              - list [ref=e1369]:
+                - listitem [ref=e1370]:
+                  - generic [ref=e1371] [cursor=pointer]:
+                    - checkbox "Контуры лекал" [checked] [ref=e1372]
+                    - generic [ref=e1373]: Контуры лекал
+                - listitem [ref=e1374]:
+                  - generic [ref=e1375] [cursor=pointer]:
+                    - checkbox "Мелкие контуры" [ref=e1376]
+                    - generic [ref=e1377]: Мелкие контуры
+                - listitem [ref=e1378]:
+                  - generic [ref=e1379] [cursor=pointer]:
+                    - checkbox "Подписи деталей" [ref=e1380]
+                    - generic [ref=e1381]: Подписи деталей
+            - generic [ref=e1382]:
+              - generic [ref=e1383]: Мех
+              - list [ref=e1384]:
+                - listitem [ref=e1385]:
+                  - generic [ref=e1386] [cursor=pointer]:
+                    - checkbox "Мех" [checked] [ref=e1387]
+                    - generic [ref=e1388]: Мех
+            - generic [ref=e1389]:
+              - generic [ref=e1390]: Зоны
+              - list [ref=e1391]:
+                - listitem [ref=e1392]:
+                  - generic [ref=e1393] [cursor=pointer]:
+                    - checkbox "Зоны" [checked] [ref=e1394]
+                    - generic [ref=e1395]: Зоны
+            - generic [ref=e1396]:
+              - generic [ref=e1397]: Редактор
+              - list [ref=e1398]:
+                - listitem [ref=e1399]:
+                  - generic [ref=e1400] [cursor=pointer]: "Точки:"
+                  - combobox [ref=e1401] [cursor=pointer]:
+                    - option "Малый"
+                    - option "Средний" [selected]
+                    - option "Крупный"
+            - generic [ref=e1402]:
+              - generic [ref=e1403]: Выкладка
+              - list [ref=e1404]:
+                - listitem [ref=e1405]:
+                  - generic [ref=e1406] [cursor=pointer]:
+                    - checkbox "Фрагменты" [checked] [ref=e1407]
+                    - generic [ref=e1408]: Фрагменты
+                - listitem [ref=e1409]:
+                  - generic [ref=e1410] [cursor=pointer]:
+                    - checkbox "Швы" [ref=e1411]
+                    - generic [ref=e1412]: Швы
+                - listitem [ref=e1413]:
+                  - generic [ref=e1414] [cursor=pointer]:
+                    - checkbox "Контуры кусков" [ref=e1415]
+                    - generic [ref=e1416]: Контуры кусков
+                - listitem [ref=e1417]:
+                  - generic [ref=e1418] [cursor=pointer]:
+                    - checkbox "Припуск куска" [checked] [ref=e1419]
+                    - generic [ref=e1420]: Припуск куска
+            - generic [ref=e1421]:
+              - generic [ref=e1422]: Холст
+              - list [ref=e1423]:
+                - listitem [ref=e1424]:
+                  - generic [ref=e1425] [cursor=pointer]:
+                    - checkbox "Сетка" [checked] [ref=e1426]
+                    - generic [ref=e1427]: Сетка
+            - generic [ref=e1428]:
+              - generic [ref=e1429]: Проверка
+              - list [ref=e1430]:
+                - listitem [ref=e1431]:
+                  - generic [ref=e1432] [cursor=pointer]:
+                    - checkbox "Дырки" [checked] [active] [ref=e1433]
+                    - generic [ref=e1434]: Дырки
+                - listitem [ref=e1435]:
+                  - generic [ref=e1436] [cursor=pointer]:
+                    - checkbox "Пересечения" [ref=e1437]
+                    - generic [ref=e1438]: Пересечения
+        - button "Отчеты" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: description
+          - generic [ref=e26]: Отчеты
+      - complementary [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Сборка меха
+          - generic [ref=e35]:
+            - button "Зоны" [ref=e36] [cursor=pointer]
+            - button "Мех" [ref=e37] [cursor=pointer]
+            - button "Выкладки" [ref=e38] [cursor=pointer]
+          - generic [ref=e39]:
+            - button "Добавить выкладку" [ref=e1550] [cursor=pointer]:
+              - generic [ref=e1551]: add
+              - generic [ref=e1552]: Добавить выкладку
+            - generic [ref=e1553]:
+              - button "inventory_voronoi_sa Из инвентаря (Voronoi+SA) 1" [ref=e1554] [cursor=pointer]:
+                - img "inventory_voronoi_sa" [ref=e1556]
+                - generic [ref=e1558]: Из инвентаря (Voronoi+SA) 1
+              - button "Удалить выкладку" [ref=e1560] [cursor=pointer]:
+                - generic [ref=e1561]: delete
+        - generic "Потяните для изменения высоты" [ref=e41]
+        - generic [ref=e42]:
+          - generic [ref=e43]: Редактор свойств
+          - generic [ref=e44]:
+            - generic [ref=e1562]:
+              - generic [ref=e1563]: Выкладка
+              - generic [ref=e1564]:
+                - button "Заблокировать редактирование" [ref=e1565] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e1566] [cursor=pointer]
+            - generic [ref=e1567]:
+              - button "▾ Информация" [expanded] [ref=e1568] [cursor=pointer]:
+                - generic [ref=e1569]: ▾
+                - generic [ref=e1570]: Информация
+              - generic [ref=e1571]:
+                - generic [ref=e1572]:
+                  - generic [ref=e1573]: Название
+                  - textbox "(Пусто)" [ref=e1575]: Из инвентаря (Voronoi+SA) 1
+                - generic [ref=e1576]:
+                  - generic [ref=e1577]: Тип
+                  - generic [ref=e1578]: Из инвентаря (Voronoi+SA)
+            - generic [ref=e1579]:
+              - button "▾ Инвентарь" [expanded] [ref=e1580] [cursor=pointer]:
+                - generic [ref=e1581]: ▾
+                - generic [ref=e1582]: Инвентарь
+              - generic [ref=e1583]:
+                - generic [ref=e1584]:
+                  - generic [ref=e1585]: Мех
+                  - combobox [ref=e1587] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e1588]:
+                  - generic [ref=e1589]: Резерв припуска, мм
+                  - spinbutton [ref=e1591]: "12.0"
+                - button "Заполнить остаток" [ref=e1593] [cursor=pointer]
+                - generic [ref=e1594]: Настройки подбора, preview и применение
+            - generic [ref=e1595]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e1596] [cursor=pointer]:
+                - generic [ref=e1597]: ▾
+                - generic [ref=e1598]: Параметры выкладки
+              - generic [ref=e1600]:
+                - generic [ref=e1601]: Резерв под припуски, мм
+                - spinbutton [ref=e1603]: "12.0"
+  - group [ref=e47]:
+    - generic "Database" [ref=e48] [cursor=pointer]

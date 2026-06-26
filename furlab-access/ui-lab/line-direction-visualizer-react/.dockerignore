@@ -1,0 +1,15 @@
+node_modules
+dist
+.git
+.vscode
+coverage
+tmp
+*.log
+ml
+tmp_py_detect.png
+tmp_py_detect2.png
+tools/_tmp_*.mjs
+tools/dom_probe.mjs
+tools/scan_and_shot.mjs
+tools/take_screenshot.mjs
+tools/test_set_file.mjs

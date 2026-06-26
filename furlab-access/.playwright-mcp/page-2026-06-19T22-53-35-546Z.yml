@@ -1,0 +1,112 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e92] [cursor=pointer]
+      - generic [ref=e93]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e94] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+      - button "VSA" [ref=e9] [cursor=pointer]
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic "Инструменты зон" [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Fur Lab
+            - button "Выбор" [ref=e15] [cursor=pointer]
+            - button "Линия зонирования" [ref=e17] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e19] [cursor=pointer]
+        - group [ref=e21]:
+          - generic "Настройки отображения" [ref=e22] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e23]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: description
+          - generic [ref=e27]: Отчеты
+      - complementary [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: Сборка меха
+          - generic [ref=e36]:
+            - button "Зоны" [ref=e37] [cursor=pointer]
+            - button "Мех" [ref=e38] [cursor=pointer]
+            - button "Выкладки" [ref=e39] [cursor=pointer]
+          - generic [ref=e40]:
+            - button "Добавить выкладку" [ref=e1202] [cursor=pointer]:
+              - generic [ref=e1203]: add
+              - generic [ref=e1204]: Добавить выкладку
+            - generic [ref=e1205]:
+              - button "longitudinal Продольно-поперечная 3" [ref=e1206] [cursor=pointer]:
+                - img "longitudinal" [ref=e1208]
+                - generic [ref=e1210]: Продольно-поперечная 3
+              - button "Удалить выкладку" [ref=e1212] [cursor=pointer]:
+                - generic [ref=e1213]: delete
+            - generic [ref=e1214]:
+              - button "inventory_voronoi_sa Из инвентаря (Voronoi SA) 2" [ref=e1215] [cursor=pointer]:
+                - img "inventory_voronoi_sa" [ref=e1217]
+                - generic [ref=e1219]: Из инвентаря (Voronoi SA) 2
+              - button "Удалить выкладку" [ref=e1221] [cursor=pointer]:
+                - generic [ref=e1222]: delete
+        - generic "Потяните для изменения высоты" [ref=e42]
+        - generic [ref=e43]:
+          - generic [ref=e44]: Редактор свойств
+          - generic [ref=e45]:
+            - generic [ref=e1223]:
+              - generic [ref=e1224]: Выкладка
+              - generic [ref=e1225]:
+                - button "Заблокировать редактирование" [ref=e1226] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e1227] [cursor=pointer]
+            - generic [ref=e1228]:
+              - button "▾ Информация" [expanded] [ref=e1229] [cursor=pointer]:
+                - generic [ref=e1230]: ▾
+                - generic [ref=e1231]: Информация
+              - generic [ref=e1232]:
+                - generic [ref=e1233]:
+                  - generic [ref=e1234]: Название
+                  - textbox "(Пусто)" [ref=e1236]: Из инвентаря (Voronoi SA) 2
+                - generic [ref=e1237]:
+                  - generic [ref=e1238]: Тип
+                  - generic [ref=e1239]: Из инвентаря (Voronoi SA)
+            - generic [ref=e1240]:
+              - button "▾ Инвентарь" [expanded] [ref=e1241] [cursor=pointer]:
+                - generic [ref=e1242]: ▾
+                - generic [ref=e1243]: Инвентарь
+              - generic [ref=e1244]:
+                - generic [ref=e1245]:
+                  - generic [ref=e1246]: Мех
+                  - combobox [ref=e1248] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e1249]:
+                  - generic [ref=e1250]: Резерв припуска, мм
+                  - spinbutton [ref=e1252]: "12.0"
+                - button "Подобрать (Voronoi SA)" [ref=e1254] [cursor=pointer]
+                - generic [ref=e1255]: Настройки подбора, preview и применение
+  - generic [ref=e1291]:
+    - generic [ref=e1292]: "Voronoi+SA: запрос кандидатов…"
+    - generic [ref=e1293]:
+      - generic: 5%
+    - list [ref=e1296]:
+      - listitem [ref=e1297]:
+        - generic [ref=e1298]: •
+        - generic [ref=e1299]: "Voronoi+SA: запрос кандидатов…"
+    - generic [ref=e1300]:
+      - generic [ref=e1301]: Кусков (подбор)
+      - generic [ref=e1302]: "0"
+      - generic [ref=e1303]: Покрытие, %
+      - generic [ref=e1304]: 0.0%
+      - generic [ref=e1305]: Итерации SA
+      - generic [ref=e1306]: "0"
+      - generic [ref=e1307]: Температура SA
+      - generic [ref=e1308]: "0.00"
+    - generic [ref=e1309]: 00:06
+    - generic [ref=e1310]: Ожидание телеметрии...
+  - group [ref=e48]:
+    - generic "Database" [ref=e49] [cursor=pointer]

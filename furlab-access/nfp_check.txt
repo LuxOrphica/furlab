@@ -1,0 +1,31 @@
+Total messages: 29 (Errors: 1, Warnings: 0)
+
+[INFO] [manual/recompute][front] payload placements: 0 [] @ http://localhost:5600/js/app.js:3356
+[INFO] [manual/recompute][front] first placement scene vs evaluated: {firstScene: null, firstEval: null} @ http://localhost:5600/js/app.js:3357
+[INFO] [manual/recompute][front] backend debug: {zone: Object, placementsReceived: 0, placementsMatched: 0, placements: Array(0), seamFragmentFlow: Array(0)} @ http://localhost:5600/js/app.js:3358
+[INFO] [manual/seams][debug] {source: disabled_before_apply, seamContoursCount: 0, seamsCount: 0, fragmentsCount: 0, candidatePairs: 0} @ http://localhost:5600/js/app.js:3532
+[INFO] [manual/recompute][front] payload placements: 1 [Object] @ http://localhost:5600/js/app.js:3356
+[INFO] [manual/recompute][front] first placement scene vs evaluated: {firstScene: Object, firstEval: Object} @ http://localhost:5600/js/app.js:3357
+[INFO] [manual/recompute][front] backend debug: {zone: Object, placementsReceived: 1, placementsMatched: 1, placements: Array(1), seamFragmentFlow: Array(1)} @ http://localhost:5600/js/app.js:3358
+[INFO] [manual/seams][debug] {source: disabled_before_apply, seamContoursCount: 1, seamsCount: 0, fragmentsCount: 0, candidatePairs: 0} @ http://localhost:5600/js/app.js:3532
+[INFO] [manual/recompute][front] payload placements: 1 [Object] @ http://localhost:5600/js/app.js:3356
+[INFO] [manual/recompute][front] first placement scene vs evaluated: {firstScene: Object, firstEval: Object} @ http://localhost:5600/js/app.js:3357
+[INFO] [manual/recompute][front] backend debug: {zone: Object, placementsReceived: 1, placementsMatched: 1, placements: Array(1), seamFragmentFlow: Array(1)} @ http://localhost:5600/js/app.js:3358
+[INFO] [manual/seams][debug] {source: disabled_before_apply, seamContoursCount: 1, seamsCount: 0, fragmentsCount: 0, candidatePairs: 0} @ http://localhost:5600/js/app.js:3532
+[INFO] [manual/recompute][front] payload placements: 2 [Object, Object] @ http://localhost:5600/js/app.js:3356
+[INFO] [manual/recompute][front] first placement scene vs evaluated: {firstScene: Object, firstEval: Object} @ http://localhost:5600/js/app.js:3357
+[INFO] [manual/recompute][front] backend debug: {zone: Object, placementsReceived: 2, placementsMatched: 2, placements: Array(2), seamFragmentFlow: Array(2)} @ http://localhost:5600/js/app.js:3358
+[INFO] [manual/seams][debug] {source: regular:core_visible, seamContoursCount: 2, seamsCount: 0, fragmentsCount: 2, candidatePairs: 1} @ http://localhost:5600/js/app.js:3532
+[INFO] [manual/recompute][front] payload placements: 2 [Object, Object] @ http://localhost:5600/js/app.js:3356
+[INFO] [manual/recompute][front] first placement scene vs evaluated: {firstScene: Object, firstEval: Object} @ http://localhost:5600/js/app.js:3357
+[INFO] [manual/recompute][front] backend debug: {zone: Object, placementsReceived: 2, placementsMatched: 2, placements: Array(2), seamFragmentFlow: Array(2)} @ http://localhost:5600/js/app.js:3358
+[INFO] [manual/seams][debug] {source: regular:core_visible, seamContoursCount: 2, seamsCount: 0, fragmentsCount: 2, candidatePairs: 1} @ http://localhost:5600/js/app.js:3532
+[INFO] [manual/recompute][front] payload placements: 2 [Object, Object] @ http://localhost:5600/js/app.js:3356
+[INFO] [manual/recompute][front] first placement scene vs evaluated: {firstScene: Object, firstEval: Object} @ http://localhost:5600/js/app.js:3357
+[INFO] [manual/recompute][front] backend debug: {zone: Object, placementsReceived: 2, placementsMatched: 2, placements: Array(2), seamFragmentFlow: Array(2)} @ http://localhost:5600/js/app.js:3358
+[INFO] [manual/seams][debug] {source: regular:core_visible, seamContoursCount: 2, seamsCount: 2, fragmentsCount: 2, candidatePairs: 1} @ http://localhost:5600/js/app.js:3532
+[INFO] [manual/recompute][front] payload placements: 2 [Object, Object] @ http://localhost:5600/js/app.js:3356
+[INFO] [manual/recompute][front] first placement scene vs evaluated: {firstScene: Object, firstEval: Object} @ http://localhost:5600/js/app.js:3357
+[INFO] [manual/recompute][front] backend debug: {zone: Object, placementsReceived: 2, placementsMatched: 2, placements: Array(2), seamFragmentFlow: Array(2)} @ http://localhost:5600/js/app.js:3358
+[INFO] [manual/seams][debug] {source: applied_fragments:core_visible, seamContoursCount: 2, seamsCount: 2, fragmentsCount: 2, candidatePairs: 1} @ http://localhost:5600/js/app.js:3532
+[ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5600/api/ac-proxy/layout-runs/commit:0

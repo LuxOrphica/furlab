@@ -1,0 +1,57 @@
+{
+  "name": "furlab-ui-lab-shell",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Electron wrapper for FurLab UI Lab backend + web UI",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^34.3.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.furlab.uilab.shell",
+    "productName": "FurLab UI Lab",
+    "files": [
+      "main.js"
+    ],
+    "extraResources": [
+      {
+        "from": "../../tools",
+        "to": "runtime/tools",
+        "filter": [
+          "ui_lab_server.js",
+          "server/**/*"
+        ]
+      },
+      {
+        "from": "../../scripts",
+        "to": "runtime/scripts"
+      },
+      {
+        "from": "../../sql",
+        "to": "runtime/sql"
+      },
+      {
+        "from": "../../ui-lab",
+        "to": "runtime/ui-lab"
+      },
+      {
+        "from": "../../БД",
+        "to": "runtime/БД",
+        "filter": [
+          "Furlab 1.accdb"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
+  }
+}
+

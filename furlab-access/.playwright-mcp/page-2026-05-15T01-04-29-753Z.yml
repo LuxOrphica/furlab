@@ -1,0 +1,276 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e58] [cursor=pointer]
+      - generic [ref=e59]: — прямоугольный проект
+      - button "Преобразовать в лекала" [ref=e60] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Линия зонирования" [ref=e13] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [active] [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - generic [ref=e2172]:
+              - generic [ref=e2173] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2174]:
+                  - generic [ref=e2175]: expand_more
+                - generic [ref=e2176]: Деталь 1
+              - generic [ref=e2179] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2180]:
+                  - generic [ref=e2181]: chevron_right
+                - img [ref=e2183]
+                - generic [ref=e2185]: Зона 1
+            - generic [ref=e2186]:
+              - generic [ref=e2187] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2188]:
+                  - generic [ref=e2189]: expand_more
+                - generic [ref=e2190]: Деталь 2
+              - generic [ref=e2193] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2194]:
+                  - generic [ref=e2195]: chevron_right
+                - img [ref=e2197]
+                - generic [ref=e2199]: Зона 2
+            - generic [ref=e2200]:
+              - generic [ref=e2201] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2202]:
+                  - generic [ref=e2203]: expand_more
+                - generic [ref=e2204]: Деталь 3
+              - generic [ref=e2207] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2208]:
+                  - generic [ref=e2209]: chevron_right
+                - img [ref=e2211]
+                - generic [ref=e2213]: Зона 3
+            - generic [ref=e2214]:
+              - generic [ref=e2215] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2216]:
+                  - generic [ref=e2217]: expand_more
+                - generic [ref=e2218]: Деталь 4
+              - generic [ref=e2221] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2222]:
+                  - generic [ref=e2223]: chevron_right
+                - img [ref=e2225]
+                - generic [ref=e2227]: Зона 4
+            - generic [ref=e2228]:
+              - generic [ref=e2229] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2230]:
+                  - generic [ref=e2231]: expand_more
+                - generic [ref=e2232]: Деталь 5
+              - generic [ref=e2235] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2236]:
+                  - generic [ref=e2237]: chevron_right
+                - img [ref=e2239]
+                - generic [ref=e2241]: Зона 5
+            - generic [ref=e2242]:
+              - generic [ref=e2243] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2244]:
+                  - generic [ref=e2245]: expand_more
+                - generic [ref=e2246]: Деталь 6
+              - generic [ref=e2249] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2250]:
+                  - generic [ref=e2251]: chevron_right
+                - img [ref=e2253]
+                - generic [ref=e2255]: Зона 6
+            - generic [ref=e2256]:
+              - generic [ref=e2257] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2258]:
+                  - generic [ref=e2259]: expand_more
+                - generic [ref=e2260]: Деталь 7
+              - generic [ref=e2263] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2264]:
+                  - generic [ref=e2265]: chevron_right
+                - img [ref=e2267]
+                - generic [ref=e2269]: Зона 7
+            - generic [ref=e2270]:
+              - generic [ref=e2271] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2272]:
+                  - generic [ref=e2273]: expand_more
+                - generic [ref=e2274]: Деталь 8
+              - generic [ref=e2277] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2278]:
+                  - generic [ref=e2279]: chevron_right
+                - img [ref=e2281]
+                - generic [ref=e2283]: Зона 8
+            - generic [ref=e2284]:
+              - generic [ref=e2285] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2286]:
+                  - generic [ref=e2287]: expand_more
+                - generic [ref=e2288]: Деталь 9
+              - generic [ref=e2291] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2292]:
+                  - generic [ref=e2293]: chevron_right
+                - img [ref=e2295]
+                - generic [ref=e2297]: Зона 9
+            - generic [ref=e2298]:
+              - generic [ref=e2299] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2300]:
+                  - generic [ref=e2301]: expand_more
+                - generic [ref=e2302]: Деталь 10
+              - generic [ref=e2305] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2306]:
+                  - generic [ref=e2307]: chevron_right
+                - img [ref=e2309]
+                - generic [ref=e2311]: Зона 10
+            - generic [ref=e2312]:
+              - generic [ref=e2313] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2314]:
+                  - generic [ref=e2315]: expand_more
+                - generic [ref=e2316]: Деталь 11
+              - generic [ref=e2319] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2320]:
+                  - generic [ref=e2321]: chevron_right
+                - img [ref=e2323]
+                - generic [ref=e2325]: Зона 11
+            - generic [ref=e2326]:
+              - generic [ref=e2327] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2328]:
+                  - generic [ref=e2329]: expand_more
+                - generic [ref=e2330]: Деталь 12
+              - generic [ref=e2333] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2334]:
+                  - generic [ref=e2335]: chevron_right
+                - img [ref=e2337]
+                - generic [ref=e2339]: Зона 12
+            - generic [ref=e2340]:
+              - generic [ref=e2341] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2342]:
+                  - generic [ref=e2343]: expand_more
+                - generic [ref=e2344]: Деталь 13
+              - generic [ref=e2347] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2348]:
+                  - generic [ref=e2349]: chevron_right
+                - img [ref=e2351]
+                - generic [ref=e2353]: Зона 13
+            - generic [ref=e2354]:
+              - generic [ref=e2355] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2356]:
+                  - generic [ref=e2357]: expand_more
+                - generic [ref=e2358]: Деталь 14
+              - generic [ref=e2361] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2362]:
+                  - generic [ref=e2363]: chevron_right
+                - img [ref=e2365]
+                - generic [ref=e2367]: Зона 14
+            - generic [ref=e2368]:
+              - generic [ref=e2369] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2370]:
+                  - generic [ref=e2371]: expand_more
+                - generic [ref=e2372]: Деталь 15
+              - generic [ref=e2375] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2376]:
+                  - generic [ref=e2377]: chevron_right
+                - img [ref=e2379]
+                - generic [ref=e2381]: Зона 15
+            - generic [ref=e2382]:
+              - generic [ref=e2383] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2384]:
+                  - generic [ref=e2385]: expand_more
+                - generic [ref=e2386]: Деталь 16
+              - generic [ref=e2389] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2390]:
+                  - generic [ref=e2391]: chevron_right
+                - img [ref=e2393]
+                - generic [ref=e2395]: Зона 16
+            - generic [ref=e2396]:
+              - generic [ref=e2397] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2398]:
+                  - generic [ref=e2399]: expand_more
+                - generic [ref=e2400]: Деталь 17
+              - generic [ref=e2403] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2404]:
+                  - generic [ref=e2405]: chevron_right
+                - img [ref=e2407]
+                - generic [ref=e2409]: Зона 17
+            - generic [ref=e2410]:
+              - generic [ref=e2411] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2412]:
+                  - generic [ref=e2413]: expand_more
+                - generic [ref=e2414]: Деталь 18
+              - generic [ref=e2417] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2418]:
+                  - generic [ref=e2419]: chevron_right
+                - img [ref=e2421]
+                - generic [ref=e2423]: Зона 18
+            - generic [ref=e2424]:
+              - generic [ref=e2425] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2426]:
+                  - generic [ref=e2427]: expand_more
+                - generic [ref=e2428]: Деталь 19
+              - generic [ref=e2431] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2432]:
+                  - generic [ref=e2433]: chevron_right
+                - img [ref=e2435]
+                - generic [ref=e2437]: Зона 19
+            - generic [ref=e2438]:
+              - generic [ref=e2439] [cursor=pointer]:
+                - button "Свернуть деталь" [ref=e2440]:
+                  - generic [ref=e2441]: expand_more
+                - generic [ref=e2442]: Деталь 20
+              - generic [ref=e2445] [cursor=pointer]:
+                - button "Развернуть зону" [ref=e2446]:
+                  - generic [ref=e2447]: chevron_right
+                - img [ref=e2449]
+                - generic [ref=e2451]: Зона 20
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e2452]: Зона
+            - generic [ref=e2453]:
+              - button "▾ Информация" [expanded] [ref=e2454] [cursor=pointer]:
+                - generic [ref=e2455]: ▾
+                - generic [ref=e2456]: Информация
+              - generic [ref=e2457]:
+                - generic [ref=e2458]:
+                  - generic [ref=e2459]: Название
+                  - generic [ref=e2460]: Зона 2
+                - generic [ref=e2461]:
+                  - generic [ref=e2462]: Detail ID
+                  - generic [ref=e2463]: "2"
+                - generic [ref=e2464]:
+                  - generic [ref=e2465]: Zone ID
+                  - generic [ref=e2466]: "2"
+                - generic [ref=e2467]:
+                  - generic [ref=e2468]: Направление ворса, °
+                  - spinbutton [ref=e2470]: "90.0"
+            - generic [ref=e2471]:
+              - button "▾ Меховой материал" [expanded] [ref=e2472] [cursor=pointer]:
+                - generic [ref=e2473]: ▾
+                - generic [ref=e2474]: Меховой материал
+              - generic [ref=e2475]:
+                - generic [ref=e2476]:
+                  - generic [ref=e2477]: Материал
+                  - generic [ref=e2478]: Норка
+                - generic [ref=e2479]:
+                  - generic [ref=e2480]: Material ID
+                  - generic [ref=e2481]: "{7B92DCC0-8A84-4B12-9C10-40DF1D2C7B62}"
+            - generic [ref=e2482]:
+              - button "▾ Геометрия" [expanded] [ref=e2483] [cursor=pointer]:
+                - generic [ref=e2484]: ▾
+                - generic [ref=e2485]: Геометрия
+              - generic [ref=e2486]:
+                - generic [ref=e2487]:
+                  - generic [ref=e2488]: Площадь зоны
+                  - generic [ref=e2489]: 372541.16 мм²
+                - generic [ref=e2490]:
+                  - generic [ref=e2491]: Периметр зоны
+                  - generic [ref=e2492]: 2646.54 мм
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]

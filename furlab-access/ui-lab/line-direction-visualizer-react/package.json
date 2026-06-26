@@ -1,0 +1,48 @@
+{
+  "name": "line-direction-visualizer-react",
+  "private": true,
+  "version": "2.0.42",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "check": "npm run lint && npm run build",
+    "react-doctor": "react-doctor --offline --verbose",
+    "vr": "node scripts/visual_regression.js",
+    "vr:update": "node scripts/visual_regression.js --update",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "bench:segmentation": "node tools/benchmark_segmentation.mjs",
+    "ml:prepare": "python ml/v3/prepare_dataset.py --src ui-lab/assets/uploads --dst ml/datasets/mezdra_v1/images --pattern \"Gemini_Generated_Image_*.png\"",
+    "ml:annotate": "python ml/v3/annotate_grabcut.py --images ml/datasets/mezdra_v1/images --masks ml/datasets/mezdra_v1/masks",
+    "ml:train": "python ml/v3/train.py --images ml/datasets/mezdra_v1/images --masks ml/datasets/mezdra_v1/masks --out ml/runs/mezdra_unet_v1.pt --epochs 40 --img-size 512 --batch-size 4",
+    "ml:eval": "python ml/v3/eval_folder.py --model ml/runs/mezdra_unet_v1.pt --input-dir ui-lab/assets/uploads_real_only --out-dir ml/preds/mezdra_unet_v1",
+    "ml:sync-unified": "python ml/v3/consolidate_annotations_dataset.py --annotations ../../data/training/annotations.ndjson --out ml/datasets/mezdra_unified_v1 --search-dirs ../../data/training/images ../../ui-lab/assets/uploads ../../ui-lab/assets/uploads_real_only ml/datasets/mezdra_v1/images --latest-per-image --manual-only",
+    "ml:train-unified": "python ml/v3/train.py --images ml/datasets/mezdra_unified_v1/images --masks ml/datasets/mezdra_unified_v1/masks --out ml/runs/mezdra_unet_unified_v1.pt --epochs 40 --img-size 512 --batch-size 4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@types/react": "^18.3.24",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^5.1.4",
+    "eslint": "^9.38.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.4.0",
+    "playwright-core": "^1.58.2",
+    "react-doctor": "^0.2.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "@fontsource/roboto": "^5.2.10",
+    "antd": "^6.3.0",
+    "jsqr": "^1.4.0",
+    "pdfmake": "^0.3.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

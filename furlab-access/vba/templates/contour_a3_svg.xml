@@ -1,0 +1,37 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{VIEW_W}} {{VIEW_H}}' width='100%' height='100%' preserveAspectRatio='xMidYMid meet'>
+  <style>
+    .t-grid-minor { stroke: #e8ecf1; stroke-width: 0.6; }
+    .t-grid-major { stroke: #d3d9e1; stroke-width: 0.9; }
+    .t-axis-text { fill: #666666; font-size: 10px; }
+    .t-axis-main { stroke: #1f2328; stroke-width: 1.25; }
+    .t-box-line { stroke: #d3d9e1; stroke-width: 0.9; }
+    .t-contour { fill: none; stroke: #000000; stroke-width: 2.2; }
+    .t-nap-line { stroke: #000000; stroke-width: 2.4; fill: none; }
+    .t-nap-dot { fill: #000000; }
+    .t-nap-text { fill: #000000; font-size: 12px; }
+    .t-panel { fill: #fdfdfd; stroke: #2b3138; stroke-width: 1; }
+    .t-panel-title { fill: #1f2328; font-size: 12px; font-family: Consolas, "Courier New", monospace; }
+    .t-panel-rule { stroke: #c8ccd2; stroke-width: 1; }
+    .t-panel-text { fill: #1f2328; font-size: 11px; font-family: Consolas, "Courier New", monospace; }
+  </style>
+  <rect x='0' y='0' width='{{VIEW_W}}' height='{{VIEW_H}}' fill='#f1f3f6' stroke='#c9ced6'/>
+  <rect x='{{PLOT_X}}' y='{{PLOT_Y}}' width='{{PLOT_W}}' height='{{PLOT_H}}' fill='#ffffff' stroke='#c2c8d0' stroke-width='1'/>
+  {{GRID_LAYERS}}
+  <line class='t-axis-main' x1='{{CHART_LEFT}}' y1='{{CHART_TOP}}' x2='{{CHART_RIGHT}}' y2='{{CHART_TOP}}' stroke='#1f2328' stroke-width='1.25'/>
+  <line class='t-axis-main' x1='{{CHART_LEFT}}' y1='{{CHART_TOP}}' x2='{{CHART_LEFT}}' y2='{{CHART_BOTTOM}}' stroke='#1f2328' stroke-width='1.25'/>
+  <line class='t-box-line' x1='{{CHART_RIGHT}}' y1='{{CHART_TOP}}' x2='{{CHART_RIGHT}}' y2='{{CHART_BOTTOM}}' stroke='#d3d9e1' stroke-width='0.9'/>
+  <line class='t-box-line' x1='{{CHART_LEFT}}' y1='{{CHART_BOTTOM}}' x2='{{CHART_RIGHT}}' y2='{{CHART_BOTTOM}}' stroke='#d3d9e1' stroke-width='0.9'/>
+  <polygon class='t-contour' points='{{PTS}}' fill='none' stroke='#000000' stroke-width='2.2'/>
+  {{NAP_ARROW}}
+  <text class='t-nap-text' x='{{NAP_TX}}' y='{{NAP_TY}}' fill='#000000' font-size='12'>nap</text>
+  <rect class='t-panel' x='{{PANEL_X}}' y='{{PANEL_Y}}' width='{{PANEL_W}}' height='{{PANEL_H}}' fill='#fdfdfd' stroke='#2b3138' stroke-width='1'/>
+  <text class='t-panel-title' x='{{INFO_X}}' y='{{TITLE_Y}}' fill='#1f2328' font-size='12' font-family='Consolas, Courier New, monospace'>Contour Summary</text>
+  <line class='t-panel-rule' x1='{{INFO_X}}' y1='{{TITLE_RULE_Y}}' x2='{{INFO_X2}}' y2='{{TITLE_RULE_Y}}' stroke='#c8ccd2' stroke-width='1'/>
+  <g class='t-panel-text' fill='#1f2328' font-size='11' font-family='Consolas, Courier New, monospace'>
+    <text x='{{INFO_X}}' y='{{INFO_Y0}}'>{{INFO_LINE_0}}</text>
+    <text x='{{INFO_X}}' y='{{INFO_Y1}}'>{{INFO_LINE_1}}</text>
+    <text x='{{INFO_X}}' y='{{INFO_Y2}}'>{{INFO_LINE_2}}</text>
+    <text x='{{INFO_X}}' y='{{INFO_Y3}}'>{{INFO_LINE_3}}</text>
+    <text x='{{INFO_X}}' y='{{INFO_Y4}}'>{{INFO_LINE_4}}</text>
+  </g>
+</svg>

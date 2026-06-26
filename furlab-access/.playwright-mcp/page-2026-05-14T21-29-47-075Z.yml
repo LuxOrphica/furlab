@@ -1,0 +1,458 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: 3D Lastique · Tools
+    - heading "Garment Spec Builder" [level=1] [ref=e6]
+    - paragraph [ref=e7]: Табель мер / Measurement Sheet — v0.1
+  - generic [ref=e51]:
+    - button "Табель мер" [ref=e52] [cursor=pointer]
+    - button "Справочник POM 407" [ref=e53] [cursor=pointer]:
+      - text: Справочник POM
+      - generic [ref=e54]: "407"
+  - generic [ref=e55]:
+    - generic [ref=e216]:
+      - generic [ref=e218]:
+        - button "Одежда" [ref=e219] [cursor=pointer]
+        - button "Аксессуары" [ref=e220] [cursor=pointer]
+        - button "Купальники муж." [ref=e221] [cursor=pointer]
+        - button "Купальники жен." [ref=e222] [cursor=pointer]
+      - generic [ref=e223]:
+        - textbox "Поиск по коду или названию…" [ref=e224]
+        - generic [ref=e225]: 106 / 106
+      - table [ref=e227]:
+        - rowgroup [ref=e228]:
+          - row "Код Название RU Name EN" [ref=e229]:
+            - columnheader "Код" [ref=e230]
+            - columnheader "Название RU" [ref=e231]
+            - columnheader "Name EN" [ref=e232]
+        - rowgroup [ref=e233]:
+          - row "1 Уровень измерения А2 A2 position" [ref=e1862] [cursor=pointer]:
+            - cell "1" [ref=e1863]
+            - cell "Уровень измерения А2" [ref=e1864]
+            - cell "A2 position" [ref=e1865]
+          - row "2 Уровень измерения А1 A1 position" [ref=e1866] [cursor=pointer]:
+            - cell "2" [ref=e1867]
+            - cell "Уровень измерения А1" [ref=e1868]
+            - cell "A1 position" [ref=e1869]
+          - row "Н Длина до конца пальца ноги Lenght to toe end" [ref=e1870] [cursor=pointer]:
+            - cell "Н" [ref=e1871]
+            - cell "Длина до конца пальца ноги" [ref=e1872]
+            - cell "Lenght to toe end" [ref=e1873]
+          - row "A Длина боковой детали Belt length side" [ref=e1874] [cursor=pointer]:
+            - cell "A" [ref=e255]
+            - cell "Длина боковой детали" [ref=e1875]
+            - cell "Belt length side" [ref=e1876]
+          - row "A1 Длина отлетной детали Detached detail length" [ref=e1877] [cursor=pointer]:
+            - cell "A1" [ref=e271]
+            - cell "Длина отлетной детали" [ref=e1878]
+            - cell "Detached detail length" [ref=e1879]
+          - row "A2 Ширина боковой панели внизу Side panel bottom width" [ref=e1880] [cursor=pointer]:
+            - cell "A2" [ref=e279]
+            - cell "Ширина боковой панели внизу" [ref=e1881]
+            - cell "Side panel bottom width" [ref=e1882]
+          - row "A3 Ширина центральной панели сзади Central panel width (back)" [ref=e1883] [cursor=pointer]:
+            - cell "A3" [ref=e287]
+            - cell "Ширина центральной панели сзади" [ref=e1884]
+            - cell "Central panel width (back)" [ref=e1885]
+          - row "A3' Ширина центральной панели сзади в растянутом виде Central panel width (back) - extended" [ref=e1886] [cursor=pointer]:
+            - cell "A3'" [ref=e1887]
+            - cell "Ширина центральной панели сзади в растянутом виде" [ref=e1888]
+            - cell "Central panel width (back) - extended" [ref=e1889]
+          - row "A4 Ширина панели Panel width" [ref=e1890] [cursor=pointer]:
+            - cell "A4" [ref=e291]
+            - cell "Ширина панели" [ref=e1891]
+            - cell "Panel width" [ref=e1892]
+          - row "A5 Ширина передней части маски Mask width front" [ref=e1893] [cursor=pointer]:
+            - cell "A5" [ref=e299]
+            - cell "Ширина передней части маски" [ref=e1894]
+            - cell "Mask width front" [ref=e1895]
+          - row "B Ширина по тыльной стороне ладони (от шва до шва) Palm width back side (from seam to seam)" [ref=e1896] [cursor=pointer]:
+            - cell "B" [ref=e307]
+            - cell "Ширина по тыльной стороне ладони (от шва до шва)" [ref=e1897]
+            - cell "Palm width back side (from seam to seam)" [ref=e1898]
+          - row "B1 Ширина ладони Palm width (from seam to seam)" [ref=e1899] [cursor=pointer]:
+            - cell "B1" [ref=e319]
+            - cell "Ширина ладони" [ref=e1900]
+            - cell "Palm width (from seam to seam)" [ref=e1901]
+          - row "B2 Ширина ладони съемной детали Detachable detail palm width back side (from seam to seam)" [ref=e1902] [cursor=pointer]:
+            - cell "B2" [ref=e323]
+            - cell "Ширина ладони съемной детали" [ref=e1903]
+            - cell "Detachable detail palm width back side (from seam to seam)" [ref=e1904]
+          - row "B3 Высота повязки сзади Band height back" [ref=e1905] [cursor=pointer]:
+            - cell "B3" [ref=e327]
+            - cell "Высота повязки сзади" [ref=e1906]
+            - cell "Band height back" [ref=e1907]
+          - row "B4 Ширина дужки Rim width" [ref=e1908] [cursor=pointer]:
+            - cell "B4" [ref=e331]
+            - cell "Ширина дужки" [ref=e1909]
+            - cell "Rim width" [ref=e1910]
+          - row "C Длина среднего пальца Middle finger length" [ref=e1911] [cursor=pointer]:
+            - cell "C" [ref=e383]
+            - cell "Длина среднего пальца" [ref=e1912]
+            - cell "Middle finger length" [ref=e1913]
+          - row "C1 Длина указательного / безымянного пальца Forefinger length / Forthfinger length" [ref=e1914] [cursor=pointer]:
+            - cell "C1" [ref=e387]
+            - cell "Длина указательного / безымянного пальца" [ref=e1915]
+            - cell "Forefinger length / Forthfinger length" [ref=e1916]
+          - row "C2 Длина мизинца Little finger length" [ref=e1917] [cursor=pointer]:
+            - cell "C2" [ref=e391]
+            - cell "Длина мизинца" [ref=e1918]
+            - cell "Little finger length" [ref=e1919]
+          - row "C3 Длина большого пальца до резинки Thumb length to ribbon" [ref=e1920] [cursor=pointer]:
+            - cell "C3" [ref=e395]
+            - cell "Длина большого пальца до резинки" [ref=e1921]
+            - cell "Thumb length to ribbon" [ref=e1922]
+          - row "C4 Длина пальца по короткой части Thumb length the shorter side" [ref=e1923] [cursor=pointer]:
+            - cell "C4" [ref=e1924]
+            - cell "Длина пальца по короткой части" [ref=e1925]
+            - cell "Thumb length the shorter side" [ref=e1926]
+          - row "C4a Длина большого пальца от низа (для моделей без резинки) Thumb length (for styles wo ribbon)" [ref=e1927] [cursor=pointer]:
+            - cell "C4a" [ref=e1928]
+            - cell "Длина большого пальца от низа (для моделей без резинки)" [ref=e1929]
+            - cell "Thumb length (for styles wo ribbon)" [ref=e1930]
+          - row "C5 Ширина пальца (от шва до шва) Width of finger (from seam to seam)" [ref=e1931] [cursor=pointer]:
+            - cell "C5" [ref=e1932]
+            - cell "Ширина пальца (от шва до шва)" [ref=e1933]
+            - cell "Width of finger (from seam to seam)" [ref=e1934]
+          - row "C7 Ширина пальца (у основания большого пальца) Thumb width (basis of the big finger)" [ref=e1935] [cursor=pointer]:
+            - cell "C7" [ref=e1936]
+            - cell "Ширина пальца (у основания большого пальца)" [ref=e1937]
+            - cell "Thumb width (basis of the big finger)" [ref=e1938]
+          - row "C8 Ширина пальца вверху Thumb width (top)" [ref=e1939] [cursor=pointer]:
+            - cell "C8" [ref=e1940]
+            - cell "Ширина пальца вверху" [ref=e1941]
+            - cell "Thumb width (top)" [ref=e1942]
+          - row "C9 Ширина вставки пальца (верхняя часть ногтя) Width of an inner insert a finger (nail top)" [ref=e1943] [cursor=pointer]:
+            - cell "C9" [ref=e1944]
+            - cell "Ширина вставки пальца (верхняя часть ногтя)" [ref=e1945]
+            - cell "Width of an inner insert a finger (nail top)" [ref=e1946]
+          - row "d Диаметр помпона Pompon diameter" [ref=e1947] [cursor=pointer]:
+            - cell "d" [ref=e1948]
+            - cell "Диаметр помпона" [ref=e1949]
+            - cell "Pompon diameter" [ref=e1950]
+          - row "D Длина среднего пальца (по внутренней части) Middle finger length (at inner side)" [ref=e1951] [cursor=pointer]:
+            - cell "D" [ref=e435]
+            - cell "Длина среднего пальца (по внутренней части)" [ref=e1952]
+            - cell "Middle finger length (at inner side)" [ref=e1953]
+          - row "d1 Диаметр помпона (на ушках) 2-nd pompon diameter" [ref=e1954] [cursor=pointer]:
+            - cell "d1" [ref=e1955]
+            - cell "Диаметр помпона (на ушках)" [ref=e1956]
+            - cell "2-nd pompon diameter" [ref=e1957]
+          - row "D1 Длина указательного / безымянного пальца (по внутренней части) Forefinger / Forthfinger length (at inner side)" [ref=e1958] [cursor=pointer]:
+            - cell "D1" [ref=e439]
+            - cell "Длина указательного / безымянного пальца (по внутренней части)" [ref=e1959]
+            - cell "Forefinger / Forthfinger length (at inner side)" [ref=e1960]
+          - row "D1a Длина безымянного пальца (по внутренней части) Forthfinger length (at inner side)" [ref=e1961] [cursor=pointer]:
+            - cell "D1a" [ref=e1962]
+            - cell "Длина безымянного пальца (по внутренней части)" [ref=e1963]
+            - cell "Forthfinger length (at inner side)" [ref=e1964]
+          - row "D2 Длина мизинца (по внутренней части) Little finger length (at inner side)" [ref=e1965] [cursor=pointer]:
+            - cell "D2" [ref=e443]
+            - cell "Длина мизинца (по внутренней части)" [ref=e1966]
+            - cell "Little finger length (at inner side)" [ref=e1967]
+          - row "D3 Ширина на уровне икроножной мышцы Calf width" [ref=e1968] [cursor=pointer]:
+            - cell "D3" [ref=e447]
+            - cell "Ширина на уровне икроножной мышцы" [ref=e1969]
+            - cell "Calf width" [ref=e1970]
+          - row "Da длины вытачки Dart length" [ref=e1971] [cursor=pointer]:
+            - cell "Da" [ref=e1972]
+            - cell "длины вытачки" [ref=e1973]
+            - cell "Dart length" [ref=e1974]
+          - row "E Ширина манжеты Cuff width" [ref=e1975] [cursor=pointer]:
+            - cell "E" [ref=e483]
+            - cell "Ширина манжеты" [ref=e1976]
+            - cell "Cuff width" [ref=e1977]
+          - row "E1 Уровень резинки по внешней части Ribbon level at outer side" [ref=e1978] [cursor=pointer]:
+            - cell "E1" [ref=e491]
+            - cell "Уровень резинки по внешней части" [ref=e1979]
+            - cell "Ribbon level at outer side" [ref=e1980]
+          - row "E2 Уровень резинки по внутренней части Ribbon level at inner side" [ref=e1981] [cursor=pointer]:
+            - cell "E2" [ref=e495]
+            - cell "Уровень резинки по внутренней части" [ref=e1982]
+            - cell "Ribbon level at inner side" [ref=e1983]
+          - row "E3 Ширина второго риба 2nd rib width" [ref=e1984] [cursor=pointer]:
+            - cell "E3" [ref=e499]
+            - cell "Ширина второго риба" [ref=e1985]
+            - cell "2nd rib width" [ref=e1986]
+          - row "E4 Длина боковой вытачки на подкладке шапки Hat lining side dart length" [ref=e1987] [cursor=pointer]:
+            - cell "E4" [ref=e503]
+            - cell "Длина боковой вытачки на подкладке шапки" [ref=e1988]
+            - cell "Hat lining side dart length" [ref=e1989]
+          - row "F Высота ушка Flap height" [ref=e1990] [cursor=pointer]:
+            - cell "F" [ref=e527]
+            - cell "Высота ушка" [ref=e1991]
+            - cell "Flap height" [ref=e1992]
+          - row "F1 Высота задника на кепке Flap height back" [ref=e1993] [cursor=pointer]:
+            - cell "F1" [ref=e539]
+            - cell "Высота задника на кепке" [ref=e1994]
+            - cell "Flap height back" [ref=e1995]
+          - row "F2 Ширина ушка Flap width" [ref=e1996] [cursor=pointer]:
+            - cell "F2" [ref=e1997]
+            - cell "Ширина ушка" [ref=e1998]
+            - cell "Flap width" [ref=e1999]
+          - row "F3 Высота второго ушка 2nd Flap height" [ref=e2000] [cursor=pointer]:
+            - cell "F3" [ref=e559]
+            - cell "Высота второго ушка" [ref=e2001]
+            - cell "2nd Flap height" [ref=e2002]
+          - row "G Ширина запястья в расслабленном виде Wrist width relaxed" [ref=e2003] [cursor=pointer]:
+            - cell "G" [ref=e615]
+            - cell "Ширина запястья в расслабленном виде" [ref=e2004]
+            - cell "Wrist width relaxed" [ref=e2005]
+          - row "G1 Высота пятки Heel height" [ref=e2006] [cursor=pointer]:
+            - cell "G1" [ref=e623]
+            - cell "Высота пятки" [ref=e2007]
+            - cell "Heel height" [ref=e2008]
+          - row "G2 Длина пятка до отверстия Heel to opening" [ref=e2009] [cursor=pointer]:
+            - cell "G2" [ref=e631]
+            - cell "Длина пятка до отверстия" [ref=e2010]
+            - cell "Heel to opening" [ref=e2011]
+          - row "G3 Длина пятка Heel length" [ref=e2012] [cursor=pointer]:
+            - cell "G3" [ref=e639]
+            - cell "Длина пятка" [ref=e2013]
+            - cell "Heel length" [ref=e2014]
+          - row "H Расстояние от основания большого пальца до основания среднего пальца Distance from the middle finger basis to the little finger basis" [ref=e2015] [cursor=pointer]:
+            - cell "H" [ref=e707]
+            - cell "Расстояние от основания большого пальца до основания среднего пальца" [ref=e2016]
+            - cell "Distance from the middle finger basis to the little finger basis" [ref=e2017]
+          - row "H0 Высота шапки (для шапок с отворотом) Height of hat (for hat with folded lapel)" [ref=e2018] [cursor=pointer]:
+            - cell "H0" [ref=e2019]
+            - cell "Высота шапки (для шапок с отворотом)" [ref=e2020]
+            - cell "Height of hat (for hat with folded lapel)" [ref=e2021]
+          - row "H1 Высота боковой панели Side panel height" [ref=e2022] [cursor=pointer]:
+            - cell "H1" [ref=e711]
+            - cell "Высота боковой панели" [ref=e2023]
+            - cell "Side panel height" [ref=e2024]
+          - row "H2 Высота задней панели Back panel height" [ref=e2025] [cursor=pointer]:
+            - cell "H2" [ref=e715]
+            - cell "Высота задней панели" [ref=e2026]
+            - cell "Back panel height" [ref=e2027]
+          - row "H3 Высота подкладки шапки Hat lining height" [ref=e2028] [cursor=pointer]:
+            - cell "H3" [ref=e719]
+            - cell "Высота подкладки шапки" [ref=e2029]
+            - cell "Hat lining height" [ref=e2030]
+          - row "H4 Ширина центральной детали посередине Central panel width in the middle" [ref=e2031] [cursor=pointer]:
+            - cell "H4" [ref=e2032]
+            - cell "Ширина центральной детали посередине" [ref=e2033]
+            - cell "Central panel width in the middle" [ref=e2034]
+          - row "H5 Полная ширина верхней части шляпы Full width top part of hat" [ref=e2035] [cursor=pointer]:
+            - cell "H5" [ref=e2036]
+            - cell "Полная ширина верхней части шляпы" [ref=e2037]
+            - cell "Full width top part of hat" [ref=e2038]
+          - row "H6 Полная длина верхней части шляпы Full length top part of hat" [ref=e2039] [cursor=pointer]:
+            - cell "H6" [ref=e2040]
+            - cell "Полная длина верхней части шляпы" [ref=e2041]
+            - cell "Full length top part of hat" [ref=e2042]
+          - row "H7 Длина верхней детали Top panel length" [ref=e2043] [cursor=pointer]:
+            - cell "H7" [ref=e2044]
+            - cell "Длина верхней детали" [ref=e2045]
+            - cell "Top panel length" [ref=e2046]
+          - row "I Длина перчатки по внешней стороне (от кончиков пальцев вниз до нижнего края) Glove length (from tips of fingers up down to a hem)" [ref=e2047] [cursor=pointer]:
+            - cell "I" [ref=e735]
+            - cell "Длина перчатки по внешней стороне (от кончиков пальцев вниз до нижнего края)" [ref=e2048]
+            - cell "Glove length (from tips of fingers up down to a hem)" [ref=e2049]
+          - row "I1 Длина перчатки (от низа до верхнего шва ладони) Glove length (from the bottom up to the top seam of palm)" [ref=e2050] [cursor=pointer]:
+            - cell "I1" [ref=e739]
+            - cell "Длина перчатки (от низа до верхнего шва ладони)" [ref=e2051]
+            - cell "Glove length (from the bottom up to the top seam of palm)" [ref=e2052]
+          - row "I3 Длина перчатки (от кончиков пальцев вниз до запястья) по внутренней стороне Glove length (from tips of fingers up to a wrist) on the inner side" [ref=e2053] [cursor=pointer]:
+            - cell "I3" [ref=e747]
+            - cell "Длина перчатки (от кончиков пальцев вниз до запястья) по внутренней стороне" [ref=e2054]
+            - cell "Glove length (from tips of fingers up to a wrist) on the inner side" [ref=e2055]
+          - row "I4 Длина перчатки (от основания пальцев вниз до запястья) по внутренней стороне Glove length (from base of fingers up to a wrist) on the inner side" [ref=e2056] [cursor=pointer]:
+            - cell "I4" [ref=e2057]
+            - cell "Длина перчатки (от основания пальцев вниз до запястья) по внутренней стороне" [ref=e2058]
+            - cell "Glove length (from base of fingers up to a wrist) on the inner side" [ref=e2059]
+          - row "I5 Ширина декоративной детали ладони Decorative palm detail width" [ref=e2060] [cursor=pointer]:
+            - cell "I5" [ref=e2061]
+            - cell "Ширина декоративной детали ладони" [ref=e2062]
+            - cell "Decorative palm detail width" [ref=e2063]
+          - row "I6 Длина съемной варежки Detachable mittens length" [ref=e2064] [cursor=pointer]:
+            - cell "I6" [ref=e2065]
+            - cell "Длина съемной варежки" [ref=e2066]
+            - cell "Detachable mittens length" [ref=e2067]
+          - row "In Длина вставки Length insert" [ref=e2068] [cursor=pointer]:
+            - cell "In" [ref=e2069]
+            - cell "Длина вставки" [ref=e2070]
+            - cell "Length insert" [ref=e2071]
+          - row "In2 Ширина вставки Width insert" [ref=e2072] [cursor=pointer]:
+            - cell "In2" [ref=e2073]
+            - cell "Ширина вставки" [ref=e2074]
+            - cell "Width insert" [ref=e2075]
+          - row "J Ширина низа перчатки в расслабленном виде Gloves bottom width relaxed" [ref=e2076] [cursor=pointer]:
+            - cell "J" [ref=e883]
+            - cell "Ширина низа перчатки в расслабленном виде" [ref=e2077]
+            - cell "Gloves bottom width relaxed" [ref=e2078]
+          - row "J1 Ширина большого пальца внизу Thumb width at the bottom" [ref=e2079] [cursor=pointer]:
+            - cell "J1" [ref=e887]
+            - cell "Ширина большого пальца внизу" [ref=e2080]
+            - cell "Thumb width at the bottom" [ref=e2081]
+          - row "J3 Ширина манжеты внизу Cuff opening" [ref=e2082] [cursor=pointer]:
+            - cell "J3" [ref=e915]
+            - cell "Ширина манжеты внизу" [ref=e2083]
+            - cell "Cuff opening" [ref=e2084]
+          - row "Ja Расстояние от бокового шва до большого пальца Distance from side seam to thumb seam" [ref=e2085] [cursor=pointer]:
+            - cell "Ja" [ref=e2086]
+            - cell "Расстояние от бокового шва до большого пальца" [ref=e2087]
+            - cell "Distance from side seam to thumb seam" [ref=e2088]
+          - row "Jb Расстояние от бокового шва до основания большого пальца Distance from side seam to thumb base" [ref=e2089] [cursor=pointer]:
+            - cell "Jb" [ref=e2090]
+            - cell "Расстояние от бокового шва до основания большого пальца" [ref=e2091]
+            - cell "Distance from side seam to thumb base" [ref=e2092]
+          - row "K Ширина вставки пальца (вверху) Finger insert width (top)" [ref=e2093] [cursor=pointer]:
+            - cell "K" [ref=e943]
+            - cell "Ширина вставки пальца (вверху)" [ref=e2094]
+            - cell "Finger insert width (top)" [ref=e2095]
+          - row "K1 Ширина вставки пальца (внизу) Finger insert width (bottom)" [ref=e2096] [cursor=pointer]:
+            - cell "K1" [ref=e959]
+            - cell "Ширина вставки пальца (внизу)" [ref=e2097]
+            - cell "Finger insert width (bottom)" [ref=e2098]
+          - row "K1' Длина резинки в растянутом виде Elastic band length extended" [ref=e2099] [cursor=pointer]:
+            - cell "K1'" [ref=e2100]
+            - cell "Длина резинки в растянутом виде" [ref=e2101]
+            - cell "Elastic band length extended" [ref=e2102]
+          - row "K2 ½ длины поля ½ brim length" [ref=e2103] [cursor=pointer]:
+            - cell "K2" [ref=e963]
+            - cell "½ длины поля" [ref=e2104]
+            - cell "½ brim length" [ref=e2105]
+          - row "K3 Ширина вставки указательного пальца/мизинца Forefinger / little finger insert width (side)" [ref=e2106] [cursor=pointer]:
+            - cell "K3" [ref=e967]
+            - cell "Ширина вставки указательного пальца/мизинца" [ref=e2107]
+            - cell "Forefinger / little finger insert width (side)" [ref=e2108]
+          - row "K6 Длина шнура (1/2) Draw cord length (1/2)" [ref=e982] [cursor=pointer]:
+            - cell "K6" [ref=e983]
+            - cell "Длина шнура (1/2)" [ref=e984]
+            - cell "Draw cord length (1/2)" [ref=e985]
+          - row "L Высота от большого пальца до кончика ногтя среднего пальца Height from tip of forefinger to the big finger" [ref=e2109] [cursor=pointer]:
+            - cell "L" [ref=e1011]
+            - cell "Высота от большого пальца до кончика ногтя среднего пальца" [ref=e2110]
+            - cell "Height from tip of forefinger to the big finger" [ref=e2111]
+          - row "L' Длина резинки банданы в растянутом виде Bandana elastic length extended" [ref=e2112] [cursor=pointer]:
+            - cell "L'" [ref=e2113]
+            - cell "Длина резинки банданы в растянутом виде" [ref=e2114]
+            - cell "Bandana elastic length extended" [ref=e2115]
+          - row "L1 Высота большого пальца Big finger height" [ref=e2116] [cursor=pointer]:
+            - cell "L1" [ref=e1019]
+            - cell "Высота большого пальца" [ref=e2117]
+            - cell "Big finger height" [ref=e2118]
+          - row "L2 Длина от основания большого пальца до основания среднего пальца Distance from the thumb basis to the middle finger basis" [ref=e2119] [cursor=pointer]:
+            - cell "L2" [ref=e1027]
+            - cell "Длина от основания большого пальца до основания среднего пальца" [ref=e2120]
+            - cell "Distance from the thumb basis to the middle finger basis" [ref=e2121]
+          - row "L3 Длина от основания большого пальца до запястья Distance from the thumb basis to a wrist" [ref=e2122] [cursor=pointer]:
+            - cell "L3" [ref=e1031]
+            - cell "Длина от основания большого пальца до запястья" [ref=e2123]
+            - cell "Distance from the thumb basis to a wrist" [ref=e2124]
+          - row "L4 Расстояние от основания большого пальца до запястья с внутренней стороны ладони Distance from the thumb basis to a wrist on inside part of palm" [ref=e2125] [cursor=pointer]:
+            - cell "L4" [ref=e1035]
+            - cell "Расстояние от основания большого пальца до запястья с внутренней стороны ладони" [ref=e2126]
+            - cell "Distance from the thumb basis to a wrist on inside part of palm" [ref=e2127]
+          - row "L5 Длина вытачки Tuck length" [ref=e2128] [cursor=pointer]:
+            - cell "L5" [ref=e1047]
+            - cell "Длина вытачки" [ref=e2129]
+            - cell "Tuck length" [ref=e2130]
+          - row "L6 Длина маски спереди Mask front length" [ref=e2131] [cursor=pointer]:
+            - cell "L6" [ref=e1051]
+            - cell "Длина маски спереди" [ref=e2132]
+            - cell "Mask front length" [ref=e2133]
+          - row "M2 Длина паты (длинная деталь) Half belt length (long detail)" [ref=e2134] [cursor=pointer]:
+            - cell "M2" [ref=e1103]
+            - cell "Длина паты (длинная деталь)" [ref=e2135]
+            - cell "Half belt length (long detail)" [ref=e2136]
+          - row "M4 Ширина паты Half belt width" [ref=e2137] [cursor=pointer]:
+            - cell "M4" [ref=e2138]
+            - cell "Ширина паты" [ref=e2139]
+            - cell "Half belt width" [ref=e2140]
+          - row "O Ширина отверстия Facehole width" [ref=e2141] [cursor=pointer]:
+            - cell "O" [ref=e1167]
+            - cell "Ширина отверстия" [ref=e2142]
+            - cell "Facehole width" [ref=e2143]
+          - row "O1 Высота отверстия Facehole height" [ref=e2144] [cursor=pointer]:
+            - cell "O1" [ref=e1171]
+            - cell "Высота отверстия" [ref=e2145]
+            - cell "Facehole height" [ref=e2146]
+          - row "O2 Половина периметра отверстия 1\\2 facehole length" [ref=e2147] [cursor=pointer]:
+            - cell "O2" [ref=e1175]
+            - cell "Половина периметра отверстия" [ref=e2148]
+            - cell "1\\2 facehole length" [ref=e2149]
+          - row "O3 Ширина отверстия спереди Front width opening" [ref=e2150] [cursor=pointer]:
+            - cell "O3" [ref=e1179]
+            - cell "Ширина отверстия спереди" [ref=e2151]
+            - cell "Front width opening" [ref=e2152]
+          - row "R Высота риба Rib height" [ref=e2153] [cursor=pointer]:
+            - cell "R" [ref=e1383]
+            - cell "Высота риба" [ref=e2154]
+            - cell "Rib height" [ref=e2155]
+          - row "R1 Ширина риба Rib width" [ref=e2156] [cursor=pointer]:
+            - cell "R1" [ref=e1391]
+            - cell "Ширина риба" [ref=e2157]
+            - cell "Rib width" [ref=e2158]
+          - row "R2 Высота подгибки риба Rib height reverse" [ref=e2159] [cursor=pointer]:
+            - cell "R2" [ref=e1403]
+            - cell "Высота подгибки риба" [ref=e2160]
+            - cell "Rib height reverse" [ref=e2161]
+          - row "R3 Ширина внутренней обтачки/ подгибки Inside band/ welt width" [ref=e2162] [cursor=pointer]:
+            - cell "R3" [ref=e2163]
+            - cell "Ширина внутренней обтачки/ подгибки" [ref=e2164]
+            - cell "Inside band/ welt width" [ref=e2165]
+          - row "S1 Шов 1 Seam 1" [ref=e2166] [cursor=pointer]:
+            - cell "S1" [ref=e1419]
+            - cell "Шов 1" [ref=e2167]
+            - cell "Seam 1" [ref=e2168]
+          - row "S2 Шов 2 Seam 2" [ref=e2169] [cursor=pointer]:
+            - cell "S2" [ref=e1427]
+            - cell "Шов 2" [ref=e2170]
+            - cell "Seam 2" [ref=e2171]
+          - row "S3 Шов 3 Seam 3" [ref=e2172] [cursor=pointer]:
+            - cell "S3" [ref=e2173]
+            - cell "Шов 3" [ref=e2174]
+            - cell "Seam 3" [ref=e2175]
+          - row "V Высота козырька по изогнутой форме Visor curved height" [ref=e2176] [cursor=pointer]:
+            - cell "V" [ref=e1583]
+            - cell "Высота козырька по изогнутой форме" [ref=e2177]
+            - cell "Visor curved height" [ref=e2178]
+          - row "V10 1/2 длины отверстия - верхний срез 1/2 facehole length - top edge" [ref=e2179] [cursor=pointer]:
+            - cell "V10" [ref=e1595]
+            - cell "1/2 длины отверстия - верхний срез" [ref=e2180]
+            - cell "1/2 facehole length - top edge" [ref=e2181]
+          - row "V4 Ширина cредней части (спереди) Middle part width (front)" [ref=e2182] [cursor=pointer]:
+            - cell "V4" [ref=e1619]
+            - cell "Ширина cредней части (спереди)" [ref=e2183]
+            - cell "Middle part width (front)" [ref=e2184]
+          - row "V5 Ширина cредней части Middle part width" [ref=e2185] [cursor=pointer]:
+            - cell "V5" [ref=e1623]
+            - cell "Ширина cредней части" [ref=e2186]
+            - cell "Middle part width" [ref=e2187]
+          - row "V5' Ширина cредней части (внизу) Middle part width (lower)" [ref=e2188] [cursor=pointer]:
+            - cell "V5'" [ref=e2189]
+            - cell "Ширина cредней части (внизу)" [ref=e2190]
+            - cell "Middle part width (lower)" [ref=e2191]
+          - row "V9 1/2 длины отверстия - нижний срез 1/2 facehole length - low edge" [ref=e2192] [cursor=pointer]:
+            - cell "V9" [ref=e1639]
+            - cell "1/2 длины отверстия - нижний срез" [ref=e2193]
+            - cell "1/2 facehole length - low edge" [ref=e2194]
+          - row "W Ширина хлястика Belt width" [ref=e2195] [cursor=pointer]:
+            - cell "W" [ref=e1659]
+            - cell "Ширина хлястика" [ref=e2196]
+            - cell "Belt width" [ref=e2197]
+          - row "W1 Ширина окантовки Welt width" [ref=e2198] [cursor=pointer]:
+            - cell "W1" [ref=e1667]
+            - cell "Ширина окантовки" [ref=e2199]
+            - cell "Welt width" [ref=e2200]
+          - row "W2 Длина хлястика Belt length" [ref=e2201] [cursor=pointer]:
+            - cell "W2" [ref=e1675]
+            - cell "Длина хлястика" [ref=e2202]
+            - cell "Belt length" [ref=e2203]
+          - row "W3 Ширина фигурной окантовки Figured welt width" [ref=e2204] [cursor=pointer]:
+            - cell "W3" [ref=e1679]
+            - cell "Ширина фигурной окантовки" [ref=e2205]
+            - cell "Figured welt width" [ref=e2206]
+          - row "Y Длина разреза для молнии Cut length zip" [ref=e2207] [cursor=pointer]:
+            - cell "Y" [ref=e1743]
+            - cell "Длина разреза для молнии" [ref=e2208]
+            - cell "Cut length zip" [ref=e2209]
+    - generic [ref=e2210]:
+      - generic [ref=e2211]:
+        - generic [ref=e2212]: B3
+        - button "✕" [ref=e2213] [cursor=pointer]
+      - generic [ref=e2214]: Высота повязки сзади
+      - generic [ref=e2215]: Band height back
+      - img "measurement" [ref=e2218]

@@ -1,0 +1,119 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e76] [cursor=pointer]
+      - generic [ref=e77]: — опа!
+      - button "Преобразовать в лекала" [ref=e78] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Линия зонирования" [ref=e13] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+        - generic [ref=e511]:
+          - button "Применить" [ref=e513] [cursor=pointer]
+          - button "Диагностика" [ref=e515] [cursor=pointer]:
+            - generic [ref=e516]: Диагностика
+            - generic [ref=e518]: chevron_right
+          - generic [ref=e519]:
+            - button "Повернуть влево" [ref=e520] [cursor=pointer]:
+              - generic [ref=e521]: rotate_left
+            - button "Повернуть вправо" [ref=e522] [cursor=pointer]:
+              - generic [ref=e523]: rotate_right
+            - button "Уменьшить шаг" [ref=e524] [cursor=pointer]:
+              - generic [ref=e525]: remove
+            - button "Увеличить шаг" [ref=e526] [cursor=pointer]:
+              - generic [ref=e527]: add
+            - generic [ref=e528]: шаг 5°
+          - generic [ref=e529]:
+            - button "Выше" [ref=e530] [cursor=pointer]:
+              - generic [ref=e531]: vertical_align_top
+            - button "Ниже" [ref=e532] [cursor=pointer]:
+              - generic [ref=e533]: vertical_align_bottom
+            - button "Вперёд" [ref=e534] [cursor=pointer]:
+              - generic [ref=e535]: flip_to_front
+            - button "Назад" [ref=e536] [cursor=pointer]:
+              - generic [ref=e537]: flip_to_back
+          - button "Лоток (23)" [ref=e539] [cursor=pointer]:
+            - generic [ref=e540]: Лоток (23)
+            - generic [ref=e542]: chevron_right
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - button "Добавить выкладку" [ref=e544] [cursor=pointer]:
+              - generic [ref=e545]: add
+              - generic [ref=e546]: Добавить выкладку
+            - generic [ref=e547]:
+              - button "inventory_manual Из инвентаря (ручной) 1" [ref=e548] [cursor=pointer]:
+                - img "inventory_manual" [ref=e550]
+                - generic [ref=e552]: Из инвентаря (ручной) 1
+              - button "Удалить выкладку" [ref=e554] [cursor=pointer]:
+                - generic [ref=e555]: delete
+            - generic [ref=e556]:
+              - button "longitudinal Продольно-поперечная 2" [ref=e557] [cursor=pointer]:
+                - img "longitudinal" [ref=e559]
+                - generic [ref=e561]: Продольно-поперечная 2
+              - button "Удалить выкладку" [ref=e563] [cursor=pointer]:
+                - generic [ref=e564]: delete
+            - generic [ref=e565]:
+              - button "longitudinal Продольно-поперечная 3" [ref=e566] [cursor=pointer]:
+                - img "longitudinal" [ref=e568]
+                - generic [ref=e570]: Продольно-поперечная 3
+              - button "Удалить выкладку" [ref=e572] [cursor=pointer]:
+                - generic [ref=e573]: delete
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e574]:
+              - generic [ref=e575]: Выкладка
+              - generic [ref=e576]:
+                - button "Редактировать" [ref=e577] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e578] [cursor=pointer]
+            - generic [ref=e579]:
+              - button "▾ Информация" [expanded] [ref=e580] [cursor=pointer]:
+                - generic [ref=e581]: ▾
+                - generic [ref=e582]: Информация
+              - generic [ref=e583]:
+                - generic [ref=e584]:
+                  - generic [ref=e585]: Название
+                  - generic [ref=e586]:
+                    - textbox "(Пусто)" [disabled]: Из инвентаря (ручной) 1
+                - generic [ref=e587]:
+                  - generic [ref=e588]: Тип
+                  - generic [ref=e589]: Из инвентаря (ручной)
+            - generic [ref=e590]:
+              - button "▾ Инвентарь" [expanded] [ref=e591] [cursor=pointer]:
+                - generic [ref=e592]: ▾
+                - generic [ref=e593]: Инвентарь
+              - generic [ref=e594]:
+                - generic [ref=e595]:
+                  - generic [ref=e596]: Мех
+                  - combobox [disabled] [ref=e598] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e599]:
+                  - generic [ref=e600]: Резерв припуска, мм
+                  - spinbutton [disabled] [ref=e602]: "12.0"
+                - button "Загрузить кандидаты из БД" [disabled] [ref=e604]
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]

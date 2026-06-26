@@ -1,0 +1,109 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e90] [cursor=pointer]
+      - generic [ref=e91]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e92] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - generic "Инструменты зон" [ref=e11]:
+          - generic [ref=e12]:
+            - generic [ref=e13]: Fur Lab
+            - button "Выбор" [ref=e14] [cursor=pointer]
+            - button "Линия зонирования" [ref=e16] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e18] [cursor=pointer]
+        - group [ref=e20]:
+          - generic "Настройки отображения" [ref=e21] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e22]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: description
+          - generic [ref=e26]: Отчеты
+      - complementary [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Сборка меха
+          - generic [ref=e35]:
+            - button "Зоны" [ref=e36] [cursor=pointer]
+            - button "Мех" [ref=e37] [cursor=pointer]
+            - button "Выкладки" [ref=e38] [cursor=pointer]
+          - generic [ref=e39]:
+            - button "Добавить выкладку" [ref=e554] [cursor=pointer]:
+              - generic [ref=e555]: add
+              - generic [ref=e556]: Добавить выкладку
+            - generic [ref=e557]:
+              - button "inventory_voronoi_sa Из инвентаря (Voronoi+SA) 1" [ref=e558] [cursor=pointer]:
+                - img "inventory_voronoi_sa" [ref=e560]
+                - generic [ref=e562]: Из инвентаря (Voronoi+SA) 1
+              - button "Удалить выкладку" [ref=e564] [cursor=pointer]:
+                - generic [ref=e565]: delete
+        - generic "Потяните для изменения высоты" [ref=e41]
+        - generic [ref=e42]:
+          - generic [ref=e43]: Редактор свойств
+          - generic [ref=e44]:
+            - generic [ref=e566]: Фрагмент
+            - generic [ref=e567]:
+              - button "▾ Информация" [expanded] [ref=e568] [cursor=pointer]:
+                - generic [ref=e569]: ▾
+                - generic [ref=e570]: Информация
+              - generic [ref=e571]:
+                - generic [ref=e572]:
+                  - generic [ref=e573]: ID фрагмента
+                  - generic [ref=e574]: "2"
+                - generic [ref=e575]:
+                  - generic [ref=e576]: Площадь, мм²
+                  - generic [ref=e577]: "13635.0"
+                - generic [ref=e578]:
+                  - generic [ref=e579]: Периметр, мм
+                  - generic [ref=e580]: "588.0"
+                - generic [ref=e581]:
+                  - generic [ref=e582]: Размер, мм
+                  - generic [ref=e583]: 138.0 × 156.0
+            - generic [ref=e584]:
+              - button "▾ Инвентарь" [expanded] [ref=e585] [cursor=pointer]:
+                - generic [ref=e586]: ▾
+                - generic [ref=e587]: Инвентарь
+              - generic [ref=e588]:
+                - generic [ref=e589]:
+                  - generic [ref=e590]: Инвентарный номер
+                  - generic [ref=e591]: FL-SCR-000081
+                - generic [ref=e592]:
+                  - generic [ref=e593]: Статус
+                  - generic [ref=e594]: matched
+                - generic [ref=e595]:
+                  - button "Заменить" [ref=e596] [cursor=pointer]
+                  - button "Снять подбор" [ref=e597] [cursor=pointer]
+            - generic [ref=e598]:
+              - button "▾ Параметры" [expanded] [ref=e599] [cursor=pointer]:
+                - generic [ref=e600]: ▾
+                - generic [ref=e601]: Параметры
+              - generic [ref=e602]:
+                - generic [ref=e603]:
+                  - generic [ref=e604]: Резерв под припуск, мм
+                  - generic [ref=e605]: "12.0"
+                - generic [ref=e606]:
+                  - generic [ref=e607]: Направление ворса
+                  - generic [ref=e608]: 90.0°
+                - generic [ref=e609]:
+                  - generic [ref=e610]: Цель ворса
+                  - generic [ref=e611]: 90.0°
+                - generic [ref=e612]:
+                  - generic [ref=e613]: Допуск ворса
+                  - generic [ref=e614]: 15.0°
+                - generic [ref=e615]:
+                  - generic [ref=e616]: Δ к цели
+                  - generic [ref=e617]: 0.000°
+                - generic [ref=e618]:
+                  - generic [ref=e619]: Проверка ворса
+                  - generic [ref=e620]: OK
+            - button "▸ Качество подбора" [ref=e622] [cursor=pointer]:
+              - generic [ref=e623]: ▸
+              - generic [ref=e624]: Качество подбора
+  - group [ref=e47]:
+    - generic "Database" [ref=e48] [cursor=pointer]

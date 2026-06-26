@@ -1,0 +1,33 @@
+{
+  "name": "inventory_direct_smoke",
+  "request": {
+    "layoutType": "inventory_direct",
+    "zone": {
+      "id": "zone-smoke-1",
+      "points": [
+        { "x": 0, "y": 0 },
+        { "x": 100, "y": 0 },
+        { "x": 100, "y": 100 },
+        { "x": 0, "y": 100 }
+      ]
+    },
+    "inputs": {
+      "axis": "y",
+      "candidates": []
+    },
+    "options": {
+      "strictCoverage": false,
+      "maxPieces": 1,
+      "maxSolveMs": 1000
+    },
+    "seed": 42
+  },
+  "expect": {
+    "httpStatus": 200,
+    "ok": true,
+    "layoutType": "inventory_direct",
+    "resultStatusIn": ["ok", "failed", "needs_attention"],
+    "minRenderItems": 0
+  }
+}
+

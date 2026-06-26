@@ -1,0 +1,207 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Услуги" [ref=e8] [cursor=pointer]:
+          - /url: "#services"
+        - link "Как работаю" [ref=e9] [cursor=pointer]:
+          - /url: "#how"
+        - link "Клиентам" [ref=e10] [cursor=pointer]:
+          - /url: "#for-whom"
+        - link "Продукты" [ref=e11] [cursor=pointer]:
+          - /url: "#products"
+        - link "Табель мер" [ref=e12] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Техпак" [ref=e13] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e14]:
+        - button "☀" [ref=e15] [cursor=pointer]
+        - button "EN" [ref=e16] [cursor=pointer]
+        - link "Заявка" [ref=e17] [cursor=pointer]:
+          - /url: "#contact"
+  - main [ref=e18]:
+    - generic [ref=e21]:
+      - generic [ref=e22]: Digital Fashion Studio
+      - heading "Конструирование. 3D. AI-визуализация." [level=1] [ref=e23]
+      - paragraph [ref=e24]: Лекала, Tech Pack, CLO 3D и AI-каталоги для брендов и дизайнеров одежды.
+      - generic [ref=e25]:
+        - link "Оставить заявку" [ref=e26] [cursor=pointer]:
+          - /url: "#contact"
+        - generic [ref=e27]: Ответ в течение 24 часов
+    - generic [ref=e29]:
+      - generic [ref=e30]: 3D Lastique
+      - generic [ref=e31]: Услуги
+      - generic [ref=e32]: От технической документации до цифровой примерки
+      - generic [ref=e33]:
+        - button "01 Конструирование" [ref=e34] [cursor=pointer]
+        - button "02 Tech Pack" [ref=e35] [cursor=pointer]
+        - button "03 CLO 3D" [ref=e36] [cursor=pointer]
+        - button "04 AI-каталог" [ref=e37] [cursor=pointer]
+        - button "05 Digital Avatar" [ref=e38] [cursor=pointer]
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - text: Конструирование
+            - generic [ref=e42]: — Pattern Making
+          - paragraph [ref=e43]: Разработка и корректировка лекал, градация по размерной сетке, адаптация под производство.
+          - generic [ref=e44]:
+            - generic [ref=e45]: Лекала
+            - generic [ref=e46]: Градация
+            - generic [ref=e47]: DXF/PDF
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e50]: Result
+            - generic [ref=e51]: .dxf / .pdf комплект
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: от 80 $
+              - generic [ref=e55]: PRICE
+            - generic [ref=e56]:
+              - generic [ref=e57]: 3–7 дн
+              - generic [ref=e58]: TIME
+      - generic [ref=e59]:
+        - generic [ref=e60]: Пакет «Лекала + Tech Pack + CLO 3D»
+        - generic [ref=e61]:
+          - generic [ref=e62]: от 350 $
+          - link "Заявка" [ref=e63] [cursor=pointer]:
+            - /url: "#contact"
+    - generic [ref=e65]:
+      - generic [ref=e66]: 3D Lastique
+      - generic [ref=e67]: Как я работаю
+      - generic [ref=e68]: Прозрачный процесс — от заявки до финального файла
+      - generic [ref=e69]:
+        - button "01 Заявка" [ref=e71] [cursor=pointer]:
+          - generic [ref=e72]: "01"
+          - generic [ref=e73]: Заявка
+        - button "02 Бриф" [ref=e76] [cursor=pointer]:
+          - generic [ref=e77]: "02"
+          - generic [ref=e78]: Бриф
+        - button "03 Работа" [ref=e81] [cursor=pointer]:
+          - generic [ref=e82]: "03"
+          - generic [ref=e83]: Работа
+        - button "04 Результат" [ref=e86] [cursor=pointer]:
+          - generic [ref=e87]: "04"
+          - generic [ref=e88]: Результат
+        - button "05 Follow-up" [ref=e91] [cursor=pointer]:
+          - generic [ref=e92]: "05"
+          - generic [ref=e93]: Follow-up
+      - generic [ref=e94]:
+        - generic [ref=e95]: 01 — Заявка
+        - paragraph [ref=e96]: Заполняешь форму — описываешь задачу, прикладываешь референсы.
+    - generic [ref=e98]:
+      - generic [ref=e99]: 3D Lastique
+      - generic [ref=e100]: Для кого
+      - generic [ref=e101]: Работаю с брендами, дизайнерами и производствами
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e104]: HOT
+          - generic [ref=e105]: Дизайнеры одежды
+          - generic [ref=e106]: Нет времени на техдок
+          - generic [ref=e107]: Tech Pack
+          - generic [ref=e108]: Лекала
+          - generic [ref=e109]: CLO 3D
+        - generic [ref=e110]:
+          - generic [ref=e111]: HOT
+          - generic [ref=e112]: Fashion-бренды
+          - generic [ref=e113]: Нет бюджета на фотосессию
+          - generic [ref=e114]: AI-каталог
+          - generic [ref=e115]: Аватар
+          - generic [ref=e116]: Лукбук
+        - generic [ref=e117]:
+          - generic [ref=e118]: Маркетплейс продавцы
+          - generic [ref=e119]: Нужны каталожные фото быстро
+          - generic [ref=e120]: AI-каталог
+          - generic [ref=e121]: Мокапы
+        - generic [ref=e122]:
+          - generic [ref=e123]: Швейные производства
+          - generic [ref=e124]: Клиенты дают плохую документацию
+          - generic [ref=e125]: Tech Pack
+          - generic [ref=e126]: Лекала
+        - generic [ref=e127]:
+          - generic [ref=e128]: Студенты fashion
+          - generic [ref=e129]: Не умеют делать Tech Pack
+          - generic [ref=e130]: Шаблоны
+          - generic [ref=e131]: Гайды
+      - generic [ref=e132]: Formats
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - generic [ref=e135]: →
+          - generic [ref=e136]: Разовая
+          - generic [ref=e137]: Один результат, фиксированная цена
+        - generic [ref=e138]:
+          - generic [ref=e139]: ⊞
+          - generic [ref=e140]: Пакет
+          - generic [ref=e141]: Комплексное решение под запуск коллекции
+        - generic [ref=e142]:
+          - generic [ref=e143]: ↺
+          - generic [ref=e144]: Сопровождение
+          - generic [ref=e145]: Ретейнер на месяц или сезон
+        - generic [ref=e146]:
+          - generic [ref=e147]: ▦
+          - generic [ref=e148]: Продукт
+          - generic [ref=e149]: Готовые шаблоны без участия времени
+    - generic [ref=e151]:
+      - generic [ref=e152]: 3D Lastique
+      - generic [ref=e153]: Цифровые продукты
+      - generic [ref=e154]: Шаблоны и ассеты для самостоятельной работы — на Gumroad и Etsy
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - generic [ref=e157]: Скоро
+          - generic [ref=e158]: Шаблоны
+          - generic [ref=e159]: Gumroad · Etsy
+          - generic [ref=e160]: Tech Pack Template
+          - generic [ref=e161]: Measurement Sheet
+          - generic [ref=e162]: BOM Template
+          - generic [ref=e163]: Fitting Comments
+        - generic [ref=e164]:
+          - generic [ref=e165]: Скоро
+          - generic [ref=e166]: Мокапы
+          - generic [ref=e167]: Gumroad · Creative Market
+          - generic [ref=e168]: Одежда flat-lay
+          - generic [ref=e169]: Каталожные сцены
+          - generic [ref=e170]: Flat Sketches
+          - generic [ref=e171]: Fashion Graphics
+        - generic [ref=e172]:
+          - generic [ref=e173]: Скоро
+          - generic [ref=e174]: Библиотеки аватаров
+          - generic [ref=e175]: Gumroad · CLO-SET
+          - generic [ref=e176]: Digital Avatars Pack
+          - generic [ref=e177]: Позы (50+)
+          - generic [ref=e178]: Каталожные сцены
+          - generic [ref=e179]: Эмоции
+        - generic [ref=e180]:
+          - generic [ref=e181]: Скоро
+          - generic [ref=e182]: Лекала PDF
+          - generic [ref=e183]: Gumroad · Etsy
+          - generic [ref=e184]: Базовые основы
+          - generic [ref=e185]: PDF Patterns
+          - generic [ref=e186]: CLO Patterns (.zpac)
+    - generic [ref=e188]:
+      - generic [ref=e189]: 3D Lastique
+      - generic [ref=e190]: Оставить заявку
+      - generic [ref=e191]: Опиши задачу — отвечу в течение 24 часов
+      - generic [ref=e192]:
+        - generic [ref=e193]:
+          - generic [ref=e194]: Опиши задачу — отвечу в течение 24 часов
+          - link "Открыть форму заявки →" [ref=e195] [cursor=pointer]:
+            - /url: https://tally.so/r/eqAp80
+        - generic [ref=e196]:
+          - generic [ref=e197]: или напиши напрямую
+          - link "Instagram @3d_lastique" [ref=e198] [cursor=pointer]:
+            - /url: https://instagram.com/3d_lastique
+            - generic [ref=e199]: Instagram
+            - generic [ref=e200]: "@3d_lastique"
+          - link "Telegram @MassSewing" [ref=e201] [cursor=pointer]:
+            - /url: https://t.me/MassSewing
+            - generic [ref=e202]: Telegram
+            - generic [ref=e203]: "@MassSewing"
+          - link "Behance 3D Lastique" [ref=e204] [cursor=pointer]:
+            - /url: https://behance.net
+            - generic [ref=e205]: Behance
+            - generic [ref=e206]: 3D Lastique
+  - contentinfo [ref=e207]:
+    - generic [ref=e208]:
+      - generic [ref=e209]: © 2025 3D Lastique · Digital Fashion Studio
+      - generic [ref=e210]: Конструирование · Tech Pack · CLO 3D · AI-визуализация

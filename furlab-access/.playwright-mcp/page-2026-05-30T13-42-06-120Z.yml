@@ -1,0 +1,783 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Узлы" [ref=e9] [cursor=pointer]:
+          - /url: /tools/nodes
+        - link "VSE" [ref=e10] [cursor=pointer]:
+          - /url: /tools/vse
+        - link "Tech Pack Hub" [ref=e11] [cursor=pointer]:
+          - /url: /tools/techpack-hub
+        - link "Техпак" [ref=e12] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e13]:
+        - button "☾" [ref=e14] [cursor=pointer]
+        - button "EN" [ref=e15] [cursor=pointer]
+  - generic [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]: Visual Standardization Engine
+      - generic [ref=e19]: Обзор для конструктора
+      - generic [ref=e20]: Расшифровка обозначений — 6 узлов из библиотеки
+    - generic [ref=e21]:
+      - button "Разметка" [ref=e22] [cursor=pointer]
+      - button "Выноски и обозначения" [ref=e23] [cursor=pointer]
+      - button "Реестр стилей" [ref=e24] [cursor=pointer]
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - 'searchbox "Поиск узла: код, название, id..." [ref=e29]'
+          - generic [ref=e30]: показано 140 из 4116
+        - generic [ref=e31]:
+          - generic "Разделы схем" [ref=e32]:
+            - button "Все схемы 4116" [ref=e33] [cursor=pointer]:
+              - generic [ref=e34]: Все схемы
+              - generic [ref=e35]: "4116"
+            - button "Аксессуары 40" [ref=e36] [cursor=pointer]:
+              - generic [ref=e37]: Аксессуары
+              - generic [ref=e38]: "40"
+            - button "Боковой вырез 27" [ref=e39] [cursor=pointer]:
+              - generic [ref=e40]: Боковой вырез
+              - generic [ref=e41]: "27"
+            - button "Вентиляция 53" [ref=e42] [cursor=pointer]:
+              - generic [ref=e43]: Вентиляция
+              - generic [ref=e44]: "53"
+            - button "Воротник 38" [ref=e45] [cursor=pointer]:
+              - generic [ref=e46]: Воротник
+              - generic [ref=e47]: "38"
+            - button "Воротник+капюшон 178" [ref=e48] [cursor=pointer]:
+              - generic [ref=e49]: Воротник+капюшон
+              - generic [ref=e50]: "178"
+            - button "Горловина 21" [ref=e51] [cursor=pointer]:
+              - generic [ref=e52]: Горловина
+              - generic [ref=e53]: "21"
+            - button "Горловина на спине 94" [ref=e54] [cursor=pointer]:
+              - generic [ref=e55]: Горловина на спине
+              - generic [ref=e56]: "94"
+            - button "Завязать шнурок 18" [ref=e57] [cursor=pointer]:
+              - generic [ref=e58]: Завязать шнурок
+              - generic [ref=e59]: "18"
+            - button "Завязка 33" [ref=e60] [cursor=pointer]:
+              - generic [ref=e61]: Завязка
+              - generic [ref=e62]: "33"
+            - button "Застежка-молния спереди 704" [ref=e63] [cursor=pointer]:
+              - generic [ref=e64]: Застежка-молния спереди
+              - generic [ref=e65]: "704"
+            - button "Капюшон с меховой планкой 31" [ref=e66] [cursor=pointer]:
+              - generic [ref=e67]: Капюшон с меховой планкой
+              - generic [ref=e68]: "31"
+            - button "карманы 713" [ref=e69] [cursor=pointer]:
+              - generic [ref=e70]: карманы
+              - generic [ref=e71]: "713"
+            - button "Кромка 575" [ref=e72] [cursor=pointer]:
+              - generic [ref=e73]: Кромка
+              - generic [ref=e74]: "575"
+            - button "Кромка воротника 64" [ref=e75] [cursor=pointer]:
+              - generic [ref=e76]: Кромка воротника
+              - generic [ref=e77]: "64"
+            - button "Маркировка 69" [ref=e78] [cursor=pointer]:
+              - generic [ref=e79]: Маркировка
+              - generic [ref=e80]: "69"
+            - button "Петля 1" [ref=e81] [cursor=pointer]:
+              - generic [ref=e82]: Петля
+              - generic [ref=e83]: "1"
+            - button "Планка спереди 150" [ref=e84] [cursor=pointer]:
+              - generic [ref=e85]: Планка спереди
+              - generic [ref=e86]: "150"
+            - button "Плечо 4" [ref=e87] [cursor=pointer]:
+              - generic [ref=e88]: Плечо
+              - generic [ref=e89]: "4"
+            - button "Подвернуть 18" [ref=e90] [cursor=pointer]:
+              - generic [ref=e91]: Подвернуть
+              - generic [ref=e92]: "18"
+            - button "Полумесяц 2" [ref=e93] [cursor=pointer]:
+              - generic [ref=e94]: Полумесяц
+              - generic [ref=e95]: "2"
+            - button "Полупояс 48" [ref=e96] [cursor=pointer]:
+              - generic [ref=e97]: Полупояс
+              - generic [ref=e98]: "48"
+            - button "Пояс 344" [ref=e99] [cursor=pointer]:
+              - generic [ref=e100]: Пояс
+              - generic [ref=e101]: "344"
+            - button "пуллер 4" [ref=e102] [cursor=pointer]:
+              - generic [ref=e103]: пуллер
+              - generic [ref=e104]: "4"
+            - button "Разрез рукава 9" [ref=e105] [cursor=pointer]:
+              - generic [ref=e106]: Разрез рукава
+              - generic [ref=e107]: "9"
+            - button "Разрез сбоку (CT) 137" [ref=e108] [cursor=pointer]:
+              - generic [ref=e109]: Разрез сбоку (CT)
+              - generic [ref=e110]: "137"
+            - button "Ремни 5" [ref=e111] [cursor=pointer]:
+              - generic [ref=e112]: Ремни
+              - generic [ref=e113]: "5"
+            - button "Система шнуровок 53" [ref=e114] [cursor=pointer]:
+              - generic [ref=e115]: Система шнуровок
+              - generic [ref=e116]: "53"
+            - button "СнежныеGaiter 11" [ref=e117] [cursor=pointer]:
+              - generic [ref=e118]: СнежныеGaiter
+              - generic [ref=e119]: "11"
+            - button "СнежныеSkirt 29" [ref=e120] [cursor=pointer]:
+              - generic [ref=e121]: СнежныеSkirt
+              - generic [ref=e122]: "29"
+            - button "Съемные детали 12" [ref=e123] [cursor=pointer]:
+              - generic [ref=e124]: Съемные детали
+              - generic [ref=e125]: "12"
+            - button "трубопроводы 58" [ref=e126] [cursor=pointer]:
+              - generic [ref=e127]: трубопроводы
+              - generic [ref=e128]: "58"
+            - button "Туннель 47" [ref=e129] [cursor=pointer]:
+              - generic [ref=e130]: Туннель
+              - generic [ref=e131]: "47"
+            - button "Усиление 7" [ref=e132] [cursor=pointer]:
+              - generic [ref=e133]: Усиление
+              - generic [ref=e134]: "7"
+            - button "Швы 311" [ref=e135] [cursor=pointer]:
+              - generic [ref=e136]: Швы
+              - generic [ref=e137]: "311"
+            - button "Шлевка для ремня 22" [ref=e138] [cursor=pointer]:
+              - generic [ref=e139]: Шлевка для ремня
+              - generic [ref=e140]: "22"
+            - button "Шлица (вырез сзади) 25" [ref=e141] [cursor=pointer]:
+              - generic [ref=e142]: Шлица (вырез сзади)
+              - generic [ref=e143]: "25"
+            - button "Fly 119" [ref=e144] [cursor=pointer]:
+              - generic [ref=e145]: Fly
+              - generic [ref=e146]: "119"
+            - button "front_placket_FP00129.ai 1" [ref=e147] [cursor=pointer]:
+              - generic [ref=e148]: front_placket_FP00129.ai
+              - generic [ref=e149]: "1"
+            - button "neckline_FN00001.ai 1" [ref=e150] [cursor=pointer]:
+              - generic [ref=e151]: neckline_FN00001.ai
+              - generic [ref=e152]: "1"
+            - button "seams_SE00401.ai 1" [ref=e153] [cursor=pointer]:
+              - generic [ref=e154]: seams_SE00401.ai
+              - generic [ref=e155]: "1"
+            - button "sleeve_vent_SC00001.ai 1" [ref=e156] [cursor=pointer]:
+              - generic [ref=e157]: sleeve_vent_SC00001.ai
+              - generic [ref=e158]: "1"
+            - button "waistband_BE00001.ai 1" [ref=e159] [cursor=pointer]:
+              - generic [ref=e160]: waistband_BE00001.ai
+              - generic [ref=e161]: "1"
+            - button "Yoke 37" [ref=e162] [cursor=pointer]:
+              - generic [ref=e163]: Yoke
+              - generic [ref=e164]: "37"
+          - generic [ref=e165]:
+            - button "front_placket_FP00129.ai FRONT_PL" [ref=e166] [cursor=pointer]:
+              - generic [ref=e167]:
+                - generic [ref=e168]: front_placket_FP00129.ai
+                - generic [ref=e169]: FRONT_PL
+            - button "neckline_FN00001.ai NECKLINE" [ref=e170] [cursor=pointer]:
+              - generic [ref=e171]:
+                - generic [ref=e172]: neckline_FN00001.ai
+                - generic [ref=e173]: NECKLINE
+            - button "seams_SE00401.ai SEAMS_SE" [ref=e174] [cursor=pointer]:
+              - generic [ref=e175]:
+                - generic [ref=e176]: seams_SE00401.ai
+                - generic [ref=e177]: SEAMS_SE
+            - button "sleeve_vent_SC00001.ai SLEEVE_V" [ref=e178] [cursor=pointer]:
+              - generic [ref=e179]:
+                - generic [ref=e180]: sleeve_vent_SC00001.ai
+                - generic [ref=e181]: SLEEVE_V
+            - button "waistband_BE00001.ai WAISTBAN" [ref=e182] [cursor=pointer]:
+              - generic [ref=e183]:
+                - generic [ref=e184]: waistband_BE00001.ai
+                - generic [ref=e185]: WAISTBAN
+            - button "Усиление RE00001" [ref=e186] [cursor=pointer]:
+              - generic [ref=e187]:
+                - generic [ref=e188]: Усиление
+                - generic [ref=e189]: RE00001
+            - button "Усиление RE00002" [ref=e190] [cursor=pointer]:
+              - generic [ref=e191]:
+                - generic [ref=e192]: Усиление
+                - generic [ref=e193]: RE00002
+            - button "Усиление RE00003 готово 1" [ref=e194] [cursor=pointer]:
+              - generic [ref=e195]:
+                - generic [ref=e196]: Усиление
+                - generic [ref=e197]: RE00003
+              - generic [ref=e198]: готово
+              - generic [ref=e199]: "1"
+            - button "Усиление RE00004" [ref=e200] [cursor=pointer]:
+              - generic [ref=e201]:
+                - generic [ref=e202]: Усиление
+                - generic [ref=e203]: RE00004
+            - button "Усиление RE00005" [ref=e204] [cursor=pointer]:
+              - generic [ref=e205]:
+                - generic [ref=e206]: Усиление
+                - generic [ref=e207]: RE00005
+            - button "Усиление RE00006" [ref=e208] [cursor=pointer]:
+              - generic [ref=e209]:
+                - generic [ref=e210]: Усиление
+                - generic [ref=e211]: RE00006
+            - button "Усиление RE00008" [ref=e212] [cursor=pointer]:
+              - generic [ref=e213]:
+                - generic [ref=e214]: Усиление
+                - generic [ref=e215]: RE00008
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00150 готово 1" [ref=e216] [cursor=pointer]:
+              - generic [ref=e217]:
+                - generic [ref=e218]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e219]: LB00150
+              - generic [ref=e220]: готово
+              - generic [ref=e221]: "1"
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00151 готово 1" [ref=e222] [cursor=pointer]:
+              - generic [ref=e223]:
+                - generic [ref=e224]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e225]: LB00151
+              - generic [ref=e226]: готово
+              - generic [ref=e227]: "1"
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00152 готово 1" [ref=e228] [cursor=pointer]:
+              - generic [ref=e229]:
+                - generic [ref=e230]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e231]: LB00152
+              - generic [ref=e232]: готово
+              - generic [ref=e233]: "1"
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00153 готово 1" [ref=e234] [cursor=pointer]:
+              - generic [ref=e235]:
+                - generic [ref=e236]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e237]: LB00153
+              - generic [ref=e238]: готово
+              - generic [ref=e239]: "1"
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00154 готово 1" [ref=e240] [cursor=pointer]:
+              - generic [ref=e241]:
+                - generic [ref=e242]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e243]: LB00154
+              - generic [ref=e244]: готово
+              - generic [ref=e245]: "1"
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00155" [ref=e246] [cursor=pointer]:
+              - generic [ref=e247]:
+                - generic [ref=e248]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e249]: LB00155
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00156" [ref=e250] [cursor=pointer]:
+              - generic [ref=e251]:
+                - generic [ref=e252]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e253]: LB00156
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00157" [ref=e254] [cursor=pointer]:
+              - generic [ref=e255]:
+                - generic [ref=e256]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e257]: LB00157
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00158" [ref=e258] [cursor=pointer]:
+              - generic [ref=e259]:
+                - generic [ref=e260]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e261]: LB00158
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00159" [ref=e262] [cursor=pointer]:
+              - generic [ref=e263]:
+                - generic [ref=e264]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e265]: LB00159
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00160" [ref=e266] [cursor=pointer]:
+              - generic [ref=e267]:
+                - generic [ref=e268]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e269]: LB00160
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00163" [ref=e270] [cursor=pointer]:
+              - generic [ref=e271]:
+                - generic [ref=e272]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e273]: LB00163
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00164" [ref=e274] [cursor=pointer]:
+              - generic [ref=e275]:
+                - generic [ref=e276]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e277]: LB00164
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00165" [ref=e278] [cursor=pointer]:
+              - generic [ref=e279]:
+                - generic [ref=e280]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e281]: LB00165
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00166" [ref=e282] [cursor=pointer]:
+              - generic [ref=e283]:
+                - generic [ref=e284]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e285]: LB00166
+            - button "Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199) LB00167" [ref=e286] [cursor=pointer]:
+              - generic [ref=e287]:
+                - generic [ref=e288]: Маркировка / 1.Top, SET for neckline & Swim& Bra(150-199)
+                - generic [ref=e289]: LB00167
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00250" [ref=e290] [cursor=pointer]:
+              - generic [ref=e291]:
+                - generic [ref=e292]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e293]: LB00250
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00251" [ref=e294] [cursor=pointer]:
+              - generic [ref=e295]:
+                - generic [ref=e296]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e297]: LB00251
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00252" [ref=e298] [cursor=pointer]:
+              - generic [ref=e299]:
+                - generic [ref=e300]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e301]: LB00252
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00253" [ref=e302] [cursor=pointer]:
+              - generic [ref=e303]:
+                - generic [ref=e304]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e305]: LB00253
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00254" [ref=e306] [cursor=pointer]:
+              - generic [ref=e307]:
+                - generic [ref=e308]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e309]: LB00254
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00255" [ref=e310] [cursor=pointer]:
+              - generic [ref=e311]:
+                - generic [ref=e312]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e313]: LB00255
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00256" [ref=e314] [cursor=pointer]:
+              - generic [ref=e315]:
+                - generic [ref=e316]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e317]: LB00256
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00257" [ref=e318] [cursor=pointer]:
+              - generic [ref=e319]:
+                - generic [ref=e320]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e321]: LB00257
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00259" [ref=e322] [cursor=pointer]:
+              - generic [ref=e323]:
+                - generic [ref=e324]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e325]: LB00259
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00261" [ref=e326] [cursor=pointer]:
+              - generic [ref=e327]:
+                - generic [ref=e328]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e329]: LB00261
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00262 готово 1" [ref=e330] [cursor=pointer]:
+              - generic [ref=e331]:
+                - generic [ref=e332]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e333]: LB00262
+              - generic [ref=e334]: готово
+              - generic [ref=e335]: "1"
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00263" [ref=e336] [cursor=pointer]:
+              - generic [ref=e337]:
+                - generic [ref=e338]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e339]: LB00263
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00264" [ref=e340] [cursor=pointer]:
+              - generic [ref=e341]:
+                - generic [ref=e342]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e343]: LB00264
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00265" [ref=e344] [cursor=pointer]:
+              - generic [ref=e345]:
+                - generic [ref=e346]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e347]: LB00265
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00266 готово 1" [ref=e348] [cursor=pointer]:
+              - generic [ref=e349]:
+                - generic [ref=e350]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e351]: LB00266
+              - generic [ref=e352]: готово
+              - generic [ref=e353]: "1"
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00267" [ref=e354] [cursor=pointer]:
+              - generic [ref=e355]:
+                - generic [ref=e356]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e357]: LB00267
+            - button "Маркировка / 2.Top, SET in side seam (250-299) LB00268" [ref=e358] [cursor=pointer]:
+              - generic [ref=e359]:
+                - generic [ref=e360]: Маркировка / 2.Top, SET in side seam (250-299)
+                - generic [ref=e361]: LB00268
+            - button "Маркировка / 1.Bottom, SET in waist, upper edge (450-499) LB00466" [ref=e362] [cursor=pointer]:
+              - generic [ref=e363]:
+                - generic [ref=e364]: Маркировка / 1.Bottom, SET in waist, upper edge (450-499)
+                - generic [ref=e365]: LB00466
+            - button "Маркировка / 1.Bottom, SET in waist, upper edge (450-499) LB00476" [ref=e366] [cursor=pointer]:
+              - generic [ref=e367]:
+                - generic [ref=e368]: Маркировка / 1.Bottom, SET in waist, upper edge (450-499)
+                - generic [ref=e369]: LB00476
+            - button "Маркировка / 2.Bottom, SET in side seam (550-599) LB00550" [ref=e370] [cursor=pointer]:
+              - generic [ref=e371]:
+                - generic [ref=e372]: Маркировка / 2.Bottom, SET in side seam (550-599)
+                - generic [ref=e373]: LB00550
+            - button "Маркировка / 2.Bottom, SET in side seam (550-599) LB00551" [ref=e374] [cursor=pointer]:
+              - generic [ref=e375]:
+                - generic [ref=e376]: Маркировка / 2.Bottom, SET in side seam (550-599)
+                - generic [ref=e377]: LB00551
+            - button "Маркировка / 2.Bottom, SET in side seam (550-599) LB00552" [ref=e378] [cursor=pointer]:
+              - generic [ref=e379]:
+                - generic [ref=e380]: Маркировка / 2.Bottom, SET in side seam (550-599)
+                - generic [ref=e381]: LB00552
+            - button "Маркировка / 2.Bottom, SET in side seam (550-599) LB00553" [ref=e382] [cursor=pointer]:
+              - generic [ref=e383]:
+                - generic [ref=e384]: Маркировка / 2.Bottom, SET in side seam (550-599)
+                - generic [ref=e385]: LB00553
+            - button "Маркировка / 3. Accessories (600-699) LB00600" [ref=e386] [cursor=pointer]:
+              - generic [ref=e387]:
+                - generic [ref=e388]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e389]: LB00600
+            - button "Маркировка / 3. Accessories (600-699) LB00601" [ref=e390] [cursor=pointer]:
+              - generic [ref=e391]:
+                - generic [ref=e392]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e393]: LB00601
+            - button "Маркировка / 3. Accessories (600-699) LB00602" [ref=e394] [cursor=pointer]:
+              - generic [ref=e395]:
+                - generic [ref=e396]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e397]: LB00602
+            - button "Маркировка / 3. Accessories (600-699) LB00603" [ref=e398] [cursor=pointer]:
+              - generic [ref=e399]:
+                - generic [ref=e400]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e401]: LB00603
+            - button "Маркировка / 3. Accessories (600-699) LB00604" [ref=e402] [cursor=pointer]:
+              - generic [ref=e403]:
+                - generic [ref=e404]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e405]: LB00604
+            - button "Маркировка / 3. Accessories (600-699) LB00605" [ref=e406] [cursor=pointer]:
+              - generic [ref=e407]:
+                - generic [ref=e408]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e409]: LB00605
+            - button "Маркировка / 3. Accessories (600-699) LB00606" [ref=e410] [cursor=pointer]:
+              - generic [ref=e411]:
+                - generic [ref=e412]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e413]: LB00606
+            - button "Маркировка / 3. Accessories (600-699) LB00607" [ref=e414] [cursor=pointer]:
+              - generic [ref=e415]:
+                - generic [ref=e416]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e417]: LB00607
+            - button "Маркировка / 3. Accessories (600-699) LB00608" [ref=e418] [cursor=pointer]:
+              - generic [ref=e419]:
+                - generic [ref=e420]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e421]: LB00608
+            - button "Маркировка / 3. Accessories (600-699) LB00609" [ref=e422] [cursor=pointer]:
+              - generic [ref=e423]:
+                - generic [ref=e424]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e425]: LB00609
+            - button "Маркировка / 3. Accessories (600-699) LB00610" [ref=e426] [cursor=pointer]:
+              - generic [ref=e427]:
+                - generic [ref=e428]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e429]: LB00610
+            - button "Маркировка / 3. Accessories (600-699) LB00611" [ref=e430] [cursor=pointer]:
+              - generic [ref=e431]:
+                - generic [ref=e432]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e433]: LB00611
+            - button "Маркировка / 3. Accessories (600-699) LB00612" [ref=e434] [cursor=pointer]:
+              - generic [ref=e435]:
+                - generic [ref=e436]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e437]: LB00612
+            - button "Маркировка / 3. Accessories (600-699) LB00613" [ref=e438] [cursor=pointer]:
+              - generic [ref=e439]:
+                - generic [ref=e440]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e441]: LB00613
+            - button "Маркировка / 3. Accessories (600-699) LB00614" [ref=e442] [cursor=pointer]:
+              - generic [ref=e443]:
+                - generic [ref=e444]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e445]: LB00614
+            - button "Маркировка / 3. Accessories (600-699) LB00615 готово 1" [ref=e446] [cursor=pointer]:
+              - generic [ref=e447]:
+                - generic [ref=e448]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e449]: LB00615
+              - generic [ref=e450]: готово
+              - generic [ref=e451]: "1"
+            - button "Маркировка / 3. Accessories (600-699) LB00616" [ref=e452] [cursor=pointer]:
+              - generic [ref=e453]:
+                - generic [ref=e454]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e455]: LB00616
+            - button "Маркировка / 3. Accessories (600-699) LB00617" [ref=e456] [cursor=pointer]:
+              - generic [ref=e457]:
+                - generic [ref=e458]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e459]: LB00617
+            - button "Маркировка / 3. Accessories (600-699) LB00618" [ref=e460] [cursor=pointer]:
+              - generic [ref=e461]:
+                - generic [ref=e462]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e463]: LB00618
+            - button "Маркировка / 3. Accessories (600-699) LB00620" [ref=e464] [cursor=pointer]:
+              - generic [ref=e465]:
+                - generic [ref=e466]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e467]: LB00620
+            - button "Маркировка / 3. Accessories (600-699) LB00622" [ref=e468] [cursor=pointer]:
+              - generic [ref=e469]:
+                - generic [ref=e470]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e471]: LB00622
+            - button "Маркировка / 3. Accessories (600-699) LB00623" [ref=e472] [cursor=pointer]:
+              - generic [ref=e473]:
+                - generic [ref=e474]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e475]: LB00623
+            - button "Маркировка / 3. Accessories (600-699) LB00625" [ref=e476] [cursor=pointer]:
+              - generic [ref=e477]:
+                - generic [ref=e478]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e479]: LB00625
+            - button "Маркировка / 3. Accessories (600-699) LB00626" [ref=e480] [cursor=pointer]:
+              - generic [ref=e481]:
+                - generic [ref=e482]: Маркировка / 3. Accessories (600-699)
+                - generic [ref=e483]: LB00626
+            - button "Маркировка / ACC past LB00612" [ref=e484] [cursor=pointer]:
+              - generic [ref=e485]:
+                - generic [ref=e486]: Маркировка / ACC past
+                - generic [ref=e487]: LB00612
+            - button "Маркировка / ACC past LB00619" [ref=e488] [cursor=pointer]:
+              - generic [ref=e489]:
+                - generic [ref=e490]: Маркировка / ACC past
+                - generic [ref=e491]: LB00619
+            - button "Маркировка / ACC past LB00621" [ref=e492] [cursor=pointer]:
+              - generic [ref=e493]:
+                - generic [ref=e494]: Маркировка / ACC past
+                - generic [ref=e495]: LB00621
+            - button "Маркировка / ACC past LB00624" [ref=e496] [cursor=pointer]:
+              - generic [ref=e497]:
+                - generic [ref=e498]: Маркировка / ACC past
+                - generic [ref=e499]: LB00624
+            - button "Маркировка / Underwear BOTTOM" [ref=e500] [cursor=pointer]:
+              - generic [ref=e501]:
+                - generic [ref=e502]: Маркировка / Underwear
+                - generic [ref=e503]: BOTTOM
+            - button "Маркировка / Underwear TOP" [ref=e504] [cursor=pointer]:
+              - generic [ref=e505]:
+                - generic [ref=e506]: Маркировка / Underwear
+                - generic [ref=e507]: TOP
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00001" [ref=e508] [cursor=pointer]:
+              - generic [ref=e509]:
+                - generic [ref=e510]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e511]: CT00001
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00002" [ref=e512] [cursor=pointer]:
+              - generic [ref=e513]:
+                - generic [ref=e514]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e515]: CT00002
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00003" [ref=e516] [cursor=pointer]:
+              - generic [ref=e517]:
+                - generic [ref=e518]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e519]: CT00003
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00004" [ref=e520] [cursor=pointer]:
+              - generic [ref=e521]:
+                - generic [ref=e522]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e523]: CT00004
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00005" [ref=e524] [cursor=pointer]:
+              - generic [ref=e525]:
+                - generic [ref=e526]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e527]: CT00005
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00006" [ref=e528] [cursor=pointer]:
+              - generic [ref=e529]:
+                - generic [ref=e530]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e531]: CT00006
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00007" [ref=e532] [cursor=pointer]:
+              - generic [ref=e533]:
+                - generic [ref=e534]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e535]: CT00007
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00008" [ref=e536] [cursor=pointer]:
+              - generic [ref=e537]:
+                - generic [ref=e538]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e539]: CT00008
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00009" [ref=e540] [cursor=pointer]:
+              - generic [ref=e541]:
+                - generic [ref=e542]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e543]: CT00009
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00010" [ref=e544] [cursor=pointer]:
+              - generic [ref=e545]:
+                - generic [ref=e546]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e547]: CT00010
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00011" [ref=e548] [cursor=pointer]:
+              - generic [ref=e549]:
+                - generic [ref=e550]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e551]: CT00011
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00012" [ref=e552] [cursor=pointer]:
+              - generic [ref=e553]:
+                - generic [ref=e554]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e555]: CT00012
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00013" [ref=e556] [cursor=pointer]:
+              - generic [ref=e557]:
+                - generic [ref=e558]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e559]: CT00013
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00014" [ref=e560] [cursor=pointer]:
+              - generic [ref=e561]:
+                - generic [ref=e562]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e563]: CT00014
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00015" [ref=e564] [cursor=pointer]:
+              - generic [ref=e565]:
+                - generic [ref=e566]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e567]: CT00015
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00016" [ref=e568] [cursor=pointer]:
+              - generic [ref=e569]:
+                - generic [ref=e570]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e571]: CT00016
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00017" [ref=e572] [cursor=pointer]:
+              - generic [ref=e573]:
+                - generic [ref=e574]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e575]: CT00017
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00018" [ref=e576] [cursor=pointer]:
+              - generic [ref=e577]:
+                - generic [ref=e578]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e579]: CT00018
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00019" [ref=e580] [cursor=pointer]:
+              - generic [ref=e581]:
+                - generic [ref=e582]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e583]: CT00019
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00020" [ref=e584] [cursor=pointer]:
+              - generic [ref=e585]:
+                - generic [ref=e586]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e587]: CT00020
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00021" [ref=e588] [cursor=pointer]:
+              - generic [ref=e589]:
+                - generic [ref=e590]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e591]: CT00021
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00022 готово 1" [ref=e592] [cursor=pointer]:
+              - generic [ref=e593]:
+                - generic [ref=e594]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e595]: CT00022
+              - generic [ref=e596]: готово
+              - generic [ref=e597]: "1"
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00023 готово 1" [ref=e598] [cursor=pointer]:
+              - generic [ref=e599]:
+                - generic [ref=e600]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e601]: CT00023
+              - generic [ref=e602]: готово
+              - generic [ref=e603]: "1"
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00024 готово 1" [ref=e604] [cursor=pointer]:
+              - generic [ref=e605]:
+                - generic [ref=e606]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e607]: CT00024
+              - generic [ref=e608]: готово
+              - generic [ref=e609]: "1"
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00026 готово 1" [ref=e610] [cursor=pointer]:
+              - generic [ref=e611]:
+                - generic [ref=e612]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e613]: CT00026
+              - generic [ref=e614]: готово
+              - generic [ref=e615]: "1"
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00035" [ref=e616] [cursor=pointer]:
+              - generic [ref=e617]:
+                - generic [ref=e618]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e619]: CT00035
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00036" [ref=e620] [cursor=pointer]:
+              - generic [ref=e621]:
+                - generic [ref=e622]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e623]: CT00036
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00037" [ref=e624] [cursor=pointer]:
+              - generic [ref=e625]:
+                - generic [ref=e626]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e627]: CT00037
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00038" [ref=e628] [cursor=pointer]:
+              - generic [ref=e629]:
+                - generic [ref=e630]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e631]: CT00038
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00039" [ref=e632] [cursor=pointer]:
+              - generic [ref=e633]:
+                - generic [ref=e634]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e635]: CT00039
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00040" [ref=e636] [cursor=pointer]:
+              - generic [ref=e637]:
+                - generic [ref=e638]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e639]: CT00040
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00041" [ref=e640] [cursor=pointer]:
+              - generic [ref=e641]:
+                - generic [ref=e642]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e643]: CT00041
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00042" [ref=e644] [cursor=pointer]:
+              - generic [ref=e645]:
+                - generic [ref=e646]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e647]: CT00042
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00043 готово 1" [ref=e648] [cursor=pointer]:
+              - generic [ref=e649]:
+                - generic [ref=e650]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e651]: CT00043
+              - generic [ref=e652]: готово
+              - generic [ref=e653]: "1"
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00044 готово 1" [ref=e654] [cursor=pointer]:
+              - generic [ref=e655]:
+                - generic [ref=e656]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e657]: CT00044
+              - generic [ref=e658]: готово
+              - generic [ref=e659]: "1"
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00045" [ref=e660] [cursor=pointer]:
+              - generic [ref=e661]:
+                - generic [ref=e662]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e663]: CT00045
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00046" [ref=e664] [cursor=pointer]:
+              - generic [ref=e665]:
+                - generic [ref=e666]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e667]: CT00046
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00047" [ref=e668] [cursor=pointer]:
+              - generic [ref=e669]:
+                - generic [ref=e670]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e671]: CT00047
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00048" [ref=e672] [cursor=pointer]:
+              - generic [ref=e673]:
+                - generic [ref=e674]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e675]: CT00048
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00049" [ref=e676] [cursor=pointer]:
+              - generic [ref=e677]:
+                - generic [ref=e678]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e679]: CT00049
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00050" [ref=e680] [cursor=pointer]:
+              - generic [ref=e681]:
+                - generic [ref=e682]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e683]: CT00050
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00051" [ref=e684] [cursor=pointer]:
+              - generic [ref=e685]:
+                - generic [ref=e686]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e687]: CT00051
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00052" [ref=e688] [cursor=pointer]:
+              - generic [ref=e689]:
+                - generic [ref=e690]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e691]: CT00052
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00053" [ref=e692] [cursor=pointer]:
+              - generic [ref=e693]:
+                - generic [ref=e694]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e695]: CT00053
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00054" [ref=e696] [cursor=pointer]:
+              - generic [ref=e697]:
+                - generic [ref=e698]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e699]: CT00054
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00055 готово 1" [ref=e700] [cursor=pointer]:
+              - generic [ref=e701]:
+                - generic [ref=e702]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e703]: CT00055
+              - generic [ref=e704]: готово
+              - generic [ref=e705]: "1"
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00056" [ref=e706] [cursor=pointer]:
+              - generic [ref=e707]:
+                - generic [ref=e708]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e709]: CT00056
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00057" [ref=e710] [cursor=pointer]:
+              - generic [ref=e711]:
+                - generic [ref=e712]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e713]: CT00057
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00059" [ref=e714] [cursor=pointer]:
+              - generic [ref=e715]:
+                - generic [ref=e716]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e717]: CT00059
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00061" [ref=e718] [cursor=pointer]:
+              - generic [ref=e719]:
+                - generic [ref=e720]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e721]: CT00061
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00062" [ref=e722] [cursor=pointer]:
+              - generic [ref=e723]:
+                - generic [ref=e724]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e725]: CT00062
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00063 готово 1" [ref=e726] [cursor=pointer]:
+              - generic [ref=e727]:
+                - generic [ref=e728]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e729]: CT00063
+              - generic [ref=e730]: готово
+              - generic [ref=e731]: "1"
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00064" [ref=e732] [cursor=pointer]:
+              - generic [ref=e733]:
+                - generic [ref=e734]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e735]: CT00064
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00065" [ref=e736] [cursor=pointer]:
+              - generic [ref=e737]:
+                - generic [ref=e738]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e739]: CT00065
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00066" [ref=e740] [cursor=pointer]:
+              - generic [ref=e741]:
+                - generic [ref=e742]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e743]: CT00066
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00067" [ref=e744] [cursor=pointer]:
+              - generic [ref=e745]:
+                - generic [ref=e746]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e747]: CT00067
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00068" [ref=e748] [cursor=pointer]:
+              - generic [ref=e749]:
+                - generic [ref=e750]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e751]: CT00068
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00069 готово 2" [ref=e752] [cursor=pointer]:
+              - generic [ref=e753]:
+                - generic [ref=e754]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e755]: CT00069
+              - generic [ref=e756]: готово
+              - generic [ref=e757]: "2"
+            - button "Разрез сбоку (CT) / 1. With zipper(...-199) CT00070" [ref=e758] [cursor=pointer]:
+              - generic [ref=e759]:
+                - generic [ref=e760]: Разрез сбоку (CT) / 1. With zipper(...-199)
+                - generic [ref=e761]: CT00070
+      - generic [ref=e762]:
+        - generic [ref=e764]:
+          - generic [ref=e765]:
+            - generic [ref=e766]:
+              - text: ОРИГИНАЛ
+              - button "↺" [ref=e767] [cursor=pointer]
+              - generic [ref=e768]: 100% · колесо = масштаб · перетаскивание = сдвиг
+            - img [ref=e771]
+          - generic [ref=e772]:
+            - generic [ref=e773]:
+              - text: СТАНДАРТ
+              - button "↺" [ref=e774] [cursor=pointer]
+              - generic [ref=e775]: 100% · колесо = масштаб · перетаскивание = сдвиг
+            - img [ref=e778]
+        - generic [ref=e780]:
+          - generic [ref=e781]:
+            - strong [ref=e782]: Для этого узла пока нет строк ролей.
+            - generic [ref=e783]: В сгенерированном SVG нет элементов с data-role. Проверь экспорт или выбери другой узел.
+          - button "Сгенерировать (0/0 ролей распознано)" [ref=e785] [cursor=pointer]

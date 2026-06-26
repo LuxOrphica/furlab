@@ -1,0 +1,40 @@
+{
+  "name": "radial_smoke",
+  "request": {
+    "layoutType": "radial",
+    "zone": {
+      "id": "zone-smoke-radial-1",
+      "points": [
+        { "x": 0, "y": 0 },
+        { "x": 120, "y": 0 },
+        { "x": 120, "y": 80 },
+        { "x": 0, "y": 80 }
+      ]
+    },
+    "inputs": {
+      "normalizeRules": {
+        "minFragmentWidthMm": 1,
+        "minFragmentLengthMm": 1,
+        "mergeSmallFragments": false
+      }
+    },
+    "options": {
+      "ringCount": 3,
+      "sectorCount": 8,
+      "rotationDeg": 0,
+      "innerRadiusMm": 0,
+      "centerMode": "auto",
+      "gapX": 0,
+      "gapY": 0,
+      "cornerRadius": 0
+    },
+    "seed": 123
+  },
+  "expect": {
+    "httpStatus": 200,
+    "ok": true,
+    "layoutType": "radial",
+    "resultStatusIn": ["ok"],
+    "minRenderItems": 6
+  }
+}

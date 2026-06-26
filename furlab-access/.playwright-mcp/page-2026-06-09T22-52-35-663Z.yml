@@ -1,0 +1,175 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e90] [cursor=pointer]
+      - generic [ref=e91]: — Без названия
+      - button "Преобразовать в лекала" [ref=e92] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+    - generic [ref=e423]:
+      - generic [ref=e424]:
+        - text: DEV · Layout Contract Monitor
+        - generic [ref=e425]: —
+      - generic [ref=e426]:
+        - generic [ref=e427]: endpoint
+        - generic [ref=e428]: —
+        - generic [ref=e429]: layoutType
+        - generic [ref=e430]: —
+        - generic [ref=e431]: payloadHasHoles
+        - generic [ref=e432]: —
+        - generic [ref=e433]: holesReceived
+        - generic [ref=e434]: —
+        - generic [ref=e435]: usedZoneDomain
+        - generic [ref=e436]: —
+        - generic [ref=e437]: outerArea
+        - generic [ref=e438]: —
+        - generic [ref=e439]: holesCount
+        - generic [ref=e440]: —
+        - generic [ref=e441]: holesArea
+        - generic [ref=e442]: —
+        - generic [ref=e443]: zoneDomainArea
+        - generic [ref=e444]: —
+        - generic [ref=e445]: fragmentCount
+        - generic [ref=e446]: —
+        - generic [ref=e447]: inHolesArea
+        - generic [ref=e448]: —
+        - generic [ref=e449]: outsideDomainArea
+        - generic [ref=e450]: —
+        - generic [ref=e451]: covRatioDenom
+        - generic [ref=e452]: —
+        - generic [ref=e453]: contractValid
+        - generic [ref=e454]: —
+        - generic [ref=e455]: issues
+        - generic [ref=e456]: —
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - generic "Инструменты зон" [ref=e11]:
+          - generic [ref=e12]:
+            - generic [ref=e13]: Fur Lab
+            - button "Выбор" [ref=e14] [cursor=pointer]
+            - button "Линия зонирования" [ref=e16] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e18] [cursor=pointer]
+        - group [ref=e20]:
+          - generic "Настройки отображения" [ref=e21] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e22]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: description
+          - generic [ref=e26]: Отчеты
+      - complementary [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Сборка меха
+          - generic [ref=e35]:
+            - button "Зоны" [ref=e36] [cursor=pointer]
+            - button "Мех" [ref=e37] [cursor=pointer]
+            - button "Выкладки" [ref=e38] [cursor=pointer]
+          - generic [ref=e39]:
+            - button "Добавить выкладку" [ref=e562] [cursor=pointer]:
+              - generic [ref=e563]: add
+              - generic [ref=e564]: Добавить выкладку
+            - generic [ref=e565]:
+              - button "radial Радиальная 6" [ref=e566] [cursor=pointer]:
+                - img "radial" [ref=e568]
+                - generic [ref=e570]: Радиальная 6
+              - button "Удалить выкладку" [ref=e572] [cursor=pointer]:
+                - generic [ref=e573]: delete
+            - generic [ref=e574]:
+              - button "longitudinal Продольно-поперечная 7" [ref=e575] [cursor=pointer]:
+                - img "longitudinal" [ref=e577]
+                - generic [ref=e579]: Продольно-поперечная 7
+              - button "Удалить выкладку" [ref=e581] [cursor=pointer]:
+                - generic [ref=e582]: delete
+            - generic [ref=e583]:
+              - button "shifted Со смещением 8" [ref=e584] [cursor=pointer]:
+                - img "shifted" [ref=e586]
+                - generic [ref=e588]: Со смещением 8
+              - button "Удалить выкладку" [ref=e590] [cursor=pointer]:
+                - generic [ref=e591]: delete
+            - generic [ref=e592]:
+              - button "transverse Ёлочка 5" [ref=e593] [cursor=pointer]:
+                - img "transverse" [ref=e595]
+                - generic [ref=e597]: Ёлочка 5
+              - button "Удалить выкладку" [ref=e599] [cursor=pointer]:
+                - generic [ref=e600]: delete
+            - generic [ref=e601]:
+              - button "inventory_nfp_sa Из инвентаря (NFP+SA) 5" [ref=e602] [cursor=pointer]:
+                - img "inventory_nfp_sa" [ref=e604]
+                - generic [ref=e606]: Из инвентаря (NFP+SA) 5
+              - button "Удалить выкладку" [ref=e608] [cursor=pointer]:
+                - generic [ref=e609]: delete
+        - generic "Потяните для изменения высоты" [ref=e41]
+        - generic [ref=e42]:
+          - generic [ref=e43]: Редактор свойств
+          - generic [ref=e44]:
+            - generic [ref=e610]:
+              - generic [ref=e611]: Выкладка
+              - generic [ref=e612]:
+                - button "Редактировать" [ref=e613] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e614] [cursor=pointer]
+            - generic [ref=e615]:
+              - button "▾ Информация" [expanded] [ref=e616] [cursor=pointer]:
+                - generic [ref=e617]: ▾
+                - generic [ref=e618]: Информация
+              - generic [ref=e619]:
+                - generic [ref=e620]:
+                  - generic [ref=e621]: Название
+                  - generic [ref=e622]:
+                    - textbox "(Пусто)" [disabled]: Со смещением 8
+                - generic [ref=e623]:
+                  - generic [ref=e624]: Тип
+                  - generic [ref=e625]: Со смещением
+            - generic [ref=e626]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e627] [cursor=pointer]:
+                - generic [ref=e628]: ▾
+                - generic [ref=e629]: Параметры выкладки
+              - generic [ref=e630]:
+                - generic [ref=e631]:
+                  - generic [ref=e632]: Резерв под припуски, мм
+                  - generic [ref=e633]:
+                    - spinbutton [disabled]: "12.0"
+                - generic [ref=e634]:
+                  - generic [ref=e635]: Вдоль ворса, мм
+                  - generic [ref=e636]:
+                    - generic [ref=e637]: min
+                    - spinbutton [disabled]: "60"
+                    - generic [ref=e638]: max
+                    - spinbutton
+                - generic [ref=e639]:
+                  - generic [ref=e640]: Поперёк ворса, мм
+                  - generic [ref=e641]:
+                    - generic [ref=e642]: min
+                    - spinbutton [disabled]: "60"
+                    - generic [ref=e643]: max
+                    - spinbutton
+                - generic [ref=e644]:
+                  - generic [ref=e645]: Ряды
+                  - generic [ref=e646]:
+                    - spinbutton [disabled]: "5"
+                - generic [ref=e647]:
+                  - generic [ref=e648]: Колонки
+                  - generic [ref=e649]:
+                    - spinbutton [disabled]: "4"
+                - generic [ref=e650]:
+                  - generic [ref=e651]: Смещение ряда, %
+                  - generic [ref=e652]:
+                    - spinbutton [disabled]: "0"
+                - generic [ref=e653]:
+                  - generic [ref=e654]: Зазор X, мм
+                  - generic [ref=e655]:
+                    - spinbutton [disabled]: "0"
+                - generic [ref=e656]:
+                  - generic [ref=e657]: Зазор Y, мм
+                  - generic [ref=e658]:
+                    - spinbutton [disabled]: "0"
+                - generic [ref=e659]:
+                  - generic [ref=e660]: Скругление, мм
+                  - generic [ref=e661]:
+                    - spinbutton [disabled]: "0"
+  - group [ref=e47]:
+    - generic "Database" [ref=e48] [cursor=pointer]
+  - generic: x = 670.31 мм y = -698.14 мм

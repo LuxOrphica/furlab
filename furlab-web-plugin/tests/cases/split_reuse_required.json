@@ -1,0 +1,34 @@
+{
+  "name": "split_reuse_required_rect",
+  "seed": 424242,
+  "zone": {
+    "id": 9001,
+    "points": [
+      { "x": 0, "y": 0 },
+      { "x": 400, "y": 0 },
+      { "x": 400, "y": 100 },
+      { "x": 0, "y": 100 }
+    ]
+  },
+  "params": {
+    "coverageTarget": 0.98,
+    "coverageEps": 0.002,
+    "maxSolveMs": 30000,
+    "hardMaxSolveMs": 60000,
+    "napTolDeg": 180,
+    "minGainAreaMm2": 5
+  },
+  "pieces": [
+    {
+      "id": "SPLIT-ONLY-1",
+      "areaMm2": 32500,
+      "points": [
+        { "x": 0, "y": 0 },
+        { "x": 250, "y": 0 },
+        { "x": 250, "y": 130 },
+        { "x": 0, "y": 130 }
+      ]
+    }
+  ]
+}
+

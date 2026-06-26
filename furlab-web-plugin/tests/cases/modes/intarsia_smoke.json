@@ -1,0 +1,33 @@
+{
+  "name": "intarsia_smoke",
+  "request": {
+    "layoutType": "intarsia",
+    "zone": {
+      "id": "zone-smoke-2",
+      "points": [
+        { "x": 0, "y": 0 },
+        { "x": 120, "y": 0 },
+        { "x": 120, "y": 60 },
+        { "x": 0, "y": 60 }
+      ]
+    },
+    "inputs": {
+      "fillType": "regular",
+      "axis": "y",
+      "candidates": []
+    },
+    "options": {
+      "rows": 2,
+      "cols": 2
+    },
+    "seed": 123
+  },
+  "expect": {
+    "httpStatus": 200,
+    "ok": true,
+    "layoutType": "intarsia",
+    "resultStatusIn": ["ok", "failed", "needs_attention"],
+    "minRenderItems": 0
+  }
+}
+

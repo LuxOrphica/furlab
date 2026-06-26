@@ -1,0 +1,54 @@
+﻿# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+coverage/
+ui-lab/assets/uploads/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Logs / temp
+*.log
+*.tmp
+tmp/
+Отладка/
+tmp/session-archive/
+
+# Access local lock files
+*.laccdb
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Local scratch artifacts
+Отладка
+_tmp_*.txt
+_tmp_*.json
+_tmp_*.sql
+_tmp_*.log
+tools/runtime_bundle.zip
+
+# Generated archives and heavy experiment artifacts
+docs/archive/
+ui-lab/archive/
+ui-lab/assets/uploads_real_only/
+ui-lab/line-direction-visualizer-react/docs/
+ui-lab/line-direction-visualizer-react/ml/preds/
+ui-lab/line-direction-visualizer-react/ml/runs/
+
+# Local-only settings and copied databases
+.claude/
+BD/*(copy).accdb
+BD/*copy*.accdb

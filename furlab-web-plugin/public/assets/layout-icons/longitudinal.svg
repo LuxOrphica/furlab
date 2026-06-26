@@ -1,0 +1,32 @@
+<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-outside-1_2107_32341" maskUnits="userSpaceOnUse" x="0" y="0" width="14" height="21" fill="black">
+<rect fill="white" width="14" height="21"/>
+<path d="M1 1H13V20H1V1Z"/>
+</mask>
+<path d="M1 1V0H0V1H1ZM13 1H14V0H13V1ZM13 20V21H14V20H13ZM1 20H0V21H1V20ZM1 1V2H13V1V0H1V1ZM13 1H12V20H13H14V1H13ZM13 20V19H1V20V21H13V20ZM1 20H2V1H1H0V20H1Z" fill="black" mask="url(#path-1-outside-1_2107_32341)"/>
+<mask id="path-3-outside-2_2107_32341" maskUnits="userSpaceOnUse" x="14" y="0" width="14" height="21" fill="black">
+<rect fill="white" x="14" width="14" height="21"/>
+<path d="M14 1H27V20H14V1Z"/>
+</mask>
+<path d="M27 1H28V0H27V1ZM27 20V21H28V20H27ZM14 1V2H27V1V0H14V1ZM27 1H26V20H27H28V1H27ZM27 20V19H14V20V21H27V20Z" fill="black" mask="url(#path-3-outside-2_2107_32341)"/>
+<mask id="path-5-outside-3_2107_32341" maskUnits="userSpaceOnUse" x="28" y="0" width="14" height="21" fill="black">
+<rect fill="white" x="28" width="14" height="21"/>
+<path d="M28 1H41V20H28V1Z"/>
+</mask>
+<path d="M41 1H42V0H41V1ZM41 20V21H42V20H41ZM28 1V2H41V1V0H28V1ZM41 1H40V20H41H42V1H41ZM41 20V19H28V20V21H41V20Z" fill="black" mask="url(#path-5-outside-3_2107_32341)"/>
+<mask id="path-7-outside-4_2107_32341" maskUnits="userSpaceOnUse" x="0" y="21" width="14" height="21" fill="black">
+<rect fill="white" y="21" width="14" height="21"/>
+<path d="M1 21H13V41H1V21Z"/>
+</mask>
+<path d="M13 41V42H14V41H13ZM1 41H0V42H1V41ZM13 21H12V41H13H14V21H13ZM13 41V40H1V41V42H13V41ZM1 41H2V21H1H0V41H1Z" fill="black" mask="url(#path-7-outside-4_2107_32341)"/>
+<mask id="path-9-outside-5_2107_32341" maskUnits="userSpaceOnUse" x="14" y="21" width="14" height="21" fill="black">
+<rect fill="white" x="14" y="21" width="14" height="21"/>
+<path d="M14 21H27V41H14V21Z"/>
+</mask>
+<path d="M27 41V42H28V41H27ZM27 21H26V41H27H28V21H27ZM27 41V40H14V41V42H27V41Z" fill="black" mask="url(#path-9-outside-5_2107_32341)"/>
+<mask id="path-11-outside-6_2107_32341" maskUnits="userSpaceOnUse" x="28" y="21" width="14" height="21" fill="black">
+<rect fill="white" x="28" y="21" width="14" height="21"/>
+<path d="M28 21H41V41H28V21Z"/>
+</mask>
+<path d="M41 41V42H42V41H41ZM41 21H40V41H41H42V21H41ZM41 41V40H28V41V42H41V41Z" fill="black" mask="url(#path-11-outside-6_2107_32341)"/>
+</svg>

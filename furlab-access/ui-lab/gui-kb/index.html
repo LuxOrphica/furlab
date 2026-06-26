@@ -1,0 +1,59 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GUI Knowledge Base</title>
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h1>GUI KB</h1>
+      <p id="meta"></p>
+      <div class="sidebar-columns">
+        <section class="sidebar-block timeline-col">
+          <h2 class="sidebar-title">Timeline</h2>
+          <div id="sidebarTimeline" class="sidebar-timeline"></div>
+        </section>
+        <section class="sidebar-block menu-col">
+          <h2 class="sidebar-title">Меню</h2>
+          <input id="search" type="search" placeholder="Поиск заметок..." />
+          <nav id="nav"></nav>
+        </section>
+      </div>
+    </aside>
+    <main class="main">
+      <div class="view-switch">
+        <button id="viewNoteBtn" class="tab-btn active" type="button">Заметка</button>
+        <button id="viewGraphBtn" class="tab-btn" type="button">Граф</button>
+        <button id="viewTimelineBtn" class="tab-btn" type="button">Timeline</button>
+      </div>
+
+      <section id="noteView" class="panel active">
+        <div class="note-layout">
+          <article id="article"></article>
+          <aside id="imageRail" class="image-rail"></aside>
+        </div>
+      </section>
+
+      <section id="graphView" class="panel">
+        <div class="graph-wrap">
+          <canvas id="graphCanvas"></canvas>
+        </div>
+        <p id="graphMeta"></p>
+      </section>
+
+      <section id="timelineView" class="panel">
+        <div class="timeline-wrap">
+          <div id="timelineMeta" class="timeline-meta"></div>
+          <div id="timelineList" class="timeline-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./data/notes-data.js"></script>
+  <script src="./src/app.js"></script>
+</body>
+</html>

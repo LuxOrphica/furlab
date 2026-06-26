@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="glyph">
+<rect id="Rectangle 138" x="0.5" y="0.5" width="119" height="119" stroke="var(--stroke-0, black)"/>
+<circle id="Ellipse 15" cx="60" cy="60" r="59.5" stroke="var(--stroke-0, black)"/>
+<circle id="Ellipse 16" cx="60.4724" cy="60.4724" r="34.4606" stroke="var(--stroke-0, black)"/>
+<line id="Line 13" x1="60.0276" y1="2.18557e-08" x2="60.0276" y2="120" stroke="var(--stroke-0, black)"/>
+<line id="Line 14" y1="59.9724" x2="120" y2="59.9724" stroke="var(--stroke-0, black)"/>
+<line id="Line 15" x1="17.593" y1="17.5542" x2="102.446" y2="102.407" stroke="var(--stroke-0, black)"/>
+<line id="Line 16" x1="17.554" y1="102.407" x2="102.407" y2="17.5542" stroke="var(--stroke-0, black)"/>
+</g>
+</svg>

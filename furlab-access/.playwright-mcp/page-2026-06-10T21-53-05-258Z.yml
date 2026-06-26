@@ -1,0 +1,144 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e91] [cursor=pointer]
+      - generic [ref=e92]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e93] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - generic "Инструменты зон" [ref=e11]:
+          - generic [ref=e12]:
+            - generic [ref=e13]: Fur Lab
+            - button "Выбор" [ref=e14] [cursor=pointer]
+            - button "Линия зонирования" [ref=e16] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e18] [cursor=pointer]
+        - group [ref=e20]:
+          - generic "Настройки отображения" [ref=e21] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e22]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: description
+          - generic [ref=e26]: Отчеты
+      - complementary [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Сборка меха
+          - generic [ref=e35]:
+            - button "Зоны" [ref=e36] [cursor=pointer]
+            - button "Мех" [ref=e37] [cursor=pointer]
+            - button "Выкладки" [ref=e38] [cursor=pointer]
+          - generic [ref=e39]:
+            - button "Добавить выкладку" [ref=e935] [cursor=pointer]:
+              - generic [ref=e936]: add
+              - generic [ref=e937]: Добавить выкладку
+            - generic [ref=e938]:
+              - button "inventory_voronoi_sa Из инвентаря (Voronoi+SA) 1" [ref=e939] [cursor=pointer]:
+                - img "inventory_voronoi_sa" [ref=e941]
+                - generic [ref=e943]: Из инвентаря (Voronoi+SA) 1
+              - button "Удалить выкладку" [ref=e945] [cursor=pointer]:
+                - generic [ref=e946]: delete
+        - generic "Потяните для изменения высоты" [ref=e41]
+        - generic [ref=e42]:
+          - generic [ref=e43]: Редактор свойств
+          - generic [ref=e44]:
+            - generic [ref=e947]:
+              - generic [ref=e948]: Выкладка
+              - generic [ref=e949]:
+                - button "Заблокировать редактирование" [ref=e950] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e951] [cursor=pointer]
+            - generic [ref=e952]:
+              - button "▾ Информация" [expanded] [ref=e953] [cursor=pointer]:
+                - generic [ref=e954]: ▾
+                - generic [ref=e955]: Информация
+              - generic [ref=e956]:
+                - generic [ref=e957]:
+                  - generic [ref=e958]: Название
+                  - textbox "(Пусто)" [ref=e960]: Из инвентаря (Voronoi+SA) 1
+                - generic [ref=e961]:
+                  - generic [ref=e962]: Тип
+                  - generic [ref=e963]: Из инвентаря (Voronoi+SA)
+            - generic [ref=e964]:
+              - button "▾ Инвентарь" [expanded] [ref=e965] [cursor=pointer]:
+                - generic [ref=e966]: ▾
+                - generic [ref=e967]: Инвентарь
+              - generic [ref=e968]:
+                - generic [ref=e969]:
+                  - generic [ref=e970]: Мех
+                  - combobox [ref=e972] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e973]:
+                  - generic [ref=e974]: Резерв припуска, мм
+                  - spinbutton [ref=e976]: "12.0"
+                - button "Заполнить остаток" [ref=e978] [cursor=pointer]
+                - generic [ref=e979]: Настройки подбора, preview и применение
+            - generic [ref=e980]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e981] [cursor=pointer]:
+                - generic [ref=e982]: ▾
+                - generic [ref=e983]: Параметры выкладки
+              - generic [ref=e985]:
+                - generic [ref=e986]: Резерв под припуски, мм
+                - spinbutton [ref=e988]: "12.0"
+  - generic [ref=e990]:
+    - generic [ref=e991]:
+      - generic [ref=e992]: Шаг 2. Предпросмотр и доводка подбора
+      - button "Закрыть" [ref=e993] [cursor=pointer]:
+        - generic [ref=e994]: close
+    - generic [ref=e995]:
+      - generic [ref=e996]:
+        - generic [ref=e997]: Фрагментов добавлено
+        - generic [ref=e998]: "221"
+      - generic [ref=e999]:
+        - generic [ref=e1000]: Нарушения ограничений
+        - generic [ref=e1001]: "0"
+      - generic [ref=e1002]:
+        - generic [ref=e1003]: Пересечения
+        - generic [ref=e1004]: "0"
+      - generic [ref=e1005]:
+        - generic [ref=e1006]: Непокрытые области
+        - generic [ref=e1007]: "126"
+      - generic [ref=e1008]:
+        - generic [ref=e1009]: Покрытие зоны, %
+        - generic [ref=e1010]: "99.8"
+      - generic [ref=e1011]:
+        - generic [ref=e1012]: Остаток, мм²
+        - generic [ref=e1013]: "0"
+      - generic [ref=e1014]:
+        - generic [ref=e1015]: Перекрытия, мм²
+        - generic [ref=e1016]: "0"
+      - generic [ref=e1017]:
+        - generic [ref=e1018]: Кандидатов в БД
+        - generic [ref=e1019]: "57"
+      - generic [ref=e1020]:
+        - generic [ref=e1021]: Совместимых
+        - generic [ref=e1022]: "57"
+      - generic [ref=e1023]:
+        - generic [ref=e1024]: Стратегия подбора
+        - generic [ref=e1025]: Voronoi+SA
+      - generic [ref=e1026]:
+        - generic [ref=e1027]: Сопоставлено фрагм., %
+        - generic [ref=e1028]: "387.72"
+      - generic [ref=e1029]:
+        - generic [ref=e1030]: KPI покрытие, %
+        - generic [ref=e1031]: "99.8"
+      - button "Экспорт case" [ref=e1033] [cursor=pointer]
+      - generic [ref=e1034]: "Диагностика:"
+      - generic [ref=e1035]: "Voronoi+SA: iters=sa, pieces=221, cov=99.8%"
+      - generic [ref=e1036]: "Использованные inventoryTag:"
+      - generic [ref=e1037]: FL-SCR-000029 FL-SCR-000081 FL-SCR-000021 FL-SCR-000120 FL-SCR-000011 FL-SCR-000078 FL-SCR-000117 FL-SCR-000104 FL-SCR-000107 FL-SCR-000059 FL-SCR-000006 FL-SCR-000033 FL-SCR-000035 FL-SCR-000005 FL-SCR-000012 FL-SCR-000102 FL-SCR-000053 FL-SCR-000055 FL-SCR-000097 FL-SCR-001003 FL-SCR-000060 FL-SCR-000082 FL-SCR-000028 FL-SCR-000093 FL-SCR-000014 FL-SCR-000026 FL-SCR-000111 FL-SCR-000098 FL-SCR-001005 FL-SCR-000108 FL-SCR-000087 FL-SCR-000084 FL-SCR-000063 FL-SCR-000017 FL-SCR-000022 FL-SCR-000049 FL-SCR-001025 FL-SCR-000007 FL-SCR-000072 FL-SCR-000066 FL-SCR-000030 FL-SCR-000062 FL-SCR-000015 FL-SCR-000095 FL-SCR-000013 FL-SCR-000040 FL-SCR-000021 FL-SCR-000021 FL-SCR-000021 FL-SCR-000021 FL-SCR-000021 FL-SCR-000021 FL-SCR-000021 FL-SCR-000120 FL-SCR-000120 FL-SCR-000120 FL-SCR-000120 FL-SCR-000120 FL-SCR-000078 FL-SCR-000078 FL-SCR-000078 FL-SCR-000078 FL-SCR-000078 FL-SCR-000078 FL-SCR-000078 FL-SCR-000117 FL-SCR-000117 FL-SCR-000117 FL-SCR-000117 FL-SCR-000104 FL-SCR-000104 FL-SCR-000104 FL-SCR-000104 FL-SCR-000104 FL-SCR-000104 FL-SCR-000104 FL-SCR-000107 FL-SCR-000107 FL-SCR-000107 FL-SCR-000107 FL-SCR-000107 FL-SCR-000107 FL-SCR-000107 FL-SCR-000107 FL-SCR-000059 FL-SCR-000059 FL-SCR-000035 FL-SCR-000102 FL-SCR-000102 FL-SCR-000102 FL-SCR-000102 FL-SCR-000102 FL-SCR-000102 FL-SCR-000102 FL-SCR-000102 FL-SCR-000102 FL-SCR-000102 FL-SCR-000053 FL-SCR-000053 FL-SCR-000055 FL-SCR-000055 FL-SCR-000055 FL-SCR-000055 FL-SCR-000055 FL-SCR-001003 FL-SCR-000060 FL-SCR-000060 FL-SCR-000060 FL-SCR-000082 FL-SCR-000082 FL-SCR-000082 FL-SCR-000082 FL-SCR-000082 FL-SCR-000082 FL-SCR-000082 FL-SCR-000082 FL-SCR-000082 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000028 FL-SCR-000093 FL-SCR-000098 FL-SCR-000098 FL-SCR-000098 FL-SCR-000098 FL-SCR-000098 FL-SCR-000098 FL-SCR-000098 FL-SCR-001005 FL-SCR-001005 FL-SCR-001005 FL-SCR-000108 FL-SCR-000108 FL-SCR-000108 FL-SCR-000108 FL-SCR-000108 FL-SCR-000108 FL-SCR-000108 FL-SCR-000108 FL-SCR-000087 FL-SCR-000087 FL-SCR-000087 FL-SCR-000087 FL-SCR-000087 FL-SCR-000087 FL-SCR-000087 FL-SCR-000087 FL-SCR-000087 FL-SCR-000084 FL-SCR-000084 FL-SCR-000084 FL-SCR-000084 FL-SCR-000084 FL-SCR-000084 FL-SCR-000063 FL-SCR-000017 FL-SCR-000017 FL-SCR-000017 FL-SCR-000017 FL-SCR-000049 FL-SCR-000049 FL-SCR-000049 FL-SCR-000049 FL-SCR-000049 FL-SCR-000049 FL-SCR-000049 FL-SCR-001025 FL-SCR-000007 FL-SCR-000072 FL-SCR-000072 FL-SCR-000072 FL-SCR-000072 FL-SCR-000072 FL-SCR-000072 FL-SCR-000072 FL-SCR-000072 FL-SCR-000066 FL-SCR-000066 FL-SCR-000066 FL-SCR-000066 FL-SCR-000066 FL-SCR-000066 FL-SCR-000066 FL-SCR-000066 FL-SCR-000030 FL-SCR-000030 FL-SCR-000030 FL-SCR-000030 FL-SCR-000030 FL-SCR-000030 FL-SCR-000030 FL-SCR-000030 FL-SCR-000030 FL-SCR-000062 FL-SCR-000062 FL-SCR-000062 FL-SCR-000015 FL-SCR-000015 FL-SCR-000015 FL-SCR-000015 FL-SCR-000015 FL-SCR-000095 FL-SCR-000095 FL-SCR-000095 FL-SCR-000013 FL-SCR-000013 FL-SCR-000013 FL-SCR-000013 FL-SCR-000013
+    - generic [ref=e1038]:
+      - button "Назад" [ref=e1039] [cursor=pointer]
+      - button "Применить" [ref=e1040] [cursor=pointer]
+      - button "Отмена" [ref=e1041] [cursor=pointer]
+  - group [ref=e47]:
+    - generic "Database" [ref=e48] [cursor=pointer]

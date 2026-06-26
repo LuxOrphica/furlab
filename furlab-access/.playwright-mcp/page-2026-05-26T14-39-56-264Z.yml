@@ -1,0 +1,67 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Узлы" [ref=e9] [cursor=pointer]:
+          - /url: /tools/nodes
+        - link "VSE" [ref=e10] [cursor=pointer]:
+          - /url: /tools/vse
+        - link "Техпак" [ref=e11] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e12]:
+        - button "☾" [ref=e13] [cursor=pointer]
+        - button "EN" [ref=e14] [cursor=pointer]
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]: 3D Lastique · Tech Pack
+      - heading "Tech Pack Builder" [level=1] [ref=e18]
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e22]: Изделие
+            - combobox "Изделие" [ref=e23] [cursor=pointer]:
+              - option "Пальто однобортное" [selected]
+              - option "Пальто двубортное"
+              - option "Жакет / блейзер"
+              - option "Брюки классические"
+              - option "Брюки casual / chino"
+              - option "Юбка"
+              - option "Футболка / поло"
+              - option "Джемпер / свитер"
+              - option "Худи / свитшот"
+              - option "Купальник слитный"
+              - option "Плавки / шорты купальные"
+              - option "Раздельный купальник (топ+низ)"
+          - generic [ref=e24]:
+            - generic [ref=e25]: Базовый размер
+            - combobox "Базовый размер" [ref=e26] [cursor=pointer]:
+              - option "48"
+              - option "50"
+              - option "52" [selected]
+              - option "54"
+              - option "56"
+              - option "58"
+        - generic [ref=e27]:
+          - button "↓ Excel RU" [ref=e28] [cursor=pointer]
+          - button "↓ Excel EN" [ref=e29] [cursor=pointer]
+          - link "↓ PDF" [ref=e71] [cursor=pointer]:
+            - /url: blob:http://localhost:5176/7f4312d7-d5a3-48a5-ac50-bc5d61b29c47
+    - generic [ref=e31]:
+      - button "01 Стиль" [ref=e32] [cursor=pointer]
+      - button "02 Выноски" [ref=e33] [cursor=pointer]
+      - button "03 BOM" [ref=e34] [cursor=pointer]
+      - button "04 Конструкция" [ref=e35] [cursor=pointer]
+      - button "05 Размерная" [active] [ref=e36] [cursor=pointer]
+      - button "06 Детали кроя" [ref=e37] [cursor=pointer]
+      - button "07 Цветовая карта" [ref=e38] [cursor=pointer]
+      - button "08 Уход" [ref=e39] [cursor=pointer]
+      - button "09 Маркировка" [ref=e40] [cursor=pointer]
+      - button "10 Файлы" [ref=e41] [cursor=pointer]
+    - generic [ref=e95]:
+      - paragraph [ref=e96]: Размерная таблица ведётся в отдельном инструменте.
+      - link "Открыть Табель мер →" [ref=e97] [cursor=pointer]:
+        - /url: /tools/pom

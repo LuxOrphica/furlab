@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FurLab DXF Import + Konva Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+  <link rel="stylesheet" href="/css/app.css" />
+
+</head>
+<body>
+  <div id="workspacePanel" class="panel">
+    <div class="row">
+      <label class="tool-select-legacy">Tool
+        <select id="toolSelect">
+          <option value="select">Select zone</option>
+          <option value="pan">Pan</option>
+          <option value="draw-zone">Draw zone</option>
+          <option value="split-zone">Split zone</option>
+          <option value="add-vertex">Add point</option>
+          <option value="edit-vertex">Edit vertex</option>
+          <option value="curve-vertex">Curve vertex</option>
+          <option value="smooth-vertex">Smooth vertex</option>
+        </select>
+      </label>
+      <button id="importTopBtn" style="display:none;">Import</button>
+      <button id="openProjectBtn" class="toolbar-btn-secondary">Открыть проект</button>
+      <button id="saveProjectBtn" class="toolbar-btn-secondary" style="display:none;">Сохранить проект</button>
+      <span id="activeProjectName" class="muted" style="font-size:12px; margin-left:4px;"></span>
+      <button id="exportCloBtn" class="toolbar-btn-secondary" style="display:none;" title="Ctrl+Shift+L">Преобразовать в лекала</button>
+      <span id="buildTag" class="muted build-tag-top">build: ...</span>
+    </div>
+    <details id="zprjSettingsPanel" class="subpanel" open style="display:none;">
+      <summary><h3 style="display:inline;">ZPRJ options</h3></summary>
+      <div class="row" style="margin-top:8px;">
+        <label><input id="zprjCompactView" type="checkbox" checked /> ZPRJ compact view</label>
+        <label>Parts mode
+          <select id="partsMode">
+            <option value="main">Main parts</option>
+            <option value="all">All parts incl. small</option>
+          </select>
+        </label>
+        <label><input id="closedContoursOnly" type="checkbox" checked /> Closed contours only</label>
+        <label><input id="autoCloseContours" type="checkbox" checked /> Auto-close near ends</label>
+        <label><input id="smartCloseGaps" type="checkbox" /> Smart close gaps</label>
+        <label>Gap tol <input id="gapTolerance" type="number" min="2" max="200" step="1" value="40" style="width:64px;" /></label>
+        <label><input id="rejectNoisyContours" type="checkbox" checked /> Reject noisy contours</label>
+        <label><input id="patternNamesOnly" type="checkbox" checked /> Pattern names only</label>
+        <label>Min points <input id="minContourPoints" type="number" min="4" max="2000" step="1" value="40" style="width:72px;" /></label>
+        <label>Max contours <input id="maxContours" type="number" min="10" max="1000" step="10" value="120" style="width:72px;" /></label>
+      </div>
+    </details>
+    <div class="row" style="min-height:0;display:flex;align-items:center;gap:8px;">
+      <span id="workspaceInfo" class="muted" style="display:none;"></span>
+      <button id="devOverlayToggle" type="button" style="margin-left:auto;font-size:10px;padding:1px 6px;opacity:0.5;" title="Partition Monitor">DEV</button>
+      <button id="lcmOverlayToggle" type="button" style="font-size:10px;padding:1px 6px;opacity:0.5;" title="Layout Contract Monitor">LCM</button>
+      <button id="vsaOverlayToggle" type="button" style="font-size:10px;padding:1px 6px;opacity:0.5;" title="Voronoi SA Monitor">VSA</button>
+    </div>
+    <div id="devOverlay" class="dev-overlay" style="display:none;">
+      <div class="dev-overlay-title"><span>DEV · Partition Monitor</span><button onclick="document.getElementById('devOverlayToggle').click()" style="margin-left:auto;background:none;border:none;color:#555;cursor:pointer;font-size:16px;line-height:1;padding:0 2px;transition:color .15s;" onmouseenter="this.style.color='#ccc'" onmouseleave="this.style.color='#555'">✕</button></div>
+      <div class="dev-overlay-body">
+        <div class="dev-overlay-grid-2col">
+          <span class="dev-label">Part ID</span><span id="dev_partId">—</span>
+          <span class="dev-label">Zones</span><span id="dev_zonesCount">—</span>
+          <span class="dev-label">partArea</span><span id="dev_partArea">—</span>
+          <span class="dev-label">unionArea</span><span id="dev_unionArea">—</span>
+          <span class="dev-label">gapArea</span><span id="dev_gapArea">—</span>
+          <span class="dev-label">overlapArea</span><span id="dev_overlapArea">—</span>
+          <span class="dev-label">partitionValid</span><span id="dev_partitionValid">—</span>
+          <span class="dev-label">selectedZone</span><span id="dev_selectedZone">—</span>
+          <span class="dev-label">originType</span><span id="dev_originType">—</span>
+          <span class="dev-label">isLastZone</span><span id="dev_isLastZone">—</span>
+          <span class="dev-label">isOnPartBound</span><span id="dev_isOnPartBound">—</span>
+          <span class="dev-label">boundarySource</span><span id="dev_boundarySource">—</span>
+          <span class="dev-label">editLock</span><span id="dev_editLock">—</span>
+          <span class="dev-label">rendered</span><span id="dev_rendered">—</span>
+          <span class="dev-label">tree</span><span id="dev_tree">—</span>
+          <span class="dev-label">lastOp</span><span id="dev_lastOp">—</span>
+          <span class="dev-label">zoneGeom</span><span id="dev_zoneGeom">—</span>
+          <span class="dev-label">handleScale</span><span id="dev_handleScale">—</span>
+        </div>
+      </div>
+    </div>
+    <div id="layoutContractMonitor" class="dev-overlay" style="display:none;">
+      <div class="dev-overlay-title"><span>DEV · Layout Contract Monitor</span> <span id="lcm_badge" style="font-size:10px;padding:1px 6px;border-radius:4px;margin-left:8px;">—</span><button onclick="document.getElementById('lcmOverlayToggle').click()" style="margin-left:auto;background:none;border:none;color:#555;cursor:pointer;font-size:16px;line-height:1;padding:0 2px;transition:color .15s;" onmouseenter="this.style.color='#ccc'" onmouseleave="this.style.color='#555'">✕</button></div>
+      <div class="dev-overlay-body">
+        <div class="dev-overlay-grid-2col">
+          <span class="dev-label">endpoint</span><span id="lcm_endpoint">—</span>
+          <span class="dev-label">layoutType</span><span id="lcm_layoutType">—</span>
+          <span class="dev-label">payloadHasHoles</span><span id="lcm_payloadHasHoles">—</span>
+          <span class="dev-label">holesReceived</span><span id="lcm_holesReceived">—</span>
+          <span class="dev-label">usedZoneDomain</span><span id="lcm_usedZoneDomain">—</span>
+          <span class="dev-label">outerArea</span><span id="lcm_outerArea">—</span>
+          <span class="dev-label">holesCount</span><span id="lcm_holesCount">—</span>
+          <span class="dev-label">holesArea</span><span id="lcm_holesArea">—</span>
+          <span class="dev-label">zoneDomainArea</span><span id="lcm_zoneDomainArea">—</span>
+          <span class="dev-label">fragmentCount</span><span id="lcm_fragmentCount">—</span>
+          <span class="dev-label">inHolesArea</span><span id="lcm_inHolesArea">—</span>
+          <span class="dev-label">outsideDomainArea</span><span id="lcm_outsideDomainArea">—</span>
+          <span class="dev-label">covRatioDenom</span><span id="lcm_covRatioDenom">—</span>
+          <span class="dev-label">contractValid</span><span id="lcm_contractValid">—</span>
+          <span class="dev-label">issues</span><span id="lcm_issues" style="word-break:break-all;">—</span>
+        </div>
+      </div>
+    </div>
+    <div id="vsaMonitor" class="dev-overlay" style="display:none;width:680px;">
+      <div class="dev-overlay-title"><span>DEV · Voronoi SA Monitor</span> <span id="vsa_version" style="font-size:10px;opacity:0.5;margin-left:6px;">v2.0</span> <span id="vsa_badge" style="font-size:10px;padding:1px 6px;border-radius:4px;margin-left:8px;">—</span> <button onclick="document.getElementById('vsaOverlayToggle').click()" style="margin-left:auto;background:none;border:none;color:#555;cursor:pointer;font-size:16px;line-height:1;padding:0 2px;transition:color .15s;" onmouseenter="this.style.color='#ccc'" onmouseleave="this.style.color='#555'">✕</button></div>
+      <div class="dev-overlay-body">
+      <div style="font-size:10px;font-weight:bold;margin:4px 0 2px;opacity:0.7;">Run Summary</div>
+      <div class="dev-overlay-grid-2col">
+        <span class="dev-label">resultStatus</span><span id="vsa_resultStatus">—</span>
+        <span class="dev-label">coveragePercent</span><span id="vsa_coveragePct">—</span>
+        <span class="dev-label">effectiveCoverage</span><span id="vsa_effectiveCovPct" title="Coverage без сливеров (фрагменты меньше minWidth×minLength)">—</span>
+        <span class="dev-label">zoneAreaMm2</span><span id="vsa_zoneArea">—</span>
+        <span class="dev-label">fragmentsTotal</span><span id="vsa_finalFragments2">—</span>
+        <span class="dev-label">slivers (мм²)</span><span id="vsa_slivers" title="Фрагменты меньше minWidth×minLength — физически не вырезать">—</span>
+        <span class="dev-label">gapFillFragments</span><span id="vsa_gapFill">—</span>
+        <span class="dev-label">physMissingTotal</span><span id="vsa_physMissing">—</span>
+        <span class="dev-label">pieceSeamReserveMm</span><span id="vsa_seamReserve">—</span>
+        <span class="dev-label">napToleranceDeg</span><span id="vsa_napTol">—</span>
+      </div>
+      <div style="font-size:10px;font-weight:bold;margin:6px 0 2px;opacity:0.7;">Дыры</div>
+      <div class="dev-overlay-grid-2col">
+        <span class="dev-label">реальные дыры мм²</span><span id="vsa_residualInterior">—</span>
+        <span class="dev-label">uncoveredComponents</span><span id="vsa_uncoveredCount">—</span>
+      </div>
+      <div id="vsa_residualTable" style="max-height:120px;overflow-y:auto;font-size:10px;margin:4px 0;"></div>
+      <div style="font-size:10px;font-weight:bold;margin:6px 0 2px;opacity:0.7;">Preflight / Selection</div>
+      <div class="dev-overlay-grid-2col">
+        <span class="dev-label">Az (зона)</span><span id="vsa_Az">—</span>
+        <span class="dev-label">Cmed (медиана cap)</span><span id="vsa_Cmed">—</span>
+        <span class="dev-label">Nbase</span><span id="vsa_Nbase">—</span>
+        <span class="dev-label">Nstart</span><span id="vsa_Nstart">—</span>
+        <span class="dev-label">overhangMm (IFP)</span><span id="vsa_overhang">—</span>
+        <span class="dev-label">unselectedUsable</span><span id="vsa_unselected">—</span>
+      </div>
+      <div style="font-size:10px;font-weight:bold;margin:6px 0 2px;opacity:0.7;">Invariants</div>
+      <div id="vsa_invariants" class="dev-overlay-grid-2col"></div>
+      <div style="font-size:10px;font-weight:bold;margin:6px 0 2px;opacity:0.7;">Fragments</div>
+      <div id="vsa_fragmentsTable" style="max-height:200px;overflow-y:auto;font-size:10px;"></div>
+      <div style="margin-top:8px;"><button id="vsaExportRunBtn" style="font-size:11px;padding:3px 10px;cursor:pointer;">⬇ Экспорт run output</button></div>
+      </div><!-- /dev-overlay-body -->
+    </div>
+    <div class="workspace-grid">
+      <div class="workspace-left">
+        <div id="zoneToolPalette" class="zone-tool-palette" aria-label="Инструменты зон">
+          <div class="zone-tool-palette-shell">
+            <div class="zone-tool-brand" aria-hidden="true">Fur<br>Lab</div>
+            <button id="zoneToolSelectBtn" class="zone-tool-btn" type="button" title="Выбор" data-icon="/assets/tool-icons/select-large.svg" data-active-icon="/assets/tool-icons/select-active.svg">
+              <img src="/assets/tool-icons/select-large.svg" alt="">
+            </button>
+            <div class="zone-tool-group">
+              <button id="zoneToolPenBtn" class="zone-tool-btn zone-tool-btn-group" type="button" title="Линия зонирования">
+                <img src="/assets/tool-icons/split-line-large.svg" alt="">
+              </button>
+              <div id="zoneToolPenMenu" class="zone-tool-submenu" hidden>
+                <button type="button" class="zone-tool-submenu-item" data-tool="split-zone" data-group="pen" data-large-icon="/assets/tool-icons/split-line-large.svg" data-active-large-icon="/assets/tool-icons/split-line-active.svg">
+                  <img src="/assets/tool-icons/split-line.svg" alt="">
+                  <span>Линия зонирования</span>
+                  <span class="zone-tool-shortcut">L</span>
+                </button>
+                <button type="button" class="zone-tool-submenu-item" data-tool="add-vertex" data-group="pen" data-large-icon="/assets/tool-icons/add-point-large.svg" data-active-large-icon="/assets/tool-icons/add-point-active.svg">
+                  <img src="/assets/tool-icons/add-point.svg" alt="">
+                  <span>Добавить точку</span>
+                  <span class="zone-tool-shortcut">X</span>
+                </button>
+                <button type="button" class="zone-tool-submenu-item" data-tool="edit-vertex" data-group="pen" data-large-icon="/assets/tool-icons/edit-point-large.svg" data-active-large-icon="/assets/tool-icons/edit-point-active.svg">
+                  <img src="/assets/tool-icons/edit-point.svg" alt="">
+                  <span>Редактировать точку кривой</span>
+                  <span class="zone-tool-shortcut">V</span>
+                </button>
+                <button type="button" class="zone-tool-submenu-item" data-tool="curve-vertex" data-group="pen" data-large-icon="/assets/tool-icons/curve-vertex-large.svg" data-active-large-icon="/assets/tool-icons/curve-vertex-active.svg">
+                  <img src="/assets/tool-icons/curve-vertex.svg" alt="">
+                  <span>Изменить кривизну</span>
+                  <span class="zone-tool-shortcut">C</span>
+                </button>
+                <!-- smooth-vertex скрыт: не реализован (отложено) -->
+                <button type="button" class="zone-tool-submenu-item" data-tool="smooth-vertex" data-group="pen" style="display:none">
+                  <span>Сгладить кривую</span>
+                </button>
+              </div>
+            </div>
+            <div class="zone-tool-group">
+              <button id="zoneToolPolygonBtn" class="zone-tool-btn zone-tool-btn-group" type="button" title="Полигон">
+                <img src="/assets/tool-icons/polygon-large.svg" alt="">
+              </button>
+              <div id="zoneToolPolygonMenu" class="zone-tool-submenu" hidden>
+                <button type="button" class="zone-tool-submenu-item" data-tool="draw-zone" data-group="polygon" data-large-icon="/assets/tool-icons/polygon-large.svg" data-active-large-icon="/assets/tool-icons/polygon-active.svg">
+                  <img src="/assets/tool-icons/polygon.svg" alt="">
+                  <span>Произвольный полигон</span>
+                  <span class="zone-tool-shortcut">S</span>
+                </button>
+                <button type="button" class="zone-tool-submenu-item" data-tool="draw-rect" data-group="polygon" data-large-icon="/assets/tool-icons/rect-large.svg" data-active-large-icon="/assets/tool-icons/rect-active.svg">
+                  <img src="/assets/tool-icons/rect.svg" alt="">
+                  <span>Прямоугольник</span>
+                  <span class="zone-tool-shortcut">R</span>
+                </button>
+                <button type="button" class="zone-tool-submenu-item" data-tool="draw-ellipse" data-group="polygon" data-large-icon="/assets/tool-icons/ellipse-large.svg" data-active-large-icon="/assets/tool-icons/ellipse-active.svg">
+                  <img src="/assets/tool-icons/ellipse.svg" alt="">
+                  <span>Эллипс</span>
+                  <span class="zone-tool-shortcut">E</span>
+                </button>
+              </div>
+            </div>
+            <button id="zoneToolIntarsiaPenBtn" class="zone-tool-btn" type="button" title="Перо интарсии" data-icon="/assets/tool-icons/intarsia-pen.svg" data-active-icon="/assets/tool-icons/intarsia-pen-active.svg" style="display:none;">
+              <img src="/assets/tool-icons/intarsia-pen.svg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="workspace-overlay-tools">
+          <details id="displaySettingsPanel">
+            <summary><h3 style="display:inline;" data-i18n="display_settings_title">Настройки отображения</h3></summary>
+            <div class="row">
+              <div class="display-group">
+                <div class="display-group-title" data-i18n="display_group_details">Детали</div>
+                <ul class="display-list">
+                  <li><label><input id="layerPattern" type="checkbox" checked /><span data-i18n="display_layer_pattern">Контуры лекал</span></label></li>
+                  <li><label><input id="majorContoursOnly" type="checkbox" /><span data-i18n="display_layer_minor_contours">Мелкие контуры</span></label></li>
+                  <li><label><input id="showDetailLabels" type="checkbox" /><span data-i18n="display_layer_detail_labels">Подписи деталей</span></label></li>
+                </ul>
+              </div>
+              <div class="display-group">
+                <div class="display-group-title" data-i18n="display_group_fur">Мех</div>
+                <ul class="display-list">
+                  <li><label><input id="layerZoneMaterials" type="checkbox" checked /><span data-i18n="display_layer_fur">Мех</span></label></li>
+                </ul>
+              </div>
+              <div class="display-group">
+                <div class="display-group-title" data-i18n="display_group_zones">Зоны</div>
+                <ul class="display-list">
+                  <li><label><input id="layerZones" type="checkbox" checked /><span data-i18n="display_layer_zones">Зоны</span></label></li>
+                </ul>
+              </div>
+              <div class="display-group">
+                <div class="display-group-title">Редактор</div>
+                <ul class="display-list">
+                  <li style="display:flex;align-items:center;gap:6px;">
+                    <span style="flex-shrink:0;font-size:12px;">Точки:</span>
+                    <select id="handleScaleSelect" style="font-size:12px;padding:1px 4px;border:1px solid #bbb;border-radius:3px;background:#fff;cursor:pointer;">
+                      <option value="0.75">Малый</option>
+                      <option value="1" selected>Средний</option>
+                      <option value="1.5">Крупный</option>
+                    </select>
+                  </li>
+                </ul>
+              </div>
+              <div class="display-group">
+                <div class="display-group-title" data-i18n="display_group_layout">Выкладка</div>
+                <ul class="display-list">
+                  <li><label><input id="layerPieceBorders" type="checkbox" checked /><span id="layerPieceBordersLabel" data-i18n="display_layer_fragments">Фрагменты</span></label></li>
+                  <li><label><input id="layerVisibleCore" type="checkbox" /><span data-i18n="display_layer_seams">Швы</span></label></li>
+                  <li><label><input id="layerPfullZ" type="checkbox" /><span data-i18n="display_layer_piece_contours">Контуры кусков</span></label></li>
+                  <li><label><input id="layerPcoreZ" type="checkbox" /><span data-i18n="display_layer_piece_seam_reserve">Припуск куска</span></label></li>
+                  <li style="display:none;"><label><input id="layerAssignedPieces" type="checkbox" checked /><span id="layerAssignedPiecesLabel"></span></label></li>
+                </ul>
+              </div>
+              <div class="display-group">
+                <div class="display-group-title" data-i18n="display_group_canvas">Холст</div>
+                <ul class="display-list">
+                  <li><label><input id="layerGuides" type="checkbox" checked /><span data-i18n="display_layer_grid">Сетка</span></label></li>
+                </ul>
+              </div>
+              <div class="display-group">
+                <div class="display-group-title" data-i18n="display_group_check">Проверка</div>
+                <ul class="display-list">
+                  <input id="layerUsedGain" type="checkbox" style="display:none" />
+                  <input id="layerVisibleArea" type="checkbox" style="display:none" />
+                  <li><label><input id="layerCoverageHoles" type="checkbox" /><span data-i18n="display_layer_holes">Дырки</span></label></li>
+                  <li><label><input id="layerPieceIntersections" type="checkbox" /><span data-i18n="display_layer_intersections">Пересечения</span></label></li>
+                </ul>
+              </div>
+              <input id="layerSelection" type="checkbox" checked style="display:none" />
+              <input id="highlightSelectedDetail" type="checkbox" checked style="display:none" />
+            </div>
+          </details>
+        </div>
+        <div class="workspace-overlay-actions">
+          <button id="reportsBtn" class="reports-trigger-btn" type="button" disabled><span class="material-symbols-outlined" aria-hidden="true">description</span><span>Отчеты</span></button>
+        </div>
+        <div id="workspace"></div>
+        <div id="manualTrayDock" class="manual-tray-dock">
+          <div class="manual-tray-resize-handle" id="manualTrayResizeHandle"></div>
+          <div id="manualTrayContent"></div>
+        </div>
+      </div>
+      <aside class="right-panel">
+        <div class="right-top">
+          <div class="right-head">Сборка меха</div>
+          <div id="layoutModeSwitch" class="layout-switch">
+            <button data-panel="zones">Зоны</button>
+            <button data-panel="materials">Мех</button>
+            <button data-panel="layouts">Выкладки</button>
+          </div>
+          <div id="rightTabsTitle" class="right-tabs">Детали / Зоны</div>
+          <div id="detailZoneTree" class="tree"></div>
+        </div>
+        <div id="rightPanelSplitter" class="right-splitter" title="Потяните для изменения высоты"></div>
+        <div class="right-bottom">
+          <div class="right-head">Редактор свойств</div>
+          <div id="propertyEditor" class="props"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div id="inventoryStep1Backdrop" class="modal-backdrop">
+    <div id="inventoryStep1Modal" class="modal" style="width:340px; max-width:calc(100vw - 20px);">
+      <div id="inventoryStep1Head" class="modal-head draggable"><span id="inventoryStep1Title">Шаг 1. Заполнить остаток</span><button id="inventoryStep1CloseBtn" class="icon-close-btn" aria-label="Закрыть"><span class="material-symbols-outlined" aria-hidden="true">close</span></button></div>
+      <div class="modal-body">
+        <div id="inventoryScenarioRow" class="field-row" style="display:none;"><label>Сценарий</label><select id="inventoryScenario"><option value="A">A: Выкладка из инвентаря</option><option value="B">B: Подбор под фрагменты</option></select></div>
+        <div id="inventoryScenarioHint" style="display:none; margin:-2px 0 8px; font-size:12px; color:#555;"></div>
+        <input id="inventoryOptimizationMode" type="hidden" value="sew_quality_economy" />
+        <div id="inventoryOptimizationHint" style="display:none; margin:-2px 0 8px; font-size:12px; color:#555;"></div>
+        <div id="fillTypeRow" class="field-row"><label>Тип заполнения</label><select id="fillType"><option value="voronoi">Мозаика Вороного</option><option value="regular">Регулярный</option></select></div>
+        <div id="placementStrategyRow" class="field-row"><label>Стратегия размещения</label><select id="placementStrategy"><option value="bestFit">bestFit</option><option value="greedy">greedy</option><option value="manualAssist">manualAssist</option></select></div>
+        <div id="fillVoronoiFields" style="display:none;"></div>
+        <div id="fillRegularFields" style="display:none;">
+          <div id="intarsiaGridModeRow" class="field-row"><label>Режим</label><select id="fillGridMode"><option value="grid">Сетка</option><option value="radial">Радиальная</option><option value="bands">Полосы</option><option value="voronoi">Мозаика Вороного</option><option value="import_svg">Импорт SVG</option></select></div>
+          <div id="intarsiaStep1GridFields">
+            <!-- Сетка -->
+            <div class="fill-mode-grid">
+              <div class="field-row"><label>Ряды</label><input id="fillRows" type="number" min="1" max="20" value="5" /></div>
+              <div class="field-row"><label>Колонки</label><input id="fillCols" type="number" min="1" max="20" value="5" /></div>
+              <div class="field-row"><label>Смещение ряда, %</label><input id="fillShiftPercent" type="number" min="-100" max="100" value="0" /></div>
+              <div class="field-row"><label>Зазор X, мм</label><input id="fillGapX" type="number" min="0" max="1000" value="0" /></div>
+              <div class="field-row"><label>Зазор Y, мм</label><input id="fillGapY" type="number" min="0" max="1000" value="0" /></div>
+              <div class="field-row"><label>Скругление углов, мм</label><input id="fillCornerRadius" type="number" min="0" max="1000" value="0" /></div>
+            </div>
+            <!-- Радиальная -->
+            <div class="fill-mode-radial" style="display:none;">
+              <div class="field-row"><label>Оси</label><input id="fillAxisCount" type="number" min="0" max="6" value="1" /></div>
+              <div class="field-row"><label>Кольца</label><input id="fillRingCount" type="number" min="1" max="20" value="4" /></div>
+              <div class="field-row"><label>Секторы</label><input id="fillSectorCount" type="number" min="1" max="36" value="8" /></div>
+              <div class="field-row"><label>Поворот, °</label><input id="fillSectorRotationDeg" type="number" min="-360" max="360" value="0" /></div>
+              <div class="field-row"><label>Внутренний радиус, мм</label><input id="fillInnerRadiusMm" type="number" min="0" max="5000" value="0" /></div>
+              <div class="field-row"><label>Центр</label><select id="fillCenterMode"><option value="auto">Авто</option><option value="manual">Вручную</option></select></div>
+              <div class="fill-center-manual" style="display:none;">
+                <div class="field-row"><label>Центр X, мм</label><input id="fillCenterX" type="number" min="-100000" max="100000" value="0" /></div>
+                <div class="field-row"><label>Центр Y, мм</label><input id="fillCenterY" type="number" min="-100000" max="100000" value="0" /></div>
+              </div>
+            </div>
+            <!-- Полосы -->
+            <div class="fill-mode-bands" style="display:none;">
+              <div class="field-row"><label>Угол, °</label><input id="fillAngleDeg" type="number" min="-89" max="89" value="45" /></div>
+              <div class="field-row"><label>Шаг, мм</label><input id="fillBandStep" type="number" min="10" max="5000" value="120" /></div>
+            </div>
+            <!-- Вороной -->
+            <div class="fill-mode-voronoi" style="display:none;">
+              <div class="field-row"><label>Плотность (0–100)</label><input id="fillDensity" type="number" min="0" max="100" value="50" /></div>
+              <div class="field-row"><label>Вариативность (0–100)</label><input id="fillVariability" type="number" min="0" max="100" value="50" /></div>
+              <div class="field-row"><label>Анизотропия (0–100)</label><input id="fillAnisotropy" type="number" min="0" max="100" value="50" /></div>
+            </div>
+            <!-- Импорт SVG -->
+            <div class="fill-mode-import-svg" style="display:none;">
+              <div style="margin-bottom:8px;">
+                <button id="intarsiaSvgPickBtn" type="button" class="prop-btn">Выбрать SVG файл</button>
+                <input id="intarsiaSvgFileInput" type="file" accept=".svg,image/svg+xml" style="display:none"/>
+              </div>
+              <div class="field-row"><label>Масштаб (мм / ед. SVG)</label><input id="intarsiaSvgScale" type="number" min="0.001" max="100" step="0.001" value="1.000"/></div>
+              <div id="intarsiaSvgStatus" style="font-size:12px;color:#555;margin-top:4px;">Файл не выбран</div>
+              <div style="margin-top:6px;">
+                <button id="intarsiaSvgClearBtn" type="button" class="prop-btn" style="display:none;">Очистить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="intarsiaStep2CandidateFields">
+          <div class="field-row" id="invFurFilterRow"><label>Мех</label><select id="invFurMaterialFilter"><option value="">Неважно</option></select></div>
+          <div class="field-row"><label>Лимит кандидатов</label><input id="invLimit" type="number" min="10" max="2000" value="300" /></div>
+          <div class="field-row"><label>Допуск по ворсу, °</label><input id="invNapTol" type="number" min="0" max="180" value="15" /></div>
+          <div class="field-row" id="invNumRestartsRow"><label title="Мультирестарт: перебрать N seed, взять минимум residual. 1 = без рестартов.">Рестарты (мультизапуск)</label><input id="invNumRestarts" type="number" min="1" max="16" value="1" /></div>
+          <div class="field-row" id="invAllowanceMmRow" style="opacity:0.5;"><label>Резерв припуска (из свойств выкладки), мм</label><input id="invAllowanceMm" type="number" min="0" max="200" step="0.5" value="3.0" readonly style="color:#888; background:#f5f5f5;" /></div>
+          <div id="inventoryAdvancedFields" style="margin-top:8px;">
+            <div id="invSizeFilterRow">
+              <div class="field-row"><label>Мин. ширина фрагм., мм</label><input id="minFragmentWidthMm" type="number" min="0" max="10000" value="0" /></div>
+              <div class="field-row"><label>Мин. длина фрагм., мм</label><input id="minFragmentLengthMm" type="number" min="0" max="10000" value="0" /></div>
+            </div>
+            <input id="invMinArea" type="hidden" value="0" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="inventoryStep1RunBtn">Подобрать</button>
+        <button id="inventoryStep1IntarsiaAssignBtn" style="display:none;">Шаг 2: Подобрать куски</button>
+        <button id="inventoryStep1CancelBtn">Закрыть</button>
+      </div>
+      <div id="inventoryStep1FlowHint" style="padding:0 16px 12px; font-size:12px; color:#555;"></div>
+    </div>
+  </div>
+
+  <div id="inventoryProgressBackdrop" class="modal-backdrop">
+    <div class="modal" style="width:340px;">
+      <div class="modal-body" style="padding:16px; text-align:center;">
+        <div id="inventoryProgressTitle" style="margin-bottom:10px;">Формирование пула кандидатов</div>
+        <div style="position:relative; width:300px; margin:0 auto;">
+          <div class="progress-wrap"><div id="inventoryProgressBar" class="progress-bar"></div></div>
+          <div id="inventoryProgressText" class="progress-text">0%</div>
+        </div>
+        <ul id="inventoryProgressSteps" class="progress-steps"></ul>
+        <div class="progress-kpi">
+          <div class="kpi-label">Кусков (подбор)</div><div id="inventoryProgressKpiPieces" class="kpi-value">-</div>
+          <div class="kpi-label">Покрытие, %</div><div id="inventoryProgressKpiCoverage" class="kpi-value">-</div>
+          <div class="kpi-label">Итерации SA</div><div id="inventoryProgressKpiIters" class="kpi-value">-</div>
+          <div class="kpi-label">Температура SA</div><div id="inventoryProgressKpiTemperature" class="kpi-value">-</div>
+        </div>
+        <div id="inventoryProgressTimer" style="margin-top:8px; font-size:12px; color:#555;">00:00</div>
+        <div id="inventoryProgressStatus" class="progress-status-line">Ожидание телеметрии...</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="inventoryStep2Backdrop" class="modal-backdrop">
+    <div id="inventoryStep2Modal" class="modal" style="width:360px; max-width:calc(100vw - 20px);">
+      <div id="inventoryStep2Head" class="modal-head draggable"><span>Шаг 2. Предпросмотр и доводка подбора</span><button id="inventoryStep2CloseBtn" class="icon-close-btn" aria-label="Закрыть"><span class="material-symbols-outlined" aria-hidden="true">close</span></button></div>
+      <div class="modal-body">
+        <div class="field-row"><label>Фрагментов добавлено</label><div id="invTotalFragments">0</div></div>
+        <div class="field-row"><label>Нарушения ограничений</label><div id="invViolations">0</div></div>
+        <div class="field-row"><label>Пересечения</label><div id="invIntersections">0</div></div>
+        <div class="field-row"><label>Непокрытые области</label><div id="invUncovered">0</div></div>
+        <div class="field-row"><label>Покрытие зоны, %</label><div id="invCoveragePercent">0</div></div>
+        <div class="field-row"><label>Остаток, мм²</label><div id="invResidualArea">0</div></div>
+        <div class="field-row nfp-sa-hide"><label>Полезно использовано, мм²</label><div id="invUsefulArea">0</div></div>
+        <div class="field-row nfp-sa-hide"><label>Выбрано кусков в зоне, мм²</label><div id="invUsedScrapArea">0</div></div>
+        <div class="field-row nfp-sa-hide"><label>Использование кусков, %</label><div id="invScrapUtilization">0</div></div>
+        <div class="field-row nfp-sa-hide"><label>Отходы кусков, %</label><div id="invScrapWaste">0</div></div>
+        <div class="field-row"><label>Перекрытия, мм²</label><div id="invOverlapArea">0</div></div>
+        <div class="field-row nfp-sa-hide"><label>Бюджет площади, мм²</label><div id="invCandidateAreaBudget">0</div></div>
+        <div class="field-row"><label>Кандидатов в БД</label><div id="invDbCandidates">0</div></div>
+        <div class="field-row"><label>Совместимых</label><div id="invCompatibleCandidates">0</div></div>
+        <div class="field-row"><label>Стратегия подбора</label><div id="invStrategyUsed">-</div></div>
+        <div class="field-row"><label>Сопоставлено фрагм., %</label><div id="invMatchedPct">0.00</div></div>
+        <div class="field-row"><label>KPI покрытие, %</label><div id="invKpiCoveragePct">0.00</div></div>
+        <div class="field-row nfp-sa-hide"><label>Tail start (coverage)</label><div id="invTailCoverageStart">-</div></div>
+        <div class="field-row nfp-sa-hide"><label>Tail alpha</label><div id="invTailOversizeAlpha">-</div></div>
+        <div class="field-row nfp-sa-hide"><label>Отбрак. oversize</label><div id="invRejectedOversize">0</div></div>
+        <div class="field-row nfp-sa-hide"><label>Отбрак. overlap</label><div id="invRejectedOverlap">0</div></div>
+        <div class="field-row nfp-sa-hide"><label>Отбрак. lowGain</label><div id="invRejectedLowGain">0</div></div>
+        <div class="field-row nfp-sa-hide"><label>Отбрак. outside</label><div id="invRejectedOutside">0</div></div>
+        <div style="margin:6px 0 8px;">
+          <button id="inventoryStep2ExportCaseBtn">Экспорт case</button>
+        </div>
+        <div id="inventoryManualPanel" class="inventory-manual-panel" style="display:none; margin:6px 0 2px 0; padding:2px 0;">
+          <div id="inventoryManualSummary" class="inventory-manual-summary">Нажмите «Оценить»</div>
+          <div class="row" style="margin:4px 0 0 0; gap:6px;">
+            <button id="inventoryManualRecomputeBtn">Оценить раскладку</button>
+          </div>
+          <div id="inventoryManualState" class="inventory-manual-state">Выбранный кусок: нет</div>
+          <div id="inventoryManualMetrics" class="inventory-manual-metrics">gain=- overlap=- outside=- util=-</div>
+        </div>
+        <div style="margin-top:8px; font-size:12px; color:#444;">Диагностика:</div>
+        <pre id="invDebugInfo" style="max-height:80px; margin:6px 0 0 0; font-size:12px;"></pre>
+        <div style="margin-top:8px; font-size:12px; color:#444;">Использованные inventoryTag:</div>
+        <pre id="invUsedTags" style="max-height:80px; margin:6px 0 0 0; font-size:12px;"></pre>
+        <div id="invSplitEventsBlock" style="margin-top:8px; display:none;">
+          <div style="font-size:12px; color:#444;">Split &amp; Return события:</div>
+          <pre id="invSplitEvents" style="max-height:120px; margin:6px 0 0 0; font-size:12px;"></pre>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="inventoryStep2BackBtn">Назад</button>
+        <button id="inventoryStep2ApplyBtn">Применить</button>
+        <button id="inventoryStep2CancelBtn">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="zoneOccupiedBackdrop" class="modal-backdrop">
+    <div class="modal" style="width:420px;">
+      <div class="modal-head"><span>Зона занята</span><button onclick="document.getElementById('zoneOccupiedBackdrop').style.display='none'" class="icon-close-btn" aria-label="Закрыть"><span class="material-symbols-outlined" aria-hidden="true">close</span></button></div>
+      <div class="modal-body">
+        <div id="zoneOccupiedMessage" style="margin-bottom:14px; font-size:13px; color:#222;"></div>
+        <div style="text-align:right;">
+          <button onclick="document.getElementById('zoneOccupiedBackdrop').style.display='none'" class="prop-btn prop-btn--primary">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="replaceCandidateBackdrop" class="modal-backdrop">
+    <div class="modal" style="width:520px;">
+      <div class="modal-head"><span>Заменить кандидата для фрагмента</span><button id="replaceCandidateCloseBtn" class="icon-close-btn" aria-label="Закрыть"><span class="material-symbols-outlined" aria-hidden="true">close</span></button></div>
+      <div class="modal-body">
+        <div id="replaceCandidateInfo" style="margin-bottom:8px; font-size:12px; color:#444;">Нет данных</div>
+        <div style="max-height:240px; overflow:auto; border:1px solid #ccc; background:#fff;">
+          <table style="width:100%; border-collapse:collapse; margin:0;">
+            <thead>
+              <tr>
+                <th style="font-size:12px;">Инв. номер</th>
+                <th style="font-size:12px;">Score</th>
+                <th style="font-size:12px;">Overlap</th>
+                <th style="font-size:12px;">Chamfer</th>
+                <th style="font-size:12px;">Выбор</th>
+              </tr>
+            </thead>
+            <tbody id="replaceCandidateRows"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="replaceCandidateApplyBtn">Применить</button>
+        <button id="replaceCandidateCancelBtn">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="layoutTypeBackdrop" class="modal-backdrop">
+  <div id="layoutTypeModal" class="layout-library-modal">
+    <div class="layout-library-head">
+      <span class="layout-library-title">Библиотека FurLab</span>
+      <button id="layoutTypeCloseBtn" class="layout-library-close icon-close-btn" aria-label="Закрыть"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+    </div>
+    <div class="layout-library-body">
+      <aside class="layout-library-side">
+        <button class="layout-library-side-btn" type="button" aria-label="Мех" data-library-mode="materials">
+          <span class="layout-library-side-icon fur"></span>
+          <span class="layout-library-side-text">Мех</span>
+        </button>
+        <button class="layout-library-side-btn active" type="button" aria-label="Выкладка" data-library-mode="layouts">
+          <span class="layout-library-side-icon grid"></span>
+          <span class="layout-library-side-text">Выкладка</span>
+        </button>
+        <button class="layout-library-side-btn" type="button" aria-label="Обработка" data-library-mode="processing">
+          <span class="layout-library-side-icon tool"></span>
+          <span class="layout-library-side-text">Обработка</span>
+        </button>
+      </aside>
+      <section class="layout-library-main">
+        <div id="layoutTypeContent" class="layout-library-content">
+          <aside id="layoutTypeCategories" class="layout-library-categories" hidden></aside>
+          <div class="layout-library-results">
+            <div class="layout-library-toolbar">
+              <div class="layout-library-search-wrap">
+                <input id="layoutTypeSearch" class="layout-library-search" type="text" placeholder="Поиск">
+              </div>
+              <div id="layoutTypeMeta" class="layout-library-sort"></div>
+            </div>
+            <div id="layoutTypeGrid" class="layout-library-grid"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="layout-library-actions">
+      <button id="layoutTypeAddBtn" disabled>Выбрать</button>
+      <button id="layoutTypeCancelBtn">Отмена</button>
+    </div>
+  </div>
+</div>
+<div id="reportsBackdrop" class="modal-backdrop">
+  <div class="modal reports-modal">
+    <div class="modal-head reports-modal-head draggable">
+        <div class="reports-modal-title-wrap">
+          <span id="reportsTitle" data-i18n="reports_title" data-i18n-fallback="Specification">Specification</span>
+          <span id="reportsModelTitle" class="reports-model-title"></span>
+        </div>
+        <div class="reports-actions-top">
+          <label class="reports-detail-picker">
+            <span data-i18n="reports_detail_label" data-i18n-fallback="Detail">Detail</span>
+            <select id="reportsDetailSelect"></select>
+          </label>
+          <button id="reportsExportCsvBtn" data-i18n="reports_export_csv" data-i18n-fallback="Export CSV">Export CSV</button>
+          <button id="reportsPrintBtn" data-i18n="reports_print" data-i18n-fallback="Print">Print</button>
+        </div>
+      <button id="reportsCloseBtn" class="icon-close-btn" aria-label="Закрыть"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+    </div>
+    <div class="modal-body reports-modal-body">
+      <div class="reports-topbar">
+        <div id="reportsDetailTabs" class="reports-detail-tabs"></div>
+        </div>
+        <div id="reportsDetailHeading" class="reports-detail-heading" data-i18n="reports_detail_heading_empty" data-i18n-fallback="Detail -">Detail -</div>
+        <div id="reportsSummary" class="reports-summary" data-i18n="reports_no_data" data-i18n-fallback="No data">No data</div>
+        <div class="reports-content">
+          <div class="reports-table-wrap">
+            <table class="reports-table">
+              <thead>
+                <tr>
+                  <th data-i18n="reports_col_thumb">Рис.</th>
+                  <th data-i18n="reports_col_nap">Направление ворса</th>
+                  <th data-i18n="reports_col_fragment">Фрагмент</th>
+                  <th id="reportsColMaterial" data-i18n="reports_col_material">Материал меха</th>
+                  <th data-i18n="reports_col_qty">Кол-во, шт</th>
+                  <th data-i18n="reports_col_area">Пл. ядра, мм²</th>
+                  <th data-i18n="reports_col_cut_area">Пл. раскроя, мм²</th>
+                  <th id="reportsColInventory" data-i18n="reports_col_inventory">Инвентарный кусок</th>
+                </tr>
+              </thead>
+              <tbody id="reportsTableBody"></tbody>
+            </table>
+          </div>
+          <div class="reports-scheme-wrap">
+            <div id="reportsSchemeTitle" class="reports-scheme-title" data-i18n="reports_scheme_title_empty" data-i18n-fallback="Detail: -">Detail: -</div>
+            <div id="reportsSchemeZone" class="reports-scheme-zone" data-i18n="reports_scheme_zone_empty" data-i18n-fallback="Zone: -">Zone: -</div>
+            <div id="reportsSchemeBox" class="reports-scheme-box"></div>
+          </div>
+        </div>
+      </div>
+      <div id="reportsPrintAll" class="reports-print-all"></div>
+      <div class="modal-actions reports-modal-actions">
+        <button id="reportsCloseFooterBtn" data-i18n="reports_close" data-i18n-fallback="Close">Close</button>
+      </div>
+  </div>
+</div>
+
+<div id="importPanel" class="panel compact-panel">
+    <h2>Import</h2>
+    <div class="row">
+      <label>Mode
+        <select id="importMode">
+          <option value="dxf">DXF folder</option>
+        </select>
+      </label>
+      <input id="importPath" type="text" value="F:\\FURLAB\\Examples" />
+      <label id="recursiveWrap"><input id="recursive" type="checkbox" /> recursive</label>
+      <button id="browseBtn">Browse...</button>
+      <button id="previewRunBtn">Preview DXF</button>
+    </div>
+    <div id="importActionsRow" class="row import-actions" style="display:none;">
+      <span id="selectionInfo" class="muted">selected: 0</span>
+    </div>
+    <div id="previewEmptyHint" class="row muted">Сначала выберите источник и нажмите Preview.</div>
+    <div id="previewTableWrap" class="preview-table-wrap" style="display:none;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:36px;">Sel</th><th class="col-idx" style="width:60px;">Idx</th><th>Name</th>
+            <th style="width:96px;">Ready</th><th style="width:120px;">Size</th><th style="width:120px;">Entities</th><th>Error</th>
+          </tr>
+        </thead>
+        <tbody id="previewTableBody"></tbody>
+      </table>
+    </div>
+    <pre id="discoverOut" class="log-output"></pre>
+    <pre id="previewOut" class="log-output"></pre>
+  </div>
+
+  <div class="panel">
+    <details class="db-details">
+      <summary>Database</summary>
+      <div class="row"><button id="partsBtn">Refresh parts</button></div>
+      <pre id="partsOut"></pre>
+    </details>
+  </div>
+
+  <input id="importFileInput" type="file" accept=".dxf" multiple style="display:none" />
+  <input id="importZprjFileInput" type="file" accept=".zprj" style="display:none" />
+
+  <!-- Project picker modal -->
+  <div id="projectPickerBackdrop" class="modal-backdrop" style="display:none;">
+    <div class="modal" style="width:540px; max-width:calc(100vw - 20px);">
+      <div class="modal-head draggable">
+        <span>Проекты</span>
+        <button id="projectPickerCloseBtn" class="icon-close-btn" aria-label="Закрыть"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+      </div>
+      <div class="modal-body" style="padding:0;">
+        <div id="projectPickerList" style="max-height:400px; overflow-y:auto;"></div>
+        <div id="projectPickerEmpty" style="padding:24px; text-align:center; color:#888; display:none;">Сохранённых проектов нет</div>
+      </div>
+      <div class="modal-actions">
+        <button id="projectPickerNewBtn">Новый проект (импорт)</button>
+        <input id="projectImportFileInput" type="file" accept=".dxf,.pac,.pos" multiple style="display:none">
+        <button id="projectPickerCancelBtn">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Save project modal -->
+  <div id="saveProjectBackdrop" class="modal-backdrop" style="display:none;">
+    <div class="modal save-project-modal">
+      <div class="modal-head draggable">
+        <span>Сохранить проект</span>
+        <button id="saveProjectCloseBtn" class="icon-close-btn" aria-label="Закрыть"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+      </div>
+      <div class="modal-body">
+        <label class="save-project-label">Название проекта</label>
+        <input id="saveProjectNameInput" class="save-project-input" type="text" maxlength="200" placeholder="Введите название…" />
+      </div>
+      <div class="modal-actions">
+        <button id="saveProjectCancelBtn" class="btn-secondary">Отмена</button>
+        <button id="saveProjectConfirmBtn" class="btn-primary">Сохранить</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export to CLO modal -->
+  <div id="exportCloBackdrop" class="modal-backdrop" style="display:none;">
+    <div class="modal" style="width:440px; max-width:calc(100vw - 20px);">
+      <div class="modal-head draggable">
+        <span id="exportCloModalTitle">Преобразовать в лекала</span>
+        <button id="exportCloCloseBtn" class="icon-close-btn" aria-label="Закрыть"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+      </div>
+      <div class="modal-body">
+        <!-- Step 1 -->
+        <div id="exportCloStep1">
+          <div style="display:grid; grid-template-columns: auto 1fr; gap:8px 12px; align-items:center; margin-bottom:8px;">
+            <label>Что преобразовать</label>
+            <select id="exportCloScope" style="width:100%; box-sizing:border-box; padding:6px 8px;">
+              <option value="all">Все зоны</option>
+              <option value="current">Текущую зону</option>
+            </select>
+            <label>Сшивание</label>
+            <select id="exportCloSeamMode" style="width:100%; box-sizing:border-box; padding:6px 8px;">
+              <option value="auto">Автоматически</option>
+              <option value="none">Не сшивать</option>
+            </select>
+          </div>
+        </div>
+        <!-- Step 2 preview -->
+        <div id="exportCloStep2" style="display:none;">
+          <div id="exportCloStats" style="display:flex; gap:18px; margin-bottom:12px; font-size:13px;">
+            <div><span id="exportCloFragCount" style="font-size:22px; font-weight:600;">0</span><br>Лекал</div>
+            <div><span id="exportCloSeamCount" style="font-size:22px; font-weight:600;">0</span><br>Швов</div>
+            <div><span id="exportCloMaterialCount" style="font-size:22px; font-weight:600;">0</span><br>Материалов</div>
+          </div>
+          <div id="exportCloZoneStatuses" style="font-size:12px; color:#888; max-height:120px; overflow-y:auto;"></div>
+          <div id="exportCloWarning" style="display:none; color:#b45309; font-size:12px; margin-top:8px;"></div>
+        </div>
+        <div id="exportCloProgress" style="display:none; margin-top:8px;">
+          <div style="background:#e5e7eb; border-radius:4px; height:8px; overflow:hidden;">
+            <div id="exportCloProgressBar" style="height:100%; width:0%; background:#3b82f6; transition:width 0.2s;"></div>
+          </div>
+          <div id="exportCloProgressLabel" style="font-size:11px; color:#6b7280; margin-top:4px;"></div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="exportCloNextBtn">Далее →</button>
+        <button id="exportCloRunBtn" style="display:none;">Экспортировать ↓ ZIP</button>
+        <button id="exportCloBackBtn" style="display:none;">← Назад</button>
+        <button id="exportCloCancelBtn">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+  <script src="/workers/polygon-clipping.umd.min.js"></script>
+  <script src="/js/core/utils.js"></script>
+  <script src="/js/core/geom.js"></script>
+  <script src="/js/core/fragments.js"></script>
+  <script src="/js/core/seams.js"></script>
+  <script src="/js/core/svg-parse.js"></script>
+  <script src="/js/core/zone-lookups.js"></script>
+  <script src="/js/core/pattern-entities.js"></script>
+  <script src="/js/core/zone-classify.js"></script>
+  <script src="/js/core/zones-persistence.js"></script>
+  <script src="/js/core/materials.js"></script>
+  <script src="/js/core/styles.js"></script>
+  <script src="/js/core/hatch.js"></script>
+  <script src="/js/core/project.js"></script>
+  <script src="/js/core/clo-export.js"></script>
+  <script src="/js/core/reports.js"></script>
+  <script src="/js/core/i18n-ru.js"></script>
+  <script src="/js/core/i18n-hydrate.js"></script>
+  <script src="/js/core/text-normalizer.js"></script>
+  <script src="/js/core/progress-utils.js"></script>
+  <script src="/js/core/progress-view.js"></script>
+  <script src="/js/core/progress-controller.js"></script>
+  <script src="/js/core/state.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/layout-modes.js"></script>
+  <script src="/js/core/layout-type-picker.js"></script>
+  <script src="/js/core/import-preview-controller.js"></script>
+  <script src="/js/core/inventory-progress-ui.js"></script>
+  <script src="/js/core/inventory-modal-drag.js"></script>
+  <script src="/js/core/inventory-step-modal-bridge.js"></script>
+  <script src="/js/core/manual-tray-view.js?v=2"></script>
+  <script src="/js/core/manual-tray-interactions.js"></script>
+  <script src="/js/core/intarsia-preview.js"></script>
+  <script src="/js/core/detail-zone-tree-view.js"></script>
+  <script src="/js/core/property-editor-view.js"></script>
+  <script src="/js/core/layer-legend.js"></script>
+  <script src="/js/core/inventory-step2-ui.js"></script>
+  <script src="/js/core/placement-explain-view.js"></script>
+  <script src="/js/core/inventory-voronoi-sa.js"></script>
+  <script src="/js/core/inventory-voronoi-sa-monitor.js"></script>
+  <script src="/js/core/stage-interactions.js"></script>
+  <script src="/js/core/ui-bindings.js"></script>
+  <script src="/js/app.js"></script>
+  <div id="statusToast" style="display:none;position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:9999;background:#fffbe6;border:1px solid #f0c040;border-radius:6px;padding:5px 16px;font-size:11px;color:#7a5c00;box-shadow:0 2px 8px rgba(0,0,0,0.13);pointer-events:none;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;"></div>
+  <div id="precisionBar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:8000;font-size:11px;font-family:monospace;color:#444;background:rgba(248,248,248,0.96);border-top:1px solid #d8d8d8;padding:2px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:20px;pointer-events:none;"></div>
+</body>
+</html>

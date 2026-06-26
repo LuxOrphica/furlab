@@ -1,0 +1,83 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Услуги" [ref=e8] [cursor=pointer]:
+          - /url: "#services"
+        - link "Как работаю" [ref=e9] [cursor=pointer]:
+          - /url: "#how"
+        - link "Клиентам" [ref=e10] [cursor=pointer]:
+          - /url: "#for-whom"
+        - link "Продукты" [ref=e11] [cursor=pointer]:
+          - /url: "#products"
+        - link "Табель мер" [ref=e12] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Техпак" [ref=e13] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e14]:
+        - button "☀" [ref=e15] [cursor=pointer]
+        - button "EN" [ref=e16] [cursor=pointer]
+        - link "Заявка" [ref=e17] [cursor=pointer]:
+          - /url: "#contact"
+  - generic [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]: 3D Lastique · Tech Pack
+      - heading "Tech Pack Builder" [level=1] [ref=e21]
+      - paragraph [ref=e22]: Garment specification — export to Excel / PDF
+    - generic [ref=e23]:
+      - button "01 Style" [ref=e24] [cursor=pointer]
+      - button "02 Callouts" [ref=e25] [cursor=pointer]
+      - button "03 BOM" [ref=e26] [cursor=pointer]
+      - button "04 Construction" [ref=e27] [cursor=pointer]
+      - button "05 Patterns" [ref=e28] [cursor=pointer]
+      - button "06 Labels & Pack" [ref=e29] [cursor=pointer]
+      - button "07 Files" [ref=e30] [cursor=pointer]
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e34]: Изделие
+        - combobox "Изделие" [ref=e35]:
+          - option "Классические брюки (муж.)" [selected]
+          - option "Пальто однобортное"
+          - option "Пальто двубортное"
+      - generic [ref=e36]:
+        - generic [ref=e37]: Базовый размер
+        - combobox "Базовый размер" [ref=e38]:
+          - option "46"
+          - option "48" [selected]
+          - option "50"
+          - option "52"
+          - option "54"
+          - option "56"
+      - generic [ref=e39]:
+        - generic [ref=e40]: Бренд
+        - textbox "Бренд" [ref=e41]: 3D Lastique
+      - generic [ref=e42]:
+        - generic [ref=e43]: Style No.
+        - textbox "Style No." [ref=e44]
+      - generic [ref=e45]:
+        - generic [ref=e46]: Name EN
+        - textbox "Name EN" [ref=e47]
+      - generic [ref=e48]:
+        - generic [ref=e49]: Название RU
+        - textbox "Название RU" [ref=e50]
+      - generic [ref=e51]:
+        - generic [ref=e52]: Сезон
+        - textbox "Сезон" [ref=e53]
+      - generic [ref=e54]:
+        - generic [ref=e55]: Пол
+        - textbox "Пол" [ref=e56]: Men
+      - generic [ref=e57]:
+        - generic [ref=e58]: Стадия
+        - textbox "Стадия" [ref=e59]: Tech pack
+      - generic [ref=e60]:
+        - generic [ref=e61]: Фабрика
+        - textbox "Фабрика" [ref=e62]
+      - generic [ref=e63]:
+        - generic [ref=e64]: Описание
+        - textbox "Описание" [ref=e65]
+    - generic [ref=e66]:
+      - button "↓ Техпак RU" [ref=e67] [cursor=pointer]
+      - button "↓ Техпак EN" [ref=e68] [cursor=pointer]
+      - generic [ref=e69] [cursor=pointer]: Генерация PDF...

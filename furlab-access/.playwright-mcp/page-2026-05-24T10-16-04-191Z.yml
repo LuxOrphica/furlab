@@ -1,0 +1,829 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Узлы" [ref=e9] [cursor=pointer]:
+          - /url: /tools/nodes
+        - link "VSE" [ref=e10] [cursor=pointer]:
+          - /url: /tools/vse
+        - link "Техпак" [ref=e11] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e12]:
+        - button "☾" [ref=e13] [cursor=pointer]
+        - button "EN" [ref=e14] [cursor=pointer]
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]: Конструктивные узлы
+      - generic [ref=e18]: Справочник узлов
+      - generic [ref=e19]: Node Library — 2428 узлов
+    - generic [ref=e20]:
+      - button "Воротник / капюшон189" [ref=e21] [cursor=pointer]
+      - button "! Усиление9" [ref=e22] [cursor=pointer]
+      - button "!Горловина21" [ref=e23] [cursor=pointer]
+      - button "!Застежка-молния спереди864" [ref=e24] [cursor=pointer]
+      - button "!Съемные детали12" [ref=e25] [cursor=pointer]
+      - button "!Петля1" [ref=e26] [cursor=pointer]
+      - button "!Подвернуть18" [ref=e27] [cursor=pointer]
+      - button "!Ремни5" [ref=e28] [cursor=pointer]
+      - button "!Полумесяц2" [ref=e29] [cursor=pointer]
+      - button "!Система шнуровок56" [ref=e30] [cursor=pointer]
+      - button "!Пояс318" [ref=e31] [cursor=pointer]
+      - button "!Швы270" [ref=e32] [cursor=pointer]
+      - button "!Шлица25" [ref=e33] [cursor=pointer]
+      - button "!Планка спереди160" [ref=e34] [cursor=pointer]
+      - button "!Разрез рукава11" [ref=e35] [cursor=pointer]
+      - button "!Плечо4" [ref=e36] [cursor=pointer]
+      - button "!Вентиляция55" [ref=e37] [cursor=pointer]
+      - button "!!Маркировка332" [ref=e38] [cursor=pointer]
+      - button "!Туннель47" [ref=e39] [cursor=pointer]
+      - button "!СнежныеSkirt29" [ref=e40] [cursor=pointer]
+    - generic [ref=e41]:
+      - button "Все 189" [ref=e42] [cursor=pointer]:
+        - text: Все
+        - generic [ref=e43]: "189"
+      - button "Молния 56" [ref=e44] [cursor=pointer]:
+        - text: Молния
+        - generic [ref=e45]: "56"
+      - button "Кнопка 59" [ref=e46] [cursor=pointer]:
+        - text: Кнопка
+        - generic [ref=e47]: "59"
+      - button "Липучка 11" [ref=e48] [cursor=pointer]:
+        - text: Липучка
+        - generic [ref=e49]: "11"
+      - button "Скрытый капюшон 30" [ref=e50] [cursor=pointer]:
+        - text: Скрытый капюшон
+        - generic [ref=e51]: "30"
+      - button "Карман для капюшона 3" [ref=e52] [cursor=pointer]:
+        - text: Карман для капюшона
+        - generic [ref=e53]: "3"
+      - button "Втачной капюшон 30" [ref=e54] [cursor=pointer]:
+        - text: Втачной капюшон
+        - generic [ref=e55]: "30"
+    - generic [ref=e56]:
+      - textbox "Поиск по коду или названию…" [ref=e57]
+      - generic [ref=e58]: 189 / 189
+      - generic [ref=e59]:
+        - button "☰" [ref=e60] [cursor=pointer]
+        - button "⊞" [ref=e61] [cursor=pointer]
+        - button "⬛" [ref=e62] [cursor=pointer]
+    - generic [ref=e64]:
+      - generic "Молния" [ref=e65] [cursor=pointer]:
+        - img "CH00104" [ref=e67]
+        - generic [ref=e68]: CH00104
+        - generic [ref=e69]: Молния
+      - generic "Молния" [ref=e70] [cursor=pointer]:
+        - img "CH00117" [ref=e72]
+        - generic [ref=e73]: CH00117
+        - generic [ref=e74]: Молния
+      - generic "Молния" [ref=e75] [cursor=pointer]:
+        - img "CH00001" [ref=e77]
+        - generic [ref=e78]: CH00001
+        - generic [ref=e79]: Молния
+      - generic "Молния" [ref=e80] [cursor=pointer]:
+        - img "CH00079" [ref=e82]
+        - generic [ref=e83]: CH00079
+        - generic [ref=e84]: Молния
+      - generic "Молния" [ref=e85] [cursor=pointer]:
+        - img "CH00006" [ref=e87]
+        - generic [ref=e88]: CH00006
+        - generic [ref=e89]: Молния
+      - generic "Молния" [ref=e90] [cursor=pointer]:
+        - img "CH00116" [ref=e92]
+        - generic [ref=e93]: CH00116
+        - generic [ref=e94]: Молния
+      - generic "Молния" [ref=e95] [cursor=pointer]:
+        - img "CH00109" [ref=e97]
+        - generic [ref=e98]: CH00109
+        - generic [ref=e99]: Молния
+      - generic "Молния" [ref=e100] [cursor=pointer]:
+        - img "CH00012" [ref=e102]
+        - generic [ref=e103]: CH00012
+        - generic [ref=e104]: Молния
+      - generic "Молния" [ref=e105] [cursor=pointer]:
+        - img "CH00011" [ref=e107]
+        - generic [ref=e108]: CH00011
+        - generic [ref=e109]: Молния
+      - generic "Молния" [ref=e110] [cursor=pointer]:
+        - img "CH00022" [ref=e112]
+        - generic [ref=e113]: CH00022
+        - generic [ref=e114]: Молния
+      - generic "Молния" [ref=e115] [cursor=pointer]:
+        - img "CH00023" [ref=e117]
+        - generic [ref=e118]: CH00023
+        - generic [ref=e119]: Молния
+      - generic "Молния" [ref=e120] [cursor=pointer]:
+        - img "CH00107" [ref=e122]
+        - generic [ref=e123]: CH00107
+        - generic [ref=e124]: Молния
+      - generic "Молния" [ref=e125] [cursor=pointer]:
+        - img "CH00082" [ref=e127]
+        - generic [ref=e128]: CH00082
+        - generic [ref=e129]: Молния
+      - generic "Молния" [ref=e130] [cursor=pointer]:
+        - img "CH00111" [ref=e132]
+        - generic [ref=e133]: CH00111
+        - generic [ref=e134]: Молния
+      - generic "Молния" [ref=e135] [cursor=pointer]:
+        - img "CH00100" [ref=e137]
+        - generic [ref=e138]: CH00100
+        - generic [ref=e139]: Молния
+      - generic "Молния" [ref=e140] [cursor=pointer]:
+        - img "CH00015" [ref=e142]
+        - generic [ref=e143]: CH00015
+        - generic [ref=e144]: Молния
+      - generic "Молния" [ref=e145] [cursor=pointer]:
+        - img "CH00026" [ref=e147]
+        - generic [ref=e148]: CH00026
+        - generic [ref=e149]: Молния
+      - generic "Молния" [ref=e150] [cursor=pointer]:
+        - img "CH00110" [ref=e152]
+        - generic [ref=e153]: CH00110
+        - generic [ref=e154]: Молния
+      - generic "Молния" [ref=e155] [cursor=pointer]:
+        - img "CH00003" [ref=e157]
+        - generic [ref=e158]: CH00003
+        - generic [ref=e159]: Молния
+      - generic "Молния" [ref=e160] [cursor=pointer]:
+        - img "CH00096" [ref=e162]
+        - generic [ref=e163]: CH00096
+        - generic [ref=e164]: Молния
+      - generic "Молния" [ref=e165] [cursor=pointer]:
+        - img "CH00091" [ref=e167]
+        - generic [ref=e168]: CH00091
+        - generic [ref=e169]: Молния
+      - generic "Молния" [ref=e170] [cursor=pointer]:
+        - img "CH00092" [ref=e172]
+        - generic [ref=e173]: CH00092
+        - generic [ref=e174]: Молния
+      - generic "Молния" [ref=e175] [cursor=pointer]:
+        - img "CH00024" [ref=e177]
+        - generic [ref=e178]: CH00024
+        - generic [ref=e179]: Молния
+      - generic "Молния" [ref=e180] [cursor=pointer]:
+        - img "CH00093" [ref=e182]
+        - generic [ref=e183]: CH00093
+        - generic [ref=e184]: Молния
+      - generic "Молния" [ref=e185] [cursor=pointer]:
+        - img "CH00005" [ref=e187]
+        - generic [ref=e188]: CH00005
+        - generic [ref=e189]: Молния
+      - generic "Молния" [ref=e190] [cursor=pointer]:
+        - img "CH00083" [ref=e192]
+        - generic [ref=e193]: CH00083
+        - generic [ref=e194]: Молния
+      - generic "Молния" [ref=e195] [cursor=pointer]:
+        - img "CH00004" [ref=e197]
+        - generic [ref=e198]: CH00004
+        - generic [ref=e199]: Молния
+      - generic "Молния" [ref=e200] [cursor=pointer]:
+        - img "CH00114" [ref=e202]
+        - generic [ref=e203]: CH00114
+        - generic [ref=e204]: Молния
+      - generic "Молния" [ref=e205] [cursor=pointer]:
+        - img "CH00112" [ref=e207]
+        - generic [ref=e208]: CH00112
+        - generic [ref=e209]: Молния
+      - generic "Молния" [ref=e210] [cursor=pointer]:
+        - img "CH00010" [ref=e212]
+        - generic [ref=e213]: CH00010
+        - generic [ref=e214]: Молния
+      - generic "Молния" [ref=e215] [cursor=pointer]:
+        - img "CH00103" [ref=e217]
+        - generic [ref=e218]: CH00103
+        - generic [ref=e219]: Молния
+      - generic "Молния" [ref=e220] [cursor=pointer]:
+        - img "CH00113" [ref=e222]
+        - generic [ref=e223]: CH00113
+        - generic [ref=e224]: Молния
+      - generic "Молния" [ref=e225] [cursor=pointer]:
+        - img "CH00008" [ref=e227]
+        - generic [ref=e228]: CH00008
+        - generic [ref=e229]: Молния
+      - generic "Молния" [ref=e230] [cursor=pointer]:
+        - img "CH00018" [ref=e232]
+        - generic [ref=e233]: CH00018
+        - generic [ref=e234]: Молния
+      - generic "Молния" [ref=e235] [cursor=pointer]:
+        - img "CH00090" [ref=e237]
+        - generic [ref=e238]: CH00090
+        - generic [ref=e239]: Молния
+      - generic "Молния" [ref=e240] [cursor=pointer]:
+        - img "CH00016" [ref=e242]
+        - generic [ref=e243]: CH00016
+        - generic [ref=e244]: Молния
+      - generic "Молния" [ref=e245] [cursor=pointer]:
+        - img "CH00101" [ref=e247]
+        - generic [ref=e248]: CH00101
+        - generic [ref=e249]: Молния
+      - generic "Молния" [ref=e250] [cursor=pointer]:
+        - img "CH00013" [ref=e252]
+        - generic [ref=e253]: CH00013
+        - generic [ref=e254]: Молния
+      - generic "Молния" [ref=e255] [cursor=pointer]:
+        - img "CH00118" [ref=e257]
+        - generic [ref=e258]: CH00118
+        - generic [ref=e259]: Молния
+      - generic "Молния" [ref=e260] [cursor=pointer]:
+        - img "CH00081" [ref=e262]
+        - generic [ref=e263]: CH00081
+        - generic [ref=e264]: Молния
+      - generic "Молния" [ref=e265] [cursor=pointer]:
+        - img "CH00019" [ref=e267]
+        - generic [ref=e268]: CH00019
+        - generic [ref=e269]: Молния
+      - generic "Молния" [ref=e270] [cursor=pointer]:
+        - img "CH00009" [ref=e272]
+        - generic [ref=e273]: CH00009
+        - generic [ref=e274]: Молния
+      - generic "Молния" [ref=e275] [cursor=pointer]:
+        - img "CH00108" [ref=e277]
+        - generic [ref=e278]: CH00108
+        - generic [ref=e279]: Молния
+      - generic "Молния" [ref=e280] [cursor=pointer]:
+        - img "CH00007" [ref=e282]
+        - generic [ref=e283]: CH00007
+        - generic [ref=e284]: Молния
+      - generic "Молния" [ref=e285] [cursor=pointer]:
+        - img "CH00105" [ref=e287]
+        - generic [ref=e288]: CH00105
+        - generic [ref=e289]: Молния
+      - generic "Молния" [ref=e290] [cursor=pointer]:
+        - img "CH00025" [ref=e292]
+        - generic [ref=e293]: CH00025
+        - generic [ref=e294]: Молния
+      - generic "Молния" [ref=e295] [cursor=pointer]:
+        - img "CH00115" [ref=e297]
+        - generic [ref=e298]: CH00115
+        - generic [ref=e299]: Молния
+      - generic "Молния" [ref=e300] [cursor=pointer]:
+        - img "CH00021" [ref=e302]
+        - generic [ref=e303]: CH00021
+        - generic [ref=e304]: Молния
+      - generic "Молния" [ref=e305] [cursor=pointer]:
+        - img "CH00014" [ref=e307]
+        - generic [ref=e308]: CH00014
+        - generic [ref=e309]: Молния
+      - generic "Молния" [ref=e310] [cursor=pointer]:
+        - img "CH00002" [ref=e312]
+        - generic [ref=e313]: CH00002
+        - generic [ref=e314]: Молния
+      - generic "Молния" [ref=e315] [cursor=pointer]:
+        - img "CH00020" [ref=e317]
+        - generic [ref=e318]: CH00020
+        - generic [ref=e319]: Молния
+      - generic "Молния" [ref=e320] [cursor=pointer]:
+        - img "CH00080" [ref=e322]
+        - generic [ref=e323]: CH00080
+        - generic [ref=e324]: Молния
+      - generic "Молния" [ref=e325] [cursor=pointer]:
+        - img "CH00102" [ref=e327]
+        - generic [ref=e328]: CH00102
+        - generic [ref=e329]: Молния
+      - generic "Молния" [ref=e330] [cursor=pointer]:
+        - img "CH00106" [ref=e332]
+        - generic [ref=e333]: CH00106
+        - generic [ref=e334]: Молния
+      - generic "Молния" [ref=e335] [cursor=pointer]:
+        - img "CH00097" [ref=e337]
+        - generic [ref=e338]: CH00097
+        - generic [ref=e339]: Молния
+      - generic "Молния" [ref=e340] [cursor=pointer]:
+        - img "CH00017" [ref=e342]
+        - generic [ref=e343]: CH00017
+        - generic [ref=e344]: Молния
+      - generic "Кнопка" [ref=e345] [cursor=pointer]:
+        - img "CH00208" [ref=e347]
+        - generic [ref=e348]: CH00208
+        - generic [ref=e349]: Кнопка
+      - generic "Кнопка" [ref=e350] [cursor=pointer]:
+        - img "CH00028" [ref=e352]
+        - generic [ref=e353]: CH00028
+        - generic [ref=e354]: Кнопка
+      - generic "Кнопка" [ref=e355] [cursor=pointer]:
+        - img "CH00039" [ref=e357]
+        - generic [ref=e358]: CH00039
+        - generic [ref=e359]: Кнопка
+      - generic "Кнопка" [ref=e360] [cursor=pointer]:
+        - img "CH00221" [ref=e362]
+        - generic [ref=e363]: CH00221
+        - generic [ref=e364]: Кнопка
+      - generic "Кнопка" [ref=e365] [cursor=pointer]:
+        - img "CH00048" [ref=e367]
+        - generic [ref=e368]: CH00048
+        - generic [ref=e369]: Кнопка
+      - generic "Кнопка" [ref=e370] [cursor=pointer]:
+        - img "CH00056" [ref=e372]
+        - generic [ref=e373]: CH00056
+        - generic [ref=e374]: Кнопка
+      - generic "Кнопка" [ref=e375] [cursor=pointer]:
+        - img "CH00030" [ref=e377]
+        - generic [ref=e378]: CH00030
+        - generic [ref=e379]: Кнопка
+      - generic "Кнопка" [ref=e380] [cursor=pointer]:
+        - img "CH00213" [ref=e382]
+        - generic [ref=e383]: CH00213
+        - generic [ref=e384]: Кнопка
+      - generic "Кнопка" [ref=e385] [cursor=pointer]:
+        - img "CH00049" [ref=e387]
+        - generic [ref=e388]: CH00049
+        - generic [ref=e389]: Кнопка
+      - generic "Кнопка" [ref=e390] [cursor=pointer]:
+        - img "CH00087" [ref=e392]
+        - generic [ref=e393]: CH00087
+        - generic [ref=e394]: Кнопка
+      - generic "Кнопка" [ref=e395] [cursor=pointer]:
+        - img "CH00204" [ref=e397]
+        - generic [ref=e398]: CH00204
+        - generic [ref=e399]: Кнопка
+      - generic "Кнопка" [ref=e400] [cursor=pointer]:
+        - img "CH00035" [ref=e402]
+        - generic [ref=e403]: CH00035
+        - generic [ref=e404]: Кнопка
+      - generic "Кнопка" [ref=e405] [cursor=pointer]:
+        - img "CH00053" [ref=e407]
+        - generic [ref=e408]: CH00053
+        - generic [ref=e409]: Кнопка
+      - generic "Кнопка" [ref=e410] [cursor=pointer]:
+        - img "CH00210" [ref=e412]
+        - generic [ref=e413]: CH00210
+        - generic [ref=e414]: Кнопка
+      - generic "Кнопка" [ref=e415] [cursor=pointer]:
+        - img "CH00052" [ref=e417]
+        - generic [ref=e418]: CH00052
+        - generic [ref=e419]: Кнопка
+      - generic "Кнопка" [ref=e420] [cursor=pointer]:
+        - img "CH00205" [ref=e422]
+        - generic [ref=e423]: CH00205
+        - generic [ref=e424]: Кнопка
+      - generic "Кнопка" [ref=e425] [cursor=pointer]:
+        - img "CH00212" [ref=e427]
+        - generic [ref=e428]: CH00212
+        - generic [ref=e429]: Кнопка
+      - generic "Кнопка" [ref=e430] [cursor=pointer]:
+        - img "CH00054" [ref=e432]
+        - generic [ref=e433]: CH00054
+        - generic [ref=e434]: Кнопка
+      - generic "Кнопка" [ref=e435] [cursor=pointer]:
+        - img "CH00089" [ref=e437]
+        - generic [ref=e438]: CH00089
+        - generic [ref=e439]: Кнопка
+      - generic "Кнопка" [ref=e440] [cursor=pointer]:
+        - img "CH00033" [ref=e442]
+        - generic [ref=e443]: CH00033
+        - generic [ref=e444]: Кнопка
+      - generic "Кнопка" [ref=e445] [cursor=pointer]:
+        - img "CH00047" [ref=e447]
+        - generic [ref=e448]: CH00047
+        - generic [ref=e449]: Кнопка
+      - generic "Кнопка" [ref=e450] [cursor=pointer]:
+        - img "CH00055" [ref=e452]
+        - generic [ref=e453]: CH00055
+        - generic [ref=e454]: Кнопка
+      - generic "Кнопка" [ref=e455] [cursor=pointer]:
+        - img "CH00200" [ref=e457]
+        - generic [ref=e458]: CH00200
+        - generic [ref=e459]: Кнопка
+      - generic "Кнопка" [ref=e460] [cursor=pointer]:
+        - img "CH00029" [ref=e462]
+        - generic [ref=e463]: CH00029
+        - generic [ref=e464]: Кнопка
+      - generic "Кнопка" [ref=e465] [cursor=pointer]:
+        - img "CH00042" [ref=e467]
+        - generic [ref=e468]: CH00042
+        - generic [ref=e469]: Кнопка
+      - generic "Кнопка" [ref=e470] [cursor=pointer]:
+        - img "CH00046" [ref=e472]
+        - generic [ref=e473]: CH00046
+        - generic [ref=e474]: Кнопка
+      - generic "Кнопка" [ref=e475] [cursor=pointer]:
+        - img "CH00088" [ref=e477]
+        - generic [ref=e478]: CH00088
+        - generic [ref=e479]: Кнопка
+      - generic "Кнопка" [ref=e480] [cursor=pointer]:
+        - img "CH00034" [ref=e482]
+        - generic [ref=e483]: CH00034
+        - generic [ref=e484]: Кнопка
+      - generic "Кнопка" [ref=e485] [cursor=pointer]:
+        - img "CH00040" [ref=e487]
+        - generic [ref=e488]: CH00040
+        - generic [ref=e489]: Кнопка
+      - generic "Кнопка" [ref=e490] [cursor=pointer]:
+        - img "CH00031" [ref=e492]
+        - generic [ref=e493]: CH00031
+        - generic [ref=e494]: Кнопка
+      - generic "Кнопка" [ref=e495] [cursor=pointer]:
+        - img "CH00220" [ref=e497]
+        - generic [ref=e498]: CH00220
+        - generic [ref=e499]: Кнопка
+      - generic "Кнопка" [ref=e500] [cursor=pointer]:
+        - img "CH00094" [ref=e502]
+        - generic [ref=e503]: CH00094
+        - generic [ref=e504]: Кнопка
+      - generic "Кнопка" [ref=e505] [cursor=pointer]:
+        - img "CH00206" [ref=e507]
+        - generic [ref=e508]: CH00206
+        - generic [ref=e509]: Кнопка
+      - generic "Кнопка" [ref=e510] [cursor=pointer]:
+        - img "CH00207" [ref=e512]
+        - generic [ref=e513]: CH00207
+        - generic [ref=e514]: Кнопка
+      - generic "Кнопка" [ref=e515] [cursor=pointer]:
+        - img "CH00050" [ref=e517]
+        - generic [ref=e518]: CH00050
+        - generic [ref=e519]: Кнопка
+      - generic "Кнопка" [ref=e520] [cursor=pointer]:
+        - img "CH00214" [ref=e522]
+        - generic [ref=e523]: CH00214
+        - generic [ref=e524]: Кнопка
+      - generic "Кнопка" [ref=e525] [cursor=pointer]:
+        - img "CH00218" [ref=e527]
+        - generic [ref=e528]: CH00218
+        - generic [ref=e529]: Кнопка
+      - generic "Кнопка" [ref=e530] [cursor=pointer]:
+        - img "CH00203" [ref=e532]
+        - generic [ref=e533]: CH00203
+        - generic [ref=e534]: Кнопка
+      - generic "Кнопка" [ref=e535] [cursor=pointer]:
+        - img "CH00045" [ref=e537]
+        - generic [ref=e538]: CH00045
+        - generic [ref=e539]: Кнопка
+      - generic "Кнопка" [ref=e540] [cursor=pointer]:
+        - img "CH00099" [ref=e542]
+        - generic [ref=e543]: CH00099
+        - generic [ref=e544]: Кнопка
+      - generic "Кнопка" [ref=e545] [cursor=pointer]:
+        - img "CH00215" [ref=e547]
+        - generic [ref=e548]: CH00215
+        - generic [ref=e549]: Кнопка
+      - generic "Кнопка" [ref=e550] [cursor=pointer]:
+        - img "CH00201" [ref=e552]
+        - generic [ref=e553]: CH00201
+        - generic [ref=e554]: Кнопка
+      - generic "Кнопка" [ref=e555] [cursor=pointer]:
+        - img "CH00038" [ref=e557]
+        - generic [ref=e558]: CH00038
+        - generic [ref=e559]: Кнопка
+      - generic "Кнопка" [ref=e560] [cursor=pointer]:
+        - img "CH00036" [ref=e562]
+        - generic [ref=e563]: CH00036
+        - generic [ref=e564]: Кнопка
+      - generic "Кнопка" [ref=e565] [cursor=pointer]:
+        - img "CH00209" [ref=e567]
+        - generic [ref=e568]: CH00209
+        - generic [ref=e569]: Кнопка
+      - generic "Кнопка" [ref=e570] [cursor=pointer]:
+        - img "CH00044" [ref=e572]
+        - generic [ref=e573]: CH00044
+        - generic [ref=e574]: Кнопка
+      - generic "Кнопка" [ref=e575] [cursor=pointer]:
+        - img "CH00037" [ref=e577]
+        - generic [ref=e578]: CH00037
+        - generic [ref=e579]: Кнопка
+      - generic "Кнопка" [ref=e580] [cursor=pointer]:
+        - img "CH00211" [ref=e582]
+        - generic [ref=e583]: CH00211
+        - generic [ref=e584]: Кнопка
+      - generic "Кнопка" [ref=e585] [cursor=pointer]:
+        - img "CH00032" [ref=e587]
+        - generic [ref=e588]: CH00032
+        - generic [ref=e589]: Кнопка
+      - generic "Кнопка" [ref=e590] [cursor=pointer]:
+        - img "CH00217" [ref=e592]
+        - generic [ref=e593]: CH00217
+        - generic [ref=e594]: Кнопка
+      - generic "Кнопка" [ref=e595] [cursor=pointer]:
+        - img "CH00027" [ref=e597]
+        - generic [ref=e598]: CH00027
+        - generic [ref=e599]: Кнопка
+      - generic "Кнопка" [ref=e600] [cursor=pointer]:
+        - img "CH00216" [ref=e602]
+        - generic [ref=e603]: CH00216
+        - generic [ref=e604]: Кнопка
+      - generic "Кнопка" [ref=e605] [cursor=pointer]:
+        - img "CH00041" [ref=e607]
+        - generic [ref=e608]: CH00041
+        - generic [ref=e609]: Кнопка
+      - generic "Кнопка" [ref=e610] [cursor=pointer]:
+        - img "CH00084" [ref=e612]
+        - generic [ref=e613]: CH00084
+        - generic [ref=e614]: Кнопка
+      - generic "Кнопка" [ref=e615] [cursor=pointer]:
+        - img "CH00086" [ref=e617]
+        - generic [ref=e618]: CH00086
+        - generic [ref=e619]: Кнопка
+      - generic "Кнопка" [ref=e620] [cursor=pointer]:
+        - img "CH00043" [ref=e622]
+        - generic [ref=e623]: CH00043
+        - generic [ref=e624]: Кнопка
+      - generic "Кнопка" [ref=e625] [cursor=pointer]:
+        - img "CH00202" [ref=e627]
+        - generic [ref=e628]: CH00202
+        - generic [ref=e629]: Кнопка
+      - generic "Кнопка" [ref=e630] [cursor=pointer]:
+        - img "CH00051" [ref=e632]
+        - generic [ref=e633]: CH00051
+        - generic [ref=e634]: Кнопка
+      - generic "Кнопка" [ref=e635] [cursor=pointer]:
+        - img "CH00219" [ref=e637]
+        - generic [ref=e638]: CH00219
+        - generic [ref=e639]: Кнопка
+      - generic "Липучка" [ref=e640] [cursor=pointer]:
+        - img "CH00059" [ref=e642]
+        - generic [ref=e643]: CH00059
+        - generic [ref=e644]: Липучка
+      - generic "Липучка" [ref=e645] [cursor=pointer]:
+        - img "CH00057" [ref=e647]
+        - generic [ref=e648]: CH00057
+        - generic [ref=e649]: Липучка
+      - generic "Липучка" [ref=e650] [cursor=pointer]:
+        - img "CH00063" [ref=e652]
+        - generic [ref=e653]: CH00063
+        - generic [ref=e654]: Липучка
+      - generic "Липучка" [ref=e655] [cursor=pointer]:
+        - img "CH00061" [ref=e657]
+        - generic [ref=e658]: CH00061
+        - generic [ref=e659]: Липучка
+      - generic "Липучка" [ref=e660] [cursor=pointer]:
+        - img "CH00064" [ref=e662]
+        - generic [ref=e663]: CH00064
+        - generic [ref=e664]: Липучка
+      - generic "Липучка" [ref=e665] [cursor=pointer]:
+        - img "CH00066" [ref=e667]
+        - generic [ref=e668]: CH00066
+        - generic [ref=e669]: Липучка
+      - generic "Липучка" [ref=e670] [cursor=pointer]:
+        - img "CH00067" [ref=e672]
+        - generic [ref=e673]: CH00067
+        - generic [ref=e674]: Липучка
+      - generic "Липучка" [ref=e675] [cursor=pointer]:
+        - img "CH00058" [ref=e677]
+        - generic [ref=e678]: CH00058
+        - generic [ref=e679]: Липучка
+      - generic "Липучка" [ref=e680] [cursor=pointer]:
+        - img "CH00060" [ref=e682]
+        - generic [ref=e683]: CH00060
+        - generic [ref=e684]: Липучка
+      - generic "Липучка" [ref=e685] [cursor=pointer]:
+        - img "CH00065" [ref=e687]
+        - generic [ref=e688]: CH00065
+        - generic [ref=e689]: Липучка
+      - generic "Липучка" [ref=e690] [cursor=pointer]:
+        - img "CH00062" [ref=e692]
+        - generic [ref=e693]: CH00062
+        - generic [ref=e694]: Липучка
+      - generic "Скрытый капюшон" [ref=e695] [cursor=pointer]:
+        - img "CH00069" [ref=e697]
+        - generic [ref=e698]: CH00069
+        - generic [ref=e699]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e700] [cursor=pointer]:
+        - img "CH00095" [ref=e702]
+        - generic [ref=e703]: CH00095
+        - generic [ref=e704]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e705] [cursor=pointer]:
+        - img "CH00068" [ref=e707]
+        - generic [ref=e708]: CH00068
+        - generic [ref=e709]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e710] [cursor=pointer]:
+        - img "CH00605" [ref=e712]
+        - generic [ref=e713]: CH00605
+        - generic [ref=e714]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e715] [cursor=pointer]:
+        - img "CH00604" [ref=e717]
+        - generic [ref=e718]: CH00604
+        - generic [ref=e719]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e720] [cursor=pointer]:
+        - img "CH00600" [ref=e722]
+        - generic [ref=e723]: CH00600
+        - generic [ref=e724]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e725] [cursor=pointer]:
+        - img "CH00078" [ref=e727]
+        - generic [ref=e728]: CH00078
+        - generic [ref=e729]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e730] [cursor=pointer]:
+        - img "CH00073" [ref=e732]
+        - generic [ref=e733]: CH00073
+        - generic [ref=e734]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e735] [cursor=pointer]:
+        - img "CH00610" [ref=e737]
+        - generic [ref=e738]: CH00610
+        - generic [ref=e739]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e740] [cursor=pointer]:
+        - img "CH00071" [ref=e742]
+        - generic [ref=e743]: CH00071
+        - generic [ref=e744]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e745] [cursor=pointer]:
+        - img "CH00075" [ref=e747]
+        - generic [ref=e748]: CH00075
+        - generic [ref=e749]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e750] [cursor=pointer]:
+        - img "CH00615" [ref=e752]
+        - generic [ref=e753]: CH00615
+        - generic [ref=e754]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e755] [cursor=pointer]:
+        - img "CH00614" [ref=e757]
+        - generic [ref=e758]: CH00614
+        - generic [ref=e759]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e760] [cursor=pointer]:
+        - img "CH00601" [ref=e762]
+        - generic [ref=e763]: CH00601
+        - generic [ref=e764]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e765] [cursor=pointer]:
+        - img "CH00607" [ref=e767]
+        - generic [ref=e768]: CH00607
+        - generic [ref=e769]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e770] [cursor=pointer]:
+        - img "CH00072" [ref=e772]
+        - generic [ref=e773]: CH00072
+        - generic [ref=e774]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e775] [cursor=pointer]:
+        - img "CH00077" [ref=e777]
+        - generic [ref=e778]: CH00077
+        - generic [ref=e779]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e780] [cursor=pointer]:
+        - img "CH00602" [ref=e782]
+        - generic [ref=e783]: CH00602
+        - generic [ref=e784]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e785] [cursor=pointer]:
+        - img "CH00611" [ref=e787]
+        - generic [ref=e788]: CH00611
+        - generic [ref=e789]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e790] [cursor=pointer]:
+        - img "CH00606" [ref=e792]
+        - generic [ref=e793]: CH00606
+        - generic [ref=e794]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e795] [cursor=pointer]:
+        - img "CH00613" [ref=e797]
+        - generic [ref=e798]: CH00613
+        - generic [ref=e799]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e800] [cursor=pointer]:
+        - img "CH00603" [ref=e802]
+        - generic [ref=e803]: CH00603
+        - generic [ref=e804]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e805] [cursor=pointer]:
+        - img "CH00608" [ref=e807]
+        - generic [ref=e808]: CH00608
+        - generic [ref=e809]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e810] [cursor=pointer]:
+        - img "CH00074" [ref=e812]
+        - generic [ref=e813]: CH00074
+        - generic [ref=e814]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e815] [cursor=pointer]:
+        - img "CH00098" [ref=e817]
+        - generic [ref=e818]: CH00098
+        - generic [ref=e819]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e820] [cursor=pointer]:
+        - img "CH00612" [ref=e822]
+        - generic [ref=e823]: CH00612
+        - generic [ref=e824]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e825] [cursor=pointer]:
+        - img "CH00609" [ref=e827]
+        - generic [ref=e828]: CH00609
+        - generic [ref=e829]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e830] [cursor=pointer]:
+        - img "CH00070" [ref=e832]
+        - generic [ref=e833]: CH00070
+        - generic [ref=e834]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e835] [cursor=pointer]:
+        - img "CH00076" [ref=e837]
+        - generic [ref=e838]: CH00076
+        - generic [ref=e839]: Скрытый капюшон
+      - generic "Скрытый капюшон" [ref=e840] [cursor=pointer]:
+        - img "CH00085" [ref=e842]
+        - generic [ref=e843]: CH00085
+        - generic [ref=e844]: Скрытый капюшон
+      - generic "Карман для капюшона" [ref=e845] [cursor=pointer]:
+        - img "CH00404" [ref=e847]
+        - generic [ref=e848]: CH00404
+        - generic [ref=e849]: Карман для капюшона
+      - generic "Карман для капюшона" [ref=e850] [cursor=pointer]:
+        - img "CH00403" [ref=e852]
+        - generic [ref=e853]: CH00403
+        - generic [ref=e854]: Карман для капюшона
+      - generic "Карман для капюшона" [ref=e855] [cursor=pointer]:
+        - img "CH00400" [ref=e857]
+        - generic [ref=e858]: CH00400
+        - generic [ref=e859]: Карман для капюшона
+      - generic "Втачной капюшон" [ref=e860] [cursor=pointer]:
+        - img "CH00513" [ref=e862]
+        - generic [ref=e863]: CH00513
+        - generic [ref=e864]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e865] [cursor=pointer]:
+        - img "CH00512" [ref=e867]
+        - generic [ref=e868]: CH00512
+        - generic [ref=e869]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e870] [cursor=pointer]:
+        - img "CH00533" [ref=e872]
+        - generic [ref=e873]: CH00533
+        - generic [ref=e874]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e875] [cursor=pointer]:
+        - img "CH00535" [ref=e877]
+        - generic [ref=e878]: CH00535
+        - generic [ref=e879]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e880] [cursor=pointer]:
+        - img "CH00529" [ref=e882]
+        - generic [ref=e883]: CH00529
+        - generic [ref=e884]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e885] [cursor=pointer]:
+        - img "CH00525" [ref=e887]
+        - generic [ref=e888]: CH00525
+        - generic [ref=e889]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e890] [cursor=pointer]:
+        - img "CH00511" [ref=e892]
+        - generic [ref=e893]: CH00511
+        - generic [ref=e894]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e895] [cursor=pointer]:
+        - img "CH00526" [ref=e897]
+        - generic [ref=e898]: CH00526
+        - generic [ref=e899]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e900] [cursor=pointer]:
+        - img "CH00524" [ref=e902]
+        - generic [ref=e903]: CH00524
+        - generic [ref=e904]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e905] [cursor=pointer]:
+        - img "CH00519" [ref=e907]
+        - generic [ref=e908]: CH00519
+        - generic [ref=e909]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e910] [cursor=pointer]:
+        - img "CH00516" [ref=e912]
+        - generic [ref=e913]: CH00516
+        - generic [ref=e914]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e915] [cursor=pointer]:
+        - img "CH00523" [ref=e917]
+        - generic [ref=e918]: CH00523
+        - generic [ref=e919]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e920] [cursor=pointer]:
+        - img "CH00528" [ref=e922]
+        - generic [ref=e923]: CH00528
+        - generic [ref=e924]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e925] [cursor=pointer]:
+        - img "CH00518" [ref=e927]
+        - generic [ref=e928]: CH00518
+        - generic [ref=e929]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e930] [cursor=pointer]:
+        - img "CH00521" [ref=e932]
+        - generic [ref=e933]: CH00521
+        - generic [ref=e934]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e935] [cursor=pointer]:
+        - img "CH00501" [ref=e937]
+        - generic [ref=e938]: CH00501
+        - generic [ref=e939]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e940] [cursor=pointer]:
+        - img "CH00507" [ref=e942]
+        - generic [ref=e943]: CH00507
+        - generic [ref=e944]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e945] [cursor=pointer]:
+        - img "CH00520" [ref=e947]
+        - generic [ref=e948]: CH00520
+        - generic [ref=e949]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e950] [cursor=pointer]:
+        - img "CH00515" [ref=e952]
+        - generic [ref=e953]: CH00515
+        - generic [ref=e954]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e955] [cursor=pointer]:
+        - img "CH00531" [ref=e957]
+        - generic [ref=e958]: CH00531
+        - generic [ref=e959]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e960] [cursor=pointer]:
+        - img "CH00508" [ref=e962]
+        - generic [ref=e963]: CH00508
+        - generic [ref=e964]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e965] [cursor=pointer]:
+        - img "CH00527" [ref=e967]
+        - generic [ref=e968]: CH00527
+        - generic [ref=e969]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e970] [cursor=pointer]:
+        - img "CH00522" [ref=e972]
+        - generic [ref=e973]: CH00522
+        - generic [ref=e974]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e975] [cursor=pointer]:
+        - img "CH00532" [ref=e977]
+        - generic [ref=e978]: CH00532
+        - generic [ref=e979]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e980] [cursor=pointer]:
+        - img "CH00517" [ref=e982]
+        - generic [ref=e983]: CH00517
+        - generic [ref=e984]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e985] [cursor=pointer]:
+        - img "CH00514" [ref=e987]
+        - generic [ref=e988]: CH00514
+        - generic [ref=e989]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e990] [cursor=pointer]:
+        - img "CH00510" [ref=e992]
+        - generic [ref=e993]: CH00510
+        - generic [ref=e994]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e995] [cursor=pointer]:
+        - img "CH00534" [ref=e997]
+        - generic [ref=e998]: CH00534
+        - generic [ref=e999]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e1000] [cursor=pointer]:
+        - img "CH00509" [ref=e1002]
+        - generic [ref=e1003]: CH00509
+        - generic [ref=e1004]: Втачной капюшон
+      - generic "Втачной капюшон" [ref=e1005] [cursor=pointer]:
+        - img "CH00530" [ref=e1007]
+        - generic [ref=e1008]: CH00530
+        - generic [ref=e1009]: Втачной капюшон

@@ -1,0 +1,142 @@
+{
+  "ok": true,
+  "resultStatus": "failed",
+  "failedReason": "zone_not_fully_covered",
+  "coveragePercent": 95.132,
+  "coveredRatio": 0.951,
+  "residualAreaMm2": 2433.953,
+  "fullCoverageOk": false,
+  "counts": {
+    "placements": 3,
+    "matched": 3,
+    "fragments": 3,
+    "usedInventoryTags": 3
+  },
+  "placements": [
+    {
+      "placementId": "1",
+      "inventoryTag": "p1",
+      "status": "matched",
+      "solveOrder": 1,
+      "fitScore": 58.821,
+      "fitAreaRatio": 0.48,
+      "fitCoverageRatio": 0.48,
+      "fitOverlap": 0,
+      "fitInsidePercent": 95.2,
+      "inZoneAreaMm2": 22841.254,
+      "inZoneCoreAreaMm2": 16876.434,
+      "usedVisibleAreaMm2": 22841.254,
+      "alignedContourAreaMm2": 24000,
+      "alignedCoreContourAreaMm2": 16896.122,
+      "alignedContourBbox": {
+        "minX": 56.513,
+        "minY": -14.849,
+        "maxX": 193.487,
+        "maxY": 194.849
+      },
+      "alignedCoreContourBbox": {
+        "minX": 69.513,
+        "minY": -1.849,
+        "maxX": 180.487,
+        "maxY": 181.849
+      }
+    },
+    {
+      "placementId": "2",
+      "inventoryTag": "p2",
+      "status": "matched",
+      "solveOrder": 2,
+      "fitScore": 47.126,
+      "fitAreaRatio": 0.48,
+      "fitCoverageRatio": 0.48,
+      "fitOverlap": 0.344,
+      "fitInsidePercent": 94.4,
+      "inZoneAreaMm2": 22661.828,
+      "inZoneCoreAreaMm2": 16876.434,
+      "usedVisibleAreaMm2": 14874.069,
+      "alignedContourAreaMm2": 24000,
+      "alignedCoreContourAreaMm2": 16896.122,
+      "alignedContourBbox": {
+        "minX": -5.987,
+        "minY": 5.151,
+        "maxX": 130.987,
+        "maxY": 214.849
+      },
+      "alignedCoreContourBbox": {
+        "minX": 7.013,
+        "minY": 18.151,
+        "maxX": 117.987,
+        "maxY": 201.849
+      }
+    },
+    {
+      "placementId": "3",
+      "inventoryTag": "p3",
+      "status": "matched",
+      "solveOrder": 3,
+      "fitScore": 46.843,
+      "fitAreaRatio": 0.48,
+      "fitCoverageRatio": 0.48,
+      "fitOverlap": 0.291,
+      "fitInsidePercent": 89.4,
+      "inZoneAreaMm2": 21449.88,
+      "inZoneCoreAreaMm2": 16825.051,
+      "usedVisibleAreaMm2": 15206.094,
+      "alignedContourAreaMm2": 24000,
+      "alignedCoreContourAreaMm2": 16896.122,
+      "alignedContourBbox": {
+        "minX": 129.013,
+        "minY": -14.849,
+        "maxX": 265.987,
+        "maxY": 194.849
+      },
+      "alignedCoreContourBbox": {
+        "minX": 142.013,
+        "minY": -1.849,
+        "maxX": 252.987,
+        "maxY": 181.849
+      }
+    }
+  ],
+  "fragments": [
+    {
+      "id": "1",
+      "ownerPlacementIndex": 0,
+      "areaMm2": 22841.254,
+      "computedAreaMm2": 22841.254,
+      "bbox": {
+        "minX": 56.897,
+        "minY": 0,
+        "maxX": 193.487,
+        "maxY": 194.849
+      },
+      "pointCount": 4
+    },
+    {
+      "id": "2",
+      "ownerPlacementIndex": 1,
+      "areaMm2": 14874.069,
+      "computedAreaMm2": 14874.069,
+      "bbox": {
+        "minX": 0,
+        "minY": 5.151,
+        "maxX": 116.687,
+        "maxY": 200
+      },
+      "pointCount": 7
+    },
+    {
+      "id": "3",
+      "ownerPlacementIndex": 2,
+      "areaMm2": 14688.613,
+      "computedAreaMm2": 14688.613,
+      "bbox": {
+        "minX": 129.577,
+        "minY": 0,
+        "maxX": 250,
+        "maxY": 194.849
+      },
+      "pointCount": 5
+    }
+  ]
+}

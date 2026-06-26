@@ -1,0 +1,24 @@
+<svg width="125" height="107" viewBox="0 0 125 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_2022_12980)">
+<path d="M4.43144 95.3188L0.781881 85.475C0.480708 84.6627 1.28468 83.8778 2.08955 84.1984L11.9208 88.1143C12.7241 88.4342 12.7702 89.5539 11.996 89.9388L8.54225 91.6558C8.36013 91.7463 8.20994 91.8902 8.11173 92.0683L6.24477 95.4541C5.8315 96.2036 4.72896 96.1213 4.43144 95.3188Z" fill="#141414"/>
+<path d="M4.43144 95.3188L0.781881 85.475C0.480708 84.6627 1.28468 83.8778 2.08955 84.1984L11.9208 88.1143C12.7241 88.4342 12.7702 89.5539 11.996 89.9388L8.54225 91.6558C8.36013 91.7463 8.20994 91.8902 8.11173 92.0683L6.24477 95.4541C5.8315 96.2036 4.72896 96.1213 4.43144 95.3188Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path d="M16 98.3661L17 97.3661L18 98.3661" stroke="black" stroke-linecap="square"/>
+<path d="M18 104.366L17 105.366L16 104.366" stroke="black" stroke-linecap="square"/>
+<path d="M17 97.3661L17 105.366" stroke="black"/>
+<path d="M14 102.366L13 101.366L14 100.366" stroke="black" stroke-linecap="square"/>
+<path d="M20 100.366L21 101.366L20 102.366" stroke="black" stroke-linecap="square"/>
+<path d="M13 101.366L21 101.366" stroke="black"/>
+<defs>
+<filter id="filter0_d_2022_12980" x="-3.78394" y="83.6238" width="20.8347" height="20.8475" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2022_12980"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2022_12980" result="shape"/>
+</filter>
+</defs>
+</svg>

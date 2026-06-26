@@ -1,0 +1,129 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e58] [cursor=pointer]
+      - generic [ref=e59]: — прямоугольный проект
+      - button "Преобразовать в лекала" [ref=e60] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "Инструменты зон" [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e10]: Fur Lab
+            - button "Выбор" [ref=e11] [cursor=pointer]
+            - button "Линия зонирования" [ref=e13] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e15] [cursor=pointer]
+        - group [ref=e17]:
+          - generic "Настройки отображения" [ref=e18] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e19]
+        - button "Отчеты" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: description
+          - generic [ref=e23]: Отчеты
+      - complementary [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: Сборка меха
+          - generic [ref=e32]:
+            - button "Зоны" [ref=e33] [cursor=pointer]
+            - button "Мех" [ref=e34] [cursor=pointer]
+            - button "Выкладки" [ref=e35] [cursor=pointer]
+          - generic [ref=e36]:
+            - button "Добавить выкладку" [ref=e4036] [cursor=pointer]:
+              - generic [ref=e4037]: add
+              - generic [ref=e4038]: Добавить выкладку
+            - generic [ref=e4039]:
+              - button "longitudinal Продольно-поперечная 21" [ref=e4040] [cursor=pointer]:
+                - img "longitudinal" [ref=e4042]
+                - generic [ref=e4044]: Продольно-поперечная 21
+              - generic [ref=e4045]:
+                - button "Редактировать выкладку" [ref=e4046] [cursor=pointer]:
+                  - generic [ref=e4047]: edit
+                - button "Удалить выкладку" [ref=e4048] [cursor=pointer]:
+                  - generic [ref=e4049]: delete
+            - generic [ref=e4050]:
+              - button "transverse Ёлочка 22" [ref=e4051] [cursor=pointer]:
+                - img "transverse" [ref=e4053]
+                - generic [ref=e4055]: Ёлочка 22
+              - generic [ref=e4056]:
+                - button "Редактировать выкладку" [ref=e4057] [cursor=pointer]:
+                  - generic [ref=e4058]: edit
+                - button "Удалить выкладку" [ref=e4059] [cursor=pointer]:
+                  - generic [ref=e4060]: delete
+            - generic [ref=e4061]:
+              - button "shifted Со смещением 23" [ref=e4062] [cursor=pointer]:
+                - img "shifted" [ref=e4064]
+                - generic [ref=e4066]: Со смещением 23
+              - generic [ref=e4067]:
+                - button "Редактировать выкладку" [ref=e4068] [cursor=pointer]:
+                  - generic [ref=e4069]: edit
+                - button "Удалить выкладку" [ref=e4070] [cursor=pointer]:
+                  - generic [ref=e4071]: delete
+            - generic [ref=e4072]:
+              - button "radial Радиальная 24" [ref=e4073] [cursor=pointer]:
+                - img "radial" [ref=e4075]
+                - generic [ref=e4077]: Радиальная 24
+              - generic [ref=e4078]:
+                - button "Редактировать выкладку" [ref=e4079] [cursor=pointer]:
+                  - generic [ref=e4080]: edit
+                - button "Удалить выкладку" [ref=e4081] [cursor=pointer]:
+                  - generic [ref=e4082]: delete
+        - generic "Потяните для изменения высоты" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Редактор свойств
+          - generic [ref=e41]:
+            - generic [ref=e4083]:
+              - generic [ref=e4084]: Выкладка
+              - generic [ref=e4085]:
+                - button "Заблокировать редактирование" [ref=e4086] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e4087] [cursor=pointer]
+            - generic [ref=e4088]:
+              - button "▾ Информация" [expanded] [ref=e4089] [cursor=pointer]:
+                - generic [ref=e4090]: ▾
+                - generic [ref=e4091]: Информация
+              - generic [ref=e4092]:
+                - generic [ref=e4093]:
+                  - generic [ref=e4094]: Название
+                  - textbox "(Пусто)" [ref=e4096]: Ёлочка 22
+                - generic [ref=e4097]:
+                  - generic [ref=e4098]: Тип
+                  - generic [ref=e4099]: Ёлочка
+            - generic [ref=e4100]:
+              - button "▾ Параметры выкладки" [expanded] [ref=e4101] [cursor=pointer]:
+                - generic [ref=e4102]: ▾
+                - generic [ref=e4103]: Параметры выкладки
+              - generic [ref=e4104]:
+                - generic [ref=e4105]:
+                  - generic [ref=e4106]: Резерв под припуски, мм
+                  - spinbutton [ref=e4108]: "12.0"
+                - generic [ref=e4109]:
+                  - generic [ref=e4110]: Вдоль ворса, мм
+                  - generic [ref=e4111]:
+                    - generic [ref=e4112]: min
+                    - spinbutton [ref=e4113]: "60"
+                    - generic [ref=e4114]: max
+                    - spinbutton: "640"
+                - generic [ref=e4115]:
+                  - generic [ref=e4116]: Поперёк ворса, мм
+                  - generic [ref=e4117]:
+                    - generic [ref=e4118]: min
+                    - spinbutton [ref=e4119]: "60"
+                    - generic [ref=e4120]: max
+                    - spinbutton: "480"
+                - generic [ref=e4122]: Фрагмент 937 мм > max 640 мм (вдоль) — используйте продольную выкладку
+                - generic [ref=e4123]:
+                  - generic [ref=e4124]: Оси
+                  - spinbutton [ref=e4126]: "1"
+                - generic [ref=e4127]:
+                  - generic [ref=e4128]: Шаг, мм
+                  - spinbutton [ref=e4130]: "120"
+                - generic [ref=e4131]:
+                  - generic [ref=e4132]: Угол, °
+                  - spinbutton [ref=e4134]: "45"
+                - generic [ref=e4135]:
+                  - generic [ref=e4136]: Зазор X, мм
+                  - spinbutton [ref=e4138]: "0"
+                - generic [ref=e4139]:
+                  - generic [ref=e4140]: Зазор Y, мм
+                  - spinbutton [ref=e4142]: "0"
+  - group [ref=e44]:
+    - generic "Database" [ref=e45] [cursor=pointer]

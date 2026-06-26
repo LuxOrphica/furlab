@@ -1,0 +1,430 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "3D LASTIQUE" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+      - navigation [ref=e7]:
+        - link "Табель мер" [ref=e8] [cursor=pointer]:
+          - /url: /tools/pom
+        - link "Узлы" [ref=e9] [cursor=pointer]:
+          - /url: /tools/nodes
+        - link "VSE" [ref=e10] [cursor=pointer]:
+          - /url: /tools/vse
+        - link "Техпак" [ref=e11] [cursor=pointer]:
+          - /url: /tools/techpack
+      - generic [ref=e12]:
+        - button "☾" [ref=e13] [cursor=pointer]
+        - button "EN" [ref=e14] [cursor=pointer]
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]: Visual Standardization Engine
+      - generic [ref=e18]: Обзор для конструктора
+      - generic [ref=e19]: Расшифровка обозначений — 6 узлов из библиотеки
+    - generic [ref=e20]:
+      - button "Разметка" [ref=e21] [cursor=pointer]
+      - button "Выноски и обозначения" [ref=e22] [cursor=pointer]
+      - button "Реестр стилей" [ref=e23] [cursor=pointer]
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - button "✓ Воротник / молния CH00001" [ref=e50] [cursor=pointer]
+        - button "✓ Горловина FN00001" [ref=e51] [cursor=pointer]
+        - button "✓ Пояс BE00001" [ref=e52] [cursor=pointer]
+        - button "✓ Швы SE00401" [ref=e53] [cursor=pointer]
+        - button "✓ Планка спереди FP00129" [ref=e54] [cursor=pointer]
+        - button "✓ Разрез рукава SC00001" [ref=e55] [cursor=pointer]
+      - generic [ref=e33]:
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - text: ОРИГИНАЛ
+              - button "↺" [ref=e38] [cursor=pointer]
+              - generic [ref=e39]: 100% · scroll = zoom · drag = pan
+            - img [ref=e57]
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - text: СТАНДАРТ
+              - button "↺" [ref=e43] [cursor=pointer]
+              - generic [ref=e44]: 100% · scroll = zoom · drag = pan
+            - img [ref=e59]
+        - generic [ref=e47]:
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - text: Наведи на строку → подсветка на оригинале · назначь роль каждому стилю
+              - generic [ref=e62]: 9 / 9
+            - table [ref=e63]:
+              - rowgroup [ref=e64]:
+                - row "Превью Цвет Толщ. Роль" [ref=e65]:
+                  - columnheader "Превью" [ref=e66]
+                  - columnheader "Цвет" [ref=e67]
+                  - columnheader "Толщ." [ref=e68]
+                  - columnheader "Роль" [ref=e69]
+              - rowgroup [ref=e70]:
+                - row "#1a1a1a 1.5 Контур детали" [ref=e71] [cursor=pointer]:
+                  - cell [ref=e72]:
+                    - img [ref=e73]
+                  - cell "#1a1a1a" [ref=e74]:
+                    - code [ref=e76]: "#1a1a1a"
+                  - cell "1.5" [ref=e77]
+                  - cell "Контур детали" [ref=e78]:
+                    - combobox [ref=e79]:
+                      - option "— не назначено —"
+                      - option "Контур детали" [selected]
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Строчка сквозная"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивалка F (ISO 602/605)"
+                      - option "Зигзаг"
+                      - option "Закрепка Bt"
+                      - option "Фрагмент"
+                      - option "Конструктивная зона"
+                      - option "Подкладка"
+                      - option "Флизелин / прокладка"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Вспомогательная линия"
+                      - option "Заливка (прочее)"
+                      - option "Молния (зубцы)"
+                      - option "Молния (тесьма)"
+                      - option "Пуговица"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура (прочее)"
+                      - option "Выноска"
+                      - option "Линия обрыва"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#e02020 1 Строчка по краю" [ref=e80] [cursor=pointer]:
+                  - cell [ref=e81]:
+                    - img [ref=e82]
+                  - cell "#e02020" [ref=e83]:
+                    - code [ref=e85]: "#e02020"
+                  - cell "1" [ref=e86]
+                  - cell "Строчка по краю" [ref=e87]:
+                    - combobox [ref=e88]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю" [selected]
+                      - option "Строчка сквозная"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивалка F (ISO 602/605)"
+                      - option "Зигзаг"
+                      - option "Закрепка Bt"
+                      - option "Фрагмент"
+                      - option "Конструктивная зона"
+                      - option "Подкладка"
+                      - option "Флизелин / прокладка"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Вспомогательная линия"
+                      - option "Заливка (прочее)"
+                      - option "Молния (зубцы)"
+                      - option "Молния (тесьма)"
+                      - option "Пуговица"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура (прочее)"
+                      - option "Выноска"
+                      - option "Линия обрыва"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#1a1a1a 1 Молния (тесьма)" [ref=e89] [cursor=pointer]:
+                  - cell [ref=e90]:
+                    - img [ref=e91]
+                  - cell "#1a1a1a" [ref=e92]:
+                    - code [ref=e94]: "#1a1a1a"
+                  - cell "1" [ref=e95]
+                  - cell "Молния (тесьма)" [ref=e96]:
+                    - combobox [ref=e97]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Строчка сквозная"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивалка F (ISO 602/605)"
+                      - option "Зигзаг"
+                      - option "Закрепка Bt"
+                      - option "Фрагмент"
+                      - option "Конструктивная зона"
+                      - option "Подкладка"
+                      - option "Флизелин / прокладка"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Вспомогательная линия"
+                      - option "Заливка (прочее)"
+                      - option "Молния (зубцы)"
+                      - option "Молния (тесьма)" [selected]
+                      - option "Пуговица"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура (прочее)"
+                      - option "Выноска"
+                      - option "Линия обрыва"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#e02020 1 Строчка сквозная" [ref=e98] [cursor=pointer]:
+                  - cell [ref=e99]:
+                    - img [ref=e100]
+                  - cell "#e02020" [ref=e101]:
+                    - code [ref=e103]: "#e02020"
+                  - cell "1" [ref=e104]
+                  - cell "Строчка сквозная" [ref=e105]:
+                    - combobox [ref=e106]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Строчка сквозная" [selected]
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивалка F (ISO 602/605)"
+                      - option "Зигзаг"
+                      - option "Закрепка Bt"
+                      - option "Фрагмент"
+                      - option "Конструктивная зона"
+                      - option "Подкладка"
+                      - option "Флизелин / прокладка"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Вспомогательная линия"
+                      - option "Заливка (прочее)"
+                      - option "Молния (зубцы)"
+                      - option "Молния (тесьма)"
+                      - option "Пуговица"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура (прочее)"
+                      - option "Выноска"
+                      - option "Линия обрыва"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#29b473 1.5 Флизелин / прокладка" [ref=e107] [cursor=pointer]:
+                  - cell [ref=e108]:
+                    - img [ref=e109]
+                  - cell "#29b473" [ref=e110]:
+                    - code [ref=e112]: "#29b473"
+                  - cell "1.5" [ref=e113]
+                  - cell "Флизелин / прокладка" [ref=e114]:
+                    - combobox [ref=e115]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Строчка сквозная"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивалка F (ISO 602/605)"
+                      - option "Зигзаг"
+                      - option "Закрепка Bt"
+                      - option "Фрагмент"
+                      - option "Конструктивная зона"
+                      - option "Подкладка"
+                      - option "Флизелин / прокладка" [selected]
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Вспомогательная линия"
+                      - option "Заливка (прочее)"
+                      - option "Молния (зубцы)"
+                      - option "Молния (тесьма)"
+                      - option "Пуговица"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура (прочее)"
+                      - option "Выноска"
+                      - option "Линия обрыва"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#1b4fa8 1 Конструктивная зона" [ref=e116] [cursor=pointer]:
+                  - cell [ref=e117]:
+                    - img [ref=e118]
+                  - cell "#1b4fa8" [ref=e119]:
+                    - code [ref=e121]: "#1b4fa8"
+                  - cell "1" [ref=e122]
+                  - cell "Конструктивная зона" [ref=e123]:
+                    - combobox [ref=e124]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Строчка сквозная"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивалка F (ISO 602/605)"
+                      - option "Зигзаг"
+                      - option "Закрепка Bt"
+                      - option "Фрагмент"
+                      - option "Конструктивная зона" [selected]
+                      - option "Подкладка"
+                      - option "Флизелин / прокладка"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Вспомогательная линия"
+                      - option "Заливка (прочее)"
+                      - option "Молния (зубцы)"
+                      - option "Молния (тесьма)"
+                      - option "Пуговица"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура (прочее)"
+                      - option "Выноска"
+                      - option "Линия обрыва"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "none 0 Стрелка" [ref=e125] [cursor=pointer]:
+                  - cell [ref=e126]
+                  - cell "none" [ref=e128]:
+                    - code [ref=e130]: none
+                  - cell "0" [ref=e131]
+                  - cell "Стрелка" [ref=e132]:
+                    - combobox [ref=e133]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Строчка сквозная"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивалка F (ISO 602/605)"
+                      - option "Зигзаг"
+                      - option "Закрепка Bt"
+                      - option "Фрагмент"
+                      - option "Конструктивная зона"
+                      - option "Подкладка"
+                      - option "Флизелин / прокладка"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Вспомогательная линия"
+                      - option "Заливка (прочее)"
+                      - option "Молния (зубцы)"
+                      - option "Молния (тесьма)"
+                      - option "Пуговица"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура (прочее)"
+                      - option "Выноска"
+                      - option "Линия обрыва"
+                      - option "Размерная линия"
+                      - option "Стрелка" [selected]
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#1a1a1a 6 Молния (тесьма)" [ref=e134] [cursor=pointer]:
+                  - cell [ref=e135]:
+                    - img [ref=e136]
+                  - cell "#1a1a1a" [ref=e137]:
+                    - code [ref=e139]: "#1a1a1a"
+                  - cell "6" [ref=e140]
+                  - cell "Молния (тесьма)" [ref=e141]:
+                    - combobox [ref=e142]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Строчка сквозная"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивалка F (ISO 602/605)"
+                      - option "Зигзаг"
+                      - option "Закрепка Bt"
+                      - option "Фрагмент"
+                      - option "Конструктивная зона"
+                      - option "Подкладка"
+                      - option "Флизелин / прокладка"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Вспомогательная линия"
+                      - option "Заливка (прочее)"
+                      - option "Молния (зубцы)"
+                      - option "Молния (тесьма)" [selected]
+                      - option "Пуговица"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура (прочее)"
+                      - option "Выноска"
+                      - option "Линия обрыва"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+                - row "#1a1a1a 1.02 Молния (тесьма)" [ref=e143] [cursor=pointer]:
+                  - cell [ref=e144]:
+                    - img [ref=e145]
+                  - cell "#1a1a1a" [ref=e146]:
+                    - code [ref=e148]: "#1a1a1a"
+                  - cell "1.02" [ref=e149]
+                  - cell "Молния (тесьма)" [ref=e150]:
+                    - combobox [ref=e151]:
+                      - option "— не назначено —"
+                      - option "Контур детали"
+                      - option "Линия сгиба"
+                      - option "Линия разреза"
+                      - option "Линия шва"
+                      - option "Припуск на шов"
+                      - option "Строчка по краю"
+                      - option "Строчка сквозная"
+                      - option "Челночная L (ISO 301)"
+                      - option "Цепная C (ISO 401)"
+                      - option "Оверлок O (ISO 504/514)"
+                      - option "Распошивалка F (ISO 602/605)"
+                      - option "Зигзаг"
+                      - option "Закрепка Bt"
+                      - option "Фрагмент"
+                      - option "Конструктивная зона"
+                      - option "Подкладка"
+                      - option "Флизелин / прокладка"
+                      - option "Штриховка прокладки"
+                      - option "Штриховка ткани"
+                      - option "Вспомогательная линия"
+                      - option "Заливка (прочее)"
+                      - option "Молния (зубцы)"
+                      - option "Молния (тесьма)" [selected]
+                      - option "Пуговица"
+                      - option "Кнопка / люверс"
+                      - option "Фурнитура (прочее)"
+                      - option "Выноска"
+                      - option "Линия обрыва"
+                      - option "Размерная линия"
+                      - option "Стрелка"
+                      - option "Неизвестно"
+                      - option "— не выводить —"
+          - button "Сгенерировать стандарт →" [ref=e152] [cursor=pointer]

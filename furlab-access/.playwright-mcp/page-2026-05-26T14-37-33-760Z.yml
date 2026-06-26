@@ -1,0 +1,186 @@
+- generic [ref=e4]:
+  - complementary [ref=e5]:
+    - heading "FURLAB AC" [level=1] [ref=e7]
+    - menu [ref=e8]:
+      - menuitem "qrcode Загрузка сканов" [ref=e9] [cursor=pointer]:
+        - img "qrcode" [ref=e10]:
+          - img [ref=e11]
+        - generic [ref=e13]: Загрузка сканов
+      - separator [ref=e14]
+      - menuitem "hdd Инвентарь лоскутов" [ref=e15] [cursor=pointer]:
+        - img "hdd" [ref=e16]:
+          - img [ref=e17]
+        - generic [ref=e19]: Инвентарь лоскутов
+      - menuitem "node-index История размещений" [ref=e20] [cursor=pointer]:
+        - img "node-index" [ref=e21]:
+          - img [ref=e22]
+        - generic [ref=e24]: История размещений
+      - menuitem "audit Отчёты down" [ref=e25] [cursor=pointer]:
+        - img "audit" [ref=e26]:
+          - img [ref=e27]
+        - generic [ref=e29]: Отчёты
+        - img "down" [ref=e30]:
+          - img [ref=e31]
+    - generic [ref=e33]:
+      - link "QR-генератор" [ref=e34] [cursor=pointer]:
+        - /url: /qr-generator/index.html?mode=single
+      - generic [ref=e35]: v2.0.42
+  - main [ref=e36]:
+    - generic [ref=e38]: Инвентарь лоскутов
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - searchbox "Поиск (инв. метка / комментарий / id)" [ref=e48]
+            - button "search" [ref=e50] [cursor=pointer]:
+              - img "search" [ref=e52]:
+                - img [ref=e53]
+          - button "Сброс" [ref=e55] [cursor=pointer]:
+            - img "reload" [ref=e57]:
+              - img [ref=e58]
+            - generic [ref=e60]: Сброс
+        - button "Настройки" [ref=e62] [cursor=pointer]:
+          - img "setting" [ref=e64]:
+            - img [ref=e65]
+          - generic [ref=e67]: Настройки
+      - generic [ref=e69]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - table:
+                  - rowgroup:
+                    - row "Инв. метка Материал filter Макс. габарит, мм Площадь, мм² Качество filter Статус filter Локация filter Обновлено":
+                      - columnheader "Инв. метка":
+                        - generic:
+                          - generic:
+                            - generic "Инв. метка"
+                          - generic:
+                            - generic:
+                              - img:
+                                - img
+                              - img:
+                                - img
+                      - columnheader "Материал filter":
+                        - generic:
+                          - generic:
+                            - generic "Материал"
+                          - button "filter":
+                            - img "filter":
+                              - img
+                      - columnheader "Макс. габарит, мм":
+                        - generic:
+                          - generic:
+                            - generic "Макс. габарит, мм"
+                          - generic:
+                            - generic:
+                              - img:
+                                - img
+                              - img:
+                                - img
+                      - columnheader "Площадь, мм²":
+                        - generic:
+                          - generic:
+                            - generic "Площадь, мм²"
+                          - generic:
+                            - generic:
+                              - img:
+                                - img
+                              - img:
+                                - img
+                      - columnheader "Качество filter":
+                        - generic:
+                          - generic:
+                            - generic "Качество"
+                          - button "filter":
+                            - img "filter":
+                              - img
+                      - columnheader "Статус filter":
+                        - generic:
+                          - generic:
+                            - generic "Статус"
+                          - button "filter":
+                            - img "filter":
+                              - img
+                      - columnheader "Локация filter":
+                        - generic:
+                          - generic:
+                            - generic "Локация"
+                          - button "filter":
+                            - img "filter":
+                              - img
+                      - columnheader "Обновлено":
+                        - generic:
+                          - generic:
+                            - generic "Обновлено"
+                          - generic:
+                            - generic:
+                              - img:
+                                - img
+                              - img:
+                                - img
+                      - columnheader
+                  - rowgroup:
+                    - generic:
+                      - generic:
+                        - generic: Инв. метка
+                      - generic:
+                        - generic:
+                          - img:
+                            - img
+                          - img:
+                            - img
+                    - generic:
+                      - generic:
+                        - generic: Материал
+                      - button:
+                        - img:
+                          - img
+                    - generic:
+                      - generic:
+                        - generic: Макс. габарит, мм
+                      - generic:
+                        - generic:
+                          - img:
+                            - img
+                          - img:
+                            - img
+                    - generic:
+                      - generic:
+                        - generic: Площадь, мм²
+                      - generic:
+                        - generic:
+                          - img:
+                            - img
+                          - img:
+                            - img
+                    - generic:
+                      - generic:
+                        - generic: Качество
+                      - button:
+                        - img:
+                          - img
+                    - generic:
+                      - generic:
+                        - generic: Статус
+                      - button:
+                        - img:
+                          - img
+                    - generic:
+                      - generic:
+                        - generic: Локация
+                      - button:
+                        - img:
+                          - img
+                    - generic:
+                      - generic:
+                        - generic: Обновлено
+                      - generic:
+                        - generic:
+                          - img:
+                            - img
+                          - img:
+                            - img
+                    - row "Записи не найдены.":
+                      - cell "Записи не найдены.":
+                        - generic: Записи не найдены.
