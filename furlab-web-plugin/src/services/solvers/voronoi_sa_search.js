@@ -24,6 +24,9 @@ function createVoronoiSaSearch(deps) {
   }
 
   function findLargestUncoveredBlobCentroid(placements, spec, zoneMask, cellCount) {
+    // v5.0 §4: находим крупнейший непокрытый блок (по числу клеток).
+    // Примечание: длинные тонкие «дыры» с низким fill_ratio — это растровые артефакты
+    // (извилистые змейки по швам между кусками), они прощаются эрозией, не приоритет для ADD.
     const { nx, ny, r, ox, oy } = spec;
     const covered = new Uint8Array(cellCount);
     for (const pl of placements) {
@@ -261,6 +264,9 @@ function createVoronoiSaSearch(deps) {
         const ki = rng.nextInt(placements.length);
         newPlacements = placements.filter((_, i) => i !== ki);
       } else if (move === MOVES.ADD && unusedPieces.length > 0) {
+        // v5.0 §4: ADD кладёт новый кусок на крупнейший непокрытый блок.
+        // Кусок выбирается случайно из unused (без fitness-сортировки —
+        // длинные тонкие «дыры» оказались растровыми артефактами, не реальными дырами).
         const newPiece = unusedPieces[rng.nextInt(unusedPieces.length)];
         const angle = normalizeDeg(napTarget - newPiece.napDeg);
         let pos = null;

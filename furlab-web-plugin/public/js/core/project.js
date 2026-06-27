@@ -66,7 +66,7 @@
           : []
       }));
     const normalizeRules = {
-      seamAllowanceReserveMm: Number(lr && lr.allowanceMm || 12)
+      seamAllowanceReserveMm: (lr && lr.allowanceMm != null && Number.isFinite(Number(lr.allowanceMm))) ? Number(lr.allowanceMm) : 12
     };
     const params = String(entry.mode || "").startsWith("inventory") ? {
       normalizeRules,

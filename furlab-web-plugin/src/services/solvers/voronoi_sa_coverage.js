@@ -146,6 +146,28 @@ function createVoronoiSaCoverage(deps) {
       isPerimeterSliver = isSliverByErosion;
       const erosionSurvives = !isSliverByErosion;
 
+      // v5.0 §8 (расширение): растровый шовный артефакт.
+      // Дыра может иметь большую площадь, но извилистую форму (fill_ratio < 0.3) —
+      // это «змейка» из растровых клеток по швам между кусками. Реальной дыры нет,
+      // есть только лесенка дискретизации. Классифицируем как raster-artifact, прощаем.
+      let isRasterArtifact = false;
+      if (!isPerimeterSliver && areaMm2 > 50) {
+        try {
+          const holePtsTemp = fromClipper(path);
+          const bbTemp = polygonBBox(holePtsTemp);
+          const bboxArea = (bbTemp.maxX - bbTemp.minX) * (bbTemp.maxY - bbTemp.minY);
+          const fillRatio = bboxArea > 1 ? areaMm2 / bboxArea : 1;
+          isRasterArtifact = fillRatio < 0.3;
+        } catch (_) {
+          isRasterArtifact = false;
+        }
+      }
+      // Если это raster-artifact — относим к sliver (прощается, не считается в residual),
+      // но в classification помечаем отдельно для диагностики.
+      if (isRasterArtifact) {
+        isPerimeterSliver = true;
+      }
+
       // Шаг 2: для не-sliver дыры — классификация interior vs edge по расстоянию до границы зоны.
       // Используем bbox-проверку: если bbox дыры целиком внутри зоны с отступом INTERIOR_DIST → interior.
       // Иначе (касается или близко к границе) → edge.
@@ -215,8 +237,9 @@ function createVoronoiSaCoverage(deps) {
         centroid: { x: sx / pts.length, y: sy / pts.length },
         pts,
         isPerimeterSliver,
-        // v5.0 §4: классификация дыры — sliver / interior / edge.
-        classification: isPerimeterSliver ? "sliver" : (isInterior ? "interior" : "edge")
+        // v5.0 §4 + §8: классификация дыры — sliver / raster-artifact / interior / edge.
+        classification: isRasterArtifact ? "raster-artifact"
+          : (isPerimeterSliver ? "sliver" : (isInterior ? "interior" : "edge"))
       });
     }
 
