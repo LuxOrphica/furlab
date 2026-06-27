@@ -787,6 +787,44 @@ function buildTerritoryOutput(args) {
     console.log(`[CPT-B] contested=${contestedB.length} moved=${bMoved} guarded=${bGuarded} stale=${bStale} time=${Date.now() - _tB}ms`);
   }
 
+  // ─── v5.0 Pass 5: Final R2 Safety-Net ──────────────────────────────────
+  // После всех post-processing pass'ов некоторые клетки могут:
+  //   (a) остаться assignment=-1 (orphan), даже если их накрывает ядро
+  //   (b) быть назначены куску, чьё ядро НЕ накрывает их, но другой кусок накрывает
+  // Оба случая — partition-gap (нарушение R2).
+  // Pass 5 переназначает такие клетки на кусок, чьё ядро их накрывает.
+  {
+    const _t5 = Date.now();
+    let p5Closed = 0, p5NoCover = 0, p5Reassigned = 0;
+    for (let idx = 0; idx < cellCount; idx++) {
+      if (!finalZoneMask[idx]) continue;
+      const cands = covByCell[idx];
+      if (!cands || cands.length === 0) continue;
+      const currentJ = assignment[idx];
+      const currentCovers = currentJ >= 0 && cands.some(c => c.k === currentJ && survivorByJ[c.k]);
+      if (currentCovers) continue;
+      let bestCand = null;
+      for (const c of cands) {
+        if (!survivorByJ[c.k]) continue;
+        if (!bestCand || c.areaMm2 > bestCand.areaMm2 ||
+            (c.areaMm2 === bestCand.areaMm2 &&
+             (placements[c.k].inventoryTag || '') < (placements[bestCand.k].inventoryTag || ''))) {
+          bestCand = c;
+        }
+      }
+      if (bestCand) {
+        if (currentJ === -1) p5Closed++;
+        else p5Reassigned++;
+        assignment[idx] = bestCand.k;
+        affectedSurvivors.add(bestCand.k);
+        if (currentJ >= 0 && survivorByJ[currentJ]) affectedSurvivors.add(currentJ);
+      } else {
+        p5NoCover++;
+      }
+    }
+    console.log(`[VSA-P5] R2 safety-net: closed=${p5Closed} reassigned=${p5Reassigned} noCover=${p5NoCover} time=${Date.now() - _t5}ms`);
+  }
+
   // Pass 3: rebuild fragment for each affected survivor.
   // Rebuild scope: survivors whose territory changed in Pass 2 BFS, Pass 4 orphan sweep,
   // PH-3 Expand, or PH-4 redistribution. thinFromPass1 is included so safety-net drop
