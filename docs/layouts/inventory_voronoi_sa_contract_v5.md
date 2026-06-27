@@ -54,7 +54,7 @@ fragment_i = core_i ∩ territory_i ∩ zone             // дизъюнктен
 
 **Выход (реплейабельно):** `zone.points`, `effectiveOptions` (вкл. `seed`), `candidates` (с контурами), `placements[]`, `algorithmTrace`, `metrics`, `diagnostics` (причины неудачи).
 
-**Placement:** `inventoryTag`, `alignedCoreContour` (ядро — единственная геометрия), `inZoneCoreContour` (фрагмент — юнит покрытия), `rawTerritoryContour` (территория), `physicalMissingMm2`. **Поле `alignedContour` (тело) убрано из солвера** — добавляется отдельной пост-операцией при экспорте раскроя.
+**Placement:** `inventoryTag`, `alignedCoreContour` (ядро — единственная геометрия покрытия/валидации), `inZoneCoreContour` (фрагмент — юнит покрытия), `rawTerritoryContour` (территория), `physicalMissingMm2`. Поле `alignedContour` = тело с припуском (`grow(core, allowanceMm)`) — только для рендера/отображения в UI; **солвер вычисляет его, но не использует ни в одном вычислении.** Любое использование `alignedContour` или `pts` внутри солвера — баг.
 
 ---
 
@@ -195,6 +195,7 @@ physMissing далее классифицируется:
 ## 7. Запрещено
 
 - Покрытие/best по полным ядрам (без инсета) или по растру — только по фрагментам, полигонально.
+- **Использование `pts` / `alignedContour` / `fullMask` внутри солвера в любом вычислении** — покрытии, маске, absorb, clip, postprocess. `pts` существует только для рендера. Кусок в солвере = `corePts`.
 - Списание внутреннего остатка в «растровый артефакт».
 - Фантомные метрики (поле, сверяемое само с собой; жёстко нулевой остаток).
 - Реюз размещённого скрапа (дубли R6).
