@@ -126,32 +126,33 @@ function createVoronoiSaCoverage(deps) {
       let isPerimeterSliver = false;
 
       // Шаг 1: эрозия САМОЙ ДЫРЫ на -1.5мм — определяет sliver (под-сеточный артефакт).
-      // Критерий совпадает с verify_voronoi_sa.py: sliver если эрозия съедает >60% площади дыры
-      // (т.е. erodedHoleArea / areaMm2 < SLIVER_ERO_FRAC = 0.40).
+      // Только для дыр < 50 мм²: крупные дыры всегда interior/edge, даже если эрозия схлопывает.
+      // Критерий: sliver если эрозия съедает >60% площади (erodedHoleArea / areaMm2 < 0.40).
       let erodedHoleArea = 0;
       let isSliverByErosion = false;
       const SLIVER_ERO_FRAC = 0.40;
-      try {
-        const coHole = new ClipperLib.ClipperOffset();
-        coHole.AddPath(path, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
-        const erodedHolePaths = new ClipperLib.Paths();
-        coHole.Execute(erodedHolePaths, -Math.round(1.5 * gStep * CLIPPER_SCALE));
-        if (erodedHolePaths && erodedHolePaths.length > 0) {
-          erodedHoleArea = erodedHolePaths.reduce((s, p) => s + clipperArea(p), 0);
+      if (areaMm2 < 50) {
+        try {
+          const coHole = new ClipperLib.ClipperOffset();
+          coHole.AddPath(path, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
+          const erodedHolePaths = new ClipperLib.Paths();
+          coHole.Execute(erodedHolePaths, -Math.round(1.5 * gStep * CLIPPER_SCALE));
+          if (erodedHolePaths && erodedHolePaths.length > 0) {
+            erodedHoleArea = erodedHolePaths.reduce((s, p) => s + clipperArea(p), 0);
+          }
+          isSliverByErosion = areaMm2 > 1e-6 ? (erodedHoleArea / areaMm2 < SLIVER_ERO_FRAC) : true;
+        } catch (_) {
+          isSliverByErosion = false;
         }
-        isSliverByErosion = areaMm2 > 1e-6 ? (erodedHoleArea / areaMm2 < SLIVER_ERO_FRAC) : true;
-      } catch (_) {
-        isSliverByErosion = false;
       }
       isPerimeterSliver = isSliverByErosion;
       const erosionSurvives = !isSliverByErosion;
 
       // v5.0 §8 (расширение): растровый шовный артефакт.
-      // Дыра может иметь большую площадь, но извилистую форму (fill_ratio < 0.3) —
-      // это «змейка» из растровых клеток по швам между кусками. Реальной дыры нет,
-      // есть только лесенка дискретизации. Классифицируем как raster-artifact, прощаем.
+      // Только для дыр < 50 мм² с fill_ratio < 0.3 — «змейка» из растровых клеток по швам.
+      // Крупные дыры (>= 50 мм²) всегда interior/edge — не скрываем как raster-artifact.
       let isRasterArtifact = false;
-      if (!isPerimeterSliver && areaMm2 > 50) {
+      if (!isPerimeterSliver && areaMm2 < 50) {
         try {
           const holePtsTemp = fromClipper(path);
           const bbTemp = polygonBBox(holePtsTemp);
