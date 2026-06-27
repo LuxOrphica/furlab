@@ -5749,7 +5749,7 @@ function renderSplitEvents(events) {
           strategy: normalizedMode,
           inventoryScenario: "",
           selectedZoneId,
-          allowanceMm: Number(parseLocaleNumber(state.layoutRun && state.layoutRun.allowanceMm, 12) || 12),
+          allowanceMm: (() => { const v = parseLocaleNumber(state.layoutRun && state.layoutRun.allowanceMm, 12); return Number.isFinite(Number(v)) ? Number(v) : 12; })(),
           placements: [],
           fragments: [],
           previewLayers: { pieceIntersections: [], visibleArea: [], coverageHoles: [], seams: [] },
@@ -6656,7 +6656,7 @@ function renderSplitEvents(events) {
         options: {
           maxSolveMs,
           seed: state.layoutRun.debugSeed != null ? state.layoutRun.debugSeed : Date.now(),
-          allowanceMm: Number(state.layoutRun.allowanceMm || 12),
+          allowanceMm: Number.isFinite(Number(state.layoutRun.allowanceMm)) ? Number(state.layoutRun.allowanceMm) : 12,
           napTarget: normalizeDeg(zone.napDirectionDeg, DEFAULT_NAP_DIRECTION_DEG),
           napTol: Number(byId("invNapTol") && byId("invNapTol").value || 15),
           minWidthMm: Number(byId("minFragmentWidthMm") && byId("minFragmentWidthMm").value || 0),
@@ -6838,7 +6838,7 @@ function renderSplitEvents(events) {
           seed: runSeed,
           absorptionCriterion: state.layoutRun.absorptionCriterion != null ? state.layoutRun.absorptionCriterion : 4,
           numRestarts: Math.max(1, Number(byId("invNumRestarts") && byId("invNumRestarts").value || state.layoutRun.numRestarts || 1)),
-          allowanceMm: Number(state.layoutRun.allowanceMm || 12),
+          allowanceMm: Number.isFinite(Number(state.layoutRun.allowanceMm)) ? Number(state.layoutRun.allowanceMm) : 12,
           napTarget: normalizeDeg(zone.napDirectionDeg, DEFAULT_NAP_DIRECTION_DEG),
           napTol: Number(byId("invNapTol") && byId("invNapTol").value || 15),
           minWidthMm: Number(byId("minFragmentWidthMm") && byId("minFragmentWidthMm").value || 0),
@@ -6868,7 +6868,7 @@ function renderSplitEvents(events) {
           seed: runSeed,
           absorptionCriterion: state.layoutRun.absorptionCriterion != null ? state.layoutRun.absorptionCriterion : 4,
           numRestarts: Math.max(1, Number(byId("invNumRestarts") && byId("invNumRestarts").value || state.layoutRun.numRestarts || 1)),
-          allowanceMm: Number(state.layoutRun.allowanceMm || 12),
+          allowanceMm: Number.isFinite(Number(state.layoutRun.allowanceMm)) ? Number(state.layoutRun.allowanceMm) : 12,
           napTarget: normalizeDeg(zone.napDirectionDeg, DEFAULT_NAP_DIRECTION_DEG),
           napTol: Number(byId("invNapTol") && byId("invNapTol").value || 15),
           minWidthMm: Number(byId("minFragmentWidthMm") && byId("minFragmentWidthMm").value || 0),
@@ -6978,7 +6978,7 @@ function renderSplitEvents(events) {
       const voronoiVariability = Math.max(1, Math.min(10, Number((byId("voronoiVariability") && byId("voronoiVariability").value) || 5)));
       const voronoiAnisotropy = Math.max(1, Math.min(10, Number((byId("voronoiAnisotropy") && byId("voronoiAnisotropy").value) || 5)));
       const voronoiGapMm = Math.max(0, Number((byId("voronoiGapMm") && byId("voronoiGapMm").value) || 0));
-      const allowanceMm = Number(parseLocaleNumber(state.layoutRun && state.layoutRun.allowanceMm, 12) || 12);
+      const allowanceMm = (() => { const v = parseLocaleNumber(state.layoutRun && state.layoutRun.allowanceMm, 12); return Number.isFinite(Number(v)) ? Number(v) : 12; })();
       const zoneMaterial = zone.materialId ? getFurMaterialById(zone.materialId) : null;
       const matMaxAlongMm = zoneMaterial && Number.isFinite(Number(zoneMaterial.maxLengthMm)) ? Number(zoneMaterial.maxLengthMm) : null;
       const matMaxAcrossMm = zoneMaterial && Number.isFinite(Number(zoneMaterial.maxWidthMm)) ? Number(zoneMaterial.maxWidthMm) : null;
@@ -7516,9 +7516,10 @@ function renderSplitEvents(events) {
           {
             const prevAllowance = parseLocaleNumber(state.layoutRun && state.layoutRun.allowanceMm, 12);
             const nextAllowance = getCurrentManualAllowanceMm();
-            state.layoutRun.allowanceMm = (Number(nextAllowance) > 0)
+            // v5.0: allowanceMm может быть 0 (ядро = тело). Используем isFinite, не > 0.
+            state.layoutRun.allowanceMm = Number.isFinite(Number(nextAllowance))
               ? Number(nextAllowance)
-              : ((Number(prevAllowance) > 0) ? Number(prevAllowance) : 12);
+              : (Number.isFinite(Number(prevAllowance)) ? Number(prevAllowance) : 12);
           }
           state.layoutRun.previewLayers = { pieceIntersections: [], visibleArea: [], coverageHoles: [] };
           state.layoutRun.splitEvents = [];
@@ -10462,7 +10463,7 @@ function refreshSelectionInfo() {
             strategy: String(lay.mode || "longitudinal"),
             fillType: "voronoi",
             selectedZoneId: Number(lay.zoneId || 0) || null,
-            allowanceMm: Number(savedParams.normalizeRules && savedParams.normalizeRules.seamAllowanceReserveMm || 12),
+            allowanceMm: Number.isFinite(Number(savedParams.normalizeRules && savedParams.normalizeRules.seamAllowanceReserveMm)) ? Number(savedParams.normalizeRules.seamAllowanceReserveMm) : 12,
             paramsSnapshot: restoredParamsSnapshot,
             fragments: Array.isArray(lastRun.resultSnapshot && lastRun.resultSnapshot.fragments) ? lastRun.resultSnapshot.fragments : [],
             placements: (Array.isArray(lastRun.scrapPlacements) ? lastRun.scrapPlacements : []).map((sp, idx) => {
