@@ -543,7 +543,10 @@ function createVoronoiSaSolver(deps) {
         }
       }
     }
-    const ifpCache = ifpCacheTight;
+    // v5.0: wide IFP (с overhang) — ядро дотягивается до края зоны.
+    // Tight IFP требовал ядро целиком внутри → краевое кольцо при allowanceMm>0.
+    // Wide IFP (зона+overhangMm) разрешает ядру выходить за границу.
+    const ifpCache = (overhangMm > 0 && ifpCacheWide.size > 0) ? ifpCacheWide : ifpCacheTight;
 
     const saSearch = await runSaSearch({
       selectedPieces,
