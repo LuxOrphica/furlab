@@ -1,6 +1,6 @@
 # FurLab — Documentation
 
-Project documentation. Source code lives in `../furlab-access` and `../furlab-web-plugin`.
+Project documentation. Part of the [furlab](https://github.com/LuxOrphica/furlab) monorepo — source code is in [`../furlab-access`](../furlab-access) and [`../furlab-web-plugin`](../furlab-web-plugin).
 
 ## Sections
 
