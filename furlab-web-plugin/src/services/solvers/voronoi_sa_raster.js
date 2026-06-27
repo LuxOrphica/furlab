@@ -105,6 +105,13 @@ function createVoronoiSaRaster(deps) {
   }
 
   function computePowerAssign(placements, weights, spec, zoneMask) {
+    // v5.0 §3 R2: партиция уважает РЕАЛЬНОЕ накрытие ядром по полигону.
+    // Для каждой клетки:
+    //   1) среди кусков, чьё ядро (corePts) накрывает центр клетки — ближайший по dx²+dy²-weight
+    //   2) если ни одно ядро не накрывает — fallback на ближайший seed (стандартный Voronoi)
+    //      клетка помечается как кандидат в physMissing (handler в output.js).
+    // Это устраняет R2-gap: точка зоны, накрытая ядром соседа, но не ядром seed-владельца,
+    // теперь отдаётся соседу.
     const { nx, ny, r, ox, oy } = spec;
     const cellCount = nx * ny;
     const assign = new Int16Array(cellCount).fill(-1);
@@ -112,18 +119,30 @@ function createVoronoiSaRaster(deps) {
       if (!zoneMask[idx]) continue;
       const cx = ox + (idx % nx + 0.5) * r;
       const cy = oy + ((idx / nx | 0) + 0.5) * r;
-      let bestScore = Infinity;
-      let bestJ = -1;
+      let bestScoreCovered = Infinity;
+      let bestJCovered = -1;
+      let bestScoreFallback = Infinity;
+      let bestJFallback = -1;
       for (let j = 0; j < placements.length; j++) {
-        const dx = cx - placements[j].cx;
-        const dy = cy - placements[j].cy;
+        const pl = placements[j];
+        const dx = cx - pl.cx;
+        const dy = cy - pl.cy;
         const score = dx * dx + dy * dy - weights[j];
-        if (score < bestScore) {
-          bestScore = score;
-          bestJ = j;
+        if (score < bestScoreFallback) {
+          bestScoreFallback = score;
+          bestJFallback = j;
+        }
+        // Проверка накрытия ядром по полигону.
+        // corePts уже трансформированы в координаты зоны (см. makePlacement в solver.js).
+        if (pl.corePts && pl.corePts.length >= 3 && pointInPolygon(cx, cy, pl.corePts)) {
+          if (score < bestScoreCovered) {
+            bestScoreCovered = score;
+            bestJCovered = j;
+          }
         }
       }
-      assign[idx] = bestJ;
+      // Приоритет: накрывающее ядро > ближайший seed (fallback).
+      assign[idx] = bestJCovered >= 0 ? bestJCovered : bestJFallback;
     }
     return assign;
   }

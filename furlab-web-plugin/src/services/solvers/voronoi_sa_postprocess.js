@@ -60,7 +60,8 @@ function runInitialPostprocess(args) {
         placements,
         args.spec,
         args.finalZoneMask,
-        args.absorptionCriterion
+        args.absorptionCriterion,
+        args.minWidthMm  // v5.0 §3 R8: guard'ы absorb
       );
       if (!absorbed) break;
       rasterAbsorbedPasses++;
@@ -562,8 +563,13 @@ function createVoronoiSaFragmentPostprocess(deps) {
 
   // Absorb residual zone cells (not covered by any fragment) into existing fragments
   // using eligibility (bit1). Extends the nearest eligible fragment's polygon.
-  function absorbResidualCells(resultPlacements, placements, spec, finalZoneMask, absorptionCriterion) {
+  function absorbResidualCells(resultPlacements, placements, spec, finalZoneMask, absorptionCriterion, minWidthMm) {
     if (absorptionCriterion == null) absorptionCriterion = 4;
+    // v5.0 §3 R8: absorb разрешён с guard'ами.
+    //   guard 1: MBR-short поглощаемой дыры ≥ minWidthMm (физически влезет кусок ≥ min)
+    //   guard 2: MBR-short фрагмента-поглотителя после absorb ≥ minWidthMm (не стал слишком тонким)
+    // Если хотя бы один guard не выполнен — absorb пропускается, дыра остаётся physMissing.
+    const guardMinWidthMm = Number(minWidthMm) || 0;
     const { nx, ny, r, ox, oy } = spec;
     const cellCount = nx * ny;
 
@@ -571,16 +577,15 @@ function createVoronoiSaFragmentPostprocess(deps) {
     const covered = new Uint8Array(cellCount);
     for (const rp of resultPlacements) {
       if (!rp.inZoneContour || rp.inZoneContour.length < 3) continue;
-      if (rp.isTerritoryPlaceholder) continue; // placeholder = piece doesn't physically cover territory
+      if (rp.isTerritoryPlaceholder) continue;
       const m = rasterize(rp.inZoneContour, spec);
       for (let i = 0; i < cellCount; i++) covered[i] |= (m[i] & 1);
     }
 
     // Find residual zone cells
-    const residualByFrag = new Map(); // fragIndex → [cellIdx, ...]
+    const residualByFrag = new Map();
     for (let idx = 0; idx < cellCount; idx++) {
       if (!finalZoneMask[idx] || covered[idx]) continue;
-      // Find eligible piece by full contour (bit0 of fullMask) — includes seam allowance reach
       let bestJ = -1, bestDist = Infinity;
       const cx = ox + (idx % nx + 0.5) * r;
       const cy = oy + ((idx / nx | 0) + 0.5) * r;
@@ -592,7 +597,6 @@ function createVoronoiSaFragmentPostprocess(deps) {
         if (d < bestDist) { bestDist = d; bestJ = j; }
       }
       if (bestJ < 0) continue;
-      // Map piece j → its fragment index
       const fi = resultPlacements.findIndex(rp => rp.scrapPieceId === placements[bestJ].id ||
         (rp.inventoryTag === placements[bestJ].inventoryTag && rp.phase !== "gap_fill"));
       if (fi < 0) continue;
@@ -601,13 +605,24 @@ function createVoronoiSaFragmentPostprocess(deps) {
     }
     if (residualByFrag.size === 0) return 0;
 
-    // Extend each affected fragment's polygon
-    // Build reverse lookup: scrapPieceId → placements index (for sealFragment)
     const pieceIdToPlIdx = new Map();
     for (let i = 0; i < placements.length; i++) pieceIdToPlIdx.set(placements[i].id, i);
 
     const cellToFrag = buildCellToFrag(resultPlacements, spec, finalZoneMask);
+    let absorbedCount = 0;
     for (const [fi, newCells] of residualByFrag) {
+      // ── v5.0 §3 R8 guard 1: MBR-short поглощаемой дыры ≥ minWidthMm ────────
+      // Собираем полигон дыры из newCells и проверяем MBR.
+      if (guardMinWidthMm > 0) {
+        const holePts = rebuildFragPoly(newCells, spec);
+        if (!holePts) continue;
+        const holeMbrShort = minBoundingRectShorter(holePts);
+        if (holeMbrShort < guardMinWidthMm) {
+          // Дыра слишком мала — кусок ≥ min физически не влезет. Пропускаем.
+          continue;
+        }
+      }
+
       // Collect current cells of this fragment
       const existingCells = [];
       for (let i = 0; i < cellCount; i++) if (cellToFrag[i] === fi) existingCells.push(i);
@@ -615,21 +630,35 @@ function createVoronoiSaFragmentPostprocess(deps) {
       const rawPts = rebuildFragPoly(allCells, spec);
       if (!rawPts) continue;
       const rp = resultPlacements[fi];
-      // Stage-8 fix: clip territory to piece boundary (inZoneContour ⊆ piece)
       const plIdx = pieceIdToPlIdx.get(rp.scrapPieceId);
       const newPts = plIdx != null ? sealFragment(rawPts, plIdx, placements) : rawPts;
       const newArea = multiPolygonArea(pointsToMultiPolygon(newPts));
       if (newArea < 1) continue;
+
+      // ── v5.0 §3 R8 guard 2: MBR-short фрагмента-поглотителя после absorb ≥ minWidthMm ──
+      // Проверяем фрагмент (inZoneCoreContour = core ∩ newTerritory), а не сам newPts.
+      // Потому что физический фрагмент = core ∩ territory, не raw territory.
+      if (guardMinWidthMm > 0) {
+        const newCorePts = (plIdx != null ? placements[plIdx].corePts : null) || newPts;
+        const newFragPts = coreFragmentForTerritory(newPts, plIdx, placements);
+        const checkPts = (newFragPts && newFragPts.length >= 3) ? newFragPts : newPts;
+        const fragMbrShort = minBoundingRectShorter(checkPts);
+        if (fragMbrShort < guardMinWidthMm) {
+          // Фрагмент стал слишком тонким — absorb нарушит R5. Пропускаем.
+          continue;
+        }
+      }
+
       rp.inZoneContour = newPts;
-      // core = piece's own core pts (real inset of piece body), not territory polygon
       const plAbs = plIdx != null ? placements[plIdx] : null;
       rp.alignedCoreContour = (plAbs && plAbs.corePts) || newPts;
       rp.inZoneCoreContour = coreFragmentForTerritory(newPts, plIdx, placements);
       rp.inZoneAreaMm2 = newArea;
       rp.gainAreaMm2 = newArea;
       rp.score = newArea;
+      absorbedCount++;
     }
-    return residualByFrag.size;
+    return absorbedCount;
   }
 
   // Dissolve small fragments (bbox below minWidthMm × minLengthMm) into neighbors.

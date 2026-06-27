@@ -21,11 +21,12 @@ function buildUncovered(covered, zoneMask) {
 }
 
 function pickMove(rng, hasUnused, hasMultiple) {
+  // v5.0 §3 R6: вращение запрещено. ROTATE убран из pickMove.
+  // Перераспределение вероятностей: TRANSLATE 0.45, SWAP 0.20, REMOVE 0.15, ADD 0.20.
   const r = rng.next();
-  if (r < 0.38) return MOVES.TRANSLATE;
-  if (r < 0.58) return MOVES.ROTATE;
-  if (r < 0.72 && hasUnused) return MOVES.SWAP;
-  if (r < 0.84 && hasMultiple) return MOVES.REMOVE;
+  if (r < 0.45) return MOVES.TRANSLATE;
+  if (r < 0.65 && hasUnused) return MOVES.SWAP;
+  if (r < 0.80 && hasMultiple) return MOVES.REMOVE;
   if (hasUnused) return MOVES.ADD;
   return MOVES.TRANSLATE;
 }

@@ -106,48 +106,104 @@ function createVoronoiSaCoverage(deps) {
       ClipperLib.PolyFillType.pftNonZero
     );
 
-    const erodeDelta = -Math.round(1.5 * gStep * CLIPPER_SCALE);
-    const co = new ClipperLib.ClipperOffset();
-    co.AddPath(toClipper(zonePoints), ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
-    const erodedPaths = new ClipperLib.Paths();
-    co.Execute(erodedPaths, erodeDelta);
-    const hasEroded = erodedPaths && erodedPaths.length > 0;
-
+    // v5.0 §4: эрозия САМОЙ ДЫРЫ (а не зоны) определяет sliver.
+    // Зона больше не эродируется — это было источником ошибки классификации.
     let residualAreaMm2 = 0;
     let residualPerimeterMm2 = 0;
     let residualInteriorMm2 = 0;
     const uncoveredComponents = [];
+
+    // v5.0 §4: классификация interior/edge по расстоянию до границы зоны (как в verify_voronoi_sa.py).
+    // Дыра — interior если её центр (или любая точка) находится дальше INTERIOR_DIST от границы зоны.
+    // Это устраняет завышение residualInteriorMm2 краевыми дырами.
+    const INTERIOR_DIST_MM = 2.0;
+    // zonePathClipper нужен для расчёта расстояния до границы (через Clipper).
+    const zonePathClipper = toClipper(zonePoints);
 
     for (const path of (residualSol || [])) {
       const areaMm2 = clipperArea(path);
       residualAreaMm2 += areaMm2;
       let isPerimeterSliver = false;
 
-      if (hasEroded) {
-        try {
-          const cprIn = new ClipperLib.Clipper();
-          cprIn.AddPath(path, ClipperLib.PolyType.ptSubject, true);
-          for (const ep of erodedPaths) cprIn.AddPath(ep, ClipperLib.PolyType.ptClip, true);
-          const interSol = new ClipperLib.Paths();
-          cprIn.Execute(
-            ClipperLib.ClipType.ctIntersection,
-            interSol,
-            ClipperLib.PolyFillType.pftNonZero,
-            ClipperLib.PolyFillType.pftNonZero
-          );
-          const insideAreaMm2 = interSol.reduce((s, p) => s + clipperArea(p), 0);
-          isPerimeterSliver = insideAreaMm2 / areaMm2 < 0.5;
-        } catch (_) {
-          isPerimeterSliver = false;
+      // Шаг 1: эрозия САМОЙ ДЫРЫ на -1.5мм — определяет sliver (под-сеточный артефакт).
+      // Критерий совпадает с verify_voronoi_sa.py: sliver если эрозия съедает >60% площади дыры
+      // (т.е. erodedHoleArea / areaMm2 < SLIVER_ERO_FRAC = 0.40).
+      let erodedHoleArea = 0;
+      let isSliverByErosion = false;
+      const SLIVER_ERO_FRAC = 0.40;
+      try {
+        const coHole = new ClipperLib.ClipperOffset();
+        coHole.AddPath(path, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
+        const erodedHolePaths = new ClipperLib.Paths();
+        coHole.Execute(erodedHolePaths, -Math.round(1.5 * gStep * CLIPPER_SCALE));
+        if (erodedHolePaths && erodedHolePaths.length > 0) {
+          erodedHoleArea = erodedHolePaths.reduce((s, p) => s + clipperArea(p), 0);
+        }
+        isSliverByErosion = areaMm2 > 1e-6 ? (erodedHoleArea / areaMm2 < SLIVER_ERO_FRAC) : true;
+      } catch (_) {
+        isSliverByErosion = false;
+      }
+      isPerimeterSliver = isSliverByErosion;
+      const erosionSurvives = !isSliverByErosion;
+
+      // Шаг 2: для не-sliver дыры — классификация interior vs edge по расстоянию до границы зоны.
+      // Используем bbox-проверку: если bbox дыры целиком внутри зоны с отступом INTERIOR_DIST → interior.
+      // Иначе (касается или близко к границе) → edge.
+      const holePts = fromClipper(path);
+      const holeBbox = polygonBBox(holePts);
+      let isInterior = false;
+      if (!isPerimeterSliver) {
+        // Быстрая bbox-проверка: если bbox дыры дальше INTERIOR_DIST от bbox зоны — interior.
+        // Это приближение, но для большинства случаев работает.
+        const zoneBb = polygonBBox(zonePoints);
+        if (zoneBb && holeBbox) {
+          const distMinX = holeBbox.minX - zoneBb.minX;
+          const distMaxX = zoneBb.maxX - holeBbox.maxX;
+          const distMinY = holeBbox.minY - zoneBb.minY;
+          const distMaxY = zoneBb.maxY - holeBbox.maxY;
+          // Если хотя бы одна сторона bbox дыры ближе INTERIOR_DIST к bbox зоны — edge.
+          // Но bbox зоны >= bbox дыры, поэтому dist'ы должны быть > INTERIOR_DIST.
+          // Это верхняя оценка: может пропустить edge-дыру как interior, но не наоборот.
+          // Для надёжности используем более строгий тест: хотя бы одна вершина дыры ближе INTERIOR_DIST к zone boundary.
+          // Полигон-тест дороже; используем Clipper: расширяем зону внутрь на INTERIOR_DIST, проверяем включение дыры.
+          try {
+            const co2 = new ClipperLib.ClipperOffset();
+            co2.AddPath(zonePathClipper, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
+            const interiorZone = new ClipperLib.Paths();
+            co2.Execute(interiorZone, -Math.round(INTERIOR_DIST_MM * CLIPPER_SCALE));
+            // Если дыра (path) целиком внутри interiorZone → interior.
+            const cprTest = new ClipperLib.Clipper();
+            cprTest.AddPath(path, ClipperLib.PolyType.ptSubject, true);
+            for (const ep of interiorZone) cprTest.AddPath(ep, ClipperLib.PolyType.ptClip, true);
+            const testSol = new ClipperLib.Paths();
+            cprTest.Execute(
+              ClipperLib.ClipType.ctIntersection,
+              testSol,
+              ClipperLib.PolyFillType.pftNonZero,
+              ClipperLib.PolyFillType.pftNonZero
+            );
+            const testArea = testSol.reduce((s, p) => s + clipperArea(p), 0);
+            isInterior = testArea >= areaMm2 * 0.99; // 99% площади дыры внутри interiorZone
+          } catch (_) {
+            isInterior = false;
+          }
         }
       }
 
-      if (isPerimeterSliver) residualPerimeterMm2 += areaMm2;
-      else residualInteriorMm2 += areaMm2;
+      if (isPerimeterSliver) {
+        // Sliver = эрозия схлопывает (sub-сеточный артефакт). В residualInteriorMm2 и residualPerimeterMm2
+        // НЕ включаем — это прощаемый под-сеточный мусор (v5.0 §8).
+        // Считаем только в residualAreaMm2 (raw total).
+      } else if (isInterior) {
+        residualInteriorMm2 += areaMm2;
+      } else {
+        // edge-дыра (не sliver, но касается/близко к границе зоны)
+        residualPerimeterMm2 += areaMm2;
+      }
       if (areaMm2 < 1) continue;
 
-      const pts = fromClipper(path);
-      const bb = polygonBBox(pts);
+      const pts = holePts;
+      const bb = holeBbox;
       let sx = 0, sy = 0;
       for (const p of pts) {
         sx += p.x;
@@ -158,7 +214,9 @@ function createVoronoiSaCoverage(deps) {
         bbox: { minX: bb.minX, minY: bb.minY, maxX: bb.maxX, maxY: bb.maxY },
         centroid: { x: sx / pts.length, y: sy / pts.length },
         pts,
-        isPerimeterSliver
+        isPerimeterSliver,
+        // v5.0 §4: классификация дыры — sliver / interior / edge.
+        classification: isPerimeterSliver ? "sliver" : (isInterior ? "interior" : "edge")
       });
     }
 

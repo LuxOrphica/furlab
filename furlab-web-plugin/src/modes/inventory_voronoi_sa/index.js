@@ -72,7 +72,9 @@ function createInventoryVoronoiSaMode(deps) {
       layoutMode: "inventory_voronoi_sa",
       territoryMode: "mosaic",
       postprocessMode: "full",
-      _lloydTiling: true
+      // v5.0 §3 R7: SA-ветка активна по умолчанию (_lloydTiling: false).
+      // Lloyd-tiling можно включить явно через options._lloydTiling для regression-тестов.
+      _lloydTiling: options && options._lloydTiling === true ? true : false
     });
     const placements = normalizePlacementOrders(result && result.placements);
     const solved = { ...(result || {}), placements, solveOrder: buildSolveOrder(placements) };

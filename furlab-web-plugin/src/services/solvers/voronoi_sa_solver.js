@@ -321,8 +321,11 @@ function createVoronoiSaSolver(deps) {
       const centeredPts = rawPts.map(p => ({ x: p.x - cen.x, y: p.y - cen.y }));
       const areaMm2 = Math.abs(ringAreaSigned(centeredPts));
       const coreInset = allowanceMm > 0 ? offsetContourInward(centeredPts, allowanceMm) : [];
+      // v5.0 §1, §7: при allowanceMm > 0 инсет обязателен. Если он схлопнулся (< 3 точек) —
+      // кусок физически непригоден (после вычета припуска не остаётся материала), отбрасываем.
+      // Запрет fallback'а к centeredPts: он маскировал P0 (ядро == тело → фейк-покрытие).
       if (allowanceMm > 0 && coreInset.length < 3) continue;
-      const centeredCorePts = coreInset.length >= 3 ? coreInset : centeredPts;
+      const centeredCorePts = (allowanceMm > 0) ? coreInset : centeredPts;
       if (minWidthMm > 0 || minLengthMm > 0) {
         const cb = polygonBBox(centeredCorePts);
         const shorter = Math.min(cb.maxX - cb.minX, cb.maxY - cb.minY);

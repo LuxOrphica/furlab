@@ -1,5 +1,163 @@
 "use strict";
 
+const ClipperLib = require("clipper-lib");
+const CLIPPER_SCALE_AE = 1000;
+
+// ── v5.0 §5.3: 4 прокси эстетики ────────────────────────────────────────────
+// Каждый фрагмент проверяется по 4 прокси. Абсолютные пороги (без сравнения с эталоном).
+// Возвращается { perFragment: [...], passRate, summary }.
+function computeAesthetics(resultPlacements, minWidthMm) {
+  const perFragment = [];
+  let passCount = 0;
+  const total = resultPlacements.length;
+
+  for (const rp of resultPlacements) {
+    const pts = rp.inZoneCoreContour || rp.inZoneContour;
+    if (!Array.isArray(pts) || pts.length < 3) {
+      perFragment.push({ scrapPieceId: rp.scrapPieceId, skipped: true });
+      continue;
+    }
+
+    // 1. Выпуклость: area / area(convexHull)
+    const fragArea = polygonArea(pts);
+    const hullPts = convexHull(pts);
+    const hullArea = polygonArea(hullPts);
+    const convexity = hullArea > 1 ? fragArea / hullArea : 0;
+
+    // 2. Заполнение MBR: area / area(MBR)
+    const mbrShort = minBoundingRectShorter(pts);
+    const mbrLong = minBoundingRectLonger(pts);
+    const mbrArea = mbrShort * mbrLong;
+    const mbrFill = mbrArea > 1 ? fragArea / mbrArea : 0;
+
+    // 3. Доля языков: area(fragment \ buffer(fragment, -minWidth/2)) / area(fragment)
+    // Эрозия фрагмента на половину min-width. Если эрозия пуста → весь фрагмент — «язык».
+    let tongueFraction = 0;
+    try {
+      const co = new ClipperLib.ClipperOffset();
+      co.AddPath(toClipperAE(pts), ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
+      const eroded = new ClipperLib.Paths();
+      const erodeDelta = -Math.round((minWidthMm / 2) * CLIPPER_SCALE_AE);
+      co.Execute(eroded, erodeDelta);
+      const erodedArea = (eroded || []).reduce((s, p) => s + Math.abs(ClipperLib.Clipper.Area(p)) / (CLIPPER_SCALE_AE * CLIPPER_SCALE_AE), 0);
+      tongueFraction = fragArea > 1 ? Math.max(0, (fragArea - erodedArea) / fragArea) : 0;
+    } catch (_) {
+      tongueFraction = 0;
+    }
+
+    // 4. Прямота швов — не вычисляется на одном фрагменте (нужны соседи).
+    // Пропускаем в per-fragment; v5.1 добавит межфрагментную метрику.
+    const seamStraightness = null;
+
+    // Пороги (v5.0 §5.3) — абсолютные, без сравнения с эталоном.
+    const TH_CONVEXITY = 0.55;
+    const TH_MBR_FILL = 0.55;
+    const TH_TONGUE = 0.08;
+    const passConvexity = convexity >= TH_CONVEXITY;
+    const passMbrFill = mbrFill >= TH_MBR_FILL;
+    const passTongue = tongueFraction <= TH_TONGUE;
+    const pass = passConvexity && passMbrFill && passTongue;
+
+    if (pass) passCount++;
+    perFragment.push({
+      scrapPieceId: rp.scrapPieceId,
+      convexity: Math.round(convexity * 1000) / 1000,
+      mbrFill: Math.round(mbrFill * 1000) / 1000,
+      tongueFraction: Math.round(tongueFraction * 1000) / 1000,
+      seamStraightness,
+      passConvexity, passMbrFill, passTongue, pass
+    });
+  }
+
+  const passRate = total > 0 ? passCount / total : 0;
+  return {
+    perFragment,
+    passRate: Math.round(passRate * 1000) / 1000,
+    passCount,
+    total,
+    thresholds: { convexity: 0.55, mbrFill: 0.55, tongue: 0.08 },
+    summary: `pass: ${passCount}/${total} (${Math.round(passRate * 100)}%)`
+  };
+}
+
+// Helpers (inline, чтобы не зависеть от deps)
+function toClipperAE(pts) {
+  return pts.map(p => ({ X: Math.round(p.x * CLIPPER_SCALE_AE), Y: Math.round(p.y * CLIPPER_SCALE_AE) }));
+}
+function polygonArea(pts) {
+  if (!Array.isArray(pts) || pts.length < 3) return 0;
+  let s = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const a = pts[i], b = pts[(i + 1) % pts.length];
+    s += a.x * b.y - b.x * a.y;
+  }
+  return Math.abs(s) * 0.5;
+}
+function convexHull(pts) {
+  const n = pts.length;
+  if (n < 3) return pts.slice();
+  const sorted = pts.slice().sort((a, b) => a.x !== b.x ? a.x - b.x : a.y - b.y);
+  const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+  const lower = [], upper = [];
+  for (const p of sorted) {
+    while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) lower.pop();
+    lower.push(p);
+  }
+  for (let i = sorted.length - 1; i >= 0; i--) {
+    const p = sorted[i];
+    while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) upper.pop();
+    upper.push(p);
+  }
+  upper.pop(); lower.pop();
+  return lower.concat(upper);
+}
+function minBoundingRectShorter(pts) {
+  if (!pts || pts.length < 3) return Infinity;
+  const hull = convexHull(pts);
+  const n = hull.length;
+  if (n < 2) return Infinity;
+  let minShorter = Infinity;
+  for (let i = 0; i < n; i++) {
+    const p1 = hull[i], p2 = hull[(i + 1) % n];
+    const dx = p2.x - p1.x, dy = p2.y - p1.y;
+    const len = Math.hypot(dx, dy);
+    if (len < 1e-9) continue;
+    const ux = dx / len, uy = dy / len, vx = -uy, vy = ux;
+    let minU = Infinity, maxU = -Infinity, minV = Infinity, maxV = -Infinity;
+    for (const p of hull) {
+      const u = p.x * ux + p.y * uy, v = p.x * vx + p.y * vy;
+      if (u < minU) minU = u; if (u > maxU) maxU = u;
+      if (v < minV) minV = v; if (v > maxV) maxV = v;
+    }
+    const shorter = Math.min(maxU - minU, maxV - minV);
+    if (shorter < minShorter) minShorter = shorter;
+  }
+  return minShorter;
+}
+function minBoundingRectLonger(pts) {
+  if (!pts || pts.length < 3) return Infinity;
+  const hull = convexHull(pts);
+  const n = hull.length;
+  if (n < 2) return Infinity;
+  let maxLonger = 0;
+  for (let i = 0; i < n; i++) {
+    const p1 = hull[i], p2 = hull[(i + 1) % n];
+    const dx = p2.x - p1.x, dy = p2.y - p1.y;
+    const len = Math.hypot(dx, dy);
+    if (len < 1e-9) continue;
+    const ux = dx / len, uy = dy / len, vx = -uy, vy = ux;
+    let minU = Infinity, maxU = -Infinity, minV = Infinity, maxV = -Infinity;
+    for (const p of hull) {
+      const u = p.x * ux + p.y * uy, v = p.x * vx + p.y * vy;
+      if (u < minU) minU = u; if (u > maxU) maxU = u;
+      if (v < minV) minV = v; if (v > maxV) maxV = v;
+    }
+    const longer = Math.max(maxU - minU, maxV - minV);
+    if (longer > maxLonger) maxLonger = longer;
+  }
+  return maxLonger;
+}
+
 function createVoronoiSaResultBuilder(deps) {
   const buildTerritoryOutput = deps.buildTerritoryOutput;
   const runInitialPostprocess = deps.runInitialPostprocess;
@@ -185,6 +343,45 @@ function createVoronoiSaResultBuilder(deps) {
       multiPolygonArea
     });
 
+    // ── v5.0 §5.2: 4 статуса результата ─────────────────────────────────────
+    // Классификация по invariants, не по одной только coverage.
+    // ok: covF ≥ 99.5% ∧ R2/R5/R6 PASS
+    // partial: covF ∈ [95%, 99.5%) ∧ R2/R5/R6 PASS ∧ physMissing ≤ 1% зоны
+    // insufficient_input: covF < 95% (пробуем insufficient; TODO: отличать от failed через pre-flight горл)
+    // failed: R2 FAIL ИЛИ R5 FAIL ИЛИ R6 FAIL ИЛИ covF < 95% при наличии кандидатов
+    const invWarnings = (resultInvariants && Array.isArray(resultInvariants.warnings))
+      ? resultInvariants.warnings : [];
+    const r2Fail = invWarnings.some(w => /^R2_/.test(w) || /partition/i.test(w));
+    const r5Fail = invWarnings.some(w => /^R5_/.test(w) || /sub.?min/i.test(w));
+    const r6Fail = invWarnings.some(w => /^R6_/.test(w) || /duplicate/i.test(w));
+    const physMissingTotalMm2 = resultPlacements.reduce(
+      (s, p) => s + (p && p.physicalMissingMm2 > 0 ? p.physicalMissingMm2 : 0), 0);
+    const physMissingPct = zoneArea > 0 ? physMissingTotalMm2 / zoneArea * 100 : 0;
+    const covF = realCoveredRatio * 100;
+
+    let resultStatus;
+    let failedReason = null;
+    if (r2Fail || r5Fail || r6Fail) {
+      // Жёсткое нарушение инварианта — баг солвера.
+      resultStatus = "failed";
+      failedReason = r2Fail ? "partition_gap_R2"
+        : r5Fail ? "sub_min_fragment_R5"
+        : "duplicate_scrap_R6";
+    } else if (covF >= 99.5) {
+      resultStatus = "ok";
+    } else if (covF >= 95.0 && physMissingPct <= 1.0) {
+      resultStatus = "partial";
+      failedReason = "coverage_below_target_with_minor_physMissing";
+    } else if (covF < 95.0 && physMissingPct > 5.0) {
+      // Эвристика insufficient_input: covF низкая И physMissing значительный.
+      // TODO v5.1: отличать от failed через pre-flight горл < 70 и inventory-check свободных кусков.
+      resultStatus = "insufficient_input";
+      failedReason = `low_coverage_${covF.toFixed(1)}pct_physMissing_${physMissingPct.toFixed(1)}pct`;
+    } else {
+      resultStatus = "failed";
+      failedReason = `coverage_${covF.toFixed(1)}pct_below_threshold`;
+    }
+
     return {
       ok: true,
       seed: effectiveOptions.seed,
@@ -195,8 +392,8 @@ function createVoronoiSaResultBuilder(deps) {
       residualPerimeterMm2,
       residualInteriorMm2,
       uncoveredComponents,
-      resultStatus: realFullCoverageOk ? "ok" : "failed",
-      failedReason: realFullCoverageOk ? null : "zone_not_fully_covered",
+      resultStatus,
+      failedReason,
       renderOrderPolicy: "solve_order",
       stackOrderPolicy: "solve_order",
       solveOrder: resultPlacements.map((p) => p.scrapPieceId),
@@ -209,7 +406,7 @@ function createVoronoiSaResultBuilder(deps) {
         zoneAreaMm2: Math.round(zoneArea)
       },
       algorithmTrace: {
-        version: "voronoi-sa-v4.0",
+        version: "voronoi-sa-v5.0",
         effectiveOptions,
         phaseA: {
           timeMs: phaseATimeMs || 0,
@@ -248,25 +445,28 @@ function createVoronoiSaResultBuilder(deps) {
       },
       selectionDebug: selectionDebug || null,
       absorptionDiagnostic: absorptionDiagnostic.length > 0 ? absorptionDiagnostic : null,
-      invariants: resultInvariants
+      invariants: resultInvariants,
+      // v5.0 §5.3: 4 прокси эстетики (выпуклость, заполнение MBR, доля языков; прямота швов — TODO v5.1).
+      aesthetics: computeAesthetics(resultPlacements, minWidthMm)
     };
   }
 
   function emptyResult(zoneArea) {
+    // v5.0 §5.2: нет кандидатов → insufficient_input (не баг солвера — нечего класть).
     return {
       ok: false,
       fullCoverageOk: false,
       coveredRatio: 0,
       coveragePercent: 0,
       residualAreaMm2: zoneArea,
-      resultStatus: "failed",
+      resultStatus: "insufficient_input",
       failedReason: "no_candidates",
       renderOrderPolicy: "solve_order",
       stackOrderPolicy: "solve_order",
       solveOrder: [],
       placements: [],
       summary: { piecesCount: 0, selectedPiecesAreaMm2: 0, selectedPiecesInZoneAreaMm2: 0, selectedPiecesAreaBasis: "piece", overlapAreaMm2: 0, utilizationPct: 0 },
-      algorithmTrace: { version: "nfp-sa-v1", steps: {} }
+      algorithmTrace: { version: "voronoi-sa-v5.0", steps: {} }
     };
   }
 

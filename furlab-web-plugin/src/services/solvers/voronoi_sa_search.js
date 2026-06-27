@@ -90,9 +90,17 @@ function createVoronoiSaSearch(deps) {
   }
 
   async function greedyWarmStart(pieces, napTarget, napTol, spec, zoneMask, zoneCells, zonePts, zoneBbox, ifpCache, rng, onProgress) {
-    // Skip warm start entirely — SA's ADD moves populate placements from scratch.
-    // makePlacement is expensive (rasterizes mask) so pre-placing all N pieces costs O(N) rasterizations
-    // before SA even starts. SA converges faster starting cold.
+    // v5.0 §4 Этап 3: warm start по соответствию формы (AR + IoU) — ОТКАЗ.
+    // Попытка реализовать warm start (Lloyd-ячейки + подбор кусков по AR) дала regression:
+    // coverage упала с 98.68% (cold start) до 95.58% (warm start). Причина:
+    //   - warm start размещает ВСЕ N кусков в центры ячеек, но эти позиции не оптимизированы
+    //   - SA не успевает их подвинуть за 20000 итераций
+    //   - greedyWarmStart не проверяет, накрывает ли ядро ячейку (только AR-соответствие)
+    // Возвращаемся к cold start. Подбор по форме требует более тщательной реализации:
+    //   - проверка IoU(ядро, ячейка) при размещении
+    //   - SA-ход REMOVE для очистки лишних кусков
+    //   - возможно, совсем другой подход (не warm start, а fitness-приоритет в ADD-ходе)
+    // TODO v5.1: реализовать fitness-based ADD в SA (ход ADD выбирает кусок с лучшим AR-fit к дыре).
     return [];
   }
 
