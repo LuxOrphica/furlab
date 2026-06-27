@@ -57,6 +57,9 @@ function computeResultInvariants(args) {
   const realCoveredRatio = Number(args && args.realCoveredRatio) || 0;
   const pointsToMultiPolygon = args && args.pointsToMultiPolygon;
   const multiPolygonArea = args && args.multiPolygonArea;
+  // v5.0 §1: при allowanceMm=0 ядро = тело (inset не применяется). Это нормальная модель,
+  // INV4 не должен срабатывать. Порог 0.99 → игнорируем, если allowanceMm=0.
+  const allowanceMm = Number(args && args.allowanceMm) || 0;
   const warnings = [];
   let summary = null;
 
@@ -89,7 +92,9 @@ function computeResultInvariants(args) {
       const coreArea = (rp.alignedCoreContour && rp.alignedCoreContour.length >= 3)
         ? multiPolygonArea(pointsToMultiPolygon(rp.alignedCoreContour))
         : 0;
-      if (coreArea >= pieceArea * 0.99) {
+      if (allowanceMm > 0 && coreArea >= pieceArea * 0.99) {
+        // INV4 срабатывает только если allowanceMm > 0 (инсет должен был примениться, но не применился).
+        // При allowanceMm=0 ядро = тело по контракту v5.0 — это норма, не warning.
         warnings.push(`INV4_FAIL: piece=${rp.scrapPieceId} coreArea=${Math.round(coreArea)} >= pieceArea=${Math.round(pieceArea)} (inset not applied)`);
       }
     }
