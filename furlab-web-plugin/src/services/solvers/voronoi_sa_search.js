@@ -264,10 +264,25 @@ function createVoronoiSaSearch(deps) {
         const ki = rng.nextInt(placements.length);
         newPlacements = placements.filter((_, i) => i !== ki);
       } else if (move === MOVES.ADD && unusedPieces.length > 0) {
-        // v5.0 §4: ADD кладёт новый кусок на крупнейший непокрытый блок.
-        // Кусок выбирается случайно из unused (без fitness-сортировки —
-        // длинные тонкие «дыры» оказались растровыми артефактами, не реальными дырами).
-        const newPiece = unusedPieces[rng.nextInt(unusedPieces.length)];
+        // v5.0 Fix тип 1: Fitness-based ADD
+        let newPiece;
+        if (cachedUncoveredTarget && unusedPieces.length > 1) {
+          const blobAreaMm2 = cachedUncoveredTarget.size * spec.r * spec.r;
+          const sortedUnused = unusedPieces.slice().sort((a, b) => {
+            const aCovers = a.areaMm2 >= blobAreaMm2;
+            const bCovers = b.areaMm2 >= blobAreaMm2;
+            if (aCovers && !bCovers) return -1;
+            if (!aCovers && bCovers) return 1;
+            if (aCovers && bCovers) {
+              return Math.abs(a.areaMm2 - blobAreaMm2 * 1.5) - Math.abs(b.areaMm2 - blobAreaMm2 * 1.5);
+            }
+            return b.areaMm2 - a.areaMm2;
+          });
+          const topN = Math.min(5, sortedUnused.length);
+          newPiece = sortedUnused[rng.nextInt(topN)];
+        } else {
+          newPiece = unusedPieces[rng.nextInt(unusedPieces.length)];
+        }
         const angle = normalizeDeg(napTarget - newPiece.napDeg);
         let pos = null;
         if (cachedUncoveredTarget && rng.next() < 0.8) {
