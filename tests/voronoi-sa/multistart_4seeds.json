@@ -1,0 +1,50 @@
+{
+  "mode": "multistart",
+  "n": 4,
+  "results": [
+    {
+      "seed": "1781456642124",
+      "ms": 41702,
+      "pieces": 25,
+      "harnessCov": "100.67%",
+      "residMm2": -2483,
+      "under": "32(94mm²)",
+      "void": "0(0mm²)",
+      "solverRI": 0,
+      "mark": "✓ absorbable"
+    },
+    {
+      "seed": "1781456842124",
+      "ms": 38465,
+      "pieces": 27,
+      "harnessCov": "99.89%",
+      "residMm2": 423,
+      "under": "35(911mm²)",
+      "void": "0(0mm²)",
+      "solverRI": 0,
+      "mark": "✓ absorbable"
+    },
+    {
+      "seed": "1781456542124",
+      "ms": 12152,
+      "pieces": 35,
+      "harnessCov": "99.23%",
+      "residMm2": 2882,
+      "under": "30(203mm²)",
+      "void": "0(0mm²)",
+      "solverRI": 0,
+      "mark": "✓ absorbable"
+    },
+    {
+      "seed": "1781456742124",
+      "ms": 41689,
+      "pieces": 25,
+      "harnessCov": "99.19%",
+      "residMm2": 3027,
+      "under": "28(245mm²)",
+      "void": "0(0mm²)",
+      "solverRI": 0,
+      "mark": "✓ absorbable"
+    }
+  ]
+}

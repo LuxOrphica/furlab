@@ -1,0 +1,34 @@
+{
+  "mode": "ab",
+  "seed": 1781456642124,
+  "results": [
+    {
+      "label": "crit=1  center-only",
+      "ms": 42375,
+      "pieces": 25,
+      "phases": "SA:25",
+      "harnessCov": "99.93%",
+      "sumMm2": 374772,
+      "residMm2": 275,
+      "overlapMm2": 0,
+      "under": "32(94mm²)",
+      "void": "0(0mm²)",
+      "solverCov": "0.00%",
+      "solverRI": 0
+    },
+    {
+      "label": "crit=4  majority≥3/5",
+      "ms": 41362,
+      "pieces": 25,
+      "phases": "SA:25",
+      "harnessCov": "99.93%",
+      "sumMm2": 374772,
+      "residMm2": 275,
+      "overlapMm2": 0,
+      "under": "32(94mm²)",
+      "void": "0(0mm²)",
+      "solverCov": "0.00%",
+      "solverRI": 0
+    }
+  ]
+}

@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<!-- saved from url=(0255)https://1c7f9bb8-e73f-4e0f-ba1d-a232485f157a.frame.claudeusercontent.com/_f/1782064546-c693/?__frame_t=WsnR76koIRe32DFC0bsnHZAN.ba3b9f4b-5591-4c9b-b7b1-ae62d5211d1d.17f7bc02-2286-43e7-a0f9-c2eef1af1999.1782068338&__frame_v=64ab6cab5ef270998f28db2673fc78e1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="/_f/1782064546-c693/">--><base href="."><script>(()=>{function C(b){if(window===top)return;if(b.type==="auxclick"&&b.button!==1)return;const z=b.composedPath?b.composedPath():[b.target];let j=null;for(let x=0;x<z.length;x++){const q=z[x];if(q&&q.matches&&q.matches("a[href],area[href]")){j=q;break}}if(!j&&b.target&&b.target.closest){j=b.target.closest("a[href],area[href]")}if(!j)return;const A=j.getAttribute("href");if(!A)return;let k,B;try{k=new URL(A,document.baseURI);B=new URL(document.baseURI).origin}catch{return}if((k.protocol==="http:"||k.protocol==="https:")&&k.origin!==B){b.preventDefault();parent.postMessage({__frame_nav:true,url:k.href},"*")}}addEventListener("click",C,true);addEventListener("auxclick",C,true);})();</script><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>CPT — Design Specification v1.0</title>
+
+<style>
+:root {
+  --ground:   #ECEEF2;
+  --text:     #1C2333;
+  --accent:   #E05A1A;
+  --blue:     #2A5EA7;
+  --muted:    #7F90A8;
+  --code-bg:  #DDE0EA;
+  --border:   #C4CADA;
+  --phase-bg: #E3E6EE;
+  --mono: 'Courier New', 'Consolas', monospace;
+  --sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+/* ── HERO ─────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 270px;
+  background: #151B29;
+  display: flex;
+  align-items: flex-end;
+  padding: 28px 44px;
+}
+
+.hero canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-family: var(--mono);
+  font-size: clamp(18px, 3vw, 30px);
+  font-weight: normal;
+  color: #EEF0F6;
+  line-height: 1.25;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #5C6E88;
+  margin-top: 10px;
+  letter-spacing: 0.04em;
+}
+
+/* ── LAYOUT ───────────────────────────────── */
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 52px 36px 96px;
+}
+
+/* ── PREAMBLE ─────────────────────────────── */
+.preamble {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.85;
+  color: var(--muted);
+  border-left: 3px solid var(--accent);
+  padding: 14px 0 14px 20px;
+  margin-bottom: 52px;
+}
+
+.preamble strong { color: var(--text); }
+
+/* ── SECTION LABELS ───────────────────────── */
+.sec {
+  margin-bottom: 40px;
+}
+
+.sec-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 22px;
+}
+
+/* ── INVARIANTS ───────────────────────────── */
+.inv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.inv {
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+}
+
+.inv-id {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.inv-body {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  background: var(--code-bg);
+  padding: 1px 5px;
+  border-radius: 2px;
+  color: var(--blue);
+}
+
+/* ── PHASE BLOCKS ─────────────────────────── */
+.phases {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.phase {
+  background: #fff;
+  border: 1px solid var(--border);
+}
+
+.phase-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 20px;
+  background: var(--phase-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.phase-n {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--accent);
+  min-width: 32px;
+  flex-shrink: 0;
+}
+
+.phase-name {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  color: var(--text);
+  flex: 1;
+}
+
+.phase-chip {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 9px;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.chip-compute { background: #D8E8F4; color: var(--blue); }
+.chip-assign  { background: #E4EAD4; color: #4A7040; }
+.chip-expand  { background: #F4E4D4; color: var(--accent); }
+.chip-bfs     { background: #E0DCF4; color: #5040A0; }
+.chip-rebuild { background: #D4EAE4; color: #307060; }
+
+.phase-body {
+  padding: 18px 20px;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.phase-body p { margin-bottom: 12px; }
+.phase-body p:last-child { margin-bottom: 0; }
+
+.algo {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.85;
+  background: var(--code-bg);
+  border-left: 2px solid var(--blue);
+  padding: 14px 16px;
+  margin: 14px 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.algo li {
+  counter-increment: step;
+  padding-left: 32px;
+  position: relative;
+  margin-bottom: 3px;
+}
+
+.algo li::before {
+  content: counter(step, decimal-leading-zero) '.';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-size: 10px;
+  top: 2px;
+  opacity: 0.7;
+}
+
+.note-block {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  border-left: 2px solid var(--border);
+  padding: 8px 14px;
+  margin: 12px 0 4px;
+  line-height: 1.75;
+}
+
+/* ── GUARANTEES TABLE ─────────────────────── */
+.gtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.gtable th {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--phase-bg);
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+
+.gtable td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.gtable tr:last-child td { border-bottom: none; }
+.gtable td:first-child { font-family: var(--mono); font-size: 12px; white-space: nowrap; }
+
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.b-pass { background: #D0EDD0; color: #287028; }
+.b-note { background: #D4E4F4; color: var(--blue); }
+.b-inv  { background: #F4E0D0; color: var(--accent); }
+
+/* ── ZONE PROGNOSIS ───────────────────────── */
+.zones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.zone {
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.zone-head {
+  padding: 10px 14px;
+  background: var(--phase-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.zone-id {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text);
+}
+
+.zone-was {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.zone-body { padding: 14px; }
+
+.zm {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--code-bg);
+}
+
+.zm:last-child { border-bottom: none; }
+
+.zm-k {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.zm-v {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+}
+
+.zm-v.pass { color: #2A7A2A; }
+.zm-v.risk { color: var(--accent); }
+
+/* ── ACCEPTANCE ───────────────────────────── */
+.acceptance {
+  background: #151B29;
+  padding: 26px 30px;
+  margin-top: 40px;
+}
+
+.acceptance h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.acceptance ul {
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 2;
+  color: #9AAABB;
+}
+
+.acceptance li::before {
+  content: '→ ';
+  color: var(--accent);
+}
+
+/* ── FOOTER ───────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: #A0AABB;
+  letter-spacing: 0.06em;
+}
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 580px) {
+  .inv-grid { grid-template-columns: 1fr; }
+  .zones { grid-template-columns: 1fr; }
+  .page { padding: 32px 18px 64px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero canvas { display: none; }
+}
+</style>
+
+<!-- ═══════════════════════════════════════════════ HERO -->
+<div class="hero">
+  <canvas id="voronoi-canvas" width="1905" height="270"></canvas>
+  <div class="hero-text">
+    <div class="hero-eyebrow">inventory_voronoi_sa — design gate</div>
+    <h1 class="hero-title">
+      Core-Priority Territory<br>
+      Construction&nbsp;<em>(CPT)</em>
+    </h1>
+    <div class="hero-meta">v1.0 · 2026-06-21 · edges-first · minWidth invariant при построении</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE -->
+<main class="page">
+
+  <p class="preamble">
+    Power-Voronoi + постфильтр исчерпан: <strong>zone_4 85% разрыва — несмежные орфаны</strong>
+    дропнутого широкого куска, связно непатчимы. <strong>zone_2 — thrash v4/v5/v6</strong>:
+    реанимация тонкого куска добавляет исключительное ядро в covC → R2 растёт, а не падает.
+    Новый конструктив строит territory от ядер наружу с гарантией MBR ≥ minWidth
+    <strong>при построении</strong>, не постфильтром.
+  </p>
+
+  <!-- ── INVARIANTS ── -->
+  <section class="sec">
+    <div class="sec-label">§1 — Перенесённые инварианты</div>
+    <div class="inv-grid">
+      <div class="inv">
+        <div class="inv-id">INV-1 · minWidth</div>
+        <div class="inv-body">
+          <code>MBR-short(fragment_k) ≥ minWidthMm</code> — гарантируется
+          при построении. Суб-минимальные фрагменты не создаются вовсе:
+          thin-регион либо поглощается валидным соседом, либо не выделяется
+          в отдельный кусок.
+        </div>
+      </div>
+      <div class="inv">
+        <div class="inv-id">INV-2 · Coverage by polygon</div>
+        <div class="inv-body">
+          Принадлежность клетки куску определяется полигоном ядра (Clipper
+          intersection area), а не 3мм растровой маской. Маска была причиной
+          несмежных орфанов в zone_4.
+        </div>
+      </div>
+      <div class="inv">
+        <div class="inv-id">INV-3 · No revival</div>
+        <div class="inv-body">
+          Тонкие куски не реанимируются: они либо поглощаются
+          (territory → BFS соседям) либо расширяются до MBR ≥ minWidth
+          без добавления чужого core в covC.
+        </div>
+      </div>
+      <div class="inv">
+        <div class="inv-id">INV-4 · Tongue + body</div>
+        <div class="inv-body">
+          Fragment куска может тянуться язычком в карман (узкая часть
+          territory). MBR-short считается по всему полигону
+          <code>core_k ∩ territory_k</code> — широкое тело обеспечивает
+          MBR ≥ 70 даже при наличии языка.
+        </div>
+      </div>
+      <div class="inv">
+        <div class="inv-id">INV-5 · Determinism</div>
+        <div class="inv-body">
+          Фиксированный порядок каждой фазы + явные тай-брейки
+          (inventoryTag asc → piece index asc). Тот же seed → тот же
+          output побайтно.
+        </div>
+      </div>
+      <div class="inv">
+        <div class="inv-id">INV-6 · No silent drop</div>
+        <div class="inv-body">
+          Каждый кусок поглощённый при построении логируется
+          <code>[CPT-ABSORB]</code> с тегом и MBR. Никаких неявных
+          исчезновений без NOTE.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ALGORITHM ── -->
+  <section class="sec">
+    <div class="sec-label">§2 — Алгоритм по фазам</div>
+    <div class="phases">
+
+      <!-- PHASE 0 -->
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-n">PH-0</span>
+          <span class="phase-name">Core Coverage Pre-computation</span>
+          <span class="phase-chip chip-compute">compute · O(K·M)</span>
+        </div>
+        <div class="phase-body">
+          <p>Для каждого куска <code>k</code> и каждой клетки <code>idx</code>
+          в bounding-box ядра вычисляем точный overlap через Clipper:</p>
+          <ol class="algo">
+            <li>Для k = 0..K−1: bbox(core_k) → список клеток idx в bbox.</li>
+            <li>Для каждого такого idx: <code>cov[k][idx] = area(intersect(core_k_poly, cell_rect_idx))</code> (Clipper, мм²).</li>
+            <li>Строим обратный индекс: <code>covByCell[idx] → [(k, score)]</code>, отсортированный по score desc.</li>
+          </ol>
+          <div class="note-block">
+            Типичная оценка: 50 кусков × 150 клеток в bbox = 7 500 Clipper-пересечений.
+            В текущей реализации начальный BFS уже дороже — накладные расходы приемлемы.
+            Оптимизация: skip если <code>area &lt; 0.01 мм²</code> (sub-pixel).
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 1 -->
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-n">PH-1</span>
+          <span class="phase-name">Exclusive + Contested Assignment</span>
+          <span class="phase-chip chip-assign">assign · O(N_cells)</span>
+        </div>
+        <div class="phase-body">
+          <p>Первичный раздел по покрытию ядрами — без Voronoi-центроидов,
+          которые не знают про форму core.</p>
+          <ol class="algo">
+            <li>Для каждой клетки idx: <code>candidates = {k : cov[k][idx] &gt; 0}</code>.</li>
+            <li>Если |candidates| == 1 → <strong>эксклюзив</strong>: <code>assignment[idx] = k</code>. Клетка закреплена за единственным покрывающим куском.</li>
+            <li>Если |candidates| &gt; 1 → <strong>contested</strong>: <code>assignment[idx] = argmax_k(cov[k][idx])</code>. Тай-брейк: tag asc → idx asc.</li>
+            <li>Если |candidates| == 0 → <code>assignment[idx] = UNCOV</code> (→ PH-2).</li>
+          </ol>
+          <div class="note-block">
+            Это закрывает 85% разрыва zone_4: эксклюзивные клетки дропнутого
+            широкого куска теперь корректно относятся к нему, а не к ближайшему
+            центроиду, который его core не покрывает.
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-n">PH-2</span>
+          <span class="phase-name">Edges-First Uncovered Fill</span>
+          <span class="phase-chip chip-expand">expand · edge-first BFS</span>
+        </div>
+        <div class="phase-body">
+          <p>Клетки без покрытия ядром (UNCOV) заполняются в порядке
+          «от края зоны внутрь». Это гарантирует что краевые и карманные регионы
+          закрываются намеренно, а не достаются объедкам интерьерного BFS.</p>
+          <ol class="algo">
+            <li>BFS от boundary zone → <code>edge_dist[idx]</code> для всех клеток зоны.</li>
+            <li>Сортируем UNCOV-клетки: (edge_dist asc, row asc, col asc).</li>
+            <li>Для каждой idx в этом порядке: смежные куски k (из assignment соседей).</li>
+            <li>Score k: <code>cov[k][idx]</code> если &gt; 0, иначе обратное расстояние до core_k (аппроксимация).</li>
+            <li><code>assignment[idx] = argmax_k(score)</code>. Тай-брейк: tag asc → idx asc.</li>
+            <li>Если нет смежных survivors → defer (orphan, → PH-5).</li>
+          </ol>
+          <div class="note-block">
+            «Язык в карман»: краевая клетка в узком кармане получает assignment
+            того куска, чей core имеет наибольший overlap. Fragment этого куска
+            вытянется в карман, но MBR-short считается по всему полигону включая
+            широкое тело → INV-4 соблюдён.
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-n">PH-3</span>
+          <span class="phase-name">MBR Enforcement — Expand or Absorb</span>
+          <span class="phase-chip chip-expand">construction-time minWidth</span>
+        </div>
+        <div class="phase-body">
+          <p>После PH-1 и PH-2 каждый кусок проверяется на MBR-инвариант.
+          Тонкие куски исправляются <strong>при построении</strong> — это ключевое
+          отличие от постфильтра.</p>
+          <ol class="algo">
+            <li>Для k в (tag asc, idx asc): вычислить <code>fragment_k = Clipper(core_k ∩ territory_k)</code>.</li>
+            <li>Если <code>MBR-short(fragment_k) ≥ minWidthMm</code> → k валиден, continue.</li>
+            <li><strong>Attempt E (expand)</strong>: перебрать граничные клетки k-territory (клетки соседних survivors, смежные с k). Для каждой в порядке (cov[k][idx] desc, tag asc, idx asc):<br>
+               &nbsp;&nbsp;— Временно: <code>assignment[idx] = k</code>.<br>
+               &nbsp;&nbsp;— Проверить donor j: <code>MBR-short(core_j ∩ territory_j_new) ≥ minWidthMm</code>.<br>
+               &nbsp;&nbsp;— Проверить k: <code>MBR-short(core_k ∩ territory_k_new) ≥ minWidthMm</code>.<br>
+               &nbsp;&nbsp;— Если оба OK → зафиксировать, пометить k и j в affectedSurvivors, break.</li>
+            <li>Если Attempt E не дал MBR ≥ minWidth → <strong>Absorb</strong>: <code>assignment[idx] = ABSORB</code> для всех ячеек k. Убрать k из resultPlacements. Log: <code>[CPT-ABSORB]</code>.</li>
+          </ol>
+          <div class="note-block">
+            Важно: при Absorb ячейки k не уходят в -1 (orphan), а в ABSORB (→ PH-4 BFS).
+            Тем самым нет несмежных orphan-зон которые были причиной zone_4 регрессии.
+            Donor-safety check (шаг 3) предотвращает chain-reaction thin.
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4 -->
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-n">PH-4</span>
+          <span class="phase-name">Absorbed Cell BFS Redistribution</span>
+          <span class="phase-chip chip-bfs">BFS · coverage polygon</span>
+        </div>
+        <div class="phase-body">
+          <p>Ячейки поглощённых кусков (ABSORB) перераспределяются через
+          глобальный BFS с mask-check по полигону, а не по растровой маске.</p>
+          <ol class="algo">
+            <li>Seed BFS: все ячейки валидных survivors (assignment = k, k ∈ validSet).</li>
+            <li>BFS-очередь инициализируется в растровом порядке (row asc, col asc) — детерминизм.</li>
+            <li>Для каждой ABSORB-ячейки ni: <code>mask_check(k, ni) = cov[k][ni] &gt; 0</code> (полигонный overlap, не растровая маска).</li>
+            <li>Tie-break при конкуренции k1/k2: <code>cov[k1][ni]</code> vs <code>cov[k2][ni]</code> desc; при равенстве — tag asc, idx asc.</li>
+            <li>Необслуженные ABSORB-ячейки (нет достижимого survivor) → ORPHAN (→ PH-5).</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- PHASE 5 -->
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-n">PH-5</span>
+          <span class="phase-name">Final Orphan Sweep</span>
+          <span class="phase-chip chip-bfs">BFS · fallback</span>
+        </div>
+        <div class="phase-body">
+          <p>Оставшиеся ORPHAN-клетки (не накрытые ни одним core, не достигнутые
+          PH-4 BFS) присваиваются ближайшему survivor по геодезическому расстоянию
+          (BFS по зоне). Это не увеличивает covF (core не покрывает), но заполняет
+          территорию и предотвращает «дыры» в зоне.</p>
+          <div class="note-block">
+            covF = 100% недостижим: ядро инсетнуто на припуск → краевое кольцо
+            шириной с припуск кроется только телом. Цель — Ось2Б ≤ допуска, не covF=100.
+            Orphan sweep переносит physMissing в Ось2А (NOTE, не FAIL).
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 6 -->
+      <div class="phase">
+        <div class="phase-head">
+          <span class="phase-n">PH-6</span>
+          <span class="phase-name">Fragment Rebuild + Safety Net</span>
+          <span class="phase-chip chip-rebuild">rebuild · safety</span>
+        </div>
+        <div class="phase-body">
+          <p>Перестраиваем inZoneCoreContour для всех survivors в affectedSurvivors
+          (те кто участвовал в Attempt E как donor или recipient, и absorbed-BFS receivers).
+          Survivors не затронутые PH-3/4 сохраняют initial fragment из PH-1 — не перестраиваются.</p>
+          <ol class="algo">
+            <li>Safety net: для каждого перестроенного fragment_k: если MBR-short &lt; minWidthMm — NOTE + drop. По инварианту построения не должно происходить; log как [CPT-SAFETY-DROP] если произошло.</li>
+            <li>Финальная проверка: nPolyOuter(territory_k) == 1 (связность). Если нет — взять наибольшую компоненту, остаток → ORPHAN.</li>
+          </ol>
+        </div>
+      </div>
+
+    </div><!-- /.phases -->
+  </section>
+
+  <!-- ── GUARANTEES ── -->
+  <section class="sec">
+    <div class="sec-label">§3 — Гарантии и оси</div>
+    <table class="gtable">
+      <thead>
+        <tr>
+          <th>Ось / инвариант</th>
+          <th>Механизм</th>
+          <th>Вердикт</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>R3 · Дизъюнктность</td>
+          <td>assignment — функция (каждая клетка → не более одного куска). Fragment_k = core_k ∩ territory_k. Территории дизъюнктны → фрагменты дизъюнктны.</td>
+          <td><span class="badge b-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>R2 · Полнота партиции</td>
+          <td>PH-1 эксклюзив: клетки покрытые только одним core → тому куску. PH-4: absorbed-BFS без несмежных orphan-зон. PH-2 edge-first: краевые + карманные ячейки заполнены. R2 gap остаётся только в contested-зонах на границах territory — существенно меньше чем при Voronoi-центроидах.</td>
+          <td><span class="badge b-note">УЛУЧШЕНИЕ</span></td>
+        </tr>
+        <tr>
+          <td>Ось3 · minWidth</td>
+          <td>PH-3 Attempt E + Absorb — конструктивная гарантия. PH-6 safety net. По инварианту: ни один survivor в resultPlacements не имеет MBR-short &lt; minWidthMm.</td>
+          <td><span class="badge b-pass">PASS ✓</span></td>
+        </tr>
+        <tr>
+          <td>Ось4 · Дубли</td>
+          <td>SA-фаза не изменяется. Дубли скрапов контролируются там же.</td>
+          <td><span class="badge b-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>Ось2Б · Edge physMissing</td>
+          <td>Edge-first PH-2 намеренно закрывает краевые регионы. Допуск 1% сохраняется.</td>
+          <td><span class="badge b-note">ПРОГНОЗ ≤1%</span></td>
+        </tr>
+        <tr>
+          <td>Детерминизм</td>
+          <td>PH-0: детерминирован (Clipper, фикс. геометрия). PH-1..6: явные тай-брейки tag asc → idx asc. BFS: инициализация в растровом порядке. Один seed → одинаковый output.</td>
+          <td><span class="badge b-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>Честность метрик (R9)</td>
+          <td>Без изменений: coveragePercent считается из inZoneCoreContour, как сейчас. verify_voronoi_sa.py не меняется.</td>
+          <td><span class="badge b-pass">PASS</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── ZONE PROGNOSIS ── -->
+  <section class="sec">
+    <div class="sec-label">§4 — Прогноз по зонам</div>
+    <div class="zones">
+
+      <div class="zone">
+        <div class="zone-head">
+          <div class="zone-id">zone_1</div>
+          <div class="zone-was">baseline: R2 = 0.46пп PASS</div>
+        </div>
+        <div class="zone-body">
+          <div class="zm">
+            <span class="zm-k">R2</span>
+            <span class="zm-v pass">≤ 0.46пп</span>
+          </div>
+          <div class="zm">
+            <span class="zm-k">Ось3</span>
+            <span class="zm-v pass">0</span>
+          </div>
+          <div class="zm">
+            <span class="zm-k">Дизъюнкт</span>
+            <span class="zm-v pass">0 мм²</span>
+          </div>
+          <div class="zm">
+            <span class="zm-k">Риск</span>
+            <span class="zm-v">PH-1 edge — малый сдвиг territory на границах. Ожидаем R2 ± 0.1пп.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="zone">
+        <div class="zone-head">
+          <div class="zone-id">zone_2</div>
+          <div class="zone-was">postfix: R2 = 0.59пп FAIL</div>
+        </div>
+        <div class="zone-body">
+          <div class="zm">
+            <span class="zm-k">R2</span>
+            <span class="zm-v pass">≤ 0.5пп</span>
+          </div>
+          <div class="zm">
+            <span class="zm-k">Ось3</span>
+            <span class="zm-v pass">0</span>
+          </div>
+          <div class="zm">
+            <span class="zm-k">Дизъюнкт</span>
+            <span class="zm-v pass">0 мм²</span>
+          </div>
+          <div class="zm">
+            <span class="zm-k">Механизм</span>
+            <span class="zm-v">Тонкий кусок → PH-3 Absorb (не revival). Exclusive PH-1 закрывает 0.094пп зазор без добавления core в covC.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="zone">
+        <div class="zone-head">
+          <div class="zone-id">zone_4</div>
+          <div class="zone-was">postfix: R2 = 2.37пп FAIL</div>
+        </div>
+        <div class="zone-body">
+          <div class="zm">
+            <span class="zm-k">R2</span>
+            <span class="zm-v risk">≤ 0.5пп*</span>
+          </div>
+          <div class="zm">
+            <span class="zm-k">Ось3</span>
+            <span class="zm-v pass">0</span>
+          </div>
+          <div class="zm">
+            <span class="zm-k">Дизъюнкт</span>
+            <span class="zm-v pass">0 мм²</span>
+          </div>
+          <div class="zm">
+            <span class="zm-k">Механизм</span>
+            <span class="zm-v">85% разрыва = эксклюзивные клетки → PH-1 закрывает. PH-4 BFS устраняет несмежные orphan-зоны. * Зависит от доли contested overlap.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ACCEPTANCE ── -->
+  <div class="acceptance">
+    <h3>§5 — Критерии приёмки</h3>
+    <ul>
+      <li>zone_1: verify PASS, R2 ≤ 0.5пп, Ось3=0, дизъюнкт=0, Ось2Б ≤1%.</li>
+      <li>zone_2: verify PASS, R2 ≤ 0.5пп, Ось3=0.</li>
+      <li>zone_4: verify PASS, R2 ≤ 0.5пп, Ось3=0.</li>
+      <li>Детерминизм: спот-реплей (тот же seed → побайтно совпадающий output).</li>
+      <li>Стадии: zone_1 проверяется ПЕРВОЙ после PH-1 реализации. Нет zone_2/4 прогона до zone_1 green.</li>
+      <li>Инструменты: verify_voronoi_sa.py v4.2 без изменений, те же фикстуры и пороги.</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  CPT Design Spec v1.0 — inventory_voronoi_sa — edges-first · minWidth by construction
+</footer>
+
+<script>
+(function() {
+  const canvas = document.getElementById('voronoi-canvas');
+  const ctx = canvas.getContext('2d');
+
+  const CELL = 11;
+  const PIECE_COLORS = [
+    '#6A9BB5', '#7AA87A', '#B07898', '#A89860',
+    '#6A9898', '#A88070', '#7898B8', '#98A470',
+    '#A87888', '#80A890', '#B08870', '#7080A8'
+  ];
+
+  let cols, rows, seeds, dist, owner, claimed, queue, qi;
+  let animId, restartTimer;
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    init();
+  }
+
+  function init() {
+    cols = Math.floor(canvas.width  / CELL) + 1;
+    rows = Math.floor(canvas.height / CELL) + 1;
+    const n = cols * rows;
+
+    // Place 12 seeds at stable proportional positions
+    const seedPos = [
+      [0.07, 0.18], [0.20, 0.72], [0.31, 0.22], [0.13, 0.78],
+      [0.42, 0.55], [0.52, 0.14], [0.46, 0.82], [0.63, 0.42],
+      [0.74, 0.12], [0.78, 0.76], [0.88, 0.28], [0.93, 0.82]
+    ];
+    seeds = seedPos.map(([px, py], i) => ({
+      col: Math.round(px * cols),
+      row: Math.round(py * rows),
+      color: PIECE_COLORS[i % PIECE_COLORS.length]
+    }));
+
+    dist    = new Int32Array(n).fill(-1);
+    owner   = new Int32Array(n).fill(-1);
+    claimed = new Uint8Array(n);
+
+    queue = [];
+    qi = 0;
+
+    seeds.forEach((s, si) => {
+      const idx = s.row * cols + s.col;
+      if (idx >= 0 && idx < n) {
+        dist[idx]    = 0;
+        owner[idx]   = si;
+        claimed[idx] = 1;
+        queue.push(idx);
+      }
+    });
+
+    ctx.fillStyle = '#151B29';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    seeds.forEach(s => drawCell(s.col, s.row, s.color, true));
+  }
+
+  function drawCell(col, row, color, isSeed) {
+    const x = col * CELL, y = row * CELL;
+    ctx.fillStyle = color;
+    ctx.globalAlpha = isSeed ? 0.9 : 0.55;
+    ctx.fillRect(x + 1, y + 1, CELL - 1, CELL - 1);
+    ctx.globalAlpha = 1;
+
+    if (isSeed) {
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.fillRect(x + CELL/2 - 1.5, y + CELL/2 - 1.5, 3, 3);
+    }
+  }
+
+  const DIRS = [[-1,0],[1,0],[0,-1],[0,1]];
+  const STEPS_PER_FRAME = 18;
+
+  function step() {
+    let worked = false;
+    for (let s = 0; s < STEPS_PER_FRAME && qi < queue.length; s++, qi++) {
+      const idx = queue[qi];
+      const si  = owner[idx];
+      const col = idx % cols, row = (idx / cols) | 0;
+
+      drawCell(col, row, seeds[si].color, dist[idx] === 0);
+
+      for (const [dc, dr] of DIRS) {
+        const nc = col + dc, nr = row + dr;
+        if (nc < 0 || nc >= cols || nr < 0 || nr >= rows) continue;
+        const ni = nr * cols + nc;
+        if (claimed[ni]) continue;
+        claimed[ni] = 1;
+        dist[ni]    = dist[idx] + 1;
+        owner[ni]   = si;
+        queue.push(ni);
+      }
+      worked = true;
+    }
+
+    if (worked || qi < queue.length) {
+      animId = requestAnimationFrame(step);
+    } else {
+      // Done — draw subtle grid overlay then restart
+      ctx.strokeStyle = 'rgba(21,27,41,0.35)';
+      ctx.lineWidth = 0.5;
+      for (let c = 0; c <= cols; c++) {
+        ctx.beginPath(); ctx.moveTo(c*CELL, 0); ctx.lineTo(c*CELL, canvas.height); ctx.stroke();
+      }
+      for (let r = 0; r <= rows; r++) {
+        ctx.beginPath(); ctx.moveTo(0, r*CELL); ctx.lineTo(canvas.width, r*CELL); ctx.stroke();
+      }
+      restartTimer = setTimeout(() => {
+        cancelAnimationFrame(animId);
+        init();
+        animId = requestAnimationFrame(step);
+      }, 2800);
+    }
+  }
+
+  window.addEventListener('resize', () => {
+    clearTimeout(restartTimer);
+    cancelAnimationFrame(animId);
+    resize();
+    animId = requestAnimationFrame(step);
+  });
+
+  resize();
+  animId = requestAnimationFrame(step);
+})();
+</script>
+
+</body></html>
