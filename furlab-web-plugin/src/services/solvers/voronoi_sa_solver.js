@@ -232,11 +232,13 @@ function createVoronoiSaSolver(deps) {
     const overhangMm = Math.max(0, Number((options && options.overhangMm != null ? options.overhangMm : 75)));
     // maxIterations: primary exit criterion — deterministic, seed-reproducible, wall-clock-independent.
     // Default 3000 (~20-30s on typical zones). computeCoverage is O(N×C) per iter — full recompute.
-    // TODO: replace with incremental coverage to allow 20000+ iters at reasonable cost.
+    // v5.0 §6: default 20000 итераций (детерминированный выход SA).
+    // Раньше было 3000 — слишком мало, SA не успевал сходиться на сложных зонах.
+    // TODO v5.1: incremental coverage для 50000+ iters at reasonable cost.
     // When null/0, falls back to time-based exit (not recommended — results vary by machine load).
     const maxIterations = (options && options.maxIterations != null)
       ? (Number(options.maxIterations) > 0 ? Math.max(1, Number(options.maxIterations)) : null)
-      : 3000;
+      : 20000;
     // absorptionCriterion: bit mask for absorption eligibility check on fullMask.
     // 1 = center only (conservative, may miss thin seam joints)
     // 4 = majority ≥3/5 sample points (default, balanced)
