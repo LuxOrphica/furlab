@@ -488,6 +488,8 @@ function buildPolygonalTerritoryOutput(args) {
 
     resultPlacements.push({
       ...pl,
+      // alignedContour = тело с припуском в мировых координатах (требуется инвариантом для matched).
+      alignedContour: pl.pts && pl.pts.length >= 3 ? pl.pts : fragPts,
       // alignedCoreContour = ядро в мировых координатах (для верификатора R2/R5).
       // В poly mode это pl.corePts (уже трансформированы в makePlacement).
       alignedCoreContour: pl.corePts,
