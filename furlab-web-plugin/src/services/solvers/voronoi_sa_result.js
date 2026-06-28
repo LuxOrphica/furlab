@@ -192,7 +192,7 @@ function createVoronoiSaResultBuilder(deps) {
     const absorptionCriterion = (options && options.absorptionCriterion != null) ? Number(options.absorptionCriterion) : 4;
     const postprocessMode = String((options && options.postprocessMode) || "raw");
     const disablePostprocess = postprocessMode === "raw" || (options && options._disablePostprocess === true);
-    const usePolygonal = !!(buildPolygonalTerritoryOutput && options && options.usePolygonal);
+    const usePolygonal = !!(buildPolygonalTerritoryOutput && !(options && options._usePolygonal === false));
     const zoneHoles = Array.isArray(options && options.zoneHoles) ? options.zoneHoles : [];
     let zoneMp = pointsToMultiPolygon(zonePoints);
     for (const hole of zoneHoles) {
@@ -205,29 +205,63 @@ function createVoronoiSaResultBuilder(deps) {
     const { nx, ny } = spec;
     const scale = CLIPPER_SCALE;
 
-    const territoryOutput = buildTerritoryOutput({
-      placements,
-      spec,
-      scale,
-      finalZoneMask,
-      isMosaic,
-      phaseBStats,
-      minWidthMm,
-      minLengthMm,
-      allowanceMm,
-      computePowerAssign,
-      polygonBBox,
-      pointsToMultiPolygon,
-      multiPolygonArea,
-      intersectMulti,
-      mpToPoints,
-      precomputedAssignment: _phaseAExtra && _phaseAExtra.lloydAssignment,
-      lloydZoneMp: (_phaseAExtra && _phaseAExtra.lloydAssignment) ? zoneMp : null
-    });
-    const resultPlacements = territoryOutput.resultPlacements;
-    const perfectCells = territoryOutput.perfectCells;
-    const fallbackFragments = territoryOutput.fallbackFragments;
-    const topologyRepair = territoryOutput.topologyRepair || null;
+    let resultPlacements, perfectCells, fallbackFragments, topologyRepair;
+    let polygonalThinFragments = [];
+
+    if (usePolygonal && buildPolygonalTerritoryOutput) {
+      // ── Полигональный путь (D-rebuild-minimal) ────────────────────────────
+      // territory_i = bounded Voronoi cell (zone ∩ core_i ∩ halfplanes).
+      // fragment_i = core_i ∩ territory_i — напрямую, без растровых клеток.
+      // Никакого postprocess (covByCell/assignment/rebuildFragPoly/PH3-absorb/
+      // CPT-B/Pass4/5/repair — всё выкинуто, см. voronoi_sa_polygonal.js).
+      // Thin-фрагменты НЕ absorb'ятся — отмечаются как thin_fragment, R5 failed.
+      const polyOut = buildPolygonalTerritoryOutput({
+        placements,
+        zonePoints,
+        zoneBbox: polygonBBox(zonePoints),
+        scale,
+        polygonBBox,
+        pointsToMultiPolygon,
+        multiPolygonArea,
+        intersectMulti,
+        diffMulti,
+        unionMulti,
+        mpToPoints,
+        minWidthMm,
+        minLengthMm,
+        allowanceMm
+      });
+      resultPlacements = polyOut.resultPlacements;
+      polygonalThinFragments = polyOut.thinFragments;
+      perfectCells = polyOut.perfectCells;
+      fallbackFragments = polyOut.fallbackFragments;
+      topologyRepair = polyOut.topologyRepair;
+    } else {
+      // ── Старый растровый путь (для regression) ────────────────────────────
+      const territoryOutput = buildTerritoryOutput({
+        placements,
+        spec,
+        scale,
+        finalZoneMask,
+        isMosaic,
+        phaseBStats,
+        minWidthMm,
+        minLengthMm,
+        allowanceMm,
+        computePowerAssign,
+        polygonBBox,
+        pointsToMultiPolygon,
+        multiPolygonArea,
+        intersectMulti,
+        mpToPoints,
+        precomputedAssignment: _phaseAExtra && _phaseAExtra.lloydAssignment,
+        lloydZoneMp: (_phaseAExtra && _phaseAExtra.lloydAssignment) ? zoneMp : null
+      });
+      resultPlacements = territoryOutput.resultPlacements;
+      perfectCells = territoryOutput.perfectCells;
+      fallbackFragments = territoryOutput.fallbackFragments;
+      topologyRepair = territoryOutput.topologyRepair || null;
+    }
 
     if (_phaseAExtra && _phaseAExtra.lloydAssignment) {
       const _sumArea = resultPlacements.reduce((s, rp) => s + (rp.inZoneAreaMm2 || 0), 0);
