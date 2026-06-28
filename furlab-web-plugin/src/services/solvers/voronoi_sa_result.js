@@ -160,6 +160,7 @@ function minBoundingRectLonger(pts) {
 
 function createVoronoiSaResultBuilder(deps) {
   const buildTerritoryOutput = deps.buildTerritoryOutput;
+  const buildPolygonalTerritoryOutput = deps.buildPolygonalTerritoryOutput || null;
   const runInitialPostprocess = deps.runInitialPostprocess;
   const runPolygonResidualAbsorption = deps.runPolygonResidualAbsorption;
   const collectDuplicatePieceWarnings = deps.collectDuplicatePieceWarnings;
@@ -191,6 +192,7 @@ function createVoronoiSaResultBuilder(deps) {
     const absorptionCriterion = (options && options.absorptionCriterion != null) ? Number(options.absorptionCriterion) : 4;
     const postprocessMode = String((options && options.postprocessMode) || "raw");
     const disablePostprocess = postprocessMode === "raw" || (options && options._disablePostprocess === true);
+    const usePolygonal = !!(buildPolygonalTerritoryOutput && options && options.usePolygonal);
     const zoneHoles = Array.isArray(options && options.zoneHoles) ? options.zoneHoles : [];
     let zoneMp = pointsToMultiPolygon(zonePoints);
     for (const hole of zoneHoles) {
@@ -267,37 +269,44 @@ function createVoronoiSaResultBuilder(deps) {
     console.log(`[VSA] computeResidualCoverage: ${Date.now() - _fmtT1}ms`);
 
     const _fmtT2 = Date.now();
-    const polygonAbsorptionResult = runPolygonResidualAbsorption({
-      resultPlacements,
-      placements,
-      warnings,
-      disablePostprocess,
-      spec,
-      scale: CLIPPER_SCALE,
-      minWidthMm,
-      coveredRatio: realCoveredRatio,
-      residualAreaMm2: realResidualAreaMm2,
-      residualPerimeterMm2,
-      residualInteriorMm2,
-      uncoveredComponents,
-      dissolvedTotal,
-      zonePoints,
-      zoneArea,
-      dissolvedPlacements,
-      computeResidualCoverage,
-      sealFragment,
-      coreFragmentForTerritory,
-      pointsToMultiPolygon,
-      multiPolygonArea
-    });
-    console.log(`[VSA] runPolygonResidualAbsorption: ${Date.now() - _fmtT2}ms`);
-    realCoveredRatio = polygonAbsorptionResult.coveredRatio;
-    realResidualAreaMm2 = polygonAbsorptionResult.residualAreaMm2;
-    residualPerimeterMm2 = polygonAbsorptionResult.residualPerimeterMm2;
-    residualInteriorMm2 = polygonAbsorptionResult.residualInteriorMm2;
-    uncoveredComponents = polygonAbsorptionResult.uncoveredComponents;
-    dissolvedTotal = polygonAbsorptionResult.dissolvedTotal;
-    void dissolvedTotal;
+    let polygonAbsorptionResult = null;
+    if (usePolygonal) {
+      // v5.0 Fix тип D: в полигональном режиме absorb запрещён (по контракту).
+      // residual absorption не запускаем — physMissing = честно, не absorb.
+      console.log(`[VSA-POLY] runPolygonResidualAbsorption skipped (polygonal mode)`);
+    } else {
+      polygonAbsorptionResult = runPolygonResidualAbsorption({
+        resultPlacements,
+        placements,
+        warnings,
+        disablePostprocess,
+        spec,
+        scale: CLIPPER_SCALE,
+        minWidthMm,
+        coveredRatio: realCoveredRatio,
+        residualAreaMm2: realResidualAreaMm2,
+        residualPerimeterMm2,
+        residualInteriorMm2,
+        uncoveredComponents,
+        dissolvedTotal,
+        zonePoints,
+        zoneArea,
+        dissolvedPlacements,
+        computeResidualCoverage,
+        sealFragment,
+        coreFragmentForTerritory,
+        pointsToMultiPolygon,
+        multiPolygonArea
+      });
+      console.log(`[VSA] runPolygonResidualAbsorption: ${Date.now() - _fmtT2}ms`);
+      realCoveredRatio = polygonAbsorptionResult.coveredRatio;
+      realResidualAreaMm2 = polygonAbsorptionResult.residualAreaMm2;
+      residualPerimeterMm2 = polygonAbsorptionResult.residualPerimeterMm2;
+      residualInteriorMm2 = polygonAbsorptionResult.residualInteriorMm2;
+      uncoveredComponents = polygonAbsorptionResult.uncoveredComponents;
+      dissolvedTotal = polygonAbsorptionResult.dissolvedTotal;
+      void dissolvedTotal;
+    }
 
     // Dedup: one physical scrap = one placement. Keep highest inZoneAreaMm2 per scrapPieceId.
     // Two-pass to avoid index-tracking bugs from splice during backward iteration.
@@ -432,16 +441,16 @@ function createVoronoiSaResultBuilder(deps) {
           gapFillFragments,
           placementsBeforeDissolve,
           dissolvedFragments: dissolvedCount,
-          underThresholdFragments: dissolveResult.underThreshold,
-          belowThresholdTotal: dissolveResult.belowThreshold,
+          underThresholdFragments: dissolveResult ? dissolveResult.underThreshold : 0,
+          belowThresholdTotal: dissolveResult ? dissolveResult.belowThreshold : 0,
           dissolvedContoursSaved: dissolvedPlacements.length,
           postprocessMode,
           postprocessDisabled: disablePostprocess
         },
         postprocessTrace: [
           ...(topologyRepair ? [topologyRepair] : []),
-          ...(Array.isArray(postprocessResult.trace) ? postprocessResult.trace : []),
-          ...(Array.isArray(polygonAbsorptionResult.trace) ? polygonAbsorptionResult.trace : [])
+          ...((!usePolygonal && postprocessResult && Array.isArray(postprocessResult.trace)) ? postprocessResult.trace : []),
+          ...((!usePolygonal && polygonAbsorptionResult && Array.isArray(polygonAbsorptionResult.trace)) ? polygonAbsorptionResult.trace : [])
         ]
       },
       selectionDebug: selectionDebug || null,

@@ -1,4 +1,4 @@
-(function registerFurLabPropertyEditorView(globalObj) {
+﻿(function registerFurLabPropertyEditorView(globalObj) {
   const root = globalObj || (typeof window !== "undefined" ? window : globalThis);
 
   function createPropertyEditorView(deps) {
@@ -330,6 +330,10 @@
         && Array.isArray(state.layoutRun && state.layoutRun.placements)
         && state.layoutRun.placements.length > 0
         && state.layoutRun.strategy === "inventory_voronoi_sa";
+      const _tilingHasResult = currentLayoutMode === "inventory_tiling"
+        && Array.isArray(state.layoutRun && state.layoutRun.placements)
+        && state.layoutRun.placements.length > 0
+        && state.layoutRun.strategy === "inventory_tiling";
       const actionTitle = currentLayoutMode === "inventory_manual"
         ? "Загрузить кандидаты из БД"
         : (isFragmentOnlyRegularLayoutSelected
@@ -340,10 +344,12 @@
           ? "Подобрать из библиотеки"
           : (currentLayoutMode === "intarsia" ? "Сгенерировать интарсию"
           : (currentLayoutMode === "inventory_nfp_sa"
-            ? (_nfpSaHasResult ? "Пересчитать" : "Подобрать (NFP+SA)")
+            ? (_nfpSaHasResult ? "Пересчитать" : "Подобрать (NFP Greedy)")
+          : (currentLayoutMode === "inventory_tiling"
+            ? (_tilingHasResult ? "Пересчитать" : "Подобрать (Тайлинг)")
           : (currentLayoutMode === "inventory_voronoi_sa"
             ? (_voronoiSaHasResult ? "Пересчитать" : "Подобрать (Voronoi SA)")
-            : "Заполнить остаток"))))));
+            : "Заполнить остаток")))))));
       const selectedLayoutName = selectedLayout ? String(selectedLayout.name || "") : "";
       const selectedLayoutModeTitle = getLayoutModeTitle(selectedLayout ? selectedLayout.mode : state.layoutMode);
       const geom = window.FurLabGeom;

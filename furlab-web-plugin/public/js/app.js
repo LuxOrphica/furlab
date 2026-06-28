@@ -66,7 +66,7 @@
     INVENTORY_OPTIMIZATION_PROFILE.description = t(
       "optimization_profile_description",
       null,
-      "Goals: full coverage, fewer pieces and seams, higher utilization."
+      "Выкладка строится из контуров кусков инвентаря. Алгоритм жадно подбирает куски, минимизируя непокрытый остаток."
     );
 
     let discoveredFiles = [];
@@ -5588,7 +5588,7 @@ function renderSplitEvents(events) {
     }
     function isLocalRuntimeLayoutMode(mode) {
       const normalizedMode = String(mode || "").trim();
-      return normalizedMode === "inventory_manual" || normalizedMode === "inventory_nfp_sa" || normalizedMode === "inventory_voronoi_sa" || normalizedMode === "longitudinal" || normalizedMode === "shifted" || normalizedMode === "transverse" || normalizedMode === "radial" || normalizedMode === "voronoi_tiles" || normalizedMode === "intarsia";
+      return normalizedMode === "inventory_manual" || normalizedMode === "inventory_nfp_sa" || normalizedMode === "inventory_tiling" || normalizedMode === "inventory_voronoi_sa" || normalizedMode === "longitudinal" || normalizedMode === "shifted" || normalizedMode === "transverse" || normalizedMode === "radial" || normalizedMode === "voronoi_tiles" || normalizedMode === "intarsia";
     }
     function ensureLocalRuntimeLayoutBinding(entry) {
       const e = entry && typeof entry === "object" ? entry : null;
@@ -6033,7 +6033,7 @@ function renderSplitEvents(events) {
         current.runtimeSnapshot = buildManualLayoutSnapshot();
         return;
       }
-      if (String(current.mode || "") === "inventory_nfp_sa" || String(current.mode || "") === "inventory_voronoi_sa") {
+      if (String(current.mode || "") === "inventory_nfp_sa" || String(current.mode || "") === "inventory_tiling" || String(current.mode || "") === "inventory_voronoi_sa") {
         const snap = buildFragmentOnlyLayoutSnapshot(String(current.mode || ""));
         snap.layoutRun.placements = Array.isArray(state.layoutRun && state.layoutRun.placements) ? state.layoutRun.placements : [];
         current.runtimeSnapshot = snap;
@@ -6160,7 +6160,7 @@ function renderSplitEvents(events) {
         : buildEmptyFragmentOnlyLayoutSnapshot(normalizedMode, entry);
       const base = state.layoutRun && typeof state.layoutRun === "object" ? state.layoutRun : {};
       const nextLayoutRunRaw = snap.layoutRun && typeof snap.layoutRun === "object" ? snap.layoutRun : {};
-      const _restoredPlacements = (normalizedMode === "inventory_nfp_sa" || normalizedMode === "inventory_voronoi_sa") && Array.isArray(nextLayoutRunRaw.placements)
+      const _restoredPlacements = (normalizedMode === "inventory_nfp_sa" || normalizedMode === "inventory_tiling" || normalizedMode === "inventory_voronoi_sa") && Array.isArray(nextLayoutRunRaw.placements)
         ? nextLayoutRunRaw.placements
         : [];
       state.layoutRun = {
@@ -6314,7 +6314,7 @@ function renderSplitEvents(events) {
           applyFragmentOnlyLayoutSnapshot(String(e.mode || ""), snap, e);
         } else if (String(e.mode || "") === "inventory_manual") {
           applyManualLayoutSnapshot(snap);
-        } else if (String(e.mode || "") === "inventory_nfp_sa" || String(e.mode || "") === "inventory_voronoi_sa") {
+        } else if (String(e.mode || "") === "inventory_nfp_sa" || String(e.mode || "") === "inventory_tiling" || String(e.mode || "") === "inventory_voronoi_sa") {
           applyFragmentOnlyLayoutSnapshot(String(e.mode || ""), snap, e);
         }
       } else if (isLocalRuntimeLayoutMode(e.mode)) {
@@ -6619,8 +6619,8 @@ function renderSplitEvents(events) {
         return;
       }
       showInventoryProgress();
-      setInventoryProgress(5, "NFP+SA: запрос кандидатов…");
-      byId("workspaceInfo").textContent = "NFP+SA: запрос кандидатов…";
+      setInventoryProgress(5, "NFP Greedy: запрос кандидатов…");
+      byId("workspaceInfo").textContent = "NFP Greedy: запрос кандидатов…";
       const candidatesRes = await api("/api/inventory/candidates", "POST", {
         zone: { id: zone.id, points: zone.points, holes: Array.isArray(zone.holes) ? zone.holes.map(holeContour).filter((h) => h.length >= 3) : [] },
         directInventory: true,
@@ -6633,7 +6633,7 @@ function renderSplitEvents(events) {
       if (!candidatesRes || !candidatesRes.ok) {
         hideInventoryProgress();
         closeInventoryStep1();
-        byId("workspaceInfo").textContent = `NFP+SA: ошибка кандидатов: ${candidatesRes && candidatesRes.error || "unknown"}`;
+        byId("workspaceInfo").textContent = `NFP Greedy: ошибка кандидатов: ${candidatesRes && candidatesRes.error || "unknown"}`;
         return;
       }
       const allCandidates = Array.isArray(candidatesRes.items) ? candidatesRes.items : [];
@@ -6643,8 +6643,8 @@ function renderSplitEvents(events) {
         napDirectionDeg: Number(c.napDirectionDeg || c.napDirection || 0),
         quantity: 1
       }));
-      setInventoryProgress(30, `NFP+SA: ${candidates.length} кандидатов, запуск солвера…`);
-      byId("workspaceInfo").textContent = `NFP+SA: ${candidates.length} кандидатов, решаем…`;
+      setInventoryProgress(30, `NFP Greedy: ${candidates.length} кандидатов, запуск солвера…`);
+      byId("workspaceInfo").textContent = `NFP Greedy: ${candidates.length} кандидатов, решаем…`;
       const maxSolveMs = 90000;
       const progressToken = `nfp_sa_${Date.now()}`;
       openInventoryProgressStream(progressToken);
@@ -6667,15 +6667,15 @@ function renderSplitEvents(events) {
       if (!res || res.ok !== true) {
         hideInventoryProgress();
         closeInventoryStep1();
-        byId("workspaceInfo").textContent = `NFP+SA ошибка: ${res && res.error || "unknown"}`;
+        byId("workspaceInfo").textContent = `NFP Greedy ошибка: ${res && res.error || "unknown"}`;
         return;
       }
       updateLayoutContractMonitor(res._contractDiag, {
-        endpoint: "modes/preview (NFP+SA)",
+        endpoint: "modes/preview (NFP Greedy)",
         layoutType: "inventory_nfp_sa",
         payloadHasHoles: Array.isArray(zone.holes) && zone.holes.length > 0
       });
-      setInventoryProgress(98, "NFP+SA: формируем результат…");
+      setInventoryProgress(98, "NFP Greedy: формируем результат…");
       const placements = Array.isArray(res.render && res.render.items) ? res.render.items.map((item) => ({
         scrapPieceId: String(item.id || ""),
         inventoryTag: String(item.meta && item.meta.inventoryTag || item.id || ""),
@@ -6760,7 +6760,7 @@ function renderSplitEvents(events) {
       state.layoutRun.serverPreview = res;
       const covPct = ((res.stats && res.stats.coveredRatio != null) ? (Number(res.stats.coveredRatio) * 100) : (Number(res.coveragePercent) || 0)).toFixed(1);
       const nPlacements = placements.length;
-      setInventoryProgress(100, `NFP+SA: готово — ${nPlacements} кусков, покрытие ${covPct}%`);
+      setInventoryProgress(100, `NFP Greedy: готово — ${nPlacements} кусков, покрытие ${covPct}%`);
       byId("invTotalFragments").textContent = String(fragments.length);
       byId("invViolations").textContent = "0";
       byId("invIntersections").textContent = "0";
@@ -6770,11 +6770,11 @@ function renderSplitEvents(events) {
       byId("invOverlapArea").textContent = "0";
       byId("invDbCandidates").textContent = String(allCandidates.length);
       byId("invCompatibleCandidates").textContent = String(candidates.length);
-      byId("invStrategyUsed").textContent = "NFP+SA";
+      byId("invStrategyUsed").textContent = "NFP Greedy";
       const _step2ModalNfp = byId("inventoryStep2Modal"); if (_step2ModalNfp) _step2ModalNfp.classList.add("strategy-nfp-sa");
       byId("invMatchedPct").textContent = Number(nPlacements / Math.max(1, candidates.length) * 100).toFixed(2);
       byId("invKpiCoveragePct").textContent = covPct;
-      byId("invDebugInfo").textContent = `NFP+SA: iters=sa, pieces=${nPlacements}, cov=${covPct}%`;
+      byId("invDebugInfo").textContent = `NFP Greedy: iters=sa, pieces=${nPlacements}, cov=${covPct}%`;
       byId("invUsedTags").textContent = placements.map((p) => p.inventoryTag || p.scrapPieceId || "").filter(Boolean).join("\n") || "(Нет)";
       renderPlacementRows([]);
       renderSplitEvents([]);
@@ -6782,7 +6782,145 @@ function renderSplitEvents(events) {
       if (applyBtn) { applyBtn.disabled = false; applyBtn.title = ""; }
       hideInventoryProgress();
       closeInventoryStep1();
-      byId("workspaceInfo").textContent = `NFP+SA: ${nPlacements} кусков, покрытие ${covPct}%`;
+      byId("workspaceInfo").textContent = `NFP Greedy: ${nPlacements} кусков, покрытие ${covPct}%`;
+      openInventoryStep2();
+      renderScene();
+    }
+
+    async function previewTilingLayout() {
+      saveCurrentLayoutRuntimeSnapshot();
+      const zone = getSelectedZoneForLayoutMode("inventory_tiling");
+      if (!zone || !Array.isArray(zone.points) || zone.points.length < 3) {
+        byId("workspaceInfo").textContent = "Сначала выберите зону.";
+        return;
+      }
+      showInventoryProgress();
+      setInventoryProgress(5, "Тайлинг: запрос кандидатов…");
+      byId("workspaceInfo").textContent = "Тайлинг: запрос кандидатов…";
+      const candidatesRes = await api("/api/inventory/candidates", "POST", {
+        zone: { id: zone.id, points: zone.points, holes: Array.isArray(zone.holes) ? zone.holes.map(holeContour).filter((h) => h.length >= 3) : [] },
+        directInventory: true,
+        onlyAvailable: true,
+        includeScrapContour: true,
+        napDirectionDeg: null,
+        minAreaMm2: Number(byId("invMinArea") && byId("invMinArea").value || 0),
+        maxCandidates: Number(byId("invLimit") && byId("invLimit").value || 300)
+      });
+      if (!candidatesRes || !candidatesRes.ok) {
+        hideInventoryProgress();
+        closeInventoryStep1();
+        byId("workspaceInfo").textContent = `Тайлинг: ошибка кандидатов: ${candidatesRes && candidatesRes.error || "unknown"}`;
+        return;
+      }
+      const allCandidates = Array.isArray(candidatesRes.items) ? candidatesRes.items : [];
+      const candidates = allCandidates.map((c) => ({
+        scrapPieceId: String(c.inventoryTag || c.id || ""),
+        scrapContour: c.scrapContour,
+        napDirectionDeg: Number(c.napDirectionDeg || c.napDirection || 0),
+        quantity: 1
+      }));
+      setInventoryProgress(30, `Тайлинг: ${candidates.length} кандидатов, запуск солвера…`);
+      byId("workspaceInfo").textContent = `Тайлинг: ${candidates.length} кандидатов, решаем…`;
+      const maxSolveMs = 30000;
+      const res = await api("/api/layout/modes/preview", "POST", {
+        layoutType: "inventory_tiling",
+        zone: { id: zone.id, points: zone.points, holes: Array.isArray(zone.holes) ? zone.holes.map(holeContour).filter((h) => h.length >= 3) : [] },
+        inputs: { candidates },
+        options: {
+          maxSolveMs,
+          allowanceMm: Number.isFinite(Number(state.layoutRun.allowanceMm)) ? Number(state.layoutRun.allowanceMm) : 12,
+          napTarget: normalizeDeg(zone.napDirectionDeg, DEFAULT_NAP_DIRECTION_DEG),
+          napTol: Number(byId("invNapTol") && byId("invNapTol").value || 15),
+          minWidthMm: Number(byId("minFragmentWidthMm") && byId("minFragmentWidthMm").value || 0),
+          minLengthMm: Number(byId("minFragmentLengthMm") && byId("minFragmentLengthMm").value || 0)
+        }
+      }, maxSolveMs + 15000);
+      if (!res || res.ok !== true) {
+        hideInventoryProgress();
+        closeInventoryStep1();
+        byId("workspaceInfo").textContent = `Тайлинг ошибка: ${res && res.error || "unknown"}`;
+        return;
+      }
+      setInventoryProgress(98, "Тайлинг: формируем результат…");
+      const placements = Array.isArray(res.render && res.render.items) ? res.render.items.map((item) => ({
+        scrapPieceId: String(item.id || ""),
+        inventoryTag: String(item.meta && item.meta.inventoryTag || item.id || ""),
+        status: "matched",
+        alignedContour: Array.isArray(item.contour) ? item.contour : [],
+        inZoneContour: Array.isArray(item.inZoneContour) && item.inZoneContour.length >= 3 ? item.inZoneContour : (Array.isArray(item.contour) ? item.contour : []),
+        rawTerritoryContour: Array.isArray(item.rawTerritoryContour) && item.rawTerritoryContour.length >= 3 ? item.rawTerritoryContour : [],
+        alignedCoreContour: Array.isArray(item.alignedCoreContour) && item.alignedCoreContour.length >= 3 ? item.alignedCoreContour : [],
+        inZoneCoreContour: Array.isArray(item.inZoneCoreContour) && item.inZoneCoreContour.length >= 3 ? item.inZoneCoreContour : [],
+        phase: "tiling",
+        solveOrder: Number(item.renderIndex || 0) + 1,
+        solveIndex: Number(item.renderIndex || 0),
+        renderIndex: Number(item.renderIndex || 0)
+      })) : [];
+      const coreContours = placements.map((p) => Array.isArray(p.inZoneCoreContour) && p.inZoneCoreContour.length >= 3 ? p.inZoneCoreContour : p.alignedContour).filter((c) => Array.isArray(c) && c.length >= 3);
+      const coverageHoles = computeCoverageHolesForZone(zone, coreContours);
+      const pieceIntersections = [];
+      const fragments = placements.map((p, idx) => {
+        const cutPts = Array.isArray(p.inZoneContour) && p.inZoneContour.length >= 3
+          ? p.inZoneContour
+          : (Array.isArray(p.alignedContour) && p.alignedContour.length >= 3 ? p.alignedContour : []);
+        const corePts = Array.isArray(p.inZoneCoreContour) && p.inZoneCoreContour.length >= 3
+          ? p.inZoneCoreContour
+          : cutPts;
+        return {
+          id: idx + 1,
+          ownerPlacementIndex: idx,
+          ownerPlacementId: idx + 1,
+          inventoryTag: p.inventoryTag || p.scrapPieceId || "",
+          points: corePts,
+          cutPoints: cutPts,
+          areaMm2: 0,
+          zoneId: Number(zone.id || 0) || null
+        };
+      }).filter((f) => f.points.length >= 3);
+      state.layers.pfullZ = true;
+      const _pfullChk = byId("layerPfullZ"); if (_pfullChk) _pfullChk.checked = true;
+      state.layoutMode = "inventory_tiling";
+      state.layoutRun.active = true;
+      state.layoutRun.status = "preview";
+      state.layoutRun.fillType = "regular";
+      state.layoutRun.strategy = "inventory_tiling";
+      state.layoutRun.inventoryScenario = "A";
+      state.layoutRun.selectedZoneId = Number(zone.id || 0) || null;
+      state.layoutRun.fragments = clipFragmentsByZoneDomain(fragments, zone);
+      state.layoutRun.placements = placements;
+      state.layoutRun.candidatePool = [];
+      state.layoutRun.manual = { suggestions: [], lastMetrics: null, selectedCandidateTag: "", activePiece: null, lastEvalContours: null, statusNote: "", selectedPlacementIndex: -1 };
+      state.selectedFragmentId = null;
+      state.layoutRun.previewLayers = { pieceIntersections, visibleArea: coreContours, coverageHoles, seams: [] };
+      state.layoutRun.splitEvents = [];
+      state.layoutRun.stats = res.stats || { placementsTotal: placements.length };
+      state.layoutRun.resultStatus = String(res.resultStatus || "ok");
+      state.layoutRun.failedReason = res.failedReason || null;
+      state.layoutRun.serverPreview = res;
+      const covPct = ((res.stats && res.stats.coveredRatio != null) ? (Number(res.stats.coveredRatio) * 100) : (Number(res.coveragePercent) || 0)).toFixed(1);
+      const nPlacements = placements.length;
+      setInventoryProgress(100, `Тайлинг: готово — ${nPlacements} кусков, покрытие ${covPct}%`);
+      byId("invTotalFragments").textContent = String(fragments.length);
+      byId("invViolations").textContent = "0";
+      byId("invIntersections").textContent = "0";
+      byId("invUncovered").textContent = coverageHoles.length > 0 ? String(coverageHoles.length) : "0";
+      byId("invCoveragePercent").textContent = covPct;
+      byId("invResidualArea").textContent = "0";
+      byId("invOverlapArea").textContent = "0";
+      byId("invDbCandidates").textContent = String(allCandidates.length);
+      byId("invCompatibleCandidates").textContent = String(candidates.length);
+      byId("invStrategyUsed").textContent = "Тайлинг";
+      byId("invMatchedPct").textContent = Number(nPlacements / Math.max(1, candidates.length) * 100).toFixed(2);
+      byId("invKpiCoveragePct").textContent = covPct;
+      byId("invDebugInfo").textContent = `Тайлинг: pieces=${nPlacements}, cov=${covPct}%`;
+      byId("invUsedTags").textContent = placements.map((p) => p.inventoryTag || p.scrapPieceId || "").filter(Boolean).join("\n") || "(Нет)";
+      renderPlacementRows([]);
+      renderSplitEvents([]);
+      const applyBtn = byId("inventoryStep2ApplyBtn");
+      if (applyBtn) { applyBtn.disabled = false; applyBtn.title = ""; }
+      hideInventoryProgress();
+      closeInventoryStep1();
+      byId("workspaceInfo").textContent = `Тайлинг: ${nPlacements} кусков, покрытие ${covPct}%`;
       openInventoryStep2();
       renderScene();
     }
@@ -7281,6 +7419,11 @@ function renderSplitEvents(events) {
       if (state.layoutMode === "inventory_nfp_sa" && !(options && options.intarsiaAssignOnly)) {
         closeInventoryStep1();
         void previewNfpSaLayout();
+        return;
+      }
+      if (state.layoutMode === "inventory_tiling" && !(options && options.intarsiaAssignOnly)) {
+        closeInventoryStep1();
+        void previewTilingLayout();
         return;
       }
       if (state.layoutMode === "inventory_voronoi_sa" && !(options && options.intarsiaAssignOnly)) {
@@ -8683,7 +8826,7 @@ function renderSplitEvents(events) {
           selectedFragObj = fragmentsList.find((f) => Number(f && f.id || 0) === selectedFragmentIdNum) || null;
         }
         const isIntarsiaSvgMode = state.layoutMode === "intarsia" && state.layoutRun.fillType === "import_svg";
-        const _isNfpSaMode = state.layoutMode === "inventory_nfp_sa" || state.layoutMode === "inventory_voronoi_sa";
+        const _isNfpSaMode = state.layoutMode === "inventory_nfp_sa" || state.layoutMode === "inventory_tiling" || state.layoutMode === "inventory_voronoi_sa";
         if (state.layers.pieceBorders) {
           const _hasMaterialZones = state.layers.zoneMaterials && state.zones.some((z) => z && z.materialId);
           for (const frag of fragmentsList) {
@@ -8704,7 +8847,7 @@ function renderSplitEvents(events) {
             const fragStroke = isSelectedFrag
               ? "#0050C8"
               : (_hasMaterialZones ? "rgba(0,60,180,0.80)" : (_fst.stroke || "#0076D6"));
-            // NFP+SA: opaque white fill so fragments show as distinct tiles (mosaic)
+            // NFP Greedy: opaque white fill so fragments show as distinct tiles (mosaic)
             const fragFill = isSelectedFrag
               ? "rgba(0,100,220,0.22)"
               : (_isNfpSaMode
@@ -8722,7 +8865,7 @@ function renderSplitEvents(events) {
             layerFragments.add(shape);
           }
         }
-        // Seam lines — for manual draw cut boundary (frag.cutPoints); NFP+SA uses shared-edge segments via deferredManualSeamSegments
+        // Seam lines — for manual draw cut boundary (frag.cutPoints); NFP Greedy uses shared-edge segments via deferredManualSeamSegments
         if (state.layers.visibleCore && isManualInventoryMode()) {
           for (const frag of fragmentsList) {
             const rawSeamPts = frag.cutPoints;

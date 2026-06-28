@@ -103,7 +103,8 @@
         ? Math.max(0, Math.max(Number(prev.tail || 0), nextTailRaw))
         : prev.tail,
       iters: Number.isFinite(nextItersRaw) ? Math.max(0, nextItersRaw) : prev.iters,
-      temperature: Number.isFinite(nextTempRaw) ? nextTempRaw : prev.temperature
+      temperature: Number.isFinite(nextTempRaw) ? nextTempRaw : prev.temperature,
+      phase: typeof p.phase === "string" ? p.phase : prev.phase
     };
   }
 

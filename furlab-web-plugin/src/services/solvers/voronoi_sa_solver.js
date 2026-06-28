@@ -22,6 +22,7 @@ const {
   collectDuplicatePieceWarnings
 } = require("./voronoi_sa_postprocess");
 const { buildTerritoryOutput } = require("./voronoi_sa_output");
+const { buildPolygonalTerritoryOutput } = require("./voronoi_sa_polygonal");
 const { createVoronoiSaGeometry } = require("./voronoi_sa_geometry");
 const { runPhaseBLloyd } = require("./voronoi_sa_lloyd");
 const { createVoronoiSaRaster } = require("./voronoi_sa_raster");
@@ -114,16 +115,54 @@ function createVoronoiSaSolver(deps) {
 
   // ── State helpers ───────────────────────────────────────────────────────────
 
+  function _convexHull(pts) {
+    const sorted = pts.slice().sort((a, b) => a.x !== b.x ? a.x - b.x : a.y - b.y);
+    const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+    const lo = [], up = [];
+    for (const p of sorted) {
+      while (lo.length >= 2 && cross(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop();
+      lo.push(p);
+    }
+    for (let i = sorted.length - 1; i >= 0; i--) {
+      const p = sorted[i];
+      while (up.length >= 2 && cross(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop();
+      up.push(p);
+    }
+    up.pop(); lo.pop();
+    return lo.concat(up);
+  }
+  function _minMaxOrientedRect(hull) {
+    const n = hull.length;
+    if (n < 2) return { shorter: Infinity, longer: Infinity };
+    let minShorter = Infinity, maxLonger = 0;
+    for (let i = 0; i < n; i++) {
+      const p1 = hull[i], p2 = hull[(i + 1) % n];
+      const dx = p2.x - p1.x, dy = p2.y - p1.y;
+      const L = Math.hypot(dx, dy);
+      if (L < 1e-9) continue;
+      const ux = dx / L, uy = dy / L, vx = -uy, vy = ux;
+      let minU = Infinity, maxU = -Infinity, minV = Infinity, maxV = -Infinity;
+      for (const p of hull) {
+        const u = p.x * ux + p.y * uy, v = p.x * vx + p.y * vy;
+        if (u < minU) minU = u; if (u > maxU) maxU = u;
+        if (v < minV) minV = v; if (v > maxV) maxV = v;
+      }
+      const w = maxU - minU, h = maxV - minV;
+      if (Math.min(w, h) < minShorter) minShorter = Math.min(w, h);
+      if (Math.max(w, h) > maxLonger) maxLonger = Math.max(w, h);
+    }
+    return { shorter: minShorter, longer: maxLonger };
+  }
+
   function makePlacement(piece, cx, cy, angleDeg, spec, zoneMask) {
-    const pts = transformPiece(piece.centeredPts, angleDeg, cx, cy);
+    const pts = transformPiece(piece.centeredPts, angleDeg, cx, cy); // v5.1: тело — для отображения
     const corePts = transformPiece(piece.centeredCorePts, angleDeg, cx, cy);
     const mask = rasterize(corePts, spec);
-    const fullMask = rasterize(pts, spec);
-    for (let i = 0; i < mask.length; i++) { if (!zoneMask[i]) { mask[i] = 0; fullMask[i] = 0; } }
+    for (let i = 0; i < mask.length; i++) { if (!zoneMask[i]) mask[i] = 0; }
     // activeCells: indices where mask bit0 is set — avoids iterating all cellCount in computeCoverage.
     const activeCells = [];
     for (let i = 0; i < mask.length; i++) { if (mask[i] & 1) activeCells.push(i); }
-    return { id: piece.id, inventoryTag: piece.inventoryTag, cx, cy, angleDeg, pts, corePts, mask, fullMask, activeCells };
+    return { id: piece.id, inventoryTag: piece.inventoryTag, cx, cy, angleDeg, pts, corePts, mask, activeCells };
   }
 
   const {
@@ -140,7 +179,15 @@ function createVoronoiSaSolver(deps) {
     computeCoverage,
     energy,
     pickMove,
-    MOVES
+    MOVES,
+    transformPiece,
+    // v5.0 Fix тип 2 + Fix тип 3: полигональные операции для ADD-guard
+    // и exit-decision (полигональный residual вместо растровых клеток).
+    pointsToMultiPolygon,
+    unionMulti,
+    intersectMulti,
+    diffMulti,
+    multiPolygonArea
   });
 
   // ── Anchor sampling ─────────────────────────────────────────────────────────
@@ -329,11 +376,13 @@ function createVoronoiSaSolver(deps) {
       if (allowanceMm > 0 && coreInset.length < 3) continue;
       const centeredCorePts = (allowanceMm > 0) ? coreInset : centeredPts;
       if (minWidthMm > 0 || minLengthMm > 0) {
-        const cb = polygonBBox(centeredCorePts);
-        const shorter = Math.min(cb.maxX - cb.minX, cb.maxY - cb.minY);
-        const longer  = Math.max(cb.maxX - cb.minX, cb.maxY - cb.minY);
-        if (minWidthMm > 0 && shorter < minWidthMm) continue;
-        if (minLengthMm > 0 && longer  < minLengthMm) continue;
+        // v5.0 Fix тип 2 (правка 1 советника): rotating calipers MBR — тот же метод,
+        // что в верификаторе (shapely minimum_rotated_rectangle). axis-aligned bbox
+        // пропускал щепки вида «83 по горизонтали / 15 по диагонали» (FL-SCR-000090).
+        const hull = _convexHull(centeredCorePts);
+        const mbr = _minMaxOrientedRect(hull);
+        if (minWidthMm > 0 && mbr.shorter < minWidthMm) continue;
+        if (minLengthMm > 0 && mbr.longer  < minLengthMm) continue;
       }
       pieces.push({
         id: String(c.id ?? c.inventoryTag),
@@ -670,6 +719,7 @@ function createVoronoiSaSolver(deps) {
 
   const { formatResult, emptyResult } = createVoronoiSaResultBuilder({
     buildTerritoryOutput,
+    buildPolygonalTerritoryOutput,
     runInitialPostprocess,
     runPolygonResidualAbsorption,
     collectDuplicatePieceWarnings,

@@ -10,6 +10,7 @@ const { createInventoryManualMode } = require("./inventory_manual");
 const { createInventorySplitReturnMode } = require("./inventory_split_return");
 const { createInventoryVoronoiSaMode } = require("./inventory_voronoi_sa");
 const { createInventoryNfpSaMode } = require("./inventory_nfp_sa");
+const { createInventoryTilingMode } = require("./inventory_tiling");
 const { createVoronoiTilesMode } = require("./voronoi_tiles");
 
 function createModeRegistry(deps) {
@@ -23,6 +24,7 @@ function createModeRegistry(deps) {
   const inventorySplitReturn = createInventorySplitReturnMode(deps || {});
   const inventoryVoronoiSa = createInventoryVoronoiSaMode(deps || {});
   const inventoryNfpSa = createInventoryNfpSaMode(deps || {});
+  const inventoryTiling = createInventoryTilingMode(deps || {});
   const voronoiTiles = createVoronoiTilesMode(deps || {});
   const modes = new Map([
     [longitudinal.modeId, longitudinal],
@@ -35,6 +37,7 @@ function createModeRegistry(deps) {
     [inventorySplitReturn.modeId, inventorySplitReturn],
     [inventoryVoronoiSa.modeId, inventoryVoronoiSa],
     [inventoryNfpSa.modeId, inventoryNfpSa],
+    [inventoryTiling.modeId, inventoryTiling],
     [voronoiTiles.modeId, voronoiTiles]
   ]);
 

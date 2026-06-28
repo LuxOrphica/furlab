@@ -31,6 +31,7 @@ const { assignCandidatesIntarsiaSmart } = require("./services/intarsia_smart_mat
 const { buildPieceWorkingContour, outsetPath } = require("./services/piece_working_area");
 const { createVoronoiSaSolver } = require("./services/solvers/voronoi_sa_solver");
 const { createNfpSaSolver } = require("./services/solvers/nfp_sa_solver");
+const { createTilingSolver } = require("./services/solvers/tiling_solver");
 
 process.on("uncaughtException", (err) => {
   console.error("[server] uncaughtException:", err && err.stack ? err.stack : String(err));
@@ -2980,6 +2981,7 @@ const _solverDeps = {
 };
 const voronoiSaSolver = createVoronoiSaSolver(_solverDeps);
 const nfpSaSolver = createNfpSaSolver(_solverDeps);
+const tilingSolver = createTilingSolver(_solverDeps);
 
 function listFilesRecursive(rootDir, extLower) {
   const out = [];
@@ -3452,6 +3454,7 @@ const server = http.createServer(async (req, res) => {
         assignInventoryDirect,
         voronoiSaSolver,
         nfpSaSolver,
+        tilingSolver,
         rankCandidatesForFragment,
         createGridSpec,
         emitLayoutProgress,

@@ -21,6 +21,7 @@ const LAYOUT_TYPES = new Set([
   "inventory_manual",
   "inventory_split_return",
   "inventory_nfp_sa",
+  "inventory_tiling",
   "inventory_voronoi_sa",
   "voronoi_tiles"
 ]);
@@ -231,6 +232,49 @@ function wrapInventoryNfpSaPreview(input, result) {
     },
     debug: {}
   }, "inventory_nfp_sa.render");
+}
+
+function wrapInventoryTilingPreview(input, result) {
+  const placements = Array.isArray(result && result.placements) ? result.placements : [];
+  assertPlacements(placements, "inventory_tiling.placements");
+  const solveOrder = Array.isArray(result && result.solveOrder) ? result.solveOrder : [];
+  const resultStatus = String(result && result.resultStatus || "ok");
+  return withRenderInvariants({
+    ok: true,
+    layoutType: "inventory_tiling",
+    modeVersion: "v1.0",
+    resultStatus,
+    warnings: [],
+    failedReason: resultStatus === "failed" ? String(result && result.failedReason || "solve_failed") : null,
+    stats: {
+      coveredRatio: Number(result && result.coveredRatio || 0),
+      placementsTotal: placements.length
+    },
+    render: {
+      renderOrderPolicy: "solve_order",
+      stackOrderPolicy: "solve_order",
+      solveOrder,
+      items: placements.map((p, idx) => {
+        const contour = normalizePoints(p && p.alignedContour);
+        if (contour.length < 3) return null;
+        const id = String((p && p.placementId) || (p && p.scrapPieceId) || (p && p.inventoryTag) || `placement_${idx + 1}`);
+        const renderIndex = Number.isFinite(Number(p && p.renderIndex)) ? Number(p.renderIndex) : idx;
+        return {
+          id, contour,
+          inZoneContour: normalizePoints(p && p.inZoneContour),
+          alignedCoreContour: normalizePoints(p && p.alignedCoreContour),
+          inZoneCoreContour: normalizePoints(p && p.inZoneCoreContour),
+          closed: true, renderIndex,
+          meta: {
+            inventoryTag: String(p && p.inventoryTag || ""),
+            phase: String(p && p.phase || ""),
+            status: String(p && p.status || "")
+          }
+        };
+      }).filter(Boolean)
+    },
+    debug: {}
+  }, "inventory_tiling.render");
 }
 
 function wrapIntarsiaPreview(input, result) {
@@ -476,6 +520,7 @@ module.exports = {
   wrapRegularFragmentPreview,
   wrapInventoryDirectPreview,
   wrapInventoryNfpSaPreview,
+  wrapInventoryTilingPreview,
   wrapInventoryVoronoiSaPreview,
   wrapIntarsiaPreview
 };

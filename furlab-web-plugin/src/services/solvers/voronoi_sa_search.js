@@ -13,6 +13,63 @@ function createVoronoiSaSearch(deps) {
   const pickMove = deps.pickMove;
   const MOVES = deps.MOVES;
   const deltaDeg = deps.deltaDeg;
+  const transformPiece = deps.transformPiece;
+  // Полигональная проверка покрытия (для exit-decision и ADD-guard).
+  const pointsToMultiPolygon = deps.pointsToMultiPolygon;
+  const unionMulti = deps.unionMulti;
+  const intersectMulti = deps.intersectMulti;
+  const diffMulti = deps.diffMulti;
+  const multiPolygonArea = deps.multiPolygonArea;
+
+  // ── rotating-calipers MBR shorter side ───────────────────────────────────────
+  // Тот же метод, что в верификаторе (shapely minimum_rotated_rectangle).
+  function convexHull(pts) {
+    const n = pts.length;
+    if (n < 3) return pts.slice();
+    const sorted = pts.slice().sort((a, b) => a.x !== b.x ? a.x - b.x : a.y - b.y);
+    const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+    const lower = [], upper = [];
+    for (const p of sorted) {
+      while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) lower.pop();
+      lower.push(p);
+    }
+    for (let i = sorted.length - 1; i >= 0; i--) {
+      const p = sorted[i];
+      while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) upper.pop();
+      upper.push(p);
+    }
+    upper.pop(); lower.pop();
+    return lower.concat(upper);
+  }
+  function minBoundingRectShorter(pts) {
+    if (!pts || pts.length < 3) return Infinity;
+    const hull = convexHull(pts);
+    const n = hull.length;
+    if (n < 2) return Infinity;
+    let minShorter = Infinity;
+    for (let i = 0; i < n; i++) {
+      const p1 = hull[i], p2 = hull[(i + 1) % n];
+      const dx = p2.x - p1.x, dy = p2.y - p1.y;
+      const len = Math.hypot(dx, dy);
+      if (len < 1e-9) continue;
+      const ux = dx / len, uy = dy / len, vx = -uy, vy = ux;
+      let minU = Infinity, maxU = -Infinity, minV = Infinity, maxV = -Infinity;
+      for (const p of hull) {
+        const u = p.x * ux + p.y * uy, v = p.x * vx + p.y * vy;
+        if (u < minU) minU = u; if (u > maxU) maxU = u;
+        if (v < minV) minV = v; if (v > maxV) maxV = v;
+      }
+      const shorter = Math.min(maxU - minU, maxV - minV);
+      if (shorter < minShorter) minShorter = shorter;
+    }
+    return minShorter;
+  }
+  // minW-guard: rotating calipers на ядре в мировой СК после transformPiece.
+  function coreMinWAfterPlacement(piece, angleDeg, cx, cy) {
+    if (!piece || !piece.centeredCorePts || piece.centeredCorePts.length < 3) return Infinity;
+    const worldPts = transformPiece(piece.centeredCorePts, angleDeg, cx, cy);
+    return minBoundingRectShorter(worldPts);
+  }
 
   function sampleAnchor(piece, ifpCache, zonePoints, zoneBbox, rng) {
     const ifp = ifpCache.get(piece.id);
@@ -75,10 +132,86 @@ function createVoronoiSaSearch(deps) {
     return bestSize > 0 ? { x: bestCx, y: bestCy, size: bestSize } : null;
   }
 
+  // ── findUncoveredBlobs (v5.0 Fix тип 2) ─────────────────────────────────────
+  // Возвращает СПИСОК всех непокрытых растровых блобов, edge-first, по убыванию size.
+  // Блобы < minBlobCells (3 клетки = 27 мм²) игнорируются — растровый шум.
+  // Edge-детектор: ≥1 клетка блоба граничит с клеткой вне зоны.
+  function findUncoveredBlobs(placements, spec, zoneMask, cellCount, opts) {
+    const minBlobCells = (opts && opts.minBlobCells != null) ? opts.minBlobCells : 3;
+    const { nx, ny, r, ox, oy } = spec;
+    const covered = new Uint8Array(cellCount);
+    for (const pl of placements) {
+      if (pl.mask) for (let i = 0; i < cellCount; i++) if (pl.mask[i] & 1) covered[i] = 1;
+    }
+    const visited = new Uint8Array(cellCount);
+    const queue = new Int32Array(cellCount);
+    const blobs = [];
+    for (let start = 0; start < cellCount; start++) {
+      if (!zoneMask[start] || covered[start] || visited[start]) continue;
+      let head = 0, tail = 0;
+      queue[tail++] = start;
+      visited[start] = 1;
+      let sx = 0, sy = 0, n = 0, isEdge = false;
+      while (head < tail) {
+        const idx = queue[head++];
+        const col = idx % nx;
+        const row = (idx / nx) | 0;
+        sx += ox + (col + 0.5) * r;
+        sy += oy + (row + 0.5) * r;
+        n++;
+        const neighbors = [
+          col > 0 ? idx - 1 : -1,
+          col < nx - 1 ? idx + 1 : -1,
+          row > 0 ? idx - nx : -1,
+          row < ny - 1 ? idx + nx : -1
+        ];
+        for (const ni of neighbors) {
+          if (ni < 0 || ni >= cellCount) continue;
+          if (!zoneMask[ni]) { isEdge = true; continue; }
+          if (covered[ni] || visited[ni]) continue;
+          visited[ni] = 1;
+          queue[tail++] = ni;
+        }
+      }
+      if (n >= minBlobCells) {
+        blobs.push({
+          x: sx / n, y: sy / n, size: n, edge: isEdge,
+          areaMm2: n * r * r
+        });
+      }
+    }
+    blobs.sort((a, b) => {
+      if (a.edge !== b.edge) return a.edge ? -1 : 1;
+      return b.size - a.size;
+    });
+    return blobs;
+  }
+
   function sampleAtBlob(piece, blob, ifpCache, zoneBbox, rng) {
     const bb = polygonBBox(piece.centeredCorePts);
     const pieceR = Math.hypot(bb.maxX - bb.minX, bb.maxY - bb.minY) * 0.5;
     const ifp = ifpCache.get(piece.id);
+
+    // ── Edge-ветка (v5.0 Fix тип 2): ядро за границей (overhang), blob накрыт ──
+    if (blob.edge) {
+      const zoneCx = (zoneBbox.minX + zoneBbox.maxX) * 0.5;
+      const zoneCy = (zoneBbox.minY + zoneBbox.maxY) * 0.5;
+      const dx = blob.x - zoneCx;
+      const dy = blob.y - zoneCy;
+      const dlen = Math.hypot(dx, dy);
+      if (dlen > 1e-6) {
+        const ux = dx / dlen, uy = dy / dlen;
+        for (const scale of [0.5, 0.3, 0.7, 0.1, 0.9]) {
+          const candidateX = blob.x + ux * pieceR * scale;
+          const candidateY = blob.y + uy * pieceR * scale;
+          if (candidateX < zoneBbox.minX - pieceR || candidateX > zoneBbox.maxX + pieceR) continue;
+          if (candidateY < zoneBbox.minY - pieceR || candidateY > zoneBbox.maxY + pieceR) continue;
+          if (ifp && ifp.length >= 3 && !pointInPolygon(candidateX, candidateY, ifp)) continue;
+          return { x: candidateX, y: candidateY };
+        }
+      }
+    }
+
     for (let attempt = 0; attempt < 48; attempt++) {
       const angle = rng.next() * Math.PI * 2;
       const dist = rng.next() * pieceR;
@@ -109,6 +242,96 @@ function createVoronoiSaSearch(deps) {
 
   function findPiece(pieces, id) {
     return pieces.find((p) => p.id === id);
+  }
+
+  // ── makePolyResidualFn (v5.0 Fix тип 2 + Fix тип 3) ──────────────────────────
+  // Считает полигональный residual = zone − Union(corePts каждого placement).
+  // Возвращает { area, holes } где holes — список компонент residual.
+  function makePolyResidualFn(zonePointsArg, holder, specRef) {
+    if (!pointsToMultiPolygon || !unionMulti || !diffMulti || !multiPolygonArea || !zonePointsArg) {
+      return () => ({ area: 0, holes: [] });
+    }
+    const zoneMp = pointsToMultiPolygon(zonePointsArg);
+    let mnX=Infinity,mxX=-Infinity,mnY=Infinity,mxY=-Infinity;
+    for (const p of zonePointsArg) {
+      if (p.x < mnX) mnX = p.x; if (p.x > mxX) mxX = p.x;
+      if (p.y < mnY) mnY = p.y; if (p.y > mxY) mxY = p.y;
+    }
+    const zoneBboxForEdge = { mnX, mxX, mnY, mxY };
+
+    return function computePolyResidual(placements) {
+      if (!placements || placements.length === 0) {
+        const zoneArea = multiPolygonArea(zoneMp);
+        let cx = 0, cy = 0, n = 0;
+        for (const p of zonePointsArg) { cx += p.x; cy += p.y; n++; }
+        cx /= n; cy /= n;
+        holder.blobs = [{ x: cx, y: cy, areaMm2: zoneArea, edge: true }];
+        return { area: zoneArea, holes: holder.blobs };
+      }
+      const coreMps = [];
+      for (const pl of placements) {
+        if (!pl.corePts || pl.corePts.length < 3) continue;
+        try { coreMps.push(pointsToMultiPolygon(pl.corePts)); } catch (_) {}
+      }
+      if (coreMps.length === 0) {
+        const zoneArea = multiPolygonArea(zoneMp);
+        let cx = 0, cy = 0, n = 0;
+        for (const p of zonePointsArg) { cx += p.x; cy += p.y; n++; }
+        cx /= n; cy /= n;
+        holder.blobs = [{ x: cx, y: cy, areaMm2: zoneArea, edge: true }];
+        return { area: zoneArea, holes: holder.blobs };
+      }
+      let unionMp;
+      try {
+        if (coreMps.length === 1) {
+          unionMp = coreMps[0];
+        } else {
+          unionMp = coreMps[0];
+          for (let i = 1; i < coreMps.length; i++) {
+            unionMp = unionMulti(unionMp, coreMps[i]);
+          }
+        }
+      } catch (_) {
+        const zoneArea = multiPolygonArea(zoneMp);
+        let cx = 0, cy = 0, n = 0;
+        for (const p of zonePointsArg) { cx += p.x; cy += p.y; n++; }
+        cx /= n; cy /= n;
+        holder.blobs = [{ x: cx, y: cy, areaMm2: zoneArea, edge: true }];
+        return { area: zoneArea, holes: holder.blobs };
+      }
+      let residualMp;
+      try { residualMp = diffMulti(zoneMp, unionMp); } catch (_) {
+        holder.blobs = null;
+        return { area: 0, holes: [] };
+      }
+      const residual = multiPolygonArea(residualMp);
+      const holes = [];
+      try {
+        for (const poly of (residualMp || [])) {
+          if (!Array.isArray(poly) || poly.length === 0) continue;
+          const ring = poly[0];
+          if (!Array.isArray(ring) || ring.length < 4) continue;
+          let a = 0;
+          for (let i = 0; i < ring.length - 1; i++) {
+            a += ring[i][0] * ring[i+1][1] - ring[i+1][0] * ring[i][1];
+          }
+          a = Math.abs(a) * 0.5;
+          if (a < 30) continue;
+          let cx = 0, cy = 0, n = ring.length - 1;
+          for (let i = 0; i < n; i++) { cx += ring[i][0]; cy += ring[i][1]; }
+          cx /= n; cy /= n;
+          const isEdge = (cx <= zoneBboxForEdge.mnX + 5 || cx >= zoneBboxForEdge.mxX - 5 ||
+                          cy <= zoneBboxForEdge.mnY + 5 || cy >= zoneBboxForEdge.mxY - 5);
+          holes.push({ x: cx, y: cy, areaMm2: a, edge: isEdge });
+        }
+      } catch (_) {}
+      holes.sort((a, b) => {
+        if (a.edge !== b.edge) return a.edge ? -1 : 1;
+        return b.areaMm2 - a.areaMm2;
+      });
+      holder.blobs = holes;
+      return { area: residual, holes };
+    };
   }
 
   async function runSaSearch(args) {
@@ -175,11 +398,13 @@ function createVoronoiSaSearch(deps) {
     let bestE = E;
     let bestCoveredCells = coveredCells;
 
+    // v5.0 Fix тип 3B: best сохраняется по полигональному residual, не по coveredCells.
+    // bestPolyResidual инициализируется ПОСЛЕ объявления computePolyResidual (ниже).
+
     const T0 = Math.max(E * 0.05, zoneCells * 0.5);
     const Tmin = T0 * 0.0005;
-    // Compute alpha so cooling reaches Tmin after exactly maxIterations steps.
-    // Tmin/T0 = 0.0005, so alpha = 0.0005^(1/N).
-    // Without maxIterations, fall back to time-based cooling at N=5000 equivalent.
+    // v5.0 Fix тип 2: TminFloor — после Tmin SA не завершается, переходит в greedy.
+    const TminFloor = Tmin;
     const coolingN = maxIterations || 5000;
     const alpha = Math.pow(0.0005, 1 / Math.max(1, coolingN));
     const stepMm = Math.min(zoneBbox.maxX - zoneBbox.minX, zoneBbox.maxY - zoneBbox.minY) * 0.08;
@@ -189,16 +414,41 @@ function createVoronoiSaSearch(deps) {
     let accepted = 0;
     let lastProgressMs = 0;
     const progressIntervalMs = 300;
-    let cachedUncoveredTarget = null;
-    let lastUncoveredCacheIter = -999;
+
+    // v5.0 Fix тип 2: кеш блобов (растровых и полигональных).
+    let cachedBlobs = null;
+    let lastBlobsCacheIter = -999;
+    let lastPolyCheckIter = -999;
+    const polyResidualHolder = { blobs: null };
+    const computePolyResidual = makePolyResidualFn(zonePoints, polyResidualHolder, spec);
+    let currentPolyHoles = [];
+    let currentPolyResidualArea = Infinity;
+    // v5.0 Fix тип 3B: bestPolyResidual инициализируется здесь.
+    let bestPolyResidual = computePolyResidual(placements).area;
+
+    // v5.0 Fix тип 3: порог вклада ADD.
+    const ADD_GAIN_THRESHOLD_MM2 = 50;
+
+    // v5.0 Fix тип 2: anti-infinite-loop.
+    let consecutiveAddFails = 0;
+    const ADD_FAIL_LIMIT = 200;
 
     const warmDoneMs = Date.now();
     const warmDurationMs = warmDoneMs - startTime;
     let _saExitReason = "running";
 
-    while (T > Tmin && (maxIterations ? iters < maxIterations : Date.now() < phaseBDeadline)) {
-      if (!maxIterations && Date.now() >= phaseADeadline) { _saExitReason = "phaseA_deadline"; break; }
+    // ── Главный цикл ──────────────────────────────────────────────────────────
+    // Не завершается по Tmin. Cooling на TminFloor (greedy), но цикл продолжается
+    // пока есть закрываемые дыры (правка 2 советника).
+    while (true) {
+      if (maxIterations && iters >= maxIterations) {
+        _saExitReason = "maxIterations"; break;
+      }
+      if (Date.now() >= phaseBDeadline) {
+        _saExitReason = "phaseBudget_timeout"; break;
+      }
       iters++;
+
       const nowMs = Date.now();
       if (onProgress && (nowMs - lastProgressMs) >= progressIntervalMs) {
         lastProgressMs = nowMs;
@@ -223,16 +473,43 @@ function createVoronoiSaSearch(deps) {
         } catch (_) {}
       }
 
-      if (iters - lastUncoveredCacheIter >= 200) {
-        cachedUncoveredTarget = findLargestUncoveredBlobCentroid(placements, spec, zoneMask, cellCount);
-        lastUncoveredCacheIter = iters;
+      // Обновление кешей
+      if (iters - lastBlobsCacheIter >= 50) {
+        cachedBlobs = findUncoveredBlobs(placements, spec, zoneMask, cellCount, { minBlobCells: 3 });
+        lastBlobsCacheIter = iters;
+      }
+      if (iters - lastPolyCheckIter >= 50) {
+        const pr = computePolyResidual(placements);
+        currentPolyResidualArea = pr.area;
+        currentPolyHoles = pr.holes;
+        lastPolyCheckIter = iters;
       }
 
       const usedSet = new Set(placements.map((p) => p.id));
       const unusedPieces = selectedPieces.filter((p) => !usedSet.has(p.id));
+
+      // ── Условие выхода: полное покрытие или недостаток инвентаря ──────────
+      if (cachedBlobs.length === 0) {
+        if (currentPolyHoles.length === 0) {
+          _saExitReason = "full_coverage_polygon";
+          break;
+        }
+        if (polyResidualHolder.blobs && polyResidualHolder.blobs.length > 0) {
+          cachedBlobs = polyResidualHolder.blobs;
+          lastBlobsCacheIter = iters;
+        }
+      }
+      if (unusedPieces.length === 0 && cachedBlobs.length > 0) {
+        _saExitReason = "insufficient_inventory_violation";
+        break;
+      }
+
+      // ── Обычный SA-step ────────────────────────────────────────────────────
       const move = pickMove(rng, unusedPieces.length > 0, placements.length > 1);
 
       let newPlacements = null;
+      let addAttempted = false;
+      let addPrAfter = null;
 
       if (move === MOVES.TRANSLATE && placements.length > 0) {
         const ki = rng.nextInt(placements.length);
@@ -264,10 +541,22 @@ function createVoronoiSaSearch(deps) {
         const ki = rng.nextInt(placements.length);
         newPlacements = placements.filter((_, i) => i !== ki);
       } else if (move === MOVES.ADD && unusedPieces.length > 0) {
-        // v5.0 Fix тип 1: Fitness-based ADD
+        addAttempted = true;
+        // v5.0 Fix тип 2: ADD целит во ВСЕ блобы, edge-приоритет.
+        let blob = null;
+        if (cachedBlobs.length > 0) {
+          if (rng.next() < 0.8) {
+            blob = cachedBlobs[0];
+          } else {
+            const topN = Math.min(5, cachedBlobs.length);
+            blob = cachedBlobs[rng.nextInt(topN)];
+          }
+        }
+
+        // Fitness-based выбор куска
         let newPiece;
-        if (cachedUncoveredTarget && unusedPieces.length > 1) {
-          const blobAreaMm2 = cachedUncoveredTarget.size * spec.r * spec.r;
+        if (blob && unusedPieces.length > 1) {
+          const blobAreaMm2 = blob.areaMm2;
           const sortedUnused = unusedPieces.slice().sort((a, b) => {
             const aCovers = a.areaMm2 >= blobAreaMm2;
             const bCovers = b.areaMm2 >= blobAreaMm2;
@@ -283,20 +572,65 @@ function createVoronoiSaSearch(deps) {
         } else {
           newPiece = unusedPieces[rng.nextInt(unusedPieces.length)];
         }
+
         const angle = normalizeDeg(napTarget - newPiece.napDeg);
         let pos = null;
-        if (cachedUncoveredTarget && rng.next() < 0.8) {
-          pos = sampleAtBlob(newPiece, cachedUncoveredTarget, ifpCache, zoneBbox, rng);
+        if (blob && rng.next() < 0.85) {
+          pos = sampleAtBlob(newPiece, blob, ifpCache, zoneBbox, rng);
         }
         if (!pos) pos = sampleAnchor(newPiece, ifpCache, zonePoints, zoneBbox, rng);
+
         if (pos) {
+          // GUARD 1: minW через rotating calipers.
+          if (minWidthMm > 0) {
+            const coreShort = coreMinWAfterPlacement(newPiece, angle, pos.x, pos.y);
+            if (coreShort < minWidthMm - 0.5) {
+              consecutiveAddFails++;
+              if (consecutiveAddFails > ADD_FAIL_LIMIT) {
+                _saExitReason = "add_loop_no_progress"; break;
+              }
+              T = Math.max(T * alpha, TminFloor);
+              continue;
+            }
+          }
+
           const np = makePlacement(newPiece, pos.x, pos.y, angle, spec, zoneMask);
-          newPlacements = [...placements, np];
+
+          // GUARD 2 (v5.0 Fix тип 3): полигональный residual-критерий.
+          let polyBefore = currentPolyResidualArea;
+          if (!Number.isFinite(polyBefore) || polyBefore === Infinity) {
+            const pr0 = computePolyResidual(placements);
+            polyBefore = pr0.area;
+            currentPolyHoles = pr0.holes;
+            currentPolyResidualArea = pr0.area;
+            lastPolyCheckIter = iters;
+          }
+          addPrAfter = computePolyResidual([...placements, np]);
+          const polyAfter = addPrAfter.area;
+          const polyGain = polyBefore - polyAfter;
+
+          if (polyGain >= ADD_GAIN_THRESHOLD_MM2) {
+            newPlacements = [...placements, np];
+          } else {
+            consecutiveAddFails++;
+            if (consecutiveAddFails > ADD_FAIL_LIMIT) {
+              _saExitReason = "add_loop_no_progress"; break;
+            }
+            T = Math.max(T * alpha, TminFloor);
+            continue;
+          }
+        } else {
+          consecutiveAddFails++;
+          if (consecutiveAddFails > ADD_FAIL_LIMIT) {
+            _saExitReason = "add_loop_no_progress"; break;
+          }
+          T = Math.max(T * alpha, TminFloor);
+          continue;
         }
       }
 
       if (!newPlacements) {
-        T *= alpha;
+        T = Math.max(T * alpha, TminFloor);
         continue;
       }
 
@@ -305,27 +639,46 @@ function createVoronoiSaSearch(deps) {
       const newE = energy(newCov.coveredCells, newCov.overlapCells, newPlacements.length, zoneCells, newSliverCount);
       const dE = newE - E;
 
-      if (dE < 0 || rng.next() < Math.exp(-dE / T)) {
+      // Accept logic. При T = TminFloor — greedy.
+      const effectiveT = Math.max(T, TminFloor);
+      if (dE < 0 || rng.next() < Math.exp(-dE / Math.max(effectiveT, 1e-9))) {
         placements = newPlacements;
         coveredCells = newCov.coveredCells;
         overlapCells = newCov.overlapCells;
         sliverCount = newSliverCount;
         E = newE;
         accepted++;
-        if (coveredCells > bestCoveredCells || (coveredCells === bestCoveredCells && E < bestE)) {
+        if (addAttempted) consecutiveAddFails = 0;
+
+        // Обновляем polyResidual после принятия хода.
+        let acceptedPolyResidual;
+        if (addAttempted && addPrAfter !== null) {
+          acceptedPolyResidual = addPrAfter.area;
+          currentPolyResidualArea = addPrAfter.area;
+          currentPolyHoles = addPrAfter.holes;
+        } else {
+          const pr = computePolyResidual(placements);
+          acceptedPolyResidual = pr.area;
+          currentPolyResidualArea = pr.area;
+          currentPolyHoles = pr.holes;
+        }
+        lastPolyCheckIter = iters;
+
+        // v5.0 Fix тип 3B: best сохраняется по полигональному residual.
+        if (acceptedPolyResidual < bestPolyResidual - 0.5 ||
+            (Math.abs(acceptedPolyResidual - bestPolyResidual) <= 0.5 && E < bestE)) {
           bestPlacements = placements.map((p) => ({ ...p, mask: p.mask.slice() }));
           bestE = E;
           bestCoveredCells = coveredCells;
+          bestPolyResidual = acceptedPolyResidual;
         }
       }
 
-      T *= alpha;
+      T = Math.max(T * alpha, TminFloor);
     }
 
     if (_saExitReason === "running") {
-      if (maxIterations && iters >= maxIterations) _saExitReason = "maxIterations";
-      else if (T <= Tmin) _saExitReason = "Tmin";
-      else _saExitReason = "phaseBudget_timeout";
+      _saExitReason = "unknown_exit";
     }
 
     return {
@@ -346,6 +699,7 @@ function createVoronoiSaSearch(deps) {
   return {
     sampleAnchor,
     findLargestUncoveredBlobCentroid,
+    findUncoveredBlobs,
     sampleAtBlob,
     greedyWarmStart,
     findPiece,

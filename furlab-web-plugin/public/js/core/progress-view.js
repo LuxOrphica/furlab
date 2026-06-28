@@ -100,18 +100,19 @@
       if (data.coverage !== undefined && Number.isFinite(Number(data.coverage))) kpiState.coverage = Number(data.coverage);
       if (data.iters !== undefined && Number.isFinite(Number(data.iters))) kpiState.iters = Number(data.iters);
       if (data.temperature !== undefined && Number.isFinite(Number(data.temperature))) kpiState.temperature = Number(data.temperature);
+      if (data.phase !== undefined && typeof data.phase === "string") kpiState.phase = data.phase;
       const hasPieces = Number.isFinite(Number(kpiState.pieces));
       const hasCoverage = Number.isFinite(Number(kpiState.coverage));
       const hasIters = Number.isFinite(Number(kpiState.iters));
-      const hasTemp = Number.isFinite(Number(kpiState.temperature));
+      const hasPhase = kpiState.phase != null;
       if (piecesEl) piecesEl.textContent = hasPieces ? String(Math.max(0, Math.round(Number(kpiState.pieces)))) : "-";
       if (covEl) covEl.textContent = hasCoverage ? Number(kpiState.coverage).toFixed(1) + "%" : "-";
       if (itersEl) itersEl.textContent = hasIters ? String(Math.round(Number(kpiState.iters))) : "-";
-      if (tempEl) tempEl.textContent = hasTemp ? Number(kpiState.temperature).toFixed(2) : "-";
+      if (tempEl) tempEl.textContent = hasPhase ? String(kpiState.phase) : "-";
     }
 
     function resetKpis() {
-      kpiState = { pieces: null, coverage: null, iters: null, temperature: null };
+      kpiState = { pieces: null, coverage: null, iters: null, temperature: null, phase: null };
       updateKpis(kpiState);
     }
 

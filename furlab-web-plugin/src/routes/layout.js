@@ -1203,6 +1203,7 @@ async function handleLayoutRoutes(req, res, reqUrl, deps) {
     assignCandidatesToFragments,
     assignInventoryDirect,
     nfpSaSolver,
+    tilingSolver,
     voronoiSaSolver,
     rankCandidatesForFragment,
     createGridSpec,
@@ -1220,6 +1221,7 @@ async function handleLayoutRoutes(req, res, reqUrl, deps) {
   const modeRegistry = createModeRegistry({
     assignInventoryDirect,
     nfpSaSolver,
+    tilingSolver,
     voronoiSaSolver,
     generateRegularFragments,
     generateShiftedFragments,

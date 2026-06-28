@@ -16,6 +16,7 @@ const layoutTypeSchema = z.enum([
   "inventory_manual",
   "inventory_split_return",
   "inventory_nfp_sa",
+  "inventory_tiling",
   "inventory_voronoi_sa",
   "voronoi_tiles",
 ]);

@@ -10,7 +10,8 @@
     // { mode: "inventory", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f" },
     // { mode: "inventory_split_return", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (Split & Return)" },
     { mode: "inventory_manual", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (\u0440\u0443\u0447\u043d\u043e\u0439)" },
-    { mode: "inventory_nfp_sa", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (NFP+SA)" },
+    { mode: "inventory_nfp_sa", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (NFP Greedy)" },
+    { mode: "inventory_tiling", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (\u0422\u0430\u0439\u043b\u0438\u043d\u0433)" },
     { mode: "inventory_voronoi_sa", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (Voronoi SA)" }
   ];
 
@@ -38,7 +39,7 @@
 
   function isInventoryLikeLayoutMode(mode) {
     const m = String(mode || "");
-    return m === "inventory" || m === "inventory_manual" || m === "inventory_split_return" || m === "inventory_nfp_sa" || m === "inventory_voronoi_sa";
+    return m === "inventory" || m === "inventory_manual" || m === "inventory_split_return" || m === "inventory_nfp_sa" || m === "inventory_tiling" || m === "inventory_voronoi_sa";
   }
 
   function getLayoutModeCatalog() {
@@ -55,6 +56,7 @@
     inventory_manual: "inventory_manual",
     inventory_split_return: "inventory_manual",
     inventory_nfp_sa: "inventory_nfp_sa",
+    inventory_tiling: "inventory_nfp_sa",
     inventory_voronoi_sa: "inventory_nfp_sa",
     voronoi_tiles: "inventory_nfp_sa"
   };
