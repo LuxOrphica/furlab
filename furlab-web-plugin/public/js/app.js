@@ -6660,7 +6660,8 @@ function renderSplitEvents(events) {
           napTarget: normalizeDeg(zone.napDirectionDeg, DEFAULT_NAP_DIRECTION_DEG),
           napTol: Number(byId("invNapTol") && byId("invNapTol").value || 15),
           minWidthMm: Number(byId("minFragmentWidthMm") && byId("minFragmentWidthMm").value || 0),
-          minLengthMm: Number(byId("minFragmentLengthMm") && byId("minFragmentLengthMm").value || 0)
+          minLengthMm: Number(byId("minFragmentLengthMm") && byId("minFragmentLengthMm").value || 0),
+          allowThinPlacements: true
         }
       }, maxSolveMs + 30000);
       closeInventoryProgressStream();
@@ -6688,7 +6689,8 @@ function renderSplitEvents(events) {
         phase: String(item.meta && item.meta.phase || "SA"),
         solveOrder: Number(item.renderIndex || 0) + 1,
         solveIndex: Number(item.renderIndex || 0),
-        renderIndex: Number(item.renderIndex || 0)
+        renderIndex: Number(item.renderIndex || 0),
+        isThin: !!(item.meta && item.meta.isThin)
       })) : [];
       const alignedContours = placements.map((p) => p.alignedContour).filter((c) => Array.isArray(c) && c.length >= 3);
       const coreContours = placements.map((p) => Array.isArray(p.inZoneCoreContour) && p.inZoneCoreContour.length >= 3 ? p.inZoneCoreContour : p.alignedContour).filter((c) => Array.isArray(c) && c.length >= 3);
@@ -8662,18 +8664,22 @@ function renderSplitEvents(events) {
           const isSelPlacement = isManualInventoryMode() && Number.isFinite(selectedPlacementIndex) && placementIndex === selectedPlacementIndex;
           if (showAssignedPieces && state.layers.pfullZ && contours.length) {
             const ic = ENGINEERING_STYLES.inventoryContours || {};
-            const pieceStroke = isSelPlacement ? (ic.selectedStroke || "#914734") : (ic.stroke || "rgba(189,87,39,0.85)");
+            const isThinPl = !!(pl.isThin);
+            const pieceStroke = isThinPl
+              ? (isSelPlacement ? "#c0392b" : "rgba(192,57,43,0.9)")
+              : (isSelPlacement ? (ic.selectedStroke || "#914734") : (ic.stroke || "rgba(189,87,39,0.85)"));
             const pieceStrokeWidth = isSelPlacement ? (ic.selectedStrokeWidth || 1.4) : (ic.strokeWidth || 1.0);
+            const pieceFill = isThinPl
+              ? (isSelPlacement ? "rgba(192,57,43,0.18)" : "rgba(192,57,43,0.08)")
+              : (manualWholePieceMode
+                ? (isSelPlacement ? "rgba(189,87,39,0.15)" : "rgba(189,87,39,0.03)")
+                : (isSelPlacement ? (ic.selectedFill || "rgba(189,87,39,0.12)") : (ic.fill || "rgba(189,87,39,0.06)")));
             for (const contour of contours) {
               layerPreview.add(new Konva.Line({
                 points: linePoints(contour),
                 stroke: pieceStroke,
                 strokeWidth: pieceStrokeWidth,
-                // In manual mode contours = alignedContour (full piece, extends outside zone, heavily overlapping).
-                // Use very low opacity to stay visible without accumulating dark when many pieces overlap.
-                fill: manualWholePieceMode
-                  ? (isSelPlacement ? "rgba(189,87,39,0.15)" : "rgba(189,87,39,0.03)")
-                  : (isSelPlacement ? (ic.selectedFill || "rgba(189,87,39,0.12)") : (ic.fill || "rgba(189,87,39,0.06)")),
+                fill: pieceFill,
                 closed: true
               }));
             }

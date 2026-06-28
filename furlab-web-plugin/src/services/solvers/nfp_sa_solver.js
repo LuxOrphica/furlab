@@ -81,22 +81,6 @@ function createNfpSaSolver(deps) {
     return inside;
   }
 
-  // ── IFP (Inner Fit Polygon) ──────────────────────────────────────────────────
-
-  function computeIFP(zonePts, centeredCorePts) {
-    try {
-      const paths = ClipperLib.Clipper.MinkowskiDiff(toClipper(zonePts), toClipper(centeredCorePts));
-      if (!paths || !paths.length) return null;
-      let best = null, bestArea = 0;
-      for (const path of paths) {
-        const a = Math.abs(ClipperLib.Clipper.Area(path));
-        if (a > bestArea) { bestArea = a; best = path; }
-      }
-      if (!best || best.length < 3) return null;
-      return best.map(p => ({ x: p.X / CLIPPER_SCALE, y: p.Y / CLIPPER_SCALE }));
-    } catch (_) { return null; }
-  }
-
   // ── Raster ───────────────────────────────────────────────────────────────────
 
   function rasterize(pts, spec) {
@@ -141,79 +125,73 @@ function createNfpSaSolver(deps) {
     return n;
   }
 
-  // ── Anchor sampling ──────────────────────────────────────────────────────────
+  // ── Sample uncovered anchors ──────────────────────────────────────────────────
+  // Pick n random uncovered cell centers — candidate centroid positions for pieces.
 
-  function sampleInPoly(poly, bbox, rng) {
-    for (let t = 0; t < 60; t++) {
-      const x = bbox.minX + rng.next() * (bbox.maxX - bbox.minX);
-      const y = bbox.minY + rng.next() * (bbox.maxY - bbox.minY);
-      if (pointInPolygon(x, y, poly)) return { x, y };
+  function sampleUncoveredAnchors(uncoveredMask, spec, rng, n) {
+    const { nx, r, ox, oy } = spec;
+    const pool = [];
+    for (let i = 0; i < uncoveredMask.length; i++) { if (uncoveredMask[i]) pool.push(i); }
+    if (!pool.length) return [];
+    const count = Math.min(n, pool.length);
+    for (let i = 0; i < count; i++) {
+      const j = i + Math.floor(rng.next() * (pool.length - i));
+      const tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
     }
-    return null;
-  }
-
-  function sampleAnchor(piece, ifpCache, zonePts, zoneBbox, rng) {
-    const ifp = ifpCache.get(piece.id);
-    if (ifp && rng.next() < 0.7) {
-      const pos = sampleInPoly(ifp, polygonBBox(ifp), rng);
-      if (pos) return pos;
+    const result = [];
+    for (let i = 0; i < count; i++) {
+      const idx = pool[i];
+      result.push({ x: ox + (idx % nx + 0.5) * r, y: oy + (Math.floor(idx / nx) + 0.5) * r });
     }
-    return sampleInPoly(zonePts, zoneBbox, rng);
+    return result;
   }
 
   // ── Greedy Coverage (§4 Этап 1) ──────────────────────────────────────────────
-  // Each iteration: K attempts per free piece → pick best (piece, position) globally.
-  // Tiebreak: inventoryTag asc (R5 determinism).
+  // Each iteration: sample 30 uncovered anchors × all pieces × 3 angles.
+  // ~9900 raster evals per iteration — completes in < 1s for 100 pieces.
 
-  async function greedyCoverage(pieces, spec, zoneMask, zoneCells, zonePts, zoneBbox, ifpCache, rng, K, napTarget, napTol, onProgress) {
+  async function greedyCoverage(pieces, spec, zoneMask, zoneCells, zonePts, zoneBbox, rng, _K, napTarget, napTol, minFragMm2, onProgress) {
     const placements = [];
     const usedIds = new Set();
     const uncoveredMask = zoneMask.slice();
     let uncoveredCells = zoneCells;
     let iteration = 0;
+    const ANGLE_PROBES = [0, -1, 1];
+    const ANCHORS_PER_ITER = 30;
+    // minCells: raster-only small-fragment guard (no polygon ops in greedy loop)
+    const minCells = minFragMm2 > 0 ? Math.max(1, Math.ceil(minFragMm2 / (spec.r * spec.r))) : 0;
 
     while (uncoveredCells > 0) {
       const freePieces = pieces.filter(p => !usedIds.has(p.id));
       if (!freePieces.length) break;
 
-      let bestPl = null, bestGain = 0, bestTag = null;
+      const anchors = sampleUncoveredAnchors(uncoveredMask, spec, rng, ANCHORS_PER_ITER);
+      if (!anchors.length) break;
 
+      let bestPl = null, bestGain = 0;
       for (const piece of freePieces) {
         const angleBase = normalizeDeg(napTarget - piece.napDeg);
-        let pieceBestPl = null, pieceBestGain = 0;
-
-        for (let k = 0; k < K; k++) {
-          const dAngle = k === 0 ? 0 : (rng.next() * 2 - 1) * Math.min(napTol, 12);
-          const angle = normalizeDeg(angleBase + dAngle);
-          if (Math.abs(deltaDeg(normalizeDeg(napTarget - piece.napDeg), angle)) > napTol) continue;
-
-          const pos = sampleAnchor(piece, ifpCache, zonePts, zoneBbox, rng);
-          if (!pos) continue;
-
-          const pl = makePlacement(piece, pos.x, pos.y, angle, spec, zoneMask);
-          const gain = countGain(pl.activeCells, uncoveredMask);
-          if (gain > pieceBestGain) { pieceBestGain = gain; pieceBestPl = pl; }
-        }
-
-        if (!pieceBestPl) continue;
-        // Tiebreak: inventoryTag asc
-        if (pieceBestGain > bestGain ||
-            (pieceBestGain === bestGain && bestTag !== null && piece.inventoryTag < bestTag)) {
-          bestGain = pieceBestGain;
-          bestPl = pieceBestPl;
-          bestTag = piece.inventoryTag;
+        for (const anchor of anchors) {
+          for (const probe of ANGLE_PROBES) {
+            const angle = normalizeDeg(angleBase + probe * (napTol / 3));
+            if (Math.abs(deltaDeg(normalizeDeg(napTarget - piece.napDeg), angle)) > napTol) continue;
+            const pl = makePlacement(piece, anchor.x, anchor.y, angle, spec, zoneMask);
+            const gain = countGain(pl.activeCells, uncoveredMask);
+            if (gain > bestGain) { bestGain = gain; bestPl = pl; }
+          }
         }
       }
 
       if (!bestPl || bestGain === 0) break;
+      if (minCells > 0 && bestGain < minCells) break;
 
       placements.push(bestPl);
       usedIds.add(bestPl.id);
       for (const idx of bestPl.activeCells) uncoveredMask[idx] = 0;
-      uncoveredCells -= bestGain;
+      uncoveredCells = Math.max(0, uncoveredCells - bestGain);
       iteration++;
 
-      if (onProgress && iteration % 4 === 0) {
+      if (onProgress && iteration % 2 === 0) {
         const covPct = Math.round((1 - uncoveredCells / zoneCells) * 1000) / 10;
         onProgress({
           type: "phase", phase: "greedy",
@@ -223,6 +201,17 @@ function createNfpSaSolver(deps) {
         });
         await new Promise(r => setImmediate(r));
       }
+    }
+
+    if (onProgress) {
+      const finalCovPct = Math.round((1 - uncoveredCells / zoneCells) * 1000) / 10;
+      onProgress({
+        type: "phase", phase: "done",
+        percent: 100,
+        title: `NFP Greedy: ${placements.length} кусков, покрытие ${finalCovPct}%`,
+        pieces: placements.length, coverage: finalCovPct
+      });
+      await new Promise(r => setImmediate(r));
     }
 
     return placements;
@@ -250,6 +239,7 @@ function createNfpSaSolver(deps) {
   function formatResult(placements, zonePoints, zoneArea, options) {
     const minWidthMm = Math.max(0, Number((options && options.minWidthMm) || 0));
     const minLengthMm = Math.max(0, Number((options && options.minLengthMm) || 0));
+    const allowThinPlacements = !!(options && options.allowThinPlacements);
 
     let zoneMp = pointsToMultiPolygon(zonePoints);
     const zoneHoles = Array.isArray(options && options.zoneHoles) ? options.zoneHoles : [];
@@ -270,14 +260,20 @@ function createNfpSaSolver(deps) {
       if (multiPolygonArea(coreMp) <= 0) continue;
 
       // R4: min-size on original core (before diff with occupied)
-      if (minWidthMm > 0 || minLengthMm > 0) {
+      // In allowThinPlacements mode: don't skip — tag as thin instead.
+      let isPlacementThin = !!(pl.isThin);
+      if (!isPlacementThin && (minWidthMm > 0 || minLengthMm > 0)) {
         const origPts = mpToPoints(coreMp);
         if (origPts.length >= 3) {
           const pb = polygonBBox(origPts);
           const shorter = Math.min(pb.maxX - pb.minX, pb.maxY - pb.minY);
           const longer = Math.max(pb.maxX - pb.minX, pb.maxY - pb.minY);
-          if (minWidthMm > 0 && shorter < minWidthMm) continue;
-          if (minLengthMm > 0 && longer < minLengthMm) continue;
+          const tooNarrow = minWidthMm > 0 && shorter < minWidthMm;
+          const tooShort = minLengthMm > 0 && longer < minLengthMm;
+          if (tooNarrow || tooShort) {
+            if (!allowThinPlacements) continue;
+            isPlacementThin = true;
+          }
         }
       }
 
@@ -318,7 +314,8 @@ function createNfpSaSolver(deps) {
               inZoneContour: pi === 0 ? inZoneContour : [],
               inZoneCoreContour: partPts,        // coverage unit (R1)
               inZoneAreaMm2: partArea,
-              status: "matched",
+              status: isPlacementThin ? "thin_fragment" : "matched",
+              isThin: isPlacementThin || undefined,
               phase: "greedy",
               solveIndex: i,
               solveOrder: i + 1,
@@ -392,12 +389,13 @@ function createNfpSaSolver(deps) {
       napTarget = 0,
       napTol = 15,
       seed = 1,
-      onProgress = null,
-      K = 32
+      onProgress = null
     } = options || {};
     const allowanceMm = Math.max(0, Number((options && options.allowanceMm) || (options && options.seamAllowanceReserveMm) || 0));
     const minWidthMm = Math.max(0, Number((options && options.minWidthMm) || 0));
     const minLengthMm = Math.max(0, Number((options && options.minLengthMm) || 0));
+    // allowThinPlacements: place pieces below minWidth threshold but tag them as thin_fragment
+    const allowThinPlacements = !!(options && options.allowThinPlacements);
 
     const rng = createSeededRng(seed);
     const zoneBbox = polygonBBox(zonePoints);
@@ -432,13 +430,18 @@ function createNfpSaSolver(deps) {
       // R7: discard if inset collapsed — no fallback to pts
       if (allowanceMm > 0 && centeredCorePts.length < 3) continue;
 
-      // min-size filter on core
+      // min-size filter on core (skipped when allowThinPlacements — thin pieces tagged instead)
+      let isThinPiece = false;
       if (minWidthMm > 0 || minLengthMm > 0) {
         const cb = polygonBBox(centeredCorePts);
         const shorter = Math.min(cb.maxX - cb.minX, cb.maxY - cb.minY);
         const longer = Math.max(cb.maxX - cb.minX, cb.maxY - cb.minY);
-        if (minWidthMm > 0 && shorter < minWidthMm) continue;
-        if (minLengthMm > 0 && longer < minLengthMm) continue;
+        const tooNarrow = minWidthMm > 0 && shorter < minWidthMm;
+        const tooShort = minLengthMm > 0 && longer < minLengthMm;
+        if (tooNarrow || tooShort) {
+          if (!allowThinPlacements) continue;
+          isThinPiece = true;
+        }
       }
 
       pieces.push({
@@ -446,23 +449,21 @@ function createNfpSaSolver(deps) {
         inventoryTag: String(c.inventoryTag ?? c.id),
         napDeg: Number(c.napDirectionDeg ?? c.napDirection ?? 0),
         centeredPts,
-        centeredCorePts
+        centeredCorePts,
+        isThin: isThinPiece
       });
     }
 
     if (!pieces.length) return emptyResult(zoneArea, "no_candidates");
 
-    // ── IFP by centeredCorePts (R1) ──────────────────────────────────────────
-    const ifpCache = new Map();
-    for (const piece of pieces) {
-      const ifp = computeIFP(zonePoints, piece.centeredCorePts);
-      if (ifp && ifp.length >= 3) ifpCache.set(piece.id, ifp);
-    }
 
     // ── Greedy Coverage ──────────────────────────────────────────────────────
+    // minFragMm2: polygon fragment must be >= this to place a piece.
+    // Prevents raster-polygon divergence from creating tiny fragments in output.
+    const minFragMm2 = minWidthMm > 0 ? minWidthMm * minWidthMm : 0;
     const placements = await greedyCoverage(
       pieces, spec, zoneMask, zoneCells, zonePoints, zoneBbox,
-      ifpCache, rng, K, napTarget, napTol, onProgress
+      rng, null, napTarget, napTol, minFragMm2, onProgress
     );
 
     return formatResult(placements, zonePoints, zoneArea, options);

@@ -225,7 +225,8 @@ function wrapInventoryNfpSaPreview(input, result) {
           meta: {
             inventoryTag: String(p && p.inventoryTag || ""),
             phase: String(p && p.phase || ""),
-            status: String(p && p.status || "")
+            status: String(p && p.status || ""),
+            isThin: !!(p && p.isThin)
           }
         };
       }).filter(Boolean)
