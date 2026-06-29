@@ -1317,7 +1317,7 @@ async function handleLayoutRoutes(req, res, reqUrl, deps) {
   if (req.method === "POST" && reqUrl.pathname === "/api/layout/modes/preview") {
     const startedAt = Date.now();
     const body = await readBodyJson(req);
-    const parsed = parsePreviewWrapperRequest(body);
+const parsed = parsePreviewWrapperRequest(body);
     if (!parsed.ok) {
       log.warn({ error: parsed.error }, "mode_preview_invalid_request");
       return jsonReply(res, 400, { ok: false, error: parsed.error });

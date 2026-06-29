@@ -6987,6 +6987,7 @@ function renderSplitEvents(events) {
         progressToken,
         options: {
           maxSolveMs,
+          maxIterations: 20000,
           seed: runSeed,
           absorptionCriterion: state.layoutRun.absorptionCriterion != null ? state.layoutRun.absorptionCriterion : 4,
           numRestarts: Math.max(1, Number(byId("invNumRestarts") && byId("invNumRestarts").value || state.layoutRun.numRestarts || 1)),
