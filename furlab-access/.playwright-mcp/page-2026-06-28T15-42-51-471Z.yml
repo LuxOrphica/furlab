@@ -1,0 +1,481 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - heading "ROAR" [level=1] [ref=e4]
+      - paragraph [ref=e5]: Локальный редактор музыкальных тегов
+    - link "Публичные альбомы" [ref=e6] [cursor=pointer]:
+      - /url: /listen
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]: Папка с музыкой
+        - textbox "Папка с музыкой" [ref=e11]:
+          - /placeholder: ./data/library
+          - text: F:\ROAR\data\library
+        - button "Выбрать" [ref=e12] [cursor=pointer]
+      - generic [ref=e13]:
+        - button "Обновить" [ref=e14] [cursor=pointer]
+        - button "Новая папка" [ref=e15] [cursor=pointer]
+        - generic [ref=e16] [cursor=pointer]:
+          - checkbox "Только аудио" [checked]
+          - generic [ref=e17]: ✓
+          - generic [ref=e18]: Только аудио
+        - generic [ref=e19]: "Файлов с аудио: 400 | Опубликовано альбомов: 10 | F:\\ROAR\\data\\library"
+        - group "Плотность списка" [ref=e20]:
+          - button "Обычный список" [pressed] [ref=e21] [cursor=pointer]:
+            - img [ref=e22]
+          - button "Компактный список" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+      - group [ref=e90]:
+        - generic "📂 library" [ref=e91] [cursor=pointer]:
+          - generic [ref=e92]: 📂
+          - generic [ref=e93]: library
+        - generic [ref=e94]:
+          - group [ref=e95]:
+            - generic "📁 HNP Публ." [ref=e96] [cursor=pointer]:
+              - generic [ref=e97]: 📁
+              - generic [ref=e98]: HNP
+              - generic [ref=e99]:
+                - button "Переименовать папку" [ref=e100]:
+                  - img [ref=e101]
+                - generic "Опубликовать альбом" [ref=e104]:
+                  - checkbox "Публ." [checked] [ref=e105]
+                  - generic [ref=e106]: Публ.
+          - group [ref=e107]:
+            - generic "📁 WAV Публ." [ref=e108] [cursor=pointer]:
+              - generic [ref=e109]: 📁
+              - generic [ref=e110]: WAV
+              - generic [ref=e111]:
+                - button "Переименовать папку" [ref=e112]:
+                  - img [ref=e113]
+                - generic "Опубликовать альбом" [ref=e116]:
+                  - checkbox "Публ." [ref=e117]
+                  - generic [ref=e118]: Публ.
+          - group [ref=e119]:
+            - generic "📂 Альбомы Публ." [ref=e175] [cursor=pointer]:
+              - generic [ref=e176]: 📂
+              - generic [ref=e122]: Альбомы
+              - generic [ref=e123]:
+                - button "Переименовать папку" [ref=e124]:
+                  - img [ref=e125]
+                - generic "Опубликовать альбом" [ref=e128]:
+                  - checkbox "Публ." [checked] [ref=e129]
+                  - generic [ref=e130]: Публ.
+            - generic [ref=e177]:
+              - group [ref=e178]:
+                - generic "📁 60-х Публ." [ref=e179] [cursor=pointer]:
+                  - generic [ref=e180]: 📁
+                  - generic [ref=e181]: 60-х
+                  - generic [ref=e182]:
+                    - button "Переименовать папку" [ref=e183]:
+                      - img [ref=e184]
+                    - generic "Опубликовать альбом" [ref=e187]:
+                      - checkbox "Публ." [ref=e188]
+                      - generic [ref=e189]: Публ.
+              - group [ref=e190]:
+                - generic "📂 80-43 Публ." [ref=e322] [cursor=pointer]:
+                  - generic [ref=e323]: 📂
+                  - generic [ref=e193]: 80-43
+                  - generic [ref=e194]:
+                    - button "Переименовать папку" [ref=e195]:
+                      - img [ref=e196]
+                    - generic "Опубликовать альбом" [ref=e199]:
+                      - checkbox "Публ." [checked] [ref=e200]
+                      - generic [ref=e201]: Публ.
+                - generic [ref=e324]:
+                  - group [ref=e325]:
+                    - generic "📁 Темы Публ." [ref=e326] [cursor=pointer]:
+                      - generic [ref=e327]: 📁
+                      - generic [ref=e328]: Темы
+                      - generic [ref=e329]:
+                        - button "Переименовать папку" [ref=e330]:
+                          - img [ref=e331]
+                        - generic "Опубликовать альбом" [ref=e334]:
+                          - checkbox "Публ." [ref=e335]
+                          - generic [ref=e336]: Публ.
+                  - group [ref=e337]:
+                    - generic "📁 Экспериментальный Публ." [ref=e338] [cursor=pointer]:
+                      - generic [ref=e339]: 📁
+                      - generic [ref=e340]: Экспериментальный
+                      - generic [ref=e341]:
+                        - button "Переименовать папку" [ref=e342]:
+                          - img [ref=e343]
+                        - generic "Опубликовать альбом" [ref=e346]:
+                          - checkbox "Публ." [ref=e347]
+                          - generic [ref=e348]: Публ.
+                  - generic [ref=e349] [cursor=pointer]:
+                    - generic [ref=e350]: ♪
+                    - generic [ref=e351]: Africa (J).wav
+                    - generic [ref=e352]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e353] [cursor=pointer]:
+                    - generic [ref=e354]: ♪
+                    - generic [ref=e355]: Август 88.mp3
+                    - generic [ref=e356]: Хорошо
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e357] [cursor=pointer]:
+                    - generic [ref=e358]: ♪
+                    - generic [ref=e359]: Август 88.wav
+                    - generic [ref=e360]: Хорошо
+                    - generic [ref=e466]:
+                      - button "Переименовать" [ref=e467]:
+                        - img [ref=e468]
+                      - button "Удалить" [ref=e471]:
+                        - img [ref=e472]
+                  - generic [ref=e361] [cursor=pointer]:
+                    - generic [ref=e362]: ♪
+                    - generic [ref=e363]: Африка (J).mp3
+                    - generic [ref=e364]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e365] [cursor=pointer]:
+                    - generic [ref=e366]: ♪
+                    - generic [ref=e367]: Африка 80.wav
+                    - generic [ref=e368]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e369] [cursor=pointer]:
+                    - generic [ref=e370]: ♪
+                    - generic [ref=e371]: ДМЖМ.mp3
+                    - generic [ref=e372]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e373] [cursor=pointer]:
+                    - generic [ref=e374]: ♪
+                    - generic [ref=e375]: ДМЖМ.wav
+                    - generic [ref=e376]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e377] [cursor=pointer]:
+                    - generic [ref=e378]: ♪
+                    - generic [ref=e379]: Карамелька.mp3
+                    - generic [ref=e380]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e381] [cursor=pointer]:
+                    - generic [ref=e382]: ♪
+                    - generic [ref=e383]: Карамелька.wav
+                    - generic [ref=e384]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e385] [cursor=pointer]:
+                    - generic [ref=e386]: ♪
+                    - generic [ref=e387]: Литл Джек энд э бёрд -1.mp3
+                    - generic [ref=e388]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e389] [cursor=pointer]:
+                    - generic [ref=e390]: ♪
+                    - generic [ref=e391]: Литл Джек энд э бёрд -1.wav
+                    - generic [ref=e392]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e393] [cursor=pointer]:
+                    - generic [ref=e394]: ♪
+                    - generic [ref=e395]: Литл Джек энд э бёрд -2.mp3
+                    - generic [ref=e396]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e397] [cursor=pointer]:
+                    - generic [ref=e398]: ♪
+                    - generic [ref=e399]: Литл Джек энд э бёрд -2.wav
+                    - generic [ref=e400]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e401] [cursor=pointer]:
+                    - generic [ref=e402]: ♪
+                    - generic [ref=e403]: МПТД.mp3
+                    - generic [ref=e404]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e405] [cursor=pointer]:
+                    - generic [ref=e406]: ♪
+                    - generic [ref=e407]: МПТД.wav
+                    - generic [ref=e408]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e409] [cursor=pointer]:
+                    - generic [ref=e410]: ♪
+                    - generic [ref=e411]: Реквием.mp3
+                    - generic [ref=e412]: Хорошо
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+                  - generic [ref=e413] [cursor=pointer]:
+                    - generic [ref=e414]: ♪
+                    - generic [ref=e415]: Реквием.wav
+                    - generic [ref=e416]: Не слушал
+                    - generic:
+                      - button "Переименовать":
+                        - img
+                      - button "Удалить":
+                        - img
+              - group [ref=e202]:
+                - generic "📁 Atomic Roar Публ." [ref=e203] [cursor=pointer]:
+                  - generic [ref=e204]: 📁
+                  - generic [ref=e205]: Atomic Roar
+                  - generic [ref=e206]:
+                    - button "Переименовать папку" [ref=e207]:
+                      - img [ref=e208]
+                    - generic "Опубликовать альбом" [ref=e211]:
+                      - checkbox "Публ." [checked] [ref=e212]
+                      - generic [ref=e213]: Публ.
+              - group [ref=e214]:
+                - generic "📁 Hiems in Novis Padensibus (Remaster) Публ." [ref=e215] [cursor=pointer]:
+                  - generic [ref=e216]: 📁
+                  - generic [ref=e217]: Hiems in Novis Padensibus (Remaster)
+                  - generic [ref=e218]:
+                    - button "Переименовать папку" [ref=e219]:
+                      - img [ref=e220]
+                    - generic "Опубликовать альбом" [ref=e223]:
+                      - checkbox "Публ." [checked] [ref=e224]
+                      - generic [ref=e225]: Публ.
+              - group [ref=e226]:
+                - generic "📁 l-h Публ." [ref=e227] [cursor=pointer]:
+                  - generic [ref=e228]: 📁
+                  - generic [ref=e229]: l-h
+                  - generic [ref=e230]:
+                    - button "Переименовать папку" [ref=e231]:
+                      - img [ref=e232]
+                    - generic "Опубликовать альбом" [ref=e235]:
+                      - checkbox "Публ." [ref=e236]
+                      - generic [ref=e237]: Публ.
+              - group [ref=e238]:
+                - generic "📁 Robot Публ." [ref=e239] [cursor=pointer]:
+                  - generic [ref=e240]: 📁
+                  - generic [ref=e241]: Robot
+                  - generic [ref=e242]:
+                    - button "Переименовать папку" [ref=e243]:
+                      - img [ref=e244]
+                    - generic "Опубликовать альбом" [ref=e247]:
+                      - checkbox "Публ." [ref=e248]
+                      - generic [ref=e249]: Публ.
+              - group [ref=e250]:
+                - generic "📁 Акустик Публ." [ref=e251] [cursor=pointer]:
+                  - generic [ref=e252]: 📁
+                  - generic [ref=e253]: Акустик
+                  - generic [ref=e254]:
+                    - button "Переименовать папку" [ref=e255]:
+                      - img [ref=e256]
+                    - generic "Опубликовать альбом" [ref=e259]:
+                      - checkbox "Публ." [checked] [ref=e260]
+                      - generic [ref=e261]: Публ.
+              - group [ref=e262]:
+                - generic "📁 Облака и дождь Публ." [ref=e263] [cursor=pointer]:
+                  - generic [ref=e264]: 📁
+                  - generic [ref=e265]: Облака и дождь
+                  - generic [ref=e266]:
+                    - button "Переименовать папку" [ref=e267]:
+                      - img [ref=e268]
+                    - generic "Опубликовать альбом" [ref=e271]:
+                      - checkbox "Публ." [ref=e272]
+                      - generic [ref=e273]: Публ.
+              - group [ref=e274]:
+                - generic "📁 Подвиг Публ." [ref=e275] [cursor=pointer]:
+                  - generic [ref=e276]: 📁
+                  - generic [ref=e277]: Подвиг
+                  - generic [ref=e278]:
+                    - button "Переименовать папку" [ref=e279]:
+                      - img [ref=e280]
+                    - generic "Опубликовать альбом" [ref=e283]:
+                      - checkbox "Публ." [ref=e284]
+                      - generic [ref=e285]: Публ.
+              - group [ref=e286]:
+                - generic "📁 Тигры, львы и роботы Публ." [ref=e287] [cursor=pointer]:
+                  - generic [ref=e288]: 📁
+                  - generic [ref=e289]: Тигры, львы и роботы
+                  - generic [ref=e290]:
+                    - button "Переименовать папку" [ref=e291]:
+                      - img [ref=e292]
+                    - generic "Опубликовать альбом" [ref=e295]:
+                      - checkbox "Публ." [checked] [ref=e296]
+                      - generic [ref=e297]: Публ.
+              - group [ref=e298]:
+                - generic "📁 ФФФ Публ." [ref=e299] [cursor=pointer]:
+                  - generic [ref=e300]: 📁
+                  - generic [ref=e301]: ФФФ
+                  - generic [ref=e302]:
+                    - button "Переименовать папку" [ref=e303]:
+                      - img [ref=e304]
+                    - generic "Опубликовать альбом" [ref=e307]:
+                      - checkbox "Публ." [ref=e308]
+                      - generic [ref=e309]: Публ.
+              - group [ref=e310]:
+                - generic "📁 Цирк «Свет и грохот» Публ." [ref=e311] [cursor=pointer]:
+                  - generic [ref=e312]: 📁
+                  - generic [ref=e313]: Цирк «Свет и грохот»
+                  - generic [ref=e314]:
+                    - button "Переименовать папку" [ref=e315]:
+                      - img [ref=e316]
+                    - generic "Опубликовать альбом" [ref=e319]:
+                      - checkbox "Публ." [checked] [ref=e320]
+                      - generic [ref=e321]: Публ.
+          - group [ref=e131]:
+            - generic "📁 Женя Публ." [ref=e132] [cursor=pointer]:
+              - generic [ref=e133]: 📁
+              - generic [ref=e134]: Женя
+              - generic [ref=e135]:
+                - button "Переименовать папку" [ref=e136]:
+                  - img [ref=e137]
+                - generic "Опубликовать альбом" [ref=e140]:
+                  - checkbox "Публ." [checked] [ref=e141]
+                  - generic [ref=e142]: Публ.
+          - group [ref=e143]:
+            - generic "📁 Материалы Публ." [ref=e144] [cursor=pointer]:
+              - generic [ref=e145]: 📁
+              - generic [ref=e146]: Материалы
+              - generic [ref=e147]:
+                - button "Переименовать папку" [ref=e148]:
+                  - img [ref=e149]
+                - generic "Опубликовать альбом" [ref=e152]:
+                  - checkbox "Публ." [checked] [ref=e153]
+                  - generic [ref=e154]: Публ.
+          - group [ref=e155]:
+            - generic "📁 Февраль Публ." [ref=e156] [cursor=pointer]:
+              - generic [ref=e157]: 📁
+              - generic [ref=e158]: Февраль
+              - generic [ref=e159]:
+                - button "Переименовать папку" [ref=e160]:
+                  - img [ref=e161]
+                - generic "Опубликовать альбом" [ref=e164]:
+                  - checkbox "Публ." [ref=e165]
+                  - generic [ref=e166]: Публ.
+          - generic [ref=e167] [cursor=pointer]:
+            - generic [ref=e168]: ♪
+            - generic [ref=e169]: Тучка (минимал) (Cover) (Cover) (1).mp3
+            - generic [ref=e170]: Не слушал
+            - generic:
+              - button "Переименовать":
+                - img
+              - button "Удалить":
+                - img
+          - generic [ref=e171] [cursor=pointer]:
+            - generic [ref=e172]: ♪
+            - generic [ref=e173]: Тучка (минимал) (Cover) (Cover).mp3
+            - generic [ref=e174]: Не слушал
+            - generic:
+              - button "Переименовать":
+                - img
+              - button "Удалить":
+                - img
+      - paragraph [ref=e28]: "Перетащите файл на папку: из дерева переместит, извне загрузит в папку."
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - heading "Альбомы/80-43/Август 88.wav" [level=2] [ref=e476]
+        - generic [ref=e32]:
+          - generic [ref=e33] [cursor=pointer]:
+            - checkbox "Публ. трек" [checked]
+            - generic [ref=e34]: ✓
+            - generic [ref=e35]: Публ. трек
+          - combobox [ref=e36]:
+            - option "Не слушал"
+            - option "Хорошо" [selected]
+            - option "Интересно"
+            - option "В работе"
+            - option "Непонятно"
+            - option "Плохо"
+      - group "Режим правой панели" [ref=e39]:
+        - button "Прослушивание" [pressed] [ref=e40] [cursor=pointer]
+        - button "Вырезка" [ref=e41] [cursor=pointer]
+      - generic [ref=e477]:
+        - textbox "tag_key" [ref=e478]
+        - textbox "value1 | value2" [ref=e479]
+        - button "Очистить" [ref=e480] [cursor=pointer]
+        - button "Удалить" [ref=e481] [cursor=pointer]
+      - generic [ref=e42]:
+        - button "+ Тег" [ref=e43] [cursor=pointer]
+        - button "Сохранить" [ref=e44] [cursor=pointer]
+        - button "Копировать теги" [ref=e45] [cursor=pointer]
+        - button "Вставить теги" [ref=e464] [cursor=pointer]
+      - generic [ref=e46]:
+        - button "Добавить обложку" [ref=e47] [cursor=pointer]
+        - button "Удалить обложку" [ref=e48] [cursor=pointer]
+      - paragraph
+      - complementary [ref=e49]:
+        - paragraph [ref=e50]: Шпаргалка ID3
+        - generic [ref=e51]:
+          - generic [ref=e52]: TIT2 Название
+          - generic [ref=e53]: TPE1 Исполнитель
+          - generic [ref=e54]: TALB Альбом
+          - generic [ref=e55]: TRCK Номер трека
+          - generic [ref=e56]: TDRC Год/дата
+          - generic [ref=e57]: TCON Жанр
+          - generic [ref=e58]: COMM Комментарий
+          - generic [ref=e59]: USLT Текст песни
+          - generic [ref=e60]: WOAS Ссылка
+          - generic [ref=e61]: TSSE Кодировщик
+          - generic [ref=e62]: TENC Кем закодировано
+          - generic [ref=e63]: APIC Обложка
+      - generic [ref=e64]:
+        - paragraph [ref=e65]: Массовая замена (по текущей папке)
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: Ключ тега
+            - textbox "Опционально, например TIT2" [ref=e69]
+          - generic [ref=e70]:
+            - generic [ref=e71]: Режим
+            - generic [ref=e72] [cursor=pointer]:
+              - checkbox "С учетом регистра"
+              - generic [ref=e74]: С учетом регистра
+          - generic [ref=e75]:
+            - generic [ref=e76]: Найти
+            - textbox "Текст для поиска" [ref=e77]
+          - generic [ref=e78]:
+            - generic [ref=e79]: Заменить на
+            - textbox "Новый текст" [ref=e80]
+        - generic [ref=e81]:
+          - button "Найти" [ref=e82] [cursor=pointer]
+          - button "Заменить" [ref=e83] [cursor=pointer]
+        - paragraph
+      - generic [ref=e84]:
+        - paragraph [ref=e85]: Копировать теги MP3 → WAV (текущая папка)
+        - paragraph [ref=e86]: Найдёт пары файлов с одинаковым именем (.mp3 и .wav) и перенесёт теги из MP3 в WAV.
+        - generic [ref=e87]:
+          - button "Проверить пары" [ref=e88] [cursor=pointer]
+          - button "Скопировать теги" [ref=e89] [cursor=pointer]

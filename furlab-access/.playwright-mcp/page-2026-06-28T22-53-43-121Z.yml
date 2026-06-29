@@ -1,0 +1,138 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - button "Открыть проект" [ref=e4] [cursor=pointer]
+      - button "Сохранить проект" [ref=e91] [cursor=pointer]
+      - generic [ref=e92]: — проект - июньский
+      - button "Преобразовать в лекала" [ref=e93] [cursor=pointer]
+      - generic [ref=e5]: "build: telemetry-v4-2026-05-06-export-reports-fix"
+    - generic [ref=e6]:
+      - button "DEV" [ref=e7] [cursor=pointer]
+      - button "LCM" [ref=e8] [cursor=pointer]
+      - button "VSA" [ref=e9] [cursor=pointer]
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic "Инструменты зон" [ref=e12]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Fur Lab
+            - button "Выбор" [ref=e15] [cursor=pointer]
+            - button "Линия зонирования" [ref=e17] [cursor=pointer]
+            - button "Произвольный полигон" [ref=e19] [cursor=pointer]
+        - group [ref=e21]:
+          - generic "Настройки отображения" [ref=e22] [cursor=pointer]:
+            - heading "Настройки отображения" [level=3] [ref=e23]
+          - option "Малый"
+          - option "Средний" [selected]
+          - option "Крупный"
+        - button "Отчеты" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26]: description
+          - generic [ref=e27]: Отчеты
+      - complementary [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: Сборка меха
+          - generic [ref=e36]:
+            - button "Зоны" [ref=e37] [cursor=pointer]
+            - button "Мех" [ref=e38] [cursor=pointer]
+            - button "Выкладки" [ref=e39] [cursor=pointer]
+          - generic [ref=e40]:
+            - button "Добавить выкладку" [ref=e595] [cursor=pointer]:
+              - generic [ref=e596]: add
+              - generic [ref=e597]: Добавить выкладку
+            - generic [ref=e598]:
+              - button "inventory_nfp_sa Из инвентаря (NFP Greedy) 1" [ref=e599] [cursor=pointer]:
+                - img "inventory_nfp_sa" [ref=e601]
+                - generic [ref=e603]: Из инвентаря (NFP Greedy) 1
+              - button "Удалить выкладку" [ref=e605] [cursor=pointer]:
+                - generic [ref=e606]: delete
+        - generic "Потяните для изменения высоты" [ref=e42]
+        - generic [ref=e43]:
+          - generic [ref=e44]: Редактор свойств
+          - generic [ref=e45]:
+            - generic [ref=e607]:
+              - generic [ref=e608]: Выкладка
+              - generic [ref=e609]:
+                - button "Заблокировать редактирование" [ref=e610] [cursor=pointer]
+                - button "Сохранить выкладку" [ref=e611] [cursor=pointer]
+            - generic [ref=e612]:
+              - button "▾ Информация" [expanded] [ref=e613] [cursor=pointer]:
+                - generic [ref=e614]: ▾
+                - generic [ref=e615]: Информация
+              - generic [ref=e616]:
+                - generic [ref=e617]:
+                  - generic [ref=e618]: Название
+                  - textbox "(Пусто)" [ref=e620]: Из инвентаря (NFP Greedy) 1
+                - generic [ref=e621]:
+                  - generic [ref=e622]: Тип
+                  - generic [ref=e623]: Из инвентаря (NFP Greedy)
+            - generic [ref=e624]:
+              - button "▾ Инвентарь" [expanded] [ref=e625] [cursor=pointer]:
+                - generic [ref=e626]: ▾
+                - generic [ref=e627]: Инвентарь
+              - generic [ref=e628]:
+                - generic [ref=e629]:
+                  - generic [ref=e630]: Мех
+                  - combobox [ref=e632] [cursor=pointer]:
+                    - option "Неважно" [selected]
+                    - option "Норка"
+                    - option "Лиса"
+                    - option "Ондатра"
+                    - option "Ангора"
+                    - option "Кролик"
+                - generic [ref=e633]:
+                  - generic [ref=e634]: Резерв припуска, мм
+                  - spinbutton [ref=e636]: "12.0"
+                - button "Пересчитать" [ref=e638] [cursor=pointer]
+                - generic [ref=e639]: Настройки подбора, preview и применение
+  - generic [ref=e641]:
+    - generic [ref=e642]:
+      - generic [ref=e643]: Шаг 2. Предпросмотр и доводка подбора
+      - button "Закрыть" [ref=e644] [cursor=pointer]:
+        - generic [ref=e645]: close
+    - generic [ref=e646]:
+      - generic [ref=e647]:
+        - generic [ref=e648]: Фрагментов добавлено
+        - generic [ref=e649]: "16"
+      - generic [ref=e650]:
+        - generic [ref=e651]: Нарушения ограничений
+        - generic [ref=e652]: "0"
+      - generic [ref=e653]:
+        - generic [ref=e654]: Пересечения
+        - generic [ref=e655]: "0"
+      - generic [ref=e656]:
+        - generic [ref=e657]: Непокрытые области
+        - generic [ref=e658]: "17"
+      - generic [ref=e659]:
+        - generic [ref=e660]: Покрытие зоны, %
+        - generic [ref=e661]: "94.7"
+      - generic [ref=e662]:
+        - generic [ref=e663]: Остаток, мм²
+        - generic [ref=e664]: "0"
+      - generic [ref=e665]:
+        - generic [ref=e666]: Перекрытия, мм²
+        - generic [ref=e667]: "0"
+      - generic [ref=e668]:
+        - generic [ref=e669]: Кандидатов в БД
+        - generic [ref=e670]: "120"
+      - generic [ref=e671]:
+        - generic [ref=e672]: Совместимых
+        - generic [ref=e673]: "120"
+      - generic [ref=e674]:
+        - generic [ref=e675]: Стратегия подбора
+        - generic [ref=e676]: NFP Greedy
+      - generic [ref=e677]:
+        - generic [ref=e678]: Сопоставлено фрагм., %
+        - generic [ref=e679]: "13.33"
+      - generic [ref=e680]:
+        - generic [ref=e681]: KPI покрытие, %
+        - generic [ref=e682]: "94.7"
+      - button "Экспорт case" [ref=e684] [cursor=pointer]
+      - generic [ref=e685]: "Диагностика:"
+      - generic [ref=e686]: "NFP Greedy: iters=sa, pieces=16, cov=94.7%"
+      - generic [ref=e687]: "Использованные inventoryTag:"
+      - generic [ref=e688]: FL-SCR-000039 FL-SCR-000038 FL-SCR-000058 FL-SCR-000036 FL-SCR-000004 FL-SCR-000020 FL-SCR-000075 FL-SCR-000029 FL-SCR-000113 FL-SCR-000067 FL-SCR-000120 FL-SCR-000120 FL-SCR-000071 FL-SCR-000071 FL-SCR-000101 FL-SCR-000101
+    - generic [ref=e689]:
+      - button "Назад" [ref=e690] [cursor=pointer]
+      - button "Применить" [ref=e691] [cursor=pointer]
+      - button "Отмена" [ref=e692] [cursor=pointer]
+  - group [ref=e48]:
+    - generic "Database" [ref=e49] [cursor=pointer]

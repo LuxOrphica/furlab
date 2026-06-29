@@ -139,11 +139,11 @@ function createVoronoiSaGeometry(deps) {
     const pl = placements[placementIdx];
     // Lloyd-tiling territories must not be clipped to piece body
     if (pl && pl._lloydTile) return fragPts;
-    if (!pl || !pl.pts || pl.pts.length < 3) return fragPts;
+    if (!pl || !pl.corePts || pl.corePts.length < 3) return fragPts;
     try {
       const ci = new ClipperLib.Clipper();
       ci.AddPath(toClipper(fragPts), ClipperLib.PolyType.ptSubject, true);
-      ci.AddPath(toClipper(pl.pts), ClipperLib.PolyType.ptClip, true);
+      ci.AddPath(toClipper(pl.corePts), ClipperLib.PolyType.ptClip, true);
       const iSol = new ClipperLib.Paths();
       ci.Execute(
         ClipperLib.ClipType.ctIntersection,

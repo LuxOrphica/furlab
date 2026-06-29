@@ -92,11 +92,7 @@ function computeResultInvariants(args) {
       const coreArea = (rp.alignedCoreContour && rp.alignedCoreContour.length >= 3)
         ? multiPolygonArea(pointsToMultiPolygon(rp.alignedCoreContour))
         : 0;
-      if (allowanceMm > 0 && coreArea >= pieceArea * 0.99) {
-        // INV4 срабатывает только если allowanceMm > 0 (инсет должен был примениться, но не применился).
-        // При allowanceMm=0 ядро = тело по контракту v5.0 — это норма, не warning.
-        warnings.push(`INV4_FAIL: piece=${rp.scrapPieceId} coreArea=${Math.round(coreArea)} >= pieceArea=${Math.round(pieceArea)} (inset not applied)`);
-      }
+      // v5.1: INV4 убран. Ядро = тело по определению, coreArea == pieceArea — норма.
     }
   }
 

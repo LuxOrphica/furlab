@@ -266,8 +266,8 @@ function buildTerritoryOutput(args) {
       x: pl.cx,
       y: pl.cy,
       angleDeg: pl.angleDeg,
-      alignedContour: pl.pts,
-      alignedCoreContour: pl.corePts,
+      alignedContour: pl.pts, // v5.1: тело (с припуском) — для отображения
+      alignedCoreContour: pl.corePts, // ядро (без припуска) — для покрытия/валидации
       rawTerritoryContour: cellPts,
       inZoneContour,
       inZoneCoreContour: inZoneContour,

@@ -3786,12 +3786,19 @@ function renderSplitEvents(events) {
       return String(state.layoutMode || "") === "inventory_manual";
     }
 
+    // Also true for NFP SA when manual-edit overlay is enabled (остаток инвентаря в лотке)
+    function isInventoryEditMode() {
+      return isManualInventoryMode() ||
+        (String(state.layoutMode || "") === "inventory_nfp_sa" &&
+         !!(state.layoutRun && state.layoutRun.enableManualEdit));
+    }
+
     function renderInventoryManualPanel() {
       syncInventoryStep2ModeUi();
       const root = byId("inventoryManualPanel");
       if (!root) return;
-      root.style.display = isManualInventoryMode() ? "block" : "none";
-      if (!isManualInventoryMode()) return;
+      root.style.display = isInventoryEditMode() ? "block" : "none";
+      if (!isInventoryEditMode()) return;
 
       const metricsEl = byId("inventoryManualMetrics");
       const stateEl = byId("inventoryManualState");
@@ -3978,7 +3985,7 @@ function renderSplitEvents(events) {
     }
 
     async function evaluateManualActivePieceNow() {
-      if (!isManualInventoryMode()) return;
+      if (!isInventoryEditMode()) return;
       const manual = state.layoutRun && state.layoutRun.manual ? state.layoutRun.manual : null;
       const ap = manual && manual.activePiece ? manual.activePiece : null;
       const zone = getManualZone(ap.points);
@@ -4070,7 +4077,7 @@ function renderSplitEvents(events) {
     }
 
     async function ensureManualPlacementsCoreContours() {
-      if (!isManualInventoryMode()) return;
+      if (!isInventoryEditMode()) return;
       const zone = getManualZone();
       if (!zone) return;
       const placements = Array.isArray(state.layoutRun && state.layoutRun.placements) ? state.layoutRun.placements : [];
@@ -4113,7 +4120,7 @@ function renderSplitEvents(events) {
     }
 
     function activateManualPieceFromCandidate(candidate, anchorWorld) {
-      if (!isManualInventoryMode()) return;
+      if (!isInventoryEditMode()) return;
       const c = candidate && typeof candidate === "object" ? candidate : null;
       if (!c) return;
       const contourRaw = parseScrapContourPoints(c.scrapContour);
@@ -4144,7 +4151,7 @@ function renderSplitEvents(events) {
     }
 
     function addManualPlacementFromCandidate(candidate, anchorWorld) {
-      if (!isManualInventoryMode()) return null;
+      if (!isInventoryEditMode()) return null;
       const c = candidate && typeof candidate === "object" ? candidate : null;
       if (!c) return null;
       const contour = toPointList(parseScrapContourPoints(c.scrapContour));
@@ -4232,7 +4239,7 @@ function renderSplitEvents(events) {
     }
 
     async function commitInventoryManualActivePiece() {
-      if (!isManualInventoryMode()) return;
+      if (!isInventoryEditMode()) return;
       const manual = state.layoutRun && state.layoutRun.manual ? state.layoutRun.manual : null;
       const ap = manual && manual.activePiece ? manual.activePiece : null;
       if (!ap || !Array.isArray(ap.points) || ap.points.length < 3) return;
@@ -4290,7 +4297,7 @@ function renderSplitEvents(events) {
     }
 
     async function recomputeInventoryManualVisibility() {
-      if (!isManualInventoryMode()) return false;
+      if (!isInventoryEditMode()) return false;
       state.layoutRun.manual = state.layoutRun.manual || { suggestions: [], lastMetrics: null, selectedCandidateTag: "", activePiece: null, lastEvalContours: null, statusNote: "", selectedPlacementIndex: -1 };
       const recomputeSeq = Number(state.layoutRun.manual.recomputeSeq || 0) + 1;
       state.layoutRun.manual.recomputeSeq = recomputeSeq;
@@ -4649,7 +4656,7 @@ function renderSplitEvents(events) {
     }
 
     async function requestManualRecomputeFromUi() {
-      if (!isManualInventoryMode()) return false;
+      if (!isInventoryEditMode()) return false;
       state.layoutRun.manual = state.layoutRun.manual || { suggestions: [], lastMetrics: null, selectedCandidateTag: "", activePiece: null, lastEvalContours: null, statusNote: "", selectedPlacementIndex: -1 };
       const manual = state.layoutRun.manual;
       manual.recomputeUiQueue = Math.max(0, Number(manual.recomputeUiQueue || 0)) + 1;
@@ -4740,7 +4747,7 @@ function renderSplitEvents(events) {
     }
 
     function updateManualStatsFromPlacements() {
-      if (!isManualInventoryMode()) return;
+      if (!isInventoryEditMode()) return;
       const placements = Array.isArray(state.layoutRun.placements) ? state.layoutRun.placements : [];
       byId("invTotalFragments").textContent = String(placements.length);
       const gain = placements.reduce((a, p) => a + Number(p && p.gainAreaMm2 || 0), 0);
@@ -4756,7 +4763,7 @@ function renderSplitEvents(events) {
     }
 
     async function requestInventoryManualSuggestions() {
-      if (!isManualInventoryMode()) return;
+      if (!isInventoryEditMode()) return;
       const selectedLayout = getSelectedLayoutEntry();
       const boundZoneId = Number(selectedLayout && String(selectedLayout.mode || "") === "inventory_manual" ? selectedLayout.boundZoneId : 0) || 0;
       const zone = state.zones.find((z) => Number(z.id) === Number(boundZoneId || state.layoutRun.selectedZoneId || state.selectedZoneId));
@@ -4782,7 +4789,7 @@ function renderSplitEvents(events) {
     }
 
     async function applyInventoryManualSuggestion(index) {
-      if (!isManualInventoryMode()) return;
+      if (!isInventoryEditMode()) return;
       const list = Array.isArray(state.layoutRun && state.layoutRun.manual && state.layoutRun.manual.suggestions)
         ? state.layoutRun.manual.suggestions
         : [];
@@ -4806,7 +4813,7 @@ function renderSplitEvents(events) {
     }
 
     function removeInventoryManualPlacementByIndex(index, noteText) {
-      if (!isManualInventoryMode()) return false;
+      if (!isInventoryEditMode()) return false;
       const placements = Array.isArray(state.layoutRun.placements) ? state.layoutRun.placements.slice() : [];
       const idx = Number(index);
       if (!Number.isFinite(idx) || idx < 0 || idx >= placements.length) return false;
@@ -4830,7 +4837,7 @@ function renderSplitEvents(events) {
     }
 
     function moveInventoryManualPlacementZ(index, direction) {
-      if (!isManualInventoryMode()) return false;
+      if (!isInventoryEditMode()) return false;
       const placements = Array.isArray(state.layoutRun.placements) ? state.layoutRun.placements.slice() : [];
       const idx = Number(index);
       const dir = Number(direction);
@@ -4853,7 +4860,7 @@ function renderSplitEvents(events) {
     }
 
     function moveInventoryManualPlacementToEdge(index, where) {
-      if (!isManualInventoryMode()) return false;
+      if (!isInventoryEditMode()) return false;
       const placements = Array.isArray(state.layoutRun.placements) ? state.layoutRun.placements.slice() : [];
       const idx = Number(index);
       if (!Number.isFinite(idx) || idx < 0 || idx >= placements.length) return false;
@@ -4882,7 +4889,7 @@ function renderSplitEvents(events) {
     }
 
     function rotateInventoryManualPlacement(index, deltaDeg) {
-      if (!isManualInventoryMode()) return false;
+      if (!isInventoryEditMode()) return false;
       const placements = Array.isArray(state.layoutRun.placements) ? state.layoutRun.placements : [];
       const idx = Number(index);
       const dd = Number(deltaDeg);
@@ -4961,7 +4968,7 @@ function renderSplitEvents(events) {
     }
 
     async function undoInventoryManualPlacement() {
-      if (!isManualInventoryMode()) return;
+      if (!isInventoryEditMode()) return;
       const undoStack = Array.isArray(state.layoutRun && state.layoutRun.manualUndoStack) ? state.layoutRun.manualUndoStack : [];
       if (undoStack.length > 0) {
         const cmd = undoStack.pop();
@@ -4986,7 +4993,7 @@ function renderSplitEvents(events) {
     }
 
     function redoInventoryManualPlacement() {
-      if (!isManualInventoryMode()) return;
+      if (!isInventoryEditMode()) return;
       const redoStack = Array.isArray(state.layoutRun && state.layoutRun.manualRedoStack) ? state.layoutRun.manualRedoStack : [];
       if (!redoStack.length) return;
       const cmd = redoStack.pop();
@@ -6725,7 +6732,11 @@ function renderSplitEvents(events) {
       state.layoutRun.selectedZoneId = Number(zone.id || 0) || null;
       state.layoutRun.fragments = clipFragmentsByZoneDomain(fragments, zone);
       state.layoutRun.placements = placements;
-      state.layoutRun.candidatePool = [];
+      // Remaining inventory: candidates NOT placed by greedy → loaded into лоток for drag-drop editing
+      const _placedTags = new Set(placements.map((p) => String(p.inventoryTag || p.scrapPieceId || "")));
+      const _unusedCandidates = allCandidates.filter((c) => !_placedTags.has(String(c.inventoryTag || c.id || "")));
+      state.layoutRun.candidatePool = _unusedCandidates;
+      state.layoutRun.enableManualEdit = true;
       state.layoutRun.manual = { suggestions: [], lastMetrics: null, selectedCandidateTag: "", activePiece: null, lastEvalContours: null, statusNote: "", selectedPlacementIndex: -1 };
       state.selectedFragmentId = null;
       const _nfpSaSeams = (() => {
@@ -6784,8 +6795,9 @@ function renderSplitEvents(events) {
       if (applyBtn) { applyBtn.disabled = false; applyBtn.title = ""; }
       hideInventoryProgress();
       closeInventoryStep1();
-      byId("workspaceInfo").textContent = `NFP Greedy: ${nPlacements} кусков, покрытие ${covPct}%`;
+      byId("workspaceInfo").textContent = `NFP Greedy: ${nPlacements} кусков, покрытие ${covPct}%, лоток: ${_unusedCandidates.length}`;
       openInventoryStep2();
+      renderInventoryManualPanel();
       renderScene();
     }
 

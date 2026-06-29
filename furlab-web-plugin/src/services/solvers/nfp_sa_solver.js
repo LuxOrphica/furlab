@@ -150,25 +150,28 @@ function createNfpSaSolver(deps) {
   // Each iteration: sample 30 uncovered anchors × all pieces × 3 angles.
   // ~9900 raster evals per iteration — completes in < 1s for 100 pieces.
 
-  async function greedyCoverage(pieces, spec, zoneMask, zoneCells, zonePts, zoneBbox, rng, _K, napTarget, napTol, minFragMm2, onProgress) {
+  async function greedyCoverage(pieces, spec, zoneMask, zoneCells, zonePts, zoneBbox, rng, _K, napTarget, napTol, minFragMm2, onProgress, allowReuse) {
     const placements = [];
     const usedIds = new Set();
+    const reuseCount = {}; // piece.id → how many copies placed
     const uncoveredMask = zoneMask.slice();
     let uncoveredCells = zoneCells;
     let iteration = 0;
-    const ANGLE_PROBES = [0, -1, 1];
-    const ANCHORS_PER_ITER = 30;
-    // minCells: raster-only small-fragment guard (no polygon ops in greedy loop)
-    const minCells = minFragMm2 > 0 ? Math.max(1, Math.ceil(minFragMm2 / (spec.r * spec.r))) : 0;
+    // In reuse mode: more angle probes to fill edge gaps; no minCells cutoff
+    const ANGLE_PROBES = allowReuse ? [0, -1, 1, -2, 2, -3, 3, 4, -4] : [0, -1, 1];
+    const ANCHORS_PER_ITER = allowReuse ? 50 : 30;
+    const minCells = (!allowReuse && minFragMm2 > 0) ? Math.max(1, Math.ceil(minFragMm2 / (spec.r * spec.r))) : 0;
+    // Safety cap: prevent infinite loop (reuse mode can run many iterations)
+    const MAX_ITERATIONS = allowReuse ? pieces.length * 20 : pieces.length * 3;
 
-    while (uncoveredCells > 0) {
-      const freePieces = pieces.filter(p => !usedIds.has(p.id));
+    while (uncoveredCells > 0 && iteration < MAX_ITERATIONS) {
+      const freePieces = allowReuse ? pieces : pieces.filter(p => !usedIds.has(p.id));
       if (!freePieces.length) break;
 
       const anchors = sampleUncoveredAnchors(uncoveredMask, spec, rng, ANCHORS_PER_ITER);
       if (!anchors.length) break;
 
-      let bestPl = null, bestGain = 0;
+      let bestPl = null, bestGain = 0, bestPiece = null;
       for (const piece of freePieces) {
         const angleBase = normalizeDeg(napTarget - piece.napDeg);
         for (const anchor of anchors) {
@@ -177,7 +180,7 @@ function createNfpSaSolver(deps) {
             if (Math.abs(deltaDeg(normalizeDeg(napTarget - piece.napDeg), angle)) > napTol) continue;
             const pl = makePlacement(piece, anchor.x, anchor.y, angle, spec, zoneMask);
             const gain = countGain(pl.activeCells, uncoveredMask);
-            if (gain > bestGain) { bestGain = gain; bestPl = pl; }
+            if (gain > bestGain) { bestGain = gain; bestPl = pl; bestPiece = piece; }
           }
         }
       }
@@ -185,8 +188,16 @@ function createNfpSaSolver(deps) {
       if (!bestPl || bestGain === 0) break;
       if (minCells > 0 && bestGain < minCells) break;
 
+      // In reuse mode: generate unique ID for each copy placed
+      if (allowReuse && bestPiece) {
+        reuseCount[bestPiece.id] = (reuseCount[bestPiece.id] || 0) + 1;
+        if (reuseCount[bestPiece.id] > 1) {
+          bestPl = Object.assign({}, bestPl, { id: `${bestPiece.id}_x${reuseCount[bestPiece.id]}` });
+        }
+      }
+
       placements.push(bestPl);
-      usedIds.add(bestPl.id);
+      if (!allowReuse) usedIds.add(bestPl.id);
       for (const idx of bestPl.activeCells) uncoveredMask[idx] = 0;
       uncoveredCells = Math.max(0, uncoveredCells - bestGain);
       iteration++;
@@ -463,7 +474,7 @@ function createNfpSaSolver(deps) {
     const minFragMm2 = minWidthMm > 0 ? minWidthMm * minWidthMm : 0;
     const placements = await greedyCoverage(
       pieces, spec, zoneMask, zoneCells, zonePoints, zoneBbox,
-      rng, null, napTarget, napTol, minFragMm2, onProgress
+      rng, null, napTarget, napTol, minFragMm2, onProgress, allowThinPlacements
     );
 
     return formatResult(placements, zonePoints, zoneArea, options);

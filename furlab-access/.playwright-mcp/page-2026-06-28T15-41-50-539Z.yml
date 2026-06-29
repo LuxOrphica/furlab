@@ -1,0 +1,95 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - heading "ROAR" [level=1] [ref=e4]
+      - paragraph [ref=e5]: Локальный редактор музыкальных тегов
+    - link "Публичные альбомы" [ref=e6] [cursor=pointer]:
+      - /url: /listen
+  - main [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]: Папка с музыкой
+        - textbox "Папка с музыкой" [ref=e11]:
+          - /placeholder: ./data/library
+        - button "Выбрать" [ref=e12] [cursor=pointer]
+      - generic [ref=e13]:
+        - button "Обновить" [ref=e14] [cursor=pointer]
+        - button "Новая папка" [ref=e15] [cursor=pointer]
+        - generic [ref=e16] [cursor=pointer]:
+          - checkbox "Только аудио" [checked]
+          - generic [ref=e17]: ✓
+          - generic [ref=e18]: Только аудио
+        - generic [ref=e19]: Обновление проводника...
+        - group "Плотность списка" [ref=e20]:
+          - button "Обычный список" [pressed] [ref=e21] [cursor=pointer]:
+            - img [ref=e22]
+          - button "Компактный список" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+      - paragraph [ref=e28]: "Перетащите файл на папку: из дерева переместит, извне загрузит в папку."
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - heading "Выберите трек" [level=2] [ref=e31]
+        - generic [ref=e32]:
+          - generic [ref=e33] [cursor=pointer]:
+            - checkbox "Публ. трек" [disabled]
+            - generic [ref=e35]: Публ. трек
+          - combobox [disabled] [ref=e36]:
+            - option "Не слушал" [selected]
+            - option "Хорошо"
+            - option "Интересно"
+            - option "В работе"
+            - option "Непонятно"
+            - option "Плохо"
+      - group "Режим правой панели" [ref=e39]:
+        - button "Прослушивание" [pressed] [ref=e40] [cursor=pointer]
+        - button "Вырезка" [ref=e41] [cursor=pointer]
+      - generic [ref=e42]:
+        - button "+ Тег" [disabled] [ref=e43]
+        - button "Сохранить" [disabled] [ref=e44]
+        - button "Копировать теги" [disabled] [ref=e45]
+      - generic [ref=e46]:
+        - button "Добавить обложку" [disabled] [ref=e47]
+        - button "Удалить обложку" [disabled] [ref=e48]
+      - paragraph
+      - complementary [ref=e49]:
+        - paragraph [ref=e50]: Шпаргалка ID3
+        - generic [ref=e51]:
+          - generic [ref=e52]: TIT2 Название
+          - generic [ref=e53]: TPE1 Исполнитель
+          - generic [ref=e54]: TALB Альбом
+          - generic [ref=e55]: TRCK Номер трека
+          - generic [ref=e56]: TDRC Год/дата
+          - generic [ref=e57]: TCON Жанр
+          - generic [ref=e58]: COMM Комментарий
+          - generic [ref=e59]: USLT Текст песни
+          - generic [ref=e60]: WOAS Ссылка
+          - generic [ref=e61]: TSSE Кодировщик
+          - generic [ref=e62]: TENC Кем закодировано
+          - generic [ref=e63]: APIC Обложка
+      - generic [ref=e64]:
+        - paragraph [ref=e65]: Массовая замена (по текущей папке)
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: Ключ тега
+            - textbox "Опционально, например TIT2" [ref=e69]
+          - generic [ref=e70]:
+            - generic [ref=e71]: Режим
+            - generic [ref=e72] [cursor=pointer]:
+              - checkbox "С учетом регистра"
+              - generic [ref=e74]: С учетом регистра
+          - generic [ref=e75]:
+            - generic [ref=e76]: Найти
+            - textbox "Текст для поиска" [ref=e77]
+          - generic [ref=e78]:
+            - generic [ref=e79]: Заменить на
+            - textbox "Новый текст" [ref=e80]
+        - generic [ref=e81]:
+          - button "Найти" [ref=e82] [cursor=pointer]
+          - button "Заменить" [ref=e83] [cursor=pointer]
+        - paragraph
+      - generic [ref=e84]:
+        - paragraph [ref=e85]: Копировать теги MP3 → WAV (текущая папка)
+        - paragraph [ref=e86]: Найдёт пары файлов с одинаковым именем (.mp3 и .wav) и перенесёт теги из MP3 в WAV.
+        - generic [ref=e87]:
+          - button "Проверить пары" [ref=e88] [cursor=pointer]
+          - button "Скопировать теги" [ref=e89] [cursor=pointer]

@@ -287,8 +287,8 @@ function createAbsorbedPlacementFromPiece(args) {
   if (args.minWidthMm > 0 && compPts && compPts.length >= 3) {
     if (minBoundingRectShorter(compPts) <= args.minWidthMm) return false;
   }
-  const pieceArea = pl.pts && pl.pts.length >= 3
-    ? args.multiPolygonArea(args.pointsToMultiPolygon(pl.pts))
+  const pieceArea = pl.corePts && pl.corePts.length >= 3
+    ? args.multiPolygonArea(args.pointsToMultiPolygon(pl.corePts))
     : compArea;
   args.resultPlacements.push({
     placementId: `${pl.id}_abs${args.absorbed + 1}`,
@@ -297,7 +297,7 @@ function createAbsorbedPlacementFromPiece(args) {
     x: pl.cx,
     y: pl.cy,
     angleDeg: pl.angleDeg,
-    alignedContour: pl.pts,
+    alignedContour: pl.pts, // v5.1: тело (с припуском) — для отображения
     inZoneContour: compPts,
     alignedCoreContour: pl.corePts,
     inZoneCoreContour: args.coreFragmentForTerritory(compPts, args.placementIndex, args.placements),
@@ -511,7 +511,7 @@ function createVoronoiSaFragmentPostprocess(deps) {
       const gapTerPts = outerRing.map(p => ({ x: p.X / scale, y: p.Y / scale }));
       if (gapTerPts.length < 3) continue;
 
-      const pieceMp = pointsToMultiPolygon(placements[j].pts);
+      const pieceMp = pointsToMultiPolygon(placements[j].corePts);
       const gapTerMp = pointsToMultiPolygon(gapTerPts);
       let fillMp;
       try { fillMp = intersectMulti(pieceMp, gapTerMp); } catch (_) { continue; }
@@ -590,8 +590,8 @@ function createVoronoiSaFragmentPostprocess(deps) {
       const cx = ox + (idx % nx + 0.5) * r;
       const cy = oy + ((idx / nx | 0) + 0.5) * r;
       for (let j = 0; j < placements.length; j++) {
-        const fm = placements[j].fullMask;
-        if (!fm || !(fm[idx] & absorptionCriterion)) continue;
+        const fm = placements[j].mask;
+        if (!fm || !(fm[idx] & 1)) continue;
         const dx = cx - placements[j].cx, dy = cy - placements[j].cy;
         const d = dx * dx + dy * dy;
         if (d < bestDist) { bestDist = d; bestJ = j; }
