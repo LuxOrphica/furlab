@@ -105,10 +105,11 @@
       const hasCoverage = Number.isFinite(Number(kpiState.coverage));
       const hasIters = Number.isFinite(Number(kpiState.iters));
       const hasPhase = kpiState.phase != null;
+      const hasTemp = Number.isFinite(Number(kpiState.temperature));
       if (piecesEl) piecesEl.textContent = hasPieces ? String(Math.max(0, Math.round(Number(kpiState.pieces)))) : "-";
       if (covEl) covEl.textContent = hasCoverage ? Number(kpiState.coverage).toFixed(1) + "%" : "-";
       if (itersEl) itersEl.textContent = hasIters ? String(Math.round(Number(kpiState.iters))) : "-";
-      if (tempEl) tempEl.textContent = hasPhase ? String(kpiState.phase) : "-";
+      if (tempEl) tempEl.textContent = hasTemp ? Number(kpiState.temperature).toExponential(2) : (hasPhase ? String(kpiState.phase) : "-");
     }
 
     function resetKpis() {
