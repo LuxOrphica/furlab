@@ -157,12 +157,13 @@ function createNfpSaSolver(deps) {
     const uncoveredMask = zoneMask.slice();
     let uncoveredCells = zoneCells;
     let iteration = 0;
-    // In reuse mode: more angle probes to fill edge gaps; no minCells cutoff
-    const ANGLE_PROBES = allowReuse ? [0, -1, 1, -2, 2, -3, 3, 4, -4] : [0, -1, 1];
-    const ANCHORS_PER_ITER = allowReuse ? 50 : 30;
+    // Reuse mode: same probes/anchors as normal — keeping it light for performance.
+    // Gap-fill by running extra iterations after inventory is exhausted.
+    const ANGLE_PROBES = [0, -1, 1];
+    const ANCHORS_PER_ITER = 30;
     const minCells = (!allowReuse && minFragMm2 > 0) ? Math.max(1, Math.ceil(minFragMm2 / (spec.r * spec.r))) : 0;
-    // Safety cap: prevent infinite loop (reuse mode can run many iterations)
-    const MAX_ITERATIONS = allowReuse ? pieces.length * 20 : pieces.length * 3;
+    // Reuse cap: enough to fill gaps without blowing up (120 pieces → 360 extra iters max)
+    const MAX_ITERATIONS = allowReuse ? pieces.length * 3 + 200 : pieces.length * 3;
 
     while (uncoveredCells > 0 && iteration < MAX_ITERATIONS) {
       const freePieces = allowReuse ? pieces : pieces.filter(p => !usedIds.has(p.id));
