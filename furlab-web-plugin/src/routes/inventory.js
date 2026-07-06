@@ -77,7 +77,8 @@ async function handleInventoryRoute(req, res, reqUrl, deps) {
     maxSpanMm: safeNum(body.maxSpanMm),
     thresholdBasis: body && body.thresholdBasis && typeof body.thresholdBasis === "object"
       ? body.thresholdBasis
-      : null
+      : null,
+    layoutNormalizeScrapContour: directInventory === true
   };
 
   const payloadPath = path.join(TMP_DIR, `inventory_candidates_${Date.now()}_${crypto.randomUUID()}.json`);

@@ -398,6 +398,27 @@
       pl.inZoneCoreContours = mapContours(pl.inZoneCoreContours, rotOne);
       pl.usedVisibleContours = mapContours(pl.usedVisibleContours, rotOne);
     }
+    function normalizeDeg(v) {
+      let x = Number(v);
+      if (!Number.isFinite(x)) return null;
+      x %= 360;
+      if (x < 0) x += 360;
+      return x;
+    }
+    function rotateNapMeta(item, deltaDeg) {
+      if (!item) return;
+      const prevRot = Number.isFinite(Number(item.alignRotationDeg))
+        ? Number(item.alignRotationDeg)
+        : (Number.isFinite(Number(item.rotationDeg)) ? Number(item.rotationDeg) : 0);
+      const nextRot = prevRot + Number(deltaDeg || 0);
+      item.alignRotationDeg = nextRot;
+      const baseNap = Number.isFinite(Number(item.napDirectionDeg))
+        ? Number(item.napDirectionDeg)
+        : (Number.isFinite(Number(item.candidate && item.candidate.napDirectionDeg))
+          ? Number(item.candidate.napDirectionDeg)
+          : null);
+      if (baseNap !== null) item.napEffectiveDeg = normalizeDeg(baseNap + nextRot);
+    }
 
     function attach() {
       stage.on("contextmenu", (e) => {
@@ -449,6 +470,7 @@
             const stepDeg = e.evt.deltaY < 0 ? 5 : -5;
             const center = centroid(selPlacement.alignedContour);
             rotatePlacementGeometry(selPlacement, (stepDeg * Math.PI) / 180, center);
+            rotateNapMeta(selPlacement, stepDeg);
             if (manual) manual.statusNote = "кусок повернут";
             renderInventoryManualPanel();
             renderScene();
@@ -460,6 +482,7 @@
             const center = centroid(ap.points);
             const rotated = rotatePoints(ap.points, (stepDeg * Math.PI) / 180, center);
             updateManualActivePiecePoints(rotated);
+            rotateNapMeta(ap, stepDeg);
             renderScene();
             return;
           }
@@ -1388,4 +1411,3 @@ setVertexDebug("mousedown edit-vertex hit", {
     createStageInteractions
   });
 })(window);
-

@@ -4133,6 +4133,11 @@ function renderSplitEvents(events) {
         : zoneCenter;
       const partCenter = centroid(contour);
       const moved = translatePoints(contour, targetCenter.x - partCenter.x, targetCenter.y - partCenter.y);
+      const baseNapDeg = Number.isFinite(Number(c.napDirectionDeg))
+        ? normalizeDeg(c.napDirectionDeg, DEFAULT_NAP_DIRECTION_DEG)
+        : (Number.isFinite(Number(c.napDirection))
+          ? normalizeDeg(c.napDirection, DEFAULT_NAP_DIRECTION_DEG)
+          : DEFAULT_NAP_DIRECTION_DEG);
       state.layoutRun.manual = state.layoutRun.manual || { suggestions: [], lastMetrics: null, selectedCandidateTag: "", activePiece: null, lastEvalContours: null, statusNote: "", selectedPlacementIndex: -1 };
       state.layoutRun.manual.selectedCandidateTag = String(c.inventoryTag || c.id || "");
       state.layoutRun.manual.activePiece = {
@@ -4141,7 +4146,10 @@ function renderSplitEvents(events) {
         candidate: c,
         points: moved,
         center: centroid(moved),
-        rotationDeg: 0
+        rotationDeg: 0,
+        alignRotationDeg: 0,
+        napDirectionDeg: baseNapDeg,
+        napEffectiveDeg: baseNapDeg
       };
       state.layoutRun.manual.statusNote = "не зафиксирован";
       state.layoutRun.manual.lastMetrics = null;
@@ -4165,6 +4173,11 @@ function renderSplitEvents(events) {
       const moved = translatePoints(contour, targetCenter.x - partCenter.x, targetCenter.y - partCenter.y);
       state.layoutRun.manual = state.layoutRun.manual || { suggestions: [], lastMetrics: null, selectedCandidateTag: "", activePiece: null, lastEvalContours: null, statusNote: "", selectedPlacementIndex: -1 };
       const nextId = (state.layoutRun.placements || []).length + 1;
+      const baseNapDeg = Number.isFinite(Number(c.napDirectionDeg))
+        ? normalizeDeg(c.napDirectionDeg, DEFAULT_NAP_DIRECTION_DEG)
+        : (Number.isFinite(Number(c.napDirection))
+          ? normalizeDeg(c.napDirection, DEFAULT_NAP_DIRECTION_DEG)
+          : DEFAULT_NAP_DIRECTION_DEG);
       const p = {
         status: "matched",
         fragmentId: nextId,
@@ -4177,6 +4190,10 @@ function renderSplitEvents(events) {
         inventoryTag: String(c.inventoryTag || c.id || ""),
         scrapPieceId: String(c.scrapPieceId || c.id || ""),
         materialId: String(c.materialId || ""),
+        candidate: c,
+        alignRotationDeg: 0,
+        napDirectionDeg: baseNapDeg,
+        napEffectiveDeg: baseNapDeg,
         alignedContour: moved,
         inZoneContour: moved.slice(),
         inZoneContours: [],
@@ -4264,6 +4281,14 @@ function renderSplitEvents(events) {
       const inZoneCoreContour = multiLargestOuterPoints(inZoneCoreMp);
       const coreWorldMp = manual && manual.lastEvalContours ? manual.lastEvalContours.coreWorld : [];
       const alignedCoreContour = multiLargestOuterPoints(coreWorldMp);
+      const baseNapDeg = Number.isFinite(Number(ap.napDirectionDeg))
+        ? normalizeDeg(ap.napDirectionDeg, DEFAULT_NAP_DIRECTION_DEG)
+        : (Number.isFinite(Number(ap.candidate && ap.candidate.napDirectionDeg))
+          ? normalizeDeg(ap.candidate.napDirectionDeg, DEFAULT_NAP_DIRECTION_DEG)
+          : DEFAULT_NAP_DIRECTION_DEG);
+      const alignRotationDeg = Number.isFinite(Number(ap.alignRotationDeg))
+        ? Number(ap.alignRotationDeg)
+        : (Number.isFinite(Number(ap.rotationDeg)) ? Number(ap.rotationDeg) : 0);
       const p = {
         status: "matched",
         fragmentId: nextId,
@@ -4275,6 +4300,10 @@ function renderSplitEvents(events) {
         scrapAreaMm2: Number(mm.pieceAreaMm2 || 0),
         inventoryTag: String(ap.inventoryTag || ""),
         scrapPieceId: String(ap.scrapPieceId || ""),
+        candidate: ap.candidate || null,
+        alignRotationDeg,
+        napDirectionDeg: baseNapDeg,
+        napEffectiveDeg: normalizeDeg(baseNapDeg + alignRotationDeg, DEFAULT_NAP_DIRECTION_DEG),
         alignedContour: toPointList(ap.points),
         alignedCoreContour,
         alignedCoreContours: Array.isArray(coreWorldMp) ? coreWorldMp : [],
@@ -4712,10 +4741,13 @@ function renderSplitEvents(events) {
               const contour = Array.isArray(p.alignedContour) ? p.alignedContour : [];
               const cx = contour.length ? contour.reduce((s, pt) => s + (pt.x || 0), 0) / contour.length : 0;
               const cy = contour.length ? contour.reduce((s, pt) => s + (pt.y || 0), 0) / contour.length : 0;
+              const rotationDeg = Number.isFinite(Number(p.alignRotationDeg))
+                ? Number(p.alignRotationDeg)
+                : (Number.isFinite(Number(p.rotationDeg)) ? Number(p.rotationDeg) : 0);
               return {
                 inventoryTag: String(p.inventoryTag || ""),
                 scrapPieceId: String(p.scrapPieceId || ""),
-                rotationDeg: Number.isFinite(Number(p.rotationDeg || p.alignRotationDeg)) ? Number(p.rotationDeg || p.alignRotationDeg) : 0,
+                rotationDeg,
                 offsetXmm: Math.round(cx * 10) / 10,
                 offsetYmm: Math.round(cy * 10) / 10,
                 resultContourSnapshot: contour.length ? JSON.stringify(contour) : null

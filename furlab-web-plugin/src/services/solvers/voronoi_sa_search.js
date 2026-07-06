@@ -526,20 +526,13 @@ function createVoronoiSaSearch(deps) {
         newPlacements = placements.map((p, i) => (i === ki ? np : p));
       } else if (move === MOVES.ROTATE && placements.length > 0) {
         const ki = rng.nextInt(placements.length);
-        const old = placements[ki];
-        const piece = findPiece(selectedPieces, old.id);
-        const dAngle = (rng.next() * 2 - 1) * Math.min(napTol, 10);
-        const newAngle = normalizeDeg(old.angleDeg + dAngle);
-        const dev = Math.abs(deltaDeg(normalizeDeg(napTarget - piece.napDeg), newAngle));
-        if (dev <= napTol) {
-          const np = makePlacement(piece, old.cx, old.cy, newAngle, spec, zoneMask);
-          newPlacements = placements.map((p, i) => (i === ki ? np : p));
-        }
+        // R6: pieces are already normalized by nap in Access DB; solver must not rotate them.
+        void ki;
       } else if (move === MOVES.SWAP && placements.length > 0 && unusedPieces.length > 0) {
         const ki = rng.nextInt(placements.length);
         const old = placements[ki];
         const newPiece = unusedPieces[rng.nextInt(unusedPieces.length)];
-        const angle = normalizeDeg(napTarget - newPiece.napDeg);
+        const angle = 0;
         const np = makePlacement(newPiece, old.cx, old.cy, angle, spec, zoneMask);
         newPlacements = placements.map((p, i) => (i === ki ? np : p));
       } else if (move === MOVES.REMOVE && placements.length > 1) {
@@ -578,7 +571,7 @@ function createVoronoiSaSearch(deps) {
           newPiece = unusedPieces[rng.nextInt(unusedPieces.length)];
         }
 
-        const angle = normalizeDeg(napTarget - newPiece.napDeg);
+        const angle = 0;
         let pos = null;
         if (blob && rng.next() < 0.85) {
           pos = sampleAtBlob(newPiece, blob, ifpCache, zoneBbox, rng);

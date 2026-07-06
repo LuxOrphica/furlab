@@ -107,6 +107,207 @@ function hasContour(contour) {
   return s.indexOf("[") >= 0 || s.indexOf("{") >= 0 || s.indexOf(";") >= 0 || s.indexOf(",") >= 0;
 }
 
+function parseJsonObject(text) {
+  var s = String(text || "");
+  if (!s) return null;
+  try {
+    if (typeof JSON !== "undefined" && JSON && typeof JSON.parse === "function") {
+      return JSON.parse(s);
+    }
+  } catch (_) {
+    return null;
+  }
+  try {
+    return eval("(" + s + ")");
+  } catch (_) {
+    return null;
+  }
+}
+
+function normalizeDeg360(v) {
+  var n = Number(v);
+  if (!isFinite(n)) return null;
+  n = n % 360;
+  if (n < 0) n += 360;
+  return n;
+}
+
+function normalizeContourPathPoints(path) {
+  var out = [];
+  if (!path || !path.length) return out;
+  for (var i = 0; i < path.length; i++) {
+    var p = path[i] || {};
+    var x = Number(p.x);
+    var y = Number(p.y);
+    if (isFinite(x) && isFinite(y)) out.push({ x: x, y: y });
+  }
+  if (out.length > 1) {
+    var a = out[0];
+    var b = out[out.length - 1];
+    if (Math.abs(a.x - b.x) < 1e-9 && Math.abs(a.y - b.y) < 1e-9) out.pop();
+  }
+  return out;
+}
+
+function closePath(path) {
+  if (!path || path.length < 1) return [];
+  var out = path.slice();
+  var a = out[0];
+  var b = out[out.length - 1];
+  if (Math.abs(a.x - b.x) > 1e-9 || Math.abs(a.y - b.y) > 1e-9) {
+    out.push({ x: a.x, y: a.y });
+  }
+  return out;
+}
+
+function contourBBox(path) {
+  if (!path || path.length < 1) return null;
+  var minX = Infinity;
+  var minY = Infinity;
+  var maxX = -Infinity;
+  var maxY = -Infinity;
+  for (var i = 0; i < path.length; i++) {
+    var p = path[i] || {};
+    var x = Number(p.x);
+    var y = Number(p.y);
+    if (!isFinite(x) || !isFinite(y)) continue;
+    if (x < minX) minX = x;
+    if (y < minY) minY = y;
+    if (x > maxX) maxX = x;
+    if (y > maxY) maxY = y;
+  }
+  if (!isFinite(minX) || !isFinite(minY) || !isFinite(maxX) || !isFinite(maxY)) return null;
+  return { width: Math.max(0, maxX - minX), height: Math.max(0, maxY - minY) };
+}
+
+function contourArea(path) {
+  if (!path || path.length < 3) return 0;
+  var sum = 0;
+  for (var i = 0; i < path.length; i++) {
+    var a = path[i];
+    var b = path[(i + 1) % path.length];
+    sum += Number(a.x) * Number(b.y) - Number(b.x) * Number(a.y);
+  }
+  return Math.abs(sum) / 2;
+}
+
+function maxPointSpan(path) {
+  if (!path || path.length < 2) return null;
+  var max = 0;
+  for (var i = 0; i < path.length; i++) {
+    for (var j = i + 1; j < path.length; j++) {
+      var dx = Number(path[i].x) - Number(path[j].x);
+      var dy = Number(path[i].y) - Number(path[j].y);
+      var d = Math.sqrt(dx * dx + dy * dy);
+      if (d > max) max = d;
+    }
+  }
+  return max;
+}
+
+function rotatePathDeg(path, deg) {
+  var rad = Number(deg) * Math.PI / 180;
+  var c = Math.cos(rad);
+  var s = Math.sin(rad);
+  var out = [];
+  for (var i = 0; i < path.length; i++) {
+    var p = path[i];
+    out.push({
+      x: Number(p.x) * c - Number(p.y) * s,
+      y: Number(p.x) * s + Number(p.y) * c
+    });
+  }
+  return out;
+}
+
+function jsonNum(v) {
+  var n = Number(v);
+  return isFinite(n) ? String(n) : "null";
+}
+
+function jsonStringOrNull(v) {
+  if (v === null || v === undefined || v === "") return "null";
+  return '"' + esc(String(v)) + '"';
+}
+
+function contourToJson(contour) {
+  var pts = contour && contour.path && contour.path.length ? contour.path : [];
+  var pathParts = [];
+  for (var i = 0; i < pts.length; i++) {
+    pathParts.push('{"x":' + jsonNum(pts[i].x) + ',"y":' + jsonNum(pts[i].y) + "}");
+  }
+  var src = contour.source || {};
+  var met = contour.metrics || {};
+  return "{" +
+    '"units":"' + esc(contour.units || "mm") + '",' +
+    '"path":[' + pathParts.join(",") + "]," +
+    '"source":{' +
+      '"canonicalized":' + (src.canonicalized ? "true" : "false") + "," +
+      '"canonicalizationMethod":' + jsonStringOrNull(src.canonicalizationMethod) + "," +
+      '"scanSide":' + jsonStringOrNull(src.scanSide) + "," +
+      '"layoutNapAligned":' + (src.layoutNapAligned ? "true" : "false") + "," +
+      '"layoutNapTargetDeg":' + jsonNum(src.layoutNapTargetDeg) + "," +
+      '"layoutRotationDeg":' + jsonNum(src.layoutRotationDeg) +
+    "}," +
+    '"metrics":{' +
+      '"area":' + jsonNum(met.area) + "," +
+      '"bboxWidth":' + jsonNum(met.bboxWidth) + "," +
+      '"bboxHeight":' + jsonNum(met.bboxHeight) +
+    "}" +
+  "}";
+}
+
+function buildLayoutNormalizedCandidate(row, metricsJson) {
+  var metrics = parseJsonObject(metricsJson);
+  var storedContour = parseJsonObject(row.scrapContour);
+  var sourceContour = null;
+  if (metrics && metrics.contourLayout && typeof metrics.contourLayout === "object") {
+    sourceContour = metrics.contourLayout;
+  } else if (metrics && metrics.contourNapAligned && typeof metrics.contourNapAligned === "object") {
+    sourceContour = metrics.contourNapAligned;
+  } else if (metrics && metrics.contourCanonical && typeof metrics.contourCanonical === "object") {
+    sourceContour = metrics.contourCanonical;
+  } else {
+    sourceContour = storedContour;
+  }
+  if (!sourceContour || typeof sourceContour !== "object") return row;
+  var path = normalizeContourPathPoints(sourceContour.path);
+  if (path.length < 3) return row;
+
+  var nap = metrics ? normalizeDeg360(metrics.napDirectionDegCanonical) : null;
+  if (nap === null) nap = normalizeDeg360(row.napDirectionDeg);
+  if (nap === null) return row;
+
+  var alreadyLayout = !!(sourceContour.source && sourceContour.source.layoutNapAligned === true);
+  var layoutPath = alreadyLayout ? path : rotatePathDeg(path, 90 - nap);
+  var bb = contourBBox(layoutPath);
+  if (!bb) return row;
+  var layoutContour = {
+    units: String(sourceContour.units || "mm"),
+    path: closePath(layoutPath),
+    source: {
+      canonicalized: !!(sourceContour.source && sourceContour.source.canonicalized),
+      canonicalizationMethod: sourceContour.source && sourceContour.source.canonicalizationMethod ? String(sourceContour.source.canonicalizationMethod) : null,
+      scanSide: sourceContour.source && sourceContour.source.scanSide ? String(sourceContour.source.scanSide) : null,
+      layoutNapAligned: true,
+      layoutNapTargetDeg: 90,
+      layoutRotationDeg: alreadyLayout ? 0 : normalizeDeg360(90 - nap)
+    },
+    metrics: {
+      area: contourArea(layoutPath),
+      bboxWidth: bb.width,
+      bboxHeight: bb.height
+    }
+  };
+  row.scrapContour = contourToJson(layoutContour);
+  row.napDirectionDeg = 90;
+  row.areaMm2 = layoutContour.metrics.area;
+  row.bboxWidthMm = layoutContour.metrics.bboxWidth;
+  row.bboxHeightMm = layoutContour.metrics.bboxHeight;
+  row.maxSpanMm = maxPointSpan(layoutPath);
+  return row;
+}
+
 function addRejectSample(map, key, row, extra) {
   if (!map[key]) map[key] = [];
   if (map[key].length >= 5) return;
@@ -180,9 +381,10 @@ try {
   var napToleranceDeg = asNum(payload.napToleranceDeg);
   if (napToleranceDeg === null) napToleranceDeg = asNum(payload.prefilterNapToleranceDeg);
   var onlyAvailable = payload.onlyAvailable === true;
+  var layoutNormalizeScrapContour = payload.layoutNormalizeScrapContour === true;
 
   var includeScrapContour = true;
-  var sql = "SELECT id, inventoryTag, materialId, scrapStatus, scrapQuality, areaMm2, bboxWidthMm, bboxHeightMm, maxSpanMm, napDirectionDeg, updatedAt, scrapContour FROM ScrapPiece";
+  var sql = "SELECT id, inventoryTag, materialId, scrapStatus, scrapQuality, areaMm2, bboxWidthMm, bboxHeightMm, maxSpanMm, napDirectionDeg, updatedAt, scrapContour, metricsJson FROM ScrapPiece";
   sql += " ORDER BY updatedAt DESC, areaMm2 DESC;";
 
   var dao = new ActiveXObject("DAO.DBEngine.120");
@@ -233,6 +435,9 @@ try {
       hasActiveReservation: false,
       scrapContour: includeScrapContour ? (rs.Fields("scrapContour").Value || "") : ""
     };
+    if (layoutNormalizeScrapContour && includeScrapContour) {
+      row = buildLayoutNormalizedCandidate(row, rs.Fields("metricsJson").Value || "");
+    }
     if (!String(row.inventoryTag || "").replace(/^\s+|\s+$/g, "")) {
       rejectCounts.inventoryTag += 1;
       addRejectSample(rejectSamples, "inventoryTag", row, "missing_inventory_tag");
