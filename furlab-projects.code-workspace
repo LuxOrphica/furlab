@@ -74,6 +74,80 @@
     "version": "2.0.0",
     "tasks": [
       {
+        "label": "FurLab Web: Server (5600)",
+        "type": "process",
+        "command": "powershell.exe",
+        "args": [
+          "-NoLogo",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-Command",
+          "chcp 65001 | Out-Null; npm start"
+        ],
+        "options": {
+          "cwd": "F:/FURLAB/dev/furlab-web-plugin",
+          "env": {
+            "PORT": "5600",
+            "HOST": "127.0.0.1",
+            "PYTHONIOENCODING": "utf-8",
+            "PYTHONUTF8": "1"
+          }
+        },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "panel": "dedicated",
+          "clear": false,
+          "showReuseMessage": false
+        }
+      },
+      {
+        "label": "FurLab Access: UI Lab Server (5500)",
+        "type": "process",
+        "command": "powershell.exe",
+        "args": [
+          "-NoLogo",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "F:/FURLAB/dev/furlab-access/tools/start_ui_lab_server.ps1"
+        ],
+        "options": {
+          "cwd": "F:/FURLAB/dev/furlab-access",
+          "env": {
+            "PYTHONIOENCODING": "utf-8",
+            "PYTHONUTF8": "1"
+          }
+        },
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "panel": "dedicated",
+          "clear": false,
+          "showReuseMessage": false
+        }
+      },
+      {
+        "label": "FurLab: Servers",
+        "dependsOn": [
+          "FurLab Web: Server (5600)",
+          "FurLab Access: UI Lab Server (5500)"
+        ],
+        "dependsOrder": "parallel",
+        "group": "build",
+        "problemMatcher": [],
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "clear": false,
+          "showReuseMessage": false
+        }
+      },
+      {
         "label": "VSE: Dev",
         "type": "process",
         "command": "powershell.exe",

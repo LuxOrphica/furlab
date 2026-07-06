@@ -1,0 +1,142 @@
+==============================================================================
+ZONE_3 — UI vs HARNESS (maxIter=5727, seed=1782674940475)
+==============================================================================
+
+=== INPUT (zone_3_realcase.json) ===
+  zone: id=3 pts=78 holes=0
+  zone bbox: [-1273,580] -> [-823,1537]
+  pieces: 120
+  seed: 1782674940475
+  params: {'maxSolveMs': 90000, 'maxIter': 20000}
+
+=== CANDIDATE ORDER (first 10) ===
+  UI response                               harness input                           
+  [0] FL-SCR-000039      nap=  54.10   [0] FL-SCR-000039      nap=  54.10  OK
+  [1] FL-SCR-000038      nap= 356.80   [1] FL-SCR-000038      nap= 356.80  OK
+  [2] FL-SCR-000036      nap= 299.60   [2] FL-SCR-000036      nap= 299.60  OK
+  [3] FL-SCR-000020      nap= 187.20   [3] FL-SCR-000020      nap= 187.20  OK
+  [4] FL-SCR-000058      nap= 273.20   [4] FL-SCR-000058      nap= 273.20  OK
+  [5] FL-SCR-000004      nap= 250.40   [5] FL-SCR-000004      nap= 250.40  OK
+  [6] FL-SCR-000089      nap= 327.10   [6] FL-SCR-000089      nap= 327.10  OK
+  [7] FL-SCR-001001      nap=  79.19   [7] FL-SCR-001001      nap=  79.19  OK
+  [8] FL-SCR-000024      nap= 196.30   [8] FL-SCR-000024      nap= 196.30  OK
+  [9] FL-SCR-001024      nap= 110.01   [9] FL-SCR-001024      nap= 110.01  OK
+
+=== METRICS ===
+  metric                                           UI         harness       diff
+  ---------------------------------------------------------------------------
+  coveragePercent                              93.746          99.655 -5.908130061459445
+  resultStatus                                 failed              ok           
+  residualAreaMm2                               23281            1286 21995.361244000007
+  residualInteriorMm2                            5302             802       4500
+  residualPerimeterMm2                          17923             434      17489
+  placements count                                 26              24          2
+  uncoveredComponentCount                           9               7          2
+
+=== PHASE A ===
+  iters                                          5727            4701       1026
+  accepted                                       3547            1989       1558
+  exit                                phaseBudget_timeout full_coverage_polygon           
+  timeMs                                        90021           32329      57692
+  warmDurationMs                                26060           10567      15493
+  SA loop time                                  63961           21762      42199
+  SA iters/sec                                   89.5           216.0 -126.47981048659689
+
+=== INVARIANTS ===
+  UI warnings (2):
+    - INV1_FAIL: sum=365821 union=365670 diff=151 thresh=1
+    - INV5_FAIL: overlap=151 thresh=1
+  HR warnings (2):
+    - INV1_FAIL: sum=372220 union=371004 diff=1216 thresh=1
+    - INV5_FAIL: overlap=1216 thresh=1
+
+=== PLACEMENTS (UI) ===
+  [ 0] FL-SCR-000083      status=?          phase=polygon_voronoi    inZoneArea=14806
+  [ 1] FL-SCR-000038      status=?          phase=polygon_voronoi    inZoneArea=33193
+  [ 2] FL-SCR-000039      status=?          phase=polygon_voronoi    inZoneArea=29790
+  [ 3] FL-SCR-000057      status=?          phase=polygon_voronoi    inZoneArea=15583
+  [ 4] FL-SCR-000003      status=?          phase=under_threshold    inZoneArea=4664
+  [ 5] FL-SCR-000020      status=?          phase=polygon_voronoi    inZoneArea=16735
+  [ 6] FL-SCR-000017      status=?          phase=polygon_voronoi    inZoneArea=20102
+  [ 7] FL-SCR-000111      status=?          phase=polygon_voronoi    inZoneArea=7487
+  [ 8] FL-SCR-000019      status=?          phase=polygon_voronoi    inZoneArea=8682
+  [ 9] FL-SCR-000075      status=?          phase=polygon_voronoi    inZoneArea=17918
+  [10] FL-SCR-000101      status=?          phase=polygon_voronoi    inZoneArea=22828
+  [11] FL-SCR-000100      status=?          phase=polygon_voronoi    inZoneArea=9974
+  [12] FL-SCR-000045      status=?          phase=polygon_voronoi    inZoneArea=16503
+  [13] FL-SCR-000094      status=?          phase=polygon_voronoi    inZoneArea=10763
+  [14] FL-SCR-001004      status=?          phase=polygon_voronoi    inZoneArea=20527
+  [15] FL-SCR-000110      status=?          phase=polygon_voronoi    inZoneArea=8805
+  [16] FL-SCR-000025      status=?          phase=polygon_voronoi    inZoneArea=16555
+  [17] FL-SCR-000099      status=?          phase=polygon_voronoi    inZoneArea=9322
+  [18] FL-SCR-000052      status=?          phase=polygon_voronoi    inZoneArea=15955
+  [19] FL-SCR-000041      status=?          phase=polygon_voronoi    inZoneArea=13275
+  [20] FL-SCR-000024      status=?          phase=polygon_voronoi    inZoneArea=16812
+  [21] FL-SCR-000079      status=?          phase=polygon_voronoi    inZoneArea=10720
+  [22] FL-SCR-000023      status=?          phase=polygon_voronoi    inZoneArea=9076
+  [23] FL-SCR-000029      status=?          phase=polygon_voronoi    inZoneArea=4517
+  [24] FL-SCR-000092      status=?          phase=polygon_voronoi    inZoneArea=4867
+  [25] FL-SCR-000091      status=?          phase=polygon_voronoi    inZoneArea=6364
+
+=== PLACEMENTS (HARNESS) ===
+  [ 0] FL-SCR-000010      status=matched    phase=polygon_voronoi    inZoneArea=4227
+  [ 1] FL-SCR-000033      status=matched    phase=polygon_voronoi    inZoneArea=12897
+  [ 2] FL-SCR-000083      status=matched    phase=polygon_voronoi    inZoneArea=13296
+  [ 3] FL-SCR-000036      status=matched    phase=polygon_voronoi    inZoneArea=21439
+  [ 4] FL-SCR-000113      status=matched    phase=polygon_voronoi    inZoneArea=16919
+  [ 5] FL-SCR-000039      status=matched    phase=polygon_voronoi    inZoneArea=21516
+  [ 6] FL-SCR-000064      status=matched    phase=polygon_voronoi    inZoneArea=22829
+  [ 7] FL-SCR-000045      status=matched    phase=polygon_voronoi    inZoneArea=19159
+  [ 8] FL-SCR-000023      status=matched    phase=polygon_voronoi    inZoneArea=9180
+  [ 9] FL-SCR-000057      status=matched    phase=polygon_voronoi    inZoneArea=12947
+  [10] FL-SCR-000101      status=matched    phase=polygon_voronoi    inZoneArea=22257
+  [11] FL-SCR-000054      status=matched    phase=polygon_voronoi    inZoneArea=16407
+  [12] FL-SCR-000034      status=under_threshold phase=under_threshold    inZoneArea=7886
+  [13] FL-SCR-000058      status=matched    phase=polygon_voronoi    inZoneArea=30658
+  [14] FL-SCR-000112      status=matched    phase=polygon_voronoi    inZoneArea=14364
+  [15] FL-SCR-00040       status=matched    phase=polygon_voronoi    inZoneArea=11326
+  [16] FL-SCR-000117      status=matched    phase=polygon_voronoi    inZoneArea=9751
+  [17] FL-SCR-000099      status=matched    phase=polygon_voronoi    inZoneArea=17556
+  [18] FL-SCR-000067      status=matched    phase=polygon_voronoi    inZoneArea=16357
+  [19] FL-SCR-000024      status=under_threshold phase=under_threshold    inZoneArea=3142
+  [20] FL-SCR-000071      status=matched    phase=polygon_voronoi    inZoneArea=12700
+  [21] FL-SCR-000038      status=matched    phase=polygon_voronoi    inZoneArea=31687
+  [22] FL-SCR-000025      status=matched    phase=polygon_voronoi    inZoneArea=13432
+  [23] FL-SCR-000061      status=matched    phase=polygon_voronoi    inZoneArea=10287
+
+=== PLACEMENT ID COMPARISON ===
+  common: 10
+  UI only (16): ['FL-SCR-000003', 'FL-SCR-000017', 'FL-SCR-000019', 'FL-SCR-000020', 'FL-SCR-000029', 'FL-SCR-000041', 'FL-SCR-000052', 'FL-SCR-000075', 'FL-SCR-000079', 'FL-SCR-000091', 'FL-SCR-000092', 'FL-SCR-000094', 'FL-SCR-000100', 'FL-SCR-000110', 'FL-SCR-000111', 'FL-SCR-001004']
+  HR only (14): ['FL-SCR-000010', 'FL-SCR-000033', 'FL-SCR-000034', 'FL-SCR-000036', 'FL-SCR-000054', 'FL-SCR-000058', 'FL-SCR-000061', 'FL-SCR-000064', 'FL-SCR-000067', 'FL-SCR-000071', 'FL-SCR-000112', 'FL-SCR-000113', 'FL-SCR-000117', 'FL-SCR-00040']
+
+=== EFFECTIVE OPTIONS DIFF ===
+     absorptionCriterion: UI=4                               HR=4
+     allowanceMm: UI=12                              HR=12
+     gridStepMm: UI=3                               HR=3
+     layoutMode: UI='inventory_voronoi_sa'          HR='inventory_voronoi_sa'
+  !! maxIterations: UI=20000                           HR=5727
+     maxSolveMs: UI=90000                           HR=90000
+     minLengthMm: UI=70                              HR=70
+     minWidthMm: UI=70                              HR=70
+     napTarget: UI=90                              HR=90
+     napTolDeg: UI=15                              HR=15
+     numRestarts: UI=1                               HR=1
+     overhangMm: UI=75                              HR=75
+     postprocessMode: UI='full'                          HR='full'
+     seed: UI=1782674940475                   HR=1782674940475
+     solver: UI='inventory_voronoi_sa'          HR='inventory_voronoi_sa'
+     territoryMode: UI='mosaic'                        HR='mosaic'
+
+=== UNCOVERED COMPONENTS (top 5 by area) ===
+  UI:
+    area= 17923.0  bbox=[-1140,1261]->[-924,1512]
+    area=  1977.0  bbox=[-951,1047]->[-840,1206]
+    area=  1836.0  bbox=[-1176,1410]->[-1116,1493]
+    area=  1195.0  bbox=[-1119,943]->[-1052,1065]
+    area=   187.0  bbox=[-1005,1083]->[-952,1104]
+  HR:
+    area=   802.0  bbox=[-1273,1032]->[-1087,1396]
+    area=   434.0  bbox=[-1273,670]->[-1249,718]
+    area=    26.0  bbox=[-1205,1309]->[-1174,1364]
+    area=     9.0  bbox=[-1031,924]->[-1010,1001]
+    area=     8.0  bbox=[-1226,1178]->[-1179,1223]

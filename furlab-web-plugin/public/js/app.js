@@ -4077,7 +4077,7 @@ function renderSplitEvents(events) {
     }
 
     async function ensureManualPlacementsCoreContours() {
-      if (!isInventoryEditMode()) return;
+      if (!isManualInventoryMode()) return;
       const zone = getManualZone();
       if (!zone) return;
       const placements = Array.isArray(state.layoutRun && state.layoutRun.placements) ? state.layoutRun.placements : [];
@@ -6670,7 +6670,7 @@ function renderSplitEvents(events) {
           minLengthMm: Number(byId("minFragmentLengthMm") && byId("minFragmentLengthMm").value || 0),
           allowThinPlacements: true
         }
-      }, maxSolveMs + 30000);
+      }, maxSolveMs + 90000);
       closeInventoryProgressStream();
       if (!res || res.ok !== true) {
         hideInventoryProgress();
@@ -6974,6 +6974,7 @@ function renderSplitEvents(events) {
       setInventoryProgress(30, `Voronoi+SA: ${candidates.length} кандидатов, запуск солвера…`);
       byId("workspaceInfo").textContent = `Voronoi+SA: ${candidates.length} кандидатов, решаем…`;
       const maxSolveMs = 90000;
+      const previewTimeoutMs = Math.max(maxSolveMs + 60000, 12 * 60 * 1000);
       const progressToken = `voronoi_sa_${Date.now()}`;
       // Fix seed before the call so re-runs on same S are possible immediately.
       // To reset to random: delete state.layoutRun.debugSeed from console.
@@ -6997,7 +6998,7 @@ function renderSplitEvents(events) {
           minWidthMm: Number(byId("minFragmentWidthMm") && byId("minFragmentWidthMm").value || 0),
           minLengthMm: Number(byId("minFragmentLengthMm") && byId("minFragmentLengthMm").value || 0)
         }
-      }, maxSolveMs + 60000);
+      }, previewTimeoutMs);
       closeInventoryProgressStream();
       if (!res || res.ok !== true) {
         hideInventoryProgress();

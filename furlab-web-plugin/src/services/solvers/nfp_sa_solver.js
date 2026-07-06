@@ -150,7 +150,7 @@ function createNfpSaSolver(deps) {
   // Each iteration: sample 30 uncovered anchors × all pieces × 3 angles.
   // ~9900 raster evals per iteration — completes in < 1s for 100 pieces.
 
-  async function greedyCoverage(pieces, spec, zoneMask, zoneCells, zonePts, zoneBbox, rng, _K, napTarget, napTol, minFragMm2, onProgress, allowReuse) {
+  async function greedyCoverage(pieces, spec, zoneMask, zoneCells, zonePts, zoneBbox, rng, _K, napTarget, napTol, minFragMm2, onProgress, allowReuse, deadlineMs) {
     const placements = [];
     const usedIds = new Set();
     const reuseCount = {}; // piece.id → how many copies placed
@@ -166,6 +166,7 @@ function createNfpSaSolver(deps) {
     const MAX_ITERATIONS = allowReuse ? pieces.length * 3 + 200 : pieces.length * 3;
 
     while (uncoveredCells > 0 && iteration < MAX_ITERATIONS) {
+      if (deadlineMs && Date.now() > deadlineMs) break;
       const freePieces = allowReuse ? pieces : pieces.filter(p => !usedIds.has(p.id));
       if (!freePieces.length) break;
 
@@ -473,9 +474,11 @@ function createNfpSaSolver(deps) {
     // minFragMm2: polygon fragment must be >= this to place a piece.
     // Prevents raster-polygon divergence from creating tiny fragments in output.
     const minFragMm2 = minWidthMm > 0 ? minWidthMm * minWidthMm : 0;
+    const maxSolveMs = Math.max(0, Number((options && options.maxSolveMs) || 0));
+    const deadlineMs = maxSolveMs > 0 ? Date.now() + maxSolveMs : 0;
     const placements = await greedyCoverage(
       pieces, spec, zoneMask, zoneCells, zonePoints, zoneBbox,
-      rng, null, napTarget, napTol, minFragMm2, onProgress, allowThinPlacements
+      rng, null, napTarget, napTol, minFragMm2, onProgress, allowThinPlacements, deadlineMs
     );
 
     return formatResult(placements, zonePoints, zoneArea, options);

@@ -1,0 +1,37 @@
+PATCH for voronoi_sa_result.js
+================================
+
+Файл: furlab-web-plugin/src/services/solvers/voronoi_sa_result.js
+
+НАЙТИ (примерно строка 380):
+---------------------------------------------------------------------------
+    const resultInvariants = computeResultInvariants({
+      resultPlacements,
+      zonePoints,
+      zoneArea,
+      realCoveredRatio,
+      pointsToMultiPolygon,
+      multiPolygonArea,
+      allowanceMm  // v5.0: передаём allowanceMm, чтобы INV4 не срабатывал при allowanceMm=0
+    });
+---------------------------------------------------------------------------
+
+ЗАМЕНИТЬ НА:
+---------------------------------------------------------------------------
+    const resultInvariants = computeResultInvariants({
+      resultPlacements,
+      zonePoints,
+      zoneArea,
+      realCoveredRatio,
+      pointsToMultiPolygon,
+      multiPolygonArea,
+      allowanceMm,  // v5.0: передаём allowanceMm, чтобы INV4 не срабатывал при allowanceMm=0
+      minWidthMm,   // v5.1: для R5 thin fragment check
+      minLengthMm   // v5.1: для R5 thin fragment check
+    });
+---------------------------------------------------------------------------
+
+Это единственная правка в result.js — добавить 2 параметра в вызов computeResultInvariants.
+minWidthMm и minLengthMm уже определены выше в той же функции (примерно строка 190-191):
+  const minWidthMm = Math.max(0, Number((options && options.minWidthMm) || 0));
+  const minLengthMm = Math.max(0, Number((options && options.minLengthMm) || 0));

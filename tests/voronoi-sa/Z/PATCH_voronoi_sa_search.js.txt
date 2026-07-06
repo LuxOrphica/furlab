@@ -1,0 +1,71 @@
+PATCH for voronoi_sa_search.js (Step 1: maxIterations as primary budget)
+================================================================================
+
+Файл: furlab-web-plugin/src/services/solvers/voronoi_sa_search.js
+
+НАЙТИ (примерно строки 432-450):
+---------------------------------------------------------------------------
+    // v5.0 Fix тип 2: anti-infinite-loop.
+    let consecutiveAddFails = 0;
+    const ADD_FAIL_LIMIT = 200;
+
+    const warmDoneMs = Date.now();
+    const warmDurationMs = warmDoneMs - startTime;
+    let _saExitReason = "running";
+
+    // ── Главный цикл ──────────────────────────────────────────────────────────
+    // Не завершается по Tmin. Cooling на TminFloor (greedy), но цикл продолжается
+    // пока есть закрываемые дыры (правка 2 советника).
+    while (true) {
+      if (maxIterations && iters >= maxIterations) {
+        _saExitReason = "maxIterations"; break;
+      }
+      if (Date.now() >= phaseBDeadline) {
+        _saExitReason = "phaseBudget_timeout"; break;
+      }
+      iters++;
+---------------------------------------------------------------------------
+
+ЗАМЕНИТЬ НА:
+---------------------------------------------------------------------------
+    // v5.0 Fix тип 2: anti-infinite-loop.
+    let consecutiveAddFails = 0;
+    const ADD_FAIL_LIMIT = 200;
+
+    // v5.1 Fix: maxIterations — единственный основной budget.
+    // Результат не зависит от скорости машины: seed + input + code → один и тот же
+    // результат. phaseBDeadline убран как exit condition (оставлен только для phaseB Lloyd).
+    // Safety net: hard deadline 10× maxSolveMs — страховка от зависания SA
+    // (например, если ADD move зациклился на невалидных позициях).
+    // На нормальных данных SA выходит по maxIterations задолго до safety net.
+    const hardDeadlineMs = phaseBDeadline + Math.max(600000, maxSolveMs * 10);
+
+    const warmDoneMs = Date.now();
+    const warmDurationMs = warmDoneMs - startTime;
+    let _saExitReason = "running";
+
+    // ── Главный цикл ──────────────────────────────────────────────────────────
+    // Не завершается по Tmin. Cooling на TminFloor (greedy), но цикл продолжается
+    // пока есть закрываемые дыры (правка 2 советника).
+    while (true) {
+      if (maxIterations && iters >= maxIterations) {
+        _saExitReason = "maxIterations"; break;
+      }
+      // v5.1: phaseBDeadline убран как exit — SA идёт до maxIterations.
+      // Safety net: hard deadline только от зависания (10× maxSolveMs).
+      if (Date.now() >= hardDeadlineMs) {
+        _saExitReason = "hard_deadline_safety_net"; break;
+      }
+      iters++;
+---------------------------------------------------------------------------
+
+Что меняется:
+- phaseBDeadline больше НЕ прерывает SA loop
+- SA идёт до maxIterations (или add_loop_no_progress / full_coverage_polygon)
+- Safety net: hard deadline = phaseBDeadline + max(10min, 10×maxSolveMs) — только от зависания
+- phaseBDeadline остаётся для phaseB Lloyd (не трогаем)
+
+Тест:
+- 2 прогона с разным timeMs (73678ms vs 77471ms) — идентичный результат:
+  cov=98.747068, plc=23, iters=17311, exit=add_loop_no_progress
+- Результат НЕ зависит от скорости машины

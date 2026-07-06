@@ -90,6 +90,17 @@
       renderSteps();
     }
 
+    function formatTemperature(value) {
+      const n = Number(value);
+      if (!Number.isFinite(n)) return "-";
+      const abs = Math.abs(n);
+      if (abs >= 100) return String(Math.round(n));
+      if (abs >= 10) return n.toFixed(1).replace(/\.0$/, "");
+      if (abs >= 1) return n.toFixed(2).replace(/\.?0+$/, "");
+      if (abs > 0 && abs < 0.0001) return n < 0 ? ">-0.0001" : "<0.0001";
+      return n.toFixed(4).replace(/\.?0+$/, "");
+    }
+
     function updateKpis(input) {
       const data = input && typeof input === "object" ? input : {};
       const piecesEl = byId("inventoryProgressKpiPieces");
@@ -109,7 +120,7 @@
       if (piecesEl) piecesEl.textContent = hasPieces ? String(Math.max(0, Math.round(Number(kpiState.pieces)))) : "-";
       if (covEl) covEl.textContent = hasCoverage ? Number(kpiState.coverage).toFixed(1) + "%" : "-";
       if (itersEl) itersEl.textContent = hasIters ? String(Math.round(Number(kpiState.iters))) : "-";
-      if (tempEl) tempEl.textContent = hasTemp ? Number(kpiState.temperature).toExponential(2) : (hasPhase ? String(kpiState.phase) : "-");
+      if (tempEl) tempEl.textContent = hasTemp ? formatTemperature(kpiState.temperature) : (hasPhase ? String(kpiState.phase) : "-");
     }
 
     function resetKpis() {
