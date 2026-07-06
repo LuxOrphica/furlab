@@ -433,6 +433,11 @@ function createVoronoiSaSearch(deps) {
     let consecutiveAddFails = 0;
     const ADD_FAIL_LIMIT = 200;
 
+    // v5.1 Fix: maxIterations is the primary budget.
+    // Result quality should not depend on machine speed. phaseBDeadline remains
+    // relevant to phaseB/Lloyd, but no longer stops the SA loop.
+    const hardDeadlineMs = phaseBDeadline + Math.max(600000, maxSolveMs * 10);
+
     const warmDoneMs = Date.now();
     const warmDurationMs = warmDoneMs - startTime;
     let _saExitReason = "running";
@@ -444,8 +449,8 @@ function createVoronoiSaSearch(deps) {
       if (maxIterations && iters >= maxIterations) {
         _saExitReason = "maxIterations"; break;
       }
-      if (Date.now() >= phaseBDeadline) {
-        _saExitReason = "phaseBudget_timeout"; break;
+      if (Date.now() >= hardDeadlineMs) {
+        _saExitReason = "hard_deadline_safety_net"; break;
       }
       iters++;
 
