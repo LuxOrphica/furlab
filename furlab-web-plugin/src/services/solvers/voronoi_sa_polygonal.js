@@ -1,50 +1,39 @@
 "use strict";
 
 /**
- * v5.0 Fix тип D-rebuild-minimal: полигональная Voronoi-нарезка territory.
+ * v5.1 polygonal Voronoi territory builder.
  *
- * Принципы (с правками советника):
- *   1. Power/weighted Voronoi: territory_i — ближайший центр СРЕДИ ТЕХ, чьё ядро
- *      накрывает точку. Не «ближайший вообще». Лечит gap[2] (точку накрывают 3 ядра,
- *      Voronoi по расстоянию отдаёт ближайшему, но его ядро может не накрывать).
- *   2. Покомпонентная обрезка по невыпуклой зоне: territory_i = компонента zone
- *      ∩ halfplanes, содержащая центр placement_i. Halfplane-нарезка на невыпуклой
- *      зоне даёт несвязные территории → развал фрагмента → thin. Лечится взятием
- *      только компоненты с центром.
- *   3. Thin < 70 в финале = failed с diagnostic. НЕ absorb'ится. НЕ удаляется
- *      в цикле (петля/недетерминизм/add_loop). Чинить посадку в дизайне SA,
- *      не реактивно.
+ * Контракт v5 (docs/layouts/inventory_voronoi_sa_contract_v5.md):
+ *   - §6: napTarget/napTolDeg/angleDeg — вестигиальные, вращение запрещено (R6).
+ *     Куски приходят уже нормализованными (ворсом вниз), angleDeg=0.
+ *   - §7: thin fragment = failed (R5), НЕ absorb'ится.
+ *   - §7: absorb без guard'ов запрещён (R8).
+ *   - §7: возврат последнего состояния вместо лучшего — запрещён.
+ *   - fragment = core_i ∩ territory_i, полигонально (не растрово).
  *
- * Алгоритм:
- *   territory_i = zone
- *   for j ≠ i:
- *     contested = territory_i ∩ core_j  (регион, где j может конкурировать)
- *     if contested пуст: continue
+ * Алгоритм (power Voronoi, D-rebuild):
+ *   territory_i = zone ∩ core_i
+ *   for j ≠ i (по возрастанию дистанции |i-j|):
+ *     contested = territory_i ∩ core_j   // область, где ОБА накрывают
+ *     if contested пуст: continue         // j не конкурирует
  *     hp_i = halfplane(containing cx_i, perpendicular bisector of (i,j))
  *     territory_i = (territory_i − contested) ∪ (contested ∩ hp_i)
- *   // берём только компоненту, содержащую (cx_i, cy_i)
- *   territory_i = largest_component_containing(territory_i, cx_i, cy_i)
- *   fragment_i = core_i ∩ territory_i
+ *   territory_i = component_containing(territory_i, cx_i, cy_i)
+ *   fragment_i = territory_i              // т.к. territory_i ⊆ core_i
  *
- * Замечания:
- *   - Если ядро_j не пересекает territory_i → j не конкурирует за этот регион,
- *     bisector не нужен. Это делает алгоритм O(N × average_intersect_count),
- *     не O(N²) всегда.
- *   - Если ядро_i не накрывает какую-то часть zone, эта часть НЕ в territory_i
- *     (потому что fragment_i = core_i ∩ territory_i, и empty territory там не поможет).
- *     Это physMissing — честно, не absorb.
- *   - Tie-break при равноудалённых центрах: детерминированный по inventoryTag asc
- *     → idx asc (через порядок halfplane clipping).
+ * Ключевые свойства:
+ *   1. territory_i ⊆ core_i с самого начала → fragment_i = territory_i.
+ *   2. Bisector применяется только к contested (где ОБА накрывают) → нет повисших точек.
+ *   3. Покомпонентная обрезка по центру → связность territory на невыпуклой зоне.
+ *   4. Никакого absorb / R2 patch / orphan sweep. Gap = physMissing, честно.
+ *   5. Thin = failed, НЕ absorb'ится, НЕ удаляется.
  *
- * Выкинутые pass'ы (всё в старом voronoi_sa_output.js):
- *   - CPT PH-0 covByCell (растровое покрытие)
- *   - buildAssignment (растровый assignment по mask)
- *   - rebuildFragPoly (cellMp из union cell-rects)
- *   - repairDisconnectedAssignment (покомпонентная обрезка по зоне + Voronoi cell связен)
- *   - PH3 thin-absorb (ЗАПРЕЩЁН по контракту, thin = failed)
- *   - CPT-B contested (power Voronoi решает contested в halfplane clipping)
- *   - Pass 4 orphan sweep (orphan = physMissing, честно)
- *   - Pass 5 R2 safety-net (partition-gap невозможен при правильном territory)
+ * Оптимизации относительно v5.0:
+ *   - inner j-loop: вместо clipperUnion на каждой итерации — конкатенация + Clean.
+ *     unionPaths (withoutContested + contestedKept) могут перекрываться только на границе
+ *     (both subsets of currentPaths), CleanPolygons это корректно обработает.
+ *   - territory хранится как array of paths (multi-component safe).
+ *   - rawTerritoryContour = все компоненты (не только первый path).
  */
 
 const ClipperLib = require("clipper-lib");
@@ -56,11 +45,12 @@ function convexHull(pts) {
   if (n < 3) return pts.slice();
   const sorted = pts.slice().sort((a, b) => a.x !== b.x ? a.x - b.x : a.y - b.y);
   const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
-  const lower = [], upper = [];
+  const lower = [];
   for (const p of sorted) {
     while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) lower.pop();
     lower.push(p);
   }
+  const upper = [];
   for (let i = sorted.length - 1; i >= 0; i--) {
     const p = sorted[i];
     while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) upper.pop();
@@ -126,13 +116,17 @@ function clipperDifference(subjectPaths, clipPaths) {
   return sol;
 }
 
-function clipperUnion(paths) {
-  const cpr = new ClipperLib.Clipper();
-  for (const p of paths) cpr.AddPath(p, ClipperLib.PolyType.ptSubject, true);
-  const sol = new ClipperLib.Paths();
-  cpr.Execute(ClipperLib.ClipType.ctUnion, sol,
-    ClipperLib.PolyFillType.pftNonZero, ClipperLib.PolyFillType.pftNonZero);
-  return sol;
+/**
+ * Clean + simplify paths. Удаляет дубликаты вершин, самопересечения, коллинеарные точки.
+ * НЕ объединяет перекрывающиеся полигоны (в отличие от union).
+ * Подходит для конкатенации withoutContested + contestedKept, т.к. они могут
+ * соприкасаться по границе, но не перекрываться по площади (both ⊆ currentPaths).
+ */
+function clipperClean(paths, scale) {
+  if (!paths || paths.length === 0) return [];
+  const cleaned = ClipperLib.Clipper.CleanPolygons(paths, Math.max(1, Math.round(scale * 0.01)));
+  const simplified = ClipperLib.Clipper.SimplifyPolygons(cleaned, ClipperLib.PolyFillType.pftNonZero);
+  return simplified || [];
 }
 
 function clipperArea(path) {
@@ -140,7 +134,7 @@ function clipperArea(path) {
 }
 
 /**
- * Строит halfplane (большой прямоугольник, обрезанный bisector'ом) —Clipper path.
+ * Строит halfplane (большой прямоугольник, обрезанный bisector'ом) — Clipper path.
  * Halfplane содержит точку (cx_i, cy_i), отрезает часть со стороны (cx_j, cy_j).
  * Bisector — перпендикуляр к отрезку (i,j) через середину.
  */
@@ -152,19 +146,10 @@ function buildHalfplanePath(cx_i, cy_i, cx_j, cy_j, zoneBbox, scale) {
   const nlen = Math.hypot(nx, ny);
   if (nlen < 1e-9) return null;
 
-  // halfplane_i: точки P такие что (P - mid) · (nx, ny) <= 0 (со стороны i)
-  // Эквивалентно: P ближе к i, чем к j.
-  // Строим как большой прямоугольник, обрезанный bisector'ом.
-
-  // Bisector direction (parallel to bisector line): (-ny, nx) normalized
   const bx = -ny / nlen, by = nx / nlen;
-  // Normal to bisector (pointing from i to j): (nx, ny) / nlen
   const nxn = nx / nlen, nyn = ny / nlen;
 
   const margin = 5000;  // 5 метров запас — больше любой зоны
-  // 4 угла halfplane_i:
-  //   2 на bisector (mid ± bx*margin)
-  //   2 со стороны i (mid + (-nxn, -nyn)*margin ± bx*margin)
   const p1 = { X: Math.round((mid_x + bx * margin) * scale), Y: Math.round((mid_y + by * margin) * scale) };
   const p2 = { X: Math.round((mid_x - bx * margin) * scale), Y: Math.round((mid_y - by * margin) * scale) };
   const p3 = { X: Math.round((mid_x - bx * margin - nxn * margin) * scale), Y: Math.round((mid_y - by * margin - nyn * margin) * scale) };
@@ -175,10 +160,6 @@ function buildHalfplanePath(cx_i, cy_i, cx_j, cy_j, zoneBbox, scale) {
 /**
  * Берёт из MultiPath (array of paths) только компоненты, содержащие точку (px, py).
  * Используется для покомпонентной обрезки territory на невыпуклой зоне.
- *
- * Алгоритм: для каждого path проверяем pointInPolygon (ray casting).
- * Возвращаем array of paths (только те, что содержат точку).
- * NB: holes (внутренние контуры) не считаем отдельными компонентами.
  */
 function componentsContainingPoint(paths, px, py) {
   const result = [];
@@ -200,7 +181,6 @@ function componentsContainingPoint(paths, px, py) {
 }
 
 function pointInPath(px, py, path) {
-  // Ray casting на Clipper path (X, Y — integer units)
   let inside = false;
   const n = path.length;
   let j = n - 1;
@@ -230,10 +210,21 @@ function pointInPath(px, py, path) {
  *   - minWidthMm, minLengthMm: для thin-detect
  *
  * Returns: {
- *   resultPlacements: [{ ...pl, rawTerritoryContour, inZoneContour, inZoneCoreContour, inZoneAreaMm2, ... }],
- *   thinFragments: [{ idx, inventoryTag, mbrShort, fragArea, cx, cy }],
+ *   resultPlacements: [...],
+ *   thinFragments: [...],
+ *   perfectCells, fallbackFragments, topologyRepair, assignment,
  *   stats: { ... }
  * }
+ *
+ * v5.1 изменения vs v5.0:
+ *   - Убран R2 partition-gap fix (стр. 514-603 в v5.0) — это был скрытый absorb,
+ *     нарушающий контракт "thin = failed, не absorb". Создавал overlap (INV1/INV5 FAIL).
+ *     Gap = physMissing, честно. Если SA не нашёл покрытие — это результат SA, не polygonal.
+ *   - inner j-loop: clipperUnion → clipperClean (O(N) вместо O(N²) по вершинам).
+ *     Корректно, т.к. withoutContested и contestedKept — оба подмножества currentPaths,
+ *     могут соприкасаться по границе, но не перекрываться по площади.
+ *   - rawTerritoryContour = все компоненты territory (не только первый path).
+ *   - Никакого 30-секундного deadline — функция отрабатывает за ~20ms на N=22.
  */
 function buildPolygonalTerritoryOutput(args) {
   const placements = args.placements;
@@ -247,13 +238,12 @@ function buildPolygonalTerritoryOutput(args) {
   const multiPolygonArea = args.multiPolygonArea;
   const mpToPoints = args.mpToPoints;
   const polygonBBox = args.polygonBBox;
-  const diffMulti = args.diffMulti;
   const minWidthMm = args.minWidthMm || 0;
   const minLengthMm = args.minLengthMm || 0;
 
   // Zone как Clipper path (units)
   const zonePath = pointsToClipperPath(zonePoints, scale);
-  const zonePaths = [zonePath];  // subject для boolean ops
+  const zonePaths = [zonePath];
   const zoneMp = pointsToMultiPolygon(zonePoints);
   const zoneArea = multiPolygonArea(zoneMp);
 
@@ -273,9 +263,7 @@ function buildPolygonalTerritoryOutput(args) {
   }
 
   // ── 1. Строим territory_i = power Voronoi cell ────────────────────────────
-  // territory_i = zone, then for j ≠ i: если core_j пересекает territory_i,
-  // применяем bisector(i,j) к contested region.
-  const territoryPaths = [];  // array of array-of-Clipper-paths (может быть несколько компонент)
+  const territoryPaths = [];
 
   for (let i = 0; i < N; i++) {
     if (!corePaths[i]) {
@@ -283,17 +271,14 @@ function buildPolygonalTerritoryOutput(args) {
       continue;
     }
     const pl_i = placements[i];
-    // territory_i = zone ∩ core_i (ограничена core_i с самого начала — см. D-tune ниже)
 
-    // Идём по j ≠ i. Tie-break: сортируем по inventoryTag asc → idx asc
-    // для детерминизма при равноудалённых центрах.
+    // Сортируем конкурентов по дистанции (близкие первыми)
     const otherIndices = [];
     for (let j = 0; j < N; j++) {
       if (j === i) continue;
       if (!corePaths[j]) continue;
       otherIndices.push(j);
     }
-    // Сортировка: по дистанции от i до j (близкие конкуренты первыми — раньше заберут contested)
     otherIndices.sort((a, b) => {
       const da = (placements[a].cx - pl_i.cx) ** 2 + (placements[a].cy - pl_i.cy) ** 2;
       const db = (placements[b].cx - pl_i.cx) ** 2 + (placements[b].cy - pl_i.cy) ** 2;
@@ -304,47 +289,32 @@ function buildPolygonalTerritoryOutput(args) {
       return a - b;
     });
 
-    // v5.0 Fix D-tune (правка 1 советника, финальная): territory_i ограничена core_i
-    // С САМОГО НАЧАЛА. Точка зоны, не накрытая core_i — НЕ в territory_i, независимо
-    // от bisector. Это устраняет partition-gap по построению:
-    //   - Точка P накрыта только core_i → P в territory_i (никто не конкурирует) → fragment_i ✓
-    //   - Точка P накрыта core_i и core_j → bisector(i,j) делит, P ближайшему → fragment ✓
-    //   - Точка P накрыта только core_j (не core_i) → P не в territory_i → не конкурирует с i
-    //
-    // Bisector(i,j) применяется к contested = territory_i ∩ core_j (область, где ОБА накрывают,
-    // т.к. territory_i уже ⊆ core_i). Вне contested — точка принадлежит только i (если накрыта
-    // только core_i) или только j (если накрыта только core_j, и тогда она в territory_j, не i).
-    //
-    // Раньше: territory_i начиналась как zone (без ∩ core_i), и bisector мог отдать точку
-    // к j даже если core_j не накрывает её → точка повисала (ни в чьём фрагменте) → gap.
-    let currentPaths = clipperIntersect(zonePaths, [corePaths[i]]);  // ⊆ core_i с самого начала
+    // territory_i = zone ∩ core_i (⊆ core_i с самого начала)
+    let currentPaths = clipperIntersect(zonePaths, [corePaths[i]]);
     if (currentPaths.length === 0) {
       territoryPaths.push(null);
       continue;
     }
 
+    // Inner j-loop: для каждого конкурента применяем bisector к contested region.
+    // v5.1: вместо clipperUnion на каждой итерации — конкатенация + clipperClean.
+    // withoutContested и contestedKept — оба подмножества currentPaths, могут
+    // соприкасаться по границе, но не перекрываться по площади → Clean корректен.
     for (const j of otherIndices) {
-      const pl_j = placements[j];
-      // contested = currentPaths ∩ core_j (область, где ОБА накрывают — т.к. currentPaths ⊆ core_i)
       const contested = clipperIntersect(currentPaths, [corePaths[j]]);
-      if (!contested || contested.length === 0) continue;  // j не конкурирует (core_j не пересекает)
+      if (!contested || contested.length === 0) continue;
 
-      // halfplane_i (ближе к i, чем к j) — Clipper path
-      const hpPath = buildHalfplanePath(pl_i.cx, pl_i.cy, pl_j.cx, pl_j.cy, zoneBbox, scale);
+      const hpPath = buildHalfplanePath(pl_i.cx, pl_i.cy, placements[j].cx, placements[j].cy, zoneBbox, scale);
       if (!hpPath) continue;
 
-      // contested_kept_i = contested ∩ halfplane_i (точки contested, ближе к i)
       const contestedKept = clipperIntersect(contested, [hpPath]);
-
-      // territory_i = (currentPaths − contested) ∪ contestedKept
-      //   − contested: убираем область, где j конкурирует (она уйдёт к j или к i по bisector)
-      //   + contestedKept: возвращаем часть contested, что ближе к i
-      // Точки вне contested (накрыты только core_i) — остаются в currentPaths, не трогаются.
       const withoutContested = clipperDifference(currentPaths, [corePaths[j]]);
-      const unionPaths = [];
-      for (const p of withoutContested) unionPaths.push(p);
-      for (const p of contestedKept) unionPaths.push(p);
-      currentPaths = unionPaths.length > 0 ? clipperUnion(unionPaths) : [];
+
+      // Конкатенация + Clean (вместо Union)
+      const combined = [];
+      for (const p of withoutContested) combined.push(p);
+      for (const p of contestedKept) combined.push(p);
+      currentPaths = combined.length > 0 ? clipperClean(combined, scale) : [];
       if (currentPaths.length === 0) break;
     }
 
@@ -353,18 +323,13 @@ function buildPolygonalTerritoryOutput(args) {
       continue;
     }
 
-    // v5.0 Fix D-tune: ∩ core_i уже применено в начале цикла (currentPaths ⊆ core_i).
-    // Дополнительного ограничения не нужно — territory_i по построению ⊆ core_i.
-    // fragment_i = core_i ∩ territory_i = territory_i (т.к. territory_i ⊆ core_i).
-
-    // ── Покомпонентная обрезка: берём только компоненту с центром placement_i ──
-    // Это лечит невыпуклые зоны (halfplane clipping может дать несвязные территории).
+    // Покомпонентная обрезка: берём только компоненту с центром placement_i
     const centeredPaths = componentsContainingPoint(currentPaths,
       Math.round(pl_i.cx * scale), Math.round(pl_i.cy * scale));
     territoryPaths.push(centeredPaths);
   }
 
-  // ── 2. Строим fragment_i = core_i ∩ territory_i ───────────────────────────
+  // ── 2. Строим fragment_i = territory_i (т.к. territory_i ⊆ core_i) ────────
   const resultPlacements = [];
   const thinFragments = [];
 
@@ -374,6 +339,7 @@ function buildPolygonalTerritoryOutput(args) {
     if (!terrPaths || terrPaths.length === 0 || !coreMps[i]) {
       resultPlacements.push({
         ...pl,
+        alignedContour: pl.pts && pl.pts.length >= 3 ? pl.pts : [],
         rawTerritoryContour: [],
         inZoneContour: [],
         inZoneCoreContour: [],
@@ -390,17 +356,28 @@ function buildPolygonalTerritoryOutput(args) {
       continue;
     }
 
-    // territory → MultiPolygon (polygon-clipping format)
-    const terrPts = clipperPathToPoints(terrPaths[0], scale);  // упрощённо — первый path
-    // NB: если несколько компонент (centredPaths может вернуть несколько holes), объединяем
+    // Собираем все компоненты territory (multi-component safe)
     const allTerrPts = [];
+    const allTerrMps = [];
+    let bestTerrPts = null;
+    let bestTerrArea = 0;
     for (const tp of terrPaths) {
       const pts = clipperPathToPoints(tp, scale);
-      if (pts.length >= 3) allTerrPts.push(pts);
+      if (pts.length >= 3) {
+        allTerrPts.push(pts);
+        const mp = pointsToMultiPolygon(pts);
+        allTerrMps.push(mp);
+        const a = multiPolygonArea(mp);
+        if (a > bestTerrArea) {
+          bestTerrArea = a;
+          bestTerrPts = pts;
+        }
+      }
     }
     if (allTerrPts.length === 0) {
       resultPlacements.push({
         ...pl,
+        alignedContour: pl.pts && pl.pts.length >= 3 ? pl.pts : [],
         rawTerritoryContour: [],
         inZoneContour: [],
         inZoneCoreContour: [],
@@ -416,30 +393,15 @@ function buildPolygonalTerritoryOutput(args) {
       });
       continue;
     }
-    // rawTerritoryContour: используем наибольший контур (outer)
-    let bestTerrPts = allTerrPts[0];
-    let bestTerrArea = 0;
-    const allTerrMps = [];
-    for (const pts of allTerrPts) {
-      const mp = pointsToMultiPolygon(pts);
-      allTerrMps.push(mp);
-      const a = multiPolygonArea(mp);
-      if (a > bestTerrArea) {
-        bestTerrArea = a;
-        bestTerrPts = pts;
-      }
-    }
 
-    // territory_mp = union всех компонент
+    // territory_mp = union всех компонент (через polygon-clipping)
     let terrMp;
     if (allTerrMps.length === 1) {
       terrMp = allTerrMps[0];
     } else {
-      // union через polygon-clipping (передаём массив)
       terrMp = allTerrMps.reduce((acc, mp) => {
         if (!acc || (Array.isArray(acc) && acc.length === 0)) return mp;
         try {
-          // polygon-clipping unionMulti принимает (a, b)
           return args.unionMulti ? args.unionMulti(acc, mp) : mp;
         } catch (_) {
           return mp;
@@ -447,7 +409,9 @@ function buildPolygonalTerritoryOutput(args) {
       }, null);
     }
 
-    // Fragment = core ∩ territory
+    // fragment = territory (т.к. territory_i ⊆ core_i по построению)
+    // Контракт v5 §7: fragment = core ∩ territory, но territory уже ⊆ core.
+    // Проверка через intersectMulti для численной устойчивости.
     let fragMp;
     try {
       fragMp = intersectMulti(coreMps[i], terrMp);
@@ -460,7 +424,7 @@ function buildPolygonalTerritoryOutput(args) {
 
     const fragPts = mpToPoints(fragMp);
 
-    // Thin-detect (БЕЗ absorb)
+    // Thin-detect (БЕЗ absorb — контракт R5)
     let isThin = false;
     let mbrShort = Infinity;
     if (fragPts.length >= 3 && fragArea > 0) {
@@ -491,11 +455,11 @@ function buildPolygonalTerritoryOutput(args) {
       // alignedContour = тело с припуском в мировых координатах (требуется инвариантом для matched).
       alignedContour: pl.pts && pl.pts.length >= 3 ? pl.pts : fragPts,
       // alignedCoreContour = ядро в мировых координатах (для верификатора R2/R5).
-      // В poly mode это pl.corePts (уже трансформированы в makePlacement).
       alignedCoreContour: pl.corePts,
-      rawTerritoryContour: bestTerrPts,
+      // rawTerritoryContour = наибольший компонент territory (для рендера).
+      rawTerritoryContour: bestTerrPts || fragPts,
       inZoneContour: fragPts,
-      inZoneCoreContour: fragPts,  // v5.0: core == fragment (припуск — внешний)
+      inZoneCoreContour: fragPts,
       inZoneAreaMm2: fragArea,
       territoryAreaMm2: terrArea,
       physMissingMm2: physMissingMm2,
@@ -511,96 +475,17 @@ function buildPolygonalTerritoryOutput(args) {
   const _t1 = Date.now();
   console.log(`[VSA-POLY] territory+fragment: ${_t1 - _t0}ms for ${N} pieces, thin=${thinFragments.length}`);
 
-  // ── 3. Финальная коррекция R2: partition-gap fix ──────────────────────────
-  // После power Voronoi могут остаться «мёртвые зоны» — точки зоны, накрытые
-  // хотя бы одним ядром, но не попавшие ни в один fragment (из-за численных
-  // ошибок bisector или схождения трёх ячеек).
+  // v5.1: R2 partition-gap fix УБРАН.
+  // В v5.0 здесь был код (стр. 514-603), который брал residual = zone − Union(fragments)
+  // и раздавал компоненты residual тому ядру, что накрывает centroid. Это был скрытый
+  // absorb, нарушающий контракт "thin = failed, не absorb" (R5/R8). Создавал overlap
+  // (INV1/INV5 FAIL), потому что residual-компонент мог накрываться несколькими ядрами,
+  // а добавлялся только к одному — но его площадь учитывалась в fragment, перекрывая
+  // соседей.
   //
-  // Для каждой такой точки — отдать её fragment того ядра, что её накрывает
-  // (если несколько — ближайшему). Это НЕ absorb (мы не двигаем ядра, не
-  // перераспределяем territory — просто добавляем накрытую область в fragment
-  // того, чьё ядро её накрывает).
-  //
-  // Реализация через diffMulti: residual = zone − Union(fragments).
-  // Для каждого компонента residual — найти накрывающее ядро, добавить к fragment.
-  const _t2 = Date.now();
-  let r2FixedCount = 0;
-  let r2FixedArea = 0;
-  try {
-    // Union всех фрагментов
-    const fragMps = [];
-    for (const rp of resultPlacements) {
-      if (rp.inZoneCoreContour && rp.inZoneCoreContour.length >= 3) {
-        fragMps.push(pointsToMultiPolygon(rp.inZoneCoreContour));
-      }
-    }
-    if (fragMps.length > 0) {
-      let fragUnion = fragMps[0];
-      for (let k = 1; k < fragMps.length; k++) {
-        try { fragUnion = args.unionMulti ? args.unionMulti(fragUnion, fragMps[k]) : fragMps[k]; } catch (_) {}
-      }
-      // residual = zone − fragUnion
-      let residualMp;
-      try { residualMp = diffMulti(zoneMp, fragUnion); } catch (_) { residualMp = null; }
-      const residualArea = residualMp ? multiPolygonArea(residualMp) : 0;
-      if (residualMp && residualArea > 50) {
-          // Для каждого компонента residual — найти накрывающее ядро, добавить к fragment
-          // residualMp в polygon-clipping format: [[outerRing, hole1, ...], ...]
-          for (const poly of (residualMp || [])) {
-            if (!Array.isArray(poly) || poly.length === 0) continue;
-            const ring = poly[0];  // outer ring
-            if (!Array.isArray(ring) || ring.length < 4) continue;
-            // area via shoelace
-            let a = 0;
-            for (let k = 0; k < ring.length - 1; k++) {
-              a += ring[k][0] * ring[k+1][1] - ring[k+1][0] * ring[k][1];
-            }
-            a = Math.abs(a) * 0.5;
-            if (a < 50) continue;  // мелкие — шум
-            // centroid
-            let cx = 0, cy = 0, n = ring.length - 1;
-            for (let k = 0; k < n; k++) { cx += ring[k][0]; cy += ring[k][1]; }
-            cx /= n; cy /= n;
-            // Найти накрывающее ядро (ближайший центр среди накрывающих)
-            let bestK = -1;
-            let bestDist = Infinity;
-            for (let k = 0; k < N; k++) {
-              if (!coreMps[k]) continue;
-              // Проверяем накрытие centroid'а ядром k
-              const corePts = placements[k].corePts;
-              if (!corePts || corePts.length < 3) continue;
-              // pointInPolygon centroid
-              if (!_pointInPolygon(cx, cy, corePts)) continue;
-              const dx = cx - placements[k].cx;
-              const dy = cy - placements[k].cy;
-              const d = dx * dx + dy * dy;
-              if (d < bestDist) { bestDist = d; bestK = k; }
-            }
-            if (bestK >= 0) {
-              // Добавить этот residual-компонент к fragment[bestK]
-              const compPts = ring.map(p => ({ x: p[0], y: p[1] }));
-              const compMp = pointsToMultiPolygon(compPts);
-              const curFrag = resultPlacements[bestK].inZoneCoreContour || [];
-              const curMp = pointsToMultiPolygon(curFrag);
-              let newFrag;
-              try {
-                newFrag = args.unionMulti ? args.unionMulti(curMp, compMp) : compMp;
-              } catch (_) { newFrag = curMp; }
-              const newPts = mpToPoints(newFrag);
-              resultPlacements[bestK].inZoneCoreContour = newPts;
-              resultPlacements[bestK].inZoneContour = newPts;
-              resultPlacements[bestK].inZoneAreaMm2 = multiPolygonArea(newFrag);
-              r2FixedCount++;
-              r2FixedArea += a;
-            }
-          }
-      }
-    }
-  } catch (_) {}
-  const _t3 = Date.now();
-  if (r2FixedCount > 0) {
-    console.log(`[VSA-POLY] R2 partition-gap fix: ${r2FixedCount} components, ${Math.round(r2FixedArea)} мм², ${_t3 - _t2}ms`);
-  }
+  // Правильное поведение: gap = physMissing, честно. Если SA не нашёл покрытие —
+  // это результат SA, не polygonal. Покрытие <99.8% → resultStatus="partial"/"failed",
+  // пользователь видит реальные дыры, не замаскированные absorb.
 
   return {
     resultPlacements,
@@ -615,27 +500,10 @@ function buildPolygonalTerritoryOutput(args) {
       thinCount: thinFragments.length,
       territoryMode: "polygon_voronoi",
       buildTimeMs: _t1 - _t0,
-      r2FixedCount,
-      r2FixedArea: Math.round(r2FixedArea)
+      r2FixedCount: 0,
+      r2FixedArea: 0
     }
   };
-}
-
-// Точечная проверка pointInPolygon (ray casting)
-function _pointInPolygon(x, y, pts) {
-  const n = pts.length;
-  if (n < 3) return false;
-  let inside = false;
-  let j = n - 1;
-  for (let i = 0; i < n; i++) {
-    const xi = pts[i].x, yi = pts[i].y;
-    const xj = pts[j].x, yj = pts[j].y;
-    if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) {
-      inside = !inside;
-    }
-    j = i;
-  }
-  return inside;
 }
 
 module.exports = {

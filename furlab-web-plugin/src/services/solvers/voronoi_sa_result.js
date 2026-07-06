@@ -384,7 +384,9 @@ function createVoronoiSaResultBuilder(deps) {
       realCoveredRatio,
       pointsToMultiPolygon,
       multiPolygonArea,
-      allowanceMm  // v5.0: передаём allowanceMm, чтобы INV4 не срабатывал при allowanceMm=0
+      allowanceMm,  // v5.0: передаём allowanceMm, чтобы INV4 не срабатывал при allowanceMm=0
+      minWidthMm,   // v5.1: для R5 thin fragment check
+      minLengthMm   // v5.1: для R5 thin fragment check
     });
 
     // ── v5.0 §5.2: 4 статуса результата ─────────────────────────────────────
