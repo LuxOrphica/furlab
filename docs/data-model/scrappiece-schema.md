@@ -29,6 +29,8 @@
 | Дата создания | `createdAt` | DATETIME | — | Момент регистрации записи |
 | Дата обновления | `updatedAt` | DATETIME | — | Момент последнего изменения |
 
+> **Нормализация контуров.** Целевая семантика описана в `docs/data-model/scrap-contour-normalization.md`: `scrapContour` хранит нормализованный контур для раскладки, `napDirectionDeg = 90`, а `metricsJson.contourRaw` и `metricsJson.napDirectionDegRaw` сохраняются как первоисточник. `contourCanonical` остаётся legacy/fallback на период миграции.
+
 ---
 
 ## Г.2. Жизненный цикл статусов ScrapPiece

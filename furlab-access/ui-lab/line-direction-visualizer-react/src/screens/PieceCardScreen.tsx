@@ -378,6 +378,30 @@ function parseContourPoints(contourJson: string | null | undefined): Pt[] {
   }
 }
 
+function contourObjectPoints(value: unknown): Pt[] {
+  if (!value || typeof value !== "object") return [];
+  const v = value as { path?: Array<{ x?: number; y?: number }> };
+  const path = Array.isArray(v.path) ? v.path : [];
+  return path
+    .map((p) => ({ x: Number(p?.x), y: Number(p?.y) }))
+    .filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
+}
+
+function isLayoutNormalizedContourJson(contourJson: string | null | undefined): boolean {
+  if (!contourJson) return false;
+  try {
+    const parsed = JSON.parse(contourJson) as { source?: Record<string, unknown> };
+    const source = parsed && typeof parsed.source === "object" ? parsed.source : null;
+    if (!source) return false;
+    const frame = String(source.frame || "").trim().toLowerCase();
+    const method = String(source.method || "").trim().toLowerCase();
+    const napTarget = Number(source.napTargetDeg ?? source.layoutNapTargetDeg);
+    return frame === "layout_norm" || method.includes("then_rotate") || napTarget === 90 || source.layoutNapAligned === true;
+  } catch {
+    return false;
+  }
+}
+
 function isContourObject(value: unknown): value is { path: Array<{ x?: number; y?: number }>; units?: string } {
   if (!value || typeof value !== "object") return false;
   const v = value as Record<string, unknown>;
@@ -693,8 +717,10 @@ export default function PieceCardScreen({ pieceId, onLoadInfoChange }: PieceCard
       : "leather_up";
   }, [metrics.scanSide]);
   const contourStats = useMemo(() => {
-    const points = parseContourPoints(piece?.scrapContour);
-    if (points.length < 3) {
+    const layoutPoints = parseContourPoints(piece?.scrapContour);
+    const scanPoints = contourObjectPoints(metrics.contourRaw);
+    const sourceScanPoints = scanPoints.length >= 3 ? scanPoints : layoutPoints;
+    if (layoutPoints.length < 3) {
       return {
         scanW: piece?.bboxWidthMm ?? null,
         scanH: piece?.bboxHeightMm ?? null,
@@ -705,9 +731,12 @@ export default function PieceCardScreen({ pieceId, onLoadInfoChange }: PieceCard
         pointsCount: contourPointCount ?? null,
       };
     }
-    const raw = getBounds(points);
+    const raw = getBounds(sourceScanPoints);
     const canNorm = Number.isFinite(Number(napDirectionDegCanonical));
-    const rotated = canNorm ? rotatePoints(points, 90 - Number(napDirectionDegCanonical)) : points;
+    const alreadyLayoutNorm = isLayoutNormalizedContourJson(piece?.scrapContour);
+    const rotated = alreadyLayoutNorm
+      ? layoutPoints
+      : (canNorm ? rotatePoints(layoutPoints, 90 - Number(napDirectionDegCanonical)) : layoutPoints);
     const norm = getBounds(rotated);
     return {
       scanW: raw.w,
@@ -716,13 +745,14 @@ export default function PieceCardScreen({ pieceId, onLoadInfoChange }: PieceCard
       normW: norm.w,
       normH: norm.h,
       normMax: norm.maxSpan,
-      pointsCount: points.length,
+      pointsCount: layoutPoints.length,
     };
   }, [
     piece?.scrapContour,
     piece?.bboxWidthMm,
     piece?.bboxHeightMm,
     piece?.maxSpanMm,
+    metrics.contourRaw,
     napDirectionDegCanonical,
     contourPointCount,
   ]);

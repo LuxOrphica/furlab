@@ -242,9 +242,12 @@ function contourToJson(contour) {
     '"units":"' + esc(contour.units || "mm") + '",' +
     '"path":[' + pathParts.join(",") + "]," +
     '"source":{' +
+      '"frame":' + jsonStringOrNull(src.frame) + "," +
       '"canonicalized":' + (src.canonicalized ? "true" : "false") + "," +
       '"canonicalizationMethod":' + jsonStringOrNull(src.canonicalizationMethod) + "," +
       '"scanSide":' + jsonStringOrNull(src.scanSide) + "," +
+      '"napTargetDeg":' + jsonNum(src.napTargetDeg) + "," +
+      '"method":' + jsonStringOrNull(src.method) + "," +
       '"layoutNapAligned":' + (src.layoutNapAligned ? "true" : "false") + "," +
       '"layoutNapTargetDeg":' + jsonNum(src.layoutNapTargetDeg) + "," +
       '"layoutRotationDeg":' + jsonNum(src.layoutRotationDeg) +
@@ -257,11 +260,27 @@ function contourToJson(contour) {
   "}";
 }
 
+function isLayoutNormalizedContour(contour) {
+  if (!contour || typeof contour !== "object") return false;
+  var src = contour.source || {};
+  var frame = String(src.frame || "").toLowerCase();
+  var method = String(src.method || "").toLowerCase();
+  var napTarget = normalizeDeg360(src.napTargetDeg);
+  var layoutTarget = normalizeDeg360(src.layoutNapTargetDeg);
+  return frame === "layout_norm" ||
+    src.layoutNapAligned === true ||
+    napTarget === 90 ||
+    layoutTarget === 90 ||
+    method.indexOf("then_rotate") >= 0;
+}
+
 function buildLayoutNormalizedCandidate(row, metricsJson) {
   var metrics = parseJsonObject(metricsJson);
   var storedContour = parseJsonObject(row.scrapContour);
   var sourceContour = null;
-  if (metrics && metrics.contourLayout && typeof metrics.contourLayout === "object") {
+  if (isLayoutNormalizedContour(storedContour)) {
+    sourceContour = storedContour;
+  } else if (metrics && metrics.contourLayout && typeof metrics.contourLayout === "object") {
     sourceContour = metrics.contourLayout;
   } else if (metrics && metrics.contourNapAligned && typeof metrics.contourNapAligned === "object") {
     sourceContour = metrics.contourNapAligned;
@@ -278,7 +297,7 @@ function buildLayoutNormalizedCandidate(row, metricsJson) {
   if (nap === null) nap = normalizeDeg360(row.napDirectionDeg);
   if (nap === null) return row;
 
-  var alreadyLayout = !!(sourceContour.source && sourceContour.source.layoutNapAligned === true);
+  var alreadyLayout = isLayoutNormalizedContour(sourceContour);
   var layoutPath = alreadyLayout ? path : rotatePathDeg(path, 90 - nap);
   var bb = contourBBox(layoutPath);
   if (!bb) return row;
@@ -289,6 +308,9 @@ function buildLayoutNormalizedCandidate(row, metricsJson) {
       canonicalized: !!(sourceContour.source && sourceContour.source.canonicalized),
       canonicalizationMethod: sourceContour.source && sourceContour.source.canonicalizationMethod ? String(sourceContour.source.canonicalizationMethod) : null,
       scanSide: sourceContour.source && sourceContour.source.scanSide ? String(sourceContour.source.scanSide) : null,
+      frame: "layout_norm",
+      napTargetDeg: 90,
+      method: alreadyLayout && sourceContour.source && sourceContour.source.method ? String(sourceContour.source.method) : "mirror_vertical_bbox_center_then_rotate",
       layoutNapAligned: true,
       layoutNapTargetDeg: 90,
       layoutRotationDeg: alreadyLayout ? 0 : normalizeDeg360(90 - nap)

@@ -28,6 +28,18 @@ Use canonical FurLab terms only. Do not introduce substitute terminology in code
 - `napDirection`: pile direction of a piece
 - `pileDirectionDeg`: pile direction of a zone
 
+## ScrapPiece contour frames
+
+The implementation canon for physical scrap contour storage is defined in
+`docs/data-model/scrap-contour-normalization.md`.
+
+In short:
+
+- `contourRaw` is the scan-side contour.
+- production scans are `leather_up`.
+- target `scrapContour` is the solver/input contour with pile direction down (`napDirectionDeg = 90`).
+- Inventory solvers must receive normalized `scrapContour` and must not mirror or rotate it again.
+
 ## Canonical layout relation
 
 - `Layout.zoneId` means a layout belongs to exactly one zone.
@@ -40,7 +52,7 @@ Use canonical FurLab terms only. Do not introduce substitute terminology in code
 
 For `InventoryLayout`:
 
-- source geometry is `scrapContour` from `ScrapPiece` plus placement rules
+- source geometry is the layout-normalized `ScrapPiece` contour plus placement rules
 - result is `fragment` as derivatives of `scrapPiece`
 - fixation in data is:
   - `Layout.params`

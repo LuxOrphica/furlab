@@ -140,6 +140,73 @@ function buildCanonicalContourForLayout(contour, scanSide) {
   };
 }
 
+function rotatePathDeg(pathIn, deg) {
+  const rad = Number(deg) * Math.PI / 180;
+  const c = Math.cos(rad);
+  const s = Math.sin(rad);
+  return (pathIn || []).map((p) => ({
+    x: p.x * c - p.y * s,
+    y: p.x * s + p.y * c,
+  }));
+}
+
+function maxPointSpan(pathIn) {
+  if (!Array.isArray(pathIn) || pathIn.length < 2) return null;
+  let max = 0;
+  for (let i = 0; i < pathIn.length; i++) {
+    for (let j = i + 1; j < pathIn.length; j++) {
+      const d = Math.hypot(pathIn[i].x - pathIn[j].x, pathIn[i].y - pathIn[j].y);
+      if (d > max) max = d;
+    }
+  }
+  return max;
+}
+
+function buildLayoutNormalizedContour(contourCanonical, napCanonical, scanSide) {
+  if (!contourCanonical || typeof contourCanonical !== 'object') return null;
+  const canonicalPath = normalizePathPoints(contourCanonical.path);
+  if (canonicalPath.length < 3) return null;
+  const nap = normalizeDeg360(napCanonical);
+  if (nap === null) return null;
+  const layoutRotationDeg = normalizeDeg360(90 - nap);
+  const layoutPath = rotatePathDeg(canonicalPath, layoutRotationDeg);
+  const bb = contourBBox(layoutPath);
+  if (!bb) return null;
+  return {
+    ...contourCanonical,
+    units: String(contourCanonical.units || 'mm'),
+    path: closePath(layoutPath),
+    source: {
+      ...(contourCanonical.source && typeof contourCanonical.source === 'object' ? contourCanonical.source : {}),
+      frame: 'layout_norm',
+      scanSide: scanSide || 'leather_up',
+      napTargetDeg: 90,
+      method: 'mirror_vertical_bbox_center_then_rotate',
+      layoutNapAligned: true,
+      layoutNapTargetDeg: 90,
+      layoutRotationDeg,
+    },
+    metrics: {
+      ...(contourCanonical.metrics && typeof contourCanonical.metrics === 'object' ? contourCanonical.metrics : {}),
+      area: Math.abs(signedArea2D(layoutPath)),
+      bboxWidth: bb.width,
+      bboxHeight: bb.height,
+    },
+  };
+}
+
+function isLayoutNormalizedContour(contour) {
+  if (!contour || typeof contour !== 'object') return false;
+  const source = contour.source && typeof contour.source === 'object' ? contour.source : {};
+  const frame = String(source.frame || '').toLowerCase();
+  const method = String(source.method || '').toLowerCase();
+  return frame === 'layout_norm' ||
+    source.layoutNapAligned === true ||
+    normalizeDeg360(source.napTargetDeg) === 90 ||
+    normalizeDeg360(source.layoutNapTargetDeg) === 90 ||
+    method.includes('then_rotate');
+}
+
 function parseObj(v) {
   if (!v) return null;
   if (typeof v === 'object') return v;
@@ -256,13 +323,21 @@ for (const r of regJson.items) {
     napDirectionDegRaw: napRaw,
     napDirectionDegCanonical: napCanonical,
   };
+  const contourLayoutNorm = buildLayoutNormalizedContour(contourCanonical, napCanonical, scanSide);
+  if (!contourLayoutNorm) {
+    stats.skippedInvalid += 1;
+    continue;
+  }
+  const layoutBb = contourBBox(normalizePathPoints(contourLayoutNorm.path));
 
   const oldMetricsStr = String(item.metricsJson || '');
-  const newMetricsStr = JSON.stringify(nextMetrics);
-  const newContourStr = JSON.stringify(contourCanonical);
   const oldContourStr = String(item.scrapContour || '');
+  const contourAlreadyLayout = isLayoutNormalizedContour(contourStored);
+  const metricsAlreadyComplete = isFully && toNum(metrics.napDirectionDegCanonical) !== null;
+  const newMetricsStr = metricsAlreadyComplete ? oldMetricsStr : JSON.stringify(nextMetrics);
+  const newContourStr = contourAlreadyLayout ? oldContourStr : JSON.stringify(contourLayoutNorm);
 
-  const needsUpdate = oldMetricsStr !== newMetricsStr || oldContourStr !== newContourStr || (napCanonical !== null && Number(item.napDirectionDeg) !== napCanonical);
+  const needsUpdate = oldMetricsStr !== newMetricsStr || oldContourStr !== newContourStr || Number(item.napDirectionDeg) !== 90;
 
   if (needsUpdate) {
     stats.updatedCandidates += 1;
@@ -281,7 +356,10 @@ for (const r of regJson.items) {
       inventoryTag: String(item.inventoryTag || ''),
       metricsJson: newMetricsStr,
       scrapContour: newContourStr,
-      napDirectionDeg: napCanonical,
+      napDirectionDeg: 90,
+      bboxWidthMm: layoutBb ? layoutBb.width : null,
+      bboxHeightMm: layoutBb ? layoutBb.height : null,
+      maxSpanMm: maxPointSpan(normalizePathPoints(contourLayoutNorm.path)),
     });
   }
 }

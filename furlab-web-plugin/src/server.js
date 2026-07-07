@@ -815,8 +815,10 @@ function transformScrapPointToWorld(p) {
   const x = safeNum(p && p.x);
   const y = safeNum(p && p.y);
   if (x === null || y === null) return null;
-  // Mirror is forbidden in placement flow; keep source contour orientation as-is.
-  return { x, y };
+  // Scrap contours are stored in FurLab raster/UI coordinates (X right, Y down).
+  // The layout workspace keeps world geometry in a Y-up frame and flips Y only
+  // at render time, so convert candidate geometry at the inventory boundary.
+  return { x, y: -y };
 }
 
 function transformScrapNapDegToWorld(v) {

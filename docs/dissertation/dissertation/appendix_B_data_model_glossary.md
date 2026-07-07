@@ -132,11 +132,13 @@
 | `inventoryTag` | string, UNIQUE | Инвентарная метка (формат `FL-SCR-XXXXXX`) |
 | `materialId` | UUID (FK → FurMaterial) | Материал куска |
 | `storageLocationId` | UUID (FK → StorageLocation), NULL | Место хранения |
-| `scrapContour` | JSON | Оцифрованный контур куска (см. В.8.1) |
-| `napDirection` | float 0..360°, NULL | Угол направления ворса |
+| `scrapContour` | JSON | Оцифрованный контур куска; после миграции — нормализованный контур для раскладки (см. В.8.1 и Приложение Н) |
+| `napDirection` | float 0..360°, NULL | Угол направления ворса; после миграции равен `90` для нормализованного `scrapContour` |
 | `metrics` | JSON | Метрические и учётные характеристики (см. В.8.2) |
 
 ### В.8.1. ScrapPiece.scrapContour (JSON)
+
+> В целевой схеме `scrapContour` является рабочим нормализованным контуром для выкладки. Исходный скан и исходный угол сохраняются в `metrics` для аудита и пересчёта. Подробности миграции описаны в Приложении Н.
 
 | Ключ | Тип | Описание |
 |------|-----|---------|
@@ -157,6 +159,10 @@
 | `note` | string, NULL | — | Комментарий / описание дефекта |
 | `createdAt` | datetime, NULL | — | Дата регистрации |
 | `updatedAt` | datetime, NULL | — | Дата последнего изменения |
+| `contourRaw` | JSON, NULL | мм | Исходный контур скана |
+| `contourCanonical` | JSON, NULL | мм | Legacy/fallback: зеркальный контур `fur_up` на переходном этапе |
+| `napDirectionDegRaw` | float, NULL | градусы | Направление ворса в кадре `contourRaw` |
+| `napDirectionDegCanonical` | float, NULL | градусы | Legacy/fallback: направление ворса в зеркальном `fur_up` кадре |
 
 ### В.8.3. ScrapQuality и ScrapStatus
 

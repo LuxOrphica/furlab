@@ -12,12 +12,13 @@
 | Уникальный идентификатор | `id` | UUID | — | Первичный ключ записи |
 | Инвентарная метка | `inventoryTag` | TEXT(64), UNIQUE | — | Печатная метка формата `FL-SCR-XXXXXX`; основной ключ поиска |
 | **Геометрия и метрики** |
-| Контур куска | `scrapContour` | JSON (MEMO) | — | Оцифрованная граница куска: `{units:"mm", path:[{x,y},...]}` |
+| Контур куска | `scrapContour` | JSON (MEMO) | — | После миграции — нормализованная граница куска для раскладки: `{units:"mm", path:[{x,y},...]}`; исходный скан хранится в `metricsJson` (см. Приложение Н) |
 | Площадь | `areaMm2` | DOUBLE | мм² | Вычисляется из контура |
 | Ширина габарита | `bboxWidthMm` | DOUBLE | мм | Ширина описывающего прямоугольника |
 | Высота габарита | `bboxHeightMm` | DOUBLE | мм | Высота описывающего прямоугольника |
 | Максимальный габарит | `maxSpanMm` | DOUBLE | мм | Максимальная протяжённость (диагональ) |
-| Угол направления ворса | `napDirectionDeg` | DOUBLE | 0–360° | Угол метки ворса на мездре; ориентация стрелки от основания к концу. В логической модели (Приложение В) поле обозначено `napDirection` — физическое имя `napDirectionDeg` уточняет единицы измерения |
+| Угол направления ворса | `napDirectionDeg` | DOUBLE | 0–360° | После миграции равен `90` для нормализованного `scrapContour`; исходный угол хранится в `metricsJson.napDirectionDegRaw` |
+| Метрики и исходные данные | `metricsJson` | JSON (MEMO) | — | Расширенное описание геометрии и аудита: `contourRaw`, `napDirectionDegRaw`, legacy `contourCanonical`, `napDirectionDegCanonical` (см. Приложение Н) |
 | **Качество и статус** |
 | Статус куска | `scrapStatus` | TEXT(20) | Available / Reserved / Used / Discarded | Статус жизненного цикла |
 | Качество куска | `scrapQuality` | TEXT(20) | Good / Limited | Оценка качества; Limited требует комментария |
@@ -80,6 +81,7 @@ Available ────────────► Reserved ───────
 │ materialId (FK → FurMaterial)                  │
 │ storageLocationId (FK → StorageLocation, NULL) │
 │ scrapContour (JSON)                            │
+│ metricsJson (JSON)                             │
 │ areaMm2                                        │
 │ bboxWidthMm, bboxHeightMm, maxSpanMm           │
 │ napDirectionDeg                                │

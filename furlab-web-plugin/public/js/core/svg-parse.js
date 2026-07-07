@@ -125,7 +125,10 @@
       for (const p of arr) {
         const x = Number(p && p.x);
         const y = Number(p && p.y);
-        if (Number.isFinite(x) && Number.isFinite(y)) out.push({ x, y });
+        // DB/API scrap contours use FurLab raster coordinates (X right, Y down).
+        // The web workspace stores geometry in world coordinates (Y up) and
+        // applies the screen flip in worldToScreen(), so convert at this boundary.
+        if (Number.isFinite(x) && Number.isFinite(y)) out.push({ x, y: -y });
       }
       return out;
     } catch (_) {

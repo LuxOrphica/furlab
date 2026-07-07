@@ -138,6 +138,16 @@ for (var i = 0; i < items.length; i++) {
     rs.Fields("metricsJson").Value = String(it.metricsJson || "");
     rs.Fields("scrapContour").Value = String(it.scrapContour || "");
 
+    if (it.bboxWidthMm !== null && it.bboxWidthMm !== undefined && it.bboxWidthMm !== "") {
+      try { rs.Fields("bboxWidthMm").Value = Number(it.bboxWidthMm); } catch (_) {}
+    }
+    if (it.bboxHeightMm !== null && it.bboxHeightMm !== undefined && it.bboxHeightMm !== "") {
+      try { rs.Fields("bboxHeightMm").Value = Number(it.bboxHeightMm); } catch (_) {}
+    }
+    if (it.maxSpanMm !== null && it.maxSpanMm !== undefined && it.maxSpanMm !== "") {
+      try { rs.Fields("maxSpanMm").Value = Number(it.maxSpanMm); } catch (_) {}
+    }
+
     if (it.napDirectionDeg === null || it.napDirectionDeg === undefined || it.napDirectionDeg === "") {
       rs.Fields("napDirectionDeg").Value = null;
     } else {

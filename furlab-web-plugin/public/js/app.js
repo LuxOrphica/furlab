@@ -4303,7 +4303,7 @@ function renderSplitEvents(events) {
         candidate: ap.candidate || null,
         alignRotationDeg,
         napDirectionDeg: baseNapDeg,
-        napEffectiveDeg: normalizeDeg(baseNapDeg + alignRotationDeg, DEFAULT_NAP_DIRECTION_DEG),
+        napEffectiveDeg: normalizeDeg(baseNapDeg - alignRotationDeg, DEFAULT_NAP_DIRECTION_DEG),
         alignedContour: toPointList(ap.points),
         alignedCoreContour,
         alignedCoreContours: Array.isArray(coreWorldMp) ? coreWorldMp : [],
@@ -4971,7 +4971,7 @@ function renderSplitEvents(events) {
       const prevRot = Number(pl.alignRotationDeg || 0);
       pl.alignRotationDeg = prevRot + dd;
       const baseNap = Number.isFinite(Number(pl.napDirectionDeg)) ? Number(pl.napDirectionDeg) : Number(state.layoutRun.lastNapDirectionDeg || DEFAULT_NAP_DIRECTION_DEG);
-      pl.napEffectiveDeg = baseNap + Number(pl.alignRotationDeg || 0);
+      pl.napEffectiveDeg = normalizeDeg(baseNap - Number(pl.alignRotationDeg || 0), DEFAULT_NAP_DIRECTION_DEG);
       state.layoutRun.manual = state.layoutRun.manual || { suggestions: [], lastMetrics: null, selectedCandidateTag: "", activePiece: null, lastEvalContours: null, statusNote: "", selectedPlacementIndex: -1 };
       state.layoutRun.manual.selectedPlacementIndex = idx;
       state.layoutRun.manual.statusNote = "кусок повернут";
@@ -8773,7 +8773,7 @@ function renderSplitEvents(events) {
                 : 0;
               const effNap = Number.isFinite(Number(pl && pl.napEffectiveDeg))
                 ? Number(pl.napEffectiveDeg)
-                : (baseNap + alignRotDeg);
+                : (baseNap - alignRotDeg);
               drawNapArrow(layerSelection, napCenter, effNap, 26);
             }
           }
@@ -9013,7 +9013,7 @@ function renderSplitEvents(events) {
               : 0;
             const effNap = Number.isFinite(Number(pl.napEffectiveDeg))
               ? Number(pl.napEffectiveDeg)
-              : (baseNap + alignRotDeg);
+              : (baseNap - alignRotDeg);
             drawNapArrow(layerFragments, fc, effNap, 18);
           }
 
