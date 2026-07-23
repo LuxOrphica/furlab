@@ -77,22 +77,83 @@ function rotatePoints(points, angleRad, center) {
   });
 }
 
+// ЗЕРКАЛО СЕРВЕРА (src/server.js: parseScrapContourPoints/transformScrapPointToWorld/
+// normalizeCandidateContourPoints). Скрап-контуры хранятся Y-ВНИЗ (растровые координаты),
+// мир воркспейса — Y-вверх: сервер флипует Y на границе инвентаря и нормализует контур
+// (дедуп + канонический старт + CCW). Harness ОБЯЗАН делать то же самое, иначе куски
+// зеркалятся и реплей решает другую задачу. Вскрыто 2026-07-16: при идентичном потоке
+// RNG покрытие первого куска расходилось (2037 vs 2286 клеток) — формы были отражёнными.
+function _signedArea(points) {
+  const pts = Array.isArray(points) ? points : [];
+  if (pts.length < 3) return 0;
+  let sum = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const a = pts[i];
+    const b = pts[(i + 1) % pts.length];
+    sum += Number(a.x || 0) * Number(b.y || 0) - Number(b.x || 0) * Number(a.y || 0);
+  }
+  return sum * 0.5;
+}
+
+function _normalizeCandidateContourPoints(points) {
+  const src = Array.isArray(points) ? points : [];
+  const cleaned = [];
+  const EPS = 1e-6;
+  for (const p of src) {
+    const x = Number(p && p.x);
+    const y = Number(p && p.y);
+    if (!Number.isFinite(x) || !Number.isFinite(y)) continue;
+    if (cleaned.length) {
+      const q = cleaned[cleaned.length - 1];
+      if (Math.hypot(x - q.x, y - q.y) <= EPS) continue;
+    }
+    cleaned.push({ x, y });
+  }
+  if (cleaned.length >= 2) {
+    const a = cleaned[0];
+    const b = cleaned[cleaned.length - 1];
+    if (Math.hypot(a.x - b.x, a.y - b.y) <= EPS) cleaned.pop();
+  }
+  if (cleaned.length < 3) return [];
+  let start = 0;
+  for (let i = 1; i < cleaned.length; i++) {
+    const p = cleaned[i];
+    const s = cleaned[start];
+    if (p.y < s.y - EPS || (Math.abs(p.y - s.y) <= EPS && p.x < s.x - EPS)) start = i;
+  }
+  const out = [];
+  for (let i = 0; i < cleaned.length; i++) out.push(cleaned[(start + i) % cleaned.length]);
+  if (_signedArea(out) < 0) out.reverse();
+  return out;
+}
+
 function parseScrapContourPoints(scrapContour) {
-  // Accept already-parsed array of {x,y} OR JSON string with .path OR JSON string of array
+  // Формат oracle-кейсов: уже готовый массив {x,y} в мировых координатах — без флипа.
   if (Array.isArray(scrapContour)) {
     return scrapContour
       .map(p => ({ x: Number(p && p.x), y: Number(p && p.y) }))
       .filter(p => Number.isFinite(p.x) && Number.isFinite(p.y));
   }
+  // Формат БД (строка JSON с .path): как сервер — Y-flip + нормализация.
   if (typeof scrapContour === "string") {
     try {
       const parsed = JSON.parse(scrapContour);
-      if (Array.isArray(parsed)) return parseScrapContourPoints(parsed);
-      if (parsed && Array.isArray(parsed.path)) return parseScrapContourPoints(parsed.path);
-    } catch (_) {}
+      const path = Array.isArray(parsed && parsed.path) ? parsed.path
+        : (Array.isArray(parsed) ? parsed : []);
+      const raw = [];
+      for (const p of path) {
+        const x = Number(p && p.x);
+        const y = Number(p && p.y);
+        if (Number.isFinite(x) && Number.isFinite(y)) raw.push({ x, y: -y });
+      }
+      return _normalizeCandidateContourPoints(raw);
+    } catch (_) { return []; }
   }
   if (scrapContour && typeof scrapContour === "object" && Array.isArray(scrapContour.path)) {
-    return parseScrapContourPoints(scrapContour.path);
+    const raw = scrapContour.path
+      .map(p => ({ x: Number(p && p.x), y: -Number(p && p.y) }))
+      .filter(p => Number.isFinite(p.x) && Number.isFinite(p.y));
+    return _normalizeCandidateContourPoints(raw);
   }
   return [];
 }
@@ -120,7 +181,7 @@ const voronoiSaSolver = createVoronoiSaSolver(solverDeps);
 // ── CLI parsing ──────────────────────────────────────────────────────────────
 
 function parseArgs(argv) {
-  const args = { _: [], seed: null, maxIter: null, maxSolveMs: null, out: null, lloyd: false, sa: false };
+  const args = { _: [], seed: null, maxIter: null, maxSolveMs: null, out: null, lloyd: false, sa: false, assignResidual: false, overlapWeight: null, junction: false, restarts: null, swapRepair: false, tagIds: false, progress: false, deepWeight: null };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--seed") args.seed = Number(argv[++i]);
@@ -129,6 +190,14 @@ function parseArgs(argv) {
     else if (a === "--out") args.out = argv[++i];
     else if (a === "--lloyd") args.lloyd = true;
     else if (a === "--sa") args.sa = true;
+    else if (a === "--assign-residual") args.assignResidual = true;
+    else if (a === "--overlap-weight") args.overlapWeight = Number(argv[++i]);
+    else if (a === "--junction") args.junction = true;
+    else if (a === "--restarts") args.restarts = Number(argv[++i]);
+    else if (a === "--swap-repair") args.swapRepair = true;
+    else if (a === "--tag-ids") args.tagIds = true;
+    else if (a === "--progress") args.progress = true;
+    else if (a === "--deep-weight") args.deepWeight = Number(argv[++i]);
     else args._.push(a);
   }
   return args;
@@ -146,43 +215,63 @@ async function main() {
   const casePath = path.resolve(args._[0]);
   const caseData = JSON.parse(fs.readFileSync(casePath, "utf-8"));
 
-  // Oracle case format:
-  //   zone: { id, points: [{x,y}...] }
-  //   pieces: [{ id, points: [{x,y}...], areaMm2 }]
-  //   params: { ... solver params ... }
-  //   seed
+  // Два поддерживаемых формата:
+  //   1) Oracle case: { zone: {points}, pieces: [{id, points}], params, seed }
+  //   2) UI run export: { zone: {points}, candidates: [{inventoryTag, scrapContour(строка-JSON), napDirectionDeg}], effectiveOptions }
   const zonePoints = caseData.zone.points.map(p => ({ x: Number(p.x), y: Number(p.y) }));
-  const seed = args.seed || caseData.seed || 1;
-  const params = caseData.params || {};
+  const seed = args.seed || caseData.seed || (caseData.effectiveOptions && caseData.effectiveOptions.seed) || 1;
+  const params = caseData.params || caseData.effectiveOptions || {};
 
   // Build candidates in solver's expected shape
-  const candidates = caseData.pieces.map(p => ({
-    id: String(p.id),
-    inventoryTag: String(p.id),
-    scrapContour: p.points.map(pt => ({ x: Number(pt.x), y: Number(pt.y) })),
-    napDirectionDeg: 0
-  }));
+  let candidates;
+  if (Array.isArray(caseData.pieces)) {
+    candidates = caseData.pieces.map(p => ({
+      id: String(p.id),
+      inventoryTag: String(p.id),
+      scrapContour: p.points.map(pt => ({ x: Number(pt.x), y: Number(pt.y) })),
+      napDirectionDeg: 0
+    }));
+  } else if (Array.isArray(caseData.candidates)) {
+    candidates = caseData.candidates.map(c => ({
+      id: args.tagIds ? String(c.inventoryTag || c.id) : String(c.id || c.inventoryTag),
+      inventoryTag: String(c.inventoryTag || c.id),
+      scrapContour: c.scrapContour, // строка-JSON или массив — parseScrapContourPoints разберёт
+      napDirectionDeg: Number(c.napDirectionDeg || 0)
+    }));
+  } else {
+    throw new Error("case file has neither .pieces (oracle) nor .candidates (run export)");
+  }
 
   // Decide _lloydTiling
   // v5.0: default SA (--sa). Lloyd-tiling только через --lloyd (regression-тесты).
   let lloydTiling = false;
   if (args.lloyd) lloydTiling = true;
 
+  // Фиделити: параметры берём из экспорта (effectiveOptions/params), хардкод — только fallback.
+  // Иначе реплей UI-прогона решает другую задачу (вскрылось на zone 2: UI clean, harness fail).
   const options = {
     seed,
     maxSolveMs: args.maxSolveMs || params.maxSolveMs || 90000,
-    maxIterations: args.maxIter || params.maxIter || 20000,
-    allowanceMm: 12,
-    minWidthMm: 70,
-    minLengthMm: 70,
-    napTarget: 90,
-    napTol: 15,
-    overhangMm: 75,
-    absorptionCriterion: 4,
+    maxIterations: args.maxIter || params.maxIterations || params.maxIter || 20000,
+    allowanceMm: params.allowanceMm != null ? Number(params.allowanceMm) : 12,
+    minWidthMm: params.minWidthMm != null ? Number(params.minWidthMm) : 70,
+    minLengthMm: params.minLengthMm != null ? Number(params.minLengthMm) : 70,
+    napTarget: params.napTarget != null ? Number(params.napTarget) : 90,
+    napTol: params.napTol != null ? Number(params.napTol)
+      : (params.napTolDeg != null ? Number(params.napTolDeg) : 15),
+    overhangMm: params.overhangMm != null ? Number(params.overhangMm) : 75,
+    absorptionCriterion: params.absorptionCriterion != null ? Number(params.absorptionCriterion) : 4,
     postprocessMode: "full",
     layoutMode: "inventory_voronoi_sa",
     territoryMode: "mosaic",
-    _lloydTiling: lloydTiling
+    _lloydTiling: lloydTiling,
+    _assignAwareResidual: args.assignResidual,
+    _overlapWeight: args.overlapWeight,
+    _junctionConsolidation: args.junction,
+    _deepOverlapWeight: args.deepWeight,
+    numRestarts: args.restarts || 1,
+    onProgress: args.progress ? (async () => {}) : undefined,
+    _swapRepair: args.swapRepair
   };
 
   console.error(`[harness] case: ${path.basename(casePath)}`);

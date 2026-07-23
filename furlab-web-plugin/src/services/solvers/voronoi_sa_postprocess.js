@@ -671,7 +671,10 @@ function createVoronoiSaFragmentPostprocess(deps) {
       if (!pts || pts.length < 3) return true;
       const bb = polygonBBox(pts);
       const w = bb.maxX - bb.minX, h = bb.maxY - bb.minY;
-      return Math.min(w, h) < minWidthMm || Math.max(w, h) < minLengthMm;
+      // Допуск −0.5мм — как в polygonal thin-check и верификаторе R5.
+      // Строгое сравнение давало рассинхрон: фрагмент 69.5мм проходил билдер,
+      // но dissolve вешал under_threshold → безусловный R5_FAIL.
+      return Math.min(w, h) < minWidthMm - 0.5 || Math.max(w, h) < minLengthMm - 0.5;
     }
 
     const { nx, ny, r, ox, oy } = spec;
@@ -806,7 +809,9 @@ function collectDuplicatePieceWarnings(resultPlacements) {
   const warnings = [];
   const pieceIdCount = new Map();
   for (const rp of resultPlacements) {
-    pieceIdCount.set(rp.scrapPieceId, (pieceIdCount.get(rp.scrapPieceId) || 0) + 1);
+    const id = String((rp && (rp.scrapPieceId || rp.inventoryTag || rp.id)) || "").trim();
+    if (!id) continue;
+    pieceIdCount.set(id, (pieceIdCount.get(id) || 0) + 1);
   }
   for (const [pid, cnt] of pieceIdCount) {
     if (cnt > 1) warnings.push(`duplicate_scrapPieceId:${pid}:count=${cnt}`);

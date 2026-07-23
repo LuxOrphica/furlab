@@ -412,11 +412,28 @@ try {
   var dao = new ActiveXObject("DAO.DBEngine.120");
   daoDb = dao.OpenDatabase(dbPath, false, true);
   var activeReservations = {};
+  // excludeReservationLayoutId: резервации ЭТОЙ выкладки не считаются занятостью —
+  // иначе «Пересчитать» после сохранения проекта вычёркивает собственные куски выкладки
+  // и каждый пересчёт решает на обеднённом пуле.
+  var excludeReservationLayoutId = String(payload.excludeReservationLayoutId || "").toLowerCase();
   try {
-    var rsResv = daoDb.OpenRecordset("SELECT scrapPieceId FROM ScrapReservation WHERE releasedAt Is Null;");
+    var rsResv = null;
+    var resvHasLayoutId = true;
+    try {
+      // Схема ScrapReservation: колонка называется layoutRunId (хранит id выкладки).
+      rsResv = daoDb.OpenRecordset("SELECT scrapPieceId, layoutRunId FROM ScrapReservation WHERE releasedAt Is Null;");
+    } catch (_eLid) {
+      resvHasLayoutId = false;
+      rsResv = daoDb.OpenRecordset("SELECT scrapPieceId FROM ScrapReservation WHERE releasedAt Is Null;");
+    }
     while (!rsResv.EOF) {
       var rid = String(rsResv.Fields("scrapPieceId").Value || "");
-      if (rid) activeReservations[rid.toLowerCase()] = true;
+      var rlid = "";
+      if (resvHasLayoutId) {
+        try { rlid = String(rsResv.Fields("layoutRunId").Value || ""); } catch (_eRl) { rlid = ""; }
+      }
+      var ownReservation = excludeReservationLayoutId && rlid && rlid.toLowerCase() === excludeReservationLayoutId;
+      if (rid && !ownReservation) activeReservations[rid.toLowerCase()] = true;
       rsResv.MoveNext();
     }
     rsResv.Close();

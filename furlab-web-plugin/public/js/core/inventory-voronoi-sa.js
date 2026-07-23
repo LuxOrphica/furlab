@@ -5,16 +5,36 @@
     return Array.isArray(points) && points.length >= 3 ? points : [];
   }
 
+  function asContours(contours, single) {
+    const out = [];
+    for (const contour of Array.isArray(contours) ? contours : []) {
+      const pts = asContour(contour);
+      if (pts.length >= 3) out.push(pts);
+    }
+    if (out.length > 0) return out;
+    const pts = asContour(single);
+    return pts.length >= 3 ? [pts] : [];
+  }
+
+  function isTechnicalResidual(c) {
+    const cls = String(c && c.classification || "");
+    return !!(c && c.isPerimeterSliver) || cls === "raster-artifact" || cls === "edge-line-artifact";
+  }
+
   function mapRenderItems(res) {
     const items = Array.isArray(res && res.render && res.render.items) ? res.render.items : [];
     return items.map((item) => ({
       scrapPieceId: String(item.id || ""),
       inventoryTag: String(item.meta && item.meta.inventoryTag || item.id || ""),
-      status: "matched",
+      status: String(item.meta && item.meta.status || "matched"),
       alignedContour: Array.isArray(item.contour) ? item.contour : [],
+      rawTerritoryContours: asContours(item.rawTerritoryContours, item.rawTerritoryContour),
+      rawTerritoryContour: asContour(item.rawTerritoryContour),
       inZoneContour: asContour(item.inZoneContour).length >= 3 ? item.inZoneContour : (Array.isArray(item.contour) ? item.contour : []),
+      inZoneContours: asContours(item.inZoneContours, item.inZoneContour),
       alignedCoreContour: asContour(item.alignedCoreContour),
       inZoneCoreContour: asContour(item.inZoneCoreContour),
+      inZoneCoreContours: asContours(item.inZoneCoreContours, item.inZoneCoreContour),
       phase: String(item.meta && item.meta.phase || "SA"),
       inZoneAreaMm2: Number(item.meta && item.meta.inZoneAreaMm2 || 0),
       bodyAreaMm2: Number(item.meta && item.meta.bodyAreaMm2 || 0),
@@ -29,26 +49,39 @@
   }
 
   function buildCoreContours(placements) {
-    return (Array.isArray(placements) ? placements : [])
-      .filter((p) => !p.isTerritoryPlaceholder)
-      .map((p) => asContour(p.inZoneCoreContour))
-      .filter((c) => c.length >= 3);
+    const out = [];
+    for (const p of (Array.isArray(placements) ? placements : [])) {
+      if (p.isTerritoryPlaceholder) continue;
+      const contours = asContours(p.inZoneCoreContours, p.inZoneCoreContour);
+      for (const c of contours) out.push(c);
+    }
+    return out;
   }
 
   function buildFragments(placements, zone) {
-    return (Array.isArray(placements) ? placements : []).map((p, idx) => {
-      const fragPts = asContour(p.inZoneCoreContour);
-      return {
-        id: idx + 1,
-        ownerPlacementIndex: idx,
-        ownerPlacementId: idx + 1,
-        inventoryTag: p.inventoryTag || p.scrapPieceId || "",
-        points: fragPts,
-        cutPoints: fragPts,
-        areaMm2: 0,
-        zoneId: Number(zone && zone.id || 0) || null
-      };
-    }).filter((f) => f.points.length >= 3);
+    const fragments = [];
+    for (const [idx, p] of (Array.isArray(placements) ? placements : []).entries()) {
+      // Канва рисует ФРАГМЕНТЫ (регуляризованную геометрию кроя): territory-контуры
+      // грязны по природе (иглы, мультичасти) и в контракт кроя не входят — попытка
+      // рисовать их дала «иглы и разделение ядер» на канве при чистых фрагментах.
+      // Щели между соседями ≤ допуска реза — честные волоски.
+      const contours = asContours(p.inZoneCoreContours, p.inZoneCoreContour);
+      for (let ci = 0; ci < contours.length; ci++) {
+        const fragPts = contours[ci];
+        fragments.push({
+          id: fragments.length + 1,
+          ownerPlacementIndex: idx,
+          ownerPlacementId: idx + 1,
+          inventoryTag: p.inventoryTag || p.scrapPieceId || "",
+          points: fragPts,
+          cutPoints: fragPts,
+          areaMm2: 0,
+          zoneId: Number(zone && zone.id || 0) || null,
+          componentIndex: ci
+        });
+      }
+    }
+    return fragments;
   }
 
   function pointInPoly(px, py, poly) {
@@ -92,7 +125,7 @@
     const serverUncovered = Array.isArray(res && res.uncoveredComponents) ? res.uncoveredComponents : [];
     const coverageHoles = serverUncovered.length > 0
       ? serverUncovered
-          .filter((c) => !c.isPerimeterSliver && (c.areaMm2 || 0) >= 9)
+          .filter((c) => !isTechnicalResidual(c) && (c.areaMm2 || 0) >= 9)
           .map((c) => c.pts || c.points || [])
           .filter((p) => Array.isArray(p) && p.length >= 3)
       : (typeof helpers.computeCoverageHolesForZone === "function"

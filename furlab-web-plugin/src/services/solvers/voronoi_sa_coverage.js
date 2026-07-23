@@ -38,6 +38,23 @@ function createVoronoiSaCoverage(deps) {
     return Math.abs(ClipperLib.Clipper.Area(path)) / (CLIPPER_SCALE * CLIPPER_SCALE);
   }
 
+  function validContour(pts) {
+    return Array.isArray(pts) && pts.length >= 3;
+  }
+
+  function placementCoverageContours(rp) {
+    if (!rp || rp.phase === "dissolved") return [];
+    if (Array.isArray(rp.inZoneContours) && rp.inZoneContours.length > 0) {
+      return rp.inZoneContours.filter(validContour);
+    }
+    if (validContour(rp.inZoneContour)) return [rp.inZoneContour];
+    if (Array.isArray(rp.inZoneCoreContours) && rp.inZoneCoreContours.length > 0) {
+      return rp.inZoneCoreContours.filter(validContour);
+    }
+    if (validContour(rp.inZoneCoreContour)) return [rp.inZoneCoreContour];
+    return [];
+  }
+
   function emptyCoverage(zoneArea) {
     return {
       coveredRatio: 0,
@@ -73,15 +90,16 @@ function createVoronoiSaCoverage(deps) {
     let anyAdded = false;
 
     for (const rp of (Array.isArray(resultPlacements) ? resultPlacements : [])) {
-      if (rp.phase === "dissolved") continue;
-      const corePts = Array.isArray(rp.inZoneCoreContour) && rp.inZoneCoreContour.length >= 3
-        ? rp.inZoneCoreContour
-        : [];
-      if (corePts.length < 3) continue;
-      const corePath = toClipper(corePts);
-      if (Math.abs(ClipperLib.Clipper.Area(corePath)) < 1) continue;
-      cprUnion.AddPath(corePath, ClipperLib.PolyType.ptSubject, true);
-      anyAdded = true;
+      // v5.1.2: polygonal SA can produce a multi-component fragment for one
+      // physical scrap. All components are coverage geometry; the single
+      // inZoneContour field is only the legacy largest component.
+      const contours = placementCoverageContours(rp);
+      for (const fragPts of contours) {
+        const fragPath = toClipper(fragPts);
+        if (Math.abs(ClipperLib.Clipper.Area(fragPath)) < 1) continue;
+        cprUnion.AddPath(fragPath, ClipperLib.PolyType.ptSubject, true);
+        anyAdded = true;
+      }
     }
 
     if (!anyAdded) return emptyCoverage(zoneArea);
@@ -120,127 +138,75 @@ function createVoronoiSaCoverage(deps) {
     // zonePathClipper нужен для расчёта расстояния до границы (через Clipper).
     const zonePathClipper = toClipper(zonePoints);
 
+    // v5.6 СТРОГИЙ РЕЖИМ (решение пользователя 2026-07-19: «фрагменты примыкают
+    // вплотную, щели недопустимы, никаких допусков»). Прощается ТОЛЬКО вычислительный
+    // мусор булевой геометрии — компоненты, схлопывающиеся эрозией 0.15мм (ширина
+    // < ~0.3мм). Прежние классы прощения (sliver-по-эрозии, raster-artifact,
+    // edge-line-artifact, потолки площади) удалены как самооправдание слабостей
+    // генератора: любой реальный остаток — честный дефект interior/edge.
+    const NUMERIC_NOISE_EROSION_MM = 0.15;
+    const isNumericNoise = (path) => {
+      try {
+        const co = new ClipperLib.ClipperOffset(2, 0.25 * CLIPPER_SCALE);
+        co.AddPath(path, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
+        const er = new ClipperLib.Paths();
+        co.Execute(er, -Math.round(NUMERIC_NOISE_EROSION_MM * CLIPPER_SCALE));
+        if (!er || !er.length) return true;
+        return er.reduce((sum, p) => sum + clipperArea(p), 0) < 0.5;
+      } catch (_) {
+        return false;
+      }
+    };
+
     for (const path of (residualSol || [])) {
       const areaMm2 = clipperArea(path);
       residualAreaMm2 += areaMm2;
-      let isPerimeterSliver = false;
+      // Вычислительный мусор — не дефект и не компонента.
+      if (isNumericNoise(path)) continue;
 
-      // Шаг 1: эрозия САМОЙ ДЫРЫ на -1.5мм — определяет sliver (под-сеточный артефакт).
-      // Только для дыр < 50 мм²: крупные дыры всегда interior/edge, даже если эрозия схлопывает.
-      // Критерий: sliver если эрозия съедает >60% площади (erodedHoleArea / areaMm2 < 0.40).
-      let erodedHoleArea = 0;
-      let isSliverByErosion = false;
-      const SLIVER_ERO_FRAC = 0.40;
-      if (areaMm2 < 50) {
-        try {
-          const coHole = new ClipperLib.ClipperOffset();
-          coHole.AddPath(path, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
-          const erodedHolePaths = new ClipperLib.Paths();
-          coHole.Execute(erodedHolePaths, -Math.round(1.5 * gStep * CLIPPER_SCALE));
-          if (erodedHolePaths && erodedHolePaths.length > 0) {
-            erodedHoleArea = erodedHolePaths.reduce((s, p) => s + clipperArea(p), 0);
-          }
-          isSliverByErosion = areaMm2 > 1e-6 ? (erodedHoleArea / areaMm2 < SLIVER_ERO_FRAC) : true;
-        } catch (_) {
-          isSliverByErosion = false;
-        }
-      }
-      isPerimeterSliver = isSliverByErosion;
-      const erosionSurvives = !isSliverByErosion;
-
-      // v5.0 §8 (расширение): растровый шовный артефакт.
-      // Только для дыр < 50 мм² с fill_ratio < 0.3 — «змейка» из растровых клеток по швам.
-      // Крупные дыры (>= 50 мм²) всегда interior/edge — не скрываем как raster-artifact.
-      let isRasterArtifact = false;
-      if (!isPerimeterSliver && areaMm2 < 50) {
-        try {
-          const holePtsTemp = fromClipper(path);
-          const bbTemp = polygonBBox(holePtsTemp);
-          const bboxArea = (bbTemp.maxX - bbTemp.minX) * (bbTemp.maxY - bbTemp.minY);
-          const fillRatio = bboxArea > 1 ? areaMm2 / bboxArea : 1;
-          isRasterArtifact = fillRatio < 0.3;
-        } catch (_) {
-          isRasterArtifact = false;
-        }
-      }
-      // Если это raster-artifact — относим к sliver (прощается, не считается в residual),
-      // но в classification помечаем отдельно для диагностики.
-      if (isRasterArtifact) {
-        isPerimeterSliver = true;
-      }
-
-      // Шаг 2: для не-sliver дыры — классификация interior vs edge по расстоянию до границы зоны.
-      // Используем bbox-проверку: если bbox дыры целиком внутри зоны с отступом INTERIOR_DIST → interior.
-      // Иначе (касается или близко к границе) → edge.
       const holePts = fromClipper(path);
       const holeBbox = polygonBBox(holePts);
+
+      // interior vs edge по расстоянию до границы зоны: дыра целиком внутри зоны,
+      // эродированной на INTERIOR_DIST → interior; иначе — edge.
       let isInterior = false;
-      if (!isPerimeterSliver) {
-        // Быстрая bbox-проверка: если bbox дыры дальше INTERIOR_DIST от bbox зоны — interior.
-        // Это приближение, но для большинства случаев работает.
-        const zoneBb = polygonBBox(zonePoints);
-        if (zoneBb && holeBbox) {
-          const distMinX = holeBbox.minX - zoneBb.minX;
-          const distMaxX = zoneBb.maxX - holeBbox.maxX;
-          const distMinY = holeBbox.minY - zoneBb.minY;
-          const distMaxY = zoneBb.maxY - holeBbox.maxY;
-          // Если хотя бы одна сторона bbox дыры ближе INTERIOR_DIST к bbox зоны — edge.
-          // Но bbox зоны >= bbox дыры, поэтому dist'ы должны быть > INTERIOR_DIST.
-          // Это верхняя оценка: может пропустить edge-дыру как interior, но не наоборот.
-          // Для надёжности используем более строгий тест: хотя бы одна вершина дыры ближе INTERIOR_DIST к zone boundary.
-          // Полигон-тест дороже; используем Clipper: расширяем зону внутрь на INTERIOR_DIST, проверяем включение дыры.
-          try {
-            const co2 = new ClipperLib.ClipperOffset();
-            co2.AddPath(zonePathClipper, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
-            const interiorZone = new ClipperLib.Paths();
-            co2.Execute(interiorZone, -Math.round(INTERIOR_DIST_MM * CLIPPER_SCALE));
-            // Если дыра (path) целиком внутри interiorZone → interior.
-            const cprTest = new ClipperLib.Clipper();
-            cprTest.AddPath(path, ClipperLib.PolyType.ptSubject, true);
-            for (const ep of interiorZone) cprTest.AddPath(ep, ClipperLib.PolyType.ptClip, true);
-            const testSol = new ClipperLib.Paths();
-            cprTest.Execute(
-              ClipperLib.ClipType.ctIntersection,
-              testSol,
-              ClipperLib.PolyFillType.pftNonZero,
-              ClipperLib.PolyFillType.pftNonZero
-            );
-            const testArea = testSol.reduce((s, p) => s + clipperArea(p), 0);
-            isInterior = testArea >= areaMm2 * 0.99; // 99% площади дыры внутри interiorZone
-          } catch (_) {
-            isInterior = false;
-          }
-        }
+      try {
+        const co2 = new ClipperLib.ClipperOffset();
+        co2.AddPath(zonePathClipper, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
+        const interiorZone = new ClipperLib.Paths();
+        co2.Execute(interiorZone, -Math.round(INTERIOR_DIST_MM * CLIPPER_SCALE));
+        const cprTest = new ClipperLib.Clipper();
+        cprTest.AddPath(path, ClipperLib.PolyType.ptSubject, true);
+        for (const ep of interiorZone) cprTest.AddPath(ep, ClipperLib.PolyType.ptClip, true);
+        const testSol = new ClipperLib.Paths();
+        cprTest.Execute(
+          ClipperLib.ClipType.ctIntersection,
+          testSol,
+          ClipperLib.PolyFillType.pftNonZero,
+          ClipperLib.PolyFillType.pftNonZero
+        );
+        const testArea = testSol.reduce((sum, p) => sum + clipperArea(p), 0);
+        isInterior = testArea >= areaMm2 * 0.99;
+      } catch (_) {
+        isInterior = false;
       }
 
-      if (isPerimeterSliver) {
-        // Sliver = эрозия схлопывает (sub-сеточный артефакт). В residualInteriorMm2 и residualPerimeterMm2
-        // НЕ включаем — это прощаемый под-сеточный мусор (v5.0 §8).
-        // Считаем только в residualAreaMm2 (raw total).
-      } else if (isInterior) {
-        residualInteriorMm2 += areaMm2;
-      } else {
-        // edge-дыра (не sliver, но касается/близко к границе зоны)
-        residualPerimeterMm2 += areaMm2;
-      }
+      if (isInterior) residualInteriorMm2 += areaMm2;
+      else residualPerimeterMm2 += areaMm2;
+
       if (areaMm2 < 1) continue;
-
-      const pts = holePts;
-      const bb = holeBbox;
       let sx = 0, sy = 0;
-      for (const p of pts) {
+      for (const p of holePts) {
         sx += p.x;
         sy += p.y;
       }
       uncoveredComponents.push({
         areaMm2: Math.round(areaMm2),
-        bbox: { minX: bb.minX, minY: bb.minY, maxX: bb.maxX, maxY: bb.maxY },
-        centroid: { x: sx / pts.length, y: sy / pts.length },
-        pts,
-        isPerimeterSliver,
-        // v5.0 §4 + §8: классификация дыры — sliver / raster-artifact / interior / edge.
-        classification: isRasterArtifact ? "raster-artifact"
-          : (isPerimeterSliver ? "sliver" : (isInterior ? "interior" : "edge"))
+        bbox: { minX: holeBbox.minX, minY: holeBbox.minY, maxX: holeBbox.maxX, maxY: holeBbox.maxY },
+        centroid: { x: sx / holePts.length, y: sy / holePts.length },
+        pts: holePts,
+        isPerimeterSliver: false,
+        classification: isInterior ? "interior" : "edge"
       });
     }
 

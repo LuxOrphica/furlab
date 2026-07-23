@@ -8,10 +8,16 @@ const MOVES = Object.freeze({
   ADD: 4
 });
 
-function energy(coveredCells, overlapCells, placementCount, zoneCells, sliverCount) {
+function energy(coveredCells, overlapCells, placementCount, zoneCells, sliverCount, overlapWeight) {
   // 1000 per uncovered cell >> 100 per sliver >> 1 per piece
   // → coverage is top priority; eliminating slivers second; fewer pieces third
-  return 1000 * (zoneCells - coveredCells) + 8 * overlapCells + 100 * (sliverCount || 0) + placementCount;
+  // v5.6 ПРИНЦИП (2026-07-19): нахлёст ядер БЕСПЛАТЕН. Шов ест ровно припуск с обеих
+  // сторон независимо от глубины нахлёста в плане — нахлёст это запас прочности стыка,
+  // а не расход меха. Штраф за перекрытие растягивал куски до едва-касания («натянутая»
+  // выкладка, щели по швам). Экономию держат штраф за число кусков + выбраковка
+  // паразитов + R5. overlapWeight оставлен для сравнения со старым поведением (=8).
+  const w = overlapWeight == null ? 0 : overlapWeight;
+  return 1000 * (zoneCells - coveredCells) + w * overlapCells + 100 * (sliverCount || 0) + placementCount;
 }
 
 function buildUncovered(covered, zoneMask) {

@@ -230,7 +230,11 @@
           areaMm2 = (pieceAligned && pieceAligned.length >= 3)
             ? Math.max(0, Math.abs(polygonArea(pieceAligned)))
             : territoryAreaMm2;
-          cutAreaMm2 = territoryAreaMm2;
+          // Площадь кроя — по ФАКТИЧЕСКОМУ крою (cutPoints), не по территории:
+          // с territory-фигурами points = линии реза стык-в-стык, а крой — фрагмент.
+          cutAreaMm2 = hasFragCutPoints
+            ? Math.max(0, Math.abs(polygonArea(cutPts) || 0)) || territoryAreaMm2
+            : territoryAreaMm2;
         } else {
           areaMm2 = territoryAreaMm2;
           cutAreaMm2 = Math.max(areaMm2, Math.abs(polygonArea(cutPts) || areaMm2));

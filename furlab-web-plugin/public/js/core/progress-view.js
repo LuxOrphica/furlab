@@ -10,9 +10,10 @@
     let kpiState = { pieces: null, coverage: null, utilization: null, tail: null };
     const stepRu = {
       "Worker / bootstrap": "Воркер / инициализация",
-      "Worker / pre-rank": "Воркер / предварительный ранжир",
-      "Worker / prerank": "Воркер / предварительный ранжир",
-      "Worker / оконный raster + pre-rank": "Воркер / оконный растр + предранжир",
+      "Worker / raster + pre-rank": "Воркер / растровая оценка кусков",
+      "Worker / pre-rank": "Воркер / предварительное ранжирование",
+      "Worker / prerank": "Воркер / предварительное ранжирование",
+      "Worker / оконный raster + pre-rank": "Воркер / растровая оценка кусков",
       "Server / placement search": "Сервер / поиск размещения",
       "Server / placement stalled": "Сервер / застой размещения",
       "Server / coverage check": "Сервер / проверка покрытия",
@@ -38,10 +39,10 @@
     function normalizeStepLabel(raw) {
       const t = String(raw || "").trim();
       if (!t) return "";
-      if (t.indexOf("Worker: ") === 0) return t.replace(/^Worker:\s*/, "Worker / ");
-      const ru = stepRu[t];
-      if (!ru || ru === t) return t;
-      return `${t} (${ru})`;
+      const normalized = t.indexOf("Worker: ") === 0 ? t.replace(/^Worker:\s*/, "Worker / ") : t;
+      const ru = stepRu[normalized];
+      if (!ru || ru === normalized) return normalized;
+      return ru;
     }
 
     function renderSteps() {

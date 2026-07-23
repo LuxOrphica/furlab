@@ -10,8 +10,11 @@
     // { mode: "inventory", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f" },
     // { mode: "inventory_split_return", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (Split & Return)" },
     { mode: "inventory_manual", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (\u0440\u0443\u0447\u043d\u043e\u0439)" },
-    { mode: "inventory_nfp_sa", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (NFP Greedy)" },
-    { mode: "inventory_tiling", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (\u0422\u0430\u0439\u043b\u0438\u043d\u0433)" },
+    // \u0421\u043a\u0440\u044b\u0442\u044b \u0438\u0437 \u043a\u0430\u0442\u0430\u043b\u043e\u0433\u0430 \u043a\u0430\u043a \u043d\u0435\u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0435: \u043f\u043e\u043a\u0440\u044b\u0442\u0438\u0435 ~50-70% \u043f\u0440\u043e\u0442\u0438\u0432 ~99.9% \u0443 VSA
+    // (NFP Greedy \u2014 \u0440\u0430\u0441\u0442\u0440\u043e\u0432\u044b\u0439 greedy \u0431\u0435\u0437 \u0434\u043e\u0431\u0438\u0432\u043a\u0438 \u0434\u044b\u0440; Tiling \u2014 bbox strip-packer).
+    // \u0421\u043e\u043b\u0432\u0435\u0440\u044b/\u0440\u0435\u0436\u0438\u043c\u044b \u0432 \u0440\u0435\u0435\u0441\u0442\u0440\u0435 \u0438 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u0441\u043e\u0445\u0440\u0430\u043d\u0451\u043d\u043d\u044b\u0445 \u0432\u044b\u043a\u043b\u0430\u0434\u043e\u043a \u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044b \u0440\u0430\u0431\u043e\u0447\u0438\u043c\u0438.
+    // { mode: "inventory_nfp_sa", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (NFP Greedy)" },
+    // { mode: "inventory_tiling", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (\u0422\u0430\u0439\u043b\u0438\u043d\u0433)" },
     { mode: "inventory_voronoi_sa", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (Voronoi SA)" }
   ];
 
@@ -53,12 +56,12 @@
     radial: "radial",
     intarsia: "intarsia",
     inventory: "inventory_manual",
-    inventory_manual: "inventory_manual",
+    inventory_manual: "inventory_manual_new",
     inventory_split_return: "inventory_manual",
     inventory_nfp_sa: "inventory_nfp_sa",
     inventory_tiling: "inventory_nfp_sa",
-    inventory_voronoi_sa: "inventory_nfp_sa",
-    voronoi_tiles: "inventory_nfp_sa"
+    inventory_voronoi_sa: "inventory_voronoi_sa_new",
+    voronoi_tiles: "voronoi_tiles_new"
   };
   const ICONS_BASE = "/assets/layout-icons/";
 

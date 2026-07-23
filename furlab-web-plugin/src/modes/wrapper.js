@@ -42,6 +42,15 @@ function normalizePoints(points) {
   return out;
 }
 
+function normalizeContours(contours) {
+  const out = [];
+  for (const contour of Array.isArray(contours) ? contours : []) {
+    const pts = normalizePoints(contour);
+    if (pts.length >= 3) out.push(pts);
+  }
+  return out;
+}
+
 function parsePreviewWrapperRequest(body) {
   const parsed = parseModePreviewApiRequest(body);
   if (parsed.ok) return parsed;
@@ -339,8 +348,11 @@ function wrapInventoryVoronoiSaPreview(input, result) {
       id,
       contour,
       inZoneContour: normalizePoints(p && (p.fragmentContour || p.inZoneContour) || []),
+      inZoneContours: normalizeContours(p && p.inZoneContours),
       alignedCoreContour: normalizePoints(p && p.alignedCoreContour || []),
       inZoneCoreContour: normalizePoints(p && p.inZoneCoreContour || []),
+      inZoneCoreContours: normalizeContours(p && p.inZoneCoreContours),
+      rawTerritoryContours: normalizeContours(p && p.rawTerritoryContours),
       cutContour: normalizePoints(p && p.cutContour || []),
       closed: true,
       renderIndex,
@@ -370,7 +382,10 @@ function wrapInventoryVoronoiSaPreview(input, result) {
     placements: placements.map((p, idx) => {
       // Compute inZoneBbox from inZoneContour for dissolved-fragment overlap check in Monitor
       let inZoneBbox = null;
-      const izc = Array.isArray(p && p.inZoneContour) ? p.inZoneContour : [];
+      const izContours = normalizeContours(p && p.inZoneContours);
+      const izc = izContours.length > 0
+        ? izContours.flat()
+        : (Array.isArray(p && p.inZoneContour) ? p.inZoneContour : []);
       if (izc.length >= 3) {
         let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
         for (const pt of izc) {

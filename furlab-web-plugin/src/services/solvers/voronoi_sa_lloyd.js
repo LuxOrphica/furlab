@@ -8,6 +8,9 @@ function runPhaseBLloyd(args) {
   const napTarget = args.napTarget;
   const napTol = args.napTol;
   const deadline = args.deadline;
+  // v5.4: итерационный бюджет — первичен (качество не должно зависеть от загрузки
+  // машины). deadline остаётся страховкой от зависания. 0/не задан → только deadline.
+  const maxIterations = Math.max(0, Number(args.maxIterations || 0));
   const makePlacement = args.makePlacement;
   const computePowerAssign = args.computePowerAssign;
 
@@ -35,7 +38,7 @@ function runPhaseBLloyd(args) {
     for (let i = 0; i < cellCount; i++) if (zoneMask[i] && (pl.mask[i] & 1)) cellCoverCount[i]++;
   }
 
-  while (Date.now() < deadline) {
+  while (Date.now() < deadline && (maxIterations === 0 || lloydIterations < maxIterations)) {
     const powerAssign = computePowerAssign(placements, weights, spec, zoneMask);
 
     const notContained = new Int32Array(placements.length);
@@ -119,6 +122,10 @@ function runPhaseBLloyd(args) {
 
     if (Date.now() >= deadline) {
       exitReason = "timeout";
+      break;
+    }
+    if (maxIterations > 0 && lloydIterations >= maxIterations) {
+      exitReason = "max_iterations";
       break;
     }
   }

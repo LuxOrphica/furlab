@@ -3,10 +3,12 @@
 #   .\START_DEMO.ps1        -- local only (http://127.0.0.1:5600)
 #   .\START_DEMO.ps1 -Zrok  -- + zrok public link for remote demo
 #   .\START_DEMO.ps1 -Zrok -NoAC  -- skip furlab-access server
+#   .\START_DEMO.ps1 -Restart -- force-restart furlab-web-plugin (:5600) even if healthy
 
 param(
   [switch]$Zrok,
-  [switch]$NoAC
+  [switch]$NoAC,
+  [switch]$Restart
 )
 
 $ErrorActionPreference = "Stop"
@@ -162,9 +164,10 @@ if (-not $NoAC) {
 # --- 3. furlab-web-plugin (:5600) ---
 Write-Host ""
 Write-Host "[3/4] furlab-web-plugin server (port $PORT_WP)..."
-if (Wait-Http "http://127.0.0.1:$PORT_WP/api/health") {
+if (-not $Restart -and (Wait-Http "http://127.0.0.1:$PORT_WP/api/health")) {
   Write-Host "  OK furlab-web-plugin already healthy"
 } else {
+  if ($Restart) { Write-Host "  [-Restart] force-restarting furlab-web-plugin" }
   Stop-NodeOnPort $PORT_WP
   $wpLogFile = "$WP_DIR\furlab-web-plugin.log"
   Start-Process powershell -ArgumentList "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", "`$env:HOST='0.0.0.0'; `$env:PORT='$PORT_WP'; cd '$WP_DIR'; node src\server.js" -WindowStyle Hidden -RedirectStandardOutput $wpLogFile -RedirectStandardError "$WP_DIR\furlab-web-plugin.err.log"

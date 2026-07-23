@@ -202,6 +202,37 @@
       }
       return null;
     }
+    // Мягкое резервирование в рамках проекта: куски, размещённые в ДРУГИХ
+    // раскладках (preview или applied), исключаются из кандидатов текущей.
+    // Резервирование в БД (ScrapReservation) остаётся на /api/projects/save.
+    function collectUsedInventoryTagsFromOtherLayouts(excludeZoneId) {
+      const used = new Set();
+      const selectedId = Number(state.selectedLayoutId || 0);
+      const exclZone = Number(excludeZoneId || 0);
+      for (const e of (Array.isArray(state.layouts) ? state.layouts : [])) {
+        if (Number(e && e.id || 0) === selectedId) continue;
+        // Выкладка целевой зоны прогона — не «чужая»: пересчёт не должен вычёркивать
+        // её собственные куски. Без этого «Пересчитать» при selectedLayoutId, указывающем
+        // на другую выкладку (панель находит выкладку по boundZoneId), решал на обеднённом
+        // пуле — каждый пересчёт терял куски предыдущего результата. Зона имеет максимум
+        // одну выкладку, так что пропуск точен.
+        if (exclZone > 0 && Number(e && e.boundZoneId || 0) === exclZone) continue;
+        const snap = getLayoutSnapshotForReports(e);
+        const placements = Array.isArray(snap && snap.layoutRun && snap.layoutRun.placements) ? snap.layoutRun.placements : [];
+        for (const p of placements) {
+          const tag = String(p && (p.inventoryTag || String(p.scrapPieceId || "").split("#")[0]) || "").trim();
+          if (tag) used.add(tag);
+        }
+      }
+      return used;
+    }
+    function filterCandidatesUsedElsewhere(items, excludeZoneId) {
+      const list = Array.isArray(items) ? items : [];
+      const used = collectUsedInventoryTagsFromOtherLayouts(excludeZoneId);
+      if (used.size === 0) return { items: list, excluded: 0 };
+      const out = list.filter((c) => !used.has(String(c && (c.inventoryTag || c.id) || "").trim()));
+      return { items: out, excluded: list.length - out.length };
+    }
     function findPlacementForFragmentInSnapshot(snapshot, fragmentOrId) {
       const snap = snapshot && typeof snapshot === "object" ? snapshot : null;
       const placements = Array.isArray(snap && snap.layoutRun && snap.layoutRun.placements) ? snap.layoutRun.placements : [];
@@ -5771,7 +5802,17 @@ function renderSplitEvents(events) {
           _contractDiagMeta: (selectedLayout && selectedLayout._lcmMeta) || null
         }
       };
-      return JSON.parse(JSON.stringify(snapshot));
+      const copy = JSON.parse(JSON.stringify(snapshot));
+      // Результаты рана — ПО ССЫЛКЕ (иммутабельны, deep-copy дорог). Без них
+      // lastRawResult/serverPreview протекают между раскладками через ...base
+      // при restore → экспорт зоны 2 получает метрики/trace/дыры зоны 4.
+      copy.layoutRun.lastRawResult = lr.lastRawResult || null;
+      copy.layoutRun.serverPreview = lr.serverPreview || null;
+      copy.layoutRun.effectiveOptions = lr.effectiveOptions || null;
+      // candidatePool тоже per-layout: иначе restore очищает его и экспорт
+      // уходит с пустым candidates (харнесс не может перегнать кейс).
+      copy.layoutRun.candidatePool = Array.isArray(lr.candidatePool) ? lr.candidatePool : [];
+      return copy;
     }
     function buildEmptyFragmentOnlyLayoutSnapshot(mode, entry) {
       const normalizedMode = String(mode || "").trim();
@@ -6065,7 +6106,13 @@ function renderSplitEvents(events) {
       };
     }
     function saveCurrentLayoutRuntimeSnapshot() {
-      const current = getSelectedLayoutEntry();
+      // Снапшот пишется ВЛАДЕЛЬЦУ runtime (кто реально запускал прогон), а не «выбранной»
+      // карточке: selectedLayoutId может указывать на чужую (панель резолвит по зоне) —
+      // снапшот уходил не туда → пропадание выкладок и перекрёстное загрязнение карточек.
+      const _ownerId = Number(state.layoutRun && state.layoutRun.ownerLayoutId || 0);
+      const current = (_ownerId > 0
+        ? (Array.isArray(state.layouts) ? state.layouts : []).find((x) => Number(x && x.id) === _ownerId)
+        : null) || getSelectedLayoutEntry();
       if (!current || !isLocalRuntimeLayoutMode(current.mode)) return;
       ensureLocalRuntimeLayoutBinding(current);
       if (String(current.mode || "") === "inventory_manual") {
@@ -6101,6 +6148,7 @@ function renderSplitEvents(events) {
       };
       state.layoutRun.active = false;
       state.layoutRun.status = "idle";
+      state.layoutRun.ownerLayoutId = null;
       state.layoutRun.fragments = [];
       state.layoutRun.placements = [];
       state.layoutRun.candidatePool = [];
@@ -6145,6 +6193,7 @@ function renderSplitEvents(events) {
       if (selectedLayout && String(selectedLayout.mode || "") === "inventory_manual") {
         if (zoneId > 0) selectedLayout.boundZoneId = zoneId;
         if (detailId > 0) selectedLayout.boundDetailId = detailId;
+        state.layoutRun.ownerLayoutId = Number(selectedLayout.id) || null;
       }
       if (!Array.isArray(state.layoutRun.placements)) state.layoutRun.placements = [];
       if (!Array.isArray(state.layoutRun.fragments)) state.layoutRun.fragments = [];
@@ -6166,6 +6215,8 @@ function renderSplitEvents(events) {
       renderPlacementRows(state.layoutRun.placements || []);
       renderSplitEvents(state.layoutRun.splitEvents || []);
       renderInventoryManualPanel();
+      // Ручной режим — не VSA: сбрасываем монитор Voronoi SA, чтобы он не показывал чужой прогон.
+      if (typeof updateVoronoiSaMonitor === "function") updateVoronoiSaMonitor(null);
       // Auto-fetch candidates when pool is empty on layout select
       const _poolEmpty = state.layoutRun.candidatePool.length === 0;
       const _layoutActive = state.layoutRun.active === true || Array.isArray(state.layoutRun.placements) && state.layoutRun.placements.length > 0;
@@ -6185,7 +6236,7 @@ function renderSplitEvents(events) {
               maxCandidates: 300
             });
             if (res && res.ok && Array.isArray(res.items)) {
-              state.layoutRun.candidatePool = res.items;
+              state.layoutRun.candidatePool = filterCandidatesUsedElsewhere(res.items, Number(zone.id)).items;
               renderInventoryManualPanel();
             }
           } catch (_) {}
@@ -6208,9 +6259,17 @@ function renderSplitEvents(events) {
         strategy: normalizedMode,
         fillType: nextLayoutRunRaw.fillType || "regular",
         placements: _restoredPlacements,
-        candidatePool: [],
-        manual: {}
+        candidatePool: Array.isArray(nextLayoutRunRaw.candidatePool) ? nextLayoutRunRaw.candidatePool : [],
+        manual: {},
+        // Анти-протечка: результаты рана строго из снапшота выбранной раскладки.
+        // Иначе ...base оставляет lastRawResult/serverPreview от ПОСЛЕДНЕГО прогона
+        // любой другой зоны (метрики/дыры/trace чужого рана в UI и экспорте).
+        lastRawResult: nextLayoutRunRaw.lastRawResult || null,
+        serverPreview: nextLayoutRunRaw.serverPreview || null,
+        effectiveOptions: nextLayoutRunRaw.effectiveOptions || null
       };
+      // Восстановленный runtime принадлежит карточке, чей снапшот применяем.
+      state.layoutRun.ownerLayoutId = Number((entry && entry.id) || (getSelectedLayoutEntry() || {}).id || 0) || null;
       // Интарсия — отдельный режим: не переносим её active=true в другие раскладки
       if (normalizedMode !== "intarsia" && !nextLayoutRunRaw.active) {
         state.layoutRun.active = false;
@@ -6235,8 +6294,11 @@ function renderSplitEvents(events) {
       if (detailId > 0) state.selectedDetailId = detailId;
       const selectedLayout = entry && typeof entry === "object" ? entry : getSelectedLayoutEntry();
       if (selectedLayout && String(selectedLayout.mode || "") === normalizedMode) {
-        if (zoneId > 0) selectedLayout.boundZoneId = zoneId;
-        if (detailId > 0) selectedLayout.boundDetailId = detailId;
+        // Привязка зоны — ИДЕНТИЧНОСТЬ карточки: ставим только если ещё не задана.
+        // Не «переезжаем» уже привязанную карточку на зону чужого снапшота (источник
+        // слипания двух выкладок на одну зону).
+        if (zoneId > 0 && !(Number(selectedLayout.boundZoneId) > 0)) selectedLayout.boundZoneId = zoneId;
+        if (detailId > 0 && !(Number(selectedLayout.boundDetailId) > 0)) selectedLayout.boundDetailId = detailId;
       }
       syncFragmentOnlyControlsFromSnapshot(snap);
       // Sync fillGridMode for intarsia
@@ -6265,6 +6327,11 @@ function renderSplitEvents(events) {
         state.layoutRun.previewLayers = { pieceIntersections: [], visibleArea: [], coverageHoles: [], seams: [] };
       }
       if (!Array.isArray(state.layoutRun.previewLayers.seams)) state.layoutRun.previewLayers.seams = [];
+      // Монитор Voronoi SA привязываем к выбранной выкладке, а не к последнему прогону:
+      // для VSA показываем её собственный lastRawResult, для прочих режимов — сбрасываем.
+      if (typeof updateVoronoiSaMonitor === "function") {
+        updateVoronoiSaMonitor(normalizedMode === "inventory_voronoi_sa" ? (state.layoutRun.lastRawResult || null) : null);
+      }
       renderPlacementRows([]);
       renderSplitEvents(state.layoutRun.splitEvents || []);
     }
@@ -6357,6 +6424,12 @@ function renderSplitEvents(events) {
           applyFragmentOnlyLayoutSnapshot(String(e.mode || ""), snap, e);
         }
       } else if (isLocalRuntimeLayoutMode(e.mode)) {
+        // Свежая выкладка (снапшота ещё нет): чистим runtime от результата предыдущей
+        // выбранной выкладки. Иначе новая наследует чужие placements — «Пересчитать»
+        // на девственной выкладке и чужой прогон в мониторе (selectedZoneId ниже
+        // привязывается к новой зоне и маскирует чужеродность данных).
+        clearActiveLayoutRuntime();
+        if (typeof updateVoronoiSaMonitor === "function") updateVoronoiSaMonitor(null);
         const boundZone = ensureLocalRuntimeLayoutBinding(e);
         if (boundZone) {
           state.selectedZoneId = Number(boundZone.id || 0) || null;
@@ -6386,6 +6459,12 @@ function renderSplitEvents(events) {
       state.propertyEditorUi.layoutEdit[String(e.id || "")] = true;
       applyLayoutMode(e.mode);
       if (isLocalRuntimeLayoutMode(e.mode)) {
+        // Свежая карточка без снапшота — не наследуем runtime предыдущей выкладки
+        // (см. одноимённую очистку в selectLayoutEntry).
+        if (!e.runtimeSnapshot) {
+          clearActiveLayoutRuntime();
+          if (typeof updateVoronoiSaMonitor === "function") updateVoronoiSaMonitor(null);
+        }
         const boundZone = ensureLocalRuntimeLayoutBinding(e);
         if (boundZone) {
           state.selectedZoneId = Number(boundZone.id || 0) || null;
@@ -6675,14 +6754,15 @@ function renderSplitEvents(events) {
         byId("workspaceInfo").textContent = `NFP Greedy: ошибка кандидатов: ${candidatesRes && candidatesRes.error || "unknown"}`;
         return;
       }
-      const allCandidates = Array.isArray(candidatesRes.items) ? candidatesRes.items : [];
+      const _nfpFiltered = filterCandidatesUsedElsewhere(candidatesRes.items, Number(zone.id));
+      const allCandidates = _nfpFiltered.items;
       const candidates = allCandidates.map((c) => ({
         scrapPieceId: String(c.inventoryTag || c.id || ""),
         scrapContour: c.scrapContour,
         napDirectionDeg: Number(c.napDirectionDeg || c.napDirection || 0),
         quantity: 1
       }));
-      setInventoryProgress(30, `NFP Greedy: ${candidates.length} кандидатов, запуск солвера…`);
+      setInventoryProgress(30, `NFP Greedy: ${candidates.length} кандидатов${_nfpFiltered.excluded ? ` (${_nfpFiltered.excluded} занято другими раскладками)` : ""}, запуск солвера…`);
       byId("workspaceInfo").textContent = `NFP Greedy: ${candidates.length} кандидатов, решаем…`;
       const maxSolveMs = 90000;
       const progressToken = `nfp_sa_${Date.now()}`;
@@ -6858,14 +6938,15 @@ function renderSplitEvents(events) {
         byId("workspaceInfo").textContent = `Тайлинг: ошибка кандидатов: ${candidatesRes && candidatesRes.error || "unknown"}`;
         return;
       }
-      const allCandidates = Array.isArray(candidatesRes.items) ? candidatesRes.items : [];
+      const _tilFiltered = filterCandidatesUsedElsewhere(candidatesRes.items, Number(zone.id));
+      const allCandidates = _tilFiltered.items;
       const candidates = allCandidates.map((c) => ({
         scrapPieceId: String(c.inventoryTag || c.id || ""),
         scrapContour: c.scrapContour,
         napDirectionDeg: Number(c.napDirectionDeg || c.napDirection || 0),
         quantity: 1
       }));
-      setInventoryProgress(30, `Тайлинг: ${candidates.length} кандидатов, запуск солвера…`);
+      setInventoryProgress(30, `Тайлинг: ${candidates.length} кандидатов${_tilFiltered.excluded ? ` (${_tilFiltered.excluded} занято другими раскладками)` : ""}, запуск солвера…`);
       byId("workspaceInfo").textContent = `Тайлинг: ${candidates.length} кандидатов, решаем…`;
       const maxSolveMs = 30000;
       const res = await api("/api/layout/modes/preview", "POST", {
@@ -6972,6 +7053,20 @@ function renderSplitEvents(events) {
     }
 
     async function previewVoronoiSaLayout() {
+      // v5.6: владельца определяем ДО вычисления зоны — зеркально панели свойств,
+      // которая резолвит выкладку по ВЫБРАННОЙ ЗОНЕ (property-editor-view.js), а не по
+      // selectedLayoutId. Иначе «Подобрать» из панели зоны 4 запускал карточку зоны 2
+      // (на которую указывал selectedLayoutId) и перезаписывал её → обе карточки на одной
+      // зоне, чужой монитор. Синхронизируем selectedLayoutId с тем, что видит пользователь.
+      const _selZoneId = Number(state.selectedZoneId || 0);
+      const _rawSel = getSelectedLayoutEntry();
+      const _ownerEntry = (_selZoneId > 0 && (!_rawSel || Number(_rawSel.boundZoneId || 0) !== _selZoneId
+        || String(_rawSel.mode || "") !== "inventory_voronoi_sa"))
+        ? ((Array.isArray(state.layouts) ? state.layouts : []).find(
+            (x) => x && Number(x.boundZoneId || 0) === _selZoneId && String(x.mode || "") === "inventory_voronoi_sa"
+          ) || _rawSel || null)
+        : _rawSel;
+      if (_ownerEntry) state.selectedLayoutId = _ownerEntry.id;
       saveCurrentLayoutRuntimeSnapshot();
       const zone = getSelectedZoneForLayoutMode("inventory_voronoi_sa");
       if (!zone || !Array.isArray(zone.points) || zone.points.length < 3) {
@@ -6985,6 +7080,9 @@ function renderSplitEvents(events) {
         zone: { id: zone.id, points: zone.points, holes: Array.isArray(zone.holes) ? zone.holes.map(holeContour).filter((h) => h.length >= 3) : [] },
         directInventory: true,
         onlyAvailable: true,
+        // Пересчёт своей выкладки: её собственные DB-резервации не считаются занятостью,
+        // иначе после сохранения проекта каждый пересчёт решает на обеднённом пуле.
+        excludeReservationLayoutId: String((getSelectedLayoutEntry() || {}).id || ""),
         includeScrapContour: true,
         napDirectionDeg: null,
         minAreaMm2: Number(byId("invMinArea") && byId("invMinArea").value || 0),
@@ -6996,14 +7094,15 @@ function renderSplitEvents(events) {
         byId("workspaceInfo").textContent = `Voronoi+SA: ошибка кандидатов: ${candidatesRes && candidatesRes.error || "unknown"}`;
         return;
       }
-      const allCandidates = Array.isArray(candidatesRes.items) ? candidatesRes.items : [];
+      const _vsaFiltered = filterCandidatesUsedElsewhere(candidatesRes.items, Number(zone.id));
+      const allCandidates = _vsaFiltered.items;
       const candidates = allCandidates.map((c) => ({
         scrapPieceId: String(c.inventoryTag || c.id || ""),
         scrapContour: c.scrapContour,
         napDirectionDeg: Number(c.napDirectionDeg || c.napDirection || 0),
         quantity: 1
       }));
-      setInventoryProgress(30, `Voronoi+SA: ${candidates.length} кандидатов, запуск солвера…`);
+      setInventoryProgress(30, `Voronoi+SA: ${candidates.length} кандидатов${_vsaFiltered.excluded ? ` (${_vsaFiltered.excluded} занято другими раскладками)` : ""}, запуск солвера…`);
       byId("workspaceInfo").textContent = `Voronoi+SA: ${candidates.length} кандидатов, решаем…`;
       const maxSolveMs = 90000;
       const previewTimeoutMs = Math.max(maxSolveMs + 60000, 12 * 60 * 1000);
@@ -7021,6 +7120,9 @@ function renderSplitEvents(events) {
         options: {
           maxSolveMs,
           maxIterations: 20000,
+          // SWAP-ремонт стыков: дыры на стыке лечатся заменой куска на больший из остатка
+          // (растровый префильтр, ≤4 пересборок, ≤25с; хуже не делает — ранговая защита).
+          _swapRepair: true,
           seed: runSeed,
           absorptionCriterion: state.layoutRun.absorptionCriterion != null ? state.layoutRun.absorptionCriterion : 4,
           numRestarts: Math.max(1, Number(byId("invNumRestarts") && byId("invNumRestarts").value || state.layoutRun.numRestarts || 1)),
@@ -7065,8 +7167,11 @@ function renderSplitEvents(events) {
       const coverageHoles = vorModel.coverageHoles;
       const pieceIntersections = vorModel.pieceIntersections;
       const fragments = vorModel.fragments;
-      state.layers.pfullZ = true;
-      const _pfullChk = byId("layerPfullZ"); if (_pfullChk) _pfullChk.checked = true;
+      // Мозаика: тела кусков перекрываются по дизайну (куску принадлежит только
+      // фрагмент) — залитые тела друг на друге читаются как «кусок поверх куска».
+      // По умолчанию слой тел выключен; включённый вручную рисуется контуром (см. render).
+      state.layers.pfullZ = false;
+      const _pfullChk = byId("layerPfullZ"); if (_pfullChk) _pfullChk.checked = false;
       state.layers.coverageHoles = true;
       const _chkCovHoles = byId("layerCoverageHoles"); if (_chkCovHoles) _chkCovHoles.checked = true;
       state.layoutMode = "inventory_voronoi_sa";
@@ -7076,6 +7181,7 @@ function renderSplitEvents(events) {
       state.layoutRun.strategy = "inventory_voronoi_sa";
       state.layoutRun.inventoryScenario = "A";
       state.layoutRun.selectedZoneId = Number(zone.id || 0) || null;
+      state.layoutRun.ownerLayoutId = _ownerEntry ? Number(_ownerEntry.id) || null : null;
       state.layoutRun.fragments = clipFragmentsByZoneDomain(fragments, zone);
       state.layoutRun.placements = placements;
       state.layoutRun.candidatePool = allCandidates;
@@ -7265,8 +7371,11 @@ function renderSplitEvents(events) {
         payloadHasHoles: Array.isArray(zone.holes) && zone.holes.length > 0
       });
       if (selectedLayout && String(selectedLayout.mode || "") === normalizedMode) {
-        selectedLayout.boundZoneId = Number(zone.id || 0) || null;
-        selectedLayout.boundDetailId = Number(zone.detailId || state.selectedDetailId || 0) || null;
+        // Привязка зоны — идентичность: не перепривязываем уже привязанную карточку.
+        if (!(Number(selectedLayout.boundZoneId) > 0)) {
+          selectedLayout.boundZoneId = Number(zone.id || 0) || null;
+          selectedLayout.boundDetailId = Number(zone.detailId || state.selectedDetailId || 0) || null;
+        }
         selectedLayout.runtimeSnapshot = buildFragmentOnlyLayoutSnapshot(normalizedMode);
         selectedLayout.isDirty = true;
       }
@@ -7311,7 +7420,7 @@ function renderSplitEvents(events) {
           return;
         }
       }
-          byId("invDebugInfo").textContent = t("manual_mode_active", null, "Manual mode is active");
+          byId("invDebugInfo").textContent = t("manual_mode_active", null, "Ручной режим активен");
           byId("invUsedTags").textContent = `(${t("no_data", null, "none")})`;
       renderSplitEvents([]);
       byId("fillType").value = isInventoryLikeLayoutMode(state.layoutMode)
@@ -7547,7 +7656,7 @@ function renderSplitEvents(events) {
         try {
           if (manualMode) {
             setInventoryProgress(10, "Worker: bootstrap");
-            addInventoryProgressNote(t("note_worker_raster_init", null, "Worker: raster initialization."));
+            addInventoryProgressNote(t("note_worker_raster_init", null, "Воркер: инициализация растра."));
           }
           const pre = await runCoverWorkerJob(
             "bootstrap",
@@ -7564,12 +7673,12 @@ function renderSplitEvents(events) {
           if (pre && pre.gridSpec) state.layoutRun.workerGridSpec = pre.gridSpec;
           if (manualMode) {
             setInventoryProgress(28, "Worker: bootstrap");
-            addInventoryProgressNote(t("note_worker_ready", null, "Worker ready."));
+            addInventoryProgressNote(t("note_worker_ready", null, "Воркер готов."));
           }
         } catch (_) {
           // Fallback silently to server flow when worker is unavailable.
           if (isStaleRun()) return;
-          if (manualMode) addInventoryProgressNote(t("note_worker_unavailable", null, "Worker unavailable, continuing without it."));
+          if (manualMode) addInventoryProgressNote(t("note_worker_unavailable", null, "Воркер недоступен, продолжаем без него."));
         }
 
         setInventoryProgress(40, t("progress_request_candidates", null, "Requesting candidates from DB"));
@@ -7598,22 +7707,21 @@ function renderSplitEvents(events) {
         });
         if (isStaleRun()) return;
         if (!candidatesRes.ok) throw new Error(candidatesRes.error || "candidates_failed");
+        const _invFiltered = filterCandidatesUsedElsewhere(candidatesRes.items, Number(zone.id));
         if (manualMode) {
-          const cnt = Array.isArray(candidatesRes.items) ? candidatesRes.items.length : 0;
+          const cnt = _invFiltered.items.length;
           setInventoryProgress(56, t("progress_request_candidates", null, "Requesting candidates from DB"));
-          addInventoryProgressNote(t("note_candidates_received", { count: cnt }, `Candidates received: ${cnt}.`));
+          addInventoryProgressNote(t("note_candidates_received", { count: cnt }, `Candidates received: ${cnt}.`) + (_invFiltered.excluded ? ` (${_invFiltered.excluded} занято другими раскладками)` : ""));
         }
-        const workerCandidates = Array.isArray(candidatesRes.items)
-          ? candidatesRes.items.map((c) => ({
-              id: c && c.id,
-              inventoryTag: c && c.inventoryTag,
-              scrapContour: c && c.scrapContour
-            }))
-          : [];
-        let prerankedCandidates = Array.isArray(candidatesRes.items) ? candidatesRes.items.slice() : [];
+        const workerCandidates = _invFiltered.items.map((c) => ({
+          id: c && c.id,
+          inventoryTag: c && c.inventoryTag,
+          scrapContour: c && c.scrapContour
+        }));
+        let prerankedCandidates = _invFiltered.items.slice();
         try {
           setInventoryProgress(54, t("progress_worker_raster_prerank", null, "Worker / raster + pre-rank"));
-          if (manualMode) addInventoryProgressNote(t("note_worker_prerank", null, "Worker: candidate pre-rank."));
+          if (manualMode) addInventoryProgressNote(t("note_worker_prerank", null, "Воркер: предварительное ранжирование кусков."));
           const preRankRes = await runCoverWorkerJob(
             "prerank",
             getEffectiveZonePoints(zone),
@@ -7645,13 +7753,13 @@ function renderSplitEvents(events) {
             });
           }
           if (manualMode) {
-            setInventoryProgress(66, "Worker: pre-rank");
-            addInventoryProgressNote(t("progress_worker_prerank_done", null, "Pre-rank completed."));
+            setInventoryProgress(66, "Воркер / предварительное ранжирование");
+            addInventoryProgressNote(t("progress_worker_prerank_done", null, "Предварительное ранжирование завершено."));
           }
         } catch (_) {
           // Keep server candidate order if worker pre-rank fails.
           if (isStaleRun()) return;
-          if (manualMode) addInventoryProgressNote(t("note_prerank_skipped", null, "Pre-rank skipped, using DB order."));
+          if (manualMode) addInventoryProgressNote(t("note_prerank_skipped", null, "Предварительное ранжирование пропущено, используем порядок из базы."));
         }
         try {
           const usage = state.tagUsage && typeof state.tagUsage === "object" ? state.tagUsage : {};
@@ -7748,7 +7856,7 @@ function renderSplitEvents(events) {
           byId("invRejectedOverlap").textContent = "0";
           byId("invRejectedLowGain").textContent = "0";
           byId("invRejectedOutside").textContent = "0";
-          byId("invDebugInfo").textContent = t("manual_mode_active", null, "Manual mode is active");
+          byId("invDebugInfo").textContent = t("manual_mode_active", null, "Ручной режим активен");
           byId("invUsedTags").textContent = `(${t("no_data", null, "none")})`;
           renderPlacementRows(Array.isArray(state.layoutRun.placements) ? state.layoutRun.placements : []);
           renderSplitEvents([]);
@@ -7761,13 +7869,13 @@ function renderSplitEvents(events) {
           openInventoryStep2();
           if (isStaleRun()) return;
           setInventoryProgress(100, "Ручной режим / готово");
-            addInventoryProgressNote(t("note_worker_raster_init", null, "Worker: raster initialization."));
+          addInventoryProgressNote(t("note_worker_ready", null, "Воркер готов."));
           hideInventoryProgress();
           renderScene();
           return;
         }
 
-        setInventoryProgress(68, t("progress_server_preview", null, "Server preview calculation"));
+        setInventoryProgress(68, t("progress_server_preview", null, "Серверный расчет выкладки"));
         startServerPreviewProgressTicker();
         const progressToken = createProgressToken();
         openInventoryProgressStream(progressToken);
@@ -7899,7 +8007,7 @@ function renderSplitEvents(events) {
         let previewRes;
         let assignOnlyBaseFragments = null;
         if (intarsiaMode && intarsiaAssignOnly) {
-        setInventoryProgress(68, t("progress_server_preview", null, "Server preview calculation"));
+        setInventoryProgress(68, t("progress_server_preview", null, "Серверный расчет выкладки"));
           let stageFragments = Array.isArray(state.layoutRun.fragments)
             ? state.layoutRun.fragments.map((f, idx) => ({
               id: Number(f && f.id) || (idx + 1),
@@ -8711,15 +8819,19 @@ function renderSplitEvents(events) {
           if (showAssignedPieces && state.layers.pfullZ && contours.length) {
             const ic = ENGINEERING_STYLES.inventoryContours || {};
             const isThinPl = !!(pl.isThin);
+            // Мозаичные режимы: тела перекрываются по дизайну → только контур, без заливки
+            const _mosaicBodies = state.layoutMode === "inventory_voronoi_sa" || state.layoutMode === "inventory_tiling";
             const pieceStroke = isThinPl
               ? (isSelPlacement ? "#c0392b" : "rgba(192,57,43,0.9)")
-              : (isSelPlacement ? (ic.selectedStroke || "#914734") : (ic.stroke || "rgba(189,87,39,0.85)"));
+              : (isSelPlacement ? (ic.selectedStroke || "#914734") : (_mosaicBodies ? "rgba(189,87,39,0.45)" : (ic.stroke || "rgba(189,87,39,0.85)")));
             const pieceStrokeWidth = isSelPlacement ? (ic.selectedStrokeWidth || 1.4) : (ic.strokeWidth || 1.0);
-            const pieceFill = isThinPl
-              ? (isSelPlacement ? "rgba(192,57,43,0.18)" : "rgba(192,57,43,0.08)")
-              : (manualWholePieceMode
-                ? (isSelPlacement ? "rgba(189,87,39,0.15)" : "rgba(189,87,39,0.03)")
-                : (isSelPlacement ? (ic.selectedFill || "rgba(189,87,39,0.12)") : (ic.fill || "rgba(189,87,39,0.06)")));
+            const pieceFill = _mosaicBodies && !isSelPlacement
+              ? "rgba(0,0,0,0)"
+              : (isThinPl
+                ? (isSelPlacement ? "rgba(192,57,43,0.18)" : "rgba(192,57,43,0.08)")
+                : (manualWholePieceMode
+                  ? (isSelPlacement ? "rgba(189,87,39,0.15)" : "rgba(189,87,39,0.03)")
+                  : (isSelPlacement ? (ic.selectedFill || "rgba(189,87,39,0.12)") : (ic.fill || "rgba(189,87,39,0.06)"))));
             for (const contour of contours) {
               layerPreview.add(new Konva.Line({
                 points: linePoints(contour),
@@ -10889,7 +11001,11 @@ function refreshSelectionInfo() {
         vsaBtn.addEventListener("click", () => {
           window.__furlab_vsa_overlay = !window.__furlab_vsa_overlay;
           vsaBtn.style.opacity = window.__furlab_vsa_overlay ? "1" : "0.5";
-          updateVoronoiSaMonitor(null);
+          // Тоггл только показывает/прячет панель — перерисовываем прогон ТЕКУЩЕЙ выкладки,
+          // не затирая его (для не-VSA режимов монитора нет актуального прогона → null).
+          const _curVsaRun = (String(state.layoutMode || "") === "inventory_voronoi_sa" && state.layoutRun)
+            ? (state.layoutRun.lastRawResult || null) : null;
+          updateVoronoiSaMonitor(_curVsaRun);
         });
       }
       // drag for vsaMonitor

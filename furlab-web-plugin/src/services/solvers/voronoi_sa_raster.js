@@ -150,7 +150,11 @@ function createVoronoiSaRaster(deps) {
   function computeCoverage(placements, cellCount) {
     const covered = new Uint8Array(cellCount);
     const coreCounts = new Uint8Array(cellCount);
+    // v5.6 «мёртвая зона»: deepCounts — покрытие deep-областями (ядро ⊖ припуск).
+    // Их пересечение = нахлёст ГЛУБЖЕ запаса шва 2×припуск — только он штрафуется.
+    const deepCounts = new Uint8Array(cellCount);
     let overlapCells = 0;
+    let deepOverlapCells = 0;
     for (const pl of placements) {
       // Use activeCells (precomputed non-zero indices) when available — O(active) not O(cellCount).
       const cells = pl.activeCells;
@@ -165,12 +169,17 @@ function createVoronoiSaRaster(deps) {
           if (pl.mask[i] & 1) { covered[i] = 1; coreCounts[i]++; }
         }
       }
+      const dcells = pl.deepCells;
+      if (dcells) {
+        for (let j = 0; j < dcells.length; j++) deepCounts[dcells[j]]++;
+      }
     }
     for (let i = 0; i < cellCount; i++) {
       if (coreCounts[i] > 1) overlapCells += coreCounts[i] - 1;
+      if (deepCounts[i] > 1) deepOverlapCells += deepCounts[i] - 1;
     }
     const coveredCells = countBits(covered);
-    return { covered, coveredCells, overlapCells };
+    return { covered, coveredCells, overlapCells, deepOverlapCells, coreCounts };
   }
 
   function buildCellToFrag(resultPlacements, spec, finalZoneMask) {

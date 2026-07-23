@@ -1,6 +1,20 @@
 (function (global) {
   "use strict";
 
+  function esc(v) {
+    const s = String(v == null ? "" : v);
+    if (global.FurLabUtils && typeof global.FurLabUtils.escapeHtml === "function") {
+      return global.FurLabUtils.escapeHtml(s);
+    }
+    return s.replace(/[&<>"']/g, (ch) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[ch]));
+  }
+
   function createRunOutputExport(args) {
     const state = args && args.state;
     if (!state || !Array.isArray(state.zones) || !state.layoutRun) return null;
@@ -20,8 +34,10 @@
       candidates: candidatePool,
       effectiveOptions: (trace && trace.effectiveOptions) || state.layoutRun.effectiveOptions || {},
       placements: placements.map((p) => ({
+        scrapPieceId: p.scrapPieceId || p.inventoryTag || "",
         inventoryTag: p.inventoryTag || p.scrapPieceId || "",
         phase: p.phase || "",
+        status: p.status || "",
         isTerritoryPlaceholder: p.isTerritoryPlaceholder || false,
         fragmentType: p.fragmentType || "",
         physicalMissingMm2: p.physicalMissingMm2 || 0,
@@ -31,9 +47,12 @@
         lowUtilization: !!p.lowUtilization,
         alignedContour: p.alignedContour || [],
         rawTerritoryContour: p.rawTerritoryContour || [],
+        rawTerritoryContours: p.rawTerritoryContours || [],
         inZoneContour: p.inZoneContour || [],
+        inZoneContours: p.inZoneContours || [],
         alignedCoreContour: p.alignedCoreContour || [],
-        inZoneCoreContour: p.inZoneCoreContour || []
+        inZoneCoreContour: p.inZoneCoreContour || [],
+        inZoneCoreContours: p.inZoneCoreContours || []
       })),
       metrics: res ? {
         ok: res.ok,
@@ -76,9 +95,32 @@
     };
   }
 
+  function clearMonitorFields() {
+    const set = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    };
+    const badge = document.getElementById("vsa_badge");
+    if (badge) { badge.textContent = "—"; badge.style.background = "#555"; badge.style.color = "#fff"; }
+    [
+      "vsa_resultStatus", "vsa_coveragePct", "vsa_effectiveCovPct", "vsa_zoneArea",
+      "vsa_finalFragments2", "vsa_slivers", "vsa_gapFill", "vsa_physMissing",
+      "vsa_seamReserve", "vsa_napTol", "vsa_residualInterior", "vsa_uncoveredCount",
+      "vsa_Az", "vsa_Cmed", "vsa_Nbase", "vsa_Nstart", "vsa_overhang", "vsa_unselected"
+    ].forEach((id) => set(id, "-"));
+    const residTbl = document.getElementById("vsa_residualTable"); if (residTbl) residTbl.innerHTML = "";
+    const fragTbl = document.getElementById("vsa_fragmentsTable"); if (fragTbl) fragTbl.innerHTML = "";
+    const invEl = document.getElementById("vsa_invariants"); if (invEl) invEl.innerHTML = "";
+  }
+
   function updateMonitor(args) {
-    const res = args && args.res;
-    if (res && typeof res === "object") global.__vsa_lastRes = res;
+    // res — источник истины на каждом вызове: приходит после прогона ИЛИ при переключении
+    // выкладки (тогда это lastRawResult выбранной раскладки, либо null, если прогона не было).
+    // Раньше присваивание было условным (только для объекта) и без сброса — из-за этого монитор
+    // «залипал» на последнем посчитанном ране и не переключался вместе с выбором выкладки.
+    if (args && Object.prototype.hasOwnProperty.call(args, "res")) {
+      global.__vsa_lastRes = (args.res && typeof args.res === "object") ? args.res : null;
+    }
     const panel = typeof document !== "undefined" && document.getElementById("vsaMonitor");
     if (!panel) return;
     if (!global.__furlab_vsa_overlay) {
@@ -88,16 +130,24 @@
     panel.style.display = "";
     bindExportButton(args);
     const r = global.__vsa_lastRes;
-    if (!r || typeof r !== "object") return;
+    if (!r || typeof r !== "object") { clearMonitorFields(); return; }
 
     const set = (id, val) => {
       const el = document.getElementById(id);
       if (el) el.textContent = val != null ? val : "-";
     };
     const s = (r.stats && typeof r.stats === "object") ? r.stats : {};
-    const sd = (r._solverDiag && typeof r._solverDiag === "object") ? r._solverDiag : {};
+    const sdBase = (r._solverDiag && typeof r._solverDiag === "object") ? r._solverDiag : {};
+    const sd = {
+      ...sdBase,
+      placements: Array.isArray(sdBase.placements) && sdBase.placements.length > 0
+        ? sdBase.placements
+        : fallbackDiagPlacements(r)
+    };
     const sel = (sd.selectionDebug && typeof sd.selectionDebug === "object") ? sd.selectionDebug : {};
-    const inv = (r.renderInvariants && typeof r.renderInvariants === "object") ? r.renderInvariants : {};
+    const inv = (r.renderInvariants && typeof r.renderInvariants === "object") ? r.renderInvariants
+      : ((sd.invariants && typeof sd.invariants === "object") ? normalizeInvariantSummary(sd.invariants)
+        : ((r.invariants && typeof r.invariants === "object") ? normalizeInvariantSummary(r.invariants) : {}));
     const lc = (r.lastConstraints && typeof r.lastConstraints === "object") ? r.lastConstraints : {};
     const at = (r.algorithmTrace && typeof r.algorithmTrace === "object") ? r.algorithmTrace : {};
     const eo = (at.effectiveOptions && typeof at.effectiveOptions === "object") ? at.effectiveOptions : {};
@@ -153,6 +203,73 @@
     renderFragmentsTable(sd);
   }
 
+  function fallbackDiagPlacements(res) {
+    const src = Array.isArray(res && res.placements) && res.placements.length > 0
+      ? res.placements
+      : (Array.isArray(res && res.render && res.render.items) ? res.render.items.map((item) => ({
+          scrapPieceId: item.id,
+          inventoryTag: item.meta && item.meta.inventoryTag,
+          status: item.meta && item.meta.status,
+          inZoneAreaMm2: item.meta && item.meta.inZoneAreaMm2,
+          inZoneContour: item.inZoneCoreContour || item.inZoneContour,
+          inZoneContours: item.inZoneCoreContours || item.inZoneContours,
+          physicalMissingMm2: item.meta && item.meta.physicalMissingMm2,
+          cutMissingMm2: item.meta && item.meta.cutMissingMm2,
+          napOk: item.meta ? item.meta.napOk : true,
+          isGapFill: item.meta && item.meta.isGapFill,
+          isDisconnected: item.meta && item.meta.isDisconnected
+        })) : []);
+    return src.map((p, idx) => ({
+      fragmentId: String((p && p.fragmentId) || (p && p.placementId) || (p && p.scrapPieceId) || `frag_${idx + 1}`),
+      scrapPieceId: p && p.scrapPieceId,
+      inventoryTag: p && p.inventoryTag,
+      phase: p && p.phase || null,
+      inZoneAreaMm2: Number(p && p.inZoneAreaMm2 || 0),
+      inZoneBbox: bboxFromContours(p && (p.inZoneCoreContours || p.inZoneContours), p && (p.inZoneCoreContour || p.inZoneContour)),
+      status: String(p && p.status || ""),
+      isGapFill: !!(p && p.isGapFill),
+      isDisconnected: !!(p && p.isDisconnected),
+      physicalMissingMm2: p && p.physicalMissingMm2 != null ? Number(p.physicalMissingMm2) : null,
+      cutMissingMm2: p && p.cutMissingMm2 != null ? Number(p.cutMissingMm2) : null,
+      napOk: !p || p.napOk !== false
+    }));
+  }
+
+  function bboxFromContours(contours, single) {
+    const all = [];
+    const multi = Array.isArray(contours) ? contours : [];
+    for (const contour of multi) {
+      if (Array.isArray(contour) && contour.length >= 3) all.push(...contour);
+    }
+    if (!all.length && Array.isArray(single) && single.length >= 3) all.push(...single);
+    if (!all.length) return null;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const pt of all) {
+      const x = Number(pt && pt.x);
+      const y = Number(pt && pt.y);
+      if (!Number.isFinite(x) || !Number.isFinite(y)) continue;
+      if (x < minX) minX = x;
+      if (x > maxX) maxX = x;
+      if (y < minY) minY = y;
+      if (y > maxY) maxY = y;
+    }
+    return Number.isFinite(minX) ? { minX, minY, maxX, maxY } : null;
+  }
+
+  function normalizeInvariantSummary(inv) {
+    if (inv && inv.summary && typeof inv.summary === "object") {
+      const warnings = Array.isArray(inv.warnings) ? inv.warnings : [];
+      return {
+        geometricPartition: !warnings.some((w) => /^R2_|partition/i.test(String(w))),
+        noOverlaps: !warnings.some((w) => /^INV[15]_/.test(String(w))),
+        coreIsRealInset: true,
+        napValid: !warnings.some((w) => /^R6_|duplicate/i.test(String(w))),
+        _stickoutMm2: inv.summary.overlapMm2 != null ? inv.summary.overlapMm2 : null
+      };
+    }
+    return inv || {};
+  }
+
   function renderResidualTable(stats) {
     const residTbl = document.getElementById("vsa_residualTable");
     if (!residTbl) return;
@@ -166,7 +283,8 @@
       const bb = c.bbox;
       const bboxStr = bb ? Math.round(bb.maxX - bb.minX) + "x" + Math.round(bb.maxY - bb.minY) : "-";
       const cent = c.centroid ? "(" + Math.round(c.centroid.x) + ", " + Math.round(c.centroid.y) + ")" : "-";
-      html += `<tr><td>${i + 1}</td><td>${Math.round(c.areaMm2 || 0)}</td><td>растр</td><td>${bboxStr}</td><td>${cent}</td></tr>`;
+      const cls = String(c.classification || (c.isPerimeterSliver ? "sliver" : "unknown"));
+      html += `<tr><td>${i + 1}</td><td>${Math.round(c.areaMm2 || 0)}</td><td>${esc(cls)}</td><td>${bboxStr}</td><td>${cent}</td></tr>`;
     });
     residTbl.innerHTML = html + "</table>";
   }

@@ -307,18 +307,23 @@ function createVoronoiSaSearch(deps) {
       const residual = multiPolygonArea(residualMp);
       const holes = [];
       try {
+        const vX = (v) => Array.isArray(v) ? v[0] : (v && v.X != null ? v.X : 0);
+        const vY = (v) => Array.isArray(v) ? v[1] : (v && v.Y != null ? v.Y : 0);
+
         for (const poly of (residualMp || [])) {
           if (!Array.isArray(poly) || poly.length === 0) continue;
           const ring = poly[0];
           if (!Array.isArray(ring) || ring.length < 4) continue;
+          const n = ring.length;
           let a = 0;
-          for (let i = 0; i < ring.length - 1; i++) {
-            a += ring[i][0] * ring[i+1][1] - ring[i+1][0] * ring[i][1];
+          for (let i = 0; i < n; i++) {
+            const j = (i + 1) % n;
+            a += vX(ring[i]) * vY(ring[j]) - vX(ring[j]) * vY(ring[i]);
           }
           a = Math.abs(a) * 0.5;
           if (a < 30) continue;
-          let cx = 0, cy = 0, n = ring.length - 1;
-          for (let i = 0; i < n; i++) { cx += ring[i][0]; cy += ring[i][1]; }
+          let cx = 0, cy = 0;
+          for (let i = 0; i < n; i++) { cx += vX(ring[i]); cy += vY(ring[i]); }
           cx /= n; cy /= n;
           const isEdge = (cx <= zoneBboxForEdge.mnX + 5 || cx >= zoneBboxForEdge.mxX - 5 ||
                           cy <= zoneBboxForEdge.mnY + 5 || cy >= zoneBboxForEdge.mxY - 5);
@@ -334,6 +339,103 @@ function createVoronoiSaSearch(deps) {
     };
   }
 
+  // ── makeAssignResidualFn (v5.3) ──────────────────────────────────────────────
+  // Assign+связность-осознанный residual. В отличие от union-подхода (zone − Union(всех
+  // ядер)), ловит дыры, невидимые тому: клетку накрывает ядро НЕ её territory-владельца
+  // (misassignment) ЛИБО клетка попадает в разорванный остров куска, который полигон-сборка
+  // выбросит по связности. Это ровно те стыковые гэпы, что видит финальный computeResidualCoverage.
+  // Растровый (spec.r), дёшев: O(sum activeCells) на assign + O(cellCount) на flood-fill.
+  function makeAssignResidualFn(zonePointsArg, holder, specRef) {
+    const { nx, ny, r, ox, oy } = specRef;
+    let mnX = Infinity, mxX = -Infinity, mnY = Infinity, mxY = -Infinity;
+    for (const p of zonePointsArg) {
+      if (p.x < mnX) mnX = p.x; if (p.x > mxX) mxX = p.x;
+      if (p.y < mnY) mnY = p.y; if (p.y > mxY) mxY = p.y;
+    }
+    const cellA = r * r;
+    return function computeAssignResidual(placements, zoneMask, cellCount) {
+      const assign = new Int32Array(cellCount).fill(-1);
+      const bestScore = new Float64Array(cellCount).fill(Infinity);
+      // 1) каждую накрытую ядром клетку → ближайшему по (dx²+dy²) накрывающему куску
+      for (let j = 0; j < placements.length; j++) {
+        const cells = placements[j].activeCells;
+        if (!cells) continue;
+        const pcx = placements[j].cx, pcy = placements[j].cy;
+        for (let k = 0; k < cells.length; k++) {
+          const i = cells[k];
+          const cx = ox + (i % nx + 0.5) * r;
+          const cy = oy + ((i / nx | 0) + 0.5) * r;
+          const dx = cx - pcx, dy = cy - pcy;
+          const s = dx * dx + dy * dy;
+          if (s < bestScore[i]) { bestScore[i] = s; assign[i] = j; }
+        }
+      }
+      // 2) flood-fill от seed-клетки каждого куска по одинаково-назначенным клеткам → kept
+      const kept = new Uint8Array(cellCount);
+      const stack = [];
+      for (let j = 0; j < placements.length; j++) {
+        const pl = placements[j];
+        let col = Math.max(0, Math.min(nx - 1, Math.floor((pl.cx - ox) / r)));
+        let row = Math.max(0, Math.min(ny - 1, Math.floor((pl.cy - oy) / r)));
+        let start = row * nx + col;
+        if (assign[start] !== j) {
+          // seed-клетка не за j — берём ближайшую j-клетку (главный компонент у seed)
+          const cells = pl.activeCells;
+          let best = -1, bestD = Infinity;
+          if (cells) for (let k = 0; k < cells.length; k++) {
+            const i = cells[k];
+            if (assign[i] !== j) continue;
+            const cx = ox + (i % nx + 0.5) * r, cy = oy + ((i / nx | 0) + 0.5) * r;
+            const d = (cx - pl.cx) * (cx - pl.cx) + (cy - pl.cy) * (cy - pl.cy);
+            if (d < bestD) { bestD = d; best = i; }
+          }
+          start = best;
+        }
+        if (start < 0 || kept[start] || assign[start] !== j) continue;
+        stack.length = 0; stack.push(start); kept[start] = 1;
+        while (stack.length) {
+          const i = stack.pop();
+          const c = i % nx, rw = (i / nx) | 0;
+          if (c > 0)     { const ni = i - 1;  if (!kept[ni] && assign[ni] === j) { kept[ni] = 1; stack.push(ni); } }
+          if (c < nx - 1){ const ni = i + 1;  if (!kept[ni] && assign[ni] === j) { kept[ni] = 1; stack.push(ni); } }
+          if (rw > 0)    { const ni = i - nx; if (!kept[ni] && assign[ni] === j) { kept[ni] = 1; stack.push(ni); } }
+          if (rw < ny-1) { const ni = i + nx; if (!kept[ni] && assign[ni] === j) { kept[ni] = 1; stack.push(ni); } }
+        }
+      }
+      // 3) residual = зонные клетки, не удержанные владельцем (assign=-1 или разорванный остров)
+      const resid = new Uint8Array(cellCount);
+      let residCells = 0;
+      for (let i = 0; i < cellCount; i++) {
+        if (zoneMask[i] && !kept[i]) { resid[i] = 1; residCells++; }
+      }
+      // 4) компоненты residual → blobs (тот же формат, что union-подход)
+      const holes = [];
+      const seen = new Uint8Array(cellCount);
+      for (let i0 = 0; i0 < cellCount; i0++) {
+        if (!resid[i0] || seen[i0]) continue;
+        let sx = 0, sy = 0, cnt = 0, edge = false;
+        stack.length = 0; stack.push(i0); seen[i0] = 1;
+        while (stack.length) {
+          const q = stack.pop();
+          const c = q % nx, rw = (q / nx) | 0;
+          const cx = ox + (c + 0.5) * r, cy = oy + (rw + 0.5) * r;
+          sx += cx; sy += cy; cnt++;
+          if (cx <= mnX + 5 || cx >= mxX - 5 || cy <= mnY + 5 || cy >= mxY - 5) edge = true;
+          if (c > 0)     { const n = q - 1;  if (resid[n] && !seen[n]) { seen[n] = 1; stack.push(n); } }
+          if (c < nx - 1){ const n = q + 1;  if (resid[n] && !seen[n]) { seen[n] = 1; stack.push(n); } }
+          if (rw > 0)    { const n = q - nx; if (resid[n] && !seen[n]) { seen[n] = 1; stack.push(n); } }
+          if (rw < ny-1) { const n = q + nx; if (resid[n] && !seen[n]) { seen[n] = 1; stack.push(n); } }
+        }
+        const areaMm2 = cnt * cellA;
+        if (areaMm2 < 30) continue;
+        holes.push({ x: sx / cnt, y: sy / cnt, areaMm2, edge });
+      }
+      holes.sort((a, b) => { if (a.edge !== b.edge) return a.edge ? -1 : 1; return b.areaMm2 - a.areaMm2; });
+      holder.blobs = holes;
+      return { area: residCells * cellA, holes };
+    };
+  }
+
   async function runSaSearch(args) {
     const selectedPieces = args.selectedPieces;
     const napTarget = args.napTarget;
@@ -344,7 +446,16 @@ function createVoronoiSaSearch(deps) {
     const zonePoints = args.zonePoints;
     const zoneBbox = args.zoneBbox;
     const ifpCache = args.ifpCache;
-    const rng = args.rng;
+    let rng = args.rng;
+    // Диагностика детерминизма (env-gated): счётчик потреблённых случайных чисел.
+    let _rngDraws = 0;
+    if (process.env.VSA_TRACE_FILE) {
+      const _rawRng = rng;
+      rng = {
+        next: () => { _rngDraws++; return _rawRng.next(); },
+        nextInt: (n) => { _rngDraws++; return _rawRng.nextInt(n); }
+      };
+    }
     const onProgress = args.onProgress;
     const cellCount = args.cellCount;
     const maxSolveMs = args.maxSolveMs;
@@ -352,6 +463,21 @@ function createVoronoiSaSearch(deps) {
     const phaseADeadline = args.phaseADeadline;
     const phaseBDeadline = args.phaseBDeadline;
     const startTime = args.startTime;
+    // v5.3-эксперимент: вес штрафа за перекрытие ядер (undefined → дефолт 8 в energy()).
+    const _overlapW = args.overlapWeight;
+    // v5.3 «уплотнение стыков» (за флагом): когда крупных дыр не осталось (только мелкие
+    // внутренние стыковые), штраф перекрытия ядер снижается до 1 — перекрытие ядер на шве
+    // гарантирует материал с обеих сторон (фрагменты разрежет биссектриса), а экономию
+    // инвентаря блюсти уже поздно и не нужно. Плюс прицельный TRANSLATE к дыре.
+    const _junction = !!args.junctionConsolidation;
+    // v5.6 «мёртвая зона»: экономический штраф применяется только к нахлёсту ГЛУБЖЕ
+    // запаса шва (пересечение deep-областей = ядро ⊖ припуск). Вес — прежние 8.
+    // v5.6 РЕШЕНИЕ (свип 2026-07-19): дефолт 0. Мёртвая зона проиграла по стыкам
+    // (4327 vs 780 мм²) — ЛЮБОЙ штраф за глубину нахлёста держит ядра у касания и рвёт
+    // стыки. Победитель — нахлёст полностью бесплатен + кромка-обязательство. Флаг оставлен.
+    const _deepW = (args.deepOverlapWeight == null) ? 0 : Number(args.deepOverlapWeight);
+    const _JUNCTION_MAX_BLOB_MM2 = 2000;
+    let _wEff = _overlapW;
 
     let placements = args.warmStartPlacements
       ? args.warmStartPlacements.slice()
@@ -370,6 +496,7 @@ function createVoronoiSaSearch(deps) {
         );
 
     const minWidthMm = args.minWidthMm || 0;
+    const minLengthMm = args.minLengthMm || 0;
 
     // Cheap sliver proxy: core bbox shorter dimension < minWidthMm.
     // corePts are already transformed to zone coords, so bbox is directly comparable.
@@ -390,9 +517,131 @@ function createVoronoiSaSearch(deps) {
       return n;
     }
 
-    let { coveredCells, overlapCells } = computeCoverage(placements, cellCount);
+    // ── v5.2 (R5 в дизайне SA): растровые территории ─────────────────────────
+    // territory клетки = nearest-center среди кусков, чья маска её накрывает —
+    // дешёвое зеркало полигонального power-Voronoi (voronoi_sa_polygonal.js).
+    // «Паразит» = кусок, чья территория заведомо даст sub-min фрагмент:
+    //   small: площадь территории < 0.9 × minW×minL (R5-провал по площади)
+    //   thin:  bbox территории короче (minW − cell) — bbox ≥ MBR, значит MBR < minW точно
+    // Такие куски SA должна убирать/двигать: их территория не считается покрытием.
+    function computeTerritoryStats(pls) {
+      const nx = spec.nx;
+      const r = spec.r;
+      const cellArea = r * r;
+      const assign = new Int16Array(cellCount).fill(-1);
+      const bestD = new Float64Array(cellCount).fill(Infinity);
+      for (let j = 0; j < pls.length; j++) {
+        const pl = pls[j];
+        const cells = pl.activeCells;
+        if (!cells) continue;
+        for (let k = 0; k < cells.length; k++) {
+          const i = cells[k];
+          const cx = spec.ox + (i % nx + 0.5) * r;
+          const cy = spec.oy + ((i / nx | 0) + 0.5) * r;
+          const dx = cx - pl.cx;
+          const dy = cy - pl.cy;
+          const d = dx * dx + dy * dy;
+          if (d < bestD[i]) { bestD[i] = d; assign[i] = j; }
+        }
+      }
+      const per = pls.map(() => ({ cells: 0, minCol: Infinity, maxCol: -Infinity, minRow: Infinity, maxRow: -Infinity, pts: [] }));
+      for (let i = 0; i < cellCount; i++) {
+        const j = assign[i];
+        if (j < 0) continue;
+        const s = per[j];
+        s.cells++;
+        const col = i % nx, row = (i / nx) | 0;
+        if (col < s.minCol) s.minCol = col;
+        if (col > s.maxCol) s.maxCol = col;
+        if (row < s.minRow) s.minRow = row;
+        if (row > s.maxRow) s.maxRow = row;
+        s.pts.push({ x: spec.ox + (col + 0.5) * r, y: spec.oy + (row + 0.5) * r });
+      }
+      const parasites = [];
+      if (minWidthMm > 0) {
+        for (let j = 0; j < pls.length; j++) {
+          const s = per[j];
+          const terrMm2 = s.cells * cellArea;
+          const bboxShortMm = s.cells > 0
+            ? Math.min(s.maxCol - s.minCol + 1, s.maxRow - s.minRow + 1) * r
+            : 0;
+          const bboxLongMm = s.cells > 0
+            ? Math.max(s.maxCol - s.minCol + 1, s.maxRow - s.minRow + 1) * r
+            : 0;
+          // Критерии строго зеркалят R5: только габариты (MBR ≥ minW×minL), НЕ площадь.
+          // Площадной критерий давал false positive: фрагмент 72×80 с fill 0.7
+          // (4100мм² < 0.9×4900) валиден по R5, а cull его удалял → дыры.
+          // Пустая территория (0 клеток) — тоже паразит: кусок ничего не даёт.
+          // Ширина — по MBR (rotating calipers), НЕ по осевому bbox: диагональная
+          // полоса 30мм под 45° имеет bbox 230×230 — осевой тест её не видит.
+          const empty = s.cells === 0;
+          let thin = false;
+          if (s.cells > 0 && bboxShortMm < (minWidthMm - 0.5) - r) {
+            thin = true; // осевой bbox уже мал — MBR только меньше
+          } else if (s.cells > 0) {
+            // Истинная ширина ≈ MBR по центрам клеток + размер клетки (полклетки с каждой стороны).
+            // Порог тот же, что у полигонального thin-теста (minW − 0.5).
+            const mbrTrueMm = minBoundingRectShorter(convexHull(s.pts)) + r;
+            if (mbrTrueMm < minWidthMm - 0.5) thin = true;
+          }
+          const short = s.cells > 0 && minLengthMm > 0 && bboxLongMm < (minLengthMm - 0.5) - r;
+          if (empty || thin || short) {
+            parasites.push({
+              idx: j,
+              id: pls[j].id,
+              territoryMm2: Math.round(terrMm2),
+              bboxShortMm: Math.round(bboxShortMm * 10) / 10,
+              reason: empty ? "territory_empty" : (thin ? "territory_thin" : "territory_short")
+            });
+          }
+        }
+      }
+      return { per, parasites };
+    }
+
+    // Незасчитываемое покрытие: unique-клетки (count==1) кусков-паразитов.
+    // При REMOVE паразита покрытие в energy не падает → SA его убирает свободно.
+    function countUnusable(pls, coreCounts, parasiteIdSet) {
+      if (!parasiteIdSet || parasiteIdSet.size === 0) return 0;
+      let n = 0;
+      for (const pl of pls) {
+        if (!parasiteIdSet.has(pl.id)) continue;
+        const cells = pl.activeCells;
+        if (!cells) continue;
+        for (let k = 0; k < cells.length; k++) {
+          if (coreCounts[cells[k]] === 1) n++;
+        }
+      }
+      return n;
+    }
+
+    // v5.6 ОБЯЗАТЕЛЬСТВО КРОМКИ: края зоны сшиваются → ядро обязано доходить до контура.
+    // Непокрытая кромочная клетка — невыполненное обязательство: доп. штраф поверх
+    // стандартной цены непокрытия. Без него свободный нахлёст уплотняет внутренность,
+    // а кромка проседает (старый штраф перекрытия случайно выталкивал куски к краю).
+    const PERIM_OBLIGATION_W = 2000;
+    const perimIdx = (() => {
+      const { nx: _pnx, ny: _pny } = spec;
+      const out = [];
+      for (let i = 0; i < cellCount; i++) {
+        if (!zoneMask[i]) continue;
+        const c = i % _pnx, rw = (i / _pnx) | 0;
+        if (c === 0 || c === _pnx - 1 || rw === 0 || rw === _pny - 1
+          || !zoneMask[i - 1] || !zoneMask[i + 1] || !zoneMask[i - _pnx] || !zoneMask[i + _pnx]) out.push(i);
+      }
+      return Int32Array.from(out);
+    })();
+    const perimUncovered = (coveredArr) => {
+      let cnt = 0;
+      for (let k = 0; k < perimIdx.length; k++) if (!coveredArr[perimIdx[k]]) cnt++;
+      return cnt;
+    };
+    let { covered, coveredCells, overlapCells, deepOverlapCells, coreCounts } = computeCoverage(placements, cellCount);
     let sliverCount = countSlivers(placements);
-    let E = energy(coveredCells, overlapCells, placements.length, zoneCells, sliverCount);
+    // v5.2: паразиты (sub-min территории) — их unique-клетки не считаются покрытием.
+    let parasiteIds = new Set(computeTerritoryStats(placements).parasites.map((p) => p.id));
+    let unusableCells = countUnusable(placements, coreCounts, parasiteIds);
+    let E = energy(coveredCells - unusableCells, overlapCells, placements.length, zoneCells, sliverCount, _wEff) + PERIM_OBLIGATION_W * perimUncovered(covered) + _deepW * deepOverlapCells;
 
     let bestPlacements = placements.map((p) => ({ ...p, mask: p.mask.slice() }));
     let bestE = E;
@@ -420,7 +669,14 @@ function createVoronoiSaSearch(deps) {
     let lastBlobsCacheIter = -999;
     let lastPolyCheckIter = -999;
     const polyResidualHolder = { blobs: null };
-    const computePolyResidual = makePolyResidualFn(zonePoints, polyResidualHolder, spec);
+    // v5.3: за флагом — assign+связность-осознанная проверка (ловит стыковые гэпы,
+    // невидимые union-подходу). Call-site `computePolyResidual(placements)` не меняется.
+    const computePolyResidual = args.assignAwareResidual
+      ? (() => {
+          const fn = makeAssignResidualFn(zonePoints, polyResidualHolder, spec);
+          return (pls) => fn(pls, zoneMask, cellCount);
+        })()
+      : makePolyResidualFn(zonePoints, polyResidualHolder, spec);
     let currentPolyHoles = [];
     let currentPolyResidualArea = Infinity;
     // v5.0 Fix тип 3B: bestPolyResidual инициализируется здесь.
@@ -437,10 +693,65 @@ function createVoronoiSaSearch(deps) {
     // Result quality should not depend on machine speed. phaseBDeadline remains
     // relevant to phaseB/Lloyd, but no longer stops the SA loop.
     const hardDeadlineMs = phaseBDeadline + Math.max(600000, maxSolveMs * 10);
+    // v5.5: интерактивный потолок. Итерационный приоритет давал прогоны 10-15 минут на
+    // нагруженной машине — для пользователя неотличимо от зависания («выключил процесс»).
+    // По потолку возвращаем ЛУЧШЕЕ найденное (bestPlacements) — дальше его добивают
+    // регуляризация, ремонт и «Пересчитать». 3×maxSolveMs, но не меньше 3 минут.
+    const wallBudgetMs = startTime + Math.max(3 * maxSolveMs, 180000);
 
     const warmDoneMs = Date.now();
     const warmDurationMs = warmDoneMs - startTime;
     let _saExitReason = "running";
+
+    // ── v5.2: отбраковка паразитов ВНУТРИ цикла ──────────────────────────────
+    // Cull после выхода вскрывал дыры, которые SA уже не могла закрыть
+    // (зона 2: −2 куска → дыра 5726мм², coverage 98.4%). Здесь паразиты
+    // удаляются на живом поиске: освободившееся место становится блобами,
+    // ADD целится в них, best перезапускается от очищенного состояния
+    // (паразитное покрытие не считается лучшим). Максимум 3 раунда за прогон.
+    let cullRoundsLeft = 3;
+    function cullParasitesInLoop() {
+      if (cullRoundsLeft <= 0) return false;
+      const ts = computeTerritoryStats(placements);
+      if (ts.parasites.length === 0 || ts.parasites.length >= placements.length) return false;
+      cullRoundsLeft--;
+      const rmIdx = new Set(ts.parasites.map((p) => p.idx));
+      console.log(`[VSA-SA] in-loop cull round: removing ${ts.parasites.length} parasites: ${ts.parasites.map((p) => `${p.id}(${p.territoryMm2}mm2,${p.reason})`).join(", ")}`);
+      placements = placements.filter((_, i) => !rmIdx.has(i));
+      const cov = computeCoverage(placements, cellCount);
+      covered = cov.covered;
+      coveredCells = cov.coveredCells;
+      deepOverlapCells = cov.deepOverlapCells || 0;
+      overlapCells = cov.overlapCells;
+      coreCounts = cov.coreCounts;
+      sliverCount = countSlivers(placements);
+      parasiteIds = new Set();
+      unusableCells = 0;
+      E = energy(coveredCells, overlapCells, placements.length, zoneCells, sliverCount, _wEff) + PERIM_OBLIGATION_W * perimUncovered(covered) + _deepW * deepOverlapCells;
+      bestPlacements = placements.map((p) => ({ ...p, mask: p.mask.slice() }));
+      bestE = E;
+      bestCoveredCells = coveredCells;
+      const pr = computePolyResidual(placements);
+      currentPolyResidualArea = pr.area;
+      currentPolyHoles = pr.holes;
+      lastPolyCheckIter = iters;
+      bestPolyResidual = pr.area;
+      cachedBlobs = findUncoveredBlobs(placements, spec, zoneMask, cellCount, { minBlobCells: 3 });
+      lastBlobsCacheIter = iters;
+      consecutiveAddFails = 0;
+      return true;
+    }
+
+    // Диагностика детерминизма: слепок начального состояния (env-gated).
+    if (process.env.VSA_TRACE_FILE) {
+      try {
+        require("fs").appendFileSync(process.env.VSA_TRACE_FILE,
+          "INIT\tpieces=" + selectedPieces.length + "\tzoneCells=" + zoneCells
+          + "\tifp=" + (ifpCache && ifpCache.size) + "\tE0=" + E + "\tcov0=" + coveredCells
+          + "\tT0=" + T0 + "\talpha=" + alpha
+          + "\tp3=" + selectedPieces.slice(0, 3).map((p) => String(p.id).slice(-8) + ":" + Math.round(p.areaMm2)).join(",") + "\n");
+      } catch (_) {}
+    }
 
     // ── Главный цикл ──────────────────────────────────────────────────────────
     // Не завершается по Tmin. Cooling на TminFloor (greedy), но цикл продолжается
@@ -452,7 +763,18 @@ function createVoronoiSaSearch(deps) {
       if (Date.now() >= hardDeadlineMs) {
         _saExitReason = "hard_deadline_safety_net"; break;
       }
+      if (Date.now() >= wallBudgetMs) {
+        _saExitReason = "wall_budget"; break;
+      }
       iters++;
+
+      // Диагностика детерминизма (env-gated, в проде выключено): трасса траектории в файл.
+      if (process.env.VSA_TRACE_FILE && (iters <= 400 || iters % 250 === 0)) {
+        try {
+          require("fs").appendFileSync(process.env.VSA_TRACE_FILE,
+            iters + "\t" + E + "\t" + coveredCells + "\t" + overlapCells + "\t" + placements.length + "\t" + accepted + "\tdraws=" + _rngDraws + "\n");
+        } catch (_) {}
+      }
 
       const nowMs = Date.now();
       if (onProgress && (nowMs - lastProgressMs) >= progressIntervalMs) {
@@ -468,7 +790,7 @@ function createVoronoiSaSearch(deps) {
             type: "phase",
             phase: "sa_loop",
             percent,
-            title: `NFP+SA: ${bestPlacements.length} pieces`,
+            title: `Voronoi+SA: оптимизация — ${bestPlacements.length} кусков, покрытие ${covPct}%`,
             pieces: bestPlacements.length,
             coverage: covPct,
             iters,
@@ -482,12 +804,30 @@ function createVoronoiSaSearch(deps) {
       if (iters - lastBlobsCacheIter >= 50) {
         cachedBlobs = findUncoveredBlobs(placements, spec, zoneMask, cellCount, { minBlobCells: 3 });
         lastBlobsCacheIter = iters;
+        // v5.3 уплотнение: фаза «доводки стыков» — остались только мелкие внутренние
+        // дыры (< _JUNCTION_MAX_BLOB_MM2). Снижаем штраф перекрытия; при смене веса
+        // перебазируем E, иначе dE сравнивается с E в другой шкале.
+        if (_junction) {
+          const _interiorBlobs = cachedBlobs.filter((b) => !b.edge);
+          const _maxBlobMm2 = cachedBlobs.length ? cachedBlobs[0].areaMm2 : 0;
+          const _consolidating = _interiorBlobs.length > 0 && _maxBlobMm2 < _JUNCTION_MAX_BLOB_MM2;
+          const _newW = _consolidating ? 1 : _overlapW;
+          if (_newW !== _wEff) {
+            _wEff = _newW;
+            E = energy(coveredCells - unusableCells, overlapCells, placements.length, zoneCells, sliverCount, _wEff) + PERIM_OBLIGATION_W * perimUncovered(covered) + _deepW * deepOverlapCells;
+          }
+        }
       }
       if (iters - lastPolyCheckIter >= 50) {
         const pr = computePolyResidual(placements);
         currentPolyResidualArea = pr.area;
         currentPolyHoles = pr.holes;
         lastPolyCheckIter = iters;
+        // v5.2: обновляем флаги паразитов и перебазируем E на свежих флагах
+        // (флаги слабо меняются — 50 итераций достаточная частота).
+        parasiteIds = new Set(computeTerritoryStats(placements).parasites.map((p) => p.id));
+        unusableCells = countUnusable(placements, coreCounts, parasiteIds);
+        E = energy(coveredCells - unusableCells, overlapCells, placements.length, zoneCells, sliverCount, _wEff) + PERIM_OBLIGATION_W * perimUncovered(covered) + _deepW * deepOverlapCells;
       }
 
       const usedSet = new Set(placements.map((p) => p.id));
@@ -496,8 +836,14 @@ function createVoronoiSaSearch(deps) {
       // ── Условие выхода: полное покрытие или недостаток инвентаря ──────────
       if (cachedBlobs.length === 0) {
         if (currentPolyHoles.length === 0) {
-          _saExitReason = "full_coverage_polygon";
-          break;
+          // v5.2: «полное покрытие» не считается достигнутым, пока есть паразиты
+          // (sub-min территории): отбраковываем их прямо в цикле и продолжаем —
+          // SA заполняет освободившееся место. Выход — только чистым.
+          if (!cullParasitesInLoop()) {
+            _saExitReason = "full_coverage_polygon";
+            break;
+          }
+          continue;
         }
         if (polyResidualHolder.blobs && polyResidualHolder.blobs.length > 0) {
           cachedBlobs = polyResidualHolder.blobs;
@@ -517,10 +863,31 @@ function createVoronoiSaSearch(deps) {
       let addPrAfter = null;
 
       if (move === MOVES.TRANSLATE && placements.length > 0) {
-        const ki = rng.nextInt(placements.length);
+        let ki, dx, dy;
+        // v5.3 уплотнение: половина TRANSLATE целится в крупнейшую внутреннюю дыру —
+        // ближайший к ней кусок двигается К её центроиду (+джиттер 2мм). Случайный
+        // выбор куска и направления почти никогда не закрывает стыковые щели.
+        const _intBlobs = _junction ? cachedBlobs.filter((b) => !b.edge) : [];
+        if (_intBlobs.length > 0 && rng.next() < 0.5) {
+          const blob = _intBlobs[0];
+          let bestI = 0, bestD2 = Infinity;
+          for (let i = 0; i < placements.length; i++) {
+            const ddx = placements[i].cx - blob.x, ddy = placements[i].cy - blob.y;
+            const d2 = ddx * ddx + ddy * ddy;
+            if (d2 < bestD2) { bestD2 = d2; bestI = i; }
+          }
+          ki = bestI;
+          const oldP = placements[ki];
+          const dist = Math.max(1, Math.sqrt(bestD2));
+          const step = Math.min(stepMm, Math.max(2, dist * 0.3));
+          dx = (blob.x - oldP.cx) / dist * step + (rng.next() * 2 - 1) * 2;
+          dy = (blob.y - oldP.cy) / dist * step + (rng.next() * 2 - 1) * 2;
+        } else {
+          ki = rng.nextInt(placements.length);
+          dx = (rng.next() * 2 - 1) * stepMm;
+          dy = (rng.next() * 2 - 1) * stepMm;
+        }
         const old = placements[ki];
-        const dx = (rng.next() * 2 - 1) * stepMm;
-        const dy = (rng.next() * 2 - 1) * stepMm;
         const piece = findPiece(selectedPieces, old.id);
         const np = makePlacement(piece, old.cx + dx, old.cy + dy, old.angleDeg, spec, zoneMask);
         newPlacements = placements.map((p, i) => (i === ki ? np : p));
@@ -585,6 +952,7 @@ function createVoronoiSaSearch(deps) {
             if (coreShort < minWidthMm - 0.5) {
               consecutiveAddFails++;
               if (consecutiveAddFails > ADD_FAIL_LIMIT) {
+                if (cullParasitesInLoop()) continue;
                 _saExitReason = "add_loop_no_progress"; break;
               }
               T = Math.max(T * alpha, TminFloor);
@@ -612,6 +980,7 @@ function createVoronoiSaSearch(deps) {
           } else {
             consecutiveAddFails++;
             if (consecutiveAddFails > ADD_FAIL_LIMIT) {
+              if (cullParasitesInLoop()) continue;
               _saExitReason = "add_loop_no_progress"; break;
             }
             T = Math.max(T * alpha, TminFloor);
@@ -620,6 +989,7 @@ function createVoronoiSaSearch(deps) {
         } else {
           consecutiveAddFails++;
           if (consecutiveAddFails > ADD_FAIL_LIMIT) {
+            if (cullParasitesInLoop()) continue;
             _saExitReason = "add_loop_no_progress"; break;
           }
           T = Math.max(T * alpha, TminFloor);
@@ -634,16 +1004,23 @@ function createVoronoiSaSearch(deps) {
 
       const newCov = computeCoverage(newPlacements, cellCount);
       const newSliverCount = countSlivers(newPlacements);
-      const newE = energy(newCov.coveredCells, newCov.overlapCells, newPlacements.length, zoneCells, newSliverCount);
+      // v5.2: unique-клетки паразитов не считаются покрытием — REMOVE паразита
+      // для SA бесплатен по coverage, а −1 кусок делает его выгодным.
+      const newUnusable = countUnusable(newPlacements, newCov.coreCounts, parasiteIds);
+      const newE = energy(newCov.coveredCells - newUnusable, newCov.overlapCells, newPlacements.length, zoneCells, newSliverCount, _wEff) + PERIM_OBLIGATION_W * perimUncovered(newCov.covered) + _deepW * (newCov.deepOverlapCells || 0);
       const dE = newE - E;
 
       // Accept logic. При T = TminFloor — greedy.
       const effectiveT = Math.max(T, TminFloor);
       if (dE < 0 || rng.next() < Math.exp(-dE / Math.max(effectiveT, 1e-9))) {
         placements = newPlacements;
+        covered = newCov.covered;
         coveredCells = newCov.coveredCells;
+        deepOverlapCells = newCov.deepOverlapCells || 0;
         overlapCells = newCov.overlapCells;
+        coreCounts = newCov.coreCounts;
         sliverCount = newSliverCount;
+        unusableCells = newUnusable;
         E = newE;
         accepted++;
         if (addAttempted) consecutiveAddFails = 0;
@@ -679,6 +1056,27 @@ function createVoronoiSaSearch(deps) {
       _saExitReason = "unknown_exit";
     }
 
+    // ── v5.2 финальная отбраковка (R5 на уровне SA) ──────────────────────────
+    // Куски с sub-min территорией удаляются из best ДО формирования фрагментов.
+    // Один проход достаточен: удаление только РАСТИТ территории оставшихся.
+    // Потеря покрытия = только unique-клетки паразита (contested заберут соседи).
+    let culled = [];
+    if (minWidthMm > 0 && bestPlacements.length > 1) {
+      const ts = computeTerritoryStats(bestPlacements);
+      if (ts.parasites.length > 0 && ts.parasites.length < bestPlacements.length) {
+        culled = ts.parasites.map((p) => ({
+          id: p.id,
+          territoryMm2: p.territoryMm2,
+          bboxShortMm: p.bboxShortMm,
+          reason: p.reason
+        }));
+        const rmIdx = new Set(ts.parasites.map((p) => p.idx));
+        bestPlacements = bestPlacements.filter((_, i) => !rmIdx.has(i));
+        bestCoveredCells = computeCoverage(bestPlacements, cellCount).coveredCells;
+        console.log(`[VSA-SA] culled ${culled.length} sub-min territory placements: ${culled.map((c) => `${c.id}(${c.territoryMm2}mm2,${c.reason})`).join(", ")}`);
+      }
+    }
+
     return {
       bestPlacements,
       bestCoveredCells,
@@ -690,7 +1088,8 @@ function createVoronoiSaSearch(deps) {
       alpha,
       phaseATimeMs: Date.now() - startTime,
       saExitReason: _saExitReason,
-      warmDurationMs
+      warmDurationMs,
+      culled
     };
   }
 

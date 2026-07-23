@@ -322,18 +322,32 @@
       const isManualLayoutSelected = currentLayoutMode === "inventory_manual";
       const isFragmentOnlyRegularLayoutSelected = currentLayoutMode === "longitudinal" || currentLayoutMode === "shifted" || currentLayoutMode === "transverse" || currentLayoutMode === "radial";
       const isIntarsiaMode = currentLayoutMode === "intarsia";
+      // Мозаичные режимы: подбор автоматический, вращение запрещено (R6) —
+      // ручные кнопки и цель/допуск/Δ/проверка ворса (константы режима) не показываются.
+      const _isMosaicFragMode = currentLayoutMode === "inventory_voronoi_sa" || currentLayoutMode === "inventory_tiling" || currentLayoutMode === "inventory_nfp_sa";
+      // «Качество подбора» заполняется только ручным/библиотечным подбором —
+      // секция скрывается целиком, когда все значения пустые.
+      const _hasFitData = [fitScore, fitAreaRatio, fitOverlap, fitInside, fitChamfer, napDelta, alignRot].some((v) => v !== "-");
+      // «Есть результат» = прогон в state.layoutRun сделан именно для зоны этой панели.
+      // Без сверки зоны глобальный layoutRun от прогона ДРУГОЙ зоны давал «Пересчитать»
+      // на свежей выкладке, у которой ещё нет своего результата.
+      const _runMatchesZone = Number(state.layoutRun && state.layoutRun.selectedZoneId || 0) > 0
+        && Number(state.layoutRun.selectedZoneId) === Number(zone && zone.id || 0);
       const _nfpSaHasResult = currentLayoutMode === "inventory_nfp_sa"
         && Array.isArray(state.layoutRun && state.layoutRun.placements)
         && state.layoutRun.placements.length > 0
-        && state.layoutRun.strategy === "inventory_nfp_sa";
+        && state.layoutRun.strategy === "inventory_nfp_sa"
+        && _runMatchesZone;
       const _voronoiSaHasResult = currentLayoutMode === "inventory_voronoi_sa"
         && Array.isArray(state.layoutRun && state.layoutRun.placements)
         && state.layoutRun.placements.length > 0
-        && state.layoutRun.strategy === "inventory_voronoi_sa";
+        && state.layoutRun.strategy === "inventory_voronoi_sa"
+        && _runMatchesZone;
       const _tilingHasResult = currentLayoutMode === "inventory_tiling"
         && Array.isArray(state.layoutRun && state.layoutRun.placements)
         && state.layoutRun.placements.length > 0
-        && state.layoutRun.strategy === "inventory_tiling";
+        && state.layoutRun.strategy === "inventory_tiling"
+        && _runMatchesZone;
       const actionTitle = currentLayoutMode === "inventory_manual"
         ? "Загрузить кандидаты из БД"
         : (isFragmentOnlyRegularLayoutSelected
@@ -344,11 +358,11 @@
           ? "Подобрать из библиотеки"
           : (currentLayoutMode === "intarsia" ? "Сгенерировать интарсию"
           : (currentLayoutMode === "inventory_nfp_sa"
-            ? (_nfpSaHasResult ? "Пересчитать" : "Подобрать (NFP Greedy)")
+            ? (_nfpSaHasResult ? "Пересчитать" : "Подобрать")
           : (currentLayoutMode === "inventory_tiling"
-            ? (_tilingHasResult ? "Пересчитать" : "Подобрать (Тайлинг)")
+            ? (_tilingHasResult ? "Пересчитать" : "Подобрать")
           : (currentLayoutMode === "inventory_voronoi_sa"
-            ? (_voronoiSaHasResult ? "Пересчитать" : "Подобрать (Voronoi SA)")
+            ? (_voronoiSaHasResult ? "Пересчитать" : "Подобрать")
             : "Заполнить остаток")))))));
       const selectedLayoutName = selectedLayout ? String(selectedLayout.name || "") : "";
       const selectedLayoutModeTitle = getLayoutModeTitle(selectedLayout ? selectedLayout.mode : state.layoutMode);
@@ -583,20 +597,21 @@
           ${renderEditorSection("fragment_inventory", "Инвентарь", `
             <div class="prop-row"><div class="prop-label">Инвентарный номер</div><div>${selectedPlacement && selectedPlacement.inventoryTag ? selectedPlacement.inventoryTag : "-"}</div></div>
             <div class="prop-row"><div class="prop-label">Статус</div><div>${selectedPlacement && selectedPlacement.status ? selectedPlacement.status : "-"}</div></div>
-            <div class="prop-actions">
-              ${currentLayoutMode !== "inventory_nfp_sa" ? `<button class="prop-btn" id="fragReplaceBtn" ${selectedPlacement ? "" : "disabled"}>Заменить</button>` : ""}
-              ${currentLayoutMode !== "inventory_nfp_sa" ? `<button class="prop-btn" id="fragClearBtn" ${selectedPlacement ? "" : "disabled"}>Снять подбор</button>` : ""}
-            </div>
+            ${_isMosaicFragMode ? "" : `<div class="prop-actions">
+              <button class="prop-btn" id="fragReplaceBtn" ${selectedPlacement ? "" : "disabled"}>Заменить</button>
+              <button class="prop-btn" id="fragClearBtn" ${selectedPlacement ? "" : "disabled"}>Снять подбор</button>
+            </div>`}
           `, true)}
           ${renderEditorSection("fragment_params", "Параметры", `
             <div class="prop-row"><div class="prop-label">Резерв под припуск, мм</div><div>${allowanceText}</div></div>
             <div class="prop-row"><div class="prop-label">Направление ворса</div><div>${nap}</div></div>
+            ${_isMosaicFragMode ? "" : `
             <div class="prop-row"><div class="prop-label">Цель ворса</div><div>${napTargetText}</div></div>
             <div class="prop-row"><div class="prop-label">Допуск ворса</div><div>${napTolText}</div></div>
             <div class="prop-row"><div class="prop-label">Δ к цели</div><div>${napDeltaToTargetText}</div></div>
-            <div class="prop-row"><div class="prop-label">Проверка ворса</div><div style="font-weight:600; color:${napCheckOk === null ? "#666" : (napCheckOk ? "#0a7d2e" : "#b42318")};">${napCheckText}</div></div>
+            <div class="prop-row"><div class="prop-label">Проверка ворса</div><div style="font-weight:600; color:${napCheckOk === null ? "#666" : (napCheckOk ? "#0a7d2e" : "#b42318")};">${napCheckText}</div></div>`}
           `, true)}
-          ${renderEditorSection("fragment_quality", "Качество подбора", `
+          ${_hasFitData ? renderEditorSection("fragment_quality", "Качество подбора", `
             <div class="prop-row"><div class="prop-label">Fit score</div><div>${fitScore}</div></div>
             <div class="prop-row"><div class="prop-label">Совпадение площади</div><div>${fitAreaRatio}</div></div>
             <div class="prop-row"><div class="prop-label">Overlap</div><div>${fitOverlap}</div></div>
@@ -604,7 +619,7 @@
             <div class="prop-row"><div class="prop-label">Chamfer</div><div>${fitChamfer}</div></div>
             <div class="prop-row"><div class="prop-label">Δ ворса</div><div>${napDelta}</div></div>
             <div class="prop-row"><div class="prop-label">Поворот совмещения</div><div>${alignRot}</div></div>
-          `, false)}
+          `, false) : ""}
           `;
         bindSectionToggles(root);
         if (regularFragmentMode) {
@@ -799,7 +814,7 @@
       }
       const layoutActionSectionHint = isFragmentOnlyRegularLayoutSelected
         ? ""
-        : (isManualLayoutSelected ? "" : `<div class="tree-empty" style="margin-top:6px;">Настройки подбора, preview и применение</div>`);
+        : (isManualLayoutSelected ? "" : `<div class="tree-empty" style="margin-top:6px;">Параметры подбора → предпросмотр → применение</div>`);
       const _lockedCls = !layoutEditEnabled ? " prop-input--locked" : "";
       const _lockedAttr = !layoutEditEnabled ? " disabled" : "";
       const layoutActionSectionBody = isFragmentOnlyRegularLayoutSelected

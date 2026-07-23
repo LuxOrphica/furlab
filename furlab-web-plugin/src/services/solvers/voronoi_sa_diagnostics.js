@@ -48,8 +48,7 @@ function computeResultInvariants(args) {
   const warnings = [];
   let summary = null;
 
-  const nonPhysical = resultPlacements.filter((rp) =>
-    rp.inZoneContour && rp.inZoneContour.length >= 3);
+  const nonPhysical = resultPlacements.filter((rp) => placementContours(rp).length > 0);
   const sumArea = nonPhysical.reduce((s, rp) => s + (rp.inZoneAreaMm2 || 0), 0);
   const unionArea = unionContourArea(nonPhysical);
   const overlapMm2 = sumArea - unionArea;
@@ -92,8 +91,6 @@ function computeResultInvariants(args) {
   if (minWidthMm > 0 || minLengthMm > 0) {
     const thinFrags = [];
     for (const rp of resultPlacements) {
-      const pts = rp.inZoneCoreContour || rp.inZoneContour || [];
-      if (!Array.isArray(pts) || pts.length < 3) continue;
       const status = String(rp.status || "");
       if (status === "thin_fragment") {
         thinFrags.push({ id: rp.scrapPieceId || rp.inventoryTag, reason: "thin_fragment_status", mbrShort: 0 });
@@ -103,14 +100,19 @@ function computeResultInvariants(args) {
         thinFrags.push({ id: rp.scrapPieceId || rp.inventoryTag, reason: "under_threshold", mbrShort: 0 });
         continue;
       }
-      const mbrShort = mbrShorterSide(pts);
-      if (minWidthMm > 0 && mbrShort < minWidthMm - 0.5) {
-        thinFrags.push({ id: rp.scrapPieceId || rp.inventoryTag, reason: `mbr_short_${mbrShort.toFixed(1)}mm<${minWidthMm}mm`, mbrShort });
-      }
-      if (minLengthMm > 0) {
-        const mbrLong = mbrLongerSide(pts);
-        if (mbrLong < minLengthMm - 0.5) {
-          thinFrags.push({ id: rp.scrapPieceId || rp.inventoryTag, reason: `mbr_long_${mbrLong.toFixed(1)}mm<${minLengthMm}mm`, mbrShort });
+      const contours = placementCoreContours(rp);
+      for (const pts of contours) {
+        const mbrShort = mbrShorterSide(pts);
+        if (minWidthMm > 0 && mbrShort < minWidthMm - 0.5) {
+          thinFrags.push({ id: rp.scrapPieceId || rp.inventoryTag, reason: `mbr_short_${mbrShort.toFixed(1)}mm<${minWidthMm}mm`, mbrShort });
+          break;
+        }
+        if (minLengthMm > 0) {
+          const mbrLong = mbrLongerSide(pts);
+          if (mbrLong < minLengthMm - 0.5) {
+            thinFrags.push({ id: rp.scrapPieceId || rp.inventoryTag, reason: `mbr_long_${mbrLong.toFixed(1)}mm<${minLengthMm}mm`, mbrShort });
+            break;
+          }
         }
       }
     }
@@ -120,6 +122,27 @@ function computeResultInvariants(args) {
   }
 
   return { warnings, summary };
+}
+
+function isContour(pts) {
+  return Array.isArray(pts) && pts.length >= 3;
+}
+
+function placementContours(rp) {
+  if (!rp) return [];
+  if (Array.isArray(rp.inZoneContours) && rp.inZoneContours.length > 0) {
+    return rp.inZoneContours.filter(isContour);
+  }
+  return isContour(rp.inZoneContour) ? [rp.inZoneContour] : [];
+}
+
+function placementCoreContours(rp) {
+  if (!rp) return [];
+  if (Array.isArray(rp.inZoneCoreContours) && rp.inZoneCoreContours.length > 0) {
+    return rp.inZoneCoreContours.filter(isContour);
+  }
+  if (isContour(rp.inZoneCoreContour)) return [rp.inZoneCoreContour];
+  return placementContours(rp);
 }
 
 // v5.1: MBR shorter/longer side via rotating calipers on convex hull.
@@ -204,10 +227,12 @@ function unionContourArea(placements) {
   const cpr = new ClipperLib.Clipper();
   let anyAdded = false;
   for (const rp of placements) {
-    const cp = toClipper(rp.inZoneContour);
-    if (Math.abs(ClipperLib.Clipper.Area(cp)) >= 1) {
-      cpr.AddPath(cp, ClipperLib.PolyType.ptSubject, true);
-      anyAdded = true;
+    for (const contour of placementContours(rp)) {
+      const cp = toClipper(contour);
+      if (Math.abs(ClipperLib.Clipper.Area(cp)) >= 1) {
+        cpr.AddPath(cp, ClipperLib.PolyType.ptSubject, true);
+        anyAdded = true;
+      }
     }
   }
   if (!anyAdded) return 0;
@@ -226,10 +251,12 @@ function independentCoveragePercent(placements, zonePoints, zoneArea) {
   const cprU = new ClipperLib.Clipper();
   let anyAdded = false;
   for (const rp of placements) {
-    const cp = toClipper(rp.inZoneContour);
-    if (Math.abs(ClipperLib.Clipper.Area(cp)) >= 1) {
-      cprU.AddPath(cp, ClipperLib.PolyType.ptSubject, true);
-      anyAdded = true;
+    for (const contour of placementContours(rp)) {
+      const cp = toClipper(contour);
+      if (Math.abs(ClipperLib.Clipper.Area(cp)) >= 1) {
+        cprU.AddPath(cp, ClipperLib.PolyType.ptSubject, true);
+        anyAdded = true;
+      }
     }
   }
   if (!anyAdded) return 0;
@@ -263,8 +290,11 @@ function toClipper(points) {
 function areaOfPaths(paths) {
   const SCALE = 1000;
   let total = 0;
-  for (const p of paths) total += Math.abs(ClipperLib.Clipper.Area(p));
-  return total / (SCALE * SCALE);
+  // Знаковая сумма: в union внешние кольца положительные, дырки — отрицательные.
+  // Math.abs по кольцам ЗАВЫШАЛ union на 2×площадь внутренних дыр → ложные INV1_FAIL
+  // (diff ровно −2×(дыры, окружённые фрагментами)).
+  for (const p of paths) total += ClipperLib.Clipper.Area(p);
+  return Math.abs(total) / (SCALE * SCALE);
 }
 
 module.exports = {

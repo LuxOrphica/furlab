@@ -22,7 +22,7 @@ const {
   collectDuplicatePieceWarnings
 } = require("./voronoi_sa_postprocess");
 const { buildTerritoryOutput } = require("./voronoi_sa_output");
-const { buildPolygonalTerritoryOutput } = require("./voronoi_sa_polygonal");
+const { buildPolygonalTerritoryOutput, regularizePartition } = require("./voronoi_sa_polygonal");
 const { createVoronoiSaGeometry } = require("./voronoi_sa_geometry");
 const { runPhaseBLloyd } = require("./voronoi_sa_lloyd");
 const { createVoronoiSaRaster } = require("./voronoi_sa_raster");
@@ -162,7 +162,17 @@ function createVoronoiSaSolver(deps) {
     // activeCells: indices where mask bit0 is set — avoids iterating all cellCount in computeCoverage.
     const activeCells = [];
     for (let i = 0; i < mask.length; i++) { if (mask[i] & 1) activeCells.push(i); }
-    return { id: piece.id, inventoryTag: piece.inventoryTag, cx, cy, angleDeg, pts, corePts, mask, activeCells };
+    // v5.6 «мёртвая зона» штрафа нахлёста: deepCells = клетки ядра, эродированного на
+    // припуск (тело ⊖ 2×припуск). Нахлёст В ПРЕДЕЛАХ запаса шва (2×припуск) не создаёт
+    // пересечения deep-областей — бесплатен по построению; глубже — экономический штраф.
+    let deepCells = null;
+    if (piece.centeredDeepPts && piece.centeredDeepPts.length >= 3) {
+      const deepPts = transformPiece(piece.centeredDeepPts, angleDeg, cx, cy);
+      const dmask = rasterize(deepPts, spec);
+      deepCells = [];
+      for (let i = 0; i < dmask.length; i++) { if ((dmask[i] & 1) && zoneMask[i]) deepCells.push(i); }
+    }
+    return { id: piece.id, inventoryTag: piece.inventoryTag, cx, cy, angleDeg, pts, corePts, mask, activeCells, deepCells };
   }
 
   const {
@@ -384,12 +394,17 @@ function createVoronoiSaSolver(deps) {
         if (minWidthMm > 0 && mbr.shorter < minWidthMm) continue;
         if (minLengthMm > 0 && mbr.longer  < minLengthMm) continue;
       }
+      // deep-контур для «мёртвой зоны» штрафа нахлёста: ядро ⊖ припуск. Считаем ТОЛЬКО
+      // когда штраф активен (_deepOverlapWeight>0) — иначе лишняя растеризация каждый ход.
+      const _deepOn = Number(options && options._deepOverlapWeight || 0) > 0;
+      const deepInset = (_deepOn && allowanceMm > 0) ? offsetContourInward(centeredCorePts, allowanceMm) : null;
       pieces.push({
         id: String(c.id ?? c.inventoryTag),
         inventoryTag: c.inventoryTag,
         napDeg: Number(c.napDirectionDeg ?? c.napDirection ?? 0),
         centeredPts,
         centeredCorePts,
+        centeredDeepPts: (deepInset && deepInset.length >= 3) ? deepInset : null,
         areaMm2
       });
       if (_ci % 8 === 7) await new Promise((r) => setImmediate(r));
@@ -549,7 +564,7 @@ function createVoronoiSaSolver(deps) {
 
       if (onProgress) {
         const _ltCovPct = zoneCells > 0 ? Math.round(ltCoveredCells / zoneCells * 1000) / 10 : 0;
-        try { onProgress({ type: "phase", phase: "postprocess", percent: 97, title: "Lloyd-tiling: построение территорий...", pieces: activeTiles.length, coverage: _ltCovPct, iters: lloydStats ? (lloydStats.lloydIterations || 0) : 0, temperature: 0 }); } catch (_) {}
+        try { onProgress({ type: "phase", phase: "postprocess", percent: 97, title: "Voronoi+SA: построение территорий…", pieces: activeTiles.length, coverage: _ltCovPct, iters: lloydStats ? (lloydStats.lloydIterations || 0) : 0, temperature: 0 }); } catch (_) {}
         await new Promise((r) => setImmediate(r));
       }
 
@@ -576,7 +591,7 @@ function createVoronoiSaSolver(deps) {
       const ifp = computeIFP(zonePoints, piece.centeredCorePts);
       if (ifp && ifp.length >= 3) ifpCacheTight.set(piece.id, ifp);
       if (_i % 4 === 3) {
-        if (onProgress) onProgress({ type: "phase", phase: "ifp_cache", percent: Math.round(20 + (_i + 1) / selectedPieces.length * 8), title: `Voronoi+SA: IFP ${_i + 1}/${selectedPieces.length}...`, pieces: 0, coverage: 0, iters: 0, temperature: 0 });
+        if (onProgress) onProgress({ type: "phase", phase: "ifp_cache", percent: Math.round(20 + (_i + 1) / selectedPieces.length * 8), title: `Voronoi+SA: поиск допустимых позиций ${_i + 1}/${selectedPieces.length}...`, pieces: 0, coverage: 0, iters: 0, temperature: 0 });
         await new Promise((r) => setImmediate(r));
       }
     }
@@ -588,7 +603,7 @@ function createVoronoiSaSolver(deps) {
         const ifp = computeIFP(zonePointsForIFP, piece.centeredCorePts);
         if (ifp && ifp.length >= 3) ifpCacheWide.set(piece.id, ifp);
         if (_i % 4 === 3) {
-          if (onProgress) onProgress({ type: "phase", phase: "ifp_wide", percent: Math.round(28 + (_i + 1) / selectedPieces.length * 2), title: `Voronoi+SA: IFP wide ${_i + 1}/${selectedPieces.length}...`, pieces: 0, coverage: 0, iters: 0, temperature: 0 });
+          if (onProgress) onProgress({ type: "phase", phase: "ifp_wide", percent: Math.round(28 + (_i + 1) / selectedPieces.length * 2), title: `Voronoi+SA: поиск позиций у кромки ${_i + 1}/${selectedPieces.length}…`, pieces: 0, coverage: 0, iters: 0, temperature: 0 });
           await new Promise((r) => setImmediate(r));
         }
       }
@@ -616,7 +631,18 @@ function createVoronoiSaSolver(deps) {
       phaseADeadline,
       phaseBDeadline,
       startTime,
-      minWidthMm
+      minWidthMm,
+      minLengthMm,
+      // v5.3: assign+связность-осознанная in-loop проверка дыр (ловит стыковые гэпы,
+      // невидимые union-подходу). За флагом — сравниваем resInt до/после по зонам.
+      assignAwareResidual: !!(options && options._assignAwareResidual),
+      // v5.3-эксперимент: вес штрафа за перекрытие ядер (undefined → дефолт 0, v5.6).
+      overlapWeight: (options && options._overlapWeight != null) ? Number(options._overlapWeight) : undefined,
+      // v5.6 «мёртвая зона»: вес штрафа за нахлёст ГЛУБЖЕ запаса шва (deep-перекрытие).
+      deepOverlapWeight: (options && options._deepOverlapWeight != null) ? Number(options._deepOverlapWeight) : undefined,
+      // v5.3-эксперимент: адаптивное уплотнение стыков (низкий штраф перекрытия +
+      // прицельный TRANSLATE, только когда остались мелкие внутренние дыры).
+      junctionConsolidation: !!(options && options._junctionConsolidation)
     });
 
     let bestPlacements = saSearch.bestPlacements;
@@ -646,7 +672,12 @@ function createVoronoiSaSolver(deps) {
     };
 
     const skipLloyd = options._skipLloyd !== false; // default true = skip Lloyd unless explicitly enabled
-    if (isMosaic && !skipLloyd && Date.now() < phaseBDeadline && bestPlacements.length > 0) {
+    // v5.4: фаза B БОЛЬШЕ НЕ зависит от wall-clock. Раньше гейт `Date.now() < phaseBDeadline`
+    // молча пропускал полировку, когда итерационно-первичный SA (v5.1) выходил позже 90с:
+    // на быстрой машине Lloyd успевал (кромка упакована), на занятом сервере — нет
+    // (полосы у края). Теперь Lloyd работает всегда, бюджет итерационный, deadline —
+    // только страховка от зависания.
+    if (isMosaic && !skipLloyd && bestPlacements.length > 0) {
       // Snapshot phaseA-best before Lloyd mutates placements in-place
       const phaseASnapshot = bestPlacements.map(pl => ({ ...pl, mask: pl.mask ? pl.mask.slice() : null }));
       const phaseACoveredCells = bestCoveredCells;
@@ -658,7 +689,8 @@ function createVoronoiSaSolver(deps) {
         selectedPieces,
         napTarget,
         napTol,
-        deadline: phaseBDeadline,
+        maxIterations: 60,
+        deadline: Date.now() + 45000,
         makePlacement,
         computePowerAssign
       });
@@ -695,16 +727,351 @@ function createVoronoiSaSolver(deps) {
     // Use the real exit reason tracked inside the SA loop, not a post-hoc guess from final state.
     const _saExitReason = saSearch.saExitReason || "unknown";
     if (onProgress) {
-      try { onProgress({ type: "phase", phase: "postprocess", percent: 97, title: "Постпроцесс: построение территорий..." }); } catch (_) {}
+      try { onProgress({ type: "phase", phase: "postprocess", percent: 97, title: "Voronoi+SA: построение территорий…" }); } catch (_) {}
       await new Promise((r) => setImmediate(r)); // flush SSE to client before blocking sync work
     }
     const t0fmt = Date.now();
-    const saResult = formatResult(finalPlacements, zonePoints, zoneArea, bestCoveredCells, zoneCells, iters, accepted, options, spec, zoneMask, selectionDebug, isMosaic, phaseATimeMs, phaseBStats, warnings, effectiveOptions, _saExitReason, { geomCoveragePct: phaseAGeomCoveragePct, geomResidualMm2: Math.round(phaseAGeomResidualMm2), warmDurationMs, saBestCoveragePct, saAlpha });
+    const saResult = formatResult(finalPlacements, zonePoints, zoneArea, bestCoveredCells, zoneCells, iters, accepted, options, spec, zoneMask, selectionDebug, isMosaic, phaseATimeMs, phaseBStats, warnings, effectiveOptions, _saExitReason, { geomCoveragePct: phaseAGeomCoveragePct, geomResidualMm2: Math.round(phaseAGeomResidualMm2), warmDurationMs, saBestCoveragePct, saAlpha, saCulled: saSearch.culled || [] });
     console.log(`[VSA] formatResult: ${Date.now() - t0fmt}ms for ${finalPlacements.length} pieces`);
 
     // Targeted cycle disabled — calls fmtResult per gap-component (O(N_comps × formatResult)) → hangs.
     // Anchor: return SA result directly. Targeted cycle to be reintroduced incrementally.
+
+    // ── v5.4 SWAP-ремонт стыков (за флагом) ─────────────────────────────────
+    // Дыра на стыке = «кусок чуть мал для своего места». Одиночные SA-ходы её не
+    // закрывают (сдвиг куска открывает дыру за ним), а ЗАМЕНА куска на больший —
+    // одиночный ход без каскада: большее ядро накрывает и старую территорию, и дыру,
+    // биссектрисы перережут перекрытия, R5 не нарушается (территория растёт).
+    // Бюджет жёсткий: растровый префильтр кандидатов, ≤3 полных пересборок, ≤25с.
+    if (isMosaic && options && options._swapRepair && saResult && saResult.ok !== false
+        && (Number(saResult.residualInteriorMm2 || 0) > 2
+          || Number(saResult.residualPerimeterMm2 || 0) > 2)) {
+      if (onProgress) {
+        try { onProgress({ type: "phase", phase: "postprocess", percent: 98, title: "Voronoi+SA: ремонт стыков (замена кусков)…" }); } catch (_) {}
+        await new Promise((r) => setImmediate(r));
+      }
+      const _fmtForRepair = (pls) => {
+        let cov = 0;
+        const covered = new Uint8Array(cellCount);
+        for (const p of pls) { const cs = p.activeCells; if (cs) for (let k = 0; k < cs.length; k++) covered[cs[k]] = 1; }
+        for (let i = 0; i < cellCount; i++) cov += covered[i];
+        return formatResult(pls, zonePoints, zoneArea, cov, zoneCells, iters, accepted, options, spec, zoneMask, selectionDebug, isMosaic, phaseATimeMs, phaseBStats, warnings.slice(), effectiveOptions, _saExitReason, { geomCoveragePct: phaseAGeomCoveragePct, geomResidualMm2: Math.round(phaseAGeomResidualMm2), warmDurationMs, saBestCoveragePct, saAlpha, saCulled: saSearch.culled || [] });
+      };
+      const repaired = trySwapRepairMosaic({
+        baseResult: saResult,
+        basePlacements: finalPlacements,
+        piecesAll: pieces,
+        spec,
+        zoneMask,
+        cellCount,
+        fmt: _fmtForRepair
+      });
+      if (repaired) return repaired;
+    }
     return saResult;
+  }
+
+  // ── v5.4: SWAP-ремонт стыковых дыр (мозаика) ────────────────────────────────
+  // Для каждой внутренней дыры: граничащие куски → кандидаты покрупнее из остатка →
+  // растровый префильтр (новое ядро покрывает и уникальные клетки старого, и дыру) →
+  // полная пересборка только для прошедших. Принимаем строго по рангу
+  // (ok > partial > failed → дыры → покрытие) и снижению дыр минимум на 10мм².
+  function trySwapRepairMosaic(args) {
+    const { baseResult, basePlacements, piecesAll, spec, zoneMask, cellCount, fmt } = args;
+    const t0 = Date.now();
+    const WALL_MS = 30000;
+    const MAX_REBUILDS = 6;
+    const MAX_INTERIOR_REBUILDS = 4;
+    const interior = (baseResult.uncoveredComponents || [])
+      .filter((c) => c && c.classification === "interior" && c.areaMm2 >= 30 && Array.isArray(c.pts) && c.pts.length >= 3)
+      .sort((a, b) => b.areaMm2 - a.areaMm2);
+    // Крупные краевые полосы (недоупаковка кромки): лечатся ДОБАВЛЕНИЕМ куска —
+    // место пустое, замена не нужна, свес за край покрывает overhang.
+    const edgeComps = (baseResult.uncoveredComponents || [])
+      .filter((c) => c && c.classification === "edge" && c.areaMm2 >= 30 && Array.isArray(c.pts) && c.pts.length >= 3)
+      .sort((a, b) => b.areaMm2 - a.areaMm2);
+    if (!interior.length && !edgeComps.length) return null;
+
+    const { nx, ny, r, ox, oy } = spec;
+    const rank = (res) => (res.resultStatus === "ok" ? 0 : res.resultStatus === "partial" ? 1 : 2) * 1e9
+      + Math.min(Number(res.residualInteriorMm2 || 0), 1e6) * 100
+      + Math.max(0, 100 - Number(res.coveragePercent || 0));
+    // Ремонт не имеет права вводить НОВЫЙ класс брака: оба «failed» ранжируются одинаково,
+    // и без этого guard'а обмен edge_deficit → sub_min_fragment_R5 проходил как «улучшение».
+    const _hasR5 = (res) => {
+      const ws = res && res.invariants && Array.isArray(res.invariants.warnings) ? res.invariants.warnings : [];
+      return ws.some((w) => /^R5_/.test(String(w)) || /sub.?min/i.test(String(w)))
+        || /sub_min_fragment/.test(String(res && res.failedReason || ""));
+    };
+    const _noNewViolation = (cand, cur) => !(_hasR5(cand) && !_hasR5(cur));
+
+    let curResult = baseResult;
+    let curPlacements = basePlacements;
+    let rebuilds = 0;
+    const diag = [];
+
+    for (const comp of interior.slice(0, 2)) {
+      if (Date.now() - t0 > WALL_MS || rebuilds >= MAX_INTERIOR_REBUILDS) break;
+      // Растровая маска дыры
+      const cb = comp.bbox;
+      const colMin = Math.max(0, Math.floor((cb.minX - ox) / r));
+      const colMax = Math.min(nx - 1, Math.ceil((cb.maxX - ox) / r));
+      const rowMin = Math.max(0, Math.floor((cb.minY - oy) / r));
+      const rowMax = Math.min(ny - 1, Math.ceil((cb.maxY - oy) / r));
+      const compCells = [];
+      for (let row = rowMin; row <= rowMax; row++) {
+        for (let col = colMin; col <= colMax; col++) {
+          const cx = ox + (col + 0.5) * r;
+          const cy = oy + (row + 0.5) * r;
+          if (pointInPolygon(cx, cy, comp.pts)) compCells.push(row * nx + col);
+        }
+      }
+      if (!compCells.length) continue;
+
+      // Сколько ядер накрывает каждую клетку (для «уникальных» клеток старого куска)
+      const counts = new Uint8Array(cellCount);
+      for (const p of curPlacements) { const cs = p.activeCells; if (cs) for (let k = 0; k < cs.length; k++) counts[cs[k]]++; }
+
+      const usedIds = new Set(curPlacements.map((p) => p.id));
+      const unused = piecesAll.filter((p) => !usedIds.has(p.id)).sort((a, b) => a.areaMm2 - b.areaMm2);
+      if (!unused.length) break;
+
+      // Граничащие куски: bbox ядра пересекает bbox дыры + 8мм, ближние первыми
+      const borders = curPlacements.map((pl) => {
+        const pb = polygonBBox(pl.corePts);
+        if (!pb) return null;
+        if (pb.maxX < cb.minX - 8 || pb.minX > cb.maxX + 8 || pb.maxY < cb.minY - 8 || pb.minY > cb.maxY + 8) return null;
+        const ddx = pl.cx - comp.centroid.x, ddy = pl.cy - comp.centroid.y;
+        return { pl, d2: ddx * ddx + ddy * ddy };
+      }).filter(Boolean).sort((a, b) => a.d2 - b.d2).slice(0, 3);
+
+      let patched = false;
+      for (const { pl } of borders) {
+        if (patched || Date.now() - t0 > WALL_MS || rebuilds >= MAX_REBUILDS) break;
+        const oldPiece = piecesAll.find((p) => p.id === pl.id);
+        const oldArea = oldPiece ? oldPiece.areaMm2 : 0;
+        const oldOnly = [];
+        const cs = pl.activeCells || [];
+        for (let k = 0; k < cs.length; k++) { const i = cs[k]; if (counts[i] === 1 && zoneMask[i]) oldOnly.push(i); }
+
+        const cands = unused.filter((p) => p.areaMm2 >= Math.max(oldArea * 0.9, 1)).slice(0, 8);
+        diag.push({ probe: true, holeMm2: Math.round(comp.areaMm2), border: pl.id, oldOnlyCells: oldOnly.length, candsTried: cands.length });
+        for (const cand of cands) {
+          if (patched || Date.now() - t0 > WALL_MS || rebuilds >= MAX_REBUILDS) break;
+          const toX = comp.centroid.x - pl.cx, toY = comp.centroid.y - pl.cy;
+          const dl = Math.max(1, Math.hypot(toX, toY));
+          // Позиции примерки: на месте старого; чуть к дыре; центр bbox «старое ядро + дыра»
+          // (для кандидата иной формы центр объединённой цели даёт лучший охват обоих).
+          const _plb = polygonBBox(pl.corePts);
+          const _ux = _plb ? (Math.min(_plb.minX, cb.minX) + Math.max(_plb.maxX, cb.maxX)) / 2 : pl.cx;
+          const _uy = _plb ? (Math.min(_plb.minY, cb.minY) + Math.max(_plb.maxY, cb.maxY)) / 2 : pl.cy;
+          const tries = [
+            [pl.cx, pl.cy],
+            [pl.cx + toX / dl * Math.min(15, dl * 0.3), pl.cy + toY / dl * Math.min(15, dl * 0.3)],
+            [_ux, _uy]
+          ];
+          const probe = diag[diag.length - 1];
+          for (const [tx, ty] of tries) {
+            const np = makePlacement(cand, tx, ty, 0, spec, zoneMask);
+            if (!np.activeCells || np.activeCells.length === 0) { probe.emptyMask = (probe.emptyMask || 0) + 1; continue; }
+            // Префильтр 1: новое ядро держит уникальные клетки старого (иначе откроем дыру
+            // за спиной). Порог 0.90: жёсткие 0.97 не проходил ни один кусок иной формы,
+            // а финальную годность всё равно решает пересборка с ранговой защитой.
+            let oldCov = 0;
+            for (let k = 0; k < oldOnly.length; k++) if (np.mask[oldOnly[k]] & 1) oldCov++;
+            if (oldOnly.length > 0 && oldCov / oldOnly.length < 0.90) { probe.f1 = (probe.f1 || 0) + 1; continue; }
+            // Префильтр 2: новое ядро накрывает саму дыру
+            let compCov = 0;
+            for (let k = 0; k < compCells.length; k++) if (np.mask[compCells[k]] & 1) compCov++;
+            if (compCov / compCells.length < 0.8) { probe.f2 = (probe.f2 || 0) + 1; continue; }
+
+            rebuilds++;
+            const candPls = curPlacements.map((p) => (p === pl ? np : p));
+            const candResult = fmt(candPls);
+            const accepted = _noNewViolation(candResult, curResult) && rank(candResult) < rank(curResult)
+              && Number(candResult.residualInteriorMm2 || 0) <= Number(curResult.residualInteriorMm2 || 0) - 10;
+            diag.push({
+              holeMm2: Math.round(comp.areaMm2),
+              swapOut: pl.id, swapIn: cand.id,
+              resIntAfter: Math.round(Number(candResult.residualInteriorMm2 || 0)),
+              accepted
+            });
+            if (accepted) {
+              curResult = candResult;
+              curPlacements = candPls;
+              patched = true;
+            }
+            break; // одна пересборка на кандидата
+          }
+        }
+      }
+    }
+
+    // ── Ремонт крупных краевых полос (многопроходный) ───────────────────────
+    // Компоненты берём из ТЕКУЩЕГО результата и пересчитываем после каждой удачной
+    // заплатки: успешный патч меняет картину остатка (900мм² → 199мм² — добиваем).
+    for (let _edgePass = 0; _edgePass < 3; _edgePass++) {
+    let _edgeAnyPatched = false;
+    const edgeNow = ((curResult.uncoveredComponents || [])
+      .filter((c) => c && c.classification === "edge" && c.areaMm2 >= 30 && Array.isArray(c.pts) && c.pts.length >= 3)
+      .sort((a, b) => b.areaMm2 - a.areaMm2)).slice(0, 2);
+    if (!edgeNow.length) break;
+    for (const comp of edgeNow) {
+      if (Date.now() - t0 > WALL_MS || rebuilds >= MAX_REBUILDS) break;
+      const cb = comp.bbox;
+      const colMin = Math.max(0, Math.floor((cb.minX - ox) / r));
+      const colMax = Math.min(nx - 1, Math.ceil((cb.maxX - ox) / r));
+      const rowMin = Math.max(0, Math.floor((cb.minY - oy) / r));
+      const rowMax = Math.min(ny - 1, Math.ceil((cb.maxY - oy) / r));
+      const compCells = [];
+      for (let row = rowMin; row <= rowMax; row++) {
+        for (let col = colMin; col <= colMax; col++) {
+          const cx = ox + (col + 0.5) * r;
+          const cy = oy + (row + 0.5) * r;
+          if (pointInPolygon(cx, cy, comp.pts)) compCells.push(row * nx + col);
+        }
+      }
+      if (!compCells.length) continue;
+
+      // ── Сначала SWAP-увеличение граничащего куска ─────────────────────────
+      // ADD-заплатка на узкой полосе рождает фрагмент уже minWidth → R5 (доказано
+      // диагностикой e303: все кандидаты failed:sub_min_fragment_R5). Увеличение
+      // соседа свободно от этого: его фрагмент прирастает полосой, оставаясь большим.
+      let patched = false;
+      {
+        const counts2 = new Uint8Array(cellCount);
+        for (const p of curPlacements) { const cs2 = p.activeCells; if (cs2) for (let k = 0; k < cs2.length; k++) counts2[cs2[k]]++; }
+        const usedIds2 = new Set(curPlacements.map((p) => p.id));
+        const unused2 = piecesAll.filter((p) => !usedIds2.has(p.id)).sort((a, b) => a.areaMm2 - b.areaMm2);
+        const borders2 = curPlacements.map((pl) => {
+          const pb = polygonBBox(pl.corePts);
+          if (!pb) return null;
+          if (pb.maxX < cb.minX - 8 || pb.minX > cb.maxX + 8 || pb.maxY < cb.minY - 8 || pb.minY > cb.maxY + 8) return null;
+          const ddx = pl.cx - comp.centroid.x, ddy = pl.cy - comp.centroid.y;
+          return { pl, d2: ddx * ddx + ddy * ddy };
+        }).filter(Boolean).sort((a, b) => a.d2 - b.d2).slice(0, 3);
+        for (const { pl } of borders2) {
+          if (patched || Date.now() - t0 > WALL_MS || rebuilds >= MAX_REBUILDS) break;
+          const oldPiece2 = piecesAll.find((p) => p.id === pl.id);
+          const oldArea2 = oldPiece2 ? oldPiece2.areaMm2 : 0;
+          const oldOnly2 = [];
+          const cs2 = pl.activeCells || [];
+          for (let k = 0; k < cs2.length; k++) { const i = cs2[k]; if (counts2[i] === 1 && zoneMask[i]) oldOnly2.push(i); }
+          const cands2 = unused2.filter((p) => p.areaMm2 >= oldArea2 + comp.areaMm2 * 0.5).slice(0, 8);
+          diag.push({ probe: true, edgeSwap: true, holeMm2: Math.round(comp.areaMm2), border: pl.id, candsTried: cands2.length });
+          const probe2 = diag[diag.length - 1];
+          for (const cand of cands2) {
+            if (patched || Date.now() - t0 > WALL_MS || rebuilds >= MAX_REBUILDS) break;
+            const _plb2 = polygonBBox(pl.corePts);
+            const _ux2 = _plb2 ? (Math.min(_plb2.minX, cb.minX) + Math.max(_plb2.maxX, cb.maxX)) / 2 : pl.cx;
+            const _uy2 = _plb2 ? (Math.min(_plb2.minY, cb.minY) + Math.max(_plb2.maxY, cb.maxY)) / 2 : pl.cy;
+            const toX2 = comp.centroid.x - pl.cx, toY2 = comp.centroid.y - pl.cy;
+            const dl2 = Math.max(1, Math.hypot(toX2, toY2));
+            const tries2 = [
+              [pl.cx, pl.cy],
+              [pl.cx + toX2 / dl2 * Math.min(25, dl2 * 0.4), pl.cy + toY2 / dl2 * Math.min(25, dl2 * 0.4)],
+              [_ux2, _uy2]
+            ];
+            for (const [tx2, ty2] of tries2) {
+              const np2 = makePlacement(cand, tx2, ty2, 0, spec, zoneMask);
+              if (!np2.activeCells || np2.activeCells.length === 0) { probe2.emptyMask = (probe2.emptyMask || 0) + 1; continue; }
+              let oldCov2 = 0;
+              for (let k = 0; k < oldOnly2.length; k++) if (np2.mask[oldOnly2[k]] & 1) oldCov2++;
+              if (oldOnly2.length > 0 && oldCov2 / oldOnly2.length < 0.90) { probe2.f1 = (probe2.f1 || 0) + 1; continue; }
+              let compCov2 = 0;
+              for (let k = 0; k < compCells.length; k++) if (np2.mask[compCells[k]] & 1) compCov2++;
+              if (compCov2 / compCells.length < 0.6) { probe2.f2 = (probe2.f2 || 0) + 1; continue; }
+              rebuilds++;
+              const candPls2 = curPlacements.map((p) => (p === pl ? np2 : p));
+              const candResult2 = fmt(candPls2);
+              const accepted2 = _noNewViolation(candResult2, curResult) && rank(candResult2) < rank(curResult)
+                && Number(candResult2.residualInteriorMm2 || 0) <= Number(curResult.residualInteriorMm2 || 0);
+              diag.push({
+                edgeSwap: true,
+                holeMm2: Math.round(comp.areaMm2),
+                swapOut: pl.id, swapIn: cand.id,
+                covAfter: Math.round(Number(candResult2.coveragePercent || 0) * 100) / 100,
+                resIntAfter: Math.round(Number(candResult2.residualInteriorMm2 || 0)),
+                statusAfter: String(candResult2.resultStatus || "?") + (candResult2.failedReason ? ":" + candResult2.failedReason : ""),
+                accepted: accepted2
+              });
+              if (accepted2) {
+                curResult = candResult2;
+                curPlacements = candPls2;
+                patched = true;
+              }
+              break;
+            }
+          }
+        }
+      }
+      if (patched) { _edgeAnyPatched = true; continue; }
+
+      const usedIds = new Set(curPlacements.map((p) => p.id));
+      const cands = piecesAll
+        .filter((p) => !usedIds.has(p.id) && p.areaMm2 >= comp.areaMm2)
+        .sort((a, b) => a.areaMm2 - b.areaMm2)
+        .slice(0, 10);
+      const bw = cb.maxX - cb.minX, bh = cb.maxY - cb.minY;
+      diag.push({ probe: true, edgeAdd: true, holeMm2: Math.round(comp.areaMm2), candsTried: cands.length });
+      const probe = diag[diag.length - 1];
+      for (const cand of cands) {
+        if (patched || Date.now() - t0 > WALL_MS || rebuilds >= MAX_REBUILDS) break;
+        // Позиции: центроид полосы и сдвиги на четверть габарита вдоль/поперёк —
+        // свес за край (overhang) уже учтён в zoneMask-клиппинге makePlacement.
+        const tries = [
+          [comp.centroid.x, comp.centroid.y],
+          [comp.centroid.x + bw / 4, comp.centroid.y], [comp.centroid.x - bw / 4, comp.centroid.y],
+          [comp.centroid.x, comp.centroid.y + bh / 4], [comp.centroid.x, comp.centroid.y - bh / 4]
+        ];
+        for (const [tx, ty] of tries) {
+          const np = makePlacement(cand, tx, ty, 0, spec, zoneMask);
+          if (!np.activeCells || np.activeCells.length === 0) { probe.emptyMask = (probe.emptyMask || 0) + 1; continue; }
+          // Префильтр: ядро кандидата накрывает ≥70% полосы
+          let compCov = 0;
+          for (let k = 0; k < compCells.length; k++) if (np.mask[compCells[k]] & 1) compCov++;
+          if (compCov / compCells.length < 0.7) { probe.f2 = (probe.f2 || 0) + 1; continue; }
+
+          rebuilds++;
+          const candPls = curPlacements.concat([np]);
+          const candResult = fmt(candPls);
+          // Принятие: ранг строго лучше И внутренние дыры не выросли (ADD у края
+          // не должен покупать покрытие ценой нового внутреннего брака или R5).
+          const accepted = _noNewViolation(candResult, curResult) && rank(candResult) < rank(curResult)
+            && Number(candResult.residualInteriorMm2 || 0) <= Number(curResult.residualInteriorMm2 || 0);
+          diag.push({
+            edgeAdd: true,
+            holeMm2: Math.round(comp.areaMm2),
+            addIn: cand.id,
+            covAfter: Math.round(Number(candResult.coveragePercent || 0) * 100) / 100,
+            resPerimAfter: Math.round(Number(candResult.residualPerimeterMm2 || 0)),
+            resIntAfter: Math.round(Number(candResult.residualInteriorMm2 || 0)),
+            statusAfter: String(candResult.resultStatus || "?") + (candResult.failedReason ? ":" + candResult.failedReason : ""),
+            accepted
+          });
+          if (accepted) {
+            curResult = candResult;
+            curPlacements = candPls;
+            patched = true;
+          }
+          break; // одна пересборка на кандидата
+        }
+      }
+      if (patched) _edgeAnyPatched = true;
+    }
+    // Пасс без единой заплатки — дальше без шансов, выходим.
+    if (!_edgeAnyPatched || Date.now() - t0 > WALL_MS || rebuilds >= MAX_REBUILDS) break;
+    }
+
+    const summary = { applied: diag.filter((d) => d.accepted).length, rebuilds, elapsedMs: Date.now() - t0, diag };
+    if (curResult !== baseResult) {
+      if (curResult.algorithmTrace) curResult.algorithmTrace.swapRepair = summary;
+      console.log(`[VSA-SwapRepair] applied=${summary.applied} rebuilds=${rebuilds} in ${summary.elapsedMs}ms`);
+      return curResult;
+    }
+    if (baseResult.algorithmTrace) baseResult.algorithmTrace.swapRepair = summary;
+    console.log(`[VSA-SwapRepair] no improvement (rebuilds=${rebuilds}, ${summary.elapsedMs}ms)`);
+    return null;
   }
 
 
@@ -720,6 +1087,7 @@ function createVoronoiSaSolver(deps) {
   const { formatResult, emptyResult } = createVoronoiSaResultBuilder({
     buildTerritoryOutput,
     buildPolygonalTerritoryOutput,
+    regularizePartition,
     runInitialPostprocess,
     runPolygonResidualAbsorption,
     collectDuplicatePieceWarnings,
@@ -754,22 +1122,37 @@ function createVoronoiSaSolver(deps) {
     const baseSeed     = Number((options && options.seed) || 1);
     const totalMs      = Math.max(1, Number((options && options.maxSolveMs) || 60000));
     const targetedMs   = Math.floor(totalMs * 0.3);
-    const saMs         = Math.floor((totalMs - targetedMs) / numRestarts);
+    // v5.3: numRestarts = МАКСИМУМ попыток, есть ранний выход по чистому результату.
+    // Каждому рестарту — ПОЛНЫЙ totalMs: урезание на targeted-долю ужимало phaseB и
+    // постобработку и дало регрессию качества (zone 2, 63с вместо 90с). Targeted-цикл
+    // после этого получает свой добавочный бюджет отдельно.
+    const saMs         = totalMs;
     const onProgress   = (options && options.onProgress) || null;
 
     let bestResult = null;
     let bestScore  = Infinity;
     const perSeedStats = [];
 
+    // Временной конверт рестартов: solve итерационно-первичен (v5.1) и на тяжёлой зоне
+    // занимает кратно больше maxSolveMs — без конверта numRestarts=3 давал 30-40 минут.
+    // Следующий рестарт стартует только пока израсходовано < 1.5×maxSolveMs; на тяжёлых
+    // зонах это честно вырождается в одиночный прогон.
+    const _restartT0 = Date.now();
+    const RESTART_ENVELOPE_MS = Math.floor(totalMs * 1.5);
+
     // Phase 1: SA restarts (skip targeted so budget stays in SA)
     for (let i = 0; i < numRestarts; i++) {
+      if (i > 0 && (Date.now() - _restartT0) > RESTART_ENVELOPE_MS) {
+        perSeedStats.push({ restart: i + 1, skipped: "time_envelope", elapsedMs: Date.now() - _restartT0 });
+        break;
+      }
       const runOptions = Object.assign({}, options, {
         seed: baseSeed + i,
         maxSolveMs: saMs,
         _skipTargeted: true,
         onProgress: onProgress ? (evt) => {
           onProgress(Object.assign({}, evt, {
-            title: `Restart ${i + 1}/${numRestarts}: ${evt.title || ""}`
+            title: `Рестарт ${i + 1}/${numRestarts}: ${evt.title || ""}`
           }));
         } : null
       });
@@ -787,11 +1170,20 @@ function createVoronoiSaSolver(deps) {
         coveragePercent: covPct != null ? Math.round(covPct * 100) / 100 : null,
         pieces: Array.isArray(result && result.placements) ? result.placements.length : null
       });
-      const score = resInt != null ? resInt : (result && result.ok ? Infinity - (result.coveredRatio || 0) * 1e6 : Infinity);
+      // Ранжирование: статус (ok > partial > failed) → внутренние дыры → покрытие.
+      // Ловит и случай «resInt=0, но R5-брак» — такой прогон не должен побеждать ok.
+      const statusRank = result && result.resultStatus === "ok" ? 0
+        : (result && result.resultStatus === "partial" ? 1 : 2);
+      const score = statusRank * 1e9
+        + (resInt != null ? Math.min(resInt, 1e6) : 1e6) * 100
+        + Math.max(0, 100 - (covPct || 0));
       if (bestResult === null || score < bestScore) {
         bestScore  = score;
         bestResult = result;
       }
+      // Ранний выход: честный «ok» уже означает ноль внутренних дыр (гейт в result.js) —
+      // оставшиеся рестарты не нужны, время пользователя дороже.
+      if (result && result.resultStatus === "ok") break;
     }
 
     if (bestResult) {

@@ -369,11 +369,16 @@
 
         <div id="intarsiaStep2CandidateFields">
           <div class="field-row" id="invFurFilterRow"><label>Мех</label><select id="invFurMaterialFilter"><option value="">Неважно</option></select></div>
-          <div class="field-row"><label>Лимит кандидатов</label><input id="invLimit" type="number" min="10" max="2000" value="300" /></div>
+          <!-- invLimit hidden: защитная константа производительности, не пользовательский выбор -->
+          <input id="invLimit" type="hidden" value="300" />
           <!-- invNapTol hidden: NFP Greedy uses IFP geometry for valid positions, not nap tolerance -->
           <input id="invNapTol" type="hidden" value="15" />
-          <div class="field-row" id="invNumRestartsRow"><label title="Мультирестарт: перебрать N seed, взять минимум residual. 1 = без рестартов.">Рестарты (мультизапуск)</label><input id="invNumRestarts" type="number" min="1" max="16" value="1" /></div>
-          <div class="field-row" id="invAllowanceMmRow" style="opacity:0.5;"><label>Резерв припуска (из свойств выкладки), мм</label><input id="invAllowanceMm" type="number" min="0" max="200" step="0.5" value="3.0" readonly style="color:#888; background:#f5f5f5;" /></div>
+          <!-- invNumRestarts hidden: 1 = одиночный прогон с полным бюджетом (прежнее поведение).
+               Авторестарты (>1) отключены: на тяжёлых зонах конверт всё равно даёт 1 прогон,
+               но с урезанным на targeted-долю бюджетом — регрессия качества (zone 2, 2026-07-16). -->
+          <input id="invNumRestarts" type="hidden" value="1" />
+          <!-- invAllowanceMm hidden: значение берётся из свойств выкладки (layoutRun.allowanceMm), JS пишет сюда для чтения -->
+          <input id="invAllowanceMm" type="hidden" value="12.0" />
           <div id="inventoryAdvancedFields" style="margin-top:8px;">
             <div id="invSizeFilterRow">
               <div class="field-row"><label>Мин. ширина фрагм., мм</label><input id="minFragmentWidthMm" type="number" min="0" max="10000" value="0" /></div>

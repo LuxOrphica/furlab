@@ -55,6 +55,8 @@ async function handleInventoryRoute(req, res, reqUrl, deps) {
     limit,
     materialId: String(body.materialId || "").trim(),
     onlyAvailable: body.onlyAvailable !== false,
+    // Резервации этой выкладки не считать занятостью (пересчёт своей же выкладки).
+    excludeReservationLayoutId: String(body.excludeReservationLayoutId || "").trim(),
     includeScrapContour: body.includeScrapContour === true,
     requireValidContour: body.requireValidContour === true,
     allowedStatuses: Array.isArray(body.allowedStatuses)

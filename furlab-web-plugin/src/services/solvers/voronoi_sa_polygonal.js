@@ -133,6 +133,189 @@ function clipperArea(path) {
   return Math.abs(ClipperLib.Clipper.Area(path));
 }
 
+function contourArea(pts) {
+  if (!Array.isArray(pts) || pts.length < 3) return 0;
+  let s = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const a = pts[i];
+    const b = pts[(i + 1) % pts.length];
+    s += Number(a.x) * Number(b.y) - Number(b.x) * Number(a.y);
+  }
+  return Math.abs(s) * 0.5;
+}
+
+function largestContour(contours) {
+  let best = [];
+  let bestArea = 0;
+  for (const pts of (Array.isArray(contours) ? contours : [])) {
+    const area = contourArea(pts);
+    if (area > bestArea) {
+      bestArea = area;
+      best = pts;
+    }
+  }
+  return best;
+}
+
+// ── Регуляризация партиции (v5.5) ────────────────────────────────────────────
+// ЕДИНСТВЕННАЯ санкционированная чистка геометрии фрагментов (взамен всех
+// точечных «деспайков»). Производственный инвариант: элементы уже ДОПУСКА РЕЗА
+// физически не вырезать — иглы, прорези и волосяные клинья не существуют для
+// раскроя. (Припуск тут НИ ПРИ ЧЁМ: припуски лежат в телах, вне фрагмента —
+// узкий язык фрагмента шву не мешает; ширину ограничивает только R5 70×70.)
+//   1) каждый фрагмент морфологически регуляризуется радиусом r = cutTolerance/2:
+//      открытие (сжать→раздуть) срезает наружные иглы/волоски,
+//      закрытие (раздуть→сжать) убирает внутренние прорези;
+//   2) fragment ⊆ core восстанавливается пересечением с ядром;
+//   3) наложения (закрытие могло налезть на соседа) разрешаются последовательным
+//      вычитанием в порядке размещения — партиция без overlap по построению.
+// Высвобожденные волоски (тоньше допуска реза) — прощаемый резидуал по
+// построению: эрозия классификатора их схлопывает. Перераспределения нет —
+// волосяные склейки с соседями сами рождали бы иглы.
+// Единственный параметр — cutToleranceMm (точность раскроя), дефолт 2.5мм.
+function regularizePartition(args) {
+  const placements = Array.isArray(args && args.placements) ? args.placements : [];
+  const cutTol = Math.max(0, Number(args && args.cutToleranceMm) || 0);
+  const r = cutTol / 2;
+  if (!(r > 0) || placements.length === 0) return { applied: false };
+  const S = 1000;
+  const t0 = Date.now();
+  const CT = ClipperLib.ClipType;
+
+  const ptsToPath = (pts) => {
+    const path = [];
+    for (const p of (Array.isArray(pts) ? pts : [])) {
+      const x = Number(p && p.x), y = Number(p && p.y);
+      if (Number.isFinite(x) && Number.isFinite(y)) path.push({ X: Math.round(x * S), Y: Math.round(y * S) });
+    }
+    return path.length >= 3 ? path : null;
+  };
+  const contoursToPaths = (contours) => {
+    const out = [];
+    for (const c of (Array.isArray(contours) ? contours : [])) {
+      const p = ptsToPath(c);
+      if (p) out.push(p);
+    }
+    return out;
+  };
+  const pathToPts = (path) => path.map((pt) => ({ x: pt.X / S, y: pt.Y / S }));
+  const pathAreaMm2 = (path) => ClipperLib.Clipper.Area(path) / (S * S);
+  const offset = (paths, delta) => {
+    const co = new ClipperLib.ClipperOffset(2, 0.25 * S);
+    co.AddPaths(paths, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
+    const dst = new ClipperLib.Paths();
+    co.Execute(dst, delta);
+    return dst;
+  };
+  const boolOp = (type, subj, clip) => {
+    const cpr = new ClipperLib.Clipper();
+    cpr.AddPaths(subj, ClipperLib.PolyType.ptSubject, true);
+    if (clip && clip.length) cpr.AddPaths(clip, ClipperLib.PolyType.ptClip, true);
+    const sol = new ClipperLib.Paths();
+    cpr.Execute(type, sol, ClipperLib.PolyFillType.pftNonZero, ClipperLib.PolyFillType.pftNonZero);
+    return sol;
+  };
+  const sumAbsAreaMm2 = (paths) => paths.reduce((s, p) => s + Math.abs(pathAreaMm2(p)), 0);
+
+  const items = placements.map((p) => {
+    const fragContours = (Array.isArray(p.inZoneContours) && p.inZoneContours.length)
+      ? p.inZoneContours
+      : (Array.isArray(p.inZoneContour) && p.inZoneContour.length >= 3 ? [p.inZoneContour] : []);
+    return {
+      p,
+      frag: contoursToPaths(fragContours),
+      core: contoursToPaths([p.alignedCoreContour])
+    };
+  });
+
+  // 1) морфология (открытие + закрытие) и возврат под ядро
+  for (const it of items) {
+    if (!it.frag.length) { it.reg = it.frag; continue; }
+    let reg = it.frag;
+    try {
+      const er = offset(it.frag, -r * S);
+      if (er.length) {
+        // открытие — наружные волоски долой
+        let opened = offset(er, r * S);
+        if (!opened.length) opened = it.frag;
+        // закрытие — внутренние прорези долой
+        const di = offset(opened, r * S);
+        if (di.length) {
+          const cl = offset(di, -r * S);
+          if (cl.length) opened = cl;
+        }
+        // fragment ⊆ core: закрытие могло вылезти за ядро — возвращаем
+        reg = it.core.length ? boolOp(CT.ctIntersection, opened, it.core) : opened;
+        if (!reg.length) reg = it.frag;
+      }
+      // er пуст: весь фрагмент уже 2r — не трогаем, его судьбу решает R5, не чистка
+    } catch (_) { reg = it.frag; }
+    it.reg = reg;
+  }
+
+  // 2) партиция без overlap: последовательное вычитание уже занятого
+  let occupied = [];
+  for (const it of items) {
+    if (!it.reg || !it.reg.length) continue;
+    try {
+      if (occupied.length) it.reg = boolOp(CT.ctDifference, it.reg, occupied);
+      if (it.reg.length) occupied = occupied.length ? boolOp(CT.ctUnion, occupied, it.reg) : it.reg.slice();
+    } catch (_) {}
+  }
+
+  // 4) запись обратно: контуры/площади фрагментов из единой очищенной геометрии
+  let changed = 0;
+  for (const it of items) {
+    if (!it.reg || !it.reg.length) continue;
+    const outContours = [];
+    for (const path of it.reg) {
+      if (pathAreaMm2(path) <= 0) continue; // только внешние кольца
+      const pts = pathToPts(path);
+      if (pts.length >= 3 && contourArea(pts) > 1e-6) outContours.push(pts);
+    }
+    if (!outContours.length) continue;
+    let areaMm2 = 0;
+    let largest = outContours[0];
+    let largestArea = -1;
+    for (const c of outContours) {
+      const a = contourArea(c);
+      areaMm2 += a;
+      if (a > largestArea) { largestArea = a; largest = c; }
+    }
+    const before = Number(it.p.inZoneAreaMm2 || 0);
+    it.p.inZoneContours = outContours;
+    it.p.inZoneContour = largest;
+    it.p.inZoneCoreContours = outContours;
+    it.p.inZoneCoreContour = largest;
+    it.p.inZoneAreaMm2 = areaMm2;
+    if (Math.abs(areaMm2 - before) > 0.5) changed++;
+  }
+
+  return {
+    applied: true,
+    changed,
+    cutToleranceMm: cutTol,
+    elapsedMs: Date.now() - t0
+  };
+}
+
+function multiPolygonOuterContours(mp) {
+  const contours = [];
+  for (const poly of (Array.isArray(mp) ? mp : [])) {
+    const ring = Array.isArray(poly) ? poly[0] : null;
+    if (!Array.isArray(ring) || ring.length < 4) continue;
+    const pts = [];
+    for (let i = 0; i < ring.length - 1; i++) {
+      const p = ring[i];
+      const x = Number(p && p[0]);
+      const y = Number(p && p[1]);
+      if (Number.isFinite(x) && Number.isFinite(y)) pts.push({ x, y });
+    }
+    if (pts.length >= 3 && contourArea(pts) > 1e-6) contours.push(pts);
+  }
+  return contours;
+}
+
 /**
  * Строит halfplane (большой прямоугольник, обрезанный bisector'ом) — Clipper path.
  * Halfplane содержит точку (cx_i, cy_i), отрезает часть со стороны (cx_j, cy_j).
@@ -240,6 +423,20 @@ function buildPolygonalTerritoryOutput(args) {
   const polygonBBox = args.polygonBBox;
   const minWidthMm = args.minWidthMm || 0;
   const minLengthMm = args.minLengthMm || 0;
+  const unionMulti = args.unionMulti;
+
+  // R5 per-component: компонент проходит, если MBR-ширина и bbox-длина не ниже
+  // порогов (допуск 0.5мм — тот же, что в thin-detect).
+  function contourPassesMinSize(contour) {
+    if (!Array.isArray(contour) || contour.length < 3) return false;
+    if (minWidthMm > 0 && minBoundingRectShorter(contour) < minWidthMm - 0.5) return false;
+    if (minLengthMm > 0) {
+      const bb = polygonBBox(contour);
+      const longSide = Math.max(bb.maxX - bb.minX, bb.maxY - bb.minY);
+      if (longSide < minLengthMm - 0.5) return false;
+    }
+    return true;
+  }
 
   // Zone как Clipper path (units)
   const zonePath = pointsToClipperPath(zonePoints, scale);
@@ -323,15 +520,17 @@ function buildPolygonalTerritoryOutput(args) {
       continue;
     }
 
-    // Покомпонентная обрезка: берём только компоненту с центром placement_i
-    const centeredPaths = componentsContainingPoint(currentPaths,
-      Math.round(pl_i.cx * scale), Math.round(pl_i.cy * scale));
-    territoryPaths.push(centeredPaths);
+    // Keep every component of territory_i. Dropping islands that do not contain
+    // the placement center creates R2 partition gaps: the core covers them, but
+    // no fragment owns them.
+    territoryPaths.push(currentPaths);
   }
 
   // ── 2. Строим fragment_i = territory_i (т.к. territory_i ⊆ core_i) ────────
   const resultPlacements = [];
   const thinFragments = [];
+  const fragMps = [];            // текущий multipolygon фрагмента по индексу записи (для фазы 2.5)
+  const satelliteFixups = [];    // записи с валидным главным компонентом + sub-min сателлитами
 
   for (let i = 0; i < N; i++) {
     const pl = placements[i];
@@ -339,10 +538,14 @@ function buildPolygonalTerritoryOutput(args) {
     if (!terrPaths || terrPaths.length === 0 || !coreMps[i]) {
       resultPlacements.push({
         ...pl,
+        scrapPieceId: pl.scrapPieceId || pl.id || pl.inventoryTag,
         alignedContour: pl.pts && pl.pts.length >= 3 ? pl.pts : [],
         rawTerritoryContour: [],
+        rawTerritoryContours: [],
         inZoneContour: [],
+        inZoneContours: [],
         inZoneCoreContour: [],
+        inZoneCoreContours: [],
         inZoneAreaMm2: 0,
         territoryAreaMm2: 0,
         physMissingMm2: 0,
@@ -353,6 +556,7 @@ function buildPolygonalTerritoryOutput(args) {
         solveOrder: i + 1,
         renderIndex: i
       });
+      fragMps.push(null);
       continue;
     }
 
@@ -377,10 +581,14 @@ function buildPolygonalTerritoryOutput(args) {
     if (allTerrPts.length === 0) {
       resultPlacements.push({
         ...pl,
+        scrapPieceId: pl.scrapPieceId || pl.id || pl.inventoryTag,
         alignedContour: pl.pts && pl.pts.length >= 3 ? pl.pts : [],
         rawTerritoryContour: [],
+        rawTerritoryContours: [],
         inZoneContour: [],
+        inZoneContours: [],
         inZoneCoreContour: [],
+        inZoneCoreContours: [],
         inZoneAreaMm2: 0,
         territoryAreaMm2: 0,
         physMissingMm2: 0,
@@ -391,6 +599,7 @@ function buildPolygonalTerritoryOutput(args) {
         solveOrder: i + 1,
         renderIndex: i
       });
+      fragMps.push(null);
       continue;
     }
 
@@ -422,24 +631,32 @@ function buildPolygonalTerritoryOutput(args) {
     const terrArea = multiPolygonArea(terrMp);
     const physMissingMm2 = Math.max(0, terrArea - fragArea);
 
-    const fragPts = mpToPoints(fragMp);
+    const fragContours = multiPolygonOuterContours(fragMp);
+    const fragPts = largestContour(fragContours);
+    const terrContours = allTerrPts;
 
-    // Thin-detect (БЕЗ absorb — контракт R5)
-    let isThin = false;
-    let mbrShort = Infinity;
-    if (fragPts.length >= 3 && fragArea > 0) {
-      mbrShort = minBoundingRectShorter(fragPts);
-      if (minWidthMm > 0 && mbrShort < minWidthMm - 0.5) {
-        isThin = true;
-      }
-      if (minLengthMm > 0) {
-        const bb = polygonBBox(fragPts);
-        const longer = Math.max(bb.maxX - bb.minX, bb.maxY - bb.minY);
-        if (longer < minLengthMm - 0.5) isThin = true;
+    fragMps.push(Array.isArray(fragMp) ? fragMp : []);
+
+    // R5 per-component (v5.2): каждый компонент фрагмента проверяется на min-size
+    // ОТДЕЛЬНО. Раньше бралась min(MBR) по всем компонентам — сателлит 10×16мм
+    // делал thin весь placement с валидным главным компонентом 170×240мм.
+    const validContours = [];
+    const subMinContours = [];
+    if (fragArea > 0) {
+      for (const contour of fragContours) {
+        if (contourPassesMinSize(contour)) validContours.push(contour);
+        else subMinContours.push(contour);
       }
     }
+    // Thin = НИ ОДИН компонент не прошёл (истинно тонкая посадка). БЕЗ absorb — контракт R5.
+    const isThin = fragContours.length > 0 && fragArea > 0 && validContours.length === 0;
 
     if (isThin) {
+      let mbrShort = Infinity;
+      for (const contour of fragContours) {
+        const curShort = minBoundingRectShorter(contour);
+        if (curShort < mbrShort) mbrShort = curShort;
+      }
       thinFragments.push({
         idx: i,
         inventoryTag: pl.inventoryTag,
@@ -448,18 +665,25 @@ function buildPolygonalTerritoryOutput(args) {
         cx: pl.cx,
         cy: pl.cy
       });
+    } else if (validContours.length > 0 && subMinContours.length > 0) {
+      // Сателлиты при живом главном компоненте — в фазу 2.5
+      satelliteFixups.push({ idx: resultPlacements.length, validContours, subMinContours });
     }
 
     resultPlacements.push({
       ...pl,
+      scrapPieceId: pl.scrapPieceId || pl.id || pl.inventoryTag,
       // alignedContour = тело с припуском в мировых координатах (требуется инвариантом для matched).
       alignedContour: pl.pts && pl.pts.length >= 3 ? pl.pts : fragPts,
       // alignedCoreContour = ядро в мировых координатах (для верификатора R2/R5).
       alignedCoreContour: pl.corePts,
       // rawTerritoryContour = наибольший компонент territory (для рендера).
       rawTerritoryContour: bestTerrPts || fragPts,
+      rawTerritoryContours: terrContours,
       inZoneContour: fragPts,
+      inZoneContours: fragContours,
       inZoneCoreContour: fragPts,
+      inZoneCoreContours: fragContours,
       inZoneAreaMm2: fragArea,
       territoryAreaMm2: terrArea,
       physMissingMm2: physMissingMm2,
@@ -470,6 +694,118 @@ function buildPolygonalTerritoryOutput(args) {
       solveOrder: i + 1,
       renderIndex: i
     });
+  }
+
+  // ── 2.5 Sub-min сателлиты (v5.2) ────────────────────────────────────────────
+  // Multi-component fragment с валидным главным компонентом: sub-min сателлит
+  //   1) передаётся соседу, чьё core накрывает ~всю его площадь И чей fragment
+  //      остаётся связным после union (выбор детерминирован: покрытие desc → tag asc);
+  //   2) иначе — выбрасывается в residual (честная дыра, диагностика droppedComponents).
+  // Это НЕ PH3-absorb: целиком thin placement не трогается (R5 = failed честно),
+  // переносятся только осколки territory, отрезанные bisector'ом.
+  const transferredComponents = [];
+  const droppedComponents = [];
+  if (satelliteFixups.length > 0 && typeof unionMulti === "function") {
+    // Step A: снять сателлиты с доноров, собрать очередь на пристройство
+    const satWork = [];
+    for (const fx of satelliteFixups) {
+      const rec = resultPlacements[fx.idx];
+      const validMps = [];
+      for (const c of fx.validContours) {
+        const mp = pointsToMultiPolygon(c);
+        for (const poly of (Array.isArray(mp) ? mp : [])) validMps.push(poly);
+      }
+      fragMps[fx.idx] = validMps;
+      for (const c of fx.subMinContours) {
+        const satMp = pointsToMultiPolygon(c);
+        const satArea = multiPolygonArea(satMp);
+        if (satArea < 1) {
+          droppedComponents.push({ fromTag: rec.inventoryTag, areaMm2: Math.round(satArea * 10) / 10, reason: "micro" });
+          continue;
+        }
+        satWork.push({ fromIdx: fx.idx, fromTag: rec.inventoryTag, satMp, satArea });
+      }
+    }
+    // Step B: передать соседям / выбросить
+    const touched = new Set(satelliteFixups.map((fx) => fx.idx));
+    for (const w of satWork) {
+      const candidates = [];
+      for (let m = 0; m < resultPlacements.length; m++) {
+        if (m === w.fromIdx) continue;
+        const recM = resultPlacements[m];
+        if (recM.status !== "matched") continue;
+        if (!coreMps[m] || !fragMps[m] || fragMps[m].length === 0) continue;
+        let covered = 0;
+        try { covered = multiPolygonArea(intersectMulti(coreMps[m], w.satMp)); } catch (_) { covered = 0; }
+        // Порог 50%: передаётся только часть, накрытая core соседа (клиппинг ниже
+        // гарантирует R2: fragment ⊆ core). Остаток < 50% — не стоит фрагментации.
+        if (covered >= w.satArea * 0.5) candidates.push({ m, covered, tag: String(recM.inventoryTag || "") });
+      }
+      candidates.sort((a, b) => {
+        if (Math.abs(b.covered - a.covered) > 1e-6) return b.covered - a.covered;
+        if (a.tag !== b.tag) return a.tag < b.tag ? -1 : 1;
+        return a.m - b.m;
+      });
+      let accepted = false;
+      let unionRejects = 0;
+      for (const cand of candidates) {
+        // Клиппинг по core соседа: transferMp ⊆ core_m по построению → R2 держится.
+        let transferMp = w.satMp;
+        if (cand.covered < w.satArea * 0.999) {
+          try { transferMp = intersectMulti(w.satMp, coreMps[cand.m]); } catch (_) { continue; }
+          if (multiPolygonArea(transferMp) < 1) continue;
+        }
+        let merged = null;
+        try { merged = unionMulti(fragMps[cand.m], transferMp); } catch (_) { merged = null; }
+        if (!merged) continue;
+        const before = multiPolygonOuterContours(fragMps[cand.m]).length;
+        const after = multiPolygonOuterContours(merged).length;
+        if (after > before) { unionRejects++; continue; } // не примыкает — union дал новый остров
+        fragMps[cand.m] = merged;
+        touched.add(cand.m);
+        const transferredMm2 = Math.min(w.satArea, cand.covered);
+        transferredComponents.push({
+          fromTag: w.fromTag,
+          toTag: resultPlacements[cand.m].inventoryTag,
+          areaMm2: Math.round(transferredMm2)
+        });
+        const remainder = w.satArea - transferredMm2;
+        if (remainder > 1) {
+          droppedComponents.push({ fromTag: w.fromTag, areaMm2: Math.round(remainder), reason: "partial_remainder" });
+        }
+        accepted = true;
+        break;
+      }
+      if (!accepted) {
+        droppedComponents.push({
+          fromTag: w.fromTag,
+          areaMm2: Math.round(w.satArea),
+          reason: candidates.length === 0 ? "no_covering_core" : "union_not_adjacent",
+          candidateCount: candidates.length,
+          unionRejects,
+          bestCoveredPct: candidates.length ? Math.round(candidates[0].covered / w.satArea * 100) : 0
+        });
+      }
+    }
+    // Step C: пересобрать поля затронутых записей из fragMps
+    for (const idx of touched) {
+      const rec = resultPlacements[idx];
+      const mp = fragMps[idx] || [];
+      const contours = multiPolygonOuterContours(mp);
+      const main = largestContour(contours);
+      const area = multiPolygonArea(mp);
+      rec.inZoneContours = contours;
+      rec.inZoneContour = main;
+      rec.inZoneCoreContours = contours;
+      rec.inZoneCoreContour = main;
+      rec.inZoneAreaMm2 = area;
+      rec.physMissingMm2 = Math.max(0, (rec.territoryAreaMm2 || 0) - area);
+    }
+    if (transferredComponents.length || droppedComponents.length) {
+      const trMm2 = transferredComponents.reduce((s, t) => s + t.areaMm2, 0);
+      const drMm2 = droppedComponents.reduce((s, t) => s + t.areaMm2, 0);
+      console.log(`[VSA-POLY] satellites: transferred=${transferredComponents.length} (${Math.round(trMm2)}mm2), dropped=${droppedComponents.length} (${Math.round(drMm2)}mm2)`);
+    }
   }
 
   const _t1 = Date.now();
@@ -490,6 +826,8 @@ function buildPolygonalTerritoryOutput(args) {
   return {
     resultPlacements,
     thinFragments,
+    transferredComponents,
+    droppedComponents,
     perfectCells: 0,
     fallbackFragments: [],
     topologyRepair: null,
@@ -501,7 +839,11 @@ function buildPolygonalTerritoryOutput(args) {
       territoryMode: "polygon_voronoi",
       buildTimeMs: _t1 - _t0,
       r2FixedCount: 0,
-      r2FixedArea: 0
+      r2FixedArea: 0,
+      satelliteTransferredCount: transferredComponents.length,
+      satelliteTransferredMm2: Math.round(transferredComponents.reduce((s, t) => s + t.areaMm2, 0)),
+      satelliteDroppedCount: droppedComponents.length,
+      satelliteDroppedMm2: Math.round(droppedComponents.reduce((s, t) => s + t.areaMm2, 0))
     }
   };
 }
@@ -510,5 +852,6 @@ module.exports = {
   buildPolygonalTerritoryOutput,
   buildHalfplanePath,
   convexHull,
-  minBoundingRectShorter
+  minBoundingRectShorter,
+  regularizePartition
 };

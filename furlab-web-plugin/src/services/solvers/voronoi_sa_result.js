@@ -161,6 +161,7 @@ function minBoundingRectLonger(pts) {
 function createVoronoiSaResultBuilder(deps) {
   const buildTerritoryOutput = deps.buildTerritoryOutput;
   const buildPolygonalTerritoryOutput = deps.buildPolygonalTerritoryOutput || null;
+  const regularizePartition = deps.regularizePartition || null;
   const runInitialPostprocess = deps.runInitialPostprocess;
   const runPolygonResidualAbsorption = deps.runPolygonResidualAbsorption;
   const collectDuplicatePieceWarnings = deps.collectDuplicatePieceWarnings;
@@ -207,6 +208,7 @@ function createVoronoiSaResultBuilder(deps) {
 
     let resultPlacements, perfectCells, fallbackFragments, topologyRepair;
     let polygonalThinFragments = [];
+    let polygonalSatellites = null;
 
     if (usePolygonal && buildPolygonalTerritoryOutput) {
       // ── Полигональный путь (D-rebuild-minimal) ────────────────────────────
@@ -236,6 +238,10 @@ function createVoronoiSaResultBuilder(deps) {
       perfectCells = polyOut.perfectCells;
       fallbackFragments = polyOut.fallbackFragments;
       topologyRepair = polyOut.topologyRepair;
+      polygonalSatellites = {
+        transferred: polyOut.transferredComponents || [],
+        dropped: polyOut.droppedComponents || []
+      };
     } else {
       // ── Старый растровый путь (для regression) ────────────────────────────
       const territoryOutput = buildTerritoryOutput({
@@ -295,6 +301,22 @@ function createVoronoiSaResultBuilder(deps) {
     warnings.push(...collectDuplicatePieceWarnings(resultPlacements));
 
     const gapFillFragments = postprocessResult.gapFillFragments;
+
+    // v5.5: регуляризация партиции — единая точка после ВСЕХ стадий (полигон, сателлиты,
+    // постобработка), ДО расчёта покрытия/инвариантов/статуса. Радиус = allowanceMm
+    // (производственный: элементов уже 2×припуска для шва не существует). Операция над
+    // всем разбиением сразу: морфология + возврат под ядро + разрешение наложений +
+    // передача высвобожденного материала соседям в пределах их ядер. См. voronoi_sa_polygonal.js.
+    let _regularizeSummary = null;
+    if (usePolygonal && typeof regularizePartition === "function") {
+      const _regT0 = Date.now();
+      try {
+        _regularizeSummary = regularizePartition({ placements: resultPlacements, cutToleranceMm: 0.6 }); // 0.6мм = вычислительная гигиена (иглы/прорези нулевой ширины), НЕ производственный допуск
+      } catch (e) {
+        _regularizeSummary = { applied: false, error: String(e && e.message || e) };
+      }
+      console.log(`[VSA] regularizePartition: ${Date.now() - _regT0}ms ${JSON.stringify(_regularizeSummary)}`);
+    }
 
     const _fmtT1 = Date.now();
     let { coveredRatio: realCoveredRatio, residualAreaMm2: realResidualAreaMm2,
@@ -400,6 +422,27 @@ function createVoronoiSaResultBuilder(deps) {
     const r2Fail = invWarnings.some(w => /^R2_/.test(w) || /partition/i.test(w));
     const r5Fail = invWarnings.some(w => /^R5_/.test(w) || /sub.?min/i.test(w));
     const r6Fail = invWarnings.some(w => /^R6_/.test(w) || /duplicate/i.test(w));
+    // Внутренние дыры между ядрами = брак при шитье: припуск уходит в шов, соседние ядра
+    // не смыкаются → реальный зазор в изделии. residualInteriorMm2 уже очищен от краевых
+    // слайверов, растровых и edge-line артефактов — это честная площадь непокрытого ВНУТРИ
+    // зоны; чистая выкладка даёт ровно 0. Порог — только на числовой шум, не на «дырку».
+    // Это дефект партиции, который парный R2-тест ядер не ловит (зазор между несколькими ядрами).
+    const INTERIOR_HOLE_TOLERANCE_MM2 = 2;
+    const interiorHoleFail = Number(residualInteriorMm2) > INTERIOR_HOLE_TOLERANCE_MM2;
+    if (interiorHoleFail) {
+      // Отражаем как нарушение партиции для монитора/ведомости (geometricPartition → FAIL).
+      // Пушим ПОСЛЕ вычисления r2Fail, чтобы не перебить специфичную причину interior_holes.
+      invWarnings.push(`R2_INTERIOR_HOLES:${Math.round(Number(residualInteriorMm2))}mm2`);
+    }
+    // Краевой дефицит = брак. Решение пользователя (2026-07-16): считаем, что припуски
+    // нужны ПО ВСЕМ краям детали/зоны (упрощение вместо sewn/free-классификации сегментов;
+    // TODO при необходимости — разметка сшиваемых сегментов от клиента и дифференциация).
+    // residualPerimeterMm2 уже очищен от прощаемых слайверов/растровых артефактов.
+    const EDGE_DEFICIT_TOLERANCE_MM2 = 2;
+    const edgeDeficitFail = Number(residualPerimeterMm2) > EDGE_DEFICIT_TOLERANCE_MM2;
+    if (edgeDeficitFail) {
+      invWarnings.push(`EDGE_DEFICIT:${Math.round(Number(residualPerimeterMm2))}mm2`);
+    }
     const physMissingTotalMm2 = resultPlacements.reduce(
       (s, p) => s + (p && p.physicalMissingMm2 > 0 ? p.physicalMissingMm2 : 0), 0);
     const physMissingPct = zoneArea > 0 ? physMissingTotalMm2 / zoneArea * 100 : 0;
@@ -413,6 +456,14 @@ function createVoronoiSaResultBuilder(deps) {
       failedReason = r2Fail ? "partition_gap_R2"
         : r5Fail ? "sub_min_fragment_R5"
         : "duplicate_scrap_R6";
+    } else if (interiorHoleFail) {
+      // Высокое покрытие, но внутри зоны есть непокрытые дыры → не «ok». Это брак.
+      resultStatus = "failed";
+      failedReason = `interior_holes_${Math.round(Number(residualInteriorMm2))}mm2`;
+    } else if (edgeDeficitFail) {
+      // Ядро не дотягивается до контура зоны: шов по краю не получит припуск.
+      resultStatus = "failed";
+      failedReason = `edge_deficit_${Math.round(Number(residualPerimeterMm2))}mm2`;
     } else if (covF >= 99.5) {
       resultStatus = "ok";
     } else if (covF >= 95.0 && physMissingPct <= 1.0) {
@@ -454,13 +505,15 @@ function createVoronoiSaResultBuilder(deps) {
       algorithmTrace: {
         version: "voronoi-sa-v5.0",
         effectiveOptions,
+        regularize: _regularizeSummary,
         phaseA: {
           timeMs: phaseATimeMs || 0,
           iterations: iters,
           accepted,
           exitReason: _exitReason || "timeout",
           warmDurationMs: _phaseAExtra ? (_phaseAExtra.warmDurationMs || 0) : 0,
-          alpha: _phaseAExtra ? (_phaseAExtra.saAlpha || null) : null
+          alpha: _phaseAExtra ? (_phaseAExtra.saAlpha || null) : null,
+          culled: _phaseAExtra && Array.isArray(_phaseAExtra.saCulled) ? _phaseAExtra.saCulled : []
         },
         phaseB: phaseBStats ? {
           timeMs: phaseBStats.timeMs,
@@ -483,6 +536,7 @@ function createVoronoiSaResultBuilder(deps) {
           postprocessMode,
           postprocessDisabled: disablePostprocess
         },
+        satellites: polygonalSatellites,
         postprocessTrace: [
           ...(topologyRepair ? [topologyRepair] : []),
           ...((!usePolygonal && postprocessResult && Array.isArray(postprocessResult.trace)) ? postprocessResult.trace : []),
