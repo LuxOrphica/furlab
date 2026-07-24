@@ -317,7 +317,7 @@ function createVoronoiSaSolver(deps) {
       solver: "inventory_voronoi_sa",
       layoutMode,
       territoryMode,
-      gridStepMm: 3,
+      gridStepMm: Number(options && options.gridStepMm) > 0 ? Number(options.gridStepMm) : 3,
       seed,
       maxSolveMs,
       maxIterations: maxIterations || null,
@@ -352,7 +352,11 @@ function createVoronoiSaSolver(deps) {
 
     const rng = createSeededRng(seed);
     const zoneBbox = polygonBBox(zonePoints);
-    const spec = createGridSpec(zoneBbox, 3, 1);
+    // Шаг сетки SA. Дефолт 3мм. Профиль (2026-07-24) показал: растр <1% времени,
+    // ~99% — Clipper; поэтому измельчение сетки почти не бьёт по скорости, но
+    // делает видимыми SA стыковые зазоры < клетки. Параметризовано под A/B.
+    const gridStepMm = Number(options && options.gridStepMm) > 0 ? Number(options.gridStepMm) : 3;
+    const spec = createGridSpec(zoneBbox, gridStepMm, 1);
     const cellCount = spec.nx * spec.ny;
     let zoneMask = rasterize(zonePoints, spec);
     // Normalize to 0/1: rasterize() returns 2-bit values (0/2/3), zone mask must be 0/1

@@ -181,7 +181,7 @@ const voronoiSaSolver = createVoronoiSaSolver(solverDeps);
 // ── CLI parsing ──────────────────────────────────────────────────────────────
 
 function parseArgs(argv) {
-  const args = { _: [], seed: null, maxIter: null, maxSolveMs: null, out: null, lloyd: false, sa: false, assignResidual: false, overlapWeight: null, junction: false, restarts: null, swapRepair: false, tagIds: false, progress: false, deepWeight: null, noReg: false, v2: false, sw: false };
+  const args = { _: [], seed: null, maxIter: null, maxSolveMs: null, out: null, lloyd: false, sa: false, assignResidual: false, overlapWeight: null, junction: false, restarts: null, swapRepair: false, tagIds: false, progress: false, deepWeight: null, noReg: false, v2: false, sw: false, clean: null, grid: null };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--seed") args.seed = Number(argv[++i]);
@@ -201,6 +201,8 @@ function parseArgs(argv) {
     else if (a === "--no-regularize") args.noReg = true;
     else if (a === "--v2") args.v2 = true;
     else if (a === "--seam-weights") args.sw = true;
+    else if (a === "--clean-contours") args.clean = Number(argv[++i]);
+    else if (a === "--grid-step") args.grid = Number(argv[++i]);
     else args._.push(a);
   }
   return args;
@@ -275,6 +277,8 @@ async function main() {
     _skipRegularize: args.noReg,
     _partitionV2: args.v2,
     _seamWeights: args.sw,
+    cleanContoursMm: args.clean,
+    gridStepMm: args.grid,
     numRestarts: args.restarts || 1,
     onProgress: args.progress ? (async () => {}) : undefined,
     _swapRepair: args.swapRepair
