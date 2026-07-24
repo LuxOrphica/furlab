@@ -101,7 +101,7 @@
 
   function isInventoryMode(mode) {
     const m = String(mode || "").trim().toLowerCase();
-    return m === "inventory_manual" || m === "inventory_direct" || m === "inventory_split_return" || m === "inventory_voronoi_sa" || m === "inventory_nfp_sa";
+    return m === "inventory_manual" || m === "inventory_direct" || m === "inventory_split_return" || m === "inventory_voronoi_sa" || m === "inventory_voronoi_sa_v2" || m === "inventory_nfp_sa";
   }
 
   function getLayoutSnapshotForEntry(entry) {

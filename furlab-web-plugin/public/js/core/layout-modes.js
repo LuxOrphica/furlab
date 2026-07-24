@@ -15,7 +15,8 @@
     // \u0421\u043e\u043b\u0432\u0435\u0440\u044b/\u0440\u0435\u0436\u0438\u043c\u044b \u0432 \u0440\u0435\u0435\u0441\u0442\u0440\u0435 \u0438 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u0441\u043e\u0445\u0440\u0430\u043d\u0451\u043d\u043d\u044b\u0445 \u0432\u044b\u043a\u043b\u0430\u0434\u043e\u043a \u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u044b \u0440\u0430\u0431\u043e\u0447\u0438\u043c\u0438.
     // { mode: "inventory_nfp_sa", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (NFP Greedy)" },
     // { mode: "inventory_tiling", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (\u0422\u0430\u0439\u043b\u0438\u043d\u0433)" },
-    { mode: "inventory_voronoi_sa", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (Voronoi SA)" }
+    { mode: "inventory_voronoi_sa", title: "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f (Voronoi SA)" },
+    { mode: "inventory_voronoi_sa_v2", title: "Из инвентаря (Voronoi SA v2)" }
   ];
 
   function asLayoutThumbSvg(svg) {
@@ -40,9 +41,17 @@
     return row ? row.title : "\u0418\u0437 \u0438\u043d\u0432\u0435\u043d\u0442\u0430\u0440\u044f";
   }
 
+  // Оба режима Voronoi SA: v1 (продакшн) и v2 (core-aware партиция).
+  // Отличаются ТОЛЬКО построением партиции на сервере; вся клиентская обвязка
+  // (панель свойств, монитор, отчёты, холст) у них общая.
+  function isVoronoiSaLayoutMode(mode) {
+    const m = String(mode || "");
+    return m === "inventory_voronoi_sa" || m === "inventory_voronoi_sa_v2";
+  }
+
   function isInventoryLikeLayoutMode(mode) {
     const m = String(mode || "");
-    return m === "inventory" || m === "inventory_manual" || m === "inventory_split_return" || m === "inventory_nfp_sa" || m === "inventory_tiling" || m === "inventory_voronoi_sa";
+    return m === "inventory" || m === "inventory_manual" || m === "inventory_split_return" || m === "inventory_nfp_sa" || m === "inventory_tiling" || isVoronoiSaLayoutMode(m);
   }
 
   function getLayoutModeCatalog() {
@@ -61,6 +70,7 @@
     inventory_nfp_sa: "inventory_nfp_sa",
     inventory_tiling: "inventory_nfp_sa",
     inventory_voronoi_sa: "inventory_voronoi_sa_new",
+    inventory_voronoi_sa_v2: "inventory_voronoi_sa_new",
     voronoi_tiles: "voronoi_tiles_new"
   };
   const ICONS_BASE = "/assets/layout-icons/";
@@ -76,6 +86,7 @@
   global.FurLabLayoutModes = Object.assign({}, global.FurLabLayoutModes || {}, {
     getLayoutModeTitle,
     isInventoryLikeLayoutMode,
+    isVoronoiSaLayoutMode,
     getLayoutModeCatalog,
     getLayoutModeThumbSvg
   });

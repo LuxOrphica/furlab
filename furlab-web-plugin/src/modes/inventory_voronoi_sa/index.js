@@ -20,7 +20,11 @@ function buildSolveOrder(placements) {
     .filter(x => x.length > 0);
 }
 
-function createInventoryVoronoiSaMode(deps) {
+// variant.modeId / variant.partitionV2 — второй режим "Voronoi SA v2" переиспользует
+// тот же солвер, отличаясь только построением партиции (core-aware power-диаграмма).
+function createInventoryVoronoiSaMode(deps, variant) {
+  const _modeId = String((variant && variant.modeId) || "inventory_voronoi_sa");
+  const _partitionV2 = !!(variant && variant.partitionV2);
   const voronoiSaSolver = deps && deps.voronoiSaSolver;
   if (!voronoiSaSolver || typeof voronoiSaSolver.solve !== "function") {
     throw new Error("inventory_voronoi_sa mode requires voronoiSaSolver");
@@ -28,9 +32,9 @@ function createInventoryVoronoiSaMode(deps) {
 
   function getDescriptor() {
     return {
-      layoutType: "inventory_voronoi_sa",
+      layoutType: _modeId,
       modeVersion: "v3.1",
-      displayName: "Inventory Voronoi+SA",
+      displayName: _partitionV2 ? "Inventory Voronoi+SA v2" : "Inventory Voronoi+SA",
       supportsPreview: true,
       supportsApply: true
     };
@@ -69,8 +73,9 @@ function createInventoryVoronoiSaMode(deps) {
       ...options,
       zoneHoles,
       onProgress,
-      layoutMode: "inventory_voronoi_sa",
+      layoutMode: _modeId,
       territoryMode: "mosaic",
+      _partitionV2: _partitionV2,
       postprocessMode: "full",
       // v5.0 §3 R7: SA-ветка активна по умолчанию (_lloydTiling: false).
       // Lloyd-tiling можно включить явно через options._lloydTiling для regression-тестов.
@@ -78,7 +83,7 @@ function createInventoryVoronoiSaMode(deps) {
     });
     const placements = normalizePlacementOrders(result && result.placements);
     const solved = { ...(result || {}), placements, solveOrder: buildSolveOrder(placements) };
-    return wrapInventoryVoronoiSaPreview(input, solved);
+    return wrapInventoryVoronoiSaPreview(input, solved, _modeId);
   }
 
   async function applyWrapper(req) {
@@ -86,7 +91,7 @@ function createInventoryVoronoiSaMode(deps) {
     const fragments = Array.isArray(req && req.fragments) ? req.fragments : [];
     return {
       ok: true,
-      layoutType: "inventory_voronoi_sa",
+      layoutType: _modeId,
       applied: true,
       previewToken: String(req && req.previewToken || ""),
       selectedZoneId: Number(req && req.selectedZoneId || 0) || null,
@@ -95,12 +100,12 @@ function createInventoryVoronoiSaMode(deps) {
       fragments,
       placements,
       solveOrder: buildSolveOrder(placements),
-      message: "inventory_voronoi_sa apply confirmed by server."
+      message: _modeId + " apply confirmed by server."
     };
   }
 
   return {
-    modeId: "inventory_voronoi_sa",
+    modeId: _modeId,
     getDescriptor,
     validatePreview,
     previewWrapper,

@@ -73,6 +73,7 @@ function createVoronoiSaSolver(deps) {
     mpToPoints,
     ringAreaSigned,
     offsetContourInward,
+    cleanCandidateContour,
     sealFragment,
     coreFragmentForTerritory
   } = createVoronoiSaGeometry({
@@ -282,6 +283,8 @@ function createVoronoiSaSolver(deps) {
       onProgress = null
     } = options || {};
     const allowanceMm = Math.max(0, Number((options && options.allowanceMm) || (options && options.seamAllowanceReserveMm) || 0));
+    // Чистка зубцов скана ДО расчёта припуска (см. cleanCandidateContour). 0 = выключено.
+    const cleanContoursMm = Math.max(0, Number((options && options.cleanContoursMm) || 0));
     const minWidthMm = Math.max(0, Number((options && options.minWidthMm) || 0));
     const minLengthMm = Math.max(0, Number((options && options.minLengthMm) || 0));
     // overhangMm: IFP uses inflated zone so pieces may overhang boundary.
@@ -377,7 +380,11 @@ function createVoronoiSaSolver(deps) {
         : parseScrapContourPoints(c.scrapContour);
       if (!rawPts || rawPts.length < 3) continue;
       const cen = centroid(rawPts);
-      const centeredPts = rawPts.map(p => ({ x: p.x - cen.x, y: p.y - cen.y }));
+      let centeredPts = rawPts.map(p => ({ x: p.x - cen.x, y: p.y - cen.y }));
+      if (cleanContoursMm > 0) {
+        const cleaned = cleanCandidateContour(centeredPts, cleanContoursMm);
+        if (cleaned && cleaned.length >= 3) centeredPts = cleaned;
+      }
       const areaMm2 = Math.abs(ringAreaSigned(centeredPts));
       const coreInset = allowanceMm > 0 ? offsetContourInward(centeredPts, allowanceMm) : [];
       // v5.0 §1, §7: при allowanceMm > 0 инсет обязателен. Если он схлопнулся (< 3 точек) —

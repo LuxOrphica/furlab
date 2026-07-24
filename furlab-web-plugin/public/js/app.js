@@ -5507,6 +5507,7 @@ function renderSplitEvents(events) {
     // Layout mode API — thin wrappers over window.FurLabLayoutModes
     function getLayoutModeTitle(mode) { const a = window.FurLabLayoutModes; return a && typeof a.getLayoutModeTitle === "function" ? a.getLayoutModeTitle(mode) : String(mode || ""); }
     function isInventoryLikeLayoutMode(mode) { const a = window.FurLabLayoutModes; return a && typeof a.isInventoryLikeLayoutMode === "function" ? !!a.isInventoryLikeLayoutMode(mode) : String(mode || "") === "inventory"; }
+    function isVoronoiSaMode(mode) { const a = window.FurLabLayoutModes; return a && typeof a.isVoronoiSaLayoutMode === "function" ? !!a.isVoronoiSaLayoutMode(mode) : String(mode || "") === "inventory_voronoi_sa"; }
     function getLayoutModeCatalog() { const a = window.FurLabLayoutModes; return a && typeof a.getLayoutModeCatalog === "function" ? a.getLayoutModeCatalog() : []; }
     function getLayoutModeThumbSvg(mode, large) { const a = window.FurLabLayoutModes; return a && typeof a.getLayoutModeThumbSvg === "function" ? a.getLayoutModeThumbSvg(mode, large) : ""; }
     const layoutTypePickerApi = window.FurLabLayoutTypePicker || {};
@@ -5595,6 +5596,11 @@ function renderSplitEvents(events) {
           x && Number(x.boundZoneId || 0) === selectedZoneId
           && String(x.mode || "") !== "intarsia"
           && normalizedMode !== "intarsia"
+          // A/B Voronoi SA: v1 и v2 уживаются на одной зоне — иначе их не сравнить
+          // глазами на одной и той же геометрии. Две карточки одного и того же
+          // варианта по-прежнему запрещены (ниже подхватится существующий черновик).
+          && !(isVoronoiSaMode(x.mode) && isVoronoiSaMode(normalizedMode)
+               && String(x.mode || "") !== normalizedMode)
         );
         if (occupiedBy) {
           const zoneName = String(selectedZone && selectedZone.name || `Зона ${selectedZoneId}`);
@@ -5658,7 +5664,7 @@ function renderSplitEvents(events) {
     }
     function isLocalRuntimeLayoutMode(mode) {
       const normalizedMode = String(mode || "").trim();
-      return normalizedMode === "inventory_manual" || normalizedMode === "inventory_nfp_sa" || normalizedMode === "inventory_tiling" || normalizedMode === "inventory_voronoi_sa" || normalizedMode === "longitudinal" || normalizedMode === "shifted" || normalizedMode === "transverse" || normalizedMode === "radial" || normalizedMode === "voronoi_tiles" || normalizedMode === "intarsia";
+      return normalizedMode === "inventory_manual" || normalizedMode === "inventory_nfp_sa" || normalizedMode === "inventory_tiling" || isVoronoiSaMode(normalizedMode) || normalizedMode === "longitudinal" || normalizedMode === "shifted" || normalizedMode === "transverse" || normalizedMode === "radial" || normalizedMode === "voronoi_tiles" || normalizedMode === "intarsia";
     }
     function ensureLocalRuntimeLayoutBinding(entry) {
       const e = entry && typeof entry === "object" ? entry : null;
@@ -6119,7 +6125,7 @@ function renderSplitEvents(events) {
         current.runtimeSnapshot = buildManualLayoutSnapshot();
         return;
       }
-      if (String(current.mode || "") === "inventory_nfp_sa" || String(current.mode || "") === "inventory_tiling" || String(current.mode || "") === "inventory_voronoi_sa") {
+      if (String(current.mode || "") === "inventory_nfp_sa" || String(current.mode || "") === "inventory_tiling" || isVoronoiSaMode(current.mode)) {
         const snap = buildFragmentOnlyLayoutSnapshot(String(current.mode || ""));
         snap.layoutRun.placements = Array.isArray(state.layoutRun && state.layoutRun.placements) ? state.layoutRun.placements : [];
         current.runtimeSnapshot = snap;
@@ -6250,7 +6256,7 @@ function renderSplitEvents(events) {
         : buildEmptyFragmentOnlyLayoutSnapshot(normalizedMode, entry);
       const base = state.layoutRun && typeof state.layoutRun === "object" ? state.layoutRun : {};
       const nextLayoutRunRaw = snap.layoutRun && typeof snap.layoutRun === "object" ? snap.layoutRun : {};
-      const _restoredPlacements = (normalizedMode === "inventory_nfp_sa" || normalizedMode === "inventory_tiling" || normalizedMode === "inventory_voronoi_sa") && Array.isArray(nextLayoutRunRaw.placements)
+      const _restoredPlacements = (normalizedMode === "inventory_nfp_sa" || normalizedMode === "inventory_tiling" || isVoronoiSaMode(normalizedMode)) && Array.isArray(nextLayoutRunRaw.placements)
         ? nextLayoutRunRaw.placements
         : [];
       state.layoutRun = {
@@ -6330,7 +6336,7 @@ function renderSplitEvents(events) {
       // Монитор Voronoi SA привязываем к выбранной выкладке, а не к последнему прогону:
       // для VSA показываем её собственный lastRawResult, для прочих режимов — сбрасываем.
       if (typeof updateVoronoiSaMonitor === "function") {
-        updateVoronoiSaMonitor(normalizedMode === "inventory_voronoi_sa" ? (state.layoutRun.lastRawResult || null) : null);
+        updateVoronoiSaMonitor(isVoronoiSaMode(normalizedMode) ? (state.layoutRun.lastRawResult || null) : null);
       }
       renderPlacementRows([]);
       renderSplitEvents(state.layoutRun.splitEvents || []);
@@ -6420,7 +6426,7 @@ function renderSplitEvents(events) {
           applyFragmentOnlyLayoutSnapshot(String(e.mode || ""), snap, e);
         } else if (String(e.mode || "") === "inventory_manual") {
           applyManualLayoutSnapshot(snap);
-        } else if (String(e.mode || "") === "inventory_nfp_sa" || String(e.mode || "") === "inventory_tiling" || String(e.mode || "") === "inventory_voronoi_sa") {
+        } else if (String(e.mode || "") === "inventory_nfp_sa" || String(e.mode || "") === "inventory_tiling" || isVoronoiSaMode(e.mode)) {
           applyFragmentOnlyLayoutSnapshot(String(e.mode || ""), snap, e);
         }
       } else if (isLocalRuntimeLayoutMode(e.mode)) {
@@ -7060,15 +7066,19 @@ function renderSplitEvents(events) {
       // зоне, чужой монитор. Синхронизируем selectedLayoutId с тем, что видит пользователь.
       const _selZoneId = Number(state.selectedZoneId || 0);
       const _rawSel = getSelectedLayoutEntry();
+      // Режим (v1 или v2) берём у карточки, с которой запускают: оба Voronoi SA
+      // делят весь клиентский путь и различаются только партицией на сервере.
+      const _vsaMode = isVoronoiSaMode(_rawSel && _rawSel.mode) ? String(_rawSel.mode)
+        : (isVoronoiSaMode(state.layoutMode) ? String(state.layoutMode) : "inventory_voronoi_sa");
       const _ownerEntry = (_selZoneId > 0 && (!_rawSel || Number(_rawSel.boundZoneId || 0) !== _selZoneId
-        || String(_rawSel.mode || "") !== "inventory_voronoi_sa"))
+        || String(_rawSel.mode || "") !== _vsaMode))
         ? ((Array.isArray(state.layouts) ? state.layouts : []).find(
-            (x) => x && Number(x.boundZoneId || 0) === _selZoneId && String(x.mode || "") === "inventory_voronoi_sa"
+            (x) => x && Number(x.boundZoneId || 0) === _selZoneId && String(x.mode || "") === _vsaMode
           ) || _rawSel || null)
         : _rawSel;
       if (_ownerEntry) state.selectedLayoutId = _ownerEntry.id;
       saveCurrentLayoutRuntimeSnapshot();
-      const zone = getSelectedZoneForLayoutMode("inventory_voronoi_sa");
+      const zone = getSelectedZoneForLayoutMode(_vsaMode);
       if (!zone || !Array.isArray(zone.points) || zone.points.length < 3) {
         byId("workspaceInfo").textContent = "Сначала выберите зону.";
         return;
@@ -7113,7 +7123,7 @@ function renderSplitEvents(events) {
       state.layoutRun.debugSeed = runSeed;
       openInventoryProgressStream(progressToken);
       const res = await api("/api/layout/modes/preview", "POST", {
-        layoutType: "inventory_voronoi_sa",
+        layoutType: _vsaMode,
         zone: { id: zone.id, points: zone.points, holes: Array.isArray(zone.holes) ? zone.holes.map(holeContour).filter((h) => h.length >= 3) : [] },
         inputs: { candidates },
         progressToken,
@@ -7142,7 +7152,7 @@ function renderSplitEvents(events) {
       }
       updateLayoutContractMonitor(res._contractDiag, {
         endpoint: "modes/preview (Voronoi+SA)",
-        layoutType: "inventory_voronoi_sa",
+        layoutType: _vsaMode,
         payloadHasHoles: Array.isArray(zone.holes) && zone.holes.length > 0
       });
       updateVoronoiSaMonitor(res);
@@ -7174,11 +7184,11 @@ function renderSplitEvents(events) {
       const _pfullChk = byId("layerPfullZ"); if (_pfullChk) _pfullChk.checked = false;
       state.layers.coverageHoles = true;
       const _chkCovHoles = byId("layerCoverageHoles"); if (_chkCovHoles) _chkCovHoles.checked = true;
-      state.layoutMode = "inventory_voronoi_sa";
+      state.layoutMode = _vsaMode;
       state.layoutRun.active = true;
       state.layoutRun.status = "preview";
       state.layoutRun.fillType = "regular";
-      state.layoutRun.strategy = "inventory_voronoi_sa";
+      state.layoutRun.strategy = _vsaMode;
       state.layoutRun.inventoryScenario = "A";
       state.layoutRun.selectedZoneId = Number(zone.id || 0) || null;
       state.layoutRun.ownerLayoutId = _ownerEntry ? Number(_ownerEntry.id) || null : null;
@@ -7492,7 +7502,7 @@ function renderSplitEvents(events) {
           if (state.layoutMode === "intarsia") previewIntarsiaFragmentsDraft();
         };
       }
-      if (state.layoutMode === "inventory_nfp_sa" || state.layoutMode === "inventory_voronoi_sa") {
+      if (state.layoutMode === "inventory_nfp_sa" || isVoronoiSaMode(state.layoutMode)) {
         const minWEl = byId("minFragmentWidthMm");
         const minLEl = byId("minFragmentLengthMm");
         if (minWEl && !minWEl.dataset.userTouched) minWEl.value = "70";
@@ -7583,7 +7593,7 @@ function renderSplitEvents(events) {
         void previewTilingLayout();
         return;
       }
-      if (state.layoutMode === "inventory_voronoi_sa" && !(options && options.intarsiaAssignOnly)) {
+      if (isVoronoiSaMode(state.layoutMode) && !(options && options.intarsiaAssignOnly)) {
         closeInventoryStep1();
         void previewVoronoiSaLayout();
         return;
@@ -8820,7 +8830,7 @@ function renderSplitEvents(events) {
             const ic = ENGINEERING_STYLES.inventoryContours || {};
             const isThinPl = !!(pl.isThin);
             // Мозаичные режимы: тела перекрываются по дизайну → только контур, без заливки
-            const _mosaicBodies = state.layoutMode === "inventory_voronoi_sa" || state.layoutMode === "inventory_tiling";
+            const _mosaicBodies = isVoronoiSaMode(state.layoutMode) || state.layoutMode === "inventory_tiling";
             const pieceStroke = isThinPl
               ? (isSelPlacement ? "#c0392b" : "rgba(192,57,43,0.9)")
               : (isSelPlacement ? (ic.selectedStroke || "#914734") : (_mosaicBodies ? "rgba(189,87,39,0.45)" : (ic.stroke || "rgba(189,87,39,0.85)")));
@@ -8990,7 +9000,7 @@ function renderSplitEvents(events) {
           selectedFragObj = fragmentsList.find((f) => Number(f && f.id || 0) === selectedFragmentIdNum) || null;
         }
         const isIntarsiaSvgMode = state.layoutMode === "intarsia" && state.layoutRun.fillType === "import_svg";
-        const _isNfpSaMode = state.layoutMode === "inventory_nfp_sa" || state.layoutMode === "inventory_tiling" || state.layoutMode === "inventory_voronoi_sa";
+        const _isNfpSaMode = state.layoutMode === "inventory_nfp_sa" || state.layoutMode === "inventory_tiling" || isVoronoiSaMode(state.layoutMode);
         if (state.layers.pieceBorders) {
           const _hasMaterialZones = state.layers.zoneMaterials && state.zones.some((z) => z && z.materialId);
           for (const frag of fragmentsList) {
@@ -10606,6 +10616,10 @@ function refreshSelectionInfo() {
           const activeEntry = getSelectedLayoutEntry();
           // Only block auto-switch for manual mode вЂ" fragment-only modes have no unsaved placements
           if (activeEntry && String(activeEntry.mode || "") === "inventory_manual") return;
+          // На зоне может лежать несколько выкладок (A/B Voronoi SA v1 vs v2).
+          // Если выбранная карточка уже принадлежит этой зоне — не перескакиваем
+          // на соседнюю, иначе клик по зоне сбрасывал бы сравнение на первую из пары.
+          if (activeEntry && Number(activeEntry.boundZoneId || 0) === zoneId) return;
           const layoutForZone = (Array.isArray(state.layouts) ? state.layouts : [])
             .find((e) => Number(e && e.boundZoneId || 0) === zoneId);
           if (layoutForZone && Number(layoutForZone.id) !== Number(state.selectedLayoutId || 0)) {
@@ -11003,7 +11017,7 @@ function refreshSelectionInfo() {
           vsaBtn.style.opacity = window.__furlab_vsa_overlay ? "1" : "0.5";
           // Тоггл только показывает/прячет панель — перерисовываем прогон ТЕКУЩЕЙ выкладки,
           // не затирая его (для не-VSA режимов монитора нет актуального прогона → null).
-          const _curVsaRun = (String(state.layoutMode || "") === "inventory_voronoi_sa" && state.layoutRun)
+          const _curVsaRun = (isVoronoiSaMode(state.layoutMode) && state.layoutRun)
             ? (state.layoutRun.lastRawResult || null) : null;
           updateVoronoiSaMonitor(_curVsaRun);
         });

@@ -1,6 +1,14 @@
 ﻿(function registerFurLabPropertyEditorView(globalObj) {
   const root = globalObj || (typeof window !== "undefined" ? window : globalThis);
 
+  // v1 и v2 Voronoi SA делят панель свойств целиком: отличие только в партиции на сервере.
+  function _isVsaMode(mode) {
+    const a = root.FurLabLayoutModes;
+    return a && typeof a.isVoronoiSaLayoutMode === "function"
+      ? !!a.isVoronoiSaLayoutMode(mode)
+      : String(mode || "") === "inventory_voronoi_sa";
+  }
+
   function createPropertyEditorView(deps) {
     const byId = deps && deps.byId;
     const state = deps && deps.state;
@@ -324,7 +332,7 @@
       const isIntarsiaMode = currentLayoutMode === "intarsia";
       // Мозаичные режимы: подбор автоматический, вращение запрещено (R6) —
       // ручные кнопки и цель/допуск/Δ/проверка ворса (константы режима) не показываются.
-      const _isMosaicFragMode = currentLayoutMode === "inventory_voronoi_sa" || currentLayoutMode === "inventory_tiling" || currentLayoutMode === "inventory_nfp_sa";
+      const _isMosaicFragMode = _isVsaMode(currentLayoutMode) || currentLayoutMode === "inventory_tiling" || currentLayoutMode === "inventory_nfp_sa";
       // «Качество подбора» заполняется только ручным/библиотечным подбором —
       // секция скрывается целиком, когда все значения пустые.
       const _hasFitData = [fitScore, fitAreaRatio, fitOverlap, fitInside, fitChamfer, napDelta, alignRot].some((v) => v !== "-");
@@ -338,10 +346,10 @@
         && state.layoutRun.placements.length > 0
         && state.layoutRun.strategy === "inventory_nfp_sa"
         && _runMatchesZone;
-      const _voronoiSaHasResult = currentLayoutMode === "inventory_voronoi_sa"
+      const _voronoiSaHasResult = _isVsaMode(currentLayoutMode)
         && Array.isArray(state.layoutRun && state.layoutRun.placements)
         && state.layoutRun.placements.length > 0
-        && state.layoutRun.strategy === "inventory_voronoi_sa"
+        && _isVsaMode(state.layoutRun.strategy)
         && _runMatchesZone;
       const _tilingHasResult = currentLayoutMode === "inventory_tiling"
         && Array.isArray(state.layoutRun && state.layoutRun.placements)
@@ -361,7 +369,7 @@
             ? (_nfpSaHasResult ? "Пересчитать" : "Подобрать")
           : (currentLayoutMode === "inventory_tiling"
             ? (_tilingHasResult ? "Пересчитать" : "Подобрать")
-          : (currentLayoutMode === "inventory_voronoi_sa"
+          : (_isVsaMode(currentLayoutMode)
             ? (_voronoiSaHasResult ? "Пересчитать" : "Подобрать")
             : "Заполнить остаток")))))));
       const selectedLayoutName = selectedLayout ? String(selectedLayout.name || "") : "";
@@ -918,7 +926,7 @@
         `, true)}
         ${intarsiaImportSection}
         ${(isIntarsiaMode || currentLayoutMode === "voronoi_tiles") ? "" : renderEditorSection("layout_inventory", layoutActionSectionTitle, layoutActionSectionBody, true)}
-        ${(isFragmentOnlyRegularLayoutSelected || isManualLayoutSelected || currentLayoutMode === "inventory_nfp_sa" || currentLayoutMode === "inventory_voronoi_sa") ? "" : renderEditorSection("layout_params", "Параметры выкладки", `
+        ${(isFragmentOnlyRegularLayoutSelected || isManualLayoutSelected || currentLayoutMode === "inventory_nfp_sa" || _isVsaMode(currentLayoutMode)) ? "" : renderEditorSection("layout_params", "Параметры выкладки", `
           <div class="prop-row"><div class="prop-label">Резерв под припуски, мм</div><div><input id="layoutAllowanceInput" class="prop-input${!layoutEditEnabled ? " prop-input--locked" : ""}" type="number" min="0" max="200" step="0.5" value="${Number(allowanceValue).toFixed(1)}"${!layoutEditEnabled ? " disabled" : ""}></div></div>
           ${currentLayoutMode === "voronoi_tiles" ? `
           <div class="prop-row prop-row-compact prop-row-minmax"><div class="prop-label">Вдоль ворса, мм</div><div class="prop-field-minmax"><span class="prop-minmax-lbl">min</span><input id="fragmentMinAlongMm" class="prop-input prop-input-compact prop-input-numeric" type="number" min="10" max="10000" value="${_fragMinAlongValue}"><span class="prop-minmax-lbl">max</span><input id="fragmentMaxAlongMm" class="prop-input prop-input-compact prop-input-numeric prop-input--locked" type="number" min="0" max="10000" value="${_matMaxAlongMm !== null ? _matMaxAlongMm : ""}" placeholder="из мате" readonly></div></div>

@@ -134,6 +134,93 @@ function createVoronoiSaGeometry(deps) {
     return result.length >= 3 ? result : [];
   }
 
+  // ── Чистка контура кандидата (до расчёта припуска) ─────────────────────────
+  // Отсканированные обрезки зубчатые, и партиция честно обводит эти зубцы: замер
+  // 2026-07-24 показал, что 16 из 16 заломов шва лежат ТОЧНО на контуре ядра
+  // (медиана расстояния 0.00мм). То есть кривизна швов родом из скана, а не из
+  // способа деления зоны — до этого её безуспешно лечили тремя способами со
+  // стороны партиции.
+  //
+  // ЖЁСТКИЙ ИНВАРИАНТ: результат ⊆ исходного контура. Мех можно только терять
+  // (срезать), но не выдумывать. Поэтому:
+  //   1) упрощение Дугласа-Пекера + пересечение с исходником — срезает мелкие
+  //      зубцы и заусенцы; там, где упрощённая линия выходит наружу, пересечение
+  //      возвращает её обратно на исходный контур;
+  //   2) морфологическое открытие радиусом tol/2 — срезает узкие выступы;
+  //   3) финальное пересечение с исходником — страховка инварианта.
+  // Вырезы (вогнутые выемки) НЕ заполняются: там материала нет. Их сглаживает
+  // только п.1, и только срезанием наружного края, а не достройкой.
+  function _dpSimplify(pts, tolMm) {
+    if (!pts || pts.length < 4 || !(tolMm > 0)) return pts;
+    const n = pts.length;
+    const keep = new Uint8Array(n);
+    keep[0] = 1;
+    const distSeg = (p, a, b) => {
+      const dx = b.x - a.x, dy = b.y - a.y, L2 = dx * dx + dy * dy;
+      let t = L2 > 0 ? ((p.x - a.x) * dx + (p.y - a.y) * dy) / L2 : 0;
+      t = t < 0 ? 0 : (t > 1 ? 1 : t);
+      return Math.hypot(p.x - (a.x + t * dx), p.y - (a.y + t * dy));
+    };
+    // замкнутый контур: рекурсия по двум половинам между самой дальней парой
+    const stack = [[0, n - 1]];
+    keep[n - 1] = 1;
+    while (stack.length) {
+      const [i0, i1] = stack.pop();
+      let far = -1, maxD = tolMm;
+      for (let i = i0 + 1; i < i1; i++) {
+        const d = distSeg(pts[i], pts[i0], pts[i1]);
+        if (d > maxD) { maxD = d; far = i; }
+      }
+      if (far >= 0) { keep[far] = 1; stack.push([i0, far], [far, i1]); }
+    }
+    const out = [];
+    for (let i = 0; i < n; i++) if (keep[i]) out.push(pts[i]);
+    return out.length >= 3 ? out : pts;
+  }
+
+  function _offsetPaths(paths, deltaMm) {
+    const co = new ClipperLib.ClipperOffset(2, 0.25 * clipperScale);
+    // jtMiter, не jtRound: скругление разбивает угол на дугу из мелких звеньев,
+    // то есть меняет один излом на десяток — ровно против цели прямых швов.
+    for (const p of paths) co.AddPath(p, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
+    const out = new ClipperLib.Paths();
+    co.Execute(out, deltaMm * clipperScale);
+    return out || [];
+  }
+
+  function _intersectWithOriginal(paths, originalPath) {
+    const cpr = new ClipperLib.Clipper();
+    for (const p of paths) cpr.AddPath(p, ClipperLib.PolyType.ptSubject, true);
+    cpr.AddPath(originalPath, ClipperLib.PolyType.ptClip, true);
+    const sol = new ClipperLib.Paths();
+    cpr.Execute(ClipperLib.ClipType.ctIntersection, sol,
+      ClipperLib.PolyFillType.pftNonZero, ClipperLib.PolyFillType.pftNonZero);
+    return sol || [];
+  }
+
+  function cleanCandidateContour(pts, tolMm) {
+    if (!pts || pts.length < 3 || !(tolMm > 0)) return pts;
+    const orig = toClipper(pts);
+    if (ringAreaSigned(pts) < 0) orig.reverse();
+    try {
+      const simplified = _dpSimplify(pts, tolMm);
+      let paths = _intersectWithOriginal([toClipper(simplified)], orig);
+      if (!paths.length) return pts;
+      const r = tolMm / 2;
+      let opened = _offsetPaths(paths, -r);
+      if (opened && opened.length) {
+        opened = _offsetPaths(opened, r);
+        if (opened && opened.length) paths = _intersectWithOriginal(opened, orig);
+      }
+      if (!paths.length) return pts;
+      const best = paths.reduce((a, b) => (Math.abs(ClipperLib.Clipper.Area(b)) > Math.abs(ClipperLib.Clipper.Area(a)) ? b : a), paths[0]);
+      const result = fromClipper(best);
+      return result.length >= 3 ? result : pts;
+    } catch (_) {
+      return pts;
+    }
+  }
+
   function sealFragment(fragPts, placementIdx, placements) {
     if (!fragPts || fragPts.length < 3) return fragPts;
     const pl = placements[placementIdx];
@@ -184,6 +271,7 @@ function createVoronoiSaGeometry(deps) {
     mpToPoints,
     ringAreaSigned,
     offsetContourInward,
+    cleanCandidateContour,
     sealFragment,
     coreFragmentForTerritory
   };

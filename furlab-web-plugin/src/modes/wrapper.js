@@ -23,6 +23,7 @@ const LAYOUT_TYPES = new Set([
   "inventory_nfp_sa",
   "inventory_tiling",
   "inventory_voronoi_sa",
+  "inventory_voronoi_sa_v2",
   "voronoi_tiles"
 ]);
 
@@ -329,7 +330,8 @@ function wrapIntarsiaPreview(input, result) {
 // ── inventory_voronoi_sa v2.0 wrapper ─────────────────────────────────────────
 // Passes full solver diagnostics (_solverDiag) for Monitor panel.
 // render.items.meta carries per-fragment fields required by the Monitor.
-function wrapInventoryVoronoiSaPreview(input, result) {
+function wrapInventoryVoronoiSaPreview(input, result, layoutTypeId) {
+  const _layoutType = String(layoutTypeId || "inventory_voronoi_sa");
   const placements = (Array.isArray(result && result.placements) ? result.placements : []).map((p, idx) => ({
     ...(p || {}),
     placementId: String((p && p.placementId) || (p && p.fragmentId) || (p && p.scrapPieceId) || (p && p.inventoryTag) || `placement_${idx + 1}`) + `#${idx + 1}`
@@ -423,7 +425,7 @@ function wrapInventoryVoronoiSaPreview(input, result) {
 
   return withRenderInvariants({
     ok: true,
-    layoutType: "inventory_voronoi_sa",
+    layoutType: _layoutType,
     modeVersion: "v3.1",
     resultStatus,
     warnings: [],

@@ -23,6 +23,10 @@ function createModeRegistry(deps) {
   const inventoryManual = createInventoryManualMode(deps || {});
   const inventorySplitReturn = createInventorySplitReturnMode(deps || {});
   const inventoryVoronoiSa = createInventoryVoronoiSaMode(deps || {});
+  const inventoryVoronoiSaV2 = createInventoryVoronoiSaMode(deps || {}, {
+    modeId: "inventory_voronoi_sa_v2",
+    partitionV2: true
+  });
   const inventoryNfpSa = createInventoryNfpSaMode(deps || {});
   const inventoryTiling = createInventoryTilingMode(deps || {});
   const voronoiTiles = createVoronoiTilesMode(deps || {});
@@ -36,6 +40,7 @@ function createModeRegistry(deps) {
     [inventoryManual.modeId, inventoryManual],
     [inventorySplitReturn.modeId, inventorySplitReturn],
     [inventoryVoronoiSa.modeId, inventoryVoronoiSa],
+    [inventoryVoronoiSaV2.modeId, inventoryVoronoiSaV2],
     [inventoryNfpSa.modeId, inventoryNfpSa],
     [inventoryTiling.modeId, inventoryTiling],
     [voronoiTiles.modeId, voronoiTiles]
