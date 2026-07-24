@@ -231,7 +231,9 @@ function createVoronoiSaResultBuilder(deps) {
         mpToPoints,
         minWidthMm,
         minLengthMm,
-        allowanceMm
+        allowanceMm,
+        partitionV2: !!(options && options._partitionV2),
+        seamWeights: !!(options && options._seamWeights)
       });
       resultPlacements = polyOut.resultPlacements;
       polygonalThinFragments = polyOut.thinFragments;
@@ -308,7 +310,7 @@ function createVoronoiSaResultBuilder(deps) {
     // всем разбиением сразу: морфология + возврат под ядро + разрешение наложений +
     // передача высвобожденного материала соседям в пределах их ядер. См. voronoi_sa_polygonal.js.
     let _regularizeSummary = null;
-    if (usePolygonal && typeof regularizePartition === "function") {
+    if (usePolygonal && typeof regularizePartition === "function" && !(options && options._skipRegularize)) {
       const _regT0 = Date.now();
       try {
         _regularizeSummary = regularizePartition({ placements: resultPlacements, cutToleranceMm: 0.6 }); // 0.6мм = вычислительная гигиена (иглы/прорези нулевой ширины), НЕ производственный допуск

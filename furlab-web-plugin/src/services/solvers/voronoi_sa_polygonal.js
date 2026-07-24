@@ -321,9 +321,7 @@ function multiPolygonOuterContours(mp) {
  * Halfplane содержит точку (cx_i, cy_i), отрезает часть со стороны (cx_j, cy_j).
  * Bisector — перпендикуляр к отрезку (i,j) через середину.
  */
-function buildHalfplanePath(cx_i, cy_i, cx_j, cy_j, zoneBbox, scale) {
-  const mid_x = (cx_i + cx_j) / 2;
-  const mid_y = (cy_i + cy_j) / 2;
+function buildHalfplanePath(cx_i, cy_i, cx_j, cy_j, zoneBbox, scale, shiftMm) {
   const nx = cx_j - cx_i;
   const ny = cy_j - cy_i;
   const nlen = Math.hypot(nx, ny);
@@ -331,6 +329,11 @@ function buildHalfplanePath(cx_i, cy_i, cx_j, cy_j, zoneBbox, scale) {
 
   const bx = -ny / nlen, by = nx / nlen;
   const nxn = nx / nlen, nyn = ny / nlen;
+  // v5.7: shiftMm сдвигает линию шва вдоль оси i→j (взвешенная power-диаграмма).
+  // 0 = классическая биссектриса посередине; >0 — шов ближе к j (i получает больше).
+  const sh = Number(shiftMm) || 0;
+  const mid_x = (cx_i + cx_j) / 2 + nxn * sh;
+  const mid_y = (cy_i + cy_j) / 2 + nyn * sh;
 
   const margin = 5000;  // 5 метров запас — больше любой зоны
   const p1 = { X: Math.round((mid_x + bx * margin) * scale), Y: Math.round((mid_y + by * margin) * scale) };
@@ -338,6 +341,79 @@ function buildHalfplanePath(cx_i, cy_i, cx_j, cy_j, zoneBbox, scale) {
   const p3 = { X: Math.round((mid_x - bx * margin - nxn * margin) * scale), Y: Math.round((mid_y - by * margin - nyn * margin) * scale) };
   const p4 = { X: Math.round((mid_x + bx * margin - nxn * margin) * scale), Y: Math.round((mid_y + by * margin - nyn * margin) * scale) };
   return [p1, p2, p3, p4];
+}
+
+/**
+ * v5.7 Взвешенные швы: подбирает вес каждого куска так, чтобы швы садились ВНУТРЬ
+ * полосы перекрытия ядер, а не посередине между центрами.
+ *
+ * Зачем: классическая биссектриса идёт посередине и часто промахивается мимо перекрытия
+ * (замер 2026-07-19: 11 из 50 пар — шов вообще вне перекрытия, ещё половина — сильно
+ * не по центру). Где шов вне перекрытия, до него дотягивается только один кусок →
+ * граница вынужденно идёт по неровному контуру ядра → заломы. Сдвинув шов в перекрытие,
+ * получаем прямую линию с материалом с обеих сторон.
+ *
+ * Как: для пары (i,j) желаемый сдвиг δ = центр проекции перекрытия на ось i→j минус
+ * середина. В power-диаграмме δ = (w_i − w_j)/(2·D), отсюда уравнение w_i − w_j = 2·D·δ.
+ * Весов N, пар ~N² — система переопределена, решаем наименьшими квадратами (релаксация
+ * Гаусса-Зейделя: вес = среднее по соседям от w_j + b_ij). Часть швов сядет точно,
+ * часть останется компромиссом — это ожидаемо и честно.
+ *
+ * Ограничение: вес двигает шов ВДОЛЬ оси, но не поворачивает его.
+ */
+function computeSeamWeights(placements, corePaths, N, scale) {
+  const eqs = [];
+  for (let i = 0; i < N; i++) {
+    if (!corePaths[i]) continue;
+    for (let j = i + 1; j < N; j++) {
+      if (!corePaths[j]) continue;
+      let ov;
+      try { ov = clipperIntersect([corePaths[i]], [corePaths[j]]); } catch (_) { continue; }
+      if (!ov || !ov.length) continue;
+      let ovArea = 0;
+      for (const p of ov) ovArea += clipperArea(p) / (scale * scale);
+      if (ovArea < 100) continue; // не соседи по существу
+      const dx = placements[j].cx - placements[i].cx;
+      const dy = placements[j].cy - placements[i].cy;
+      const D = Math.hypot(dx, dy);
+      if (D < 1) continue;
+      const ux = dx / D, uy = dy / D;
+      let tmin = Infinity, tmax = -Infinity;
+      for (const path of ov) {
+        for (const pt of path) {
+          const x = pt.X / scale - placements[i].cx;
+          const y = pt.Y / scale - placements[i].cy;
+          const t = x * ux + y * uy;
+          if (t < tmin) tmin = t;
+          if (t > tmax) tmax = t;
+        }
+      }
+      if (!Number.isFinite(tmin) || !Number.isFinite(tmax)) continue;
+      const delta = (tmin + tmax) / 2 - D / 2;
+      // Ограничение: шов не должен уезжать за пределы отрезка между центрами —
+      // иначе кусок теряет территорию вокруг собственного центра.
+      const clamped = Math.max(-D * 0.45, Math.min(D * 0.45, delta));
+      eqs.push({ i, j, b: 2 * D * clamped });
+    }
+  }
+  const w = new Float64Array(N);
+  if (!eqs.length) return w;
+  const nbr = [];
+  for (let i = 0; i < N; i++) nbr.push([]);
+  for (const e of eqs) {
+    nbr[e.i].push({ o: e.j, b: e.b });
+    nbr[e.j].push({ o: e.i, b: -e.b });
+  }
+  for (let it = 0; it < 60; it++) {
+    for (let i = 0; i < N; i++) {
+      const lst = nbr[i];
+      if (!lst.length) continue;
+      let s = 0;
+      for (const e of lst) s += w[e.o] + e.b;
+      w[i] = s / lst.length;
+    }
+  }
+  return w;
 }
 
 /**
@@ -424,6 +500,8 @@ function buildPolygonalTerritoryOutput(args) {
   const minWidthMm = args.minWidthMm || 0;
   const minLengthMm = args.minLengthMm || 0;
   const unionMulti = args.unionMulti;
+  const partitionV2 = !!args.partitionV2; // v2: прямые общие швы (power-диаграмма)
+  const seamWeights = !!args.seamWeights;  // v5.7: сдвиг швов в полосу перекрытия
 
   // R5 per-component: компонент проходит, если MBR-ширина и bbox-длина не ниже
   // порогов (допуск 0.5мм — тот же, что в thin-detect).
@@ -459,6 +537,9 @@ function buildPolygonalTerritoryOutput(args) {
     coreMps.push(pointsToMultiPolygon(pl.corePts));
   }
 
+  // v5.7: веса для сдвига швов внутрь полос перекрытия (только с partitionV2)
+  const seamW = (partitionV2 && seamWeights) ? computeSeamWeights(placements, corePaths, N, scale) : null;
+
   // ── 1. Строим territory_i = power Voronoi cell ────────────────────────────
   const territoryPaths = [];
 
@@ -493,26 +574,54 @@ function buildPolygonalTerritoryOutput(args) {
       continue;
     }
 
-    // Inner j-loop: для каждого конкурента применяем bisector к contested region.
-    // v5.1: вместо clipperUnion на каждой итерации — конкатенация + clipperClean.
-    // withoutContested и contestedKept — оба подмножества currentPaths, могут
-    // соприкасаться по границе, но не перекрываться по площади → Clean корректен.
-    for (const j of otherIndices) {
-      const contested = clipperIntersect(currentPaths, [corePaths[j]]);
-      if (!contested || contested.length === 0) continue;
+    if (partitionV2) {
+      // ── v2: core-aware power-диаграмма ────────────────────────────────────
+      // cell_i = (zone ∩ core_i) − ⋃_j (core_j ∩ halfplane_j), где halfplane_j —
+      // сторона биссектрисы, содержащая seed_j. Убираем только там, где ЯДРО соседа
+      // реально есть И сосед ближе → покрытие сохраняется (точку берёт ближайший
+      // НАКРЫВАЮЩИЙ кусок, как в растровом computePowerAssign). Вычитаемые области
+      // фиксированы (не зависят от порядка) → шов i–j = core_i∩core_j∩биссектриса —
+      // одна прямая линия, одинаковая для обоих соседей → швы прямые и совпадающие.
+      for (const j of otherIndices) {
+        const contested = clipperIntersect(currentPaths, [corePaths[j]]);
+        if (!contested || contested.length === 0) continue;
+        // halfplane_j (сторона seed_j) = buildHalfplanePath с j на «своей» стороне
+        // сдвиг шва: δ_ji = (w_j − w_i)/(2·D) — та же линия, что и δ_ij с другой стороны
+        let shJI = 0;
+        if (seamW) {
+          const _dx = pl_i.cx - placements[j].cx, _dy = pl_i.cy - placements[j].cy;
+          const _D = Math.hypot(_dx, _dy);
+          if (_D > 1) shJI = (seamW[j] - seamW[i]) / (2 * _D);
+        }
+        const hpJ = buildHalfplanePath(placements[j].cx, placements[j].cy, pl_i.cx, pl_i.cy, zoneBbox, scale, shJI);
+        if (!hpJ) continue;
+        const removeRegion = clipperIntersect(contested, [hpJ]); // core_j ∩ halfplane_j ∩ current
+        if (!removeRegion || removeRegion.length === 0) continue;
+        currentPaths = clipperDifference(currentPaths, removeRegion);
+        if (currentPaths.length === 0) break;
+      }
+    } else {
+      // ── v1: условный разрез только «спорной» области (где оба ядра) ───────
+      // v5.1: вместо clipperUnion на каждой итерации — конкатенация + clipperClean.
+      // withoutContested и contestedKept — оба подмножества currentPaths, могут
+      // соприкасаться по границе, но не перекрываться по площади → Clean корректен.
+      for (const j of otherIndices) {
+        const contested = clipperIntersect(currentPaths, [corePaths[j]]);
+        if (!contested || contested.length === 0) continue;
 
-      const hpPath = buildHalfplanePath(pl_i.cx, pl_i.cy, placements[j].cx, placements[j].cy, zoneBbox, scale);
-      if (!hpPath) continue;
+        const hpPath = buildHalfplanePath(pl_i.cx, pl_i.cy, placements[j].cx, placements[j].cy, zoneBbox, scale);
+        if (!hpPath) continue;
 
-      const contestedKept = clipperIntersect(contested, [hpPath]);
-      const withoutContested = clipperDifference(currentPaths, [corePaths[j]]);
+        const contestedKept = clipperIntersect(contested, [hpPath]);
+        const withoutContested = clipperDifference(currentPaths, [corePaths[j]]);
 
-      // Конкатенация + Clean (вместо Union)
-      const combined = [];
-      for (const p of withoutContested) combined.push(p);
-      for (const p of contestedKept) combined.push(p);
-      currentPaths = combined.length > 0 ? clipperClean(combined, scale) : [];
-      if (currentPaths.length === 0) break;
+        // Конкатенация + Clean (вместо Union)
+        const combined = [];
+        for (const p of withoutContested) combined.push(p);
+        for (const p of contestedKept) combined.push(p);
+        currentPaths = combined.length > 0 ? clipperClean(combined, scale) : [];
+        if (currentPaths.length === 0) break;
+      }
     }
 
     if (currentPaths.length === 0) {
