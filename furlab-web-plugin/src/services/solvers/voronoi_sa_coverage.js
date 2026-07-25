@@ -138,19 +138,22 @@ function createVoronoiSaCoverage(deps) {
     // zonePathClipper нужен для расчёта расстояния до границы (через Clipper).
     const zonePathClipper = toClipper(zonePoints);
 
-    // v5.6 СТРОГИЙ РЕЖИМ (решение пользователя 2026-07-19: «фрагменты примыкают
-    // вплотную, щели недопустимы, никаких допусков»). Прощается ТОЛЬКО вычислительный
-    // мусор булевой геометрии — компоненты, схлопывающиеся эрозией 0.15мм (ширина
-    // < ~0.3мм). Прежние классы прощения (sliver-по-эрозии, raster-artifact,
-    // edge-line-artifact, потолки площади) удалены как самооправдание слабостей
-    // генератора: любой реальный остаток — честный дефект interior/edge.
-    const NUMERIC_NOISE_EROSION_MM = 0.15;
-    const isNumericNoise = (path) => {
+    // ДОПУСТИМАЯ ЩЕЛЬ НА СТЫКЕ (решение пользователя 2026-07-25, заменяет строгий
+    // режим от 2026-07-19). Тонкая щель между фрагментами шириной ≤ ACCEPTABLE_GAP_MM
+    // при шитье бридж­уется припуском и невидима — это НЕ брак. Компактная дыра толще
+    // порога — честный дефект и считается полностью.
+    // Механика: щель шириной w схлопывается эрозией на w/2 с каждой стороны. Поэтому
+    // радиус эрозии = ACCEPTABLE_GAP_MM/2; всё, что после неё исчезает (или оставляет
+    // < 0.5мм² хвоста), — прощаемая щель. Это НЕ «потолок площади»: длинный тонкий шов
+    // любой площади прощается, а компактная дыра — нет; разница именно в толщине.
+    const ACCEPTABLE_GAP_MM = 0.5;
+    const ACCEPTABLE_GAP_EROSION_MM = ACCEPTABLE_GAP_MM / 2;
+    const isAcceptableGap = (path) => {
       try {
         const co = new ClipperLib.ClipperOffset(2, 0.25 * CLIPPER_SCALE);
         co.AddPath(path, ClipperLib.JoinType.jtMiter, ClipperLib.EndType.etClosedPolygon);
         const er = new ClipperLib.Paths();
-        co.Execute(er, -Math.round(NUMERIC_NOISE_EROSION_MM * CLIPPER_SCALE));
+        co.Execute(er, -Math.round(ACCEPTABLE_GAP_EROSION_MM * CLIPPER_SCALE));
         if (!er || !er.length) return true;
         return er.reduce((sum, p) => sum + clipperArea(p), 0) < 0.5;
       } catch (_) {
@@ -161,8 +164,8 @@ function createVoronoiSaCoverage(deps) {
     for (const path of (residualSol || [])) {
       const areaMm2 = clipperArea(path);
       residualAreaMm2 += areaMm2;
-      // Вычислительный мусор — не дефект и не компонента.
-      if (isNumericNoise(path)) continue;
+      // Щель тоньше допуска (бридж­уется припуском) — не дефект и не компонента.
+      if (isAcceptableGap(path)) continue;
 
       const holePts = fromClipper(path);
       const holeBbox = polygonBBox(holePts);
