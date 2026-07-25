@@ -7117,10 +7117,13 @@ function renderSplitEvents(events) {
       const maxSolveMs = 90000;
       const previewTimeoutMs = Math.max(maxSolveMs + 60000, 12 * 60 * 1000);
       const progressToken = `voronoi_sa_${Date.now()}`;
-      // Fix seed before the call so re-runs on same S are possible immediately.
-      // To reset to random: delete state.layoutRun.debugSeed from console.
+      // Каждый расчёт/пересчёт берёт НОВЫЙ seed → другая выкладка. Солвер
+      // детерминирован: тот же seed давал бы бит-в-бит ту же раскладку, и «Пересчитать»
+      // был бесполезен. Разброс по seed большой (см. память), так что пересчёт до
+      // устраивающего результата — это и есть практический best-of-N вручную.
+      // Для ВОСПРОИЗВОДИМОСТИ при отладке: вручную выставить state.layoutRun.debugSeed
+      // в консоли — тогда он и будет использован (авто-seed его не перезаписывает).
       const runSeed = state.layoutRun.debugSeed != null ? state.layoutRun.debugSeed : Date.now();
-      state.layoutRun.debugSeed = runSeed;
       openInventoryProgressStream(progressToken);
       const res = await api("/api/layout/modes/preview", "POST", {
         layoutType: _vsaMode,
