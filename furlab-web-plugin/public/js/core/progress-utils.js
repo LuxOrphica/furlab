@@ -102,8 +102,12 @@
     const nextItersRaw = Number(p.iters);
     const nextTempRaw = Number(p.temperature);
     return {
+      // Куски — ТЕКУЩЕЕ число в выкладке, НЕ монотонный пик: SA законно убирает лишние
+      // куски (ходы REMOVE), и показывать максимум-за-прогон вводило в заблуждение
+      // (табличка «32» при реальных «24»). Монотонность оставлена только для метрик,
+      // которые и должны расти (покрытие/утилизация).
       pieces: Number.isFinite(nextPiecesRaw)
-        ? Math.max(0, Math.max(Number(prev.pieces || 0), nextPiecesRaw))
+        ? Math.max(0, nextPiecesRaw)
         : prev.pieces,
       coverage: Number.isFinite(nextCoverageRaw)
         ? Math.max(0, Math.max(Number(prev.coverage || 0), nextCoverageRaw))
