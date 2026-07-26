@@ -790,7 +790,7 @@ function createVoronoiSaSearch(deps) {
             type: "phase",
             phase: "sa_loop",
             percent,
-            title: `Voronoi+SA: оптимизация — ${bestPlacements.length} кусков, покрытие ${covPct}%`,
+            title: `Оптимизация: ${bestPlacements.length} кусков, покрытие ${covPct}%`,
             pieces: bestPlacements.length,
             coverage: covPct,
             iters,
